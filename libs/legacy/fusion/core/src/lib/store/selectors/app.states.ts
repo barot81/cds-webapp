@@ -65,7 +65,11 @@ export const getSelectedTenantName = createSelector(
 export const getLeafOucodeList = createSelector(
   getOrgState,
   (state: OrgState)=>{
-    return state.TenantWithOuCodeTree.OucodeTree[0].Children.map((x:OuCodeAccessTree)=>{
+    const RootOuCodeTree = state.TenantWithOuCodeTree.OucodeTree[0];
+    if( RootOuCodeTree.Children.length === 0) {
+      return [RootOuCodeTree];
+    }
+    return RootOuCodeTree.Children.map((x:OuCodeAccessTree)=>{
       while(x.Children.length > 0){
         x = x.Children[0];
       }
@@ -74,7 +78,8 @@ export const getLeafOucodeList = createSelector(
   }
 )
 
-export const selectedOucode = createSelector(getOrgState, getLeafOucodeList, 
+
+export const selectedOucode = createSelector(getOrgState, getLeafOucodeList ,
   (state: OrgState, flatArray: OuCodeAccessTree[]) => {
   return flatArray.find((x) => x.isSelected);
 });

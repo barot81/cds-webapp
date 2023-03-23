@@ -201,22 +201,12 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
    *
    */
   toggleSidebarOpen(key): void {
-    this.selectedOucodeName$
-      .subscribe((selectedOucode) => {
-        if (selectedOucode) {
-          this.openNavBar(key);
-        }
-      })
-      .unsubscribe();
-    if (this._oAuthService.hasValidAccessToken()) this.openNavBar(key);
-  }
-
-  openNavBar(key: any) {
     this._fuseSidebarService.getSidebar(key).toggleOpen();
     setTimeout(() => {
       this._fuseSidebarService.shiftFocus();
     }, 100);
   }
+
 
 
   /**
