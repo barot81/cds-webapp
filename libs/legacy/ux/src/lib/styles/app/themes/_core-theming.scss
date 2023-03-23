@@ -1,0 +1,680 @@
+@use '@angular/material' as mat;
+
+// Include core Angular Material styles
+@include mat.core();
+
+// -----------------------------------------------------------------------------------------------------
+// @ Color classes generator
+// -----------------------------------------------------------------------------------------------------
+@mixin generate-color-classes($colorName, $color, $contrastColor, $hue) {
+  .#{$colorName}#{$hue}-bg {
+    background-color: $color !important;
+  }
+
+  .#{$colorName}#{$hue}-hover-bg {
+    &:hover {
+      background-color: $color !important;
+    }
+  }
+
+  .#{$colorName}#{$hue} {
+    background-color: $color !important;
+    color: $contrastColor !important;
+
+    &[disabled] {
+      background-color: rgba($color, 0.12) !important;
+      color: rgba($contrastColor, 0.26) !important;
+    }
+  }
+
+  .#{$colorName}#{$hue}-fg {
+    color: $color !important;
+  }
+
+  .#{$colorName}#{$hue}-border {
+    border-color: $color !important;
+  }
+
+  .#{$colorName}#{$hue}-border-top {
+    border-top: 1px solid $color !important;
+  }
+
+  .#{$colorName}#{$hue}-border-right {
+    border-right: 1px solid $color !important;
+  }
+
+  .#{$colorName}#{$hue}-border-bottom {
+    border-bottom: 1px solid $color !important;
+  }
+
+  .#{$colorName}#{$hue}-border-left {
+    border-left: 1px solid $color !important;
+  }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Text color levels generator
+// -----------------------------------------------------------------------------------------------------
+@mixin generate-text-color-levels($classes, $contrast) {
+  // If the contrast is dark...
+  @if ($contrast== 'dark') {
+    // Put down the color classes
+    #{$classes} {
+      i,
+      .icon {
+        color: rgba(0, 0, 0, 0.54);
+      }
+
+      &.secondary-text,
+      .secondary-text {
+        color: rgba(0, 0, 0, 0.72) !important;
+      }
+
+      &.hint-text,
+      .hint-text,
+      &.disabled-text,
+      .disabled-text {
+        color: rgba(0, 0, 0, 0.38) !important;
+      }
+
+      &.divider,
+      .divider {
+        color: rgba(0, 0, 0, 0.12) !important;
+      }
+
+      .mat-ripple-element {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      .adaptive-border-color {
+        border-color: rgba(0, 0, 0, 0.12);
+      }
+    }
+  }
+
+  // If the base text color is white...
+  @else {
+    // Put down the color classes
+    #{$classes} {
+      i,
+      .icon {
+        color: rgba(255, 255, 255, 1);
+      }
+
+      &.secondary-text,
+      .secondary-text {
+        color: rgba(255, 255, 255, 0.7) !important;
+      }
+
+      &.hint-text,
+      .hint-text,
+      &.disabled-text,
+      .disabled-text {
+        color: rgba(255, 255, 255, 0.5) !important;
+      }
+
+      &.divider,
+      .divider {
+        color: rgba(255, 255, 255, 0.12) !important;
+      }
+
+      .mat-ripple-element {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .adaptive-border-color {
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Material element colors generator
+// -----------------------------------------------------------------------------------------------------
+@mixin generate-material-element-colors($classes, $contrast) {
+  // If the contrast color is light...
+  $fuseForeground: (
+    base: white,
+    text: white,
+    hint-text: rgba(white, 0.5),
+    divider: rgba(white, 0.12),
+  );
+
+  // If the contrast color is dark...
+  @if ($contrast== 'dark') {
+    $fuseForeground: (
+      base: black,
+      hint-text: rgba(black, 0.38),
+      divider: rgba(black, 0.12),
+    );
+  }
+
+  // Put down the color classes
+  #{$classes} {
+    // Native Input
+    input[type='text'] {
+      color: map-get($fuseForeground, base);
+    }
+
+    // Input
+    .mat-form-field-label {
+      color: map-get($fuseForeground, hint-text);
+    }
+
+    .mat-form-field-underline {
+      background-color: map-get($fuseForeground, divider);
+    }
+
+    // Select
+    .mat-select-trigger,
+    .mat-select-arrow {
+      color: map-get($fuseForeground, hint-text);
+    }
+
+    .mat-select-underline {
+      background-color: map-get($fuseForeground, divider);
+    }
+
+    .mat-select-disabled .mat-select-value,
+    .mat-select-arrow,
+    .mat-select-trigger {
+      color: map-get($fuseForeground, hint-text);
+    }
+
+    .mat-select-content,
+    .mat-select-panel-done-animating {
+      //background: map-get($background, card);
+    }
+
+    .mat-select-value {
+      color: map-get($fuseForeground, text);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Fuse color classes
+// -----------------------------------------------------------------------------------------------------
+@mixin fuse-color-classes($palettes) {
+  // Define contrast lists
+  $light-contrasting-classes: ();
+  $dark-contrasting-classes: ();
+
+  // Generate the color classes...
+  @each $paletteName, $palette in $palettes {
+    // Get the contrasts map
+    $contrasts: map-get($palette, 'contrast');
+
+    @each $hue in $matHues {
+      // Get the color and the contrasting color
+      $color: map-get($palette, $hue);
+      $contrast: map-get($contrasts, $hue);
+
+      @if ($color !=null and $contrast !=null) {
+        // Generate color classes
+        @include generate-color-classes(
+          $paletteName,
+          $color,
+          $contrast,
+          '-#{$hue}'
+        );
+
+        // If the contrast color is dark
+        @if (rgba(black, 1) ==rgba($contrast, 1)) {
+          $dark-contrasting-classes: append(
+            $dark-contrasting-classes,
+            unquote('.#{$paletteName}-#{$hue}'),
+            'comma'
+          );
+        }
+
+        // if the contrast color is light
+        @else {
+          $light-contrasting-classes: append(
+            $light-contrasting-classes,
+            unquote('.#{$paletteName}-#{$hue}'),
+            'comma'
+          );
+        }
+
+        // Run the generator one more time for default values (500)
+        // if we are not working with primary, accent or warn palettes
+        @if (
+          $hue==500 and
+            $paletteName !=
+            'primary' and
+            $paletteName !=
+            'accent' and
+            $paletteName !=
+            'warn'
+        ) {
+          // Generate color classes
+          @include generate-color-classes($paletteName, $color, $contrast, '');
+
+          // Add color to the correct list depending on the contrasting color
+
+          // If the contrast color is dark
+          @if (rgba(black, 1) ==rgba($contrast, 1)) {
+            $dark-contrasting-classes: append(
+              $dark-contrasting-classes,
+              unquote('.#{$paletteName}'),
+              'comma'
+            );
+          }
+
+          // if the contrast color is light
+          @else {
+            $light-contrasting-classes: append(
+              $light-contrasting-classes,
+              unquote('.#{$paletteName}'),
+              'comma'
+            );
+          }
+        }
+      }
+    }
+
+    // Run the generator again for the selected default hue values for
+    // primary, accent and warn palettes
+    //
+    // We are doing this because the default hue value can be changed
+    // by the user when the Material theme being generated.
+    @if (
+      $paletteName==
+        'primary' or
+        $paletteName==
+        'accent' or
+        $paletteName==
+        'warn'
+    ) {
+      // Get the color and the contrasting color for the selected
+      // default hue
+      $color: map-get($palette, 'default');
+      $contrast: map-get($palette, 'default-contrast');
+
+      // Generate color classes
+      @include generate-color-classes($paletteName, $color, $contrast, '');
+
+      // Add color to the correct list depending on the contrasting color
+
+      // If the contrast color is dark
+      @if (rgba(black, 1) ==rgba($contrast, 1)) {
+        $dark-contrasting-classes: append(
+          $dark-contrasting-classes,
+          unquote('.#{$paletteName}'),
+          'comma'
+        );
+      }
+
+      // if the contrast color is light
+      @else {
+        $light-contrasting-classes: append(
+          $light-contrasting-classes,
+          unquote('.#{$paletteName}'),
+          'comma'
+        );
+      }
+    }
+  }
+
+  // Generate contrasting colors
+  @include generate-text-color-levels($dark-contrasting-classes, 'dark');
+  @include generate-text-color-levels($light-contrasting-classes, 'light');
+  @include generate-material-element-colors($dark-contrasting-classes, 'dark');
+  @include generate-material-element-colors(
+    $light-contrasting-classes,
+    'light'
+  );
+}
+
+// @ Custom color maps for Fuse
+// -----------------------------------------------------------------------------------------------------
+$fuse-white: (
+  500: white,
+  contrast: (
+    500: $dark-primary-text,
+  ),
+);
+
+$fuse-black: (
+  500: black,
+  contrast: (
+    500: $light-primary-text,
+  ),
+);
+
+$grey-palette: (
+  50: #fafafa,
+  100: #f5f5f5,
+  200: #eeeeee,
+  300: #e0e0e0,
+  400: #bdbdbd,
+  500: #9e9e9e,
+  600: #757575,
+  700: #616161,
+  800: #424242,
+  900: #212121,
+  A100: #ffffff,
+  A200: #eeeeee,
+  A400: #bdbdbd,
+  A700: #616161,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+$fuse-navy: (
+  50: #ececee,
+  100: #c5c6cb,
+  200: #9ea1a9,
+  300: #7d818c,
+  400: #5c616f,
+  500: #3c4252,
+  600: #353a48,
+  700: #2d323e,
+  800: #262933,
+  900: #1e2129,
+  A100: #c5c6cb,
+  A200: #9ea1a9,
+  A400: #5c616f,
+  A700: #2d323e,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+$exxat-pink: (
+  50: #fde5f2,
+  100: #f9bedd,
+  200: #f693c7,
+  300: #f267b1,
+  400: #ef47a0,
+  500: #ec268f,
+  600: #ea2287,
+  700: #e71c7c,
+  800: #e41772,
+  900: #df0d60,
+  A100: #ffffff,
+  A200: #ffd7e5,
+  A400: #ffa4c4,
+  A700: #ff8bb4,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+$exxat-orange: (
+  50: #fef1e7,
+  100: #fcdbc3,
+  200: #fac49b,
+  300: #f8ac72,
+  400: #f79a54,
+  500: #f58836,
+  600: #f48030,
+  700: #f27529,
+  800: #f06b22,
+  900: #ee5816,
+  A100: #ffffff,
+  A200: #fff0eb,
+  A400: #ffcbb8,
+  A700: #ffb89e,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+$exxat-yellow: (
+  50: #fffde7,
+  100: #fff9c4,
+  200: #fff59d,
+  300: #fff176,
+  400: #ffee58,
+  500: #ffdf00,
+  600: #fdd835,
+  700: #fbc02d,
+  800: #f9a825,
+  900: #f57f17,
+  A100: #ffff8d,
+  A200: #ffff00,
+  A400: #ffea00,
+  A700: #ffd600,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $dark-primary-text,
+    700: $dark-primary-text,
+    800: $dark-primary-text,
+    900: $dark-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  ),
+);
+
+$exxat-teal: (
+  50: #e1f4f4,
+  100: #b3e3e3,
+  200: #81d0d0,
+  300: #4fbdbd,
+  400: #29afae,
+  500: #03a1a0,
+  600: #039998,
+  700: #028f8e,
+  800: #028584,
+  900: #017473,
+  A100: #a2fffe,
+  A200: #6ffffe,
+  A400: #3cfffd,
+  A700: #23fffd,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Material colors map
+// -----------------------------------------------------------------------------------------------------
+$matPalettes: (
+  'red': mat.$red-palette,
+  'pink': $exxat-pink,
+  'purple': mat.$purple-palette,
+  'deep-purple': mat.$deep-purple-palette,
+  'indigo': mat.$indigo-palette,
+  'blue': mat.$blue-palette,
+  'light-blue': mat.$light-blue-palette,
+  'cyan': mat.$cyan-palette,
+  'teal': $exxat-teal,
+  'green': mat.$green-palette,
+  'light-green': mat.$light-green-palette,
+  'lime': mat.$lime-palette,
+  'yellow': $exxat-yellow,
+  'amber': mat.$amber-palette,
+  'orange': $exxat-orange,
+  'deep-orange': mat.$deep-orange-palette,
+  'brown': mat.$brown-palette,
+  'grey': mat.$grey-palette,
+  'blue-grey': mat.$blue-grey-palette,
+);
+
+// Generate Fuse color classes for custom palettes
+$custom_palettes: (
+  fuse-white: $fuse-white,
+  fuse-black: $fuse-black,
+  mat-teal: mat.$teal-palette,
+);
+
+// Material color hues list
+$matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400,
+  A700;
+
+$light-focused: rgba(white, 0.12);
+$dark-focused: rgba(black, 0.12);
+
+// Background palette for light themes.
+$light-theme-background-palette: (
+  status-bar: map-get($grey-palette, 300),
+  app-bar: map-get($grey-palette, 100),
+  background: map-get($grey-palette, 50),
+  hover: rgba(black, 0.1),
+  card: white,
+  dialog: white,
+  disabled-button: rgba(black, 0.12),
+  raised-button: white,
+  focused-button: $dark-focused,
+  selected-button: map-get($grey-palette, 300),
+  selected-disabled-button: map-get($grey-palette, 400),
+  disabled-button-toggle: map-get($grey-palette, 200),
+  unselected-chip: map-get($grey-palette, 300),
+  disabled-list-option: map-get($grey-palette, 200),
+  tooltip: map-get($grey-palette, 700),
+  tableHeader: #eeeeff,
+  thick-border: #dcdcdc,
+  avatar: rgba(0, 0, 0, 0.12),
+  table-hover: #e6e6e6,
+);
+
+// Background palette for dark themes.
+$dark-theme-background-palette: (
+  status-bar: black,
+  app-bar: map-get($grey-palette, 900),
+  background: #121212,
+  hover: rgba(white, 0.1),
+  card: #1e1e1e,
+  dialog: map-get($grey-palette, 800),
+  disabled-button: rgba(white, 0.12),
+  raised-button: map-get($grey-palette, 800),
+  focused-button: $light-focused,
+  selected-button: map-get($grey-palette, 900),
+  selected-disabled-button: map-get($grey-palette, 800),
+  disabled-button-toggle: black,
+  unselected-chip: map-get($grey-palette, 700),
+  disabled-list-option: rgba(white, 0.12),
+  tooltip: map-get($grey-palette, 700),
+  tableHeader: #232229,
+  thick-border: #3d3d3d,
+  avatar: rgba(0, 0, 0, 0.12),
+  table-hover: #343434,
+);
+
+// Foreground palette for light themes.
+$light-theme-foreground-palette: (
+  base: black,
+  divider: $dark-dividers,
+  dividers: $dark-dividers,
+  disabled: $dark-disabled-text,
+  disabled-button: rgba(black, 0.26),
+  disabled-text: $dark-disabled-text,
+  elevation: black,
+  hint-text: $dark-disabled-text,
+  secondary-text: $dark-secondary-text,
+  icon: rgba(black, 0.54),
+  icons: rgba(black, 0.54),
+  text: rgba(black, 0.87),
+  slider-min: rgba(black, 0.87),
+  slider-off: rgba(black, 0.26),
+  slider-off-active: rgba(black, 0.38),
+  secondary-title: #975b00,
+);
+
+// Foreground palette for dark themes.
+$dark-theme-foreground-palette: (
+  base: white,
+  divider: $light-dividers,
+  dividers: $light-dividers,
+  disabled: $light-disabled-text,
+  disabled-button: rgba(white, 0.3),
+  disabled-text: $light-disabled-text,
+  elevation: black,
+  hint-text: $light-disabled-text,
+  secondary-text: $light-secondary-text,
+  icon: white,
+  icons: white,
+  text: white,
+  slider-min: white,
+  slider-off: rgba(white, 0.3),
+  slider-off-active: rgba(white, 0.3),
+  secondary-title: #fcd599,
+);
+
+// Core Mixins Includes
+// -----------------------------------------------------------------------------------------------------
+// @ Generate Fuse color classes for default Material palettes
+// -----------------------------------------------------------------------------------------------------
+@include fuse-color-classes($matPalettes);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Generate Fuse color classes for custom palettes
+// -----------------------------------------------------------------------------------------------------
+
+@include fuse-color-classes($custom_palettes);

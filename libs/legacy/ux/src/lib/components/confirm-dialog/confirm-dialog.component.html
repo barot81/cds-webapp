@@ -1,0 +1,43 @@
+<div class="dialog-box-wrapper" fxLayout="column" class="p-16">
+  <div class="dialog-box-message-container pb-8">
+    <span>{{ confirmMessage }}</span>
+  </div>
+  <div
+    *ngIf="confirmActions.inputCheck"
+    class="form-field-zero-spacing"
+    fxLayout="row"
+    fxLayoutAlign="start space-between"
+  >
+    <div fxLayout="column" class="" fxFlex="30">
+      Displayed number
+      <span class="font-24">
+        {{ randomNumber }}
+      </span>
+    </div>
+    <mat-form-field appearance="fill" fxFlex="70">
+      <mat-label>Enter displayed number to continue:</mat-label>
+      <input matInput [formControl]="output" />
+    </mat-form-field>
+  </div>
+  <mat-error *ngIf="error">Please enter number correctly</mat-error>
+  <div fxLayout="row" fxLayoutAlign="end" class="pt-16">
+    <mat-divider></mat-divider>
+    <button
+      *ngIf="confirmActions.cancel"
+      mat-stroked-button
+      color="primary"
+      (click)="onConfirm(false)"
+    >
+      {{ confirmActions.cancel }}
+    </button>
+    <button
+      *ngIf="confirmActions.ok"
+      mat-flat-button
+      color="primary"
+      class="ml-8"
+      (click)="onConfirm(true)"
+    >
+      {{ confirmActions.ok }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+@use '@angular/material' as mat;
+
+@mixin toggle-button-theme($theme) {
+  $is-dark: map-get($theme, is-dark);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  // @ START -- Material Button Toggle Focused Style Changes
+  .mat-button-toggle-group {
+    border-radius: 4px;
+    border: 1px solid map-get($map: $foreground, $key: divider) !important;
+    background: transparent !important;
+
+    .mat-button-toggle-label-content {
+      line-height: 32px !important;
+    }
+
+    .mat-button-toggle {
+      background: transparent !important;
+      height: 32px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mat-button-toggle-checked {
+      font-weight: 600 !important;
+    }
+
+    &[color='primary'] {
+      .mat-button-toggle-checked {
+        background: mat.get-color-from-palette($primary) !important;
+        @if ($is-dark) {
+          color: map-get($map: $exxat-foreground, $key: text) !important;
+        } @else {
+          color: $white !important;
+        }
+        &:hover {
+          background: mat.get-color-from-palette($primary) !important;
+        }
+      }
+    }
+
+    &[color='accent'] {
+      .mat-button-toggle-checked {
+        background: mat.get-color-from-palette($accent) !important;
+        color: map-get($map: $exxat-foreground, $key: text) !important;
+      }
+    }
+
+    &.button-toggle-2 {
+      .mat-button-toggle-label-content {
+        line-height: 21px !important;
+      }
+
+      .mat-button-toggle {
+        height: 24px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent !important;
+      }
+
+      .mat-button-toggle-checked {
+        font-weight: 600 !important;
+        color: $dark-primary-text !important;
+        background: mat.get-color-from-palette($accent) !important;
+      }
+
+      &[color='primary'] {
+        .mat-button-toggle-checked {
+          background: mat.get-color-from-palette($primary) !important;
+        }
+      }
+
+      &[color='accent'] {
+        .mat-button-toggle-checked {
+          background: mat.get-color-from-palette($accent) !important;
+        }
+      }
+    }
+  }
+  // @ END -- Material Button Toggle Focused Style Changes
+}

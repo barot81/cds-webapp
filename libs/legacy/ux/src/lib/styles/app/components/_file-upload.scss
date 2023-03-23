@@ -1,0 +1,35 @@
+@use '@angular/material' as mat;
+
+@mixin file-upload-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $is-dark: map-get($theme, is-dark);
+
+  .file-upload-box {
+    i {
+      color: map-get($map: $foreground, $key: icon);
+    }
+
+    @if ($is-dark) {
+      background-color: map-get($background, background);
+    } @else {
+      background-color: whitesmoke;
+    }
+
+    border-color: map-get($map: $foreground, $key: divider) !important;
+
+    .file-upload-text {
+      span {
+        color: map-get($foreground, text);
+      }
+    }
+  }
+
+  #exxat-file-upload {
+    .mat-error {
+      text-align: left !important;
+    }
+  }
+}

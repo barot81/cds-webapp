@@ -1,0 +1,199 @@
+<div class="user-setting-drawer theme-selection">
+  <div
+    fxLayout="column"
+    class="user-setting-drawer_content overflow-auto pb-16"
+    style="height: calc(100vh - 156px) !important"
+  >
+    <div
+      class="user_info_container mb-16"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <ng-container
+        *ngIf="(loggedInUser$ | async) && (loggedInUser$ | async) !== null"
+      >
+        <div
+          class="avatar_circle"
+          fxLayoutAlign="center center"
+          aria-hidden="true"
+        >
+          <div class="initials">
+            <ng-container *ngIf="userDetails">
+              <span
+                >{{ getFirstChar(userDetails?.given_name)
+                }}{{ getFirstChar(userDetails?.family_name) }}</span
+              >
+            </ng-container>
+            <ng-container *ngIf="!userDetails">
+              <span
+                >{{ getFirstChar((loggedInUser$ | async)?.FirstName)
+                }}{{ getFirstChar((loggedInUser$ | async)?.LastName) }}</span
+              >
+            </ng-container>
+          </div>
+        </div>
+        <div
+          class="pt-16 user_info"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+        >
+          <div>
+            <ng-container *ngIf="userDetails">
+              <span class="font-weight-600"
+                >{{ userDetails?.given_name }}
+                {{ userDetails?.family_name }}</span
+              >
+            </ng-container>
+            <ng-container *ngIf="!userDetails">
+              <span class="font-weight-600"
+                >{{ (loggedInUser$ | async)?.FirstName }}
+                {{ (loggedInUser$ | async)?.LastName }}</span
+              >
+            </ng-container>
+          </div>
+          <div>
+            <ng-container *ngIf="userDetails">
+              <span>{{ userDetails?.email }}</span>
+            </ng-container>
+            <ng-container *ngIf="!userDetails">
+              <span>{{ (loggedInUser$ | async)?.Email }}</span>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div class="px-16" fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="row" fxLayoutAlign="start center" class="mr-8">
+          <i aria-hidden="true" class="fa-light fa-palette s-18"></i>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <span>Theme</span>
+        </div>
+      </div>
+      <div
+        fxLayout="row wrap"
+        fxLayoutAlign="start center"
+        tabindex="0"
+        aria-label="Theme Selection"
+        class="mt-12"
+      >
+        <button
+          class="theme-chip mr-16 mb-16"
+          mat-button
+          [attr.aria-label]="item.id"
+          *ngFor="let item of themes"
+          [ngClass]="{ selected: (selectedTheme$ | async) === item.id }"
+          (click)="changeTheme(item.id)"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <span
+              class="mr-8 status-point"
+              [style.background-color]="item.primary"
+            ></span>
+            <span>
+              {{ item.title | titlecase }}
+            </span>
+          </div>
+        </button>
+      </div>
+      <ng-container>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div fxLayout="row" fxLayoutAlign="start center" class="mr-8">
+            <i class="fa-light fa-moon-over-sun s-18"></i>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <span>Mode</span>
+          </div>
+        </div>
+        <div
+          fxLayout="row wrap"
+          fxLayoutAlign="start center"
+          tabindex="0"
+          aria-label="Mode Selection"
+          class="mt-12"
+        >
+          <button
+            class="mode-button mr-16 mb-16"
+            mat-button
+            [attr.aria-label]="item.id"
+            *ngFor="let item of modes"
+            [ngClass]="{ selected: (selectedMode$ | async) === item.id }"
+            (click)="changeMode(item.id)"
+          >
+            <div>
+              <img class="w-100-p h-100-p mode_image" [src]="item.src" />
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="mt-4">
+              <span>
+                {{ item.id | titlecase }}
+              </span>
+            </div>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+    <div *ngIf="!userDetails">
+      <button
+        mat-menu-item
+        fxLayoutAlign="start center"
+        exxatManifoldPanelAction
+        [componentSelector]="identityComponentMapService.get('change-password')"
+        [size]="'drawer-sm'"
+        [caption]="'Change Password'"
+        [primaryAction]="'Save'"
+        [entityKey]="0"
+      >
+        <i aria-hidden="true" class="fa-light fa-key s-18 mr-16"></i>
+        <span>Change password</span>
+      </button>
+    </div>
+    <div *ngIf="!userDetails">
+      <button
+        mat-menu-item
+        fxLayoutAlign="start center"
+        (click)="openConsentDetailsPopup()"
+      >
+        <i aria-hidden="true" class="fa-light fa-receipt s-18 mr-16"></i>
+        <span>Consent detail</span>
+      </button>
+    </div>
+  </div>
+  <div class="bottom_sticky_button">
+    <div
+      *ngIf="!userDetails"
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      class="mt-16 mb-8"
+    >
+      <div *ngIf="lastLoginTime !== null && lastLoginTime !== undefined">
+        <span
+          >last login {{ lastLoginTime.toDateString() }},
+          {{ lastLoginTime.toLocaleTimeString() }}</span
+        >
+      </div>
+    </div>
+    <div class="bt">
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="mx-12">
+        <button mat-button fxLayoutAlign="center center" (click)="signOut()">
+          <i
+            aria-hidden="true"
+            class="fa-light fa-arrow-right-from-bracket s-18 mr-8"
+          ></i>
+          <span>Logout</span>
+        </button>
+
+        <div class="h-44 mt-12 mb-12">
+          <iframe
+            src="https://www.tinfoilsecurity.com/badge_iframe/9bb9eab8fd2e214d85a8c39b9538154983259ffd?type=a&size=2"
+            sandbox="allow-popups"
+            scrolling="no"
+            frameborder="0"
+            allowTransparency="true"
+            style="border: none; overflow: hidden; width: 115px; height: 44px"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+@import './material.theme';
+
+@mixin override-theme($theme) {
+  @include override-material-theme($theme);
+}

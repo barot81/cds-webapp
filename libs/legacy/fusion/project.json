@@ -1,0 +1,53 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/legacy/fusion/src",
+  "prefix": "exxat.ui.packages",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/legacy/fusion"],
+      "options": {
+        "project": "libs/legacy/fusion/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/legacy/fusion/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/legacy/fusion/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/legacy/fusion"],
+      "options": {
+        "jestConfig": "libs/legacy/fusion/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/legacy/fusion/**/*.ts",
+          "libs/legacy/fusion/**/*.html",
+          "libs/legacy/fusion/components/**/*.ts",
+          "libs/legacy/fusion/components/**/*.html",
+          "libs/legacy/fusion/core/**/*.ts",
+          "libs/legacy/fusion/core/**/*.html",
+          "libs/legacy/fusion/directives/**/*.ts",
+          "libs/legacy/fusion/directives/**/*.html",
+          "libs/legacy/fusion/models/**/*.ts",
+          "libs/legacy/fusion/models/**/*.html",
+          "libs/legacy/fusion/pipes/**/*.ts",
+          "libs/legacy/fusion/pipes/**/*.html",
+          "libs/legacy/fusion/services/**/*.ts",
+          "libs/legacy/fusion/services/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

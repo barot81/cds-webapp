@@ -1,0 +1,135 @@
+<div id="exxat-file-viewer">
+  <div fxLayout="row wrap" *ngIf="isData" class="mobile-scroll">
+    <div
+      class="overflow-auto file-viewer-height viewer-sidebar"
+      fxLayout="column"
+      fxFlex="100"
+      fxFlex.gt-md="20"
+      fxFlex.md="28"
+      fxFlex.sm="35"
+    >
+      <mat-list fxLayout="column" class="p-0">
+        <button
+          mat-button
+          class="p-0 w-100-p text-left"
+          *ngFor="let file of fileDescriptions; let i = index"
+          
+          (click)="loadFile(file, i)"
+        >
+          <mat-list-item
+            class="py-12 px-8 w-100-p"
+            fxLayoutAlign="start start"
+            fxLayout="column"
+            [ngClass]="{ 'active-element': i == selectedIndex }"
+          >
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              class="w-100-p"
+              fxFlex="100"
+            >
+              <div
+                fxLayoutAlign="start"
+                fxLayout="column"
+                class="w-100-p pr-8"
+                fxFlex="90"
+              >
+                <span
+                  [attr.id]="file.fileName"
+                  [display]="isTextOverflow(file.fileName)"
+                  (contextmenu)="onContextMenu($event, file, i)"
+                  [tooltip]="file.fileName"
+                  [options]="tooltipOptions"
+                  class="
+                    font-weight-600
+                    grid_header_truncate
+                    word-break-all
+                    white-space-break-spaces
+                  "
+                >
+                  {{ file.fileName }}
+                </span>
+
+                <div fxLayout="row wrap" fxLayoutAlign="start">
+                  <span class="date-time-text overflow-ellipses w-100-p">
+                    {{ file.updatedTimestamp | date: 'MMM d, yyyy h:mm:ss a' }}
+                  </span>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="10">
+                <!-- <button mat-icon-button class="mr-8">
+                  <i class="far fa-copy icon-fill s-16 "></i>
+                </button>              -->
+                <button
+                  mat-icon-button
+                  (click)="downloadOriginalFile(file.id, file.fileName, $event)"
+                >
+                  <i
+                    class="far fa-cloud-download-alt s-16 mr-4 mb-4"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </mat-list-item>
+        </button>
+      </mat-list>
+    </div>
+
+    <div
+      class="exxat-file-viewer-container pl-sm-16 pb-16"
+      *ngIf="!isNotSupportedFormat"
+      fxLayout="column"
+      fxFlex="100"
+      fxFlex.md="72"
+      fxFlex.sm="65"
+      fxFlex.gt-md="80"
+      
+    >
+      <ng-container #vc></ng-container>
+    </div>
+
+    <div
+      *ngIf="isNotSupportedFormat"
+      fxLayout="column"
+      fxFlex="100"
+      fxFlex.gt-sm="80"
+    >
+      <div
+        class="message-box warning"
+        *ngIf="isLoadedNotSupported; else loading"
+      >
+        File format not supported. Download the file to view
+        <a (click)="download()">{{ this.file_name }}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box error" *ngIf="!isData">
+    <span>No files to view</span>
+  </div>
+</div>
+
+<mat-menu #contextMenu="matMenu">
+  <ng-template matMenuContent let-item="item">
+    <a
+      mat-menu-item
+      target="_blank"
+      [routerLink]="['/dynamicViewer']"
+      [queryParams]="{
+        id: item.id,
+        fn: item.fileName,
+        ft: item.fileType,
+        ct: item.contentType,
+        doc: documentConfiguration.fileEndpoint | json
+      }"
+      >Open in a new tab</a
+    >
+  </ng-template>
+</mat-menu>
+
+<div
+  style="visibility: hidden; position: fixed"
+  [style.left]="contextMenuPosition.x"
+  [style.top]="contextMenuPosition.y"
+  [matMenuTriggerFor]="contextMenu"
+></div>

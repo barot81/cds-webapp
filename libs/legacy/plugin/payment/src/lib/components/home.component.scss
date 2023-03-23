@@ -1,0 +1,28 @@
+@import 'node_modules/@exxat/styles/shared/init';
+
+#subscription_table_container {
+  overflow: auto;
+  .subscription-table {
+    tr {
+      td {
+        padding-right: 25px;
+      }
+      th {
+        width: 22vw;
+        &:last-child {
+          width: 10vw;
+        }
+      }
+    }
+  }
+}
+
+#product_cards {
+  .mat-card {
+    min-height: 180px;
+  }
+}
+
+.payment-success-check-color {
+  color: $japanese-laurel;
+}

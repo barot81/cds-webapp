@@ -1,0 +1,9 @@
+<div class="container" (scroll)="onScroll($event)" >
+  <ng-content></ng-content>
+  <div
+  class="spinner-container"
+  *ngIf="(datasourceFacade.fusionDataSourceLoading$ | async)"
+>
+  <mat-spinner></mat-spinner>
+</div>
+</div>

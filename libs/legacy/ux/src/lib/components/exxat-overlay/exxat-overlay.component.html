@@ -1,0 +1,25 @@
+<div
+  id="overlay-content"
+  class="p-16"
+  tabindex="0"
+  aria-label="Overlay"
+  cdkTrapFocus
+>
+  <ng-container [ngSwitch]="contentType">
+    <ng-container *ngSwitchCase="'string'">
+      <div class="box">
+        <div [innerHTML]="content"></div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'template'">
+      <ng-container
+        *ngTemplateOutlet="content; context: context"
+      ></ng-container>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'component'">
+      <ng-container *ngComponentOutlet="content"></ng-container>
+    </ng-container>
+  </ng-container>
+</div>

@@ -1,0 +1,70 @@
+<form [formGroup]="form">
+  <div
+    class="theme-options-panel"
+    fusePerfectScrollbar
+    *ngIf="view === 'radio'; else toggleView"
+  >
+    <div class="header">
+      <span class="title">Theme Options</span>
+
+      <button
+        mat-icon-button
+        class="close-button"
+        (click)="toggleSidebarOpen('themeOptionsPanel')"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <!-- COLOR THEME -->
+    <div class="group">
+      <h2>Color themes</h2>
+
+      <mat-radio-group
+        fxLayout="column"
+        fxLayoutAlign="start start"
+        formControlName="colorTheme"
+      >
+        <mat-radio-button class="mb-12" value="theme-blue-light"
+          >Blue Light</mat-radio-button
+        >
+        <mat-radio-button class="mb-12" value="theme-blue-dark"
+          >Blue Dark</mat-radio-button
+        >
+        <mat-radio-button class="mb-12" value="theme-purple-light"
+          >Purple Light</mat-radio-button
+        >
+        <mat-radio-button class="mb-12" value="theme-purple-dark"
+          >Purple Dark</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <ng-template #toggleView>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-button-toggle-group
+        #group="matButtonToggleGroup"
+        formControlName="colorTheme"
+        color="accent"
+        [value]="'theme-blue-light'"
+      >
+        <mat-button-toggle
+          [value]="'theme-blue-light'"
+          [attr.aria-label]="'theme-blue-light'"
+        >
+          <i aria-hidden="true" class="fa-light fa-sun mr-8"></i>
+          <span>Light</span>
+        </mat-button-toggle>
+        <mat-button-toggle
+          [value]="'theme-blue-dark'"
+          [attr.aria-label]="'theme-blue-dark'"
+        >
+          <i aria-hidden="true" class="fa-light fa-moon mr-8"></i>
+          <span>Dark</span>
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+
+    </div>
+  </ng-template>
+</form>

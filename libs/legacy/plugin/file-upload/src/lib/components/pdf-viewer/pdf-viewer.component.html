@@ -1,0 +1,7 @@
+<div class="h-100-p">
+  <ng2-pdfjs-viewer class="fill" viewerId="MyID2" #viewer [pdfSrc]="currentPdfLink" (onDocumentLoad)="pdfLoaded()"
+    [zoom]="zoom" [Auth]="_Auth" [Oucodes]="_Oucodes" [TanentId]="_TanentId" cursor="HAND" [download]="false"
+    downloadFileName="downloadPdfLink" [viewBookmark]=false [openFile]=false scroll="W" spred="E" [print]="false" [errorOverride]="true"
+     errorMessage="My error Message">
+    </ng2-pdfjs-viewer>
+</div>

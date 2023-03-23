@@ -1,0 +1,107 @@
+$ck-editor-border-radius: 4px;
+$ck-editor-border-width: 1px;
+$ck-editor-content-height: 245px;
+
+@mixin ckeditor-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $accent: map-get($theme, accent);
+  $is-dark: map-get($theme, is-dark);
+  $primary: map-get($theme, primary);
+  $warn: map-get($theme, warn);
+
+  ckeditor {
+    display: flex !important;
+    flex-direction: column !important;
+
+    .ck {
+      &.ck-editor {
+        order: 1 !important;
+      }
+
+      &.ck-editor__top.ck-reset_all {
+        top: 0px !important;
+        position: sticky !important;
+        z-index: 100 !important;
+        border: $ck-editor-border-width solid $silver !important;
+        border-radius: $ck-editor-border-radius $ck-editor-border-radius 0 0 !important;
+      }
+
+      &.ck-editor__main {
+        border: $ck-editor-border-width solid $silver !important;
+        border-top: transparent !important;
+        border-radius: 0 0 $ck-editor-border-radius $ck-editor-border-radius !important;
+      }
+
+      &.ck-sticky-panel__placeholder {
+        visibility: hidden !important;
+        height: 0px !important;
+      }
+
+      &.ck-sticky-panel .ck-sticky-panel__content_sticky {
+        position: unset !important;
+        top: unset !important;
+        box-shadow: none !important;
+      }
+    }
+
+    .word-count-container {
+      order: 2 !important;
+      display: flex !important;
+      flex-direction: row !important;
+      justify-content: flex-end !important;
+    }
+
+    &.inValid {
+      .ck-editor__top.ck-reset_all {
+        border: 1px solid $red !important;
+        border-bottom: transparent !important;
+      }
+
+      .ck-editor__main {
+        border: 1px solid $red !important;
+        border-top: $ck-editor-border-width solid $silver !important;
+      }
+
+      .word-count-container {
+        color: $red !important;
+      }
+    }
+
+    &.valid {
+      .ck-editor__top.ck-reset_all {
+        border: 1px solid $verdun-green !important;
+        border-bottom: transparent !important;
+      }
+
+      .ck-editor__main {
+        border: 1px solid $verdun-green !important;
+        border-top: $ck-editor-border-width solid $silver !important;
+      }
+    }
+
+    // CK-Editor Main Content Height Setting
+    .ck.ck-editor__main {
+      height: $ck-editor-content-height !important;
+      overflow-y: auto !important;
+      max-height: $ck-editor-content-height !important;
+    }
+  }
+
+  // This is for CK Editor styling
+  .ck.ck-editor__editable {
+    min-height: 200px !important;
+    i {
+      font-style: italic !important;
+      font-family: 'Source Sans Pro', sans-serif !important;
+      font-size: inherit !important;
+      color: inherit !important;
+    }
+    &:not(.ck-editor__nested-editable).ck-focused {
+      box-shadow: none !important;
+    }
+    li {
+      list-style-position: inside;
+    }
+  }
+}

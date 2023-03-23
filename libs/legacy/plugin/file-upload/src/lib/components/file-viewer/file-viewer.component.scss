@@ -1,0 +1,21 @@
+@import 'node_modules/@exxat/styles/shared/init';
+
+#exxat-file-viewer {
+  .exxat-file-viewer-container {
+    @include media-breakpoint('xs') {
+      padding: 16px !important;
+    }
+  }
+  .mobile-scroll {
+    @include media-breakpoint('lt-sm') {
+      height: 100vh;
+      overflow: auto;
+      padding-bottom: 150px;
+    }
+    .viewer-sidebar {
+      @include media-breakpoint('lt-sm') {
+        height: fit-content !important;
+      }
+    }
+  }
+}

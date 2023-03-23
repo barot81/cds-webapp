@@ -1,0 +1,38 @@
+@use '@angular/material' as mat;
+
+@mixin file-viewer-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $is-dark: map-get($theme, is-dark);
+
+  #exxat-file-viewer {
+    button.mat-button {
+      border-radius: 0px !important;
+      &:hover {
+        border-radius: 0px !important;
+        background: map-get($map: $background, $key: hover) !important;
+      }
+      .mat-list-item {
+        border-radius: 0px !important;
+        border-left: 4px solid transparent !important;
+        &:hover {
+          background: none !important ;
+        }
+
+        &.active-element {
+          background: map-get($map: $background, $key: hover) !important;
+          border-left: 4px solid mat.get-color-from-palette($primary, 500) !important;
+          &:hover {
+            background: transparent !important;
+          }
+        }
+
+        .date-time-text {
+          color: $dove-light-gray;
+        }
+      }
+    }
+  }
+}

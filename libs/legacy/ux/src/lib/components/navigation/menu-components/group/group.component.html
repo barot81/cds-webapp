@@ -1,0 +1,35 @@
+<ng-container *ngIf="!item.hidden">
+  <!-- <div class="group-title">
+    <img
+      *ngIf="item.image && item.image !== null; else title"
+      [src]="item.image"
+      style="width: 82.32px"
+    />
+    <ng-template #title>
+      <span
+        class="font-weight-600 font-14 {{
+          itemClasses.font ? itemClasses.font : ''
+        }}"
+        [attr.aria-label]="item.title"
+        >{{ item.title | uppercase | labelDictionary: item?.id }}</span
+      >
+    </ng-template>
+  </div> -->
+
+  <div class="group-items">
+    <ng-container *ngFor="let item of item.children">
+      <fusion-nav-group
+        *ngIf="item.type === 'menu-group'"
+        [item]="item"
+      ></fusion-nav-group>
+      <fusion-nav-collapsable
+        *ngIf="item.type === 'menu-collapsable'"
+        [item]="item"
+      ></fusion-nav-collapsable>
+      <fusion-nav-item
+        *ngIf="item.type === 'menu-item'"
+        [item]="item"
+      ></fusion-nav-item>
+    </ng-container>
+  </div>
+</ng-container>

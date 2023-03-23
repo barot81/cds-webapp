@@ -1,0 +1,53 @@
+@import 'node_modules/@exxat/styles/shared/init';
+
+.avatar-lg {
+  width: 40px !important;
+  height: 40px !important;
+  object-fit: cover;
+}
+
+.no-avatar {
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  border-radius: 4px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.no-avatar-lg {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 4px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.avatar-wrapper {
+  .edit-icon-wrapper {
+    display: none;
+    margin-right: 8px;
+  }
+
+  &:hover {
+    .edit-icon-wrapper {
+      display: block;
+      border-radius: 4px;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      cursor: pointer;
+      position: absolute;
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
+}

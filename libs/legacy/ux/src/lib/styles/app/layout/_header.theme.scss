@@ -1,0 +1,30 @@
+@use '@angular/material' as mat;
+
+@mixin header-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $action: map-get($theme, action);
+  $is-dark: map-get($theme, is-dark);
+
+  header {
+    @if ($is-dark) {
+      background: map-get($map: $background, $key: card) !important;
+    }
+    .header-separator {
+      background: map-get($foreground, divider);
+    }
+  }
+
+  .panel-content {
+    a {
+      text-decoration: none !important;
+      word-break: break-all !important;
+      cursor: pointer;
+      &:hover {
+        color: mat.get-color-from-palette($primary);
+      }
+    }
+  }
+}

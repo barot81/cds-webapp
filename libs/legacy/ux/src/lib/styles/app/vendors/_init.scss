@@ -1,0 +1,6 @@
+// Material Imports
+@import './material/init';
+
+@mixin vendors-theme($theme) {
+  @include angular-material-theme($theme);
+}

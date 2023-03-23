@@ -1,0 +1,207 @@
+@mixin search-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $action: map-get($theme, action);
+  $is-dark: map-get($theme, is-dark);
+  $search-bg-dark: map-get(
+    $map: $background,
+    $key: card,
+  );
+  ::placeholder {
+    color: map-get($map: $foreground, $key: secondary-text) !important;
+  }
+
+  .search-wrapper {
+    .search {
+      height: 40px;
+      line-height: 36px;
+      padding: 8px;
+      font-size: px-to-rem(14);
+      border-radius: 4px !important;
+      border: 1px solid map-get($map: $foreground, $key: divider) !important;
+      overflow: hidden;
+      display: flex !important;
+
+      .mat-icon {
+        margin: 0 8px 0 0;
+        font-size: 24px !important;
+      }
+      input {
+        background: transparent !important;
+        font-style: normal;
+        font-weight: normal;
+        font-size: px-to-rem(14);
+        line-height: 18px;
+        color: map-get($map: $foreground, $key: text) !important;
+        padding: 0 8px;
+      }
+    }
+
+    .search.table-search {
+      height: 48px;
+      width: 300px;
+      max-width: 300px;
+      line-height: 36px;
+      padding: 8px 16px;
+      font-size: px-to-rem(14);
+      border-radius: 8px 0px 0px !important;
+      border-right: 1px solid map-get($map: $foreground, $key: divider) !important;
+      border-top: none !important;
+      border-bottom: none !important;
+      border-left: none !important;
+      overflow: hidden;
+      display: flex !important;
+      flex-direction: row !important;
+
+      @include media-breakpoint('lt-md') {
+        width: 100% !important;
+      }
+    }
+    .search.sidenav-search {
+      height: 48px;
+      line-height: 36px;
+      padding: 8px 16px;
+      width: 100% !important;
+      display: flex !important;
+      border: none !important;
+      overflow: hidden;
+    }
+    &.search-grid {
+      width: 300px;
+      @include media-breakpoint('xs') {
+        width: 100%;
+      }
+    }
+  }
+
+  // css for search and dropdown with border.
+  .search-dropdown-control {
+    .mat-form-field-wrapper {
+      padding-bottom: 0px !important;
+    }
+    .mat-form-field-infix {
+      border-top: 0px !important;
+      padding: 8px 0px !important;
+    }
+    .mat-form-field-appearance-fill {
+      .mat-form-field-flex {
+        background: transparent !important;
+        border-radius: 0;
+        padding: 0 10px;
+      }
+      .mat-form-field-underline {
+        display: none;
+      }
+    }
+    .select-box {
+      .mat-form-field-wrapper {
+        .mat-form-field-flex {
+          @if ($is-dark) {
+            background: $search-bg-dark !important;
+          }
+          border: 1px solid map-get($map: $foreground, $key: divider) !important;
+          border-radius: 4px 0px 0px 4px !important;
+          .mat-select-value {
+            font-size: px-to-rem(14) !important;
+          }
+        }
+      }
+      &.mat-form-field-should-float {
+        mat-label {
+          display: none;
+        }
+      }
+    }
+    .input-box {
+      .mat-form-field-wrapper {
+        .mat-form-field-flex {
+          border-style: solid !important;
+          border-width: 1px 1px 1px 0px !important;
+          border-color: map-get($map: $foreground, $key: divider) !important;
+          @if ($is-dark) {
+            background: $search-bg-dark !important;
+          }
+          border-radius: 0 4px 4px 0 !important;
+          width: 25vw;
+          @include media-breakpoint('lt-sm') {
+            width: 100%;
+          }
+          .clear-button {
+            height: 18px !important;
+            width: 18px !important;
+          }
+        }
+      }
+    }
+  }
+
+  //search with dropdown for table
+  .table-search-with-dropdown {
+    .search-dropdown-control {
+      height: 48px !important;
+      .mat-form-field.select-box {
+        width: 150px !important;
+        @include media-breakpoint('lt-sm') {
+          width: 100px !important;
+        }
+        .mat-form-field-wrapper {
+          .mat-form-field-flex {
+            border-radius: 8px 0px 0px 0px !important;
+            border: none !important;
+            @if ($is-dark) {
+              background: $search-bg-dark !important;
+            }
+          }
+        }
+      }
+
+      .mat-form-field.input-box {
+        border-right: 1px solid map-get($map: $foreground, $key: divider) !important;
+        .mat-form-field-flex {
+          border: none !important;
+          width: 350px !important;
+          border-radius: 0px !important;
+          @include media-breakpoint('lt-sm') {
+            width: 120px !important;
+          }
+        }
+        .mat-input-element {
+          font-size: 14px !important;
+        }
+
+        .clear-button {
+          height: 32px !important;
+          width: 32px !important;
+          i {
+            font-size: px-to-rem(18) !important;
+          }
+        }
+      }
+
+      .mat-form-field-wrapper {
+        margin-bottom: 0px !important;
+        height: 48px !important;
+
+        .mat-form-field-flex {
+          background: map-get($map: $background, $key: card) !important;
+          border: none !important;
+          .mat-form-field-infix {
+            height: 48px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin search-bar-theme($theme) {
+  $background: map-get($theme, background);
+
+  .fuse-search-bar {
+    &.expanded {
+      background-color: map-get($background, background);
+    }
+  }
+}

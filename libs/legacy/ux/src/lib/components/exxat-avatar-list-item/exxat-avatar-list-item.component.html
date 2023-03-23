@@ -1,0 +1,38 @@
+<div fxLayout="row" fxLayoutAlign="start center">
+  <div>
+    <div class="image-width-unset">
+      <img
+        role="img"
+        aria-hidden="true"
+        [alt]="firstName + ' ' + lastName"
+        *ngIf="
+          firstName.length === 0 && lastName.length === 0 && !src;
+          else avatar
+        "
+        class="avatar"
+        src="assets/images/general/avatar.png"
+      />
+    </div>
+    <ng-template #avatar>
+      <img
+        role="img"
+        aria-hidden="true"
+        [alt]="firstName + ' ' + lastName"
+        *ngIf="src; else noAvatar"
+        class="avatar"
+        [src]="src"
+      />
+      <ng-template #noAvatar>
+        <div role="img" aria-hidden="true" class="no-avatar">
+          <span class="initials"
+            >{{ this.firstInitial }}{{ this.lastInitial }}</span
+          >
+        </div>
+      </ng-template>
+    </ng-template>
+  </div>
+  <span class="white-space-normal text-left">
+    {{ lastName }}<span *ngIf="lastName && lastName.length > 0">, </span
+    >{{ firstName }}
+  </span>
+</div>

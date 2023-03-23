@@ -1,0 +1,16 @@
+@mixin navbar-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $action: map-get($theme, action);
+  $is-dark: map-get($theme, is-dark);
+
+  fuse-sidebar {
+    &.navbar-fuse-sidebar {
+      @if ($is-dark) {
+        background: #2e2e2e !important;
+      }
+    }
+  }
+}

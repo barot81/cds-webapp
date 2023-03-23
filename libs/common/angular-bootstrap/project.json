@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/common/angular-bootstrap/src",
+  "prefix": "exxat.ui.packages",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/common/angular-bootstrap"],
+      "options": {
+        "project": "libs/common/angular-bootstrap/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/common/angular-bootstrap/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/common/angular-bootstrap/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/common/angular-bootstrap"],
+      "options": {
+        "jestConfig": "libs/common/angular-bootstrap/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/common/angular-bootstrap/**/*.ts",
+          "libs/common/angular-bootstrap/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

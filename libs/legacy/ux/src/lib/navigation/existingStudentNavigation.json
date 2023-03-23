@@ -1,0 +1,120 @@
+{
+    "id": "Meta.Navigation.Student",
+    "role": "Student",
+    "menus": [
+        {
+            "id": "student.dashboard",
+            "title": "Dashboard",
+            "type": "menu-item",
+            "icon": "dashboard",
+            "active": false,
+            "url": "/dashboard",
+            "featureCode": "Service.Dashboard",
+            "children": []
+        },
+        {
+            "id": "student.profile",
+            "title": "Profile",
+            "type": "menu-item",
+            "icon": "person",
+            "active": false,
+            "url": "/student",
+            "featureCode": "Service.Student",
+            "children": [
+                {
+                    "id": "profile",
+                    "title": "Profile",
+                    "type": "menu-item",
+                    "icon": "",
+                    "active": false,
+                    "url": "/student/profile"
+                },
+                {
+                    "id": "contact",
+                    "title": "Contact",
+                    "type": "menu-item",
+                    "icon": "",
+                    "active": false,
+                    "url": "/student/contact"
+                },
+                {
+                    "id": "compliance",
+                    "title": "Compliance",
+                    "type": "menu-item",
+                    "icon": "",
+                    "active": false,
+                    "url": "/student/compliance"
+                },
+                {
+                    "id": "share.profile",
+                    "title": "Share Profile",
+                    "type": "menu-item",
+                    "icon": "",
+                    "active": false,
+                    "url": "/student/shareprofile"
+                }
+            ]
+        },
+        {
+            "id": "student.placement",
+            "title": "Placements",
+            "type": "menu-item",
+            "icon": "import_contacts",
+            "active": false,
+            "url": "/plan-of-study/placement",
+            "featureCode": "Service.Placement",
+            "children": []
+        },
+        {
+            "id": "student.planofstudy",
+            "title": "Plan Of Study",
+            "type": "menu-item",
+            "icon": "import_contacts",
+            "active": false,
+            "url": "/plan-of-study",
+            "featureCode": "Service.PlanOfStudy",
+            "children": []
+        },
+        {
+            "id": "student.wishlist",
+            "title": "Wishlist",
+            "type": "menu-item",
+            "icon": "grade",
+            "active": false,
+            "url": "/wishlist/student",
+            "featureCode": "Service.Wishlist",
+            "children": []
+        }
+    ],
+    "actions": [
+        {
+            "id": "admin.help",
+            "title": "Resources",
+            "type": "menu-action",
+            "icon": "help",
+            "active": false,
+            "url": ""
+        },
+        {
+            "id": "admin.techSupport",
+            "title": "Tech Support",
+            "type": "menu-action",
+            "icon": "headset_mic",
+            "active": false,
+            "url": "/techsupport"
+        },
+        {
+            "id": "admin.chat",
+            "title": "Chat",
+            "type": "menu-action",
+            "icon": "chat",
+            "active": false,
+            "url": "/chat"
+        }
+    ],
+    "_rid": "07pUAOvJxho2AAAAAAAAAA==",
+    "_self": "dbs/07pUAA==/colls/07pUAOvJxho=/docs/07pUAOvJxho2AAAAAAAAAA==/",
+    "_etag": "\"b9004191-0000-2000-0000-5e2689500000\"",
+    "_attachments": "attachments/",
+    "_ts": 1579583824
+}

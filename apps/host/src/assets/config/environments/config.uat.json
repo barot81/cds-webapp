@@ -1,0 +1,410 @@
+{
+  "appSettings": {
+    "production": true,
+    "allowProductSelection": false,
+    "unauthorizedEndpoints": [],
+    "notFoundEndpoints": [],
+    "auth": {
+      "endpoint": "https://exxat-v4-identity-service.azurewebsites.net"
+    },
+    "realtime": {
+      "endpoint": "https://exxat-v4-meta-service.azurewebsites.net/Account"
+    },
+    "gateway": {
+      "endpoint": ""
+    },
+    "services": {
+      "foundation.meta": {
+        "endpoint": "https://exxat-v4-meta-service.azurewebsites.net"
+      },
+      "v3.account": {
+        "endpoint": "https://exxat-uat-apps.azurewebsites.net/fusion/account/LoginWithToken"
+      },
+      "v3.launch": {
+        "endpoint": "https://exxat-uat-apps.azurewebsites.net/Fusion/Home/Launch"
+      },
+      "v3.login": {
+        "endpoint": "https://exxat-uat-apps.azurewebsites.net/Fusion/Account/Login"
+      },
+      "help.center.salesForceUrl": {
+        "endpoint": "https://exxat.force.com/v4Help/s/"
+      },
+      "help.center.v4SupportUrl": {
+        "endpoint": "http://exxat.com/"
+      },
+      "help.center.supportNumber": {
+        "endpoint": "323-999-1559"
+      },
+      "payment": {
+        "endpoint": "https://exxat-v4-payment-service.azurewebsites.net"
+      },
+      "settingdictionary": {
+        "endpoint": "https://api-config-labels.uat.exxat.net/"
+      },
+      "featureflag": {
+        "endpoint": "https://api-feature-management.uat.exxat.net/"
+      },
+      "student.profile": {
+        "endpoint": "https://exxat-v4-student-profile-service.azurewebsites.net"
+      },
+      "preceptor.profile": {
+        "endpoint": "https://exxat-v4-preceptor-service.azurewebsites.net"
+      },
+      "site.report": {
+        "endpoint": "https://exxat-v4-site-report-service.azurewebsites.net"
+      },
+      "foundation.registration": {
+        "endpoint": "https://exxat-v4-registration-service.azurewebsites.net"
+      },
+      "site.profile": {
+        "endpoint": "https://exxat-v4-site-service.azurewebsites.net"
+      },
+      "site.resources": {
+        "endpoint": "https://exxat-v4-site-resource-service.azurewebsites.net"
+      },
+      "communicationlog.information": {
+        "endpoint": "https://exxat-v4-communicationlog-service.azurewebsites.net"
+      },
+      "admin.activity": {
+        "endpoint": "https://exxat-v4-learning-service.azurewebsites.net"
+      },
+      "student.planOfStudy": {
+        "endpoint": "https://exxat-v4-faculty-service.azurewebsites.net"
+      },
+      "student.pos": {
+        "endpoint": "https://exxat-v4-planofstudy-service.azurewebsites.net"
+      },
+      "student.cohort": {
+        "endpoint": "https://exxat-v4-cohort-service.azurewebsites.net"
+      },
+      "placement-hub": {
+        "endpoint": "https://exxat-v4-placement-hub-service.azurewebsites.net"
+      },
+      "placement": {
+        "endpoint": "https://exxat-v4-placement-service.azurewebsites.net"
+      },
+      "placement.report": {
+        "endpoint": "https://exxat-v4-placement-report-service.azurewebsites.net"
+      },
+      "student.report": {
+        "endpoint": "https://exxat-v4-sscp-report-service.azurewebsites.net"
+      },
+      "publish-slot": {
+        "endpoint": "https://exxat-v4-publishslot-service.azurewebsites.net"
+      },
+      "slotgroupresponsenotification": {
+        "endpoint": "https://exxat-v4-slotgroupresponsenotification-service.azurewebsites.net"
+      },
+      "slots": {
+        "endpoint": "https://exxat-v4-slot-service.azurewebsites.net"
+      },
+      "contract": {
+        "endpoint": "https://exxat-v4-contract-service.azurewebsites.net"
+      },
+      "service.notification": {
+        "endpoint": "https://exxat-v4-event-scheduler-service.azurewebsites.net"
+      },
+      "wishlist": {
+        "endpoint": "https://exxat-v4-wishlist-service.azurewebsites.net"
+      },
+      "myrequest": {
+        "endpoint": "https://exxat-v4-myrequest-service.azurewebsites.net"
+      },
+      "plugin.resourses": {
+        "endpoint": "https://exxat-v4-resource-service.azurewebsites.net"
+      },
+      "faculty.resource": {
+        "endpoint": "https://exxat-v4-faculty-resource-service.azurewebsites.net"
+      },
+      "powerBI": {
+        "endpoint": "http://exxatwebservice.azurewebsites.net"
+      },
+      "kinesis": {
+        "endpoint": "https://exxat-v4-student-compliance-workflow-service.azurewebsites.net/ComplianceWorkflow/"
+      },
+      "kinesis.file": {
+        "endpoint": "https://exxat-v4-student-compliance-workflow-service.azurewebsites.net/Kinesis/Consume"
+      },
+      "student.compliance": {
+        "endpoint": "https://exxat-v4-student-compliance-service.azurewebsites.net"
+      },
+      "course.compliance": {
+        "endpoint": "https://exxat-v4-course-compliance-service.azurewebsites.net"
+      },
+      "complianceWorkflow": {
+        "endpoint": "https://exxat-v4-student-compliance-workflow-service.azurewebsites.net/ComplianceWorkflow/"
+      },
+      "grading": {
+        "endpoint": "https://exxat-v4-grading-service.azurewebsites.net/"
+      },
+      "platform.scoring": {
+        "endpoint": "https://exxat-v4-scoring-service.azurewebsites.net/Platform/"
+      },
+      "evaluation": {
+        "endpoint": "https://exxat-v4-evaluation-service.azurewebsites.net"
+      },
+      "evaluationWorkflow": {
+        "endpoint": "https://exxat-v4-evaluation-workflow-service.azurewebsites.net/Evaluation/"
+      },
+      "evaluationTargetView": {
+        "endpoint": "https://exxat-v4-evaluation-summaryview-service.azurewebsites.net"
+      },
+      "evaluationAggregate": {
+        "endpoint": "https://exxat-v4-evaluation-aggregate-service.azurewebsites.net"
+      },
+      "placementInfo": {
+        "endpoint": "https://exxat-v4-placementinfo-service.azurewebsites.net"
+      },
+      "patientLog": {
+        "endpoint": "https://exxat-v4-patientlog-service.azurewebsites.net/PatientLog/"
+      },
+      "patientLogAggregate": {
+        "endpoint": "https://exxat-v4-patientlog-aggregate-service.azurewebsites.net"
+      },
+      "logWorkflow": {
+        "endpoint": "https://exxat-v4-patientlog-workflow-service.azurewebsites.net/PatientLog/"
+      },
+      "platform.report": {
+        "endpoint": "https://exxat-v4-platform-reporting-workflow-service.azurewebsites.net"
+      },
+      "patientLog.report": {
+        "endpoint": "https://exxat-v4-platform-reporting-workflow-service.azurewebsites.net/PatientLog/"
+      },
+      "patientlog.template": {
+        "endpoint": "https://exxat-v4-patientlog-template-service.azurewebsites.net/PatientLog/"
+      },
+      "student.assignment": {
+        "endpoint": "https://exxat-v4-assignment-service.azurewebsites.net/Assignment/"
+      },
+      "assignmentsWorkflow": {
+        "endpoint": "https://exxat-v4-assignment-workflow-service.azurewebsites.net/Assignment/"
+      },
+      "azure.patientlog.search": {
+        "endpoint": "https://datasearchexxat.search.windows.net/"
+      },
+      "timesheet": {
+        "endpoint": "https://exxat-v4-timesheet-service.azurewebsites.net"
+      },
+      "exxat.forms.site": {
+        "endpoint": "https://exxat-v4-forms-service.azurewebsites.net/ExxatForms/"
+      },
+      "exxat.forms.myrequest": {
+        "endpoint": "https://exxat-v4-forms-myrequest-service.azurewebsites.net/ExxatForms/"
+      },
+      "exxat.forms.course.survey": {
+        "endpoint": "https://exxat-v4-forms-course-service.azurewebsites.net/ExxatForms/"
+      },
+      "student.registration": {
+        "endpoint": "https://exxat-v4-student-registration-service.azurewebsites.net"
+      },
+      "plan.tagging": {
+        "endpoint": "https://exxat-v4-tagging-service.azurewebsites.net"
+      },
+      "plan.course": {
+        "endpoint": "https://exxat-v4-course-service.azurewebsites.net"
+      },
+      "plan.programme": {
+        "endpoint": "https://exxat-v4-programme-service.azurewebsites.net"
+      },
+      "plan.faculty": {
+        "endpoint": "https://exxat-v4-faculty-service.azurewebsites.net"
+      },
+      "plan.curriculum": {
+        "endpoint": "https://exxat-v4-curriculum-service.azurewebsites.net"
+      },
+      "plan.accreditationStandard": {
+        "endpoint": "https://exxat-v4-accreditation-standard-service.azurewebsites.net"
+      },
+      "plan.mapping": {
+        "endpoint": "https://exxat-v4-mapping-service.azurewebsites.net"
+      },
+      "plan.clone": {
+        "endpoint": "https://exxat-v4-plan-clone-service.azurewebsites.net"
+      },
+      "plan.configuration": {
+        "endpoint": "https://exxat-v4-system-configuration-service.azurewebsites.net"
+      },
+      "plan.report": {
+        "endpoint": "https://exxat-v4-plan-adf-report-service.azurewebsites.net"
+      },
+      "site.communication": {
+        "endpoint": "https://exxat-v4-sitecommunication-service.azurewebsites.net"
+      },
+      "site.requirement": {
+        "endpoint": "https://exxat-v4-site-requirement-service.azurewebsites.net"
+      },
+      "autoplacement": {
+        "endpoint": "https://v4-autoplacement-service.azurewebsites.net"
+      },
+      "tenantonboarding": {
+        "endpoint": "https://exxat-v4-tenant-onboarding-service.azurewebsites.net"
+      },
+      "publicwebsite": {
+        "endpoint": "https://api-publicsite.uat.exxat.net"
+      },
+      "publicWebsiteURL": {
+        "endpoint": "https://uatpublic.exxat.com"
+      },
+      "userConfiguration": {
+        "endpoint": "https://exxat-v4-userconfiguration-service.azurewebsites.net"
+      }
+    },
+    "microfrontends": {
+      "dashboard": "https://dashboard-app.mfe-uat.exxat.com",
+      "profile": "https://profile-app.mfe-uat.exxat.com",
+      "faculty": "https://faculty-app.mfe-uat.exxat.com",
+      "cohort": "https://cohort-app.mfe-uat.exxat.com",
+      "communication": "https://communication-app.mfe-uat.exxat.com",
+      "program": "https://program-app.mfe-uat.exxat.com",
+      "plan-of-study": "https://plan-of-study-app.mfe-uat.exxat.com",
+      "school-contact": "https://school-contact-app.mfe-uat.exxat.com",
+      "compliance": "https://compliance-app.mfe-uat.exxat.com",
+      "faculty-setup": "https://faculty-setup-app.mfe-uat.exxat.com",
+      "plan": "https://plan-app.mfe-uat.exxat.com",
+      "plan-reports": "https://plan-reports-app.mfe-uat.exxat.com",
+      "course": "https://course-app.mfe-uat.exxat.com",
+      "learning-activity": "https://learning-activity-app.mfe-uat.exxat.com",
+      "evaluation": "https://evaluation-app.mfe-uat.exxat.com",
+      "patient-log": "https://patient-log-app.mfe-uat.exxat.com",
+      "assignment": "https://assignment-app.mfe-uat.exxat.com",
+      "timesheet": "https://timesheet-app.mfe-uat.exxat.com",
+      "student-survey": "https://student-survey-app.mfe-uat.exxat.com",
+      "sites": "https://sites-app.mfe-uat.exxat.com",
+      "preceptor": "https://preceptor-app.mfe-uat.exxat.com",
+      "steps": "https://steps-app.mfe-uat.exxat.com",
+      "slot": "https://slot-app.mfe-uat.exxat.com",
+      "wishlist": "https://wishlist-app.mfe-uat.exxat.com",
+      "my-request": "https://my-request-app.mfe-uat.exxat.com",
+      "placement": "https://placement-app.mfe-uat.exxat.com",
+      "ssr": "https://ssr-app.mfe-uat.exxat.com",
+      "settings": "https://settings-app.mfe-uat.exxat.com",
+      "publicwebsite": "https://publicwebsite-app.mfe-uat.exxat.com",
+      "payment-report": "https://payment-report-app.mfe-uat.exxat.com",
+      "role-configuration": "https://role-configuration-app.mfe-uat.exxat.com",
+      "tenant-onboarding": "https://tenant-onboarding-app.mfe-uat.exxat.com",
+      "audit": "https://audit-app.mfe-uat.exxat.com",
+      "release-notes": "https://release-notes-app.mfe-uat.exxat.com",
+      "ux-demo": "https://ux-demo-app.mfe-uat.exxat.com",
+      "reports": "https://reports-app.mfe-uat.exxat.com"
+    },
+    "localization": {
+      "languages": [
+        {
+          "code": "en",
+          "name": "EN",
+          "culture": "en-EN"
+        },
+        {
+          "code": "es",
+          "name": "ES",
+          "culture": "es-ES"
+        },
+        {
+          "code": "fr",
+          "name": "FR",
+          "culture": "fr-FR"
+        }
+      ],
+      "defaultLanguage": "en"
+    },
+    "notifications": {
+      "toasterEnable": false,
+      "options": {
+        "timeOut": 5000,
+        "showProgressBar": true,
+        "pauseOnHover": true,
+        "position": [
+          "top",
+          "right"
+        ],
+        "theClass": "sy-notification"
+      }
+    },
+    "debugging": true,
+    "instrumentationKey": "831c5b0d-02fc-4819-a0ca-664e3f367aff",
+    "clickTrackingSettings": {
+      "clickTrackingEnabled": true,
+      "excludedTenants": []
+    },
+    "azureAdB2C": {
+      "clientId": "78b46724-ca0f-44a8-b9e8-8572512a5150",
+      "activeDirectory": "exxatdev",
+      "tenant": "exxatdev.onmicrosoft.com",
+      "signUpSignInPolicyId": "B2C_1_DefaultSignUpAndSignIn",
+      "forgotPassword": "B2C_1_DefaultPasswordReset",
+      "redirectUri": "http://localhost:4200/admission/login",
+      "b2cScopes": [
+        "https://exxatdev.onmicrosoft.com/api/read"
+      ]
+    },
+    "authGuardSettings": {
+      "loginUrl": "/account/login",
+      "launchUrl": "/account/launch"
+    },
+    "userIdleSettings": {
+      "idle": 5,
+      "timeout": 10,
+      "ping": 60
+    },
+    "GoogleReCaptcha": {
+      "SiteKey": "6LfZRcoUAAAAAKjWaIHM-ZcmOvDaoXfec-WyRUS6"
+    },
+    "Cryptography": {
+      "EnableEncryption": false,
+      "Key": "Cryptography Key Kprocks!ankitkp",
+      "IV": "Key cryp!ankitKP",
+      "Keysizes": 128
+    },
+    "other": {
+      "platformSettings": {
+        "controlSettings": {
+          "searchControlSetting": {
+            "apiKey": "A917C2E2B64B7F87B7B285472BE5E297",
+            "searchUriICD": "https://datasearchexxat.search.windows.net/indexes/uat-icd-index/docs/search?api-version=2019-05-06",
+            "autocompleteUriICD": "https://datasearchexxat.search.windows.net/indexes/uat-icd-index/docs/autocomplete?",
+            "searchUriCPT": "https://datasearchexxat.search.windows.net/indexes/uat-cpt-index/docs/search?api-version=2019-05-06",
+            "autocompleteUriCPT": "https://datasearchexxat.search.windows.net/indexes/uat-cpt-index/docs/autocomplete?"
+          }
+        }
+      }
+    },
+    "AzureMap": {
+      "subscriptionKey": "cmOsYE9rat66qiKh-dAX6CuRbK4nny8Vs7DRpTp-tXk"
+    },
+    "blobStorage": {
+      "fusionURI": "https://exxatfusion.blob.core.windows.net"
+    }
+  },
+  "uiSettings": {
+    "colorTheme": "theme-blue-light",
+    "customScrollbars": true,
+    "layout": {
+      "style": "vertical-layout-1",
+      "width": "fullwidth",
+      "navbar": {
+        "primaryBackground": "fuse-navy-700",
+        "secondaryBackground": "fuse-navy-900",
+        "folded": false,
+        "hidden": false,
+        "position": "left",
+        "variant": "vertical-style-2"
+      },
+      "header": {
+        "customBackgroundColor": true,
+        "background": "fuse-white-bg",
+        "hidden": false,
+        "position": "above"
+      },
+      "footer": {
+        "customBackgroundColor": true,
+        "background": "fuse-white",
+        "hidden": false,
+        "position": "below-fixed"
+      },
+      "sidepanel": {
+        "hidden": false,
+        "position": "right"
+      }
+    }
+  }
+}

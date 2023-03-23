@@ -1,0 +1,47 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/legacy/account/src",
+  "prefix": "exxat.ui.packages",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/legacy/account"],
+      "options": {
+        "project": "libs/legacy/account/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/legacy/account/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/legacy/account/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/legacy/account"],
+      "options": {
+        "jestConfig": "libs/legacy/account/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/legacy/account/**/*.ts",
+          "libs/legacy/account/**/*.html",
+          "libs/legacy/account/identity/**/*.ts",
+          "libs/legacy/account/identity/**/*.html",
+          "libs/legacy/account/meta/**/*.ts",
+          "libs/legacy/account/meta/**/*.html",
+          "libs/legacy/account/registration/**/*.ts",
+          "libs/legacy/account/registration/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

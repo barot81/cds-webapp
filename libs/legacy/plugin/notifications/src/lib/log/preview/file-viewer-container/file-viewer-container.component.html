@@ -1,0 +1,23 @@
+<div id="fileViewer_container" fxLayout="column">
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-16">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <button
+        mat-icon-button
+        class="mr-4 back_button fuse-white-fg"
+        (click)="cancel()"
+      >
+        <i class="fa-light fa-arrow-left-long"></i>
+      </button>
+      <h2 class="document_title fuse-white-fg">
+        {{ documentConfiguration.defaultFileName }}
+      </h2>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="file_viewer_container" style="width: 92vw">
+      <exxat-file-viewer
+        [documentConfiguration]="documentConfiguration"
+      ></exxat-file-viewer>
+    </mat-card>
+  </div>
+</div>

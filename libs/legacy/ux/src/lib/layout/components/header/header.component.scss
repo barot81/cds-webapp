@@ -1,0 +1,117 @@
+@import 'node_modules/@exxat/styles/shared/init';
+
+header {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  z-index: 999 !important;
+  // z-index: 4;
+  // height: 56px;
+  .mat-toolbar {
+    height: 48px;
+  }
+  &.below {
+    z-index: 2;
+  }
+
+  .mat-toolbar {
+    position: relative;
+    background: inherit !important;
+    color: inherit !important;
+    font-weight: normal !important;
+
+    .info-bar {
+      .info-box {
+        font-size: 14px !important;
+        @include media-breakpoint('lt-sm') {
+          line-height: 16px !important;
+          width: auto !important;
+          padding: 4px 8px !important;
+          text-align: left !important;
+          font-size: 11px !important;
+        }
+      }
+    }
+
+    .notification-overlay {
+      position: fixed;
+      top: 32px;
+      width: calc(100% - 370px);
+      @include media-breakpoint('lt-md') {
+        width: 90%;
+      }
+    }
+
+    .mat-icon-button,
+    .user-button {
+      border-radius: 0px !important;
+    }
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+
+    .logo-icon {
+      width: 38px;
+    }
+  }
+
+  .user-button,
+  fuse-search-bar,
+  .notification-panel-toggle-button,
+  .bell-icon-toggle-button,
+  .apps-panel-toggle-button,
+  .quick-panel-toggle-button,
+  .navbar-toggle-button {
+    min-width: 48px !important;
+    height: 48px !important;
+    border-radius: 0 !important;
+
+    @include media-breakpoint('xs') {
+      height: 56px;
+    }
+  }
+
+  .bell-icon-button {
+    position: relative;
+    .notification-number {
+      position: absolute;
+      top: 9px;
+      right: 8px;
+      background: red;
+      color: white;
+      width: 15px;
+      height: 15px;
+      line-height: 14px;
+      border-radius: 50%;
+      font-weight: 600;
+      font-size: 10px;
+    }
+  }
+
+  .header-separator {
+    height: 48px;
+    width: 1px;
+    background: black;
+
+    @include media-breakpoint('xs') {
+      height: 48px;
+    }
+  }
+}
+
+.header-panel-menu {
+  width: 350px !important;
+  max-width: 350px !important;
+  max-height: none !important;
+
+  .floating-panel {
+    position: relative;
+    .panel-content {
+      min-height: 100px;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+  }
+}

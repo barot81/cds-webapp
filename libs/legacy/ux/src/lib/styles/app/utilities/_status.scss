@@ -1,0 +1,153 @@
+.status-fg {
+  &.inprogress {
+    color: $dodger-blue-dark !important;
+  }
+
+  &.pendingreview {
+    color: $jaffa !important;
+  }
+
+  &.notapproved {
+    color: $pomegranate !important;
+  }
+
+  &.approved {
+    color: $fruit-salad !important;
+  }
+}
+
+//Status for Badges //
+.status-badge {
+  font-size: px-to-rem(14);
+  width: max-content;
+  border-radius: $border-radius-2;
+  padding: 2px 8px;
+  min-height: 24px;
+  line-height: 1.4 !important;
+
+  &.primary {
+    background: $amaranth;
+    color: $white;
+  }
+
+  &.approved,
+  &.submitted,
+  &.developed,
+  &.fullyexecuted,
+  &.compliant,
+  &.linkclicked,
+  &.open,
+  &.reviewed,
+  &.sentcount,
+  &.delivered,
+  &.opened,
+  &.clicked {
+    background: $De-York;
+    color: $gray-dark;
+  }
+
+  &.inprogress,
+  &.indevelopment,
+  &.process {
+    background: $onahau;
+    color: $gray-dark;
+  }
+
+  &.getstarted,
+  &.totalcount,
+  &.cancelled {
+    background: $alto-gray;
+    color: $gray-dark;
+  }
+
+  &.pending,
+  &.pendingreview,
+  &.pendingforreview,
+  &.onhold,
+  &.scheduled {
+    background: $Marzipan;
+    color: $gray-dark;
+  }
+
+  &.expired,
+  &.expiring,
+  &.disapproved,
+  &.noncompliant,
+  &.notapproved,
+  &.terminated,
+  &.dropped,
+  &.bounce,
+  &.block,
+  &.spamreport,
+  &.differed {
+    background: $cosmos;
+    color: $milano-red;
+  }
+
+  &.info {
+    background: $ToryBlue;
+    color: $white;
+  }
+
+  &.selected-box {
+    background: whitesmoke;
+  }
+
+  &.current {
+    background: $persian-blue;
+    color: $white;
+  }
+
+  &.approved-locked {
+    background: $light-green;
+    color: $black-color;
+  }
+
+  i {
+    margin-right: 4px;
+    &.s-14 {
+      font-size: 14px !important;
+      width: auto !important;
+      height: 14px !important;
+      min-width: 14px !important;
+      min-height: 14px !important;
+      line-height: 14px !important;
+    }
+  }
+}
+
+mat-icon.status {
+  border-radius: 50%;
+
+  &.online {
+    color: $fruit-salad;
+
+    &:before {
+      content: 'check_circle';
+    }
+  }
+
+  &.do-not-disturb {
+    color: $pomegranate;
+
+    &:before {
+      content: 'remove_circle_outline';
+    }
+  }
+
+  &.away {
+    color: $amber;
+
+    &:before {
+      content: 'access_time';
+    }
+  }
+
+  &.offline {
+    color: $dull-gray;
+
+    &:before {
+      content: 'not_interested';
+    }
+  }
+}

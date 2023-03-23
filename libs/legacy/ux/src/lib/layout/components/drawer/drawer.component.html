@@ -1,0 +1,112 @@
+<div cdkTrapFocus>
+  <div
+    class="header drawerDialog"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <button
+        [attr.aria-label]="'Close' + drawerTitle + 'Drawer'"
+        mat-icon-button
+        class="toggle-sidebar-folded close-icon kprocking"
+        (click)="foldSidebarTemporarily()"
+        (keydown)="checkCloseDrawer($event)"
+      >
+        <i aria-hidden="true" class="fa-light fa-xmark s-18"></i>
+      </button>
+
+      <div
+        class="title cursor-default"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+      >
+        <span
+          tabindex="0"
+          id="drawer_title"
+          [options]="tooltipOptions"
+          [tooltip]="drawerTitle"
+          [display]="isTextOverflow('drawer_title')"
+          [attr.aria-label]="drawerTitle !== null ? drawerTitle : null"
+          class="ml-12 font-weight-400 font-18 drawer_title"
+          *ngIf="drawerTitle !== null && drawerTitle !== undefined"
+        >
+          {{ drawerTitle }}
+        </span>
+      </div>
+    </div>
+
+    <div
+      fxLayout="row"
+      fxLayoutAlign="end center"
+      [ngClass]="{
+        'pr-12':
+          !(_layoutService?.primaryAction && _layoutService?.secondaryAction) ||
+          !(_layoutService?.primaryAction || _layoutService?.secondaryAction)
+      }"
+      *ngIf="
+        (_layoutService?.primaryAction &&
+          _layoutService?.primaryAction !== null &&
+          _layoutService?.primaryAction.length > 0) ||
+        (_layoutService?.secondaryAction &&
+          _layoutService?.secondaryAction !== null &&
+          _layoutService?.secondaryAction.length > 0)
+      "
+    >
+      <button
+        style="word-spacing: 10px"
+        *ngIf="
+          _layoutService?.primaryAction &&
+          _layoutService?.primaryAction !== null &&
+          _layoutService?.primaryAction.length > 0
+        "
+        [disabled]="!(isFormValid | async)"
+        mat-flat-button
+        color="primary"
+        (click)="onRecordSave()"
+      >
+        {{ _layoutService.primaryAction }}
+        <mat-icon *ngIf="_layoutService.showPrimaryActionSpinner$ | async">
+          <mat-spinner color="accent" diameter="20"></mat-spinner>
+        </mat-icon>
+      </button>
+      <div
+        *ngIf="
+          _layoutService?.secondaryAction &&
+          _layoutService?.secondaryAction !== null &&
+          _layoutService?.secondaryAction.length > 0 &&
+          _layoutService?.isDeleteVisible
+        "
+      >
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="drawerMoreMenu"
+          aria-label="more"
+        >
+          <i aria-hidden="true" class="fa-light fa-ellipsis-v"></i>
+        </button>
+        <mat-menu #drawerMoreMenu="matMenu">
+          <button
+            mat-menu-item
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            [ngClass]="[
+              _layoutService.secondaryAction === 'Delete' ? 'delete-icon' : '',
+              _layoutService.secondaryAction === 'Delete' ? 'warn-fg' : ''
+            ]"
+            (click)="onRecordDelete()"
+          >
+            <span>{{ _layoutService.secondaryAction }}</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="content"
+    [style.height]="sanitizer.bypassSecurityTrustStyle('calc(100vh - 56px)')"
+  >
+    <fuse-progress-bar></fuse-progress-bar>
+    <ng-template drawerContentDirective></ng-template>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="nav vertical">
+  <ng-container *ngIf="navAliasLoaded$ | async">
+    <ng-container *ngFor="let item of navigation; let isLast = last">
+      <fusion-nav-group
+        *ngIf="item.type === 'menu-group'"
+        [item]="item"
+        class="mb-16"
+        [ngClass]="{ 'border-none': isLast }"
+      ></fusion-nav-group>
+      <fusion-nav-collapsable
+        *ngIf="item.type === 'menu-collapsable'"
+        [item]="item"
+      ></fusion-nav-collapsable>
+      <fusion-nav-item
+        *ngIf="item.type === 'menu-item'"
+        [item]="item"
+      ></fusion-nav-item>
+    </ng-container>
+  </ng-container>
+</div>

@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/legacy/angular-bootstrap-legacy/src",
+  "prefix": "exxat.ui.packages",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/legacy/angular-bootstrap-legacy"],
+      "options": {
+        "project": "libs/legacy/angular-bootstrap-legacy/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/legacy/angular-bootstrap-legacy/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/legacy/angular-bootstrap-legacy/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/legacy/angular-bootstrap-legacy"],
+      "options": {
+        "jestConfig": "libs/legacy/angular-bootstrap-legacy/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/legacy/angular-bootstrap-legacy/**/*.ts",
+          "libs/legacy/angular-bootstrap-legacy/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

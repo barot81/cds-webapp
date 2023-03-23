@@ -1,0 +1,29 @@
+<!-- <div class="snackbarformat" fxLayout="row" fxLayoutAlign="space-between center">
+    <div>{{ data?.message }}</div>
+    <div>
+        <mat-icon>{{ data?.icon }}</mat-icon>
+    </div>
+</div> -->
+
+<div fxLayout="row" fxLayoutAlign="space-between center" class="pt-14">
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <i
+      aria-hidden="true"
+      *ngIf="data.icon && data.icon !== null"
+      class="fa-light {{ data.icon }} mr-12"
+    ></i>
+    <span *ngIf="data.message && data.message !== null" class="font-weight-600">
+      {{ data.message }}
+    </span>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end center">
+    <button
+      mat-icon-button
+      (click)="onClose()"
+      aria-label="close snackbar"
+      class="action-icon"
+    >
+      <i aria-hidden="true" class="fa-light fa-times"></i>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/common/user-idle/src",
+  "prefix": "exxat.ui.packages",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/common/user-idle"],
+      "options": {
+        "project": "libs/common/user-idle/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/common/user-idle/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/common/user-idle/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/common/user-idle"],
+      "options": {
+        "jestConfig": "libs/common/user-idle/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/common/user-idle/**/*.ts",
+          "libs/common/user-idle/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

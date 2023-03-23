@@ -1,0 +1,58 @@
+@use '../../../../../../../node_modules/@angular/material/index' as mat;
+
+@import 'node_modules/@exxat/styles/shared/init';
+
+@mixin exxat-file-viewer-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $is-dark: map-get($theme, is-dark);
+
+  #exxat-file-viewer {
+    button.active-element {
+      background: mat.get-color-from-palette($primary) !important;
+      color: $white !important;
+      i,
+      mat-icon {
+        color: $white !important;
+      }
+      .mat-list-item {
+        color: $white !important;
+        .date-time-text {
+          color: $white !important;
+        }
+
+        button.mat-icon-button:hover {
+          i {
+            color: $blue-dianne !important;
+          }
+        }
+      }
+      &:hover {
+        background: mat.get-color-from-palette($primary) !important;
+      }
+    }
+
+    button.mat-button {
+      border-radius: 0px !important;
+      &:hover {
+        border-radius: 0px !important;
+        background: $concrete;
+      }
+      .mat-list-item {
+        border-radius: 0px !important;
+        &:hover {
+          background: none !important ;
+        }
+
+        button.mat-icon-button:hover {
+          background-color: mat.get-color-from-palette($accent, 50) !important;
+        }
+        .date-time-text {
+          color: $dove-light-gray;
+        }
+      }
+    }
+  }
+}

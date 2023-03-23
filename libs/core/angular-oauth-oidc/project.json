@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/core/angular-oauth-oidc/src",
+  "prefix": "exxat.ui.packages",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/core/angular-oauth-oidc"],
+      "options": {
+        "project": "libs/core/angular-oauth-oidc/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/core/angular-oauth-oidc/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/core/angular-oauth-oidc/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/core/angular-oauth-oidc"],
+      "options": {
+        "jestConfig": "libs/core/angular-oauth-oidc/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/core/angular-oauth-oidc/**/*.ts",
+          "libs/core/angular-oauth-oidc/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

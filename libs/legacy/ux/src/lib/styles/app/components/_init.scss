@@ -1,0 +1,39 @@
+@import './accordian';
+@import './avatar';
+@import './countdown.theme';
+@import './datatable';
+@import './file-upload';
+@import './file-viewer';
+@import './infobox';
+@import './messagebox';
+@import './range-slider.theme';
+@import './search';
+@import './show-more-show-less';
+@import './skeleton';
+@import './snackbar';
+@import './time-picker.theme';
+@import './toggle-button';
+@import './tooltip';
+@import './tree';
+@import './widget.theme';
+
+// Mixin Includes
+@mixin components-theme($theme) {
+  @include accordian-theme($theme);
+  @include avatar-theme($theme);
+  @include countdown-theme($theme);
+  @include datatable-theme($theme);
+  @include file-upload-theme($theme);
+  @include file-viewer-theme($theme);
+  @include info-box-theme($theme);
+  @include range-slider-theme($theme);
+  @include search-theme($theme);
+  @include search-bar-theme($theme);
+  @include show-more-less-theme($theme);
+  @include snackbar-theme($theme);
+  @include time-picker-theme($theme);
+  @include toggle-button-theme($theme);
+  @include tooltip-theme($theme);
+  @include tree-theme($theme);
+  @include widget-theme($theme);
+}

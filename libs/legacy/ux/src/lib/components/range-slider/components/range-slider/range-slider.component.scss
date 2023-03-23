@@ -1,0 +1,166 @@
+@import 'node_modules/@exxat/styles/shared/init';
+
+:host {
+  // @include media-breakpoint('lt-md') {
+  white-space: nowrap;
+  overflow: auto;
+  // }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin range-slider-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $range-label-width: 59px !default;
+  $range-label-height: 36px !default;
+  $small-screen-slider-width: 1000px !important;
+
+  .slider,
+  .slider * {
+    box-sizing: border-box;
+  }
+
+  .slider {
+    display: block;
+    width: 100% !important;
+    @include media-breakpoint('lt-md') {
+      width: $small-screen-slider-width;
+    }
+
+    cursor: default;
+    font-size: 14px;
+    .bar {
+      width: 100%;
+      background: $gray-stepper;
+      height: 4px;
+      position: relative;
+      border-radius: 20px;
+      & > span.handle {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        background: map-get($accent, default);
+        border: 4px solid $white;
+        border-radius: 50%;
+        position: absolute;
+        top: -7px;
+        margin-left: -10px;
+        z-index: 1;
+        cursor: pointer;
+        transition: left 0.2s ease;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+        &.last-active {
+          z-index: 2;
+        }
+      }
+      div.filler {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        border-radius: 5px;
+        .step-indicators {
+          text-align: end;
+          &.active {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+    .range-slider__value {
+      position: relative;
+      width: $range-label-width;
+      height: $range-label-height;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 8px;
+      > input {
+        width: 54px;
+        background: transparent;
+        text-align: center;
+        margin-top: 6px;
+        padding: 0px;
+        font-size: 20px;
+        color: map-get($accent, default);
+        /* Chrome, Safari, Edge, Opera */
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        /* Firefox */
+        &[type='number'] {
+          -moz-appearance: textfield;
+        }
+      }
+    }
+    .range-slider__value:after,
+    .range-slider__value:before {
+      right: 100%;
+      top: 50%;
+      border: solid transparent;
+      content: '';
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .range-slider__value:after {
+      border-color: rgba(255, 255, 255, 0);
+      border-right-color: $white;
+      border-width: 4px;
+      margin-top: -4px;
+    }
+    .range-slider__value:before {
+      border-color: rgba(200, 232, 252, 0);
+      border-right-color: rgba(0, 0, 0, 0.12);
+      border-width: 6px;
+      margin-top: -6px;
+    }
+    .values {
+      display: block;
+      > span {
+        margin-top: 9px;
+        &.active {
+          margin-top: 0px;
+          font-size: 20px;
+        }
+      }
+    }
+    .values span:first-child {
+      float: left;
+    }
+    .values span:last-child {
+      float: right;
+    }
+    .track-description {
+      text-align: center;
+      > div {
+        @include media-breakpoint('lt-md') {
+          word-break: break-word;
+          white-space: break-spaces;
+        }
+      }
+    }
+    .track-description div:first-child {
+      text-align: left;
+    }
+    .track-description div:last-child {
+      text-align: right;
+    }
+    &.disabled {
+      opacity: 0.7;
+      .bar {
+        box-shadow: none !important;
+        & > span.handle {
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}

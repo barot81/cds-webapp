@@ -1,0 +1,46 @@
+<div class="page-layout carded fullwidth" fxLayout="column"  id="ess-wizard">
+
+  <div class="center px-0" fxFlex="100" >
+
+    <div class="" fxLayout="row" fxFlex='100'>
+      <div fxLayout="row wrap" fxLayoutAlign="center start" fxFlex.gt-md="100" fxFlex="100" class="margin-auto">
+        <!-- Commenting this part till we move ESS out of drawer -->
+        <!-- <div class="pt-4 pr-8" fxFlex.gt-sm="5" fxFlex="100">
+          <button mat-icon-button role="img" class="action-icon" routerLink="" aria-label="arrow back">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+        </div> -->
+
+        <div id="exxat-wizard-examples" fxFlex.gt-sm="100" fxFlex="100">
+          <div class="stepper-transparent">
+          <mat-horizontal-stepper [linear]=true #stepper>
+
+            <!-- <mat-step [completed]="isCompleted"> -->
+            <mat-step [stepControl]="recipientListFormStep">
+              <ng-template matStepLabel class="mat-step-label-active" tabindex="0" aria-label="recipients">Recipients</ng-template>
+              <exxat-notification-recipient-list [categoryId]="categoryId" [notificationId]="notificationId" [groupId]="groupId" [displayCountButton]="displayCountButton"
+                [emailConfiguration]="emailConfiguration" [disableSelectorRecipients]="disableSelectorRecipients" [disableRecipientsComponent]="disableRecipientsComponent" [recipientCount]="recipientCount" (isRecipientListFormChange)="formChangedEvent($event)">
+              </exxat-notification-recipient-list>
+            </mat-step>
+
+            <!--  This code will use in Phase 2 -->
+            <mat-step [stepControl]="templateFormStep">
+              <ng-template matStepLabel class="mat-step-label-active" tabindex="0" aria-label="Template">Template</ng-template>
+              <exxat-notification-template [categoryId]="categoryId"
+              [notificationId]="notificationId" [groupId]="groupId" [emailConfiguration]="emailConfiguration" [tenantLogoPath]="tenantLogoPath"  (isTemplateFormChange)="formChangedEvent($event)" >
+              </exxat-notification-template>
+            </mat-step>
+
+            <!--  This code will use in Phase 3 -->
+            <mat-step [stepControl]="previewFormStep">
+              <ng-template matStepLabel class="mat-step-label-active" tabindex="0" aria-label="Preview">Preview</ng-template>
+              <exxat-notification-preview (sendEmail)='confirmNotification($event)' (sendNotification)="sendNotification()" [categoryId]="categoryId"   [notificationId]="notificationId" [emailConfiguration]="emailConfiguration" [tenantLogoPath]="tenantLogoPath" (isPreviewFormChange)="formChangedEvent($event)">
+              </exxat-notification-preview>
+            </mat-step>
+          </mat-horizontal-stepper>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

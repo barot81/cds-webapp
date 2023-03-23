@@ -1,0 +1,112 @@
+@for $i from 1 through 10 {
+  .border-width-#{$i} {
+    border-width: $i !important;
+  }
+
+  .border-radius-#{$i} {
+    border-radius: $i !important;
+  }
+}
+
+@mixin borders-theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $border-style: 1px solid map-get($map: $foreground,
+      $key: divider,
+    ) !important;
+
+  .border,
+  .b {
+    border: $border-style;
+  }
+
+  .border-top,
+  .bt {
+    border-top: $border-style;
+  }
+
+  .border-top-none {
+    border-top: none !important;
+  }
+
+  .border-right,
+  .br {
+    border-right: $border-style;
+  }
+
+  .border-bottom,
+  .bb {
+    border-bottom: $border-style;
+  }
+
+  .border-left,
+  .bl {
+    border-left: $border-style;
+  }
+
+  .border-horizontal,
+  .bx {
+    border-left: $border-style;
+    border-right: $border-style;
+  }
+
+  .border-vertical,
+  .by {
+    border-top: $border-style;
+    border-bottom: $border-style;
+  }
+
+  .border-bottom-none {
+    border-bottom: none !important;
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ Border radius helpers
+  // -----------------------------------------------------------------------------------------------------
+  .border-radius-100 {
+    border-radius: 100%;
+  }
+
+  .border-radius-2 {
+    border-radius: 2px;
+  }
+
+  .border-radius-4 {
+    border-radius: 4px !important;
+  }
+
+  .border-radius-8 {
+    border-radius: 8px !important;
+  }
+
+  .border-radius-16 {
+    border-radius: 16px !important;
+  }
+
+  .border-radius-20 {
+    border-radius: 20px !important;
+  }
+
+  .border-radius-24 {
+    border-radius: 24px !important;
+  }
+
+  .border-radius-0 {
+    border-radius: 0px !important;
+  }
+
+  //------------------------------
+  // Grid Paginator Border : START
+  //------------------------------
+
+  .border-light-top {
+    border-top: 1px solid $alto-light !important;
+  }
+
+  //------------------------------
+  // Grid Paginator Border : END
+  //------------------------------
+
+  .border-none {
+    border: none !important;
+  }
+}

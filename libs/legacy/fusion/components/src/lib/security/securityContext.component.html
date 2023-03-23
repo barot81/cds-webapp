@@ -1,0 +1,32 @@
+<div *ngIf="isVisible">
+  <ng-container *ngTemplateOutlet="(template ==null ? defaultTemplate : template); context:oucodeContext">
+  </ng-container>
+
+</div>
+
+
+<ng-template #defaultTemplate let-oucodeList="oucodeList">
+
+
+  <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width" [class.mat-form-field-invalid]="isError || showError" appearance="fill" style="width:100%;" required>
+          <mat-label>Select {{fieldName+' '}}*</mat-label>
+          <mat-select matInput
+
+          (selectionChange)="onOucodeChanged($event.value)"
+             (blur)="onOucodeTouched()">
+            <mat-option *ngFor="let oucode of oucodeContext['oucodeList']" [value]="oucode.key">{{
+                oucode.value
+            }}</mat-option>
+          </mat-select>
+          <div *ngIf="isError || showError" class="mat-form-field-subscript-wrapper">
+            <div class="ng-trigger ng-trigger-transition Messages ng-star-inserted"
+            style="opacity: 1; transform: translateY(0%); display: block;margin-top: 1.2em; font-size:small">
+            <mat-error>{{errorMessage ? errorMessage : "Please Select a value."}}</mat-error>
+          </div>
+        </div>
+        </mat-form-field>
+      </div>
+    </div>
+</ng-template>

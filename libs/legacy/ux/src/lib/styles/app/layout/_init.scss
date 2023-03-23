@@ -1,0 +1,11 @@
+@import './drawer';
+@import './header.theme';
+@import './navbar.theme';
+@import './sidebar.theme';
+
+@mixin layout-theme($theme) {
+  @include drawer-theme($theme);
+  @include header-theme($theme);
+  @include navbar-theme($theme);
+  @include sidebar-theme($theme);
+}

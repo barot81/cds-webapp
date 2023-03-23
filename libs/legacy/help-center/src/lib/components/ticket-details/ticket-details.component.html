@@ -1,0 +1,53 @@
+<div class="m-12" *ngIf="commentsGroupedByDate?.length !== 0; else onMessages">
+  <div
+    *ngFor="let commentGroup of commentsGroupedByDate; let isFirst = first"
+    class="m-8"
+  >
+    <mat-accordion aria-label="messages">
+      <mat-expansion-panel [expanded]="isFirst">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div fxLayoutAlign="start center" fxLayout="row">
+              <span> {{ commentGroup.date }} </span>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="column" tabindex="0" aria-label="expanded content">
+          <div class="p-8" *ngFor="let comment of commentGroup.messageArray">
+            <div fxLayout="column" class="border-bottom">
+              <span class="font-weight-600 pb-12"
+                ><span class="text-italic">From: </span>{{ comment.from }}</span
+              >
+              <p class="pb-4">
+                {{ comment.message }}
+              </p>
+              <div *ngFor="let attachment of comment.attachments">
+                <a [href]="attachment.content_url">{{
+                  attachment.file_name
+                }}</a>
+              </div>
+              <span class="text-italic pt-4 pb-12"
+                >Last updated on
+                <strong>{{ comment.dateAndTime }}</strong></span
+              >
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+
+<ng-template #onMessages>
+  <mat-card class="p-0" tabindex="0" aria-label="">
+    <header
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      class="card-header-title card-header-border-bottom"
+    >
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <span class="primary-heading">No comments</span>
+      </div>
+    </header>
+  </mat-card>
+</ng-template>

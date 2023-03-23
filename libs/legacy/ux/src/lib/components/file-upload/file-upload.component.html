@@ -1,0 +1,57 @@
+<div id="exxat-file-upload">
+  <div fxLayout="column">
+    <div class="upload-files-container" fxLayout="column">
+      <div
+        fxLayout="row"
+        *ngFor="let item of filesList"
+        fxLayoutAlign="start"
+        class="upload-file-action"
+      >
+        <button
+          mat-icon-button
+          *ngIf="item.type === 'icon'; else spinner"
+          color="warn"
+          aria-label="Delete file"
+          class="delete-icon"
+        >
+          <i aria-hidden="true" class="fa-light fa-trash-alt s-18 warn-fg"></i>
+        </button>
+        <ng-template #spinner>
+          <mat-spinner color="accent" diameter="23"></mat-spinner>
+        </ng-template>
+        <div fxLayout="column">
+          <div fxLayout="row" fxLayoutAlign="start space-between">
+            <span
+              tabindex="0"
+              attr.aria-label="File name is {{ item.fileName }}"
+              >{{ item.fileName }}</span
+            >
+            <span
+              class="secondary-text"
+              tabindex="0"
+              attr.aria-label="File size is {{ item.fileSize }}"
+              >{{ item.fileSize }}</span
+            >
+          </div>
+          <span
+            class="warn-fg font-size-12 pt-8"
+            tabindex="0"
+            attr.aria-label="Error is {{ item.errorMessage }}"
+            >{{ item.errorMessage }}</span
+          >
+        </div>
+      </div>
+    </div>
+    <div class="file-upload-box-container" fxLayout="column">
+      <div class="file-upload-box">
+        <button class="file-upload-text" fxLayout="row" fxLayoutAlign="center">
+          <i aria-hidden="true" class="fa-light fa-cloud-arrow-up"></i>
+          <span>Browse to upload</span>
+        </button>
+      </div>
+      <div class="file-format-text">
+        <span>Supported formats: pdf, doc, jpg, jpeg, png, docx, bmp</span>
+      </div>
+    </div>
+  </div>
+</div>

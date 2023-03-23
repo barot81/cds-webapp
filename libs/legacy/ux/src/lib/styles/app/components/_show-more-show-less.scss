@@ -1,0 +1,123 @@
+
+@mixin show-more-less-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $action: map-get($theme, action);
+
+  ////////////////////////////////////////////////////////// Show More Data
+  .read-more-state {
+    display: none;
+  }
+
+  .read-more-target {
+    // opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    font-size: 0;
+    transition: 0.25s ease;
+  }
+
+  .read-more-state:checked~.read-more-wrap .read-more-target {
+    // opacity: 1;
+    visibility: visible;
+    font-size: inherit;
+    max-height: 999em;
+    margin-top: 12px;
+  }
+
+  .read-more-state:checked~.read-more-wrap .read-more-trigger {
+    display: none;
+  }
+
+  .read-more-wrap {
+    div:last-child {
+      .mb-16 {
+        margin-bottom: 0px !important;
+      }
+    }
+  }
+
+  .read-more-trigger,
+  .read-less-trigger {
+    cursor: pointer;
+  }
+
+  ////////////////////////////////////////////////  Show More text
+  .text-container {
+    position: relative;
+
+    //margin-bottom: 16px;
+    .text {
+      max-height: 40px;
+      overflow: hidden;
+    }
+
+    #show-more-label {
+      // color: $endeavour;
+      font-weight: normal;
+      margin-bottom: 16px;
+      position: absolute;
+      top: 100%;
+      cursor: pointer;
+    }
+
+    input {
+      display: none;
+    }
+
+    #show-more-label:after {
+      content: 'Show More';
+    }
+
+    input:checked+#show-more-label:after {
+      content: 'Show Less';
+    }
+
+    input:checked~div {
+      max-height: 100%;
+    }
+  }
+
+  //chips show more show less inline
+  .chips-show-more-less {
+    .chips-show-more-less-container {
+      .mat-chip-list-wrapper {
+        overflow: hidden !important;
+        height: 40px;
+      }
+    }
+
+    .show {
+      .mat-chip-list-wrapper {
+        overflow: auto !important;
+        height: auto;
+      }
+    }
+  }
+
+  //table show more/less
+  .mat-card.table-show-more-less,
+  .table-show-more-less {
+    input {
+      display: none;
+    }
+
+    .table-read-more-target {
+      display: none;
+    }
+
+    .table-read-more-state:checked~.table-read-more-wrap .table-read-more-target {
+      display: table-row !important;
+    }
+
+    .table-read-more-state~.table-read-more-trigger:before {
+      content: 'See More' !important;
+    }
+
+    .table-read-more-state:checked~.table-read-more-trigger:before {
+      content: 'See Less' !important;
+    }
+  }
+}

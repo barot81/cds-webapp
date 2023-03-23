@@ -1,0 +1,18 @@
+<div class="header-tab-control header-filters-width">
+  <mat-form-field>
+    <mat-select [placeholder]="label"
+    [formControl]="formControl"
+    [multiple]="isMultiple"
+    name="custom-dropdown"
+    [(value)]="selected"
+    (selectionChange)="OnSelectionChange($event)"
+    >
+  <mat-option
+  *ngFor="let item of (dropDownFilterItems$ | async)"
+  [value]="item.value"
+>
+  {{ item.viewName }}
+</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

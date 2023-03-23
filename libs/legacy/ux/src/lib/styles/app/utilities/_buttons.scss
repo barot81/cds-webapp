@@ -1,0 +1,189 @@
+@use '@angular/material' as mat;
+
+@mixin button-theme($theme) {
+  // Currrent Theme Variables --------------------------
+  $is-dark: map-get($theme, is-dark);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  .float-button {
+    position: fixed;
+    z-index: 10;
+    bottom: 32px;
+    right: 32px;
+  }
+
+  .mat-raised-button:not(.mat-button-disabled),
+  .mat-flat-button:not(.mat-button-disabled):hover {
+    .mat-button-ripple {
+      background: map-get($map: $background, $key: hover) !important;
+    }
+  }
+
+  button.mat-flat-button,
+  button.mat-stroked-button,
+  button.mat-button:not(.mat-select-search-clear) {
+    min-width: 80px;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    height: 32px;
+    @extend %flex-center;
+    &.btn-sm {
+      height: 24px !important;
+    }
+  }
+
+  mat-list.mat-list-base {
+    button.mat-flat-button,
+    button.mat-stroked-button,
+    button.mat-button {
+      height: auto !important;
+    }
+  }
+
+  // START : Mat Button Border Styling
+  .mat-button:not([disabled='true']) {
+    &.mat-primary {
+      i {
+        color: mat.get-color-from-palette($primary) !important;
+      }
+    }
+  }
+  // END : Mat Button Border Styling
+
+  // START : Stroked Button Border Styling
+  .mat-stroked-button:not([disabled='true']) {
+    border: 1px solid $black-color !important;
+
+    &.mat-primary {
+      border: 1px solid mat.get-color-from-palette($primary) !important;
+      i {
+        color: mat.get-color-from-palette($primary) !important;
+      }
+    }
+    &.mat-warn {
+      border: 1px solid mat.get-color-from-palette($warn) !important;
+    }
+    &.mat-accent {
+      border: 1px solid mat.get-color-from-palette($accent) !important;
+    }
+  }
+
+  //START : Mat Icon Button
+  .mat-icon-button:not([disabled='true']) {
+    i {
+      font-size: 18px;
+    }
+  }
+
+  .mat-calendar-controls {
+    .mat-icon-button {
+      width: 40px !important;
+      height: 40px !important;
+      line-height: 40px !important;
+    }
+  }
+
+  .mat-icon-button {
+    width: 32px !important;
+    height: 32px !important;
+    line-height: 32px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      background: map-get($map: $background, $key: hover) !important;
+    }
+
+    &.filter-icon-button {
+      width: 50px !important;
+      .mat-button-wrapper {
+        span {
+          color: mat.get-color-from-palette($warn);
+        }
+      }
+    }
+
+    &.pagination-button {
+      height: 24px !important;
+      width: 32px !important;
+      line-height: 24px !important;
+      //color: map-get($map: $foreground, $key: text) !important;
+      font-weight: 400 !important;
+      &.active {
+        font-weight: 600 !important;
+      }
+      &:hover {
+        color: map-get($map: $foreground, $key: text) !important;
+      }
+    }
+
+    &.pagination-next-button {
+      height: 24px !important;
+      width: 32px !important;
+      line-height: 24px !important;
+      color: default !important;
+      font-weight: 400 !important;
+    }
+  }
+}
+
+//button height minimized to 24 px
+.button-height-condensed {
+  line-height: 24px !important;
+}
+
+//css for toggle button on course catalog page
+.button-white-bg {
+  border-radius: 4px !important;
+  // background-color: $white;
+  min-width: 64px;
+  line-height: 36px;
+  padding: 0 16px;
+}
+
+.basic-button {
+  width: 100%;
+  border-radius: 0px !important;
+  // background-color: transparent;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.filter-status-button {
+  // background: $white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  height: 40px;
+  border: 2px solid $white;
+  &:hover {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  }
+  // added for reference, developers can add below class conditionaly for on click
+  &:active {
+    border: 2px solid $seance;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
+  }
+  &.onclick-filter {
+    border: 2px solid $seance;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
+  }
+}
+
+.filter-badge-count {
+  min-width: 40px;
+  font-weight: 600;
+  padding: 0px 4px !important;
+  border-radius: 4px !important;
+  text-align: center;
+  &.failedcount {
+    // background: $cosmos;
+    // color: $gray-dark;
+  }
+}

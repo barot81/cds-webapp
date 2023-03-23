@@ -1,0 +1,135 @@
+@use "@angular/material" as mat;
+
+@mixin graphs-theme($theme) {
+  $foreground: map-get($theme, foreground);
+
+  .graph_legend {
+    .legend_title {
+      padding-left: 16px;
+    }
+    .legend_label_containter {
+      padding: 12px 0px 8px 16px;
+      border-radius: 4px;
+      border: 1px solid map-get($map: $foreground, $key: divider) !important;
+      overflow: auto;
+      height: auto;
+      .legend_label {
+        margin-bottom: 8px;
+        cursor: default;
+        .legend_label_color {
+          border-radius: 4px !important;
+          display: inline-block;
+          height: 16px !important;
+          margin-right: 8px !important;
+          width: 16px !important;
+          min-width: 16px !important;
+          max-width: 16px !important;
+        }
+        .legend_label_text {
+          display: block !important;
+          overflow: hidden !important;
+          text-overflow: ellipsis !important;
+          white-space: nowrap !important;
+        }
+      }
+    }
+  }
+
+  // END : New Custom Lagends For Chart: Styling
+
+  // START : Overriding Styling of Ngx-Chart
+
+  .chart-legend {
+    > div {
+      header {
+        &.legend-title {
+          font-size: px-to-rem(16) !important;
+          font-weight: 600 !important;
+          margin-bottom: 4px !important;
+          .legend-title-text {
+            line-height: normal !important;
+          }
+        }
+      }
+      .legend-wrap {
+        .legend-labels {
+          background: transparent !important;
+          border: 1px solid map-get($map: $foreground, $key: divider) !important;
+          border-radius: 4px !important;
+          padding: 4px !important;
+          .legend-label {
+            ngx-charts-legend-entry {
+              .legend-label-color {
+                border-radius: 4px !important;
+                display: inline-block !important;
+                height: 16px !important;
+                margin-right: 8px !important;
+                width: 16px !important;
+              }
+              .legend-label-text {
+                font-size: px-to-rem(14) !important;
+                color: map-get($foreground, base) !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // END : Overriding Styling of Ngx-Chart
+
+  // START : Custom Lagends For Chart: Styling
+
+  .custom_lagend_area {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    margin-top: 8px;
+    line-height: 85%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: left;
+    white-space: nowrap;
+    width: 100%;
+    .legend_label {
+      .legend_label_color {
+        border-radius: 3px;
+        display: inline-block;
+        height: 15px;
+        margin-right: 5px;
+        width: 15px;
+      }
+    }
+  }
+
+  // END : Custom Lagends For Chart: Styling
+
+  // Ngx Chart Legend Position Set to Left
+  .ngx-chart-legend-position-left {
+    ngx-charts-chart {
+      .ngx-charts-outer {
+        display: flex !important;
+        flex-direction: row-reverse !important;
+      }
+    }
+  }
+  ngx-charts-chart {
+    svg {
+      fill: map-get($foreground, text);
+    }
+  }
+
+  //this class is for active state of graph
+  .charts-color-active {
+    path {
+      fill: $fruit-salad !important;
+    }
+  }
+
+  //this class is for green color of charts
+  .charts-color-green {
+    path {
+      fill: $fruit-salad !important;
+    }
+  }
+}

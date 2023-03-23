@@ -1,0 +1,665 @@
+// -----------------------------------------------------------------------------------------------------
+@use '@angular/material' as mat;
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+// @import './variables';
+
+@mixin datatable-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $is-dark: map-get($theme, is-dark);
+  $accent: map-get($theme, accent);
+
+  .column-shadow {
+    background: map-get($map: $background, $key: card);
+    border-right: 3px solid map-get($map: $foreground, $key: divider) !important;
+  }
+
+  .exxat-table.multiple-div-one-td {
+    td {
+      padding: 0px !important;
+    }
+
+    td > div {
+      padding: 8px 16px;
+      border-bottom: 1px solid #e6e6e6;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .div-height {
+      height: 68px;
+    }
+  }
+
+  // Expandable Cell Grid Css
+  table {
+    &.expandable-cell-grid {
+      .mat-cell,
+      .mat-header-cell,
+      .mat-footer-cell {
+        &.expandable-cell {
+          > .ellipsis {
+            width: $expand-ellipsis-content-width;
+            max-width: $expand-ellipsis-content-width;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          width: $expand-cell-width;
+          max-width: $expand-cell-width;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        &.expanded-cell {
+          width: $expand-cell-hover-width;
+          max-width: $expand-cell-hover-width;
+          text-overflow: none;
+          white-space: normal;
+        }
+      }
+    }
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .hide-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .hide-scroll {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  // css For Multi Row Grid
+  .multi-row {
+    .td-width {
+      display: flex;
+      align-items: center;
+      min-height: 41px;
+      margin-left: -12px;
+      margin-right: -12px;
+      padding: 4px 12px;
+      border-bottom: 1px solid map-get($map: $foreground, $key: divider) !important;
+
+      &:last-child {
+        border-bottom: none !important;
+      }
+    }
+  }
+
+  //css for colspan grid
+  #grid-with-colspan {
+    th.mat-header-cell {
+      text-align: center;
+
+      &.header-font-weight {
+        font-weight: normal !important;
+      }
+    }
+
+    .first-header-row,
+    .second-header-row:nth-child(3n + 1),
+    td:nth-child(3n + 1) {
+      border-right: 1px solid map-get($map: $foreground, $key: divider) !important;
+
+      &:last-child {
+        border-right: 1px solid map-get($map: $foreground, $key: divider) !important;
+      }
+    }
+
+    .first-header-row {
+      border-bottom: 1px solid map-get($map: $foreground, $key: divider) !important;
+
+      &:first-child {
+        border-bottom: 1px solid map-get($map: $foreground, $key: divider) !important;
+      }
+    }
+
+    .course-name-column {
+      min-width: 15vw;
+      max-width: 15vw;
+
+      @include media-breakpoint('md') {
+        min-width: 30vw;
+        max-width: 30vw;
+      }
+
+      @include media-breakpoint('sm') {
+        min-width: 38vw;
+        max-width: 38vw;
+      }
+
+      @include media-breakpoint('lt-sm') {
+        min-width: 78vw;
+        max-width: 78vw;
+      }
+    }
+
+    .column-width {
+      min-width: 8vw;
+      max-width: 8vw;
+
+      @include media-breakpoint('md') {
+        min-width: 12vw;
+        max-width: 12vw;
+      }
+
+      @include media-breakpoint('sm') {
+        min-width: 16vw;
+        max-width: 16vw;
+      }
+
+      @include media-breakpoint('lt-sm') {
+        min-width: 40vw;
+        max-width: 40vw;
+      }
+    }
+
+    .blue-background {
+      background-color: $blue-background;
+    }
+
+    .accent-shade-background {
+      background-color: $accent-shade-background;
+    }
+  }
+
+  //css for all tables
+  table.exxat-table,
+  mat-table.exxat-table {
+    .mat-checkbox {
+      line-height: 15px !important;
+    }
+
+    tr {
+      th,
+      td {
+        border-right: 1px solid map-get($map: $foreground, $key: divider);
+
+        &:last-child {
+          border-right: none !important;
+        }
+      }
+
+      &.mat-header-row {
+        .mat-header-cell {
+          font-weight: 600 !important;
+          font-size: 14px !important;
+          border-top: 1px solid map-get($map: $foreground, $key: divider) !important;
+          padding: 4px 12px !important;
+          text-transform: uppercase !important;
+        }
+
+        // min-height: 40px!important;
+        height: 48px !important;
+      }
+
+      &.mat-row {
+        height: 40px !important;
+
+        td {
+          padding: 4px 12px !important;
+        }
+
+        &:last-child {
+          border-bottom: none !important;
+        }
+
+        &:hover {
+          background: map-get($map: $background, $key: table-hover) !important;
+
+          .mat-icon-button:hover {
+            background-color: map-get(
+              $map: $background,
+              $key: hover
+            ) !important;
+
+            &.delete-icon:hover {
+              background-color: $light-red !important;
+            }
+          }
+        }
+
+        //applied this class conditionally
+        &.row-selected {
+          background-color: map-get(
+            $map: $background,
+            $key: table-hover
+          ) !important;
+
+          &:hover {
+            background-color: map-get(
+              $map: $background,
+              $key: table-hover
+            ) !important;
+
+            .mat-icon-button {
+              &:hover {
+                background-color: map-get(
+                  $map: $background,
+                  $key: hover
+                ) !important;
+              }
+            }
+          }
+        }
+
+        &.row-highlighted {
+          background-color: map-get(
+            $map: $background,
+            $key: table-hover
+          ) !important;
+
+          &:hover {
+            .mat-icon-button {
+              &:hover {
+                background-color: transparent !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .no-search-grid {
+    .content-card {
+      border-radius: 8px 8px 8px 8px !important;
+    }
+
+    table.exxat-table,
+    mat-table.exxat-table {
+      tr {
+        &.mat-header-row {
+          .mat-header-cell {
+            border-top: none !important;
+          }
+        }
+
+        th:first-child {
+          border-radius: 4px 0 0 0;
+        }
+
+        th:last-child {
+          border-radius: 0 4px 0 0;
+        }
+      }
+
+      tr:last-child {
+        td:first-child {
+          border-radius: 0 0 0 4px;
+        }
+
+        td:last-child {
+          border-radius: 0 0 4px 0;
+        }
+      }
+    }
+  }
+
+  .no-top-border {
+    .mat-header-row {
+      .mat-header-cell {
+        border-top: none !important;
+      }
+    }
+  }
+
+  .result-found-style {
+    padding: 8px 16px;
+    font-style: italic;
+    border-top: 1px solid map-get($map: $foreground, $key: divider) !important;
+
+    font-weight: 600;
+  }
+
+  table.expand-table,
+  mat-table.expand-table {
+    tr {
+      th,
+      td {
+        padding: 8px 16px !important;
+      }
+    }
+  }
+
+  //pagination height minimised
+  .mat-paginator-container {
+    min-height: 40px !important;
+  }
+
+  //css for no alternate color for rows
+
+  table.no-alternate-color,
+  mat-table.no-alternate-color {
+    tr.mat-row:nth-child(odd) {
+      @if ($is-dark) {
+        background-color: $black-secondory !important;
+      } @else {
+        background-color: $white !important;
+      }
+    }
+  }
+
+  //Styling specific to compliance notification page
+  .noBackground {
+    background: $white !important;
+  }
+
+  .flexCheckbox {
+    flex: 0.1 !important;
+  }
+
+  .flexcolumn {
+    flex: 1.4 !important;
+  }
+
+  //css for expandable row table
+  mat-table.expandable-table {
+    mat-header-row {
+      .mat-header-cell {
+        font-weight: 600 !important;
+        font-size: 14px !important;
+        border-top: 1px solid map-get($map: $foreground, $key: divider) !important;
+        text-transform: uppercase !important;
+      }
+
+      min-height: 48px !important;
+    }
+
+    mat-row:nth-child(2n) {
+      min-height: 40px !important;
+    }
+
+    mat-row {
+      &:last-child {
+        border-bottom: none !important;
+      }
+
+      &:hover {
+        background: map-get($map: $background, $key: table-hover) !important;
+
+        .mat-icon-button:hover {
+          background: map-get($map: $background, $key: hover) !important;
+        }
+      }
+
+      //applied this class conditionally
+      &.row-selected {
+        background-color: map-get(
+          $map: $background,
+          $key: table-hover
+        ) !important;
+
+        &:hover {
+          background-color: map-get(
+            $map: $background,
+            $key: table-hover
+          ) !important;
+
+          .mat-icon-button {
+            &:hover {
+              background-color: map-get(
+                $map: $background,
+                $key: hover
+              ) !important;
+            }
+          }
+        }
+      }
+
+      &.row-highlighted {
+        background-color: map-get(
+          $map: $background,
+          $key: table-hover
+        ) !important;
+
+        &:hover {
+          .mat-icon-button {
+            &:hover {
+              background-color: transparent !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Scrollable Table SCSS
+  .flex-table-container {
+    .flex_table_content {
+      @include media-breakpoint('gt-sm') {
+        table {
+          thead {
+            tr {
+              th:first-child {
+                padding-left: $flex_Table_padding !important;
+              }
+
+              th:last-child {
+                padding-right: $flex_Table_padding !important;
+              }
+            }
+          }
+
+          tbody {
+            tr {
+              td:first-child {
+                padding-left: $flex_Table_padding !important;
+              }
+
+              td:last-child {
+                padding-right: $flex_Table_padding !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //border for table and search bar parent div, changed according to new design
+  .table-rounded-border {
+    border: 1px solid $alto-light;
+
+    @if ($is-dark) {
+      border: 1px solid $border-dark-theme;
+    }
+
+    border-radius: 8px;
+  }
+
+  //css for first column sticky table
+  #sticky-column-table {
+    .content {
+      overflow-y: auto;
+      overflow-x: auto;
+
+      .exxat-sticky-table {
+        .mat-table-sticky {
+          opacity: 1;
+        }
+
+        td {
+          &.cdk-column-student_name {
+            padding-left: 16px !important;
+
+            @include media-breakpoint('xs') {
+              min-height: 60px;
+            }
+          }
+
+          .list-item-name {
+            font-size: px-to-rem(14);
+            font-weight: 600;
+          }
+        }
+
+        td:first-child {
+          min-width: 280px;
+
+          @include media-breakpoint('xs') {
+            min-width: 130px;
+          }
+        }
+      }
+    }
+  }
+
+  .scroll-smooth {
+    scroll-behavior: smooth !important;
+  }
+
+  //------------------------------
+  // Grid Paginator Border : START
+  //------------------------------
+
+  .border-light-top {
+    border-top: 1px solid $alto-light !important;
+  }
+
+  //------------------------------
+  // Grid Paginator Border : END
+  //------------------------------
+
+  //------------------------------
+  // Table Disable Styling : Start
+  //------------------------------
+
+  table {
+    &.disabled {
+      opacity: 0.6 !important;
+    }
+  }
+
+  //------------------------------
+  // Table Disable Styling : END
+  //------------------------------
+  // Page Level Scroll Table Paginator Sticky Styling
+  .mat-paginator-sticky {
+    bottom: 0px;
+    position: sticky;
+    z-index: 99 !important;
+  }
+
+  .sticky_table_header {
+    border-radius: 8px 8px 0 0 !important;
+  }
+
+  // START : Mat Table Headers Background & Foreground Color Styling
+  .mat-table {
+    .mat-header-row {
+      .mat-header-cell {
+        background-color: map-get(
+          $map: $background,
+          $key: tableHeader
+        ) !important;
+        color: map-get($map: $foreground, $key: text) !important;
+      }
+    }
+  }
+
+  // END: Mat Table Headers Background & Foreground Color Styling
+
+  .exxat-table-min-td-width {
+    td {
+      @include media-breakpoint('lt-sm') {
+        min-width: 50vw !important;
+      }
+    }
+  }
+
+  .mat-paginator-range-actions {
+    justify-content: end !important;
+    border-left: 1px solid map-get($map: $foreground, $key: divider) !important;
+    @include media-breakpoint('lt-sm') {
+      border: none !important;
+    }
+  }
+
+  //Site module hide pagination details for sidebar
+  location-list,
+  mapofaffiliation {
+    fuse-sidebar {
+      mat-paginator {
+        .mat-paginator-container {
+          right: 0px !important;
+          position: fixed;
+        }
+        .mat-paginator-range-actions {
+          border: none !important;
+        }
+        .mat-paginator-page-size {
+          display: none !important;
+        }
+        .mat-paginator-range-label {
+          display: none !important;
+        }
+      }
+    }
+  }
+
+  .mat-paginator-page-size {
+    margin-right: 16px !important;
+  }
+
+  .mat-paginator-range-label {
+    white-space: nowrap !important;
+    margin: 0 16px 0 16px !important;
+    color: map-get($map: $foreground, $key: text) !important;
+  }
+
+  .mat-paginator-icon {
+    width: 24px !important;
+  }
+
+  .mat-paginator-navigation-first,
+  .mat-paginator-navigation-last,
+  .mat-paginator-navigation-previous,
+  .mat-paginator-navigation-next {
+    .mat-paginator-icon {
+      color: map-get($map: $foreground, $key: text) !important;
+    }
+  }
+
+  .mat-paginator-navigation-first.mat-button-disabled,
+  .mat-paginator-navigation-last.mat-button-disabled,
+  .mat-paginator-navigation-previous.mat-button-disabled,
+  .mat-paginator-navigation-next.mat-button-disabled {
+    .mat-paginator-icon {
+      color: map-get($map: $foreground, $key: divider) !important;
+    }
+  }
+
+  .mat-paginator-page-size {
+    color: map-get($map: $foreground, $key: text) !important;
+    @include media-breakpoint('lt-sm') {
+      display: none !important;
+    }
+  }
+
+  // START : No Border For Exxat Table's Th and Td
+  table.exxat-table.no-border,
+  mat-table.exxat-table.no-border {
+    tr {
+      th,
+      td {
+        border-right: none !important;
+      }
+    }
+  }
+
+  // END : No Border For Exxat Table's Th and Td
+}
+
+//mixin closes here

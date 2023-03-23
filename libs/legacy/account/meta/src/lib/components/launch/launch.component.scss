@@ -1,0 +1,47 @@
+
+  .grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: normal;
+  }
+  .program-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+  
+  .program-radio-button {
+    margin: 5px;
+  }
+
+  .spinner{
+    margin-top: 80px;
+    text-align: center;
+    display: flex;
+    align-self: center;
+  }
+
+
+  .mat-form-field.mat-form-field-type-mat-select .mat-form-field-infix {
+      width: fit-content;
+  }
+
+  #program_dashboard {
+    .margin-auto{
+      margin:0 auto; 
+    }
+    display: flex;
+    flex-direction: row;
+    flex-basis: auto;
+
+    .program_list:hover {
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0px 3px 1px -2px rgba(64, 85, 181, 0.2),
+      0px 2px 2px 0px rgba(64, 85, 181, 0.14),
+      0px 1px 5px 0px rgba(64, 85, 181, 0.12);
+      border-radius: 8px;
+    }
+  }
+  

@@ -1,0 +1,23 @@
+@import 'node_modules/@exxat/styles/shared/init';
+
+.tag-showcase-menu-container {
+  max-height: 250px !important;
+  min-width: 252px;
+  max-width: 272px;
+  overflow-y: auto !important;
+  padding: 8px 16px 0 16px;
+
+  .truncate-with-hover {
+    @include media-breakpoint('gt-md') {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 1;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  &.chip-view {
+    width: 350px !important;
+  }
+}

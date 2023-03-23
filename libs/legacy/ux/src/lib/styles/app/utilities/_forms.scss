@@ -1,0 +1,27 @@
+button,
+input[type='email'],
+input[type='tel'],
+input[type='text'],
+input[type='password'],
+input[type='image'],
+input[type='submit'],
+input[type='button'],
+input[type='search'],
+textarea {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Forms
+// -----------------------------------------------------------------------------------------------------
+.form-wrapper {
+  padding: 16px;
+
+  .form-title {
+    font-size: 21px;
+    padding: 8px 0;
+  }
+}

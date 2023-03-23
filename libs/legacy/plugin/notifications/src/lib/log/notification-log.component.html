@@ -1,0 +1,132 @@
+<div class="page-layout full-width inner-scroll w-100-p" style="height: 100%;">
+
+  <div class="spinner-container" *ngIf="(isLoadingResults$ | async)">
+      <mat-spinner></mat-spinner>
+  </div>
+
+<div class="center">
+    <mat-card>
+
+      <div fxLayout="row" class="pb-16" fxLayoutAlign="start center">
+          <div class="search-wrapper search-grid w-50-p" fxLayout="row" fxLayoutAlign="start center">
+            <div class="search" fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
+              <mat-icon class="s-16 secondary-text" (click)="applySearch($event)">search</mat-icon>
+              <input type="text" placeholder="Search by Recipient Name,Recipient Email,Subject or Email Content" [(ngModel)]="searchValue" (keyup)="applySearch($event)" fxFlex />
+            </div>
+          </div>
+        </div>
+
+        <div class="content pb-40 mt-16 overflow-auto" (scroll)="onScroll($event)"
+        [style.height.px]="headerService.scrollContentheight - ( search_bar_height + settlement_height)">
+
+            <table mat-table [dataSource]="dataSource" class="w-100-p exxat-table condensed-table pt-0"
+              #sort="matSort" matSort matSortActive="sentAt" matSortDisableClear matSortDirection="desc"
+              >
+
+
+                <ng-container matColumnDef="recipientName">
+                    <th class="pl-16" mat-header-cell *matHeaderCellDef tabindex="0" aria-label="Recipient Name">
+                        Recipient Name</th>
+                    <td mat-cell *matCellDef="let element" class="pl-16">
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                            <span tabindex="0"
+                                [attr.aria-label]="element.recipientName">{{element.recipientName}}</span>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="recipientEmail">
+                    <th class="pl-16" mat-header-cell *matHeaderCellDef tabindex="0" aria-label="Recipient Email">
+                        Recipient Email</th>
+                    <td mat-cell *matCellDef="let element" class="pl-16">
+                        <div fxLayout="column" fxLayoutAlign="start">
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                                <div fxLayout="row" fxLayoutAlign="start center" class="mr-4"><span
+                                        class="email-dot" [ngClass]="getClass(element.iscc?'cc':'to')"></span>
+                                </div>
+                                <div tabindex="0" [attr.aria-label]="element.iscc?'cc':'to'">
+                                    {{element.iscc?'cc':'to'}} :
+                                </div>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="start center" tabindex="0"
+                                [attr.aria-label]="element.recipientEmail">{{element.recipientEmail}}
+                            </div>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="subject">
+                    <th class="pl-16" mat-header-cell *matHeaderCellDef tabindex="0" aria-label="Subject" > Subject
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="pl-16">
+                      <button  mat-button color="primary" class="action-icon ml-10 w-100-p py-8" aria-label="Edit"
+                      exxatManifoldPanelAction [componentSelector]="drawerService.get('notification-log-preview')"
+                      [size]="'drawer-sm'"
+                      [data]="{'content': element.body,'subject':element.subject,'attachmentsFileDescription':element.attachmentsFileDescription}"
+                      [caption]="'View Email Content'" role=""
+                      [ngStyle]="{'pointer-events':notificationLogConfig.showTemplate === false ? 'none' : 'auto' }">
+                        {{ element.subject }}
+                    </button>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th class="pl-16" mat-header-cell *matHeaderCellDef tabindex="0" aria-label="Status"> Status
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="pl-16">
+                        <div fxLayout="row" fxLayoutAlign="space-between center">
+                            <div fxLayoutAlign="start center" class="status-badge" tabindex="0"
+                                [attr.aria-label]="'status is' + element.status"
+                                [ngClass]="getClass(element.status)">
+                                {{element.status}}
+                            </div>
+                            <div fxLayoutAlign="end center">
+                                <button mat-icon-button aria-label="status info"
+                                tooltip="{{ element.description }}" [options]="tooltipOptions">
+                                    <i class="fa-light fa-circle-info"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="fromemail">
+                    <th class="pl-16" mat-header-cell *matHeaderCellDef tabindex="0" aria-label="From"> From </th>
+                    <td mat-cell *matCellDef="let element" class="pl-16">
+                        <div tabindex="0" [attr.aria-label]="'from' + element.fromemail">
+                            {{element.fromemail}}
+                        </div>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="sentAt">
+                    <th class="pl-16" mat-header-cell *matHeaderCellDef tabindex="0" aria-label="Email Sent Time">
+                        Email Sent Time </th>
+                    <td mat-cell *matCellDef="let element" class="pl-16">
+                        <div tabindex="0" [attr.aria-label]="'Email sent time is' + element.sentAt">
+                            {{_timeZonePipe.transformUTCtoSchoolTime(element.sentAt,'MMM DD, yyyy h:mm A')}}
+                      </div>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="isScheduled" *ngIf="notificationLogConfig.showScheduled">
+                    <th class="pl-16" mat-header-cell *matHeaderCellDef tabindex="0" aria-label="Schedule Email">
+                        Schedule Email </th>
+                    <td mat-cell *matCellDef="let element" class="pl-16">
+                        <div tabindex="0" [attr.aria-label]="'Schedule email is' + element.isScheduled">
+                            {{element.isScheduled?'yes':'no'}}
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                </tr>
+            </table>
+            <div *ngIf="(dataSource.data === undefined || dataSource.data.length === 0) && !(isLoadingResults$ | async)">
+              <div class="message-box warning">No results found</div>
+          </div>
+        </div>
+    </mat-card>
+</div>
+</div>

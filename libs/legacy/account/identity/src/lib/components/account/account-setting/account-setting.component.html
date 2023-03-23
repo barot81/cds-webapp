@@ -1,0 +1,92 @@
+
+  <div mat-close >
+      <button mat-icon-button close-drawer><mat-icon >close</mat-icon></button>
+  </div>
+
+<div class="home" >
+    <!-- for showing spinner when uploading profile picture -->
+    <button class="avatar-wrapper" mat-button>
+        <div *ngIf="loading; else: profilePicture">
+            <mat-spinner diameter="50"></mat-spinner>
+          </div>
+          <ng-template #profilePicture>  <img *ngIf="!initials" class="profile-pic" [src]="ProfileUrl" alt="Profile"/></ng-template>
+
+
+      <div *ngIf="initials" [ngClass]="['profile-initial']">
+        <span [ngClass]="['profile-identity-initials']">
+          <div *ngIf="loading; else: templateName">
+            <mat-spinner diameter="30"></mat-spinner>
+          </div>
+
+          <ng-template #templateName> {{ displayInitial }} </ng-template>
+        </span>
+      </div>
+    </button>
+
+  </div>
+
+<!-- Section Off Student Full Name, Email and Class -->
+<div class="info">
+  <div>{{ fullname | uppercase }}</div>
+  <div class="email">{{ email }}</div>
+  <div class="emailwrapper">
+  </div>
+  <mat-divider></mat-divider>
+  <div class="changepwd">
+      <button (click)="changePassword()" >Change Password</button>
+  </div>
+  <mat-divider></mat-divider>
+</div>
+
+<!-- Other elements of drawer -->
+<div class="info">
+
+
+  <div *ngIf="studentrole">
+    <button mat-flat-button class="terms" (click)="openDialog()">Terms Of Use</button>
+  </div>
+
+ <div *ngIf="!studentrole">
+  <label>{{ tanentName }}</label>
+  <br>
+  <div >
+
+
+    <div class="setting-list">
+     <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+        <button mat-icon-button disabled></button>
+        <mat-checkbox class="checklist-leaf-node"
+                      [checked]="checklistSelection.isSelected(node)"
+                      (change)="todoLeafItemSelectionToggle(node)">{{node.Name}}</mat-checkbox>
+      </mat-tree-node>
+
+
+      <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+        <button mat-icon-button matTreeNodeToggle
+                [attr.aria-label]="'toggle ' + node.filename">
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+          </mat-icon>
+        </button>
+        <mat-checkbox [checked]="descendantsAllSelected(node)"
+                      [indeterminate]="descendantsPartiallySelected(node)"
+                      (change)="todoItemSelectionToggle(node)">{{node.Name}}</mat-checkbox>
+
+      </mat-tree-node>
+    </mat-tree>
+  </div>
+    </div>
+
+  
+ </div>
+
+
+
+  <!-- Section for Drawer Action Buttons -->
+    <div actions>
+      <button class="logoutbutton" mat-stroked-button (click)="signOut()">
+        Sign Out
+      </button>
+    </div>
+</div>

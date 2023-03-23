@@ -1,0 +1,180 @@
+<div id="main" (window.resize)="onResize($event)">
+  <!-- HEADER: Above -->
+  <ng-container *ngIf="fusionConfig.layout.header.position === 'above'">
+    <ng-container *ngTemplateOutlet="header"></ng-container>
+  </ng-container>
+  <!-- / HEADER: Above -->
+
+  <div id="container-1" class="container">
+    <!-- NAVBAR: Left -->
+    <ng-container *ngIf="fusionConfig.layout.navbar.position === 'left'">
+      <ng-container *ngTemplateOutlet="leftNavbar"></ng-container>
+    </ng-container>
+    <!-- / NAVBAR: Left -->
+
+    <div id="container-2" class="container">
+      <!-- HEADER: Below fixed -->
+      <ng-container
+        *ngIf="fusionConfig.layout.header.position === 'below-fixed'"
+      >
+        <ng-container *ngTemplateOutlet="header"></ng-container>
+      </ng-container>
+      <!-- / HEADER: Below fixed -->
+
+      <div
+        id="container-3"
+        class="container"
+        fusePerfectScrollbar
+        cdkScrollable
+        [fusePerfectScrollbarOptions]="{
+          suppressScrollX: true,
+          updateOnRouteChange: true
+        }"
+      >
+        <!-- HEADER: Below static -->
+        <ng-container
+          *ngIf="fusionConfig.layout.header.position === 'below-static'"
+        >
+          <ng-container *ngTemplateOutlet="header"></ng-container>
+        </ng-container>
+        <!-- / HEADER: Below static -->
+
+        <!-- CONTENT -->
+        <!-- <div > -->
+        <content id="app_main_content" tabindex="0"></content>
+        <!-- </div> -->
+        <!-- / CONTENT -->
+
+        <!-- FOOTER: Below static -->
+        <ng-container
+          *ngIf="fusionConfig.layout.footer.position === 'below-static'"
+        >
+          <ng-container *ngTemplateOutlet="footer"></ng-container>
+        </ng-container>
+        <!-- / FOOTER: Below static -->
+      </div>
+
+      <!-- FOOTER: Below fixed -->
+      <ng-container
+        *ngIf="fusionConfig.layout.footer.position === 'below-fixed'"
+      >
+        <ng-container *ngTemplateOutlet="footer"></ng-container>
+      </ng-container>
+      <!-- / FOOTER: Below fixed -->
+    </div>
+  </div>
+
+  <!-- FOOTER: Above -->
+  <ng-container *ngIf="fusionConfig.layout.footer.position === 'above'">
+    <ng-container *ngTemplateOutlet="footer"></ng-container>
+  </ng-container>
+  <!-- FOOTER: Above -->
+</div>
+
+<!-- SIDE PANEL -->
+<ng-container
+  *ngIf="
+    !fusionConfig.layout.sidepanel.hidden &&
+    fusionConfig.layout.sidepanel.position === 'right'
+  "
+>
+  <!-- DRAWER PANEL -->
+  <fuse-sidebar
+    name="drawer"
+    position="right"
+    class="drawer right-drawer-panel"
+    [folded]="true"
+    [foldedAutoTriggerOnHover]="false"
+    (backDropClick)="onBackDropClick()"
+  >
+    <drawer></drawer>
+  </fuse-sidebar>
+  <!-- / DRAWER PANEL -->
+</ng-container>
+<!-- / SIDE PANEL -->
+
+<!-- MANIFOLD PANEL -->
+<ng-template manifoldPanelDirective></ng-template>
+<!-- / MANIFOLD PANEL -->
+
+<!-- QUICK PANEL -->
+<fuse-sidebar name="quickPanel" position="right" class="quick-panel">
+  <quick-panel></quick-panel>
+</fuse-sidebar>
+<!-- / QUICK PANEL -->
+
+<!-- Teme Oprions-->
+<fuse-sidebar
+  name="themeOptionsPanel"
+  class="theme-options-sidebar"
+  position="right"
+  [invisibleOverlay]="false"
+>
+  <fuse-theme-options></fuse-theme-options>
+</fuse-sidebar>
+<!-- Teme Oprions-->
+<!-- HEADER -->
+<ng-template #header>
+  <header
+    id="top_main_header"
+    *ngIf="!fusionConfig.layout.header.hidden"
+    [ngClass]="
+      fusionConfig.layout.header.customBackgroundColor === true
+        ? fusionConfig.layout.header.position +
+          ' ' +
+          fusionConfig.layout.header.background
+        : fusionConfig.layout.header.position
+    "
+  ></header>
+</ng-template>
+<!-- / HEADER -->
+
+<!-- FOOTER -->
+<ng-template #footer>
+  <footer
+    class="dashboard_footer"
+    *ngIf="
+      !fusionConfig.layout.footer.hidden && _layoutService.getFooterVisibleValue
+    "
+    [@slideInBottom]="_layoutService.getFooterVisibleValue"
+    [@slideOutBottom]="!_layoutService.getFooterVisibleValue"
+    [ngClass]="fusionConfig.layout.footer.position"
+  ></footer>
+</ng-template>
+<!-- / FOOTER -->
+
+<!-- LEFT NAVBAR -->
+<ng-template #leftNavbar>
+  <fuse-sidebar
+    tabindex="0"
+    cdkTrapFocus
+    name="navbar"
+    class="navbar-fuse-sidebar"
+    [folded]="fusionConfig.layout.navbar.folded"
+    *ngIf="!fusionConfig.layout.navbar.hidden"
+  >
+    <navbar
+      [variant]="fusionConfig.layout.navbar.variant"
+      class="left-navbar"
+    ></navbar>
+  </fuse-sidebar>
+</ng-template>
+<!-- / LEFT NAVBAR -->
+
+<!-- RIGHT NAVBAR -->
+<ng-template #rightNavbar>
+  <fuse-sidebar
+    name="navbar"
+    position="right"
+    class="navbar-fuse-sidebar"
+    [folded]="fusionConfig.layout.navbar.folded"
+    lockedOpen="gt-md"
+    *ngIf="!fusionConfig.layout.navbar.hidden"
+  >
+    <navbar
+      [variant]="fusionConfig.layout.navbar.variant"
+      class="right-navbar"
+    ></navbar>
+  </fuse-sidebar>
+</ng-template>
+<!-- / RIGHT NAVBAR -->

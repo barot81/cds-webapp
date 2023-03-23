@@ -1,0 +1,384 @@
+<!-- eslint-disable @angular-eslint/template/no-negated-async -->
+<mat-toolbar fxLayout="column" class="p-0 border-bottom">
+  <div
+    fxFlex
+    fxFill
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    class="h-100-p"
+  >
+    <div
+      fxFlex="1 0 auto"
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      class="h-100-p"
+    >
+      <button
+        aria-label="Expand Main Navigation"
+        mat-icon-button
+        class="navbar-toggle-button h-100-p"
+        *ngIf="!hiddenNavbar && !rightNavbar"
+        (click)="toggleSidebarOpen('navbar')"
+      >
+        <i aria-hidden="true" class="fa-light fa-bars"></i>
+      </button>
+
+      <span
+        class="font-18 font-weight-600"
+        fxHide.lt-sm
+        tabindex="0"
+        attr.aria-label="you are on {{ pageTitle }} page"
+      >
+        {{ pageTitle }}
+      </span>
+
+      <!-- <div
+        class="header-separator"
+        *ngIf="!hiddenNavbar && !rightNavbar"
+        fxHide.gt-md
+      ></div> -->
+
+      <div fxLayout="row" fxLayoutAlign="start center" *ngIf="horizontalNavbar">
+        <div class="logo ml-16">
+          <img class="logo-icon" src="assets/images/logos/fuse.svg" />
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="h-100-p"
+      fxFlex="0 1 auto"
+      fxLayout="row"
+      fxLayoutAlign="start center"
+    >
+      <ng-container *ngIf="loggedInUser$ | async as loggedInUser">
+        <ng-container *ngIf="loggedInUser?.user?.ManagedUserAccount?.IsActive">
+          <div fxLayout="column" class="w-100-p info-bar">
+            <div
+              fxLayout="row wrap"
+              fxLayoutAlign="space-between center"
+              class="info-box warning border-radius-0"
+            >
+              <span class="white-space-normal pr-sm-16">
+                You are in view only mode for
+                {{ loggedInUser?.user?.ManagedUserAccount?.Name }}
+              </span>
+              <a (click)="switchBack()">Switch back</a>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <!-- <div class="header-separator"></div> -->
+
+      <ng-container *ngIf="!(hasDelegateRole$ | async)">
+        <button
+          mat-icon-button
+          class="apps-panel-toggle-button h-100-p"
+          (click)="redirectToLaunch()"
+          aria-label="launch panel"
+        >
+          <i aria-hidden="true" class="fa-light fa-grid"></i>
+        </button>
+      </ng-container>
+
+      <!-- code for bell icon -->
+      <ng-container
+        *ngIf="
+          !(hasDelegateRole$ | async) &&
+          this.scheduledDowntimes &&
+          this.scheduledDowntimes?.length > 0
+        "
+      >
+        <!-- <div class="header-separator"></div> -->
+        <button
+          mat-icon-button
+          class="bell-icon-button bell-icon-toggle-button h-100-p"
+          exxatDrawerAction
+          [componentSelector]="
+            _HeaderDrawerService.get('exxat-app-header-notification-drawer')
+          "
+          [data]="this.scheduledDowntimes"
+          [size]="'drawer-md'"
+          [caption]="'Notifications'"
+          aria-label="Notifications"
+        >
+          <i aria-hidden="true" class="fas fa-bell"></i>
+          <span class="notification-number">{{
+            this.scheduledDowntimes?.length
+          }}</span>
+        </button>
+      </ng-container>
+
+      <!-- <div class="header-separator"></div> -->
+
+      <button
+        mat-icon-button
+        class="notification-panel-toggle-button h-100-p"
+        (click)="navigateToHelpCenter()"
+        tooltip="Help Center"
+        [options]="tooltipOptions"
+      >
+        <i aria-hidden="true" class="fa-light fa-circle-question"></i>
+      </button>
+
+      <ng-container *ngIf="isStudent">
+        <button
+          mat-flat-button
+          color="primary"
+          class="mr-8"
+          aria-label="Setting"
+          (click)="chatToggle()"
+        >
+          <i class="fa-light fa-comments-alt s-16 mr-4"></i>
+          <span class="ml-4">chat</span>
+        </button>
+      </ng-container>
+
+      <!-- <div class="header-separator"></div> -->
+
+      <ng-container *ngIf="!(hasDelegateRole$ | async) && isAdmin">
+        <button
+          mat-icon-button
+          class="notification-panel-toggle-button h-100-p bell-icon-button"
+          (click)="openReleaseNotes()"
+          aria-label="Release Notes"
+        >
+          <i aria-hidden="true" class="fa fa-bullhorn s-18"></i>
+        </button>
+      </ng-container>
+
+      <!-- <div class="header-separator"></div> -->
+      <!-- profile section -->
+      <ng-container *ngIf="hasDelegateRole$ | async; else elseBlock">
+        <button mat-button class="user-button">
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <ng-container *ngIf="loggedInUser$ | async as loggedInUser">
+              <div fxLayout="row text-left">
+                <ng-container *ngIf="userName">
+                  <span class="username mr-8" fxHide fxShow.gt-sm>{{
+                    userName
+                  }}</span>
+                </ng-container>
+                <ng-container *ngIf="!userName">
+                  <span class="username mr-8" fxHide fxShow.gt-sm
+                    >{{ loggedInUser?.user?.FirstName }}
+                    {{ loggedInUser?.user?.LastName }}</span
+                  >
+                  <span class="username mr-12" fxHide fxShow.gt-sm
+                    >{{ _headerService.tenantName | async }} ({{
+                      _headerService.selectedOUCodeCaption$ | async
+                    }})</span
+                  >
+                </ng-container>
+              </div>
+              <!-- <mat-icon class="s-16"> keyboard_arrow_down</mat-icon> -->
+            </ng-container>
+          </div>
+        </button>
+      </ng-container>
+      <ng-template #elseBlock>
+        <button
+          mat-button
+          aria-label="toggle user setting"
+          exxatManifoldPanelAction
+          [componentSelector]="
+            _HeaderDrawerService.get('exxat-user-setting-drawer')
+          "
+          [size]="'drawer-x-sm'"
+          [data]="loggedInUser$ | async"
+          [caption]="'User setting'"
+          class="user-button"
+        >
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <ng-container *ngIf="loggedInUser$ | async as loggedInUser">
+              <div fxLayout="row text-left">
+                <ng-container *ngIf="userName">
+                  <span class="username mr-8" fxHide fxShow.gt-sm>{{
+                    userName
+                  }}</span>
+                </ng-container>
+                <ng-container *ngIf="!userName">
+                  <span class="username mr-8" fxHide fxShow.gt-sm
+                    >{{ loggedInUser?.user?.FirstName }}
+                    {{ loggedInUser?.user?.LastName }}</span
+                  >
+                  <span class="username mr-12" fxHide fxShow.gt-sm
+                    >{{ _headerService.tenantName | async }} ({{
+                      _headerService.selectedOUCodeCaption$ | async
+                    }})</span
+                  >
+                </ng-container>
+              </div>
+              <i aria-hidden="true" class="fa-light fa-angle-down s-16"></i>
+            </ng-container>
+          </div>
+        </button>
+      </ng-template>
+
+      <!-- <ng-container  *ngIf='loggedInUser$ | async as loggedInUser'> -->
+      <mat-menu #userMenu="matMenu">
+        <!-- <ng-container *ngIf="!(hasDelegateRole$ | async)">
+          <button
+            mat-menu-item
+            exxatDrawerAction
+            [componentSelector]="
+              identityComponentMapService.get('change-password')
+            "
+            [size]="'drawer-sm'"
+            [caption]="'Change Password'"
+            [primaryAction]="'Save'"
+            [entityKey]="0"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <i aria-hidden="true" class="fa-light fa-key s-20 mr-16"></i>
+            <span>Change password</span>
+          </button>
+
+          <button
+            mat-menu-item
+            class=""
+            exxatDrawerAction
+            [componentSelector]="_themeSelection.get('exxat-theme-selection')"
+            [size]="'drawer-sm'"
+            [caption]="'Theme Options'"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <i aria-hidden="true" class="fa-light fa-cog s-20 mr-16"></i>
+            <span>Setting</span>
+          </button>
+
+          <button
+            mat-menu-item
+            class=""
+            (click)="openConsentDetailsPopup()"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <i aria-hidden="true" class="fa-light fa-receipt s-20 mr-16"></i>
+            <span>Consent detail</span>
+          </button>
+          <button
+            mat-menu-item
+            class=""
+            (click)="signOut()"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <i aria-hidden="true" class="fa-light fa-sign-out s-20 mr-16"></i>
+            <span>Logout</span>
+          </button>
+          <div *ngIf="lastLoginTime !== null && lastLoginTime !== undefined">
+            <mat-divider></mat-divider>
+            <div class="p-12 pb-0 font-14">
+              <em
+                >last login
+                <span
+                  >{{ lastLoginTime.toDateString() }},
+                  {{ lastLoginTime.toLocaleTimeString() }}</span
+                ></em
+              >
+            </div>
+          </div>
+        </ng-container> -->
+      </mat-menu>
+
+      <!-- <div
+        class="header-separator"
+        *ngIf="!hiddenNavbar && rightNavbar"
+        fxHide
+        fxShow.gt-xs
+      ></div> -->
+
+      <button
+        mat-icon-button
+        class="navbar-toggle-button"
+        *ngIf="!hiddenNavbar && rightNavbar"
+        (click)="toggleSidebarOpen('navbar')"
+        fxHide.gt-md
+      >
+        <i aria-hidden="true" class="fa-light fa-bars"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- code for notifications overlay -->
+  <div
+    class="notification-overlay"
+    *ngIf="this.showNotificationBanner && this.scheduledDowntimes?.length > 0"
+  >
+    <div
+      class="info-box warning m-4"
+      fxLayout="row"
+      fxLayoutAlign="space-between start"
+      tabindex="0"
+      aria-label="This is notification box with action button"
+    >
+      <div
+        fxLayout="column"
+        class="white-space-normal"
+        tabindex="0"
+        aria-label="Notification is"
+      >
+        <ng-container *ngFor="let downtime of this.scheduledDowntimes">
+          <span tabindex="0" attr.aria-label="{{ downtime.title }}">{{
+            downtime.title
+          }}</span>
+          <span
+            class="font-14"
+            tabindex="0"
+            attr.aria-label="{{ downtime.messageText }}"
+            >{{ downtime.messageText }}</span
+          >
+        </ng-container>
+      </div>
+      <span
+        tabindex="0"
+        aria-label="cancel button"
+        (click)="closeNotificationBanner()"
+        ><i aria-hidden="true" class="fas fa-times s-18"></i
+      ></span>
+    </div>
+  </div>
+  <ng-container *ngIf="_headerService.showReleaseNotes | async">
+    <div class="notification-overlay">
+      <div
+        class="info-box warning m-4"
+        fxLayout="row"
+        fxLayoutAlign="space-between start"
+        tabindex="0"
+        aria-label="This is notification box with action button"
+      >
+        <div
+          fxLayout="column"
+          class="white-space-normal"
+          tabindex="0"
+          aria-label="Notification is"
+        >
+          <span tabindex="0" attr.aria-label="New Release Available"
+            >New Release Available</span
+          >
+          <span
+            class="font-14"
+            tabindex="0"
+            attr.aria-label="We're constantly making PRISM better. Click Here for some of the
+              notable new features and improvements that we've made in our New
+              Release"
+            >We're constantly making PRISM better.
+            <a [routerLink]="['/releasenotes']">Click Here</a> for some of the
+            notable new features and improvements that we've made in our New
+            Release
+          </span>
+        </div>
+        <span
+          tabindex="0"
+          aria-label="cancel button"
+          (click)="hideReleaseNotificationBanner()"
+          ><i aria-hidden="true" class="fas fa-times s-18"></i
+        ></span>
+      </div>
+    </div>
+  </ng-container>
+</mat-toolbar>

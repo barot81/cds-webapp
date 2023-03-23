@@ -1,0 +1,15 @@
+<div class="dialog-box-wrapper" fxLayout="column" class="p-16">
+  <div class="dialog-box-message-container pb-4">
+    <span *ngIf="isDelegatorUser; else delegatorMsg">
+      The current session has timed out, Please refresh this page again.
+    </span>
+    <ng-template #delegatorMsg>
+      <span> The current session has timed out, please log in again. </span>
+    </ng-template>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end" class="pt-16">
+    <button mat-flat-button color="primary" class="ml-8" (click)="onConfirm()">
+      Ok
+    </button>
+  </div>
+</div>

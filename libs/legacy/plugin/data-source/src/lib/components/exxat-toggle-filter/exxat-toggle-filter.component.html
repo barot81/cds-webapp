@@ -1,0 +1,4 @@
+<div fxLayout="row wrap">
+  <button [ngClass]="{'selected': filter.value === selectedFilter}" class="mr-16 mb-16"
+    *ngFor="let filter of filterList" mat-stroked-button (click)="onClick(filter.value)">{{filter.viewName}}</button>
+</div>

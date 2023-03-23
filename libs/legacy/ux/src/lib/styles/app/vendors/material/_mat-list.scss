@@ -1,0 +1,26 @@
+.mat-select-search-panel {
+  /* allow absolute positioning relative to outer options container */
+  transform: none !important;
+  overflow-x: hidden !important;
+}
+
+.mat-option[aria-disabled='true'].contains-mat-select-search {
+  /* let move mat-select-search at the top of the dropdown. As option is disabled, there will be no-ripple hence safe. */
+  position: static !important;
+  padding: 0 !important;
+
+  .mat-icon {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+  }
+  .mat-option-pseudo-checkbox {
+    display: none !important;
+  }
+  &.mat-select-search-no-entries-found {
+    height: 2 * 3em !important;
+  }
+}
+
+mat-list-option {
+  width: auto !important;
+}

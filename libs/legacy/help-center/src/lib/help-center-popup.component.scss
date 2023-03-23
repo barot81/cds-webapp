@@ -1,0 +1,17 @@
+// @import '../../../../../../../ux/src/lib/styles/app/shared/init';
+.help-center-popup .file-upload-box-container .file-upload-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: dashed;
+  border-width: 2px;
+  border-radius: 1px;
+  padding: 16px;
+  line-height: normal;
+  border-color: #bdbdbd !important;
+  background-color: #f5f5f5;
+}
+
+.no-border-radius {
+  border-radius: 0px !important;
+}

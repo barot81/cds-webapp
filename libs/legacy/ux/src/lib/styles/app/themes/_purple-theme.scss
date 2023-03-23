@@ -1,0 +1,306 @@
+@use '@angular/material' as mat;
+
+////////////////////////////////////////////////////////////////
+///////////// Purple Light Theme  ////////////////
+////////////////////////////////////////////////////////////////
+
+// @Start --  Exxat Purple Light Theme Color Palates
+
+$exxat-purple-light-theme-primary: (
+  50: #f2e7fc,
+  100: #dfc2f9,
+  200: #c999f5,
+  300: #b370f0,
+  400: #a352ed,
+  500: #9333ea,
+  600: #8b2ee7,
+  700: #8027e4,
+  800: #7620e1,
+  900: #6414db,
+  A100: #ffffff,
+  A200: #e6d8ff,
+  A400: #c6a5ff,
+  A700: #b58bff,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+$exxat-purple-light-theme-accent: (
+  50: #fef5e7,
+  100: #fde6c2,
+  200: #fcd599,
+  300: #fbc470,
+  400: #fab752,
+  500: #f9aa33,
+  600: #f8a32e,
+  700: #f79927,
+  800: #f69020,
+  900: #f57f14,
+  A100: #ffffff,
+  A200: #fff7f1,
+  A400: #ffdabe,
+  A700: #ffcca4,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $dark-primary-text,
+    700: $dark-primary-text,
+    800: $dark-primary-text,
+    900: $dark-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  ),
+);
+
+// @End --  Exxat Purple Light Theme Color Palates
+
+// -----------------------------------------------------------------------------------------------------
+// @ Define the Purple Light theme
+// -----------------------------------------------------------------------------------------------------
+
+// Define the primary, accent and warn palettes
+$purple-light-primary-palette: mat.define-palette(
+  $exxat-purple-light-theme-primary,
+  500,
+  400,
+  600
+);
+$purple-light-accent-palette: mat.define-palette(
+  $exxat-purple-light-theme-accent,
+  500
+);
+$purple-light-warn-palette: mat.define-palette(mat.$red-palette);
+
+// Create the Material theme object
+$purple-theme: mat.define-light-theme(
+  $purple-light-primary-palette,
+  $purple-light-accent-palette,
+  $purple-light-warn-palette
+);
+
+$purple-theme: map-merge(
+  $purple-theme,
+  (
+    background:
+      map-merge(
+        map-get($purple-theme, background),
+        $light-theme-background-palette
+      ),
+  )
+);
+
+$purple-theme: map-merge(
+  $purple-theme,
+  (
+    foreground:
+      map-merge(
+        map-get($purple-theme, foreground),
+        $light-theme-foreground-palette
+      ),
+  )
+);
+
+$purple-theme: map-merge(
+  $purple-theme,
+  (
+    action: $fuse-navy,
+  )
+);
+
+// Add ".theme-purple-light" class to the body to activate this theme.
+// Class name must start with "theme-" !!!
+body.theme-purple-light {
+  // Create an Angular Material theme from the $theme map
+  @include mat.all-component-themes($purple-theme);
+
+  // Create an Material Date Time Picker theme from the $theme map
+  @include mat-datetimepicker-theme($purple-theme);
+
+  // Apply the theme to the Fuse Core
+  @include core-theme($purple-theme);
+
+  // Generate Fuse color classes for primary, accent and warn colors
+  $palettes: (
+    primary: $purple-light-primary-palette,
+    accent: $purple-light-accent-palette,
+    warn: $purple-light-warn-palette,
+  );
+
+  @include fuse-color-classes($palettes);
+}
+
+////////////////////////////////////////////////////////////////
+///////////// Purple Light Theme  //////////////// END
+////////////////////////////////////////////////////////////////
+
+// -----------------------------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////
+///////////// Purple Dark Theme  //////////////// START
+////////////////////////////////////////////////////////////////
+
+// @Start --  Exxat Purple Dark Theme Color Palates
+
+$exxat-purple-dark-theme-primary: (
+  50: #f2e7fc,
+  100: #dfc2f9,
+  200: #c999f5,
+  300: #b370f0,
+  400: #a352ed,
+  500: #9333ea,
+  600: #8b2ee7,
+  700: #8027e4,
+  800: #7620e1,
+  900: #6414db,
+  A100: #ffffff,
+  A200: #e6d8ff,
+  A400: #c6a5ff,
+  A700: #b58bff,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+$exxat-purple-dark-theme-accent: (
+  50: #fef3e2,
+  100: #fce2b6,
+  200: #facf85,
+  300: #f8bb54,
+  400: #f7ad30,
+  500: #f59e0b,
+  600: #f4960a,
+  700: #f28c08,
+  800: #f08206,
+  900: #ee7003,
+  A100: #ffffff,
+  A200: #ffeee1,
+  A400: #ffd0ae,
+  A700: #ffc195,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+// @End --  Exxat Purple Dark Theme Color Palates
+
+// -----------------------------------------------------------------------------------------------------
+// @ Define a Purple Dark theme
+// -----------------------------------------------------------------------------------------------------
+
+// Define the primary, accent and warn palettes
+$purple-dark-primary-palette: mat.define-palette(
+  $exxat-purple-dark-theme-primary,
+  500
+);
+$purple-dark-accent-palette: mat.define-palette(
+  $exxat-purple-dark-theme-accent,
+  500
+);
+$purple-dark-warn-palette: mat.define-palette(mat.$red-palette);
+
+// Create the Material theme object
+$purple-dark-theme: mat.define-dark-theme(
+  $purple-dark-primary-palette,
+  $purple-dark-accent-palette,
+  $purple-dark-warn-palette
+);
+
+// Custom Background Pellete For Dark Theme
+$purple-dark-theme: map-merge(
+  $purple-dark-theme,
+  (
+    background:
+      map-merge(
+        map-get($purple-dark-theme, background),
+        $dark-theme-background-palette
+      ),
+  )
+);
+
+$purple-dark-theme: map-merge(
+  $purple-dark-theme,
+  (
+    foreground:
+      map-merge(
+        map-get($purple-dark-theme, foreground),
+        $dark-theme-foreground-palette
+      ),
+  )
+);
+
+$purple-dark-theme: map-merge(
+  $purple-dark-theme,
+  (
+    action: $fuse-navy,
+  )
+);
+
+// Add ".theme-purple-gray-dark" class to the body to activate this theme.
+// Class name must start with "theme-" !!!
+body.theme-purple-dark {
+  // Generate the Angular Material theme
+  @include mat.all-component-themes($purple-dark-theme);
+
+  // Create an Material Date Time Picker Dark theme from the $theme map
+  @include mat-datetimepicker-theme($purple-dark-theme);
+
+  // Apply the theme to the Fuse Core
+  @include core-theme($purple-dark-theme);
+
+  // Generate Fuse color classes for primary, accent and warn colors
+  $palettes: (
+    primary: $purple-dark-primary-palette,
+    accent: $purple-dark-accent-palette,
+    warn: $purple-dark-warn-palette,
+  );
+
+  @include fuse-color-classes($palettes);
+}
+
+////////////////////////////////////////////////////////////////
+///////////// Purple Dark Theme  //////////////// END
+////////////////////////////////////////////////////////////////

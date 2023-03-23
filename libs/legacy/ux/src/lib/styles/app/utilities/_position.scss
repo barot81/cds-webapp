@@ -1,0 +1,45 @@
+// -----------------------------------------------------------------------------------------------------
+// @ Position helpers
+// -----------------------------------------------------------------------------------------------------
+@each $breakpoint, $materialBreakpoint in $helper-breakpoints {
+  @include media-breakpoint($materialBreakpoint) {
+    $infix: if($materialBreakpoint == null, '', '-#{$breakpoint}');
+
+    .position#{$infix}-relative {
+      position: relative;
+    }
+
+    .position#{$infix}-absolute {
+      position: absolute;
+    }
+
+    .position#{$infix}-static {
+      position: static;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Absolute position alignment helpers
+// -----------------------------------------------------------------------------------------------------
+@each $breakpoint, $materialBreakpoint in $helper-breakpoints {
+  @include media-breakpoint($materialBreakpoint) {
+    $infix: if($materialBreakpoint == null, '', '-#{$breakpoint}');
+
+    .align#{$infix}-top {
+      top: 0;
+    }
+
+    .align#{$infix}-right {
+      right: 0;
+    }
+
+    .align#{$infix}-bottom {
+      bottom: 0;
+    }
+
+    .align#{$infix}-left {
+      left: 0;
+    }
+  }
+}

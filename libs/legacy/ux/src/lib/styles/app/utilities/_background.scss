@@ -1,0 +1,52 @@
+// Exxat Custom Label Background Class List
+// EX : exxat-mandy-bg
+@each $color, $value in $exxat-custom-label-bg-colors {
+  .exxat-#{$color}-bg {
+    background-color: $value !important;
+  }
+
+  .exxat-#{$color}-fg {
+    color: $value !important;
+  }
+}
+
+//to be changed after color finalize
+//small circular-background classes
+.small-circle-background {
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: px-to-rem(12);
+
+  &.circle-green {
+    background-color: $caribbean-green;
+  }
+
+  &.circle-red {
+    background-color: $vivid-tangerine;
+  }
+}
+//to be changed after color finalize
+//large circular-background classes
+.large-circle-background {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: px-to-rem(18);
+
+  &.circle-green {
+    background-color: $caribbean-green;
+  }
+
+  &.circle-red {
+    background-color: $vivid-tangerine;
+  }
+}

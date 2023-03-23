@@ -1,0 +1,80 @@
+<div *ngIf="!editable; else editable_avatar">
+  <img
+    role="img"
+    aria-hidden="true"
+    [alt]="firstName + ' ' + lastName"
+    [ngClass]="{ 'avatar-lg': size === 'lg' }"
+    *ngIf="firstName.length === 0 && lastName.length === 0 && !src; else avatar"
+    class="avatar"
+    src="assets/images/general/avatar.png"
+  />
+  <ng-template #avatar>
+    <img
+      role="img"
+      aria-hidden="true"
+      [alt]="firstName + ' ' + lastName"
+      [ngClass]="{ 'avatar-lg': size === 'lg' }"
+      *ngIf="src; else noAvatar"
+      class="avatar"
+      [src]="src"
+    />
+    <ng-template #noAvatar>
+      <div
+        role="img"
+        aria-hidden="true"
+        class="no-avatar"
+        [ngClass]="{ 'no-avatar-lg': size === 'lg' }"
+      >
+        <span class="initials"
+          >{{ this.firstInitial }}{{ this.lastInitial }}</span
+        >
+      </div>
+    </ng-template>
+  </ng-template>
+</div>
+
+<ng-template #editable_avatar>
+  <div class="avatar-wrapper">
+    <img
+      role="img"
+      aria-hidden="true"
+      [alt]="firstName + ' ' + lastName"
+      [ngClass]="{ 'avatar-lg': size === 'lg' }"
+      *ngIf="
+        firstName.length === 0 && lastName.length === 0 && !src;
+        else avatar
+      "
+      class="avatar m-0"
+      src="assets/images/general/avatar.png"
+    />
+    <div class="edit-icon-wrapper">
+      <div fxLayout="row" fxLayoutAlign="center center" class="h-100-p">
+        <i aria-hidden="true" class="fa-light fa-pen s-18 fuse-white-fg"></i>
+      </div>
+    </div>
+
+    <ng-template #avatar>
+      <img
+        role="img"
+        aria-hidden="true"
+        [alt]="firstName + ' ' + lastName"
+        [ngClass]="{ 'avatar-lg ': size === 'lg' }"
+        *ngIf="src; else noAvatar"
+        class="avatar m-0"
+        [src]="src"
+      />
+      <ng-template #noAvatar>
+        <div
+          role="img"
+          aria-hidden="true"
+          class="no-avatar m-0"
+          [ngClass]="{ 'no-avatar-lg': size === 'lg' }"
+        >
+          <span class="no-avatar-lg-initials"
+            >{{ this.firstInitial }}{{ this.lastInitial }}</span
+          >
+        </div>
+      </ng-template>
+    </ng-template>
+  </div>
+</ng-template>

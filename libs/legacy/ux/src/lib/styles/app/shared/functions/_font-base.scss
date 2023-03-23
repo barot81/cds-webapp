@@ -1,0 +1,14 @@
+@use 'sass:math';
+//font conversion from pixel to rem//
+$font-base-size: 10px !default;
+
+@function px-to-rem($number) {
+  @if (unitless($number)) {
+    $number: $number * 1px;
+  }
+
+  $raw: math.div($number, $font-base-size);
+  $rounded: math.div(ceil($raw * 10000), 10000);
+  @return $rounded * 1rem;
+}
+//font conversion from pixel to rem//

@@ -1,0 +1,45 @@
+<div class="search-dropdown-control" fxLayout="row">
+  <mat-form-field appearance="fill" class="select-box">
+    <mat-select
+      #select
+      class="search-dropdown"
+      placeholder="Search"
+      [value]="currentField"
+      (selectionChange)="onSelectionChange($event)"
+    >
+      <mat-option
+        *ngFor="let search of listofOptions"
+        [value]="search.fieldName"
+      >
+        {{ search.displayName }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field
+    appearance="fill"
+    class="input-box"
+    fxFlex.lt-sm="100"
+    search
+    [formControl]="searchText"
+  >
+    <i class="fa-light fa-magnifying-glass s-18 mr-8"></i>
+    <input
+      id="inputBox"
+      autocomplete="off"
+      matInput
+      [formControl]="searchText"
+      (keyup)="textChanged()"
+      type="text"
+      placeholder="Search"
+    />
+    <button
+      mat-icon-button
+      aria-label="clear search"
+      class="action-icon clear-button"
+      (click)="clearClick()"
+    >
+      <i class="fa-light fa-xmark s-14"></i>
+    </button>
+  </mat-form-field>
+</div>

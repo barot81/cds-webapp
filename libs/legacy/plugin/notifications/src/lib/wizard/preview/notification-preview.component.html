@@ -1,0 +1,75 @@
+<div fxLayout="column" class="">
+  <div fxLayout="row" fxLayoutAlign="end center" class="mt-16 px-xs-16">
+    <button mat-stroked-button color="primary" matStepperPrevious class="mr-8"  aria-label="Primary">Previous</button>
+    <button aria-label="Primary" mat-flat-button color="primary" matStepperNext
+      (click)="SendNotification()">
+      <span *ngIf="isSend==='Schedule' && this.fusionFormGroup.valid; else elseBlock">Schedule</span>
+      <ng-template #elseBlock>Send</ng-template>
+    </button>
+  </div>
+  <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="100" class="template-content-height">
+
+    <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-md-16 mt-16 h-100-p">
+      <mat-card class="w-100-p p-0 h-100-p">
+        <div fxLayout="column" fxLayoutAlign="space-between start" fxFlex="100">
+          <div fxLayout="column" class='w-100-p'>
+            <div class="email-header" fxLayout="column" class='w-100-p'>
+              <span class="p-16 font-weight-600" tabindex="0" aria-label="Subject">{{subject}}</span>
+              <div fxLayout="row" fxLayoutAlign="center start" fxFlex="100" class="logo-border p-16" tabindex="0"
+                aria-label="header with school logo">
+                <div class="svg-logo-img" *ngIf="selectedLayoutHeader" [innerHTML]="selectedLayoutHeader | safeHTML">
+                </div>
+              </div>
+            </div>
+            <div fxLayout="column" class="p-16 email-body w-100-p">
+              <div *ngIf="previewData" class="ck-editor-container" [innerHTML]='previewData | mdToHTML | safeHTML'></div>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="center start"
+            class=" email-footer logo-border logo-border-radius p-16 w-100-p" tabindex="0"
+            aria-label="Footer with exxat logo">
+            <div *ngIf="selectedLayoutFooter" class="pl-16" [innerHTML]="selectedLayoutFooter | safeHTML">
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <!--Side Bar-->
+    <div fxLayout="row" fxLayoutAlign="start start" fxFlex.gt-sm="50" fxFlex="100" class="mt-16 px-xs-16">
+      <form name="form" [formGroup]="fusionFormGroup">
+        <div fxLayout="column" class="w-100-p">
+          <div *ngIf="emailConfiguration.showScheduleType==true">
+            <mat-radio-group aria-label="Select an option" fxLayout="column" formControlName="scheduleType" required>
+              <mat-radio-button class="mb-16 " value="FireAndForget"><span class="white-space-normal">Send email
+                  now</span>
+              </mat-radio-button>
+              <mat-radio-button class="mb-16 " value="Schedule"><span class="white-space-normal">Send email at specific
+                  date and
+                  time</span></mat-radio-button>
+            </mat-radio-group>
+
+            <div fxLayout="row" fxLayoutAlign="start center" *ngIf="isSend==='Schedule'">
+
+              <mat-form-field appearance="fill" fxFlex="100">
+                <mat-label>Date Time</mat-label>
+                <mat-datetimepicker-toggle [for]="datetimePicker" matSuffix></mat-datetimepicker-toggle>
+
+                <mat-datetimepicker #datetimePicker type="datetime" openOnFocus="true" timeInterval="5" mode="portrait" [disabled]="!startDateValidation"
+                  color="primary" class="action-icon" disabled="false">
+                </mat-datetimepicker>
+
+                <input matInput formControlName="scheduleDate" [matDatetimepicker]="datetimePicker" [min]="startDate"
+                  autocomplete="false" class="disabled-form-field" placeholder="MM/DD/YYYY  HH:MM">
+
+                <mat-error>This field is required!</mat-error>
+              </mat-form-field>
+
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

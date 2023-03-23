@@ -1,0 +1,10 @@
+@mixin accordian-theme($theme) {
+  .mat-accordion {
+    .mat-expansion-panel-header {
+      mat-panel-title {
+        font-size: 16px !important;
+        font-weight: 600 !important;
+      }
+    }
+  }
+}

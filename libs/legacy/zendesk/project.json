@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/legacy/zendesk/src",
+  "prefix": "exxat.ui.packages",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/legacy/zendesk"],
+      "options": {
+        "project": "libs/legacy/zendesk/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/legacy/zendesk/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/legacy/zendesk/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/legacy/zendesk"],
+      "options": {
+        "jestConfig": "libs/legacy/zendesk/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/legacy/zendesk/**/*.ts",
+          "libs/legacy/zendesk/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

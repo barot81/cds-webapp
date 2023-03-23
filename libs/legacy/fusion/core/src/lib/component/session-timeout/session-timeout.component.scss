@@ -1,0 +1,22 @@
+@import 'node_modules/@exxat/styles/shared/init';
+
+:host {
+  margin: -16px;
+}
+
+#login {
+  // transition: background 0.5s linear;
+  mat-card {
+    width: 350px;
+  }
+}
+
+.drawer-card {
+  border: 1px solid $alto-light;
+  border-radius: 10px;
+  padding: 12px 16px;
+  &:hover {
+    cursor: pointer;
+    background-color: #b3b3b3;
+  }
+}

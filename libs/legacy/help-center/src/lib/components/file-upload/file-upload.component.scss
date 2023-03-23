@@ -1,0 +1,13 @@
+@import 'node_modules/@exxat/styles/shared/init';
+
+.file-upload-box-container .file-upload-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: dashed;
+  border-width: 2px;
+  border-radius: 1px;
+  padding: 16px;
+  line-height: normal;
+  border-color: $silver;
+}

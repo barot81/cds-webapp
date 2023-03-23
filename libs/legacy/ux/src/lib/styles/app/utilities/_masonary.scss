@@ -1,0 +1,66 @@
+
+@mixin masonary-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $action: map-get($theme, action);
+  $is-dark: map-get($theme, is-dark);
+
+  /* Masonry grid */
+  .masonry {
+    transition: all 0.5s ease-in-out;
+    column-gap: 8px;
+    column-fill: initial;
+    .brick {
+      margin-bottom: 16px;
+      border-radius: 8px;
+      display: inline-block; /* Fix the misalignment of items */
+      vertical-align: top; /* Keep the item on the very top */
+      @if ($is-dark) {
+        background-color: $black-secondory;
+      } @else {
+        background-color: $white;
+      }
+
+      padding: 16px;
+      width: 100%;
+      box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+        0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+      .card-item-content {
+        margin-top: 16px;
+        &:first-child {
+          margin-top: 0px;
+        }
+      }
+    }
+
+    .matcard-brick {
+      margin-bottom: 8px;
+      display: inline-block; /* Fix the misalignment of items */
+      vertical-align: top; /* Keep the item on the very top */
+      width: 100%;
+    }
+  }
+
+  /* Masonry on mobile screens */
+  @media only screen and (max-width: 768px) {
+    .masonry {
+      column-count: 1 !important;
+    }
+  }
+
+  /* Masonry on tablets */
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .masonry {
+      column-count: 2;
+    }
+  }
+
+  /* Masonry on big screens */
+  @media only screen and (min-width: 1024px) {
+    .masonry {
+      column-count: 2;
+    }
+  }
+}

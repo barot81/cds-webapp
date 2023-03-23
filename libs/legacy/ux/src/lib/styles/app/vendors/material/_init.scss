@@ -1,0 +1,8 @@
+@import './mat-list';
+@import './mat-timepicker.theme';
+@import './material.theme';
+
+@mixin angular-material-theme($theme) {
+  @include mat-timepicker-theme($theme);
+  @include material-theme($theme);
+}

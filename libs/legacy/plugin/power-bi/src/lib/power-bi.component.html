@@ -1,0 +1,14 @@
+<mat-card class="m-16 p-8" [ngClass]="isAdvancedSearchReport?'mt-8':'mt-16'">
+  <div class="spinner-container" *ngIf="loading">
+    <mat-spinner color="accent"></mat-spinner>
+  </div>
+  <div class="p-16 message-box warning" *ngIf="noData && !this.loading">
+    <span
+      >There are some issues at the Power BI service. Please try after
+      sometime</span
+    >
+  </div>
+  <section id="report">
+    <div style="width: 100%;" [ngClass]="isAdvancedSearchReport?'student-advancedView':'dashboard-report'" #reportContainer></div>
+  </section>
+</mat-card>

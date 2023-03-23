@@ -1,0 +1,8 @@
+@import 'libs/legacy/ux/src/lib/styles/app/shared/init';
+
+.form-container {
+  min-width: 300px;
+  @include media-breakpoint('xs') {
+    min-width: 280px;
+  }
+}

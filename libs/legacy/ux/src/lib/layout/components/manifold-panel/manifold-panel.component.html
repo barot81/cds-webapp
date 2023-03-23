@@ -1,0 +1,118 @@
+<ng-container
+  *ngIf="
+    !fusionConfig.layout.sidepanel.hidden &&
+    fusionConfig.layout.sidepanel.position === 'right'
+  "
+>
+  <div #manifoldPanel class="manifold-panel" cdkTrapFocus>
+    <fuse-sidebar
+      class="{{ panelName }}"
+      #sidebar
+      [name]="panelName"
+      position="right"
+      [folded]="true"
+      [foldedAutoTriggerOnHover]="false"
+      (backDropClick)="onBackDropClick()"
+    >
+      <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <button
+            mat-icon-button
+            class="toggle-sidebar-folded close-icon"
+            [ngClass]="focusBtnClassName"
+            (click)="unfoldPanel()"
+          >
+            <i aria-hidden="true" class="fa-light fa-xmark s-18"></i>
+          </button>
+
+          <ng-container>
+            <div
+              class="title cursor-default"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <span
+                [attr.id]="activeManifoldPanel?.caption"
+                [options]="tooltipOptions"
+                [tooltip]="_manifoldPanelCaption$ | async"
+                [display]="isTextOverflow(activeManifoldPanel?.caption)"
+                class="ml-12 font-weight-400 font-18 drawer_title"
+                #manifoldPanelTitle
+              ></span>
+            </div>
+          </ng-container>
+        </div>
+
+        <div
+          fxLayout="row"
+          fxLayoutAlign="end center"
+          *ngIf="
+            activeManifoldPanel?.primaryAction ||
+            activeManifoldPanel?.secondaryAction
+          "
+          [ngClass]="{
+            'pr-12':
+              !(
+                activeManifoldPanel?.primaryAction &&
+                activeManifoldPanel?.secondaryAction
+              ) ||
+              !(
+                activeManifoldPanel?.primaryAction ||
+                activeManifoldPanel?.secondaryAction
+              )
+          }"
+        >
+          <button
+            #primaryAction
+            id="_layoutService.manifoldPanelInstances"
+            mat-flat-button
+            *ngIf="
+              activeManifoldPanel?.primaryAction &&
+              activeManifoldPanel?.primaryAction !== null &&
+              activeManifoldPanel?.primaryAction.length > 0
+            "
+            color="primary"
+            (click)="onRecordSave()"
+          >
+            {{ activeManifoldPanel?.primaryAction }}
+          </button>
+          <div
+            *ngIf="
+              activeManifoldPanel?.secondaryAction &&
+              activeManifoldPanel?.secondaryAction !== null &&
+              activeManifoldPanel?.secondaryAction.length > 0
+            "
+          >
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="drawerMoreMenu"
+              aria-label="more"
+            >
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #drawerMoreMenu="matMenu">
+              <button
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                mat-menu-item
+                (click)="onRecordDelete()"
+              >
+                <span>
+                  {{ activeManifoldPanel?.secondaryAction }}
+                </span>
+              </button>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <fuse-progress-bar class="mt-48"></fuse-progress-bar>
+      </div>
+
+      <div class="content drawer-p">
+        <ng-template manifoldPanelContentDirective></ng-template>
+      </div>
+    </fuse-sidebar>
+  </div>
+</ng-container>

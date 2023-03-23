@@ -1,0 +1,17 @@
+{
+  "authConfig": {
+    "issuer": "https://auth.dev.exxat.net/realms/ExxatApps",
+    "clientId": "preceptor-bff",
+    "responseType": "code",
+    "redirectUri": "http://localhost:9900/preceptor/dashboard",
+    "silentRefreshRedirectUri": "http://localhost:9900/silent-refresh.html",
+    "scope": "openid profile email",
+    "useSilentRefresh": true,
+    "silentRefreshTimeout": 5000,
+    "timeoutFactor": 0.25,
+    "sessionChecksEnabled": true,
+    "requireHttps": false,
+    "clearHashAfterLogin": false,
+    "nonceStateSeparator": "semicolon"
+  }
+}

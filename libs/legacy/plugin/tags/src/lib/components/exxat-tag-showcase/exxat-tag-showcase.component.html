@@ -1,0 +1,76 @@
+<ng-container *ngIf="(tags$ | async).length > 0">
+  <div *ngIf="tagView === TAGVIEW.LABEL" fxLayout="row wrap" fxLayoutAlign="start center">
+    <ng-container *ngIf="triggerOn === 'click'; else autoMenuContent">
+      <button mat-icon-button aria-label="open tag list" [matMenuTriggerFor]="menu">
+        <i class="fa-light fa-tag s-18"></i>
+      </button>
+    </ng-container>
+
+    <ng-template #autoMenuContent>
+      <auto-open-menu>
+        <button trigger mat-icon-button aria-label="open tag list">
+          <i class="fa-light fa-tag s-18"></i>
+        </button>
+        <div content>
+          <div *ngIf="false; else tag_showcase_container"></div>
+        </div>
+      </auto-open-menu>
+    </ng-template>
+  </div>
+
+  <div *ngIf="tagView === TAGVIEW.CHIP">
+    <mat-chip-list #chipList aria-label="tag list">
+      <div fxLayout="row" fxLayoutAlign="start center" class="exxat-chips-tag mr-4">
+        <div *ngFor="let tag of tags$ | async; let i = index">
+          <mat-chip disableRipple fxLayoutAlign="start center" *ngIf="i <= _tagsLength - 1" removable="false"
+            tooltip="{{ getTagTitle(tag) }}" [options]="tooltipOptionsTop" tabindex="0"
+            [isEnabled]="isTextOverflow(getTagId(tag) + '-chip') && _isGrid"
+            class="mr-4 chip-transparent-bg tag-sc-chip">
+            <i class="{{ getTagColor(tag) }}-fg fa-light fa-tag s-18 mr-4"></i>
+            <span [attr.id]="tag.id + '-chip'" [ngClass]="_isGrid ? 'grid-chip-text' : 'chip-text'">{{
+              getTagTitle(tag)
+              }}</span>
+          </mat-chip>
+          <ng-container *ngIf="triggerOn === 'click'; else autoMenuContentChip">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="open tag list"
+              *ngIf="(tags$ | async).length > 1 && i === _tagsLength">
+              <i class="fa-light fa-ellipsis-vertical s-18"></i>
+            </button>
+          </ng-container>
+
+          <ng-template #autoMenuContentChip>
+            <auto-open-menu>
+              <button trigger mat-icon-button aria-label="open tag list"
+                *ngIf="(tags$ | async).length > 1 && i === _tagsLength">
+                <i class="fa-light fa-ellipsis-vertical s-18"></i>
+              </button>
+              <div content>
+                <div *ngIf="false; else tag_showcase_container"></div>
+              </div>
+            </auto-open-menu>
+          </ng-template>
+        </div>
+      </div>
+    </mat-chip-list>
+  </div>
+
+  <mat-menu #menu="matMenu" xPosition="after" [overlapTrigger]="false">
+    <div *ngIf="false; else tag_showcase_container"></div>
+  </mat-menu>
+
+  <ng-template #tag_showcase_container>
+    <div class="tag-showcase-menu-container">
+      <div fxLayout="row" fxLayoutAlign="start center" class="cursor-pointer"
+        *ngFor="let tag of tags$ | async; let i = index; let isLast = last" [ngClass]="
+          (tags$ | async).length === 1 ? 'mb-0' : isLast ? 'mb-8' : 'mb-16'
+        ">
+        <i class="fa-light fa-tag s-18" class="{{ getTagColor(tag) }}-fg"></i>
+        <div class="ml-8 w-100-p" [attr.id]="getTagId(tag)" tooltip="{{ getTagTitle(tag) }}"
+          [options]="tooltipOptionsRight" [isEnabled]="false">
+          <span tabindex="0" [attr.aria-label]="getTagTitle(tag)">{{ getTagTitle(tag) }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ng-container>

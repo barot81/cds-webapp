@@ -1,0 +1,81 @@
+<div class="cursor-pointer" (click)="showEditableAvatarDialogBox()">
+    <div class="position-relative mr-8 avatar-wrapper">
+        <img *ngIf="!firstName && !lastName; else avatar" src="assets/images/general/avatar.png" alt="user avatar"
+            class="avatar m-0" [ngClass]="{ 'avatar-lg' : size == 'lg', 'avatar-sm' : size == 'sm'}">
+        <div class="edit-icon-wrapper">
+            <div fxLayout="row" fxLayoutAlign="center center" class="h-100-p">
+                <i class="fa-light fa-pen s-18 fuse-white-fg"></i>
+            </div>
+        </div>
+        <div *ngIf="avatarInformation.loading" class="avatar spinner-avatar"
+            [ngClass]="{ 'avatar-lg' : size == 'lg', 'avatar-sm' : size == 'sm'}">
+            <mat-spinner color="accent" class="spinner-container" diameter="32"></mat-spinner>
+        </div>
+    </div>
+</div>
+
+<ng-template #editableAvatarDialogBox>
+    <mat-dialog-content class="margin-auto image-dialog-box" tabindex="0" aria-label="dialog box is opened"
+        fxLayout="column">
+        <button mat-icon-button mat-dialog-close class="image-popup-cancel">
+            <i class="fa-regular fa-xmark s-20"></i>
+        </button>
+        <div class="position-relative">
+            <img *ngIf="!firstName && !lastName; else avatar" alt="user avatar" src="assets/images/general/avatar.png">
+            <div *ngIf="avatarInformation.loading" class="avatar spinner-avatar dialog-box-spinner"
+                [ngClass]="{ 'avatar-lg' : size == 'lg', 'avatar-sm' : size == 'sm'}">
+                <mat-spinner color="accent" class="spinner-container" diameter="60"></mat-spinner>
+            </div>
+        </div>
+        <mat-error class="m-8" *ngIf="showError">{{error}}</mat-error>
+        <mat-error class="m-8" *ngIf="showErrorDelete">{{deleteError}}</mat-error>
+        <div fxLayout="row" fxLayoutAlign="center center" class="mt-24 mb-16">
+            <button mat-stroked-button color="warn" class="mr-8"
+                *ngIf="fileDowloadKey && fileConfiguration?.fileEndpoint?.deleteAction" [featureCode]='featureCode'
+                [params]="{CAN: ['DELETE']}" (click)="deleteAvatar()" aria-label="delete image">
+                Delete
+            </button>
+            <button mat-flat-button color="primary" [featureCode]='featureCode' [params]="{CAN: ['UPDATE']}"
+                (click)="avatarUpload.click()">
+                <span *ngIf="!(fileDowloadKey && fileConfiguration?.fileEndpoint?.deleteAction); else changeText">Upload
+                    Image</span>
+                <ng-template #changeText>Change Image</ng-template>
+            </button>
+        </div>
+    </mat-dialog-content>
+</ng-template>
+<ng-template #avatar>
+    <img *ngIf="src; else noAvatar" [src]="src" class="avatar m-0" alt="user avatar"
+        [ngClass]="{ 'avatar-lg' : size == 'lg', 'avatar-sm' : size == 'sm'}">
+    <ng-template #noAvatar>
+        <span class="avatar no-avatar m-0" [ngClass]="{ 'avatar-lg' : size == 'lg', 'avatar-sm' : size == 'sm'}">
+            <div *ngIf="!avatarInformation.loading">
+                {{this.lastInitial}}{{this.firstInitial}}
+            </div>
+        </span>
+    </ng-template>
+</ng-template>
+<input class="profile-upload" type="file" accept="image/*" (change)="uploadAvatar($event)" #avatarUpload
+    style="display: none" />
+<a #download style="display: none"></a>
+
+<ng-template #deleteDialog>
+    <mat-dialog-content class="margin-auto dialog-box-spacing">
+        <div fxLayout="column">
+            <div fxLayout="column" class="mb-24">
+                <span class="mb-12 font-14 font-weight-600">Remove profile photo</span>
+                <p>
+                    Are you sure you would like to remove the profile photo?
+                </p>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center">
+                <button mat-stroked-button mat-dialog-close color="primary" class="mr-8" aria-label="Cancel">
+                    Cancel
+                </button>
+                <button mat-flat-button color="primary" aria-label="Yes" [mat-dialog-close]="true">
+                    Yes
+                </button>
+            </div>
+        </div>
+    </mat-dialog-content>
+</ng-template>

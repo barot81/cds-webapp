@@ -1,0 +1,12 @@
+<div fxLayout="row" fxLayoutAlign="start" fxFlex="100">
+    <div fxFlex="90" fxFlex.md="90" fxFlex.sm="86" fxFlex.xs="75">
+        <div #content [class.collapsed]="($isCollapsed | async)">
+            <ng-content></ng-content>
+        </div>
+    </div>
+    <div fxFlex="10" fxFlex.md="10" fxFlex.sm="14" fxFlex.xs="25" *ngIf="($showButtons | async)" class="">
+        <div (click)="toggleIsCollapsed()">
+            <button mat-button color="accent">Show {{($isCollapsed | async) ? 'More':'Less'}}</button>
+        </div>
+    </div>
+</div>

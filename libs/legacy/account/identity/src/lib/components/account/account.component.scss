@@ -1,0 +1,66 @@
+
+$theme-background-color: #00897b;
+// Profile Pic Upload
+.Profile-area {
+  text-decoration: none !important;
+  padding: 0 0;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+.profile-pic {
+  position: relative;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+
+}
+
+//Initials
+.profile-identity-portrait {
+  border-radius: 50%;
+  box-shadow: 0 2.8px 2.8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.profile-initial {
+  // background-color: PALEVIOLETRED;#91a0a7#636d6c
+  background-color: $theme-background-color;
+  position: relative;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 9px;
+
+  .profile-identity-initials {
+    position: relative;
+    color: white !important;
+    font-size: 20px;
+  }
+}
+
+.material-icons.md-light {
+  color: rgba(255, 255, 255, 1);
+}
+// ::ng-deep .exxat-default-theme .mat-progress-spinner circle,
+// .exxat-default-theme .mat-spinner circle {
+//   stroke: grey !important;
+// }
+ mat-spinner{
+  margin: auto;
+  margin-top: -2px;
+ }
+ @media only screen and (max-width: 1024px) {
+   .Profile-area{
+    height: 32px !important;
+    width: 32px !important;
+  .profile-initial {
+    height: 32px !important;
+    width: 32px !important;
+    padding-top: 8px !important;
+    .profile-identity-initials {
+      font-size: 15px !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<nav mat-tab-nav-bar class="width-fit-content w-100-p">
+    <a mat-tab-link *ngFor="let link of navigations" [routerLink]="link.url" routerLinkActive 
+    #rla="routerLinkActive"
+      [active]="rla.isActive" (click)="activateNavigation(link)">
+      <span>{{ link.title }}</span>
+    </a>
+</nav>

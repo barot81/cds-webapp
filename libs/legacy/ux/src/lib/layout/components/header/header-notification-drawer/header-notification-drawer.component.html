@@ -1,0 +1,14 @@
+<div class="drawer-p">
+  <ng-container *ngFor='let downtime of this.scheduledDowntimes'>
+    <mat-card class="p-0 mb-16" fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="start center"
+      class="card-header-title card-header-border-bottom py-8 pr-8 pl-16">
+      <h4 class="primary-heading font-weight-600 text-capitalize" tabindex="0" attr.aria-label="{{downtime.title}}">
+        {{downtime.title}}</h4>
+      </div>
+    <div class="p-16" tabindex="0" attr.aria-label="{{downtime.messageText}}">
+      {{downtime.messageText}}
+    </div>
+  </mat-card>
+</ng-container>
+</div>

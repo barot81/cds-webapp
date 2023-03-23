@@ -1,0 +1,32 @@
+// Material theming tools
+@import '@angular/material/theming';
+
+////////////////////////////////////////////////////////////////
+///////////// DO NOT MODIFY BELOW IMPORT ORDER ////////////////
+////////////////////////////////////////////////////////////////
+
+@import './shared/init';
+
+@import './utilities/init';
+
+@import './vendors/init';
+
+@import './layout/init';
+
+@import './plugins/init';
+
+@import './components/init';
+
+@import './override/init';
+
+@import './helpers/init';
+
+// Mixin Includes
+@mixin core-theme($theme) {
+  @include utilities-theme($theme);
+  @include layout-theme($theme);
+  @include plugins-theme($theme);
+  @include components-theme($theme);
+  @include vendors-theme($theme);
+  @include override-theme($theme);
+}

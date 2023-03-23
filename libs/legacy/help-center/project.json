@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/legacy/help-center/src",
+  "prefix": "exxat.ui.packages",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/legacy/help-center"],
+      "options": {
+        "project": "libs/legacy/help-center/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/legacy/help-center/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/legacy/help-center/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/legacy/help-center"],
+      "options": {
+        "jestConfig": "libs/legacy/help-center/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/legacy/help-center/**/*.ts",
+          "libs/legacy/help-center/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,27 @@
+<div class="dialog-box-wrapper" fxLayout="column" class="p-16">
+  <div class="dialog-box-message-container pb-4">
+    <span class="mb-12 font-14 font-weight-600">Session Timing Out Soon</span>
+    <div class="word-break-word">
+      The current session is expiring in
+      <span class="minutes font-weight-600">{{ minutes$ | async }}</span>
+      <span>:</span>
+      <span class="seconds font-weight-600">{{ seconds$ | async }}</span>
+      minutes. Would you like to continue the session?
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="end" class="pt-16">
+    <button
+      mat-stroked-button
+      mat-dialog-close
+      color="primary"
+      class="mr-8"
+      (click)="manageSessionTimeout()"
+    >
+      Logout
+    </button>
+    <button mat-flat-button color="primary" (click)="onContinueClick()">
+      Continue
+    </button>
+  </div>
+</div>

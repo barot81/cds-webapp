@@ -1,0 +1,184 @@
+@mixin tooltip-theme($theme) {
+  $is-dark: map-get($theme, is-dark);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .tippy-content {
+    @include media-breakpoint('lt-sm') {
+      max-width: 225px !important;
+    }
+  }
+
+  .tippy-box {
+    border: 1px solid map-get($map: $foreground, $key: divider) !important;
+
+    &[data-theme='light'] {
+      background-color: map-get($map: $background, $key: card) !important;
+      color: map-get($map: $foreground, $key: text) !important;
+
+      i {
+        color: map-get($map: $foreground, $key: icon);
+      }
+    }
+
+    &[data-theme='dark'] {
+      background-color: map-get(
+        $map: $dark-theme-background-palette,
+        $key: card
+      ) !important;
+      color: $light-primary-text !important;
+
+      i {
+        color: white !important;
+      }
+    }
+  }
+
+  // For Tippy Light Theme Arrow Styling
+  .tippy-box[data-theme='light'][data-placement^='top'] > .tippy-arrow:before {
+    border-top-color: map-get(
+      $map: $light-theme-background-palette,
+      $key: card
+    ) !important;
+  }
+
+  .tippy-box[data-theme='light'][data-placement^='bottom']
+    > .tippy-arrow:before {
+    border-bottom-color: map-get(
+      $map: $light-theme-background-palette,
+      $key: card
+    ) !important;
+  }
+
+  .tippy-box[data-theme='light'][data-placement^='left'] > .tippy-arrow:before {
+    border-left-color: map-get(
+      $map: $light-theme-background-palette,
+      $key: card
+    ) !important;
+  }
+
+  .tippy-box[data-theme='light'][data-placement^='right']
+    > .tippy-arrow:before {
+    border-right-color: map-get(
+      $map: $light-theme-background-palette,
+      $key: card
+    ) !important;
+  }
+
+  // For Tippy Dark Theme Arrow Styling
+  .tippy-box[data-theme='dark'][data-placement^='top'] > .tippy-arrow:before {
+    border-top-color: map-get(
+      $map: $dark-theme-background-palette,
+      $key: card
+    ) !important;
+  }
+
+  .tippy-box[data-theme='dark'][data-placement^='bottom']
+    > .tippy-arrow:before {
+    border-bottom-color: map-get(
+      $map: $dark-theme-background-palette,
+      $key: card
+    ) !important;
+  }
+
+  .tippy-box[data-theme='dark'][data-placement^='left'] > .tippy-arrow:before {
+    border-left-color: map-get(
+      $map: $dark-theme-background-palette,
+      $key: card
+    ) !important;
+  }
+
+  .tippy-box[data-theme='dark'][data-placement^='right'] > .tippy-arrow:before {
+    border-right-color: map-get(
+      $map: $dark-theme-background-palette,
+      $key: card
+    ) !important;
+  }
+
+  @if ($is-dark) {
+    .tippy-box {
+      &[data-theme='light'] {
+        background-color: map-get($map: $background, $key: card) !important;
+        color: map-get($map: $foreground, $key: text) !important;
+
+        i {
+          color: map-get($map: $foreground, $key: icon);
+        }
+      }
+
+      &[data-theme='dark'] {
+        background-color: white !important;
+        color: $dark-primary-text !important;
+
+        i {
+          color: rgba(0, 0, 0, 0.54) !important;
+        }
+      }
+    }
+
+    // For Tippy Light Theme Arrow Styling
+    .tippy-box[data-theme='light'][data-placement^='top']
+      > .tippy-arrow:before {
+      border-top-color: map-get(
+        $map: $dark-theme-background-palette,
+        $key: card
+      ) !important;
+    }
+
+    .tippy-box[data-theme='light'][data-placement^='bottom']
+      > .tippy-arrow:before {
+      border-bottom-color: map-get(
+        $map: $dark-theme-background-palette,
+        $key: card
+      ) !important;
+    }
+
+    .tippy-box[data-theme='light'][data-placement^='left']
+      > .tippy-arrow:before {
+      border-left-color: map-get(
+        $map: $dark-theme-background-palette,
+        $key: card
+      ) !important;
+    }
+
+    .tippy-box[data-theme='light'][data-placement^='right']
+      > .tippy-arrow:before {
+      border-right-color: map-get(
+        $map: $dark-theme-background-palette,
+        $key: card
+      ) !important;
+    }
+
+    // For Tippy Dark Theme Arrow Styling
+    .tippy-box[data-theme='dark'][data-placement^='top'] > .tippy-arrow:before {
+      border-top-color: map-get(
+        $map: $light-theme-background-palette,
+        $key: card
+      ) !important;
+    }
+
+    .tippy-box[data-theme='dark'][data-placement^='bottom']
+      > .tippy-arrow:before {
+      border-bottom-color: map-get(
+        $map: $light-theme-background-palette,
+        $key: card
+      ) !important;
+    }
+
+    .tippy-box[data-theme='dark'][data-placement^='left']
+      > .tippy-arrow:before {
+      border-left-color: map-get(
+        $map: $light-theme-background-palette,
+        $key: card
+      ) !important;
+    }
+
+    .tippy-box[data-theme='dark'][data-placement^='right']
+      > .tippy-arrow:before {
+      border-right-color: map-get(
+        $map: $light-theme-background-palette,
+        $key: card
+      ) !important;
+    }
+  }
+}

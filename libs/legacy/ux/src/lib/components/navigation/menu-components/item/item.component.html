@@ -1,0 +1,40 @@
+<ng-container *ngIf="!item.hidden">
+  <!-- item.url -->
+  <a
+    class="nav-link h-40"
+    [ngClass]="
+      itemClasses.hoverBG
+        ? itemClasses.hoverBG + ' mx-12'
+        : 'mx-12 my-8 normal border-none pl-24  '
+    "
+    *ngIf="item.url && !item.function"
+    [routerLink]="[item.url]"
+    [routerLinkActive]="
+      itemClasses.activeBG ? itemClasses.activeBG + ' active' : 'active'
+    "
+    replaceUrl="true"
+    [routerLinkActiveOptions]="{ exact: item.exactMatch || false }"
+    (click)="resetDatasource()"
+    [target]="item.openInNewTab ? '_blank' : '_self'"
+  >
+    <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+  </a>
+
+  <ng-template #itemContent>
+    <i
+      aria-hidden="true"
+      class="fa-light nav-link-icon {{ item.icon }}"
+      *ngIf="item.icon"
+    ></i>
+    <span class="nav-link-title" [attr.aria-label]="item.title">{{
+      item.title | labelDictionary: item?.id
+    }}</span>
+    <span
+      class="nav-link-badge"
+      *ngIf="item.badge"
+      [ngStyle]="{ 'background-color': item.badge.bg, color: item.badge.fg }"
+    >
+      {{ item.badge.title }}
+    </span>
+  </ng-template>
+</ng-container>

@@ -1,0 +1,38 @@
+<div class="p-16 help_dialog_box">
+  <div fxLayout="column">
+    <div fxLayout="column">
+      <span class="font-14 font-weight-600"
+        >Having Trouble? We're Here to Help!</span
+      >
+      <div class="pl-12">
+        <ol>
+          <li class="py-8">
+            The easiest, and fastest, way to find answers is with a quick search
+            on our Help Center at
+            <a href="{{ salesForceUrl }}" target="_blank">{{
+              salesForceUrl
+            }}</a>
+            where you will find documents and video tutorials to guide you
+            through common tasks.
+          </li>
+          <li class="py-8">
+            Need more in-depth help? You can reach out to
+            <a href="mailto:v4support@exxat.com">v4support@exxat.com</a> to
+            address more complex problems and someone will return your message
+            within 3 business days.
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="closeDialog()"
+        aria-label="Close Dialog"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>

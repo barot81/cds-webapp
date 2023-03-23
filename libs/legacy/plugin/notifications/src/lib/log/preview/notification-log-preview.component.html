@@ -1,0 +1,30 @@
+<div class="drawer-p">
+    <div>
+      <!--add ribben and preview style-->     
+      <div fxLayout="row" fxLayoutAlign="start center" class="message-box info ml-8 mr-8 pb-8" tabindex="0" >
+         Below is the content of sent email
+      </div>
+      <div fxLayout="column" class="center content pt-24 preview-content">
+            <div fxLayout="row" fxLayoutAlign="start center" class="ml-8 mb-16 email-body w-100-p">
+               <b><div>{{this.emailSubject}} </div></b>
+            </div>      
+            <div fxLayout="row" fxLayoutAlign="start center" class="pt-8 ml-8 email-body w-100-p">
+               <div appExternalLink [innerHTML]= "this.previewContent | safeHTML"> </div>
+            </div>
+      </div>
+      <div *ngIf="attachmentsFileDescription?.length>0">
+         Attachments:
+      </div>
+      <div *ngIf="attachmentsFileDescription?.length===0 || attachmentsFileDescription === 'undefined'">
+         No Attachments in this email.
+      </div>
+      <div *ngIf="attachmentsFileDescription?.length>0">
+         <mat-card style="width: 20vw;" *ngFor='let attachment of attachmentsFileDescription'>
+                <a (click)="open(fileViewerComponentRef,attachment.id,attachment.fileName)">
+                     {{attachment.fileName}}
+                 </a>
+         </mat-card>
+      </div>
+   
+   </div>
+</div>

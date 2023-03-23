@@ -1,0 +1,9 @@
+<div class="gridContainer">
+      <form ngNoForm #myFormPost name="myFormPost"
+      action="{{this.formData?.destinationURL}}"
+      method="POST" >
+      <input type='hidden' name='SAMLRequest' value="{{this.formData?.samlRequest}}" />
+      <input type='hidden'  name='RelayState' value="{{this.formData?.relayState}}" />
+      <button type="submit" hidden></button> 
+    </form>
+</div>

@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/legacy/fusion/feature-flag/src",
+  "prefix": "exxat.ui.packages",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/legacy/fusion/feature-flag"],
+      "options": {
+        "project": "libs/legacy/fusion/feature-flag/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/legacy/fusion/feature-flag/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/legacy/fusion/feature-flag/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/legacy/fusion/feature-flag"],
+      "options": {
+        "jestConfig": "libs/legacy/fusion/feature-flag/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/legacy/fusion/feature-flag/**/*.ts",
+          "libs/legacy/fusion/feature-flag/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,33 @@
+<div class="position-relative mr-8">
+  <img
+    [ngClass]="{ 'avatar-lg': size == 'lg', 'avatar-sm': size == 'sm' }"
+    *ngIf="!firstName && !lastName; else avatar"
+    class="avatar m-0"
+    src="assets/images/general/avatar.png"
+  />
+  <ng-template #avatar>
+    <div class="p-5" *ngIf="avatarInformation.loading">
+      <mat-spinner
+        color="accent"
+        class="spinner-container position-svg"
+        diameter="{{ diameter }}"
+      ></mat-spinner>
+    </div>
+    <img
+      [ngClass]="{ 'avatar-lg': size == 'lg', 'avatar-sm': size == 'sm' }"
+      *ngIf="src; else noAvatar"
+      class="avatar m-0"
+      [src]="src"
+    />
+    <ng-template #noAvatar
+      ><span
+        class="no-avatar"
+        [ngClass]="{ 'avatar-lg': size == 'lg', 'avatar-sm': size == 'sm' }"
+      >
+        {{ this.lastInitial }}{{ this.firstInitial }}</span
+      >
+    </ng-template>
+  </ng-template>
+</div>
+
+<a #download style="display: none"></a>

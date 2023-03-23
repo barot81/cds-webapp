@@ -1,0 +1,85 @@
+<!-- eslint-disable @angular-eslint/template/no-negated-async -->
+<input matInput class="mat-select-search-input mat-select-search-hidden" />
+
+<div
+  #innerSelectSearch
+  class="mat-select-search-inner mat-typography mat-datepicker-content mat-tab-header"
+>
+  <input
+    class="mat-select-search-input mat-input-element"
+    autocomplete="off"
+    [type]="type"
+    [formControl]="_formControl"
+    #searchSelectInput
+    (keydown)="_handleKeydown($event)"
+    (keyup)="_handleKeyup($event)"
+    (blur)="onBlur()"
+    [placeholder]="placeholderLabel"
+    [attr.aria-label]="ariaLabel"
+  />
+
+  <mat-spinner
+    *ngIf="searching"
+    class="mat-select-search-spinner"
+    diameter="16"
+  ></mat-spinner>
+
+  <button
+    mat-button
+    *ngIf="!hideClearSearchButton && value && !searching"
+    mat-icon-button
+    aria-label="Clear"
+    (click)="_reset(true)"
+    class="mat-select-search-clear"
+  >
+    <i aria-hidden="true" class="fa-light fa-xmark s-18"></i>
+  </button>
+
+  <ng-content select=".mat-select-search-custom-header-content"></ng-content>
+</div>
+
+<div #multiSelectTogglePanel id="multiSelectTogglePanel" fxLayout="row">
+  <div
+    *ngIf="_isToggleVisible() && !(_showNoEntriesFound$ | async)"
+    fxLayout="row wrap"
+    fxLayoutAlign="space-between center"
+    class="px-8 py-16 w-100-p"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <button
+        class="link-btn"
+        [attr.aria-label]="isAllSelected.value ? 'Clear all' : 'Select all'"
+        (click)="
+          isAllSelected.value ? _toggleSelectAll(false) : _toggleSelectAll(true)
+        "
+      >
+        {{ (isAllSelected$ | async) ? 'Clear all' : 'Select all' }}
+      </button>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayoutAlign="end center"
+      *ngIf="
+        _options &&
+        _options !== null &&
+        (selectedValuesLength$ | async) > 0 &&
+        !isAllSelected.value
+      "
+    >
+      <button
+        attr.aria-label="Unselect {{ selectedValuesLength$ }}"
+        class="link-btn"
+        (click)="_toggleSelectAll(false)"
+      >
+        Unselect ({{ selectedValuesLength$ | async }})
+      </button>
+    </div>
+  </div>
+</div>
+
+<div
+  *ngIf="_showNoEntriesFound$ | async"
+  class="mat-select-search-no-entries-found"
+>
+  {{ noEntriesFoundLabel }}
+</div>

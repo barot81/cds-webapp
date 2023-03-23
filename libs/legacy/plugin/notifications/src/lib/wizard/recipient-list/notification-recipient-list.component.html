@@ -1,0 +1,219 @@
+<div fxLayout="column" class="" id="ess-wizard">
+  <div
+    fxLayout="row wrap"
+    fxLayoutAlign="space-between center"
+    fxFlex="100"
+    class=""
+  >
+    <div fxLayout="row" fxLayoutAlign="start center" class="mt-16">
+      <button
+        mat-stroked-button
+        color="primary"
+        aria-label="Primary"
+        *ngIf="this.disableRecipientsComponent === false"
+        [cdkCopyToClipboard]="emailsToCopy"
+        (cdkCopyToClipboardCopied)="emailCopied($event)"
+      >
+        <i class="fa-light fa-copy s-18 mr-8"></i>
+        <span class="white-space-normal"
+        >Copy selected recipient email addresses</span
+        >
+      </button>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        class="white-background width-fit-content px-8 border-radius-4 h-40 readonly-filter"
+        *ngIf="this.displayCountButton === true"
+      >
+        <div fxLayout="row" fxLayoutAlign="start center" class="pr-16">
+          <div
+            class="filter-badge-count status-badge totalcount font-18"
+            tabindex="0"
+            aria-label="count"
+          >
+            {{ recipientCount }}
+          </div>
+          <span
+            class="ml-8 space-no-wrap"
+            tabindex="0"
+            aria-label="Total Emails "
+          >Total Recipients</span
+          >
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end center" class="mt-16 pl-xs-16">
+      <button
+        [disabled]="!fusionFormGroup.valid"
+        mat-flat-button
+        color="primary"
+        matStepperNext
+        class=""
+        aria-label="Primary"
+        matStepperNext
+      >
+        Next
+      </button>
+    </div>
+  </div>
+  <div fxLayout="row wrap" fxFlex="100">
+    <div
+      fxLayout="column"
+      fxFlex.gt-sm="50"
+      fxFlex="100"
+      class="pr-md-16 mt-16"
+      *ngIf="this.disableRecipientsComponent === false"
+    >
+      <mat-error
+        class="pb-8"
+        *ngIf="fusionFormGroup.get('to').hasError('required')"
+      >At least one recipient must be selected.</mat-error
+      >
+      <mat-card class="p-0 w-100-p m-0" fxLayout="column">
+        <div
+          class="p-16 checkbox-header"
+          fxLayout="row wrap"
+          fxLayoutAlign="space-between center"
+        >
+          <mat-checkbox
+            class=""
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            (change)="$event ? masterToggle() : null"
+            [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()"
+            attr.aria-label="checkbox for Recipients"
+          >
+            Recipients
+          </mat-checkbox>
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <span *ngIf="toEmailListCount > 0" class="">
+              {{ toEmailListCount + ' selected recipients' }}
+            </span>
+          </div>
+        </div>
+        <div fxLayout="column">
+          <mat-divider></mat-divider>
+        </div>
+        <div class="pb-12" fxLayout="column">
+          <div *ngFor="let subtask of emailList; let i = index">
+            <div class="px-16 pt-12">
+              <mat-checkbox
+                (click)="$event.stopPropagation()"
+                (change)="editRecipientList($event, subtask, i)"
+                [checked]="selection.isSelected(subtask)"
+                attr.aria-label="checkbox for {{ subtask.name }}"
+              >
+                {{ subtask.name + ' (' + subtask.email + ')' }}
+              </mat-checkbox>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div fxFlex.gt-sm="50" fxFlex="100" class="mt-16">
+      <form name="form" [formGroup]="fusionFormGroup">
+        <div fxLayout="column" class="w-100-p px-xs-16">
+          <div
+            fxLayout="column"
+            fxLayoutAlign="start start"
+            fxFlex="100"
+            class=""
+          >
+            <div class="mb-8">
+              <mat-hint
+              >If override is specified, ALL email notifications will be sent
+                to THIS email instead of the original recipients.</mat-hint
+              >
+            </div>
+            <mat-form-field appearance="fill" class="w-100-p">
+              <mat-label>Override Recipient's Email</mat-label>
+              <input
+                matInput
+                formControlName="adminEmail"
+                (focusout)="validateAndAddInToList()"
+              />
+              <mat-error>Invalid Email Address!</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start start" fxFlex="100">
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Reply to</mat-label>
+              <input matInput formControlName="replyto" required />
+              <mat-error
+                *ngIf="fusionFormGroup.get('replyto').hasError('required')"
+              >This field is required!</mat-error
+              >
+              <mat-error
+                *ngIf="fusionFormGroup.get('replyto').hasError('email')"
+              >Incorrect email address!
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start start" fxFlex="100">
+            <mat-form-field appearance="fill" class="w-100-p">
+              <mat-label>CC</mat-label>
+              <mat-chip-list #chipListCc formControlName="cc">
+                <mat-chip
+                  *ngFor="let item of ccEmailList; let i = index"
+                  [selectable]="true"
+                  [removable]="removable"
+                  (removed)="removeEmail(item, true)"
+                  required
+                  name="chips"
+                  class="word-break-all"
+                >
+                  {{ item }}
+                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input
+                  [matChipInputFor]="chipListCc"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="true"
+                  (matChipInputTokenEnd)="add($event, true)"
+                />
+              </mat-chip-list>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start start" fxFlex="100">
+            <mat-form-field appearance="fill" class="w-100-p">
+              <mat-label>BCC</mat-label>
+              <mat-chip-list #chipListbcc formControlName="bcc">
+                <mat-chip
+                  *ngFor="let item of bccEmailList; let i = index"
+                  [selectable]="true"
+                  [removable]="removable"
+                  (removed)="removeEmail(item, false)"
+                  required
+                  name="bcc"
+                  class="word-break-all"
+                >
+                  {{ item }}
+                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input
+                  [matChipInputFor]="chipListbcc"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="true"
+                  (matChipInputTokenEnd)="add($event, false)"
+                />
+              </mat-chip-list>
+            </mat-form-field>
+          </div>
+          <div
+            fxLayout="column"
+            *ngIf="emailConfiguration.showUploadFileInput === true"
+          >
+            <span class="font-weight-600 mb-8">Upload files</span>
+            <exxat-file-upload
+              [fileConfiguration]="fileConfiguration"
+              (FileUploadDone)="FileUploadDone($event)"
+              (FileDeleteDone)="FileDeleteDone($event)"
+              formControlName="fileDescriptions"
+            ></exxat-file-upload>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

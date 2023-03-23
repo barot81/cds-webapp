@@ -1,0 +1,2548 @@
+@use '@angular/material' as mat;
+
+@mixin override-material-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $accent: map-get($theme, accent);
+  $is-dark: map-get($theme, is-dark);
+  $primary: map-get($theme, primary);
+  $warn: map-get($theme, warn);
+
+  plugin-notification-log-preview {
+    i {
+      font-family: none !important;
+    }
+  }
+
+  mat-card.theme-changed {
+    border-left: 4px solid mat.get-color-from-palette($primary) !important;
+  }
+
+  mat-chip.chip-transparent-bg {
+    padding: 2px;
+    background-color: transparent !important;
+  }
+
+  mat-chip.chip-transparent-bg::after {
+    background: none !important; // color that you want on hover
+  }
+
+  mat-chip.chip-transparent-bg:active {
+    box-shadow: none !important; // color that you want on hover
+  }
+
+  .cdk-overlay-pane {
+    &.mat-tooltip-panel {
+      .mat-tooltip {
+        background-color: map-get($map: $background, $key: card) !important;
+        border: 1px solid map-get($map: $foreground, $key: divider) !important;
+        color: map-get($map: $foreground, $key: text) !important;
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
+      }
+    }
+  }
+
+  .mat-form-field-type-mat-chip-list {
+    .mat-form-field-wrapper {
+      .mat-form-field-flex {
+        padding: 8px 8px !important;
+
+        .mat-form-field-infix {
+          padding-bottom: 0 !important;
+        }
+      }
+    }
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ Typography
+  // -----------------------------------------------------------------------------------------------------
+
+  // Angular Material typography
+  $typography: mat.define-typography-config(
+    $font-family: 'Source Sans Pro, sans-serif',
+    $title: mat.define-typography-level(20px, 32px, 600),
+    $body-2: mat.define-typography-level(14px, 24px, 600),
+    $button: mat.define-typography-level(14px, 14px, 600),
+    $input: mat.define-typography-level(16px, 1.125, 400),
+  );
+
+  // Setup the typography
+  @include mat.all-component-typographies($typography);
+
+  .mat-list-base {
+    padding-top: 16px;
+
+    .mat-list-item {
+      font-size: px-to-rem(14);
+    }
+  }
+
+  mat-dialog-container {
+    height: auto !important;
+    padding: 0px !important;
+  }
+
+  .modal-background {
+    background-color: rgba(10, 10, 10, 0.86);
+  }
+
+  .modal {
+    pointer-events: none !important;
+  }
+
+  .table-search-with-dropdown
+    .search-dropdown-control
+    .mat-form-field.select-box:after {
+    content: '\7c';
+    position: absolute;
+    top: 4px;
+    right: 0;
+    font-family: 'Font Awesome 6 Pro';
+    font-size: 37px;
+    color: map-get($map: $foreground, $key: divider) !important;
+    font-weight: lighter;
+  }
+
+  .modal-content {
+    pointer-events: all !important;
+  }
+
+  //accordian header height auto
+  .accordian-header-height-auto {
+    .mat-expansion-panel-header {
+      height: auto !important;
+    }
+  }
+
+  .mat-dialog-container {
+    border-radius: 4px !important;
+  }
+
+  //accordian header height auto
+  .accordian-header-height-auto-mobile {
+    .mat-expansion-panel-header {
+      @include media-breakpoint('lt-sm') {
+        height: auto !important;
+      }
+    }
+  }
+
+  .mat-secondary-menu {
+    button {
+      &:hover {
+        &:last-child {
+          background: mat.get-color-from-palette($warn, 50) !important;
+          color: mat.get-color-from-palette($warn) !important;
+
+          i {
+            color: mat.get-color-from-palette($warn) !important;
+          }
+        }
+      }
+    }
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ Course Master Button Styling
+  // -----------------------------------------------------------------------------------------------------
+
+  .mat-select-panel {
+    .mat-option.dropdown-with-tooltip {
+      .mat-option-text {
+        overflow: initial !important;
+        text-overflow: initial !important;
+        display: initial !important;
+      }
+    }
+  }
+
+  //css for mat-tooltip
+  .mat-tooltip {
+    background-color: $tundora !important;
+    color: $white !important;
+    text-align: left !important;
+    border-radius: 4px !important;
+    padding: 8px !important;
+    font-size: px-to-rem(14) !important;
+  }
+
+  .course-master-grid-component {
+    .content {
+      .grid_container {
+        > table {
+          .mat-button-focus-overlay {
+            background-color: transparent !important;
+          }
+        }
+      }
+    }
+  }
+
+  //css for expand-collapse sidebar list
+  fuse-sidebar.sidebar-expand-collapse,
+  .sidebar-expand-collapse {
+    //css for expand collapse icon
+    button.mat-button {
+      border-left: 4px solid map-get($map: $background, $key: card) !important;
+      box-sizing: border-box;
+      font-size: px-to-rem(14);
+      height: auto !important;
+      min-height: 40px !important;
+
+      &:hover {
+        background: map-get($map: $background, $key: hover) !important;
+        border-left: 4px solid map-get($map: $background, $key: thick-border) !important;
+      }
+
+      &.active-item-class {
+        background: map-get($map: $background, $key: hover) !important;
+        border-left: 4px solid mat.get-color-from-palette($primary, 500) !important;
+      }
+
+      .mat-list-item {
+        padding: 11px 16px 11px 8px !important;
+      }
+    }
+
+    &.folded.unfolded {
+      &.sidebar {
+        box-shadow: 7px 0px 14px rgba(0, 0, 0, 0.09) !important;
+      }
+
+      mat-divider {
+        &.hide-divider {
+          display: block !important;
+        }
+      }
+
+      .pin-sticky {
+        display: block !important;
+      }
+
+      .left-arrow {
+        display: none !important;
+      }
+
+      button.mat-button {
+        .mat-list-item {
+          i,
+          mat-icon {
+            display: block !important;
+
+            &:hover {
+              background: none !important;
+            }
+          }
+        }
+      }
+    }
+
+    // to hide pin icon when sidebar is fixed
+    .pin-sticky {
+      display: none;
+    }
+
+    //css for sidebar list
+    mat-list {
+      &.mat-list-item,
+      .mat-list-item {
+        &.active-item-class {
+          background: map-get($map: $background, $key: hover) !important;
+          border-left: 4px solid mat.get-color-from-palette($primary, 500) !important;
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+        }
+      }
+
+      button.mat-button {
+        border-radius: 0px !important;
+
+        &:hover {
+          border-radius: 0px !important;
+        }
+
+        .mat-list-item {
+          border-radius: 0px !important;
+
+          .mat-list-item-content {
+            span {
+              overflow: hidden;
+            }
+
+            width: 100%;
+            padding: 0px !important;
+          }
+        }
+      }
+    }
+
+    //css when sidebar is folded
+    &.folded:not(.unfolded) {
+      .mat-list {
+        position: fixed !important;
+      }
+
+      .hide-content-folded {
+        display: none !important;
+      }
+
+      .right-arrow {
+        display: flex !important;
+      }
+
+      mat-divider {
+        &.hide-divider {
+          display: none !important;
+        }
+      }
+
+      button.mat-icon-button {
+        margin-top: 4px !important;
+        margin-bottom: 4px !important;
+      }
+
+      .left-arrow {
+        display: none !important;
+      }
+
+      .submenu {
+        padding-left: 16px;
+        display: none !important;
+
+        &.sub_sub_menu {
+          display: none !important;
+        }
+      }
+
+      .submenu-expanded-text {
+        background: none !important;
+      }
+    }
+
+    //css when sidebar folded ends
+
+    // css for nested option in sidebar
+    .arrow-expand-collapse {
+      transition: 300ms ease-in-out;
+      transform: rotate(0deg);
+    }
+
+    .arrow-expand-collapse.rotated {
+      transform: rotate(180deg);
+    }
+
+    // style for submenu
+    .submenu {
+      display: none;
+      transition: transform 300ms ease;
+      transform: scaleY(0);
+      transform-origin: top;
+
+      button.mat-button {
+        padding-left: 35px !important;
+      }
+
+      // syle for sub sub menu
+      .sub_sub_menu {
+        button.mat-button {
+          padding-left: 70px !important;
+        }
+
+        &.expanded {
+          transform: scaleY(1);
+          display: flex;
+        }
+      }
+
+      &.expanded {
+        transform: scaleY(1);
+        display: flex;
+      }
+    }
+  }
+
+  fuse-sidebar.sidebar-map-page {
+    //css for sidebar list
+    mat-list {
+      button.active-item-class,
+      .active-item-class:hover {
+        background: map-get($map: $background, $key: hover) !important;
+        cursor: default;
+      }
+
+      button.mat-button {
+        border-radius: 0px !important;
+
+        &:hover {
+          border-radius: 0px !important;
+          background: $concrete;
+        }
+
+        .mat-list-item {
+          border-radius: 0px !important;
+
+          .mat-list-item-content {
+            width: 100%;
+          }
+
+          &:hover {
+            background: none !important;
+            border-radius: 0px !important;
+          }
+        }
+      }
+    }
+
+    .student-side-map {
+      button.mat-button {
+        &:hover {
+          background: $verdun-green !important;
+
+          .mat-list-item,
+          i {
+            color: $white !important;
+          }
+
+          .secondary-gray-color {
+            color: $concrete !important;
+          }
+        }
+      }
+    }
+
+    //css when sidebar is folded
+    &.folded:not(.unfolded) {
+      .hide-content-folded {
+        display: none !important;
+      }
+
+      .right-arrow {
+        display: flex !important;
+        margin-right: 4px;
+      }
+
+      .left-arrow {
+        display: none !important;
+      }
+
+      &.sidebar {
+        border-radius: 4px !important;
+      }
+
+      .border-bottom {
+        border-bottom: none !important;
+      }
+    }
+  }
+
+  // css for collapsable ends
+  /////////////////////////////////////////////////////////////////////////////////////////
+
+  //css for mapping page
+  .mapping-page-sidebar {
+    .mat-expansion-panel-header {
+      height: 48px !important;
+    }
+
+    .tree-node-height {
+      height: 48px !important;
+    }
+
+    .mat-tree-node {
+      height: 48px !important;
+      min-height: 48px !important;
+    }
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ Material Chips Dynamic Text Color Styling
+  // -----------------------------------------------------------------------------------------------------
+
+  .light-fg {
+    color: $white !important;
+
+    i,
+    mat-icon {
+      color: $white !important;
+    }
+  }
+
+  .dark-fg {
+    color: $black-color !important;
+
+    i,
+    mat-icon {
+      color: $black-color !important;
+    }
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ Mat Tree With Drag And Drop Styling Part
+  // -----------------------------------------------------------------------------------------------------
+
+  .mat-tree-node {
+    &.draggable {
+      user-select: none;
+      cursor: move;
+
+      &.cdk-drag-preview {
+        // while dragging
+        @include mat.elevation(4);
+        border-radius: 35px;
+      }
+
+      &.cdk-drag-placeholder {
+        // potential drop area
+        opacity: 0;
+      }
+    }
+  }
+
+  /* items moving away to make room for drop */
+  .cdk-drop-list-dragging .mat-tree-node:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  /* item being dropped */
+  .cdk-drag-animating {
+    transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ mat-raised-button Theming Part
+  // -----------------------------------------------------------------------------------------------------
+  button.mat-focus-indicator.mat-raised-button.mat-button-base.mat-accent {
+    @if ($is-dark) {
+      // color: $gray-dark !important;
+    }
+  }
+
+  .full-page-scroll-side-bar-list {
+    .mat-expansion-panel {
+      box-shadow: none !important;
+      border-radius: 0px !important;
+    }
+
+    .mat-expansion-panel-body {
+      padding: 0px !important;
+    }
+
+    .mat-expansion-panel-header.active-list-item.mat-expanded:focus,
+    .mat-expansion-panel-header.active-list-item.mat-expanded:hover {
+      background: mat.get-color-from-palette($primary, 100) !important;
+    }
+
+    .mat-expansion-panel-header.active-list-item:hover:not([aria-disabled='true']) {
+      background: mat.get-color-from-palette($primary, 100) !important;
+    }
+
+    mat-expansion-panel-header {
+      height: 64px !important;
+      padding: 0px !important;
+
+      .mat-expansion-panel-header-title,
+      .mat-expansion-panel-header-description {
+        margin: 0px !important;
+      }
+
+      .mat-expansion-indicator {
+        // display: none;
+        margin-right: 16px !important;
+      }
+    }
+  }
+
+  .mat-datetimepicker-calendar-controls {
+    @if ($is-dark) {
+      color: $black-color !important;
+    }
+  }
+
+  .primary-lighter-fg {
+    color: mat.get-color-from-palette($primary, lighter);
+  }
+
+  .primary-darker-fg {
+    color: mat.get-color-from-palette($primary, darker);
+  }
+
+  .accent-lighter-fg {
+    color: mat.get-color-from-palette($accent, lighter);
+  }
+
+  .accent-darker-fg {
+    color: mat.get-color-from-palette($accent, darker);
+  }
+
+  .page-layout,
+  .drawer {
+    .filter-edit-drawer {
+      //added additional class for filter-edit drawer design
+      .nav-tabs {
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        z-index: 4;
+
+        .secondary-tab-nav-bar {
+          border-bottom: none !important;
+        }
+      }
+    }
+
+    .mat-tab-label-active,
+    .mat-tab-link-active {
+      background: mat.get-color-from-palette($primary, 500);
+      border-radius: 4px; //changed according to new design
+      font-weight: 600 !important;
+      font-size: px-to-rem(14);
+      color: $white !important;
+
+      &:hover {
+        background: mat.get-color-from-palette($primary, 500) !important;
+        // background: map-get($map: $background, $key: hover) !important;
+      }
+    }
+
+    .share-profile-preview {
+      .mat-tab-label-active,
+      .mat-tab-link-active {
+        opacity: 1 !important;
+        background-color: mat.get-color-from-palette($primary, 500) !important;
+
+        &:hover {
+          background: mat.get-color-from-palette($primary, 500) !important;
+        }
+      }
+    }
+
+    .secondary-tab-nav-bar {
+      .mat-tab-label-active,
+      .mat-tab-link-active {
+        color: map-get($map: $foreground, $key: base) !important;
+      }
+    }
+
+    .mat-ink-bar {
+      background-color: transparent !important; //changed according to new design
+    }
+
+    .mat-tab-nav-bar {
+      border-radius: 4px !important; //changed according to new design\
+      padding: 2px;
+      width: 100% !important;
+
+      @include media-breakpoint('gt-sm') {
+        width: fit-content !important;
+      }
+
+      @if ($is-dark) {
+        background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.12),
+          rgba(255, 255, 255, 0.12)
+        );
+      } @else {
+        background: $white; //changed according to new design
+      }
+
+      &.secondary-tab-nav-bar {
+        border-radius: 0px !important;
+        background: transparent;
+
+        .mat-tab-link {
+          &:hover {
+            border-bottom: 4px solid
+              mat.get-color-from-palette($primary, lighter);
+            border-radius: 0 !important;
+            background: transparent !important;
+          }
+        }
+
+        .mat-tab-label-active,
+        .mat-tab-link-active {
+          background: transparent !important;
+          border-radius: 4px 4px 0px 0px; //changed according to new design
+          font-weight: 600 !important;
+          border-bottom: 4px solid mat.get-color-from-palette($primary, 500);
+
+          &:hover {
+            border-bottom: 4px solid mat.get-color-from-palette($primary, 500);
+          }
+        }
+      }
+
+      &.tertiary-tab-nav-bar {
+        border-radius: 0px !important;
+        background: transparent;
+
+        .mat-tab-label-active,
+        .mat-tab-link-active {
+          background: transparent;
+          border-radius: 0px; //changed according to new design
+          font-weight: 600 !important;
+          color: $gray-dark;
+        }
+
+        .mat-ink-bar {
+          background-color: mat-color(
+            $primary
+          ) !important; //changed according to new design
+          height: 2px !important;
+        }
+      }
+    }
+  }
+
+  .drawer {
+    .mat-tab-nav-bar {
+      width: 100% !important;
+      @include media-breakpoint('gt-md') {
+        width: fit-content !important;
+      }
+    }
+  }
+
+  #exxat-tree-wrapper {
+    .mat-tab-nav-bar {
+      @include media-breakpoint('gt-sm') {
+        width: 100% !important;
+      }
+    }
+  }
+
+  .mat-sort-header-content {
+    text-align: left !important;
+  }
+
+  .header-hover-grid {
+    th {
+      .mat-sort-header-container {
+        button.mat-sort-header-button {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  // secondary navbar styles
+  .page-layout {
+    .secondary-tabs {
+      .mat-tab-link {
+        color: mat.get-color-from-palette($accent);
+        font-size: px-to-rem(14);
+      }
+
+      .mat-tab-label-active,
+      .mat-tab-link-active {
+        background-color: transparent;
+        color: mat.get-color-from-palette($accent);
+      }
+
+      .mat-ink-bar {
+        background: mat.get-color-from-palette($accent);
+        height: 3px;
+      }
+    }
+  }
+
+  // mat tab styles changes
+  .mat-tab-ui {
+    .mat-tab-header {
+      border-bottom: none !important;
+      border-radius: 20px;
+      background: $concrete;
+      width: auto !important;
+
+      .mat-tab-label {
+        height: 40px !important;
+        min-width: 130px !important;
+        padding: 0 16px;
+        color: $black-color;
+      }
+
+      .mat-tab-label-active {
+        border-bottom: none !important;
+        background: mat.get-color-from-palette($primary) !important;
+        border-radius: 20px;
+        color: $white !important;
+        opacity: 1 !important;
+      }
+
+      .mat-ink-bar {
+        background: none !important;
+      }
+    }
+  }
+
+  .mat-menu-height-auto {
+    min-height: auto !important;
+  }
+
+  /*Wizard Control changed SCSS*/
+  // #exxat-wizard-examples {
+  .mat-stepper-horizontal {
+    .mat-horizontal-stepper-header-container {
+      border-radius: 4px !important;
+      border: 1px solid map-get($map: $foreground, $key: divider) !important;
+
+      @include media-breakpoint('gt-xs') {
+        width: fit-content;
+      }
+
+      @include media-breakpoint('lt-md') {
+        overflow: auto !important;
+
+        &::-webkit-scrollbar {
+          /* WebKit */
+          width: 0;
+          height: 0;
+        }
+      }
+
+      .mat-step-label {
+        font-size: px-to-rem(14);
+      }
+
+      .mat-step-header {
+        background: map-get($map: $background, $key: card) !important;
+        height: auto !important;
+        padding: 0 8px !important;
+        position: relative;
+        float: left;
+        text-align: center;
+        min-width: 160px !important;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        &:last-child {
+          &::after,
+          &::before {
+            display: none !important;
+          }
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: -1px;
+          right: -9px;
+          height: 0;
+          width: 0;
+          border: 13px solid transparent;
+          border-right-width: 0;
+          z-index: 1;
+          -webkit-transform: translateX(4px);
+          -moz-transform: translateX(4px);
+          -ms-transform: translateX(4px);
+          -o-transform: translateX(4px);
+          border-left-color: $whitesmoke;
+          margin: 0;
+          border-top-color: transparent !important;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0px;
+          right: -8px;
+          height: 0;
+          width: 0;
+          border: 12.1px solid transparent;
+          border-right-width: 0;
+          z-index: 999 !important;
+          -webkit-transform: translateX(4px);
+          -moz-transform: translateX(4px);
+          -ms-transform: translateX(4px);
+          -o-transform: translateX(4px);
+          border-left-color: map-get($map: $background, $key: card) !important;
+          margin: 0;
+          border-top-color: transparent !important;
+        }
+
+        &.mat-horizontal-stepper-header {
+          overflow: inherit !important;
+
+          @include media-breakpoint('lt-md') {
+            overflow: initial !important;
+          }
+        }
+
+        &[ng-reflect-selected='true'],
+        &[aria-selected='true'] {
+          background: mat.get-color-from-palette($primary) !important;
+
+          .mat-step-icon {
+            background: none !important;
+            font-weight: 600;
+            margin-right: 4px !important;
+            font-size: px-to-rem(14);
+          }
+
+          .mat-step-label {
+            color: $white !important;
+          }
+
+          &::before {
+            border-left-color: mat.get-color-from-palette($primary) !important;
+          }
+        }
+
+        &[ng-reflect-selected='false'],
+        &[aria-selected='false'] {
+          .mat-step-icon {
+            background: none !important;
+            color: map-get($map: $foreground, $key: text) !important;
+            margin-right: 4px !important;
+            font-size: 16px;
+          }
+
+          &:hover {
+            background: map-get($map: $background, $key: hover) !important;
+
+            &::before {
+              border-left-color: map-get(
+                $map: $background,
+                $key: hover
+              ) !important;
+            }
+
+            &::after {
+              border-left-color: map-get(
+                $map: $background,
+                $key: card
+              ) !important;
+            }
+          }
+        }
+
+        &:first-child {
+          border-radius: 4px 0 0 4px;
+        }
+
+        &:last-child {
+          border-radius: 0 4px 4px 0;
+        }
+      }
+
+      .mat-stepper-horizontal-line {
+        display: none !important;
+      }
+    }
+  }
+
+  .stepper-transparent {
+    .mat-stepper-horizontal {
+      background-color: transparent !important;
+    }
+
+    .mat-horizontal-stepper-header-container {
+      margin-left: 0px;
+    }
+
+    .mat-horizontal-content-container {
+      overflow: hidden;
+      padding: 0 0 24px;
+    }
+  }
+
+  .stepper-inside-drawer {
+    .mat-horizontal-content-container,
+    .mat-horizontal-stepper-content {
+      height: 100%;
+      overflow: hidden;
+    }
+  }
+
+  .ess-wizard-page {
+    pre {
+      margin: 0px !important;
+      white-space: pre-line !important;
+    }
+  }
+
+  .mat-dialog-content.dialog-box-spacing {
+    padding: 16px !important;
+    min-width: 350px;
+    max-width: 600px;
+  }
+
+  .mat-dialog-content.image-dialog-box {
+    padding: 0px !important;
+    min-width: 345px;
+    max-width: 345px;
+    border-radius: 4px !important;
+    position: relative;
+
+    @include media-breakpoint('lt-md') {
+      min-width: 260px;
+      max-width: 260px;
+    }
+
+    img,
+    .no-avatar,
+    .avatar-lg,
+    .avatar-sm {
+      font-size: 6rem !important;
+      width: 100% !important;
+      height: 325px !important;
+      object-fit: cover;
+      margin: 0px;
+      border-radius: 4px 4px 0px 0px !important;
+
+      @include media-breakpoint('lt-md') {
+        height: 260px !important;
+      }
+    }
+
+    .image-popup-cancel {
+      z-index: 9;
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      background: map-get($map: $exxat-foreground, $key: chip) !important;
+
+      &:hover {
+        background: map-get($map: $exxat-foreground, $key: chip) !important;
+      }
+    }
+  }
+
+  // }
+  //////////////////
+  .page-layout,
+  .drawer,
+  exxat-multi-drawer,
+  manifold-panel {
+    .mat-tab-link {
+      padding: 0 16px;
+      min-width: auto;
+      height: 36px !important;
+      text-transform: capitalize;
+      opacity: 1;
+      font-weight: 400;
+      height: 40px;
+
+      &:not(.mat-tab-label-active):hover {
+        background: map-get($map: $background, $key: hover) !important;
+        border-radius: 4px;
+      }
+    }
+
+    .mat-link-bar {
+      background: transparent;
+      height: 0px;
+    }
+
+    .mat-tab-header {
+      border-bottom: none !important;
+    }
+
+    .mat-card {
+      border-radius: 8px;
+
+      &:not(.dashboard_card) {
+        border: 1px solid map-get($map: $foreground, $key: divider) !important;
+      }
+
+      // For Invalid State
+      &.invalid {
+        border: 1px solid mat.get-color-from-palette($warn) !important;
+      }
+
+      &.dashboard_card {
+        border-width: 1px !important;
+        border-style: solid !important;
+      }
+
+      box-shadow: none !important;
+
+      &.theme-changed {
+        border-left: 4px solid mat.get-color-from-palette($primary) !important;
+      }
+    }
+
+    .mat-expansion-panel {
+      border-radius: 0px;
+      box-shadow: none;
+    }
+
+    a:hover {
+      text-decoration: none !important;
+    }
+  }
+
+  //css for all form field border
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: $silver !important;
+  }
+
+  //month-year-picker
+  month-year-picker {
+    width: 100% !important;
+
+    mat-form-field {
+      width: 100% !important;
+    }
+  }
+
+  .tags-container {
+    .mat-checkbox-label {
+      $white-space: initial !important;
+      word-break: break-word !important;
+    }
+  }
+
+  .compliance-student-side-bar-list {
+    .mat-expansion-panel-header.mat-expanded {
+      background-color: #e0e7f2 !important;
+    }
+
+    .mat-expansion-panel {
+      box-shadow: none !important;
+      border-radius: 0px !important;
+    }
+
+    .mat-expansion-panel-body {
+      padding: 0px !important;
+    }
+
+    mat-expansion-panel-header {
+      height: 64px !important;
+      padding: 0px 16px 0 0 !important;
+
+      .mat-expansion-panel-header-title,
+      .mat-expansion-panel-header-description {
+        margin: 0px !important;
+      }
+    }
+  }
+
+  .evaluation-review-side-bar-list {
+    .mat-expansion-panel-header.mat-expanded {
+      background-color: #e0e7f2 !important;
+    }
+
+    .mat-expansion-panel {
+      box-shadow: none !important;
+      border-radius: 0px !important;
+    }
+
+    .mat-expansion-panel-body {
+      padding: 0px !important;
+    }
+
+    mat-expansion-panel-header {
+      height: auto !important;
+      padding: 0px 16px 0 0 !important;
+
+      .mat-expansion-panel-header-title,
+      .mat-expansion-panel-header-description {
+        margin: 0px !important;
+      }
+    }
+
+    mat-list {
+      mat-list-item {
+        .align-self-normal {
+          align-self: normal;
+        }
+
+        .max-width-fitcontent {
+          max-width: inherit;
+        }
+
+        .active-status-item {
+          border: 2px solid #4b7902;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+
+  .compliance-right-side-accordian {
+    mat-expansion-panel-header {
+      height: auto !important;
+
+      .mat-content {
+        padding-right: 16px !important;
+      }
+    }
+  }
+
+  //for assignment sidebar list only
+  .assignment-student-side-bar-list {
+    .mat-expansion-panel-header.mat-expanded {
+      background-color: #e0e7f2 !important;
+    }
+
+    .mat-expansion-panel {
+      box-shadow: none !important;
+      border-radius: 0px !important;
+    }
+
+    .mat-expansion-panel-body {
+      padding: 0px !important;
+    }
+
+    mat-expansion-panel-header {
+      height: auto !important;
+
+      // padding: 0px 16px 0 0 !important;
+      .mat-expansion-panel-header-title,
+      .mat-expansion-panel-header-description {
+        margin: 0px !important;
+      }
+    }
+  }
+
+  .exxat-list {
+    .mat-expansion-panel-body {
+      padding: 0px !important;
+    }
+  }
+
+  .mat-standard-chip {
+    min-height: 24px !important;
+    border-radius: 4px !important;
+    height: auto !important;
+    padding: 0px 12px !important;
+    &.tag-sc-chip {
+      padding: 0px !important;
+    }
+  }
+
+  .configuration {
+    .mat-standard-chip {
+      margin: 0px 8px 4px 0px;
+    }
+  }
+
+  .setting-chip-style {
+    .mat-chip.mat-standard-chip::after {
+      background: none !important;
+    }
+  }
+
+  .specialized-chip {
+    .mat-chip {
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 12px !important;
+      border-radius: 20px !important ;
+    }
+    .mat-standard-chip {
+      min-height: 16px !important;
+      white-space: nowrap !important;
+      padding: 0px 8px !important;
+      background-color: map-get($map: $foreground, $key: divider) !important;
+    }
+    .mat-chip-ripple {
+      max-height: 16px !important;
+    }
+    .mat-chip.mat-standard-chip::after {
+      background: none !important;
+    }
+  }
+
+  .mat-chip {
+    font-weight: 400 !important;
+  }
+
+  //scss for inner-page demo responsive view
+  .inner-page-panel {
+    .mat-expansion-panel-header {
+      color: $white;
+
+      @if ($is-dark) {
+        background-color: $scorpion;
+      } @else {
+        background-color: $alto-dark;
+      }
+    }
+
+    .mat-expansion-panel-body {
+      padding: 0 0px 16px !important;
+    }
+  }
+
+  // Expanded Filter Chip List
+  .expanded-filter-list {
+    mat-chip-list {
+      .mat-chip-list-wrapper {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+      }
+    }
+  }
+
+  // Expanded Filter Chip List
+  .show-more-chips-list {
+    mat-chip-list {
+      .mat-chip-list-wrapper {
+        height: 38px;
+        overflow: hidden !important;
+      }
+    }
+  }
+
+  //styles according to new design.
+  .card-header-border-bottom {
+    border-bottom: 1px solid map-get($map: $foreground, $key: divider) !important;
+  }
+
+  .card-header-border-top {
+    border-top: 1px solid map-get($map: $foreground, $key: divider) !important;
+  }
+
+  .icon-fill-bg {
+    background-color: transparent;
+  }
+
+  .accent-border-btn {
+    border: 1px solid mat.get-color-from-palette($accent) !important;
+  }
+
+  //mat menu panel fixed width
+  .menu-panel-width.mat-menu-panel {
+    width: 214px !important;
+    min-width: 214px !important;
+    max-height: calc(100vh - 265px) !important;
+
+    .mat-menu-item {
+      i {
+        display: none;
+      }
+
+      &:hover {
+        i {
+          display: inline-block;
+          color: $nobel;
+        }
+      }
+
+      &.menu-item-active,
+      &.menu-item-active:hover {
+        i {
+          display: inline-block;
+          color: $blue-dianne;
+        }
+      }
+    }
+  }
+
+  .mat-menu-item-height {
+    .mat-menu-item {
+      white-space: normal !important;
+      overflow: visible !important;
+      text-overflow: initial !important;
+      line-height: initial !important;
+      height: auto !important;
+    }
+  }
+
+  .auto-complete-option-height {
+    .mat-option {
+      height: 68px !important;
+      line-height: 20px !important;
+    }
+  }
+
+  //Css for mat-accordian without Background
+  .mat-accordion-no-bg {
+    .mat-expansion-panel {
+      box-shadow: none !important;
+      background: none !important;
+
+      .mat-expansion-panel-header {
+        span.mat-expansion-indicator {
+          &::after {
+            color: $gray-dark !important;
+          }
+        }
+      }
+    }
+  }
+
+  //This class is for to hide/show content on hover and on active of tree node
+  .tree-content-hide {
+    .mat-tree-node:hover,
+    .tree-node-active {
+      .hide-tree-content {
+        display: none !important;
+      }
+    }
+  }
+
+  .course-catalog-page {
+    .mat-form-field {
+      .mat-select-value-text {
+        font-size: px-to-rem(20) !important;
+        font-weight: 600 !important;
+      }
+    }
+  }
+
+  .details-report-page {
+    .mat-form-field {
+      .mat-select-value-text {
+        font-size: px-to-rem(18) !important;
+        font-weight: 200 !important;
+      }
+    }
+  }
+
+  .scroll-spy-component-demo-page {
+    .mat-tree-node {
+      min-height: auto !important;
+    }
+  }
+
+  //styles according to new design ends.
+
+  //theme mixin ends
+  .list-item-height {
+    .mat-list-item {
+      height: 56px !important;
+    }
+  }
+
+  //Slots Page
+  .list-item-height-slots {
+    .mat-list-item {
+      height: 70px !important;
+    }
+  }
+
+  //css for patient-log-review-sidebar
+  .patient-log-review-sidebar {
+    .mat-expansion-panel-header {
+      border-radius: 35px !important;
+    }
+
+    .mat-expansion-panel-body {
+      padding-right: 0px !important;
+      padding-bottom: 0px !important;
+    }
+
+    .pl-list-item {
+      button .mat-button-wrapper {
+        width: 100% !important;
+      }
+    }
+  }
+
+  .left-side-arrow {
+    .mat-expansion-panel-header {
+      span.mat-content {
+        order: 1;
+        padding-left: 16px;
+      }
+
+      span.mat-expansion-indicator {
+        // transform: rotate(0deg) !important;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  // @ START --- Slot By Site Page Mat Expantion Panel Changes
+  .right-side-arrow .mat-expansion-panel-header > span.mat-content {
+    order: 2;
+    padding-left: 16px;
+  }
+
+  //slot-by-site page expansion panel header height for diff screens
+  .right-side-arrow {
+    .mat-expansion-panel-header {
+      padding-left: 24px !important;
+      height: auto !important;
+
+      &:hover {
+        background-color: $mercury !important;
+      }
+    }
+  }
+
+  // @ END --- Slot By Site Page Mat Expantion Panel Changes
+  //mat expansion pannel extra padding removed on generic
+  //css for compliance cards component which applies to all accordians
+  .mat-expansion-panel.accordian-border {
+    border-radius: 20px !important;
+    border: 1px solid map-get($map: $foreground, $key: divider) !important;
+  }
+
+  .mat-expansion-panel.mat-expanded {
+    .mat-expansion-panel-header {
+      border-bottom: 1px solid map-get($map: $foreground, $key: divider) !important;
+      border-radius: 4px 4px 0px 0px !important;
+      height: 44px !important;
+    }
+  }
+
+  .mat-expansion-panel {
+    box-shadow: none !important;
+    border: 1px solid;
+    border-radius: 8px !important;
+    border-color: map-get($map: $foreground, $key: divider) !important;
+
+    .mat-expansion-panel-header {
+      padding: 0px 20px 0px 16px !important;
+      min-height: 44px !important;
+      height: 44px;
+
+      header.card-header-title {
+        min-height: 44px !important;
+        width: fit-content;
+        word-break: break-all !important;
+      }
+    }
+
+    .mat-expansion-panel-content {
+      .mat-expansion-panel-body {
+        padding: 12px 16px !important;
+
+        .ngx-timepicker {
+          font: 400 14px Source Sans Pro, sans-serif !important;
+        }
+      }
+    }
+  }
+
+  //////expansion panel
+
+  .accordian-group-style {
+    mat-accordion.mat-accordion:last-child {
+      mat-expansion-panel {
+        border-radius: 0px 0px 8px 8px !important;
+      }
+    }
+
+    .mat-expansion-panel {
+      border: none !important;
+      border-radius: 0% !important;
+
+      .mat-expansion-panel-header {
+        border-bottom: none !important;
+
+        &:hover {
+          border-radius: 0% !important;
+        }
+
+        .mat-expansion-panel-header-title {
+          .secondary-text {
+            font-weight: 400 !important;
+          }
+        }
+      }
+
+      .mat-expansion-panel-body {
+        padding: 0px 16px !important;
+      }
+    }
+
+    .mat-expansion-panel.mat-expanded {
+      .secondary-text {
+        display: none !important;
+      }
+    }
+  }
+
+  //css for wishlist rank selection page
+  .form-field-infix-zero-padding {
+    .mat-form-field-infix {
+      padding: 8px 0px !important;
+    }
+  }
+
+  //css to remove border top when there is no label
+  .form-field-infix-zero-border {
+    .mat-form-field-infix {
+      border-top: 0px !important;
+    }
+  }
+
+  .admin-pl-review {
+    .admin-pl-card {
+      .mat-list {
+        padding: 0 !important;
+
+        .mat-list-item-content {
+          padding: 0 !important;
+
+          .pl-code-list-grid {
+            width: 100%;
+            display: flex;
+            font-size: px-to-rem(14);
+            justify-content: space-between;
+
+            .mat-icon {
+              color: $blue-dianne;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  mat-checkbox {
+    .mat-checkbox-layout {
+      white-space: normal !important;
+      word-break: break-word !important;
+    }
+  }
+
+  //css for ck editor for ESS screen
+
+  ckeditor {
+    .ck.ck-editor__main {
+      padding: 0 16px !important;
+      border-top: none !important;
+
+      .ck.ck-content {
+        border: none !important;
+        padding: 0 !important;
+        background: transparent !important;
+      }
+    }
+
+    .ck.ck-toolbar.ck-toolbar_grouping {
+      border: none !important;
+    }
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ START : View Doc Button Styling
+  // -----------------------------------------------------------------------------------------------------
+
+  .view_doc_btn {
+    font-weight: normal !important;
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ END : View Doc Button Styling
+  // -----------------------------------------------------------------------------------------------------
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ START : z-Index Fixing of Material Time Picker
+  // -----------------------------------------------------------------------------------------------------
+  .timepicker-overlay {
+    z-index: 10000 !important;
+  }
+
+  .timepicker-backdrop-overlay {
+    z-index: 1000 !important;
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ END : z-Index Fixing of Material Time Picker
+  // -----------------------------------------------------------------------------------------------------
+
+  .share-site-form
+    .mat-form-field.mat-form-field-invalid
+    .mat-form-field-label {
+    color: rgba(0, 0, 0, 0.6) !important;
+  }
+
+  // WHite Bg For Mat Form Field
+  mat-form-field {
+    &.white-bg {
+      .mat-form-field-wrapper {
+        .mat-form-field-flex {
+          .mat-form-field-outline {
+            background: white !important;
+          }
+        }
+      }
+    }
+  }
+
+  .disabled-form-field {
+    .mat-form-field-wrapper {
+      border-radius: 4px !important;
+      padding-bottom: 0px !important;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+      color: transparent !important;
+    }
+  }
+
+  // No Padding Bottom For Mat Form Field
+  mat-form-field {
+    &.pb-none {
+      .mat-form-field-wrapper {
+        padding-bottom: 0px !important;
+      }
+    }
+  }
+
+  button.view-as-disabled,
+  .view-as-disabled,
+  a.view-as-disabled,
+  .mat-icon-button[disabled][disabled] {
+    cursor: default !important;
+    color: $nobel !important;
+    background: transparent !important;
+    pointer-events: none !important;
+
+    i {
+      color: $nobel !important;
+    }
+
+    &:hover {
+      background-color: transparent !important;
+    }
+
+    mat-icon {
+      cursor: default !important;
+    }
+  }
+
+  compliance-notification-history-list {
+    exxat-notification-log {
+      mat-card {
+        height: calc(100vh - 270px) !important;
+
+        .content {
+          height: calc(100vh - 375px) !important;
+        }
+      }
+    }
+  }
+
+  nexus-app-evaluation-dashboard-distribution {
+    exxat-notification-log {
+      .search-wrapper.search-grid {
+        width: 460px !important;
+      }
+
+      mat-card {
+        height: calc(100vh - 260px) !important;
+
+        .content {
+          height: calc(100vh - 365px) !important;
+        }
+      }
+    }
+  }
+
+  // Last dates were missing due to fix height of the container. So set it to auto
+  .mat-datetimepicker-calendar {
+    height: auto !important;
+  }
+
+  // Increase The Mat Select Max Height
+  .mat-select-panel {
+    max-height: 296px !important;
+  }
+
+  // Change The Box Shadow Of Tooltip
+  .tippy-box[data-theme~='light'] {
+    box-shadow: 0 5px 17px -5px #0006 !important;
+  }
+
+  .mat-form-field.mat-form-field-appearance-fill {
+    //Required marker
+    .mat-form-field-required-marker {
+      font-size: small;
+      font-weight: 600;
+      position: absolute;
+      margin-top: 0px;
+      margin-left: 2px;
+    }
+
+    .mat-form-field-subscript-wrapper {
+      padding: 0 !important;
+      font-size: 75%;
+      margin-top: 4px !important;
+      top: calc(100% - 1.79em) !important;
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /*  @ Select
+  /* ----------------------------------------------------------------------------------------------------- */
+    .mat-select {
+      display: inline-flex;
+
+      .mat-select-placeholder {
+        transition: none !important;
+      }
+
+      .mat-select-trigger {
+        display: inline-flex;
+        align-items: center;
+        width: 100%;
+        height: auto;
+
+        .mat-select-value {
+          display: flex;
+          position: relative;
+          max-width: none;
+
+          .mat-select-value-text {
+            display: inline-flex;
+
+            > * {
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+      }
+
+      .mat-select-arrow-wrapper {
+        transform: translateY(0);
+
+        .mat-select-arrow {
+          margin: 0 4px 0 2px;
+        }
+      }
+    }
+
+    /* Disable floating mat-label */
+    &.mat-form-field-has-label.mat-form-field-can-float.mat-form-field-should-float {
+      .mat-form-field-label-wrapper {
+        .mat-form-field-label {
+          width: 100% !important;
+          transform: none !important;
+        }
+      }
+    }
+
+    /* Adjustments for mat-label */
+    &.mat-form-field-has-label {
+      .mat-form-field-wrapper {
+        margin-top: 24px;
+      }
+    }
+
+    /* Default style tweaks and enhancements */
+    .mat-form-field-wrapper {
+      margin-bottom: 14px;
+      padding-bottom: 0;
+
+      .mat-form-field-flex {
+        position: relative;
+        display: flex;
+        align-items: center;
+        border-radius: 6px;
+        min-height: 32px;
+        padding: 0 8px;
+        border: 1px solid map-get($map: $foreground, $key: divider);
+
+        .mat-form-field-infix {
+          position: static;
+          display: flex;
+          align-items: center;
+          width: 88px;
+          padding: 0;
+          border: 0;
+
+          .mat-input-element {
+            padding: 0 0;
+            margin-top: 0;
+            line-height: 1.25;
+          }
+
+          .mat-select-value {
+            display: flex;
+            max-width: none;
+            margin-right: 8px;
+            line-height: 1.25;
+          }
+
+          /* Textarea */
+          textarea.mat-input-element {
+            display: flex;
+            align-self: stretch;
+            min-height: 36px;
+            height: auto;
+            margin: 14px 0;
+            padding: 0 6px 0 0;
+            transform: none;
+          }
+
+          .mat-form-field-label-wrapper {
+            top: -25px;
+            font-size: 14px !important;
+            height: auto;
+            padding-top: 0;
+            overflow: visible;
+            pointer-events: auto;
+            line-height: 1.65;
+
+            .mat-form-field-label {
+              position: relative;
+              top: 0;
+              margin-top: 0;
+              backface-visibility: hidden;
+              transition: none;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+
+      /* Remove the underline */
+      .mat-form-field-underline {
+        display: none;
+      }
+
+      /* Subscript tweaks */
+      .mat-form-field-subscript-wrapper {
+        position: relative;
+        top: auto;
+        padding: 0;
+        margin-top: 0;
+        font-weight: 500;
+        line-height: 1.25;
+
+        > div {
+          display: contents;
+          /* Remove the div from flow to stop the subscript animation */
+        }
+
+        .mat-error,
+        .mat-hint {
+          display: block;
+        }
+      }
+    }
+
+    /* Invalid */
+    &.mat-form-field-invalid {
+      .mat-form-field-label {
+        color: mat.get-color-from-palette($warn, 500) !important;
+      }
+    }
+  }
+
+  html {
+    &.cdk-global-scrollblock {
+      position: relative !important;
+      overflow: hidden !important;
+    }
+  }
+
+  // Fix: "Placement component form-field margin "
+  #notification-component {
+    .mat-form-field-wrapper {
+      margin: 0 !important;
+    }
+  }
+
+  // Fix: "Inconsistent button heights due to inconsistent line heights"
+  button {
+    .mat-button-wrapper {
+      line-height: normal;
+    }
+  }
+
+  .mat-icon {
+    // Fix: "Font-weight config affecting the icons"
+    font-weight: 400 !important;
+
+    // Fix: "Inconsistent positioning on custom font icons"
+    line-height: 1;
+  }
+
+  // Fix: "Icon button ripple radius is not correct on Edge & Safari"
+  .mat-icon-button {
+    .mat-button-ripple {
+      border-radius: 4px;
+    }
+  }
+
+  // Fix: "Smooth scrolling for iOS"
+  .mat-dialog-container {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  // Fix: "Inconsistent font sizes across elements"
+  .mat-checkbox {
+    font-size: px-to-rem(16);
+  }
+
+  .mat-radio-button {
+    font-size: px-to-rem(16);
+  }
+
+  // Fix: "Input underlines has wrong color opacity value"
+  .mat-form-field-underline {
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+
+  .mat-form-field {
+    // Fix: "Table-cell and inline-table in mat-select"
+    &.mat-form-field-type-mat-select {
+      .mat-form-field-infix {
+        display: inline-flex;
+        //VB: commented this css as it was interfering with search filters.
+        //width: auto;
+
+        .mat-select-trigger {
+          display: inline-flex;
+          align-items: center;
+          width: 100%;
+
+          .mat-select-value {
+            display: flex;
+            max-width: none;
+            margin-right: 8px;
+          }
+
+          .mat-select-arrow-wrapper {
+            display: inline-flex;
+          }
+        }
+      }
+    }
+  }
+
+  // Fix: Stepper icons are broken due to Fuse's icon helpers
+  mat-horizontal-stepper,
+  mat-vertical-stepper {
+    mat-step-header {
+      mat-icon {
+        height: 16px !important;
+        width: 16px !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        color: inherit !important;
+      }
+    }
+  }
+
+  mat-vertical-stepper {
+    padding: 16px 0;
+
+    .mat-step-header {
+      padding: 12px 24px !important;
+    }
+  }
+
+  // Fix: Chip remove icon is broken due to Fuse's icon helpers
+  mat-chip {
+    mat-icon {
+      min-width: 0 !important;
+      min-height: 0 !important;
+    }
+  }
+
+  // Fix: Mat-card-image requires a bigger width than 100%
+  .mat-card-image {
+    max-width: none !important;
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ Angular Materil Form Field UI Changes : March, 2022 : START
+  // -----------------------------------------------------------------------------------------------------
+
+  .mat-error {
+    text-align: right !important;
+  }
+
+  mat-label {
+    font-size: 14px !important;
+  }
+
+  .mat-form-field-disabled {
+    mat-label {
+      color: map-get($map: $foreground, $key: disabled-text) !important;
+    }
+
+    input {
+      color: map-get($map: $foreground, $key: disabled-text) !important;
+    }
+  }
+
+  .mat-checkbox-label {
+    font-size: 14px !important;
+  }
+
+  .mat-form-field-flex {
+    border-radius: 4px !important;
+    border-width: 1px !important;
+  }
+
+  .mat-focused {
+    .mat-form-field-flex {
+      border-color: mat.get-color-from-palette($primary, 500) !important;
+      border-width: 1px !important;
+
+      .mat-form-field-label-wrapper {
+        .mat-form-field-label {
+          .mat-placeholder-required.mat-form-field-required-marker {
+            color: mat.get-color-from-palette($warn, 500) !important;
+          }
+        }
+      }
+    }
+  }
+
+  .mat-form-field-infix {
+    input.mat-input-element {
+      font-size: 14px !important;
+    }
+  }
+
+  .mat-form-field-disabled {
+    .mat-form-field-flex {
+      background: #00000005 !important;
+      border-color: map-get($map: $foreground, $key: divider) !important;
+    }
+  }
+
+  // Invalid State of Mat Form Field
+  .mat-form-field.mat-form-field-invalid.mat-form-field-appearance-fill
+    .mat-form-field-wrapper
+    .mat-form-field-flex {
+    border-color: mat.get-color-from-palette($warn, 500) !important;
+
+    .mat-form-field-infix .mat-form-field-label-wrapper .mat-form-field-label {
+      color: mat.get-color-from-palette($warn, 500) !important;
+    }
+  }
+
+  mat-select.mat-select {
+    .mat-select-min-line {
+      font-size: 14px !important;
+    }
+  }
+
+  mat-radio-group[disabled='true'] {
+    mat-label {
+      // font-weight: 600 !important;
+      color: map-get($map: $foreground, $key: disabled-text) !important;
+    }
+  }
+
+  .mat-radio-disabled {
+    span.disable {
+      color: map-get($map: $foreground, $key: disabled-text) !important;
+    }
+
+    .mat-radio-outer-circle {
+      border-color: map-get(
+        $map: $exxat-foreground,
+        $key: disable-radio
+      ) !important;
+    }
+
+    .mat-radio-inner-circle {
+      background-color: map-get(
+        $map: $exxat-foreground,
+        $key: disable-radio
+      ) !important;
+    }
+  }
+
+  .mat-radio-outer-circle {
+    height: 18px !important;
+    width: 18px !important;
+  }
+
+  .mat-radio-inner-circle {
+    height: 14px !important;
+    width: 14px !important;
+    top: 2px !important;
+    left: 2px !important;
+  }
+
+  .table-column-chips {
+    .mat-chip {
+      background: map-get($map: $background, $key: unselected-chip) !important;
+      color: map-get($map: $foreground, $key: text) !important;
+    }
+  }
+
+  .exxat-chips-tag {
+    .mat-chip {
+      min-width: 96px;
+      max-width: 300px;
+      overflow: hidden;
+
+      .chips-text {
+        min-width: 66px;
+        max-width: 270px;
+        white-space: nowrap;
+      }
+
+      .grid-chip-text {
+        min-width: 66px;
+        max-width: 66px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  //css for chips in table header
+  .table-header-chips {
+    white-space: nowrap;
+
+    .mat-chip-list-wrapper {
+      flex-wrap: nowrap !important;
+
+      .mat-chip {
+        .mat-chip-trailing-icon {
+          margin-left: 3px !important;
+        }
+
+        &.mat-standard-chip {
+          padding-right: 4px !important;
+          padding-left: 8px !important;
+        }
+      }
+    }
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ Angular Materil Form Field UI Changes : March, 2022 : END
+  // -----------------------------------------------------------------------------------------------------
+
+  // Theme Selection Styling -- Start
+  .theme-selection {
+    .theme-chip {
+      height: 24px;
+      background-color: map-get($map: $background, $key: hover) !important;
+      align-items: center;
+      display: flex;
+
+      &.selected {
+        border: 1px solid mat.get-color-from-palette($primary);
+      }
+
+      .status-point {
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+      }
+
+      &:hover {
+        background-color: map-get($map: $background, $key: hover) !important;
+      }
+    }
+
+    .mode-button {
+      height: 82px !important;
+      width: 92px !important;
+      background-color: transparent !important;
+      border-radius: 10px !important;
+
+      &.selected {
+        border: 1px solid mat.get-color-from-palette($primary);
+      }
+    }
+  }
+
+  //hide error message coming from backend
+  #ckeditor_field {
+    .mat-form-field-subscript-wrapper {
+      .mat-error {
+        display: none !important;
+      }
+    }
+  }
+
+  // Theme Selection Styling -- End
+
+  // START -- Mat Checkbox Container & Mat Radio Buttons Container Styling
+
+  .mat-checkbox-container,
+  .mat-radio-button-container {
+    &.mat-invalid {
+      padding: 16px !important;
+      border: 1px solid mat.get-color-from-palette($warn) !important;
+      border-radius: 4px;
+    }
+  }
+
+  //Pos screen sidebar expansion panel header scss according to dew design
+  .pos-screen-expansion-header {
+    .mat-expansion-panel-header.mat-expanded {
+      background-color: $white !important;
+      border-bottom: none !important;
+
+      @if ($is-dark) {
+        background-color: transparent !important;
+      }
+    }
+
+    .mat-expansion-panel-header {
+      @if ($is-dark) {
+        border-bottom: 1px solid $border-dark-theme !important;
+        background-color: $mine-shaft !important;
+      }
+    }
+
+    .mat-expansion-panel-content .mat-expansion-panel-body {
+      padding: 0 0px !important;
+    }
+
+    .mat-list-base {
+      padding: 0 !important;
+    }
+  }
+
+  // END -- Mat Checkbox Container & Mat Radio Buttons Container Styling
+
+  //for grid inside accordian
+  .grid-expansion-panel.mat-expansion-panel
+    .mat-expansion-panel-content
+    .mat-expansion-panel-body {
+    padding: 0px !important;
+  }
+
+  .mat-form-field-label,
+  mat-label {
+    color: map-get($map: $foreground, $key: text) !important;
+    font-weight: 600 !important;
+  }
+
+  mat-radio-button.mat-radio-button-break {
+    .mat-radio-label-content {
+      white-space: break-spaces !important;
+    }
+  }
+  #dashboard-screen-container {
+    .info-box {
+      border-radius: 8px !important;
+      border: 1px solid map-get($map: $foreground, $key: divider) !important;
+    }
+  }
+
+  navbar {
+    &.vertical-style-2 {
+      background-color: map-get($map: $background, $key: 'card') !important;
+    }
+  }
+
+  header {
+    button {
+      &.chat-online {
+        cursor: pointer !important;
+      }
+      &.chat-offline {
+        color: map-get(
+          $map: $foreground,
+          $key: 'diabled-icon-button'
+        ) !important;
+        .mat-button-focus-overlay {
+          background-color: transparent !important;
+        }
+      }
+    }
+  }
+
+  button.mat-icon-button.mat-button-disabled {
+    @if ($is-dark) {
+      opacity: 0.7 !important;
+    }
+  }
+
+  // START : Mat Card And Mat Accordian Invalid State Styling
+  .mat-card.invalid,
+  mat-expansion-panel.mat-expansion-panel.invalid {
+    border: 1px solid mat.get-color-from-palette($warn) !important;
+  }
+
+  mat-accordion.mat-accordion.invalid {
+    > mat-expansion-panel.mat-expansion-panel {
+      border: 1px solid mat.get-color-from-palette($warn) !important;
+    }
+  }
+  // END : Mat Card And Mat Accordian Invalid State Styling
+   // Invalid State For Mat Form Filed -- Mat Date Picker  
+   .mat-form-field.mat-form-field-appearance-fill.mat-invalid {
+    .mat-form-field-flex {
+      border-color: mat.get-color-from-palette($warn) !important;
+    } 
+    }
+}
+
+// pagination remove once pagination changes deployed
+mat-paginator {
+  .mat-paginator-outer-container {
+    font-size: px-to-rem(14);
+
+    .mat-paginator-container {
+      .mat-paginator-range-actions {
+        button {
+          &.mat-paginator-navigation-next,
+          &.mat-paginator-navigation-previous {
+            color: #f9aa33;
+          }
+        }
+      }
+    }
+  }
+}
+
+#top_main_header {
+  .mat-icon-button {
+    height: 100% !important;
+  }
+}
+
+//css for ck editor for ESS screen
+.ck.ck-toolbar.ck-toolbar_grouping {
+  border: none !important;
+}
+
+.ck.ck-editor__main .ck.ck-content {
+  border: none !important;
+  padding: 0 !important;
+}
+
+.ck.ck-editor__main {
+  padding: 0 16px !important;
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ START : View Doc Button Styling
+// -----------------------------------------------------------------------------------------------------
+
+.view_doc_btn {
+  font-weight: normal !important;
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ END : View Doc Button Styling
+// -----------------------------------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------------------------------
+// @ START : z-Index Fixing of Material Time Picker
+// -----------------------------------------------------------------------------------------------------
+.timepicker-overlay {
+  z-index: 10000 !important;
+}
+
+.timepicker-backdrop-overlay {
+  z-index: 1000 !important;
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ END : z-Index Fixing of Material Time Picker
+// -----------------------------------------------------------------------------------------------------
+
+.share-site-form .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+// WHite Bg For Mat Form Field
+mat-form-field {
+  &.white-bg {
+    .mat-form-field-wrapper {
+      .mat-form-field-flex {
+        .mat-form-field-outline {
+          background: white !important;
+        }
+      }
+    }
+  }
+}
+
+// No Padding Bottom For Mat Form Field
+mat-form-field {
+  &.pb-none {
+    .mat-form-field-wrapper {
+      padding-bottom: 0px !important;
+    }
+  }
+}
+
+button.view-as-disabled,
+.view-as-disabled,
+a.view-as-disabled,
+.mat-icon-button[disabled][disabled] {
+  cursor: default !important;
+  color: $nobel !important;
+  background: transparent !important;
+  pointer-events: none !important;
+
+  i {
+    color: $nobel !important;
+  }
+
+  &:hover {
+    background-color: transparent !important;
+  }
+
+  mat-icon {
+    cursor: default !important;
+  }
+}
+
+compliance-notification-history-list {
+  exxat-notification-log {
+    mat-card {
+      height: calc(100vh - 270px) !important;
+
+      .content {
+        height: calc(100vh - 375px) !important;
+      }
+    }
+  }
+}
+
+nexus-app-evaluation-dashboard-distribution {
+  exxat-notification-log {
+    .search-wrapper.search-grid {
+      width: 460px !important;
+    }
+
+    mat-card {
+      height: calc(100vh - 260px) !important;
+
+      .content {
+        height: calc(100vh - 365px) !important;
+      }
+    }
+  }
+}
+
+// Last dates were missing due to fix height of the container. So set it to auto
+.mat-datetimepicker-calendar {
+  height: auto !important;
+}
+
+// Increase The Mat Select Max Height
+.mat-select-panel {
+  max-height: 296px !important;
+}
+
+// Change The Box Shadow Of Tooltip
+.tippy-box[data-theme~='light'] {
+  box-shadow: 0 5px 17px -5px #0006 !important;
+}
+
+.spinner-avatar {
+  position: absolute;
+  top: 0;
+
+  .mat-spinner.mat-progress-spinner {
+    svg {
+      top: 30% !important;
+      left: 30% !important;
+      transform: translate(-50%, -50%) !important;
+    }
+  }
+
+  &.dialog-box-spinner {
+    .mat-spinner.mat-progress-spinner {
+      svg {
+        top: 40% !important;
+        left: 40% !important;
+        transform: translate(-50%, -50%) !important;
+      }
+    }
+  }
+}

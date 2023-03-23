@@ -1,0 +1,17 @@
+<div class="page-layout simple full-width inner-scroll">
+  <div class="text-center h-100-p m-16" fxLayout="column" fxLayoutAlign="center center">
+    <div><i class="far fa-clock accent-fg mb-44 s-120"></i></div>
+    <div class="font-24 accent-fg font-weight-600">
+      <span>Session Timed Out</span>
+    </div>
+    <div class="font-14 accent-fg mt-16" fxLayout="column" fxLayoutAlign="center center">
+      <span>The current session has timed out - please click "Refresh" </span>
+      <span>to return to your session </span>
+    </div>
+    <div class="mt-16">
+      <button mat-stroked-button color="accent" class="accent-border-btn" (click)="onPageRefresh()">
+        Refresh
+      </button>
+    </div>
+  </div>
+</div>

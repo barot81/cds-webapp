@@ -1,0 +1,289 @@
+////////////////////////////////////////////////////////////////
+///////////// Colors Varibales ////////////////
+////////////////////////////////////////////////////////////////
+
+// Angular Version 13 Removed Colors From Material -- Fixes
+// -------------------------------------------------------------
+$dark-primary-text: rgba(black, 0.87);
+$dark-secondary-text: rgba(black, 0.72);
+$dark-disabled-text: rgba(black, 0.38);
+$dark-dividers: rgba(black, 0.12);
+$dark-focused: rgba(black, 0.12);
+$light-primary-text: white;
+$light-secondary-text: rgba(white, 0.7);
+$light-disabled-text: rgba(white, 0.5);
+$light-dividers: rgba(white, 0.12);
+$light-focused: rgba(white, 0.12);
+// --------------------------------------------------------------
+
+//$blue-lagoon: #26a69a;
+//$default-tab: #060606;
+$white: #fff;
+$De-York: #6fcf97;
+$sulu: #beec75;
+$Manhattan: #f6c89f;
+$Gallery: #ececec;
+$Fair-pink: #ffeeee;
+$Alizarin-crimson: #dc2a2a;
+$Buttermilk: #ffeeb4;
+$FrenchPass: #b3e5fc;
+$ToryBlue: #0d47a1;
+$Carulean: #03a9f4;
+$whitesmoke: #f8f8f8;
+$dove-gray: #666666;
+$mercury: #e6e6e6;
+$cod-gray: #1e1e1e;
+$alto: #dddddd;
+$blue-dianne: #244354;
+$alabaster: #fafafa;
+$nobel: #b3b3b3;
+
+$alto-gray: #d8d8d8;
+$Marzipan: #f8e196;
+$cosmos: #ffd4d4;
+$milano-red: #bd0e0e;
+$red: #f81201;
+$denim: #106cc8;
+$texas: #f7f49a;
+$apple: #43a047;
+$purple-heart: #673ab7;
+$limed-spruce: #37474f;
+$burnt-sienna: #b71c1c;
+$light-blue: #91d5f5;
+$sea-green: #2e7d32;
+$light-green: #75f390;
+$caribbean-green: #00cc99;
+$vivid-tangerine: #ff8080;
+$mine-shaft-dark: #272727;
+$japanese-laurel: #008000;
+$persian-blue: #211eae;
+$silver-chalice: #ababab;
+$dove-gray-dark: #616161;
+$code-gray: #161616;
+$scorpion: #595959;
+$alto-dark: #d9d9d9;
+$dull-gray: #646464;
+$silver: #bdbdbd;
+$tundora-light: #414141;
+$emperor: #535353;
+$cod-black-light: #121212;
+$masala: #444444;
+$silver-light: #ccc;
+$athens-gray: #edeef1;
+$matisse: #1e79ae;
+$seance: #7b1fa2;
+$picaso: #fff59e;
+$persian-green: #009688;
+$tall-poppy: #bf342a;
+$silver-chalice-dark: #9e9e9e;
+$san-marino: #3f51b5;
+$orange-peel: #ff9800;
+$bay-leaf: #72aa7e;
+$gorse: #ffeb3b;
+$nobel: #b3b3b3;
+$mandy: #e85d67;
+$amber: #ffc107;
+$pomegranate: #f44336;
+$lynch: #607d8b;
+$robin-egg-blue: #00bcd4;
+$tapestry: #b85792;
+$sushi: #8bc34a;
+$orange: #ff5722;
+$dodger-blue-dark: #2196f3;
+$amaranth: #e91e63;
+$fruit-salad: #4caf50;
+$keppel: #34aead;
+$boulder: #757575;
+$scarlet-gum: #54156f;
+$verdun-green: #4b7902;
+$deep-cerulean: #0181a9;
+$jacksons-purple: #1d2f93;
+$limeade: #65bc00;
+$heliotrope: #c86cef;
+$mandarian-orange: #962525;
+$sky-blue: #268bff;
+$jaffa: #f58836;
+$light-red: #ffebee;
+$oasis: #fde6c2;
+$titanium: #e5e5e5;
+
+//light theme
+$alto-light: #e0e0e0;
+$onahau: #d0e6ff;
+$concrete: #f2f2f2;
+$gray-dark: #333333;
+$korma: #8d480f;
+$endeavour: #005a9e;
+$black-delight: rgba(0, 0, 0, 0.42);
+$brown-dark: #975b00;
+$alab: #faf9f9;
+
+// Dark theme
+// $search-bg-dark: rgba(255, 255, 255, 0.05);
+$border-dark-theme: rgba(255, 255, 255, 0.1);
+$lemon-chiffon: #fffdd8;
+$shark: #2b3035;
+$mine-shaft: #2e2e2e;
+$tundora-dark: #2a2a2a;
+$pirate-gold: #bb7b00;
+$dodger-blue: #20a1ff;
+$brown-light: #fcd599;
+
+//colors for new grid..which will be changed or removed
+$blue-background: #56ccf2;
+$accent-shade-background: #ecd4f7;
+$fruit-salad-dark: darken(
+  $fruit-salad,
+  20%
+); //added for graph active state color
+//variables for lighter shades of colors
+$De-York-light: lighten($De-York, 30%);
+$Manhattan-light: lighten($Manhattan, 5%);
+$cosmos-light: lighten($cosmos, 5%);
+$Marzipan-light: lighten($Marzipan, 5%);
+$endeavour-light: lighten($endeavour, 45%);
+
+$gray-color: #828282;
+$black-color: #000000;
+$black-secondory: #424242;
+$dark-gray: #4f4f4f;
+$blue-color: #047b86;
+$gray-stepper: #fafafa;
+$gray-header: whitesmoke;
+$gray-border: #eeeeee;
+$dot-background: #9b9b9b;
+$tundora: #4d4d4d;
+$dove-light-gray: #737373;
+
+// Exxat Cutom Labels COLORS LIST
+$exxat-custom-label-bg-colors: (
+  'picasso': $picaso,
+  'persian-green': $persian-green,
+  'tall-poppy': $tall-poppy,
+  'silver-chalice-dark': $silver-chalice-dark,
+  'san-marino': $san-marino,
+  'orange-peel': $orange-peel,
+  'bay-leaf': $bay-leaf,
+  'gorse': $gorse,
+  'mandy': $mandy,
+  'amber': $amber,
+  'pomegranate': $pomegranate,
+  'lynch': $lynch,
+  'robin-egg-blue': $robin-egg-blue,
+  'tapestry': $tapestry,
+  'sushi': $sushi,
+  'orange': $orange,
+  'dodger-blue-dark': $dodger-blue-dark,
+  'amaranth': $amaranth,
+  'fruit-salad': $fruit-salad,
+  'keppel': $keppel,
+  'oasis': $oasis,
+  'titanium': $titanium,
+) !default;
+
+$exxat-foreground: (
+  text: #1a1a1a,
+  secondary-text: #5f5f5f,
+  icon: #5f5f5f,
+  scroll: #bababa,
+  avatar: #bababa,
+  border: #e4e4e4,
+  chip: #e4e4e4,
+  disable: #bababa,
+  disable-radio: #8d8d8d,
+);
+
+// -----------------------------------------------------------------------------------------------------
+// @ No Box Shadow
+// -----------------------------------------------------------------------------------------------------
+@mixin no-box-shadow {
+  .no-box-shadow {
+    box-shadow: none;
+    border-radius: 0;
+  }
+}
+
+////////////////////////////////////////////////////////////////
+///////////// Borders Varibales ////////////////
+////////////////////////////////////////////////////////////////
+
+$border-radius-100-p: 100%;
+$border-radius-50-p: 50%;
+$border-radius-0: 0px;
+$border-radius-2: 2px;
+$border-radius-4: 4px;
+$border-radius-8: 8px;
+$border-radius-16: 16px;
+
+%border-radius-20 {
+  border-radius: 20px;
+}
+
+////////////////////////////////////////////////////////////////
+///////////// Drawer Varibales ////////////////
+////////////////////////////////////////////////////////////////
+
+$x-small: 30vw;
+$small: 35vw;
+$medium: 50vw;
+$large: 75vw;
+$x-large: 90vw;
+$xx-large: 100vw;
+
+////////////////////////////////////////////////////////////////
+///////////// Flex Table Varibales ////////////////
+////////////////////////////////////////////////////////////////
+
+$flex_Scroll_BG_Opacity: 0.3;
+$flex_Table_padding: 44px;
+$highlight_header_bg: $lemon-chiffon; //kept this css because color can be changes in future
+$expand-cell-hover-width: 40vw;
+$expand-ellipsis-content-hover-width: 38vw;
+$expand-cell-width: 17vw;
+$expand-ellipsis-content-width: 15vw;
+
+////////////////////////////////////////////////////////////////
+///////////// Page Layout Varibales ////////////////
+////////////////////////////////////////////////////////////////
+
+$carded-header-height: 200px !default;
+$carded-toolbar-height: 64px !default;
+$header-height: 120px !default;
+// Calculate toolbar-less carded header height
+$carded-header-height-without-toolbar: $carded-header-height -
+  $carded-toolbar-height;
+
+%flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+////////////////////////////////////////////////////////////////
+///////////// BreakPoints Varibales ////////////////
+////////////////////////////////////////////////////////////////
+// Media step breakpoint mixin based on Angular Material lib
+$breakpoints: (
+  xs: 'screen and (max-width: 599px)',
+  sm: 'screen and (min-width: 600px) and (max-width: 959px)',
+  md: 'screen and (min-width: 960px) and (max-width: 1279px)',
+  lg: 'screen and (min-width: 1280px) and (max-width: 1919px)',
+  xl: 'screen and (min-width: 1920px) and (max-width: 5000px)',
+  lt-sm: 'screen and (max-width: 599px)',
+  lt-md: 'screen and (max-width: 959px)',
+  lt-lg: 'screen and (max-width: 1279px)',
+  lt-xl: 'screen and (max-width: 1919px)',
+  gt-xs: 'screen and (min-width: 600px)',
+  gt-sm: 'screen and (min-width: 960px)',
+  gt-md: 'screen and (min-width: 1280px)',
+  gt-lg: 'screen and (min-width: 1920px)',
+) !default;
+
+// Re-map the breakpoints for the helper classes
+$helper-breakpoints: (
+  xs: null,
+  sm: 'gt-xs',
+  md: 'gt-sm',
+  lg: 'gt-md',
+  xl: 'gt-lg',
+);

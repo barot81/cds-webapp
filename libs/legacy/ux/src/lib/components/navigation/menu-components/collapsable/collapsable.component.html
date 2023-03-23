@@ -1,0 +1,61 @@
+<ng-container *ngIf="!item.hidden">
+  <!-- normal collapsable -->
+  <a
+    class="nav-link h-40 mx-12"
+    [ngClass]="itemClasses.hoverBG"
+    *ngIf="!item.url && !item.function"
+    (click)="toggleOpen($event)"
+  >
+    <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+  </a>
+
+  <!-- item.url -->
+  <a
+    class="nav-link h-40 mx-12"
+    [ngClass]="itemClasses.hoverBG"
+    *ngIf="item.url && !item.function"
+    (click)="toggleOpen($event)"
+    [routerLink]="[item.url]"
+    [routerLinkActive]="['active', 'primary']"
+    [routerLinkActiveOptions]="{ exact: item.exactMatch || false }"
+    [target]="item.openInNewTab ? '_blank' : '_self'"
+  >
+    <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+  </a>
+
+  <ng-template #itemContent>
+    <i
+      aria-hidden="true"
+      class="fa-light nav-link-icon {{ item.icon }}"
+      *ngIf="item.icon"
+    ></i>
+    <span class="nav-link-title" [attr.aria-label]="item.title">{{
+      item.title | labelDictionary: item?.id
+    }}</span>
+    <span
+      class="nav-link-badge"
+      *ngIf="item.badge"
+      [ngStyle]="{ 'background-color': item.badge.bg, color: item.badge.fg }"
+    >
+      {{ item.badge.title }}
+    </span>
+    <i aria-hidden="true" class="fa-light fa-angle-right collapsable-arrow"></i>
+  </ng-template>
+
+  <div class="children" [@slideInOut]="isOpen">
+    <ng-container *ngFor="let item of item.children">
+      <fusion-nav-item
+        *ngIf="item.type === 'menu-item'"
+        [item]="item"
+      ></fusion-nav-item>
+      <fusion-nav-collapsable
+        *ngIf="item.type === 'menu-collapsable'"
+        [item]="item"
+      ></fusion-nav-collapsable>
+      <!-- <fusion-nav-group
+        *ngIf="item.type === 'menu-group'"
+        [item]="item"
+      ></fusion-nav-group> -->
+    </ng-container>
+  </div>
+</ng-container>

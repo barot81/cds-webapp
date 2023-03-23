@@ -1,0 +1,96 @@
+<div
+  id="login"
+  fxLayout="row"
+  fxLayoutAlign="center center"
+  class="margin-auto w-100-p"
+  [ngStyle]="{
+    background: 'url(assets/images/bg/1.jpg)',
+    'background-size': 'cover'
+  }"
+>
+  <mat-card>
+    <div fxLayout="column">
+      <div
+        id="login-form-wrapper"
+        fxLayout="column"
+        fxLayoutAlign="start center"
+        fxFlex="100"
+      >
+        <div id="login-form">
+          <div>
+            <div
+              class="logo"
+              fxLayout="row"
+              fxLayoutAlign="center center"
+              fxFlex="100"
+            >
+              <img
+                src="assets/images/logo/exxat-pink-large.png"
+                alt="exxat-pink-large"
+                width="150px"
+                height="80px"
+              />
+            </div>
+          </div>
+          <div fxLayout="column">
+            <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100">
+              <div class="w-100-p px-8">
+                <div class="w-100-p">
+                  <div fxLayout="column" fxLayoutAlign="center center">
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-clock accent-fg mb-12 s-120"
+                    ></i>
+                  </div>
+                  <div
+                    class="font-14 accent-fg mb-12"
+                    fxLayout="column"
+                    fxLayoutAlign="center center"
+                  >
+                    <span
+                      tabindex="0"
+                      aria-label="The current session is timed out, please perform 
+                      any of the actions below."
+                      >Your current session has expired
+                    </span>
+                  </div>
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="center center"
+                    class="drawer-card mb-12"
+                    (click)="logOut('re-login_from_session_timeout')"
+                  >
+                    <div fxLayout="column">
+                      <span
+                        class="font-16 font-weight-600 overflow-ellipses pr-16"
+                        tabindex="0"
+                      >
+                        Sign in again as "{{ userName }}"
+                      </span>
+                    </div>
+                  </div>
+
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="center center"
+                    class="drawer-card"
+                    (click)="logOut('logout_from_session_timeout')"
+                  >
+                    <div fxLayout="column" color="primary">
+                      <span
+                        class="font-16 font-weight-600 overflow-ellipses pr-16"
+                        tabindex="0"
+                      >
+                        Sign out
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

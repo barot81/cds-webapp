@@ -1,0 +1,57 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/legacy/plugin/src",
+  "prefix": "exxat.ui.packages",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/legacy/plugin"],
+      "options": {
+        "project": "libs/legacy/plugin/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/legacy/plugin/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/legacy/plugin/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/legacy/plugin"],
+      "options": {
+        "jestConfig": "libs/legacy/plugin/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/legacy/plugin/**/*.ts",
+          "libs/legacy/plugin/**/*.html",
+          "libs/legacy/plugin/ckeditor/**/*.ts",
+          "libs/legacy/plugin/ckeditor/**/*.html",
+          "libs/legacy/plugin/data-source/**/*.ts",
+          "libs/legacy/plugin/data-source/**/*.html",
+          "libs/legacy/plugin/file-upload/**/*.ts",
+          "libs/legacy/plugin/file-upload/**/*.html",
+          "libs/legacy/plugin/file-viewer/**/*.ts",
+          "libs/legacy/plugin/file-viewer/**/*.html",
+          "libs/legacy/plugin/notifications/**/*.ts",
+          "libs/legacy/plugin/notifications/**/*.html",
+          "libs/legacy/plugin/payment/**/*.ts",
+          "libs/legacy/plugin/payment/**/*.html",
+          "libs/legacy/plugin/power-bi/**/*.ts",
+          "libs/legacy/plugin/power-bi/**/*.html",
+          "libs/legacy/plugin/tags/**/*.ts",
+          "libs/legacy/plugin/tags/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

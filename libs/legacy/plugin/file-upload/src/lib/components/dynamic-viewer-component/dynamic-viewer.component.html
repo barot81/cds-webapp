@@ -1,0 +1,25 @@
+<div id="exxat-file-viewer" class="w-100-p h-100-p">
+    <div fxLayout="row wrap" class="h-100-p" *ngIf="isData">
+        <div class="exxat-file-viewer-container w-100-p h-100-p" *ngIf="!isNotSupportedFormat">
+            <ng-container #vc></ng-container>
+        </div>
+        <div class="exxat-file-viewer-container w-100-p h-100-p" *ngIf="isNotSupportedFormat">
+            <div class="message-box warning" *ngIf="isLoadedNotSupported else loading">
+                File format not supported. Download the file to view
+                <a (click)="download()">{{this.file_name}}</a>
+            </div>
+        </div>
+    </div>
+    <div fxLayout="row wrap" *ngIf="!isData">
+        <div class="message-box error"> No files to view</div>
+    </div>
+</div>
+
+<ng-template #loading>
+    <div fxLayout="row" fxLayoutAlign="start space-between" class="mt-16">
+      <div fxLayout="column">
+        <div class="line shine w-140 h-8 "></div>
+  
+      </div>
+    </div>
+  </ng-template>

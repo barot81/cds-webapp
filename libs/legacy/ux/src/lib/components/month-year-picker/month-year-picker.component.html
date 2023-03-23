@@ -1,0 +1,7 @@
+<mat-form-field appearance="fill">
+  <mat-label>{{ label }}</mat-label>
+  <input (click)="picker.open()" matInput [matDatepicker]="picker" [value]="value" [min]="updatedMinDate"
+    [max]="updatedMaxDate" [placeholder]="placeholder" [required]="required" readonly />
+  <mat-datepicker-toggle matSuffix [for]="picker"> </mat-datepicker-toggle>
+  <mat-datepicker [startView]="startView" #picker (monthSelected)="fromDateSelected($event, picker)"></mat-datepicker>
+</mat-form-field>

@@ -1,0 +1,60 @@
+<div class="drawer-p theme-selection" fxLayout="column">
+  <div fxLayout="column" class="border-bottom">
+    <div class="mb-16">
+      <span class="font-16 font-weight-600">THEME</span>
+    </div>
+    <div>
+      <div
+        fxLayout="row wrap"
+        fxLayoutAlign="start center"
+        tabindex="0"
+        aria-label="Theme Selection"
+      >
+        <button
+          class="theme-chip mr-12 mb-16"
+          mat-button
+          [attr.aria-label]="item.id"
+          *ngFor="let item of themes"
+          [ngClass]="{ selected: (selectedTheme$ | async) === item.id }"
+          (click)="changeTheme(item.id)"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <span
+              class="mr-8 status-point"
+              [style.background-color]="item.primary"
+            ></span>
+            <span>
+              {{ item.title | titlecase }}
+            </span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="column" class="border-bottom">
+    <div class="mb-16">
+      <span class="font-16 font-weight-600">SCHEME</span>
+    </div>
+    <div>
+      <div
+        fxLayout="row wrap"
+        fxLayoutAlign="start center"
+        tabindex="0"
+        aria-label="Scheme Selection"
+      >
+        <button
+          class="theme-chip mr-12 mb-16"
+          *ngFor="let item of schemes"
+          mat-button
+          [attr.aria-label]="item.id"
+          [ngClass]="{ selected: (selectedScheme$ | async) === item.id }"
+          (click)="changeScheme(item.id)"
+        >
+          <i aria-hidden="true" class="fa-light {{ item.icon }} mr-8 s-14"></i>
+          {{ item.id | titlecase }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="form"></form>
+</div>

@@ -1,0 +1,15 @@
+@mixin exxat-time-picker-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $is-dark: map-get($theme, is-dark);
+
+  .w-clock-wrapper {
+    .w-clock {
+      @if ($is-dark) {
+        background: darkgrey !important;
+      }
+    }
+  }
+}

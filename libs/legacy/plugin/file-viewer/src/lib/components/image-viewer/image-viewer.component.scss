@@ -1,0 +1,34 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+h2 {
+  margin-left: 20px;
+  white-space: nowrap;
+}
+
+$sidebarWidth: 200px;
+$contentPadding: 16px;
+$wDiff: $sidebarWidth + $contentPadding * 2;
+
+$headerHeight: 64px;
+$subHeaderHeight: 32px + 16px;
+$hDiff: $headerHeight + $subHeaderHeight + $contentPadding * 2;
+
+.imagewrapper {
+  flex: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+  min-height: 70vh;
+  height: 100%;
+
+  /*  max-width: calc(100vw -  #{$wDiff});
+  min-width: calc(100vw - #{$wDiff});
+  width: calc(100vw - #{$wDiff});
+  max-height: calc(100vh - #{$hDiff});
+  min-height: calc(100vh - #{$hDiff});
+  height: calc(100vh - #{$hDiff}); */
+}

@@ -1,0 +1,128 @@
+@use '@angular/material' as mat;
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+
+@mixin mat-timepicker-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $action: map-get($theme, action);
+  $is-dark: map-get($theme, is-dark);
+
+  ngx-material-timepicker-container {
+    ngx-material-timepicker-content {
+      .timepicker {
+        .timepicker__header {
+          background-color: mat.get-color-from-palette($primary, 400);
+          .timepicker-dial__item {
+            color: mat.get-color-from-palette($primary, 700) !important;
+            &.timepicker-dial__item_active {
+              color: mat.get-color-from-palette($primary, 700) !important;
+            }
+          }
+          .timepicker-period__btn.timepicker-dial__item_active {
+            color: white !important;
+          }
+        }
+      }
+      .clock-face__number > span.active {
+        background-color: mat.get-color-from-palette($primary) !important;
+      }
+      .clock-face__clock-hand {
+        background-color: mat.get-color-from-palette($primary) !important;
+      }
+      ngx-material-timepicker-button {
+        .timepicker-button {
+          color: mat.get-color-from-palette($primary) !important;
+        }
+      }
+    }
+  }
+
+  ngx-timepicker-field {
+    width: 100% !important;
+    height: 34px !important;
+    border-radius: 5px !important;
+    padding: 0.3em 0.55em 0.2em 0 !important;
+    background: mat.get-color-from-palette(
+      $foreground,
+      base,
+      if($is-dark, 0.1, 0.04)
+    );
+    border: solid 1px map-get($map: $foreground, $key: divider) !important;
+
+    &:focus-within {
+      border: solid 1px mat.get-color-from-palette($primary) !important;
+    }
+
+    .ngx-timepicker {
+      border-bottom: none !important;
+    }
+
+    .ngx-timepicker-control--active::after,
+    .period-control__button::after {
+      border-bottom: none !important;
+      content: none !important;
+    }
+
+    .ngx-timepicker-control__input,
+    .period-control__button {
+      background: transparent !important;
+      font-size: 14px !important;
+      font-weight: normal !important;
+    }
+
+    ngx-material-timepicker-toggle {
+      display: flex !important;
+      flex: auto !important;
+      justify-content: flex-end !important;
+    }
+  }
+
+  .ngx-time-picker-container {
+    .secondary-text {
+      color: map-get($map: $foreground, $key: text) !important;
+      font-weight: 600 !important;
+    }
+
+    &:focus-within {
+      .secondary-text,
+      mat-label {
+        color: mat.get-color-from-palette($primary) !important;
+      }
+    }
+
+    &.mat-invalid {
+      .secondary-text,
+      mat-label {
+        color: mat.get-color-from-palette($warn) !important;
+      }
+      ngx-timepicker-field {
+        border: solid 1px mat.get-color-from-palette($warn) !important;
+      }
+    }
+  }
+
+  .period-selector__button--active {
+    color: mat.get-color-from-palette($primary) !important;
+  }
+  ngx-material-timepicker-toggle,
+  mat-datepicker-toggle {
+    button {
+      svg {
+        @if ($is-dark) {
+          fill: map-get($map: $foreground, $key: icon);
+        }
+      }
+    }
+  }
+  .ngx-timepicker-control__arrow,
+  .period-control__arrow {
+    color: map-get($map: $foreground, $key: icon) !important;
+    font-size: 8px !important;
+    margin-top: 3px !important;
+  }
+}

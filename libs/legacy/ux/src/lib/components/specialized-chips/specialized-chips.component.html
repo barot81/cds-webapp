@@ -1,0 +1,8 @@
+<mat-chip-list class="specialized-chip">
+  <mat-chip
+    [options]="tooltipOptions"
+    [tooltip]="specializedChip"
+    [isEnabled]="isTooltipEnable(specializedChip)"
+    >{{ isTextOverflow(specializedChip) }}</mat-chip
+  >
+</mat-chip-list>

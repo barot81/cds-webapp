@@ -1,0 +1,47 @@
+@import 'node_modules/@exxat/styles/shared/init';
+
+#exxat-file-upload {
+  .upload-files-container {
+    .upload-file-action {
+      margin-bottom: 16px;
+
+      span {
+        padding-left: 16px;
+        word-break: break-word;
+      }
+
+      mat-icon {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .file-upload-box-container {
+    .file-upload-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: dashed;
+      border-width: 2px;
+      border-radius: 1px;
+      padding: 16px;
+      line-height: normal;
+      border-color: $silver !important;
+
+      .file-upload-text {
+        span {
+          font-size: 16px;
+          padding-left: 16px;
+        }
+      }
+    }
+
+    .file-format-text {
+      padding-top: 4px;
+    }
+  }
+
+  .filePointer {
+    cursor: pointer;
+  }
+}

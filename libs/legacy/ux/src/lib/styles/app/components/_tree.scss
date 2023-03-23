@@ -1,0 +1,98 @@
+@use '@angular/material' as mat;
+@mixin tree-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $action: map-get($theme, action);
+  $is-dark: map-get($theme, is-dark);
+  //tree styling
+  .tree-examples-style {
+    //style for node expanded
+    mat-tree-node.mat-tree-node[aria-expanded='true'] .tree-node-bg {
+      border-radius: 0px !important;
+      .icon-hidden {
+        i {
+          visibility: visible !important;
+          cursor: pointer !important;
+        }
+      }
+      button.mat-button {
+        height: 48px !important;
+      }
+      &.accordian-style-node {
+        border-radius: 0px !important;
+      }
+    }
+    mat-tree-node {
+      .tree-node-hover {
+        border-left: 4px solid transparent;
+        min-height: 48px !important;
+      }
+      i {
+        font-size: 16px !important;
+      }
+    }
+    mat-tree-node.mat-tree-node {
+      font-size: 16px !important;
+      .mat-checkbox-label {
+        font-size: 16px !important;
+      }
+    }
+    .mat-tree-node:hover {
+      background: none !important;
+    }
+    //menu icon visibility
+    .icon-hidden {
+      i {
+        visibility: hidden !important;
+      }
+    }
+    .tree-node-hover:hover {
+      background: map-get($map: $background, $key: hover) !important;
+      border-left: 4px solid transparent !important;
+      box-sizing: border-box;
+      border-radius: 0px !important;
+      .icon-hidden {
+        i {
+          visibility: visible !important;
+          cursor: pointer !important;
+        }
+      }
+      .mat-icon-button:hover {
+        background-color: map-get($map: $background, $key: hover) !important;
+      }
+      &.accordian-style-node {
+        border-radius: 0px !important;
+      }
+    }
+    //for active node item
+    .tree-node-active,
+    .tree-node-active:hover {
+      background: map-get($map: $background, $key: hover) !important;
+      font-weight: 400px !important;
+      font-size: 16px !important;
+      border-left: 4px solid mat.get-color-from-palette($primary, 500) !important;
+      box-sizing: border-box;
+      .mat-icon-button:hover {
+        background-color: map-get($map: $background, $key: hover) !important;
+      }
+      .icon-hidden {
+        i {
+          visibility: visible !important;
+          cursor: pointer !important;
+        }
+      }
+      &.accordian-style-node {
+        border: none !important;
+        border-radius: 0px !important;
+      }
+    }
+  }
+  //mat-expansion without background
+  .share-drawer {
+    .mat-tree-node:hover {
+      background: transparent !important; //on hover
+    }
+  }
+}

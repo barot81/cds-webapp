@@ -1,0 +1,336 @@
+<div
+  class="p-16 page-layout inner-scroll help-center-popup"
+  fxLayout="column"
+  fxFlex="100"
+  fxFlex.gt-sm="100"
+  fxFlex.gt-md="100"
+>
+  <div class="mb-12">
+    <mat-card>
+      <div class="mb-10 ml-gt-sm-16">
+        <div>
+          <span id="important_message" theme="light">
+            The easiest, and fastest, way to find answers is with a quick search
+            on our
+            <a href="https://exxat.force.com/v4Help/s/" target="_blank"
+              >Help Center</a
+            >, where you will find documents and video tutorials to guide you
+            through common tasks.
+          </span>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div>
+    <div
+      fxLayout="column wrap"
+      fxFlex="100"
+      fxFlex.gt-sm="40"
+      fxFlex.gt-md="40"
+    >
+      <div>
+        <div class="" fxFlex="100">
+          <form [formGroup]="fusionFormGroup">
+            <mat-card fxLayout="column" class="mb-16">
+              <div
+                fxLayout="row wrap"
+                fxLayoutAlign="start center"
+                fxFlex="1 0 auto"
+                class="w-100-p"
+              >
+                <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>Subject</mat-label>
+                  <input matInput formControlName="subject" required />
+                  <mat-error>Subject is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+              <v4-app-help-file-upload
+                (filesListEvent)="onUploadFiles($event)"
+              ></v4-app-help-file-upload>
+
+              <div
+                fxLayout="row wrap"
+                fxLayoutAlign="start center"
+                fxFlex="1 0 auto"
+              >
+                <mat-form-field appearance="fill" class="w-100-p">
+                  <mat-label>Ask Question</mat-label>
+
+                  <textarea
+                    matInput
+                    rows="4"
+                    formControlName="askQuestion"
+                    required
+                  ></textarea>
+                  <mat-error>Ask Question is required!</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div fxLayout="row" fxLayoutAlign="end center" class="mt-8">
+                <button
+                  mat-flat-button
+                  color="primary"
+                  mat-dialog-close
+                  (click)="onSubmit()"
+                  [disabled]="(isFormValid$ | async) === false"
+                >
+                  Submit
+                </button>
+              </div>
+            </mat-card>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- /1st column -->
+
+    <!-- 2nd column -->
+
+    <div class="" fxFlex.gt-sm="60" fxFlex.gt-md="60">
+      <div class="ml-8">
+        <nav mat-tab-nav-bar class="">
+          <a
+            mat-tab-link
+            (click)="ticketListByUser()"
+            [active]="selectedTab === 'user'"
+          >
+            <span>My Tickets</span>
+          </a>
+        </nav>
+      </div>
+
+      <div
+        class="page-layout carded fullwidth inner-scroll exxat-new-grid full-width-page"
+      >
+        <div class="overflow-y-auto">
+          <div class="content">
+            <div
+              fxLayout="column"
+              class="table-rounded-border white-background"
+            >
+              <div fxLayout="column" #gridHeader>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="w-100-p"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxFlex.lt-md="100"
+                  >
+                    <div
+                      class="search-wrapper"
+                      fxFlex="100"
+                      search
+                      [formControl]="searchItem"
+                    >
+                      <div
+                        class="search table-search"
+                        fxFlex
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-magnifying-glass s-18"
+                        ></i>
+                        <input
+                          id="inputBox"
+                          type="text"
+                          placeholder="Search"
+                          [formControl]="searchItem"
+                          fxFlex
+                          [(ngModel)]="searchValue"
+                          (keyup)="applyFilter($event)"
+                        />
+
+                        <button
+                          mat-icon-button
+                          aria-label="clear search"
+                          class="action-icon clear-button"
+                          (click)="clearSearch()"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-xmark s-18"
+                          ></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="switchOverInfo"
+                class="info-box info no-border-radius"
+              >
+                <span>{{ switchOverInfo }}</span>
+              </div>
+              <div
+                *ngIf="error"
+                fxLayout="row wrap"
+                fxLayoutAlign="center"
+                class="pt-16 result-found-style warn-fg"
+                tabindex="0"
+                aria-label="2 search results found"
+              >
+                Failed to retrieve results. Look's like an internal server
+                error, please try again after some time. If the problem
+                persists, please contact support at
+                <a href="mailto:v4support@exxat.com">v4support@exxat.com.</a>
+              </div>
+              <div
+                class="overflow-auto"
+                style="height: calc(100vh - 355px) !important"
+              >
+                <table
+                  aria-label="This is a Simple table"
+                  mat-table
+                  [dataSource]="dataSource"
+                  class="w-100-p exxat-table"
+                  matSort
+                >
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef class="name-column">
+                      ID
+                    </th>
+                    <td
+                      mat-cell
+                      *matCellDef="let element; let i = index"
+                      class="name-column"
+                    >
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        <a
+                          exxatManifoldPanelAction
+                          [componentSelector]="
+                            helpCenterDrawerService.get('ticket-details')
+                          "
+                          [size]="'drawer-lg'"
+                          [data]="{
+                            requestId: element.id,
+                            apiHeader: this._apiHeaders
+                          }"
+                          [entityKey]="'viewTicketDetailstatuss'"
+                          [caption]="'Ticket Details'"
+                          [primaryAction]="'Reply'"
+                        >
+                          {{ element.id }}
+                        </a>
+                      </div>
+                    </td>
+                  </ng-container>
+                  <!-- address Column -->
+                  <ng-container matColumnDef="subject">
+                    <th mat-header-cell *matHeaderCellDef class="status-column">
+                      Subject
+                    </th>
+                    <td
+                      mat-cell
+                      *matCellDef="let element"
+                      class="status-column"
+                    >
+                      {{ element.subject }}
+                    </td>
+                  </ng-container>
+                  <!-- email Column -->
+                  <ng-container matColumnDef="status">
+                    <th
+                      mat-header-cell
+                      *matHeaderCellDef
+                      class="priority-width"
+                      mat-sort-header
+                    >
+                      Status
+                    </th>
+                    <td
+                      mat-cell
+                      *matCellDef="let element"
+                      class="priority-width"
+                    >
+                      {{ element.status }}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="description">
+                    <th
+                      mat-header-cell
+                      *matHeaderCellDef
+                      class="description-width"
+                    >
+                      Description
+                    </th>
+                    <td
+                      mat-cell
+                      *matCellDef="let element"
+                      class="description-width"
+                    >
+                      {{ element.description }}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="created_at">
+                    <th
+                      mat-sort-header
+                      mat-header-cell
+                      *matHeaderCellDef
+                      class="priority-width"
+                    >
+                      Created Date
+                    </th>
+                    <td
+                      mat-cell
+                      *matCellDef="let element"
+                      class="priority-width"
+                    >
+                      {{ element.created_at }}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="updated_at">
+                    <th
+                      mat-sort-header
+                      mat-header-cell
+                      *matHeaderCellDef
+                      class="priority-width"
+                    >
+                      Updated Date
+                    </th>
+                    <td
+                      mat-cell
+                      *matCellDef="let element"
+                      class="priority-width"
+                    >
+                      {{ element.updated_at }}
+                    </td>
+                  </ng-container>
+                  <tr
+                    mat-header-row
+                    *matHeaderRowDef="displayedColumns; sticky: true"
+                  ></tr>
+                  <tr
+                    mat-row
+                    *matRowDef="let row; columns: displayedColumns"
+                  ></tr>
+                </table>
+              </div>
+              <div #pagination>
+                <mat-paginator
+                  [length]="totalCount"
+                  tabindex="0"
+                  [pageSize]="10"
+                  class="mat-paginator-sticky bt"
+                >
+                </mat-paginator>
+              </div>
+            </div>
+          </div>
+          <!-- / CONTENT -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

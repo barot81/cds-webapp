@@ -1,0 +1,16 @@
+<button
+  mat-button
+  class="Profile-area"
+  (click)="openAccoutSetting()"
+>
+<div *ngIf="initials" [ngClass]="['profile-initial']">
+  <span [ngClass]="['profile-identity-initials']">
+    <div *ngIf="loading; else: templateName">
+      <mat-spinner diameter="30"></mat-spinner>
+    </div>
+
+    <ng-template #templateName> {{ displayInitial }} </ng-template>
+  </span>
+</div>
+  <img *ngIf="ProfileUrl && !initials" class="profile-pic" [src]="ProfileUrl" alt="profile"/>
+</button>

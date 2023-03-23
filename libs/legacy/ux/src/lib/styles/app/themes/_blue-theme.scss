@@ -1,0 +1,313 @@
+@use '@angular/material' as mat;
+
+////////////////////////////////////////////////////////////////
+///////////// Blue Light Theme  ////////////////
+////////////////////////////////////////////////////////////////
+
+// @Start --  Exxat Blue Light Theme Color Palates
+
+$exxat-blue-light-theme-primary: (
+  50: #e8eaf6,
+  100: #c6cbe9,
+  200: #9fa8da,
+  300: #7985cb,
+  400: #5c6bc0,
+  500: #3f51b5,
+  600: #394aae,
+  700: #3140a5,
+  800: #29379d,
+  900: #1b278d,
+  A100: #c6cbff,
+  A200: #939dff,
+  A400: #606eff,
+  A700: #4757ff,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+$exxat-blue-light-theme-accent: (
+  50: #fef5e7,
+  100: #fde6c2,
+  200: #fcd599,
+  300: #fbc470,
+  400: #fab752,
+  500: #f9aa33,
+  600: #f8a32e,
+  700: #f79927,
+  800: #f69020,
+  900: #f57f14,
+  A100: #ffffff,
+  A200: #fff7f1,
+  A400: #ffdabe,
+  A700: #ffcca4,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $dark-primary-text,
+    700: $dark-primary-text,
+    800: $dark-primary-text,
+    900: $dark-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  ),
+);
+
+// @End --  Exxat Blue Light Theme Color Palates
+
+// -----------------------------------------------------------------------------------------------------
+// @ Define the default theme
+// -----------------------------------------------------------------------------------------------------
+
+// Define the primary, accent and warn palettes
+$blue-light-primary-palette: mat.define-palette(
+  $exxat-blue-light-theme-primary,
+  500,
+  100,
+  900
+);
+$blue-light-accent-palette: mat.define-palette(
+  $exxat-blue-light-theme-accent,
+  500,
+  100,
+  900
+);
+$blue-light-warn-palette: mat.define-palette(mat.$red-palette);
+
+// Create the Material theme object
+$blue-theme: mat.define-light-theme(
+  $blue-light-primary-palette,
+  $blue-light-accent-palette,
+  $blue-light-warn-palette
+);
+
+$blue-theme: map-merge(
+  $blue-theme,
+  (
+    background:
+      map-merge(
+        map-get($blue-theme, background),
+        $light-theme-background-palette
+      ),
+  )
+);
+
+$blue-theme: map-merge(
+  $blue-theme,
+  (
+    foreground:
+      map-merge(
+        map-get($blue-theme, foreground),
+        $light-theme-foreground-palette
+      ),
+  )
+);
+
+$blue-theme: map-merge(
+  $blue-theme,
+  (
+    action: $fuse-navy,
+  )
+);
+
+// Add ".theme-blue-light" class to the body to activate this theme.
+// Class name must start with "theme-" !!!
+body.theme-blue-light {
+  // Create an Angular Material theme from the $theme map
+  @include mat.all-component-themes($blue-theme);
+
+  // Create an Material Date Time Picker theme from the $theme map
+  @include mat-datetimepicker-theme($blue-theme);
+
+  // Apply the theme to the Fuse Core
+  @include core-theme($blue-theme);
+
+  // Generate Fuse color classes for primary, accent and warn colors
+  $palettes: (
+    primary: $blue-light-primary-palette,
+    accent: $blue-light-accent-palette,
+    warn: $blue-light-warn-palette,
+  );
+
+  @include fuse-color-classes($palettes);
+}
+
+////////////////////////////////////////////////////////////////
+///////////// Blue Light Theme  //////////////// END
+////////////////////////////////////////////////////////////////
+
+// -----------------------------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////
+///////////// Blue Dark Theme  //////////////// START
+////////////////////////////////////////////////////////////////
+
+// @Start --  Exxat Blue Dark Theme Color Palates
+
+$exxat-blue-dark-theme-primary: (
+  50: #efeeff,
+  100: #d8d6ff,
+  200: #bebaff,
+  300: #a39eff,
+  400: #908aff,
+  500: #7c75ff,
+  600: #746dff,
+  700: #6962ff,
+  800: #5f58ff,
+  900: #4c45ff,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #edecff,
+  A700: #d4d3ff,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  ),
+);
+
+$exxat-blue-dark-theme-accent: (
+  50: #fef3e2,
+  100: #fce2b6,
+  200: #facf85,
+  300: #f8bb54,
+  400: #f7ad30,
+  500: #f59e0b,
+  600: #f4960a,
+  700: #f28c08,
+  800: #f08206,
+  900: #ee7003,
+  A100: #ffffff,
+  A200: #ffeee1,
+  A400: #ffd0ae,
+  A700: #ffc195,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $dark-primary-text,
+    700: $dark-primary-text,
+    800: $dark-primary-text,
+    900: $dark-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  ),
+);
+// @End --  Exxat Blue Dark Theme Color Palates
+
+// -----------------------------------------------------------------------------------------------------
+// @ Define a Dark theme
+// -----------------------------------------------------------------------------------------------------
+
+// Define the primary, accent and warn palettes
+$blue-dark-primary-palette: mat.define-palette(
+  $exxat-blue-dark-theme-primary,
+  500,
+  100,
+  900,
+  500
+);
+$blue-dark-accent-palette: mat.define-palette(
+  $exxat-blue-dark-theme-accent,
+  500,
+  100,
+  900
+);
+$blue-dark-warn-palette: mat.define-palette(mat.$red-palette);
+
+// Create the Material theme object
+$blue-dark-theme: mat.define-dark-theme(
+  $blue-dark-primary-palette,
+  $blue-dark-accent-palette,
+  $blue-dark-warn-palette
+);
+
+// Custom Background Pellete For Dark Theme
+$blue-dark-theme: map-merge(
+  $blue-dark-theme,
+  (
+    background:
+      map-merge(
+        map-get($blue-dark-theme, background),
+        $dark-theme-background-palette
+      ),
+  )
+);
+
+$blue-dark-theme: map-merge(
+  $blue-dark-theme,
+  (
+    foreground:
+      map-merge(
+        map-get($blue-dark-theme, foreground),
+        $dark-theme-foreground-palette
+      ),
+  )
+);
+
+$blue-dark-theme: map-merge(
+  $blue-dark-theme,
+  (
+    action: $fuse-navy,
+  )
+);
+
+// Add ".theme-blue-gray-dark" class to the body to activate this theme.
+// Class name must start with "theme-" !!!
+body.theme-blue-dark {
+  // Generate the Angular Material theme
+  @include mat.all-component-themes($blue-dark-theme);
+
+  // Create an Material Date Time Picker Dark theme from the $theme map
+  @include mat-datetimepicker-theme($blue-dark-theme);
+
+  // Apply the theme to the Fuse Core
+  @include core-theme($blue-dark-theme);
+
+  // Generate Fuse color classes for primary, accent and warn colors
+  $palettes: (
+    primary: $blue-dark-primary-palette,
+    accent: $blue-dark-accent-palette,
+    warn: $blue-dark-warn-palette,
+  );
+
+  @include fuse-color-classes($palettes);
+}
+
+////////////////////////////////////////////////////////////////
+///////////// Blue Dark Theme  //////////////// END
+////////////////////////////////////////////////////////////////

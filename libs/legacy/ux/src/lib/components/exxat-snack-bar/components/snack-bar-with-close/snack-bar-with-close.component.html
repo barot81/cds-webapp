@@ -1,0 +1,17 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" class="pt-14">
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <span tabindex="0" [attr.aria-label]="data" class="font-weight-600">
+      {{ data }}
+    </span>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end center">
+    <button
+      mat-icon-button
+      (click)="onClose()"
+      aria-label="close snackbar"
+      class="action-icon"
+    >
+      <i aria-hidden="true" class="fa-light fa-times"></i>
+    </button>
+  </div>
+</div>

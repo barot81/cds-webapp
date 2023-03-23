@@ -1,0 +1,16 @@
+<div class="dialog">
+<h1 mat-dialog-title class="dialog-title ml-16"> Warning - <strong>"One Time Password"</strong></h1>
+<mat-divider></mat-divider>
+<div mat-dialog-content class="dialog-content">
+  <div *ngIf="
+  (data.userOTPAttempts < 5); else accountLock;">You have entered {{data.userOTPAttempts}} times wrong
+  <strong>"One-Time Password"</strong>. {{(5 - data.userOTPAttempts)}} more attempt<span *ngIf="(5 - data.userOTPAttempts) !=1">s</span>are remaining.</div>
+  <ng-template #accountLock>
+    <div>
+      You have entered <strong>"One-Time Password"</strong> incorrectly for 5 or more attempts. You will not be able to request <strong>"One-Time Password"</strong> for next  <strong>6 hours</strong>. If you need immediate assistance with your password please contact <strong>v4support@exxat.com</strong>.<br/> 
+      please try to login after <strong>{{ lockoutEnd | date:'medium' }} </strong>.
+    </div>
+  </ng-template>
+  <button type="button" mat-stroked-button class="drawer-actions-save mt-16" (click)="onClose()" cdkFocusInitial> OK </button>
+</div>
+</div>

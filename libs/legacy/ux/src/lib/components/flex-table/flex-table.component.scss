@@ -1,0 +1,53 @@
+@import 'node_modules/@exxat/styles/shared/init';
+
+:host {
+  width: -webkit-fill-available !important;
+}
+.flex-table-container {
+  @include media-breakpoint('gt-sm') {
+    position: relative;
+  }
+
+  .scroll-button {
+    @include media-breakpoint('gt-sm') {
+      width: 40px;
+      height: 100%;
+      background: rgb(189, 195, 199, $flex_Scroll_BG_Opacity);
+      align-items: center;
+      // top: 16px;
+      z-index: 200;
+      position: absolute;
+      &.left {
+        cursor: pointer !important;
+        left: 0px;
+        background: -webkit-linear-gradient(
+          to left,
+          rgb(255, 255, 255, $flex_Scroll_BG_Opacity),
+          rgb(189, 195, 199, $flex_Scroll_BG_Opacity)
+        );
+        background: linear-gradient(
+          to left,
+          rgb(255, 255, 255, $flex_Scroll_BG_Opacity),
+          rgb(189, 195, 199, $flex_Scroll_BG_Opacity)
+        );
+      }
+      &.right {
+        cursor: pointer !important;
+        right: 8px;
+        background: -webkit-linear-gradient(
+          to right,
+          rgb(255, 255, 255, $flex_Scroll_BG_Opacity),
+          rgb(189, 195, 199, $flex_Scroll_BG_Opacity)
+        );
+        background: linear-gradient(
+          to right,
+          rgb(255, 255, 255, $flex_Scroll_BG_Opacity),
+          rgb(189, 195, 199, $flex_Scroll_BG_Opacity)
+        );
+      }
+    }
+    @include media-breakpoint('lt-md') {
+      display: none;
+    }
+  }
+}

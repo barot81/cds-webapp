@@ -1,0 +1,28 @@
+<div
+  class="navbar-header"
+  [ngClass]="fuseConfig.layout.navbar.secondaryBackground"
+>
+  <div class="logo h-64 p-4 fuse-white-bg border-radius-4">
+    <img class="logo-icon" [src]="_logoUrl$ | async" alt="logo" />
+  </div>
+
+  <!-- <button
+    aria-label="Collapse Main Navigation"
+    mat-icon-button
+    class="toggle-sidebar-opened"
+    (click)="toggleSidebarOpened()"
+  >
+    <i aria-hidden="true" class="fa-light fa-arrow-left"></i>
+  </button> -->
+</div>
+
+<div
+  class="navbar-content"
+  fusePerfectScrollbar
+  [fusePerfectScrollbarOptions]="{ suppressScrollX: true }"
+  [ngClass]="fuseConfig.layout.navbar.primaryBackground"
+>
+  <fusion-navigation
+    [aliasLabels]="_fuseNavigationService.aliasLabels | async"
+  ></fusion-navigation>
+</div>

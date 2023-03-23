@@ -1,0 +1,176 @@
+<div class="slider" [class.disabled]="isDisabled" fxFlex="100" fxLayout="row">
+  <div
+    [fxFlex]="hideInputBox ? 100 : 90"
+    [ngClass]="hideInputBox ? 'px-16' : 'pl-16'"
+    fxFlex.xs="95"
+    fxLayout="column"
+    fxLayoutAlign="start"
+  >
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxHide.gt-xs>
+      <div></div>
+      <div
+        *ngIf="!hideInputBox"
+        fxLayoutAlign="center center"
+        fxLayout="column"
+      >
+        <div>
+          <span class="font-24">{{ currentValues[handlerIndex.left] }}</span>
+        </div>
+        <div>
+          <span class="font-16">{{
+            getDescription(currentValues[handlerIndex.left])
+          }}</span>
+        </div>
+      </div>
+
+      <div fxLayoutAlign="end center">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="open description list"
+        >
+          <i aria-hidden="true" class="fa-light fa-ellipsis-h s-18"></i>
+        </button>
+
+        <mat-menu #menu="matMenu" xPosition="after">
+          <div fxLayout="column" class="px-16">
+            <div class="mb-4"><span>Ratings</span></div>
+            <mat-divider></mat-divider>
+            <div
+              *ngFor="let item of sliderTracks"
+              fxLayout="row"
+              fxLayoutAlign="start"
+              class="mt-8"
+            >
+              <span class="font-18">{{ item.endStep }} </span> -
+              {{ item.description }}
+            </div>
+          </div>
+        </mat-menu>
+      </div>
+    </div>
+
+    <div
+      class="bar mt-16"
+      (mousemove)="handlerSliding($event)"
+      (panmove)="handlerSliding($event)"
+    >
+      <span
+        tabindex="0"
+        role="slider"
+        class="handle"
+        [ngClass]="{
+          active: isHandlerActive && currentHandlerIndex === handlerIndex.left,
+          'last-active': currentHandlerIndex === handlerIndex.left
+        }"
+        [style.left.%]="handlerX[handlerIndex.left]"
+        (mousedown)="setHandlerActive($event, handlerIndex.left)"
+        (panstart)="setHandlerActive($event, handlerIndex.left)"
+      >
+      </span>
+      <div class="filler">
+        <div class="h-100-p" fxLayout="row" fxLayoutAlign="start center">
+          <div
+            *ngFor="let stepPos of stepIndicatorPositions; let islast = last"
+            [style.width.px]="stepPos.position"
+            [style.background]="stepPos.bgColor"
+            class="h-100-p"
+          >
+            <div
+              class="step-indicators pt-12"
+              *ngIf="!islast && !hideValues"
+              [fxHide.xs]="!isIncludedInSliderTracks(stepPos.value)"
+              [ngClass]="{
+                active: stepPos.value === currentValues[handlerIndex.left]
+              }"
+            >
+              <span
+                *ngIf="hideDecimalValues ? isInteger(stepPos.value) : true"
+                >{{ stepPos.value }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="values pb-8" *ngIf="!hideValues">
+      <span
+        [ngClass]="{
+          active:
+            initValues[handlerIndex.left] === currentValues[handlerIndex.left]
+        }"
+        >{{ initValues[handlerIndex.left] }}</span
+      >
+      <span
+        [ngClass]="{
+          active:
+            initValues[handlerIndex.right] === currentValues[handlerIndex.left]
+        }"
+        >{{ initValues[handlerIndex.right] }}</span
+      >
+    </div>
+
+    <div
+      *ngIf="!hideDescription"
+      fxHide.xs
+      class="track-description pt-8"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+    >
+      <!-- <div *ngFor="let step of sliderTracks" [style.width.px]="step?.width"> -->
+      <div
+        *ngFor="
+          let step of sliderTracks;
+          let isLast = last;
+          let isFirst = first
+        "
+        [ngClass]="{ 'pr-8': !isLast }"
+      >
+        <span
+          class="font-18"
+          [ngClass]="{
+            'font-weight-600': currentValues[handlerIndex.left] === step.endStep
+          }"
+          >{{ step.endStep }}</span
+        >
+        -
+        {{ step.description }}
+      </div>
+    </div>
+  </div>
+
+  <div
+    *ngIf="!hideInputBox"
+    fxFlex="10"
+    fxLayout="column"
+    fxLayoutAlign="start"
+    fxHide.xs
+    class="pl-16"
+  >
+    <div fxLayout="row" fxLayoutAlign="start">
+      <div>
+        <form [formGroup]="sliderForm">
+          <div type="text" class="range-slider__value">
+            <input
+              type="number"
+              (keypress)="onKeyPress($event)"
+              formControlName="sliderValue"
+              [min]="minValue"
+              [max]="maxValue"
+              [step]="step"
+              #range_slider_input
+              (keyup)="roundOffInput(range_slider_input.value)"
+              [attr.aria-label]="
+                'slider value is' + sliderForm.get('sliderValue').value
+              "
+            />
+          </div>
+        </form>
+      </div>
+      <div fxLayoutAlign="end end" class="pl-4">
+        <span>Rating</span>
+      </div>
+    </div>
+  </div>
+</div>

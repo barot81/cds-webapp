@@ -1,0 +1,413 @@
+{
+  "appSettings": {
+    "production": false,
+    "allowProductSelection": false,
+    "unauthorizedEndpoints": [],
+    "notFoundEndpoints": [],
+    "auth": {
+      "endpoint": "https://foundation-identity-gw.dev.exxat.net"
+    },
+    "realtime": {
+      "endpoint": "https://foundation-meta-gw.dev.exxat.net/Account"
+    },
+    "gateway": {
+      "endpoint": ""
+    },
+    "services": {
+      "foundation.meta": {
+        "endpoint": "https://foundation-meta-gw.dev.exxat.net"
+      },
+      "v3.account": {
+        "endpoint": "https://exxat-dev-webapps.azurewebsites.net/fusion/account/LoginWithToken"
+      },
+      "v3.launch": {
+        "endpoint": "https://exxat-dev-webapps.azurewebsites.net/Fusion/Home/Launch"
+      },
+      "v3.login": {
+        "endpoint": "https://exxat-dev-webapps.azurewebsites.net/Fusion/Account/Login"
+      },
+      "help.center": {
+        "endpoint": "http://localhost:65301"
+      },
+      "payment": {
+        "endpoint": "https://exxat-dev-integration-payment-service.azurewebsites.net"
+      },
+      "settingdictionary": {
+        "endpoint": "https://api-config-labels.dev.exxat.net/"
+      },
+      "featureflag": {
+        "endpoint": "https://api-feature-management.dev.exxat.net/"
+      },
+      "help.center.salesForceUrl": {
+        "endpoint": "https://exxat.force.com/v4Help/s/"
+      },
+      "help.center.supportNumber": {
+        "endpoint": "323-999-1559"
+      },
+      "student.profile": {
+        "endpoint": "https://student-profile-gw.dev.exxat.net"
+      },
+      "preceptor.profile": {
+        "endpoint": "https://preceptor-profile-gw.dev.exxat.net"
+      },
+      "site.report": {
+        "endpoint": "https://site-report-gw.dev.exxat.net"
+      },
+      "foundation.registration": {
+        "endpoint": "https://foundation-registration-gw.dev.exxat.net"
+      },
+      "site.profile": {
+        "endpoint": "https://site-profile-gw.dev.exxat.net"
+      },
+      "site.resources": {
+        "endpoint": "https://site-resources-gw.dev.exxat.net"
+      },
+      "communicationlog.information": {
+        "endpoint": "https://communicationlog-information-gw.dev.exxat.net"
+      },
+      "admin.activity": {
+        "endpoint": "https://admin-activity-gw.dev.exxat.net"
+      },
+      "student.planOfStudy": {
+        "endpoint": "https://student-planofstudy-gw.dev.exxat.net"
+      },
+      "student.pos": {
+        "endpoint": "https://student-pos-gw.dev.exxat.net"
+      },
+      "student.cohort": {
+        "endpoint": "https://student-cohort-gw.dev.exxat.net"
+      },
+      "placement-hub": {
+        "endpoint": "https://placement-hub-gw.dev.exxat.net"
+      },
+      "placement": {
+        "endpoint": "https://placement-gw.dev.exxat.net"
+      },
+      "placement.report": {
+        "endpoint": "https://placement-report-gw.dev.exxat.net"
+      },
+      "publish-slot": {
+        "endpoint": "https://publish-slot-gw.dev.exxat.net"
+      },
+      "slotgroupresponsenotification": {
+        "endpoint": "https://slotgroupresponsenotification-gw.dev.exxat.net"
+      },
+      "slots": {
+        "endpoint": "https://slots-gw.dev.exxat.net"
+      },
+      "contract": {
+        "endpoint": "https://contract-gw.dev.exxat.net"
+      },
+      "service.notification": {
+        "endpoint": "https://service-notification-gw.dev.exxat.net"
+      },
+      "wishlist": {
+        "endpoint": "https://wishlist-gw.dev.exxat.net"
+      },
+      "myrequest": {
+        "endpoint": "https://myrequest-gw.dev.exxat.net"
+      },
+      "plugin.resourses": {
+        "endpoint": "https://plugin-resourses-gw.dev.exxat.net"
+      },
+      "faculty.resource": {
+        "endpoint": "https://faculty-resource-gw.dev.exxat.net"
+      },
+      "tenantonboarding": {
+        "endpoint": "https://tenantonboarding-gw.dev.exxat.net"
+      },
+      "userConfiguration": {
+        "endpoint": "https://userConfiguration-gw.dev.exxat.net"
+      },
+      "kinesis": {
+        "endpoint": "https://kinesis-gw.dev.exxat.net/ComplianceWorkflow/"
+      },
+      "kinesis.file": {
+        "endpoint": "https://kinesis-gw.dev.exxat.net/Kinesis/Consume"
+      },
+      "platform.report": {
+        "endpoint": "https://platform-report-gw.dev.exxat.net"
+      },
+      "student.compliance": {
+        "endpoint": "https://student-compliance-gw.dev.exxat.net"
+      },
+      "course.compliance": {
+        "endpoint": "https://course-compliance-gw.dev.exxat.net"
+      },
+      "complianceWorkflow": {
+        "endpoint": "https://kinesis-gw.dev.exxat.net/ComplianceWorkflow/"
+      },
+      "student.assignment": {
+        "endpoint": "https://student-assignment-gw.dev.exxat.net/Assignment/"
+      },
+      "assignmentsWorkflow": {
+        "endpoint": "https://assignmentsWorkflow-gw.dev.exxat.net/Assignment"
+      },
+      "evaluation": {
+        "endpoint": "https://evaluation-gw.dev.exxat.net"
+      },
+      "evaluationWorkflow": {
+        "endpoint": "https://evaluationWorkflow-gw.dev.exxat.net/Evaluation/"
+      },
+      "evaluationTargetView": {
+        "endpoint": "https://evaluationtargetview-gw.dev.exxat.net"
+      },
+      "evaluationAggregate": {
+        "endpoint": "https://evaluationaggregate-gw.dev.exxat.net"
+      },
+      "placementInfo": {
+        "endpoint": "https://placementinfo-gw.dev.exxat.net"
+      },
+      "platform.scoring": {
+        "endpoint": "https://platform-scoring-gw.dev.exxat.net/Platform/"
+      },
+      "grading": {
+        "endpoint": "https://grading-gw.dev.exxat.net"
+      },
+      "patientLog": {
+        "endpoint": "https://patientlog-gw.dev.exxat.net/PatientLog/"
+      },
+      "patientLogAggregate": {
+        "endpoint": "https://patientlogaggregate-gw.dev.exxat.net"
+      },
+      "logWorkflow": {
+        "endpoint": "https://logworkflow-gw.dev.exxat.net/PatientLog/"
+      },
+      "patientLog.report": {
+        "endpoint": "https://patientlog-report-gw.dev.exxat.net/PatientLog/"
+      },
+      "patientlog.template": {
+        "endpoint": "https://patientlog-template-gw.dev.exxat.net/PatientLog/"
+      },
+      "azure.patientlog.search": {
+        "endpoint": "https://datasearchexxat.search.windows.net/"
+      },
+      "timesheet": {
+        "endpoint": "https://timesheet-gw.dev.exxat.net"
+      },
+      "exxat.forms.site": {
+        "endpoint": "https://exxat-forms-site-gw.dev.exxat.net/ExxatForms/"
+      },
+      "exxat.forms.myrequest": {
+        "endpoint": "https://exxat-forms-myrequest-gw.dev.exxat.net/ExxatForms/"
+      },
+      "exxat.forms.course.survey": {
+        "endpoint": "https://exxat-forms-course-survey-gw.dev.exxat.net/ExxatForms/"
+      },
+      "student.registration": {
+        "endpoint": "https://student-registration-gw.dev.exxat.net"
+      },
+      "plan.tagging": {
+        "endpoint": "https://plan-tagging-gw.dev.exxat.net"
+      },
+      "plan.report": {
+        "endpoint": "https://plan-report-gw.dev.exxat.net"
+      },
+      "plan.course": {
+        "endpoint": "https://plan-course-gw.dev.exxat.net"
+      },
+      "plan.programme": {
+        "endpoint": "https://plan-programme-gw.dev.exxat.net"
+      },
+      "plan.faculty": {
+        "endpoint": "https://plan-faculty-gw.dev.exxat.net"
+      },
+      "plan.curriculum": {
+        "endpoint": "https://plan-curriculum-gw.dev.exxat.net"
+      },
+      "plan.accreditationStandard": {
+        "endpoint": "https://plan-accreditationstandard-gw.dev.exxat.net"
+      },
+      "plan.mapping": {
+        "endpoint": "https://plan-mapping-gw.dev.exxat.net"
+      },
+      "plan.clone": {
+        "endpoint": "https://plan-clone-gw.dev.exxat.net"
+      },
+      "plan.configuration": {
+        "endpoint": "https://plan-configuration-gw.dev.exxat.net"
+      },
+      "log": {
+        "endpoint": "https://exxat-dev-integration-log-api.azurewebsites.net"
+      },
+      "autoplacement": {
+        "endpoint": "https://autoplacement-gw.dev.exxat.net"
+      },
+      "site.communication": {
+        "endpoint": "https://site-communication-gw.dev.exxat.net"
+      },
+      "site.requirement": {
+        "endpoint": "https://site-requirement-gw.dev.exxat.net"
+      },
+      "student.report": {
+        "endpoint": "https://student-report-gw.dev.exxat.net"
+      },
+      "student.bulkImport": {
+        "endpoint": "https://student-bulkImport-gw.dev.exxat.net"
+      },
+      "publicwebsite": {
+        "endpoint": "https://api-publicsite.dev.exxat.net"
+      },
+      "publicWebsiteURL": {
+        "endpoint": "https://public.dev.exxat.net"
+      }
+    },
+    "microfrontends": {
+      "dashboard": "https://dashboard-app.dev.exxat.net",
+      "profile": "https://profile-app.dev.exxat.net",
+      "faculty": "https://faculty-app.dev.exxat.net",
+      "cohort": "https://cohort-app.dev.exxat.net",
+      "communication": "https://communication-app.dev.exxat.net",
+      "program": "https://program-app.dev.exxat.net",
+      "plan-of-study": "https://plan-of-study-app.dev.exxat.net",
+      "school-contact": "https://school-contact-app.dev.exxat.net",
+      "compliance": "https://compliance-app.dev.exxat.net",
+      "faculty-setup": "https://faculty-setup-app.dev.exxat.net",
+      "plan": "https://plan-app.dev.exxat.net",
+      "plan-reports": "https://plan-reports-app.dev.exxat.net",
+      "course": "https://course-app.dev.exxat.net/",
+      "learning-activity": "https://learning-activity-app.dev.exxat.net",
+      "evaluation": "https://evaluation-app.dev.exxat.net",
+      "patient-log": "https://patient-log-app.dev.exxat.net",
+      "assignment": "https://assignment-app.dev.exxat.net",
+      "timesheet": "https://timesheet-app.dev.exxat.net",
+      "student-survey": "https://student-survey-app.dev.exxat.net",
+      "sites": "https://sites-app.dev.exxat.net",
+      "preceptor": "https://preceptor-dev.azurewebsites.net",
+      "steps": "https://steps-app.dev.exxat.net",
+      "slot": "https://slot-app.dev.exxat.net",
+      "wishlist": "https://wishlist-app.dev.exxat.net",
+      "my-request": "https://my-request-app.dev.exxat.net",
+      "placement": "https://placement-app.dev.exxat.net",
+      "ssr": "https://ssr-app.dev.exxat.net",
+      "settings": "https://settings-app.dev.exxat.net",
+      "publicwebsite": "https://publicwebsite-app.dev.exxat.net",
+      "payment-report": "https://payment-report-app.dev.exxat.net",
+      "role-configuration": "https://role-configuration-app.dev.exxat.net",
+      "tenant-onboarding": "https://tenant-onboarding-app.dev.exxat.net",
+      "audit": "https://audit-app.dev.exxat.net",
+      "release-notes": "https://release-notes-app.dev.exxat.net",
+      "ux-demo": "https://ux-demo-app.dev.exxat.net",
+      "reports": "https://reports-app.dev.exxat.net"
+    },
+    "localization": {
+      "languages": [
+        {
+          "code": "en",
+          "name": "EN",
+          "culture": "en-EN"
+        },
+        {
+          "code": "es",
+          "name": "ES",
+          "culture": "es-ES"
+        },
+        {
+          "code": "fr",
+          "name": "FR",
+          "culture": "fr-FR"
+        }
+      ],
+      "defaultLanguage": "en"
+    },
+    "notifications": {
+      "toasterEnable": true,
+      "options": {
+        "timeOut": 5000,
+        "showProgressBar": true,
+        "pauseOnHover": true,
+        "position": [
+          "top",
+          "right"
+        ],
+        "theClass": "sy-notification"
+      }
+    },
+    "debugging": true,
+    "instrumentationKey": "1dc0130d-2a33-4ce4-b7f4-4c73bb7ab6a3",
+    "clickTrackingSettings": {
+      "clickTrackingEnabled": true,
+      "excludedTenants": []
+    },
+    "azureAdB2C": {
+      "clientId": "78b46724-ca0f-44a8-b9e8-8572512a5150",
+      "activeDirectory": "exxatdev",
+      "tenant": "exxatdev.onmicrosoft.com",
+      "signUpSignInPolicyId": "B2C_1_DefaultSignUpAndSignIn",
+      "forgotPassword": "B2C_1_DefaultPasswordReset",
+      "redirectUri": "http://localhost:4200/admission/login",
+      "b2cScopes": [
+        "https://exxatdev.onmicrosoft.com/api/read"
+      ]
+    },
+    "authGuardSettings": {
+      "loginUrl": "/account/login",
+      "launchUrl": "/account/launch"
+    },
+    "userIdleSettings": {
+      "idle": 5,
+      "timeout": 10,
+      "ping": 60
+    },
+    "GoogleReCaptcha": {
+      "SiteKey": "6LfZRcoUAAAAAKjWaIHM-ZcmOvDaoXfec-WyRUS6"
+    },
+    "Cryptography": {
+      "EnableEncryption": false,
+      "Key": "Cryptography Key Kprocks!ankitkp",
+      "IV": "Key cryp!ankitKP",
+      "Keysizes": 128
+    },
+    "other": {
+      "platformSettings": {
+        "controlSettings": {
+          "searchControlSetting": {
+            "apiKey": "A917C2E2B64B7F87B7B285472BE5E297",
+            "searchUriICD": "https://datasearchexxat.search.windows.net/indexes/dev-icd-index/docs/search?api-version=2019-05-06",
+            "autocompleteUriICD": "https://datasearchexxat.search.windows.net/indexes/dev-icd-index/docs/autocomplete?",
+            "searchUriCPT": "https://datasearchexxat.search.windows.net/indexes/dev-cpt-index/docs/search?api-version=2019-05-06",
+            "autocompleteUriCPT": "https://datasearchexxat.search.windows.net/indexes/dev-cpt-index/docs/autocomplete?"
+          }
+        }
+      }
+    },
+    "AzureMap": {
+      "subscriptionKey": "cmOsYE9rat66qiKh-dAX6CuRbK4nny8Vs7DRpTp-tXk"
+    },
+    "blobStorage": {
+      "fusionURI": "https://exxatfusion.blob.core.windows.net"
+    }
+  },
+  "uiSettings": {
+    "colorTheme": "theme-blue-light",
+    "customScrollbars": true,
+    "layout": {
+      "style": "vertical-layout-1",
+      "width": "fullwidth",
+      "navbar": {
+        "primaryBackground": "fuse-navy-700",
+        "secondaryBackground": "fuse-navy-900",
+        "folded": false,
+        "hidden": false,
+        "position": "left",
+        "variant": "vertical-style-2"
+      },
+      "header": {
+        "customBackgroundColor": true,
+        "background": "fuse-white-bg",
+        "hidden": false,
+        "position": "above"
+      },
+      "footer": {
+        "customBackgroundColor": true,
+        "background": "fuse-white",
+        "hidden": false,
+        "position": "below-fixed"
+      },
+      "sidepanel": {
+        "hidden": false,
+        "position": "right"
+      }
+    }
+  }
+}

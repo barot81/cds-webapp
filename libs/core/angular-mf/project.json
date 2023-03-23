@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/core/angular-mf/src",
+  "prefix": "exxat.ui.packages",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/core/angular-mf"],
+      "options": {
+        "project": "libs/core/angular-mf/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/core/angular-mf/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/core/angular-mf/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/core/angular-mf"],
+      "options": {
+        "jestConfig": "libs/core/angular-mf/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/core/angular-mf/**/*.ts",
+          "libs/core/angular-mf/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

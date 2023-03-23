@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/core/angular-runtime-config/src",
+  "prefix": "exxat.ui.packages",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/core/angular-runtime-config"],
+      "options": {
+        "project": "libs/core/angular-runtime-config/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/core/angular-runtime-config/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/core/angular-runtime-config/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/core/angular-runtime-config"],
+      "options": {
+        "jestConfig": "libs/core/angular-runtime-config/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/core/angular-runtime-config/**/*.ts",
+          "libs/core/angular-runtime-config/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

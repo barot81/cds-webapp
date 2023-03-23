@@ -1,0 +1,216 @@
+<!-- eslint-disable @angular-eslint/template/no-negated-async -->
+<div [ngSwitch]="tagsMenuView" (click)="$event.stopPropagation()">
+  <!-- View -->
+
+  <div [class]="class">
+    <div class="view" *ngSwitchCase="'tags'" fxFlex fxLayout="column">
+      <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+        <div>Total tags ({{ tags && tags.length > 0 ? tags.length : 0 }})</div>
+        <button
+          *ngIf="!($addButtonDisableRule | async)"
+          mat-button
+          class="link-btn"
+          (click)="tagsMenuView = 'add'"
+          aria-label="Add Button"
+        >
+          Add
+        </button>
+
+        <button
+          *ngIf="$addButtonDisableRule | async"
+          mat-button
+          class="cursor-not-allowed"
+          tooltip="Max {{ options.tagsListLength }} tags are allowed"
+          [options]="tooltipOptions"
+        >
+          <span class="disabled-text">Add</span>
+        </button>
+      </div>
+
+      <div class="tags-container" fxLayout="column">
+        <div
+          class="tag"
+          *ngFor="let tag of tags"
+          fxFlex="0 0 auto"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+        >
+          <div class="tag-color" [ngClass]="tag.color"></div>
+
+          <mat-checkbox
+            fxFlex
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            [checked]="tag.isChecked"
+            (change)="toggleTags(tag.id, $event)"
+          >
+            {{ tag.name }}
+          </mat-checkbox>
+
+          <button mat-icon-button>
+            <i
+              class="fa-light fa-pen s-14"
+              (click)="
+                tagsMenuView = 'edit'; selectedTag = tag; initEditTagForm(tag)
+              "
+            ></i>
+          </button>
+        </div>
+      </div>
+
+      <div
+        *ngIf="_options.saveButton && tags.length > 0"
+        [ngClass]="{ footer: tags.length > 0 }"
+        class="mr-16"
+        fxLayout="row"
+        fxLayoutAlign="end center"
+      >
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="onSubmit()"
+          class="mb-4"
+        >
+          Apply
+        </button>
+      </div>
+    </div>
+
+    <!-- Edit View -->
+    <div class="view edit" *ngSwitchCase="'edit'" fxLayout="column">
+      <form [formGroup]="editTagForm">
+        <div class="header" fxLayout="row" fxLayoutAlign="start center">
+          <button mat-icon-button (click)="tagsMenuView = 'tags'">
+            <i class="fa-light fa-long-arrow-left s-14"></i>
+          </button>
+          <div>Edit Tag</div>
+        </div>
+
+        <div class="content" fxLayout="row" fxLayoutAlign="start center">
+          <div fxFlex fxLayout="column" fxLayoutAlign="start">
+            <div
+              fxFlex="0 1 auto"
+              fxLayout="row"
+              fxLayoutAlign="space-between baseline"
+              class="mr-4"
+            >
+              <mat-form-field appearance="fill" fxFlex="90">
+                <mat-label>Tag Name</mat-label>
+                <input name="Name" matInput formControlName="name" />
+                <mat-error
+                  *ngIf="
+                    (editFormTagTitle.dirty || editFormTagTitle.touched) &&
+                    editFormTagTitle.invalid &&
+                    editFormTagTitle.errors.maxlength
+                  "
+                >
+                  Maximum {{ _options.tagTitleMaxLength }} characters are
+                  allowed</mat-error
+                >
+                <mat-error
+                  *ngIf="
+                    (editFormTagTitle.dirty || editFormTagTitle.touched) &&
+                    editFormTagTitle.invalid &&
+                    editFormTagTitle.errors.required
+                  "
+                >
+                  Required field</mat-error
+                >
+              </mat-form-field>
+
+              <fuse-material-color-picker
+                name="editTagColor"
+                formControlName="color"
+                class="ml-8"
+              >
+              </fuse-material-color-picker>
+            </div>
+            <button
+              type="submit"
+              mat-flat-button
+              color="primary"
+              class="save-btn mr-16"
+              [disabled]="!editTagForm.valid"
+              (click)="onTagEdited()"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Add View -->
+    <div class="view add" *ngSwitchCase="'add'" fxLayout="column">
+      <form [formGroup]="addTagForm">
+        <div class="header" fxLayout="row" fxLayoutAlign="start center">
+          <button mat-icon-button (click)="tagsMenuView = 'tags'">
+            <i class="fa-light fa-long-arrow-left s-14"></i>
+          </button>
+          <div class="font-weight-600">Add Tag</div>
+        </div>
+
+        <div class="content" fxLayout="row" fxLayoutAlign="start center">
+          <div fxFlex fxLayout="column" fxLayoutAlign="start">
+            <div
+              fxFlex="0 1 auto"
+              fxLayout="row"
+              fxLayoutAlign="space-between baseline"
+              class="mr-4"
+            >
+              <mat-form-field appearance="fill" fxFlex="90">
+                <mat-label>Tag Name</mat-label>
+                <input
+                  matInput
+                  placeholder="Name"
+                  formControlName="name"
+                  name="tagName"
+                />
+                <mat-error
+                  *ngIf="
+                    (addFormTagTitle.dirty || addFormTagTitle.touched) &&
+                    addFormTagTitle.invalid &&
+                    addFormTagTitle.errors.maxlength
+                  "
+                >
+                  Maximum {{ _options.tagTitleMaxLength }} characters are
+                  allowed</mat-error
+                >
+                <mat-error
+                  *ngIf="
+                    (addFormTagTitle.dirty || addFormTagTitle.touched) &&
+                    addFormTagTitle.invalid &&
+                    addFormTagTitle.errors.required
+                  "
+                >
+                  Required field</mat-error
+                >
+              </mat-form-field>
+
+              <fuse-material-color-picker
+                id="add-color-picker"
+                formControlName="color"
+                name="add-color-picker"
+                class="ml-4"
+              >
+              </fuse-material-color-picker>
+            </div>
+
+            <button
+              type="submit"
+              mat-stroked-button
+              class="primary-border-btn"
+              aria-label="Add button"
+              color="primary"
+              class="save-btn mr-16"
+              [disabled]="!addTagForm.valid"
+              (click)="addNewTag()"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

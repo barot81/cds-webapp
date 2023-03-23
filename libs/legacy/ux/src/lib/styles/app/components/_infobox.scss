@@ -1,0 +1,30 @@
+@mixin info-box-theme($theme) {
+  .info-box {
+    padding: 8px 16px;
+    border-radius: 4px;
+    background: $lynch;
+    color: $dark-primary-text;
+
+    button.mat-icon-button.action-icon {
+      height: 18px !important;
+      width: 18px !important;
+    }
+    &.warning {
+      background: $Buttermilk;
+      color: $dark-primary-text;
+    }
+    &.error {
+      background: $burnt-sienna;
+      color: $white;
+    }
+
+    &.success {
+      background: $De-York;
+    }
+
+    &.info {
+      background: $FrenchPass;
+      color: $dark-primary-text;
+    }
+  }
+}

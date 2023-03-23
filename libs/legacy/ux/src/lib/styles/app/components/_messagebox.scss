@@ -1,0 +1,34 @@
+// Message boxes
+.message-box {
+  padding: 12px;
+  background: $lynch;
+  border-left: 6px solid $limed-spruce;
+  color: rgba(255, 255, 255, 1);
+
+  &.error {
+    background: $burnt-sienna;
+    border-left-color: $burnt-sienna;
+  }
+
+  &.warning {
+    background: $Buttermilk;
+    border-left-color: $amber;
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  &.success {
+    background: $De-York;
+    border-left-color: $sea-green;
+  }
+
+  &.info {
+    background: $FrenchPass;
+    border-left-color: $Carulean;
+    color: rgba(0, 0, 0, 0.87);
+  }
+  &.selected-box {
+    background: whitesmoke;
+    border-left-color: $Carulean;
+    color: rgba(0, 0, 0, 0.87);
+  }
+}

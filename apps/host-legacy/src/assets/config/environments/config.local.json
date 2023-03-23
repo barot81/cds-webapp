@@ -1,0 +1,196 @@
+{
+  "appSettings": {
+    "production": false,
+    "allowProductSelection": false,
+    "unauthorizedEndpoints": [],
+    "notFoundEndpoints": [],
+    "auth": {
+      "endpoint": "https://api-identity.dev.exxat.net"
+    },
+    "realtime": {
+      "endpoint": "https://foundation-meta-gw.dev.exxat.net/Account"
+    },
+    "gateway": {
+      "endpoint": ""
+    },
+    "services": {
+      "foundation.meta": {
+        "endpoint": "https://api-meta.dev.exxat.net"
+      },
+      "v3.account": {
+        "endpoint": "https://exxat-dev-webapps.azurewebsites.net/fusion/account/LoginWithToken"
+      },
+      "v3.launch": {
+        "endpoint": "https://exxat-dev-webapps.azurewebsites.net/Fusion/Home/Launch"
+      },
+      "v3.login": {
+        "endpoint": "https://exxat-dev-webapps.azurewebsites.net/Fusion/Account/Login"
+      },
+      "help.center": {
+        "endpoint": "http://localhost:65301"
+      },
+      "payment": {
+        "endpoint": "https://api-payment.dev.exxat.net"
+      },
+      "settingdictionary": {
+        "endpoint": "https://api-config-labels.dev.exxat.net/"
+      },
+      "featureflag": {
+        "endpoint": "https://api-feature-management.dev.exxat.net/"
+      },
+      "help.center.salesForceUrl": {
+        "endpoint": "https://exxat.force.com/v4Help/s/"
+      },
+      "help.center.supportNumber": {
+        "endpoint": "323-999-1559"
+      },
+      "help.center.zendeskURL": {
+        "endpoint": "https://exxat.zendesk.com/"
+      },
+      "help.center.exxatForceURL": {
+        "endpoint": "https://exxat.force.com/v4Help/s/"
+      },
+      "prismChatURL": {
+        "endpoint": "https://prism-zendesk-api.dev.exxat.net/"
+      },
+      "foundation.registration": {
+        "endpoint": "https://api-registration.dev.exxat.net"
+      },
+      "tenantonboarding": {
+        "endpoint": "https://api-tenantonboarding.dev.exxat.net"
+      },
+      "userConfiguration": {
+        "endpoint": "https://api-userconfiguration.dev.exxat.net"
+      }
+    },
+    "microfrontends": {
+      "remote-legacy": "http://localhost:5201"
+    },
+    "localization": {
+      "languages": [
+        {
+          "code": "en",
+          "name": "EN",
+          "culture": "en-EN"
+        },
+        {
+          "code": "es",
+          "name": "ES",
+          "culture": "es-ES"
+        },
+        {
+          "code": "fr",
+          "name": "FR",
+          "culture": "fr-FR"
+        }
+      ],
+      "defaultLanguage": "en"
+    },
+    "notifications": {
+      "toasterEnable": true,
+      "options": {
+        "timeOut": 5000,
+        "showProgressBar": true,
+        "pauseOnHover": true,
+        "position": ["top", "right"],
+        "theClass": "sy-notification"
+      }
+    },
+    "debugging": true,
+    "instrumentationKey": "d504a4d4-5356-4732-b190-49312ea701c3",
+    "clickTrackingSettings": {
+      "clickTrackingEnabled": true,
+      "excludedTenants": []
+    },
+    "azureAdB2C": {
+      "clientId": "78b46724-ca0f-44a8-b9e8-8572512a5150",
+      "activeDirectory": "exxatdev",
+      "tenant": "exxatdev.onmicrosoft.com",
+      "signUpSignInPolicyId": "B2C_1_DefaultSignUpAndSignIn",
+      "forgotPassword": "B2C_1_DefaultPasswordReset",
+      "redirectUri": "http://localhost:4200/admission/login",
+      "b2cScopes": ["https://exxatdev.onmicrosoft.com/api/read"]
+    },
+    "authGuardSettings": {
+      "loginUrl": "/account/login",
+      "launchUrl": "/account/launch"
+    },
+    "userIdleSettings": {
+      "idle": 1800,
+      "timeout": 300
+    },
+    "releaseNoteNotification": {
+      "offset": 7
+    },
+    "silentTokenRefreshSettings": {
+      "oldTokenDeleteOffset": 120
+    },
+    "helpCenterSettings": {
+      "switchOverInfo": "Tickets raised after January 14, 2023 are only listed below"
+    },
+    "resources": {
+      "eventDaysOffSet": 7,
+      "voracoAuthKey": "6WoaEYI4fkocpJBjjiNjNN24tyDFpUjb"
+    },
+    "GoogleReCaptcha": {
+      "SiteKey": "6LfZRcoUAAAAAKjWaIHM-ZcmOvDaoXfec-WyRUS6"
+    },
+    "Cryptography": {
+      "EnableEncryption": false,
+      "Key": "Cryptography Key Kprocks!ankitkp",
+      "IV": "Key cryp!ankitKP",
+      "Keysizes": 128
+    },
+    "other": {
+      "platformSettings": {
+        "controlSettings": {
+          "searchControlSetting": {
+            "apiKey": "A917C2E2B64B7F87B7B285472BE5E297",
+            "searchUriICD": "https://datasearchexxat.search.windows.net/indexes/dev-icd-index/docs/search?api-version=2019-05-06",
+            "autocompleteUriICD": "https://datasearchexxat.search.windows.net/indexes/dev-icd-index/docs/autocomplete?",
+            "searchUriCPT": "https://datasearchexxat.search.windows.net/indexes/dev-cpt-index/docs/search?api-version=2019-05-06",
+            "autocompleteUriCPT": "https://datasearchexxat.search.windows.net/indexes/dev-cpt-index/docs/autocomplete?"
+          }
+        }
+      }
+    },
+    "AzureMap": {
+      "subscriptionKey": "cmOsYE9rat66qiKh-dAX6CuRbK4nny8Vs7DRpTp-tXk"
+    },
+    "blobStorage": {
+      "fusionURI": "https://exxatfusion.blob.core.windows.net"
+    }
+  },
+  "uiSettings": {
+    "colorTheme": "theme-blue-light",
+    "customScrollbars": true,
+    "layout": {
+      "style": "vertical-layout-1",
+      "width": "fullwidth",
+      "navbar": {
+        "primaryBackground": "fuse-navy-700",
+        "secondaryBackground": "fuse-navy-900",
+        "folded": false,
+        "hidden": false,
+        "position": "left",
+        "variant": "vertical-style-2"
+      },
+      "header": {
+        "customBackgroundColor": true,
+        "background": "fuse-white-bg",
+        "hidden": false,
+        "position": "above"
+      },
+      "footer": {
+        "customBackgroundColor": true,
+        "background": "fuse-white",
+        "hidden": false,
+        "position": "below-fixed"
+      },
+      "sidepanel": {
+        "hidden": false,
+        "position": "right"
+      }
+    }
+  }
+}

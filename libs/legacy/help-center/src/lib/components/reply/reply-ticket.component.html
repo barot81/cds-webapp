@@ -1,0 +1,22 @@
+<div class="mb-16" fxLayout="row wrap">
+  <v4-app-help-file-upload
+    fxFlex="100"
+    (filesListEvent)="onUploadFiles($event)"
+  ></v4-app-help-file-upload>
+</div>
+<div>
+  <ckeditor
+    class="editor-border"
+    fxFlex="100"
+    [editor]="Editor"
+    id="ckeditor_id"
+    name="classic-editor"
+    [config]="config"
+    (ready)="($event)"
+    (change)="onChange($event)"
+    (focus)="($event)"
+    (blur)="($event)"
+    [maxLength]="1000"
+  >
+  </ckeditor>
+</div>

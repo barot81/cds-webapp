@@ -1,0 +1,41 @@
+i,
+.fa-icon,
+mat-icon {
+  font-size: px-to-rem(24);
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  line-height: 24px;
+  @each $breakpoint, $materialBreakpoint in $helper-breakpoints {
+    @include media-breakpoint($materialBreakpoint) {
+      $infix: if($materialBreakpoint==null, '', '-#{$breakpoint}');
+      @for $size from 2 through 128 {
+        &.s#{$infix}-#{$size * 2} {
+          font-size: #{($size * 2) + 'px'} !important;
+          width: #{($size * 2) + 'px'} !important;
+          height: #{($size * 2) + 'px'} !important;
+          min-width: #{($size * 2) + 'px'} !important;
+          min-height: #{($size * 2) + 'px'} !important;
+          line-height: #{($size * 2) + 'px'} !important;
+        }
+      }
+    }
+  }
+}
+
+i,
+em {
+  &.fa-file-excel {
+    color: $fruit-salad !important;
+  }
+  &.fa-file-powerpoint {
+    color: $orange-peel !important;
+  }
+  &.fa-file-word {
+    color: $dodger-blue-dark !important;
+  }
+  &.fa-file-pdf {
+    color: $pomegranate !important;
+  }
+}

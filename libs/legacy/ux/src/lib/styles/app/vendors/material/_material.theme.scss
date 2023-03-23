@@ -1,0 +1,61 @@
+@use '@angular/material' as mat;
+
+@mixin material-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $action: map-get($theme, action);
+  $is-dark: map-get($theme, is-dark);
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ Mat Drawer Styling
+  // -----------------------------------------------------------------------------------------------------
+  .mat-drawer-inner-container {
+    overflow: hidden !important;
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ mat-expansion-panel Theming Part
+  // -----------------------------------------------------------------------------------------------------
+  .mat-expansion-panel {
+    @if ($is-dark) {
+      background: map-get($background, card) !important;
+    }
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ Avatar
+  // -----------------------------------------------------------------------------------------------------
+  .avatar {
+    color: map-get($foreground, text);
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ Forms
+  // -----------------------------------------------------------------------------------------------------
+  .form-wrapper {
+    background-color: map-get($background, card);
+  }
+
+  //css for public page card avatar
+  .public-avatar-position {
+    position: absolute;
+    top: 16px;
+
+    @include media-breakpoint('xs') {
+      position: inherit;
+    }
+
+    .avatar {
+      width: 120px !important;
+      height: 120px !important;
+    }
+
+    .no-avatar {
+      width: 120px !important;
+      height: 120px !important;
+      font-size: px-to-rem(32);
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<div class="p-16">
+  <div fxLayout="column">
+    <div fxLayout="column">
+      <span class="font-14 font-weight-600">Consent Detail</span>
+      <div class="mt-16">
+        <div [innerHTML]="consentText"></div>
+        <div class="py-8">
+          <strong>Date- </strong> {{ consentedAt | date: 'shortDate' }} <strong>Time- </strong>
+          {{ consentedAt | date: 'shortTime' }}
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="closeDialog()"
+        aria-label="Close Dialog"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1955 @@
+@use '@angular/material' as mat;
+
+@mixin global-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $action: map-get($theme, action);
+  $is-dark: map-get($theme, is-dark);
+  $base-color: mat.get-color-from-palette($accent);
+  $base-color-light: lighten($base-color, 60%);
+
+  .clone-curriculum {
+    label.mat-checkbox-layout {
+      width: 100% !important;
+      .mat-checkbox-inner-container {
+        margin-left: 0px !important;
+      }
+      .mat-checkbox-label {
+        width: 100%;
+      }
+    }
+  }
+
+  account-login,
+  g-forgot-password {
+    mat-card {
+      border-radius: 8px !important;
+      form {
+        button.mat-flat-button.mat-button-base.mat-primary {
+          height: auto !important;
+          span.mat-button-wrapper {
+            white-space: break-spaces !important;
+          }
+        }
+      }
+      &.login-form-card {
+        box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.25) !important;
+      }
+      &.event-card {
+        border-radius: 8px !important;
+        &.event-card-min-width {
+          @include media-breakpoint('gt-md') {
+            min-width: 830px;
+          }
+        }
+      }
+      .card-content {
+        border-radius: 0px 0px 8px 8px;
+        @include media-breakpoint('xs') {
+          width: 350px;
+        }
+      }
+      .event-card-content {
+        .content-fg {
+          //adding rgba for dark theme with white background image
+          color: rgba(0, 0, 0, 0.87);
+        }
+        @include media-breakpoint('xs') {
+          min-height: 360px;
+        }
+      }
+      .support-content {
+        a {
+          text-decoration: underline !important;
+        }
+      }
+      .card-icon {
+        pointer-events: none !important;
+      }
+      .event-content-container {
+        width: 100%;
+        @include media-breakpoint('gt-xs') {
+          width: 60%;
+        }
+      }
+    }
+
+    .skeleton-event-content {
+      &.webinar {
+        max-width: 350px;
+        min-width: 350px;
+        height: 230px;
+        @include media-breakpoint('gt-md') {
+          max-width: 700px;
+          min-width: 700px;
+        }
+        @include media-breakpoint('md') {
+          max-width: 400px;
+          min-width: 400px;
+        }
+      }
+      &.workshop {
+        max-width: 350px;
+        min-width: 350px;
+        height: 255px;
+        @include media-breakpoint('gt-md') {
+          max-width: 400px;
+          min-width: 400px;
+        }
+        @include media-breakpoint('md') {
+          max-width: 400px;
+          min-width: 400px;
+        }
+      }
+      &.support {
+        max-width: 350px;
+        min-width: 350px;
+        height: 255px;
+        @include media-breakpoint('gt-md') {
+          max-width: 300px;
+          min-width: 300px;
+        }
+        @include media-breakpoint('gt-xs') {
+          max-width: 400px;
+          min-width: 400px;
+        }
+      }
+    }
+  }
+
+  .drawer_title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left !important;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+
+  .error-pages {
+    .error-code {
+      font-size: px-to-rem(216);
+      font-weight: 600;
+      color: mat.get-color-from-palette($primary, 500);
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      @if ($is-dark) {
+        text-shadow: 0px 4px 4px #ffffff40;
+      }
+    }
+
+    .error-desc {
+      font-size: px-to-rem(24);
+      font-weight: 600;
+      color: mat.get-color-from-palette($primary, 500);
+      text-align: center;
+    }
+  }
+
+  exxat-plugin-power-bi {
+    mat-card {
+      section#report {
+        > div {
+          iframe {
+            border: none !important;
+          }
+        }
+      }
+    }
+  }
+
+  .search-wrapper + div div a[exxatdraweraction] {
+    white-space: pre;
+  }
+
+  //marquee
+  .marquee {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .marquee-content {
+    width: max-content;
+    margin: 0;
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    -moz-animation: scroll-left 1.5s linear infinite;
+    -webkit-animation: scroll-left 1.5s linear infinite;
+    animation: scroll-left 15s linear infinite;
+  }
+
+  @-moz-keyframes scroll-left {
+    0% {
+      -moz-transform: translateX(100%);
+    }
+    100% {
+      -moz-transform: translateX(-100%);
+    }
+  }
+
+  @-webkit-keyframes scroll-left {
+    0% {
+      -webkit-transform: translateX(100%);
+    }
+    100% {
+      -webkit-transform: translateX(-100%);
+    }
+  }
+
+  @keyframes scroll-left {
+    0% {
+      -moz-transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+      transform: translateX(100%);
+    }
+    100% {
+      -moz-transform: translateX(-100%);
+      -webkit-transform: translateX(-100%);
+      transform: translateX(-100%);
+    }
+  }
+
+  .skip-content-link:focus {
+    pointer-events: auto;
+    transform: translate(-50%, 0.25rem);
+    outline: none;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .skip-content-link {
+    position: absolute;
+    left: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    transform: translate(-50%, -200%);
+    transition: transform cubic-bezier(0.17, 0.67, 0.5, 0.71) 100ms;
+  }
+
+  vertical-layout-1 #main > .container > .container > .container content {
+    margin: 0px !important;
+
+    .full-width-page {
+      padding: 16px;
+
+      @include media-breakpoint('lt-sm') {
+        padding: 8px;
+      }
+    }
+
+    .page-without-header {
+      fuse-sidebar.sidebar {
+        border-left: none !important;
+        border-top: none !important;
+      }
+
+      fuse-sidebar.secondary-sidebar {
+        border-left: solid 1px map-get($map: $foreground, $key: divider) !important;
+        border-top: solid 1px map-get($map: $foreground, $key: divider) !important;
+        border-radius: 8px;
+      }
+
+      .main-right-side-content {
+        margin: 16px 16px 16px 0px;
+
+        @include media-breakpoint('lt-sm') {
+          margin: 8px 8px 8px 0px;
+        }
+      }
+    }
+
+    .page-with-header {
+      padding: 16px;
+
+      @include media-breakpoint('lt-md') {
+        padding: 8px;
+      }
+
+      fuse-sidebar.sidebar {
+        border-radius: 8px !important;
+
+        @include media-breakpoint('lt-md') {
+          margin-left: -8px;
+        }
+
+        @include media-breakpoint('md') {
+          margin-left: -16px;
+        }
+      }
+    }
+
+    .page-layout {
+      &.simple.left-sidebar.inner-sidebar > .content > .center > .content {
+        box-shadow: none !important;
+        border-radius: 0px !important;
+        background: none !important;
+      }
+
+      &.simple.left-sidebar > .center {
+        box-shadow: none !important;
+
+        .content {
+          background: transparent !important;
+        }
+      }
+    }
+  }
+
+  .carousel-card {
+    background: map-get($map: $exxat-foreground, $key: chip);
+    color: map-get($map: $exxat-foreground, $key: text);
+  }
+
+  .dash_logo_container {
+    min-width: fit-content;
+    max-height: 96px;
+  }
+
+  .dash_logo {
+    width: auto;
+    height: auto;
+    max-height: 96px;
+    max-width: 350px;
+    border: 4px solid rgb(255, 255, 255);
+    border-radius: 4px;
+    color: rgba(0, 0, 0, 0.87); //alt text color
+    @include media-breakpoint('xs') {
+      max-width: 300px;
+    }
+  }
+
+  .brand_logo_container {
+    min-width: 15%;
+    max-width: 15%;
+  }
+
+  .brand_logo {
+    width: auto;
+    height: 75px;
+  }
+
+  // Org Logo Class
+  .org_logo {
+    height: 64px !important;
+    width: auto !important;
+  }
+
+  @for $i from 0 through 500 {
+    .sticky-element-#{$i} {
+      position: -webkit-sticky !important;
+      /* Safari */
+      position: sticky !important;
+      top: $i;
+      z-index: 9 !important;
+      background: map-get($map: $background, $key: background);
+    }
+  }
+
+  .transparent-fg {
+    color: transparent;
+  }
+
+  .transparent-bg {
+    background-color: transparent !important;
+  }
+
+  .container-bg {
+    background: mat.get-color-from-palette($background, card) !important;
+  }
+
+  //For Location and Site address verification extra field to hide
+  .uspstest {
+    .mat-form-field-subscript-wrapper {
+      .mat-error {
+        display: none !important;
+      }
+    }
+
+    .mat-form-field {
+      .mat-form-field-wrapper {
+        .mat-form-field-underline {
+          display: none !important;
+        }
+      }
+    }
+  }
+
+  //to make background gray on hover of any element
+  .element-hover:hover {
+    background-color: $concrete !important;
+  }
+
+  button.mat-button-base {
+    border-radius: 4px;
+  }
+
+  .badge {
+    position: relative;
+  }
+
+  .badge > span.data-badge {
+    position: absolute;
+    top: -10px;
+    right: -20px;
+    font-size: px-to-rem(14);
+    background: mat.get-color-from-palette($accent, 200);
+    color: map-get($foreground, text);
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 18px;
+    border-radius: 50%;
+    box-shadow: 0 0 1px $gray-dark;
+  }
+
+  button {
+    &.icon-fill-bg {
+      margin-left: 10px;
+    }
+  }
+
+  //////////////////////////////////////////////////////////////@at-root
+  a {
+    color: mat.get-color-from-palette($action);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .header-elevation {
+    -webkit-box-shadow: 0 6px 6px -6px black;
+    -moz-box-shadow: 0 6px 6px -6px black;
+    box-shadow: 0 6px 6px -6px black;
+  }
+
+  .secondary-list-item-active {
+    background: $concrete;
+    font-weight: 600;
+    border: 2px solid mat.get-color-from-palette($primary);
+    box-sizing: border-box;
+    border-radius: 35px;
+
+    @if ($is-dark) {
+      background: $mine-shaft-dark;
+      border: 2px solid mat.get-color-from-palette($primary);
+      color: $white;
+    }
+  }
+
+  .btn-stroke {
+    border: 1px solid mat.get-color-from-palette($accent);
+  }
+
+  .sidebar-width {
+    width: 240px;
+    min-width: 240px;
+    max-width: 240px;
+  }
+
+  /////////////////////////////////////////////////////////////////////// @ Header Nav Bar
+  #horizontal-stepper {
+    .mat-horizontal-stepper-header {
+      padding-right: 24px !important;
+      padding-left: 24px !important;
+
+      &:last-child {
+        padding-right: 0px !important;
+      }
+
+      &:first-child {
+        padding-left: 0px !important;
+      }
+    }
+
+    .mat-horizontal-content-container {
+      padding: 0px !important;
+    }
+  }
+
+  .header-panel-menu {
+    .mat-menu-content:not(:empty) {
+      padding: 0px !important;
+    }
+  }
+
+  // css for white background.
+  .white-header {
+    border-radius: 16px 16px 0 0;
+    background-color: $white;
+
+    @if ($is-dark) {
+      background-color: $black-secondory;
+    }
+  }
+
+  .white-background {
+    background: map-get($map: $background, $key: card) !important;
+  }
+
+  ngx-material-timepicker-container {
+    z-index: 9999 !important;
+  }
+
+  .cdk-overlay-container {
+    .cdk-global-overlay-wrapper {
+      .cdk-overlay-pane {
+        max-height: 550px !important;
+
+        @include media-breakpoint('lt-sm') {
+          width: 95vw !important;
+        }
+      }
+    }
+  }
+
+  .page-layout {
+    .content-card {
+      box-shadow: none !important;
+    }
+
+    // css for gray background.
+    .gray-header {
+      mat-card {
+        border: none !important;
+
+        @if ($is-dark) {
+          background-color: map-get($background, background);
+        } @else {
+          background-color: $gray-header;
+        }
+
+        padding: 0px;
+
+        @include media-breakpoint('lt-sm') {
+          padding: 4px;
+        }
+      }
+
+      .no-box-shadow {
+        box-shadow: none !important;
+        border-radius: 0px !important;
+      }
+    }
+
+    // css for content card border radious.
+    .content-card-radious {
+      .content-card {
+        border-radius: 0px !important;
+      }
+    }
+
+    // css for dropdown filters without underline.
+    .header-tab-control {
+      .mat-form-field-type-mat-select.mat-form-field-hide-placeholder {
+        span.mat-form-field-label-wrapper {
+          top: -0.80375em !important;
+        }
+      }
+
+      .mat-form-field-wrapper {
+        padding-bottom: 0px !important;
+      }
+
+      .mat-form-field-underline {
+        display: none;
+      }
+
+      .mat-form-field-flex {
+        background: transparent;
+      }
+
+      .filter-spacing {
+        .mat-form-field-appearance-fill .mat-form-field-flex {
+          padding: 8px 16px 0px 0px;
+        }
+
+        .mat-form-field-infix {
+          border-top: 0px !important;
+          padding: 8px 0px !important;
+        }
+      }
+    }
+
+    .filters-with-maxwidth {
+      .mat-form-field-infix {
+        max-width: 32vw !important;
+        width: auto !important;
+        min-width: 180px !important;
+
+        @include media-breakpoint('lt-md') {
+          max-width: 100vw !important;
+        }
+      }
+    }
+
+    .filters-with-minwidth {
+      .mat-form-field-infix {
+        width: 10vw;
+      }
+    }
+
+    .filters-with-width-auto {
+      .mat-form-field-infix {
+        width: auto !important;
+      }
+    }
+  }
+
+  .red-border-panel {
+    .mat-expansion-panel {
+      border: 2px solid red !important;
+    }
+  }
+
+  .gray-background {
+    @if ($is-dark) {
+      background-color: map-get($background, background);
+    } @else {
+      background-color: $gray-header !important;
+    }
+  }
+
+  /////////////////////////////////////////////////////////////////////// @ Header Nav Bar //
+  //////////////////////////////////////////////////////////////@at-root
+  .secondary-gray-color {
+    color: $scorpion;
+  }
+
+  .getting-started {
+    border: dashed;
+    border-width: 1px;
+    border-radius: 1px;
+    padding: 12px 26px 10px 20px;
+    border-color: mat.get-color-from-palette($accent);
+    color: mat.get-color-from-palette($primary);
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    font-weight: 600;
+
+    .mat-icon {
+      color: mat.get-color-from-palette($primary);
+    }
+  }
+
+  ////////////////////////////////////////////////////////////// @ WeekDay Selector
+  .exxat-chip input {
+    display: none !important;
+  }
+
+  .exxat-chip input[type='checkbox'] + label {
+    display: inline-block;
+    border-radius: 20px;
+    background: $alto;
+
+    @if ($is-dark) {
+      color: black;
+    } @else {
+      color: map-get($foreground, text);
+    }
+
+    margin-right: 3px;
+    padding: 10px 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .exxat-chip input[type='checkbox']:checked + label {
+    background: mat.get-color-from-palette($primary);
+    color: map-get($foreground, text);
+  }
+
+  ////////////////////////////////////////////////////////////// @ WeekDay Selector //
+  //////////////////////////////////////////////////////////////
+  .sidebar {
+    background-color: map-get($background, card) !important;
+
+    @if ($is-dark) {
+      background: $cod-gray !important;
+    }
+  }
+
+  //////////////////////////////////////////////////////////////
+  .action-icon {
+    &:hover {
+      background: map-get($map: $background, $key: hover) !important;
+    }
+  }
+
+  .delete-icon {
+    &:hover {
+      background-color: $light-red !important;
+      border-radius: 4px !important;
+    }
+  }
+
+  fuse-highlight pre {
+    min-height: 50px !important;
+    max-height: 400px !important;
+    overflow: auto;
+    //width: 98%;
+  }
+
+  ////////////////////////////////////////////////////////////// @Drag Andn Drop
+  .exxat-drag-drop-list {
+    width: 500px;
+    max-width: 100%;
+    min-height: 40px;
+    display: block;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .exxat-drag-drop {
+    padding: 0px 0px 12px;
+    color: map-get($foreground, text);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    font-size: px-to-rem(14);
+
+    .content {
+      border: solid 1px map-get($map: $foreground, $key: divider) !important;
+      background-color: map-get($map: $background, $key: card) !important;
+      border-radius: 4px;
+      width: 100%;
+    }
+    .content:not(.trimmed-content) {
+      padding: 0px 9px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+    }
+
+    .content.trimmed-content {
+      @extend .text-overflow-2;
+      padding: 6px 9px !important;
+      min-height: 32px !important;
+      max-height: 51px !important;
+    }
+
+    .icon-drag {
+      visibility: visible;
+      cursor: move;
+    }
+
+    &:hover {
+      .icon-drag {
+        visibility: visible;
+      }
+    }
+  }
+
+  .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
+
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .example-box:last-child {
+    border: none;
+  }
+
+  .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  ///////////////////select box checked accent color///////////////////////////////////////////
+  select-all-checkbox {
+    .mat-option {
+      .mat-pseudo-checkbox-checked {
+        background: mat.get-color-from-palette($accent);
+      }
+    }
+  }
+
+  .mat-select-panel {
+    .mat-selected:not(.mat-option-disabled) {
+      .mat-pseudo-checkbox-checked {
+        background: mat.get-color-from-palette($primary);
+      }
+
+      span {
+        &.mat-option-text {
+          color: mat.get-color-from-palette($primary, 500);
+        }
+      }
+    }
+  }
+
+  //// Primary Heading in cards//
+  .card-header-title {
+    min-height: 44px !important;
+    padding: 8px 8px 8px 16px;
+    border-radius: 8px 8px 0 0;
+    word-break: break-all;
+
+    .primary-heading {
+      font-size: px-to-rem(16);
+      line-height: 20px;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+  }
+
+  //hedings in sidebar
+  .sidebar-heading {
+    line-height: 21px;
+    color: $korma;
+
+    @if ($is-dark) {
+      color: $pirate-gold;
+    }
+  }
+
+  //for brown color headings
+  .brown-heading {
+    color: $korma;
+
+    @if ($is-dark) {
+      color: $brown-light;
+    }
+  }
+
+  //for brown background
+  .brown-background {
+    background-color: $korma;
+  }
+
+  .exxat-info-container {
+    padding: 12px 16px;
+
+    .exxat-info {
+      padding-bottom: 12px;
+      word-break: break-all;
+
+      .title {
+        font-weight: 600;
+        font-size: px-to-rem(14);
+        line-height: 18px;
+        letter-spacing: 0.16px;
+        color: $gray-dark;
+
+        // Specific to Chrome Browser ---
+        @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+          -webkit-font-smoothing: antialiased !important;
+        }
+
+        // Specific to Safari Browser ---
+        @media not all and (min-resolution: 0.001dpcm) {
+          @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+            -webkit-font-smoothing: auto !important;
+          }
+        }
+
+        @if ($is-dark) {
+          color: white;
+        }
+      }
+
+      .description {
+        font-weight: normal;
+        font-size: px-to-rem(14);
+        line-height: 18px;
+        letter-spacing: 0.16px;
+        color: $gray-dark;
+
+        @if ($is-dark) {
+          color: white;
+        }
+
+        padding-bottom: 16px;
+      }
+
+      .description:last-child {
+        padding-bottom: 0px;
+      }
+    }
+  }
+
+  .configuration {
+    .exxat-info {
+      .title {
+        padding-bottom: 0px;
+      }
+    }
+  }
+
+  //// Left side bar starts///
+
+  //fuse-sidebar {
+  .mat-list-base {
+    padding: 0px !important;
+
+    button {
+      width: 100%;
+      display: block;
+    }
+
+    button.mat-button,
+    a {
+      padding: 0px !important;
+      margin: 0px !important;
+      display: block;
+      font-weight: normal !important;
+
+      &:hover {
+        background: map-get($map: $background, $key: hover) !important;
+        border-radius: 0px !important;
+      }
+
+      &.mat-list-item,
+      .mat-list-item {
+        border-left: 4px solid transparent !important;
+        box-sizing: border-box;
+        font-size: px-to-rem(14);
+        height: auto !important;
+        min-height: 40px !important;
+        padding: 11px 16px 11px 12px !important;
+
+        &.active-list-item,
+        &.scroll_spy_list_active_item {
+          background: map-get($map: $background, $key: hover) !important;
+          font-weight: 600 !important;
+          border-left: 4px solid mat.get-color-from-palette($primary, 500) !important;
+          box-sizing: border-box;
+
+          &:hover {
+            background: transparent !important;
+          }
+        }
+
+        &.secondary-active-list-item {
+          background: $concrete;
+          border-radius: 8px;
+          font-weight: 600;
+
+          @if ($is-dark) {
+            background: $mine-shaft-dark;
+          }
+        }
+      }
+
+      &:hover {
+        background: map-get($map: $background, $key: hover) !important;
+      }
+    }
+
+    .mat-list-item-content {
+      padding: 0px !important;
+
+      .mat-list-item-ripple {
+        display: none !important;
+      }
+    }
+  }
+
+  //Sidebar with timeline
+  #sidebar-with-timeline {
+    .sidebar {
+      .steps {
+        .step {
+          border-left: 4px solid inherit !important;
+          border-radius: 0px !important;
+          position: relative;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          padding: 12px;
+          cursor: pointer;
+          text-align: start;
+          border-left: 4px solid transparent !important;
+
+          .title {
+            font-weight: 400;
+          }
+
+          &:hover {
+            border-left: 4px solid inherit !important;
+            background: map-get($map: $background, $key: hover) !important;
+          }
+
+          //css for active item
+          &.current {
+            box-sizing: border-box;
+            background: map-get($map: $background, $key: hover) !important;
+            border-left: 4px solid mat.get-color-from-palette($primary, 500) !important;
+
+            .index {
+              span {
+                border: 2px solid;
+                border-color: mat.get-color-from-palette($primary) !important;
+              }
+            }
+
+            .title {
+              font-weight: 600; //css for text in active item
+            }
+
+            &:hover {
+              background: map-get($map: $background, $key: hover) !important;
+            }
+          }
+
+          //css for completed steps
+          &.completed {
+            .index {
+              span {
+                border: 2px solid;
+                border-color: mat.get-color-from-palette(
+                  $primary
+                ) !important; //css for circle in completed steps item
+              }
+            }
+          }
+
+          &.first {
+            .index {
+              &:before {
+                display: none; //css for line before first item
+              }
+            }
+          }
+
+          &.last {
+            .index {
+              &:after {
+                display: none; //css for line after last item
+              }
+            }
+          }
+
+          //css for the lines before and after step
+          .index {
+            display: flex;
+            margin-right: 12px;
+
+            &:before,
+            &:after {
+              position: absolute;
+              display: block;
+              content: ' ';
+              border-left: 1px solid;
+              width: 1px;
+              height: 25%;
+              left: 25px;
+              z-index: 8;
+            }
+
+            &:before {
+              top: 0;
+            }
+
+            &:after {
+              bottom: 0;
+            }
+
+            //css for circle and number inside circle
+            span {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+              width: 28px;
+              min-width: 28px;
+              max-width: 28px;
+              height: 28px;
+              border-radius: 100%;
+              border: 2px solid;
+              font-weight: bold;
+              font-size: px-to-rem(14);
+              z-index: 10;
+            }
+          }
+
+          .title {
+            display: flex; //css for text of step
+          }
+        }
+      }
+    }
+
+    //sidebar css end
+
+    .center {
+      position: relative;
+      overflow: hidden;
+
+      .content {
+        position: relative;
+
+        .course-step {
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          overflow: auto;
+          -webkit-overflow-scrolling: touch;
+
+          &.ng-animating {
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+
+  //class for general active elements
+
+  .general-item-active-class {
+    @extend %active-item-class;
+  }
+
+  //// Left side bar ends///
+  //fuse sidebar css changed according to new design
+  .sidebar {
+    border: 1px solid $alto-light;
+    box-shadow: none !important;
+    z-index: 9999 !important;
+
+    @if ($is-dark) {
+      border: 1px solid $border-dark-theme;
+    }
+
+    &.secondary-sidebar {
+      z-index: 1000 !important;
+    }
+  }
+
+  //css for dashed border
+  .border-dashed-bottom {
+    border-bottom: 1px dashed $alto-light;
+
+    @if ($is-dark) {
+      border-bottom: 1px dashed $border-dark-theme;
+    }
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ START : Fusion Nav Group -- Styling
+  // -----------------------------------------------------------------------------------------------------
+  fusion-nav-group {
+    padding-bottom: 16px;
+    border-bottom: 1px solid map-get($map: $foreground, $key: divider) !important;
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ END : Fusion Nav Group -- Styling
+  // -----------------------------------------------------------------------------------------------------
+
+  // Help Dialog Box Ol Margin Fixes
+  .help_dialog_box {
+    .ol_margin_fix {
+      margin-left: -24px !important;
+    }
+  }
+
+  // Card With Header BG
+  .card_with_header_bg {
+    padding: 0px !important;
+    margin-bottom: 16px !important;
+    width: 100% !important;
+
+    .card_header {
+      height: 80px !important;
+      background-color: map-get(
+        $map: $background,
+        $key: tableHeader
+      ) !important;
+    }
+
+    .card_content {
+      padding: 16px;
+    }
+  }
+
+  // FOR Exxat Tag Mat Menu Min Height For Single Tag
+  .mat-menu-panel {
+    min-height: 50px !important;
+    min-width: 168px !important;
+    max-width: 310px !important;
+  }
+
+  // Scrollable Form Steps : Accordian Styling
+  .form_step_panel {
+    &.accordian-group-style,
+    .accordian-group-style {
+      .mat-expansion-panel {
+        // Level 2
+        .mat-expansion-panel-body {
+          padding: 0px !important;
+          .mat-expansion-panel-header {
+            padding-left: 28px !important;
+          }
+          // Level 3
+          .mat-expansion-panel-content {
+            .mat-expansion-panel-body {
+              .mat-expansion-panel-header {
+                padding-left: 36px !important;
+              }
+              // Level 4
+              .mat-expansion-panel-content {
+                .mat-expansion-panel-body {
+                  .mat-expansion-panel-header {
+                    padding-left: 44px !important;
+                  }
+                  // Level 5
+                  .mat-expansion-panel-content {
+                    .mat-expansion-panel-body {
+                      .mat-expansion-panel-header {
+                        padding-left: 52px !important;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .mat-expansion-panel-header {
+          min-height: 40px !important;
+          height: 40px !important;
+          border-radius: 0px !important;
+
+          border-left: 4px transparent solid !important;
+
+          &.cdk-focused {
+            background: map-get($map: $background, $key: hover) !important;
+            border-left: 4px mat.get-color-from-palette($primary) solid !important;
+          }
+
+          .mat-expansion-panel-header-title {
+            font-size: 14px !important;
+            font-weight: 400 !important;
+          }
+        }
+      }
+
+      mat-accordion.mat-accordion:last-child mat-expansion-panel,
+      mat-accordion.mat-accordion:last-child mat-expansion-panel {
+        border-radius: 0px !important;
+      }
+    }
+  }
+
+  .mat_pagination_container {
+    border-radius: 0px 0px 8px 8px !important;
+  }
+
+  // Long Text Mat-Chip CLose Icon Alignment Fixes
+  .drawer-p {
+    mat-chip-list.mat-chip-list {
+      mat-chip.mat-chip {
+        .mat-chip-remove {
+          display: inline-table !important;
+        }
+      }
+    }
+  }
+}
+
+//mixin closes here
+//////////////////////////////////////////////////////////circle dot
+.dot {
+  height: 7px;
+  width: 7px;
+  min-width: 7px;
+  background-color: $dot-background;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0px 10px;
+
+  &.dot-lg {
+    height: 12px;
+    width: 12px;
+    min-width: 12px;
+  }
+}
+
+.email-dot {
+  height: 6px;
+  width: 6px;
+  min-width: 6px;
+  border-radius: 50%;
+  display: inline-block;
+
+  &.cc {
+    background-color: $amber;
+  }
+
+  &.to {
+    background-color: $limeade;
+  }
+
+  &.bcc {
+    background-color: $tapestry;
+  }
+}
+
+.custom-spacing {
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.custom-dropdown {
+  .mat-form-field-wrapper {
+    padding-bottom: 0px !important;
+  }
+
+  .mat-form-field-underline {
+    display: none;
+  }
+}
+
+.grid-custom-dropdown {
+  .mat-form-field-wrapper {
+    margin-bottom: 0px !important;
+    margin-top: 4px !important;
+  }
+}
+
+.form-field-spacing {
+  .mat-form-field-wrapper {
+    padding-bottom: 16px !important;
+  }
+}
+
+.form-field-zero-spacing {
+  .mat-form-field-wrapper {
+    padding-bottom: 0px !important;
+  }
+}
+
+.margin-auto {
+  margin: 0 auto !important;
+}
+
+.height-auto {
+  height: auto !important;
+}
+
+.width-auto {
+  width: auto !important;
+}
+
+.custom-tooltip {
+  position: relative;
+
+  .tooltip {
+    display: inline-block;
+    position: relative;
+  }
+
+  .tooltiptext {
+    background-color: $tundora;
+    color: $white;
+    text-align: left;
+    border-radius: 4px;
+    padding: 8px;
+    position: absolute;
+    display: block;
+    z-index: 999; // changed z-index from 10000 to 999 because it was coming above sidebar when sidebar is open in small screens
+    top: 35px;
+    max-width: 300px;
+  }
+
+  .tooltiptext::after {
+    content: '';
+    position: absolute;
+    top: -17px;
+    left: 50px;
+    margin-left: -5px;
+    border-width: 9px;
+    border-style: solid;
+    border-color: transparent transparent $tundora transparent;
+  }
+}
+
+.mat-option-height {
+  .mat-option {
+    line-height: 22px !important;
+    padding: 18px !important;
+    height: auto;
+    /* margin-bottom: 16px; */
+  }
+}
+
+.line-height-inherit {
+  line-height: inherit !important;
+}
+// -----------------------------------------------------------------------------------------------------
+// @ Cursor helpers
+// -----------------------------------------------------------------------------------------------------
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.cursor-default {
+  cursor: default !important;
+}
+
+.cursor-none {
+  pointer-events: none !important;
+}
+
+.spinner-container {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  height: 100% !important;
+  width: 100% !important;
+  position: absolute !important;
+  z-index: 9999;
+  top: 0;
+}
+
+.pt-xs-16 {
+  @include media-breakpoint('lt-sm') {
+    padding-top: 16px !important;
+  }
+}
+
+.pt-xs-12 {
+  @include media-breakpoint('lt-sm') {
+    padding-top: 12px !important;
+  }
+}
+
+.pb-xs-16 {
+  @include media-breakpoint('lt-sm') {
+    padding-bottom: 16px !important;
+  }
+}
+
+.pl-xs-16 {
+  @include media-breakpoint('lt-sm') {
+    padding-left: 16px !important;
+  }
+}
+
+.px-xs-16 {
+  @include media-breakpoint('lt-sm') {
+    padding: 0px 16px;
+  }
+}
+
+.px-xs-8 {
+  @include media-breakpoint('lt-sm') {
+    padding: 0px 8px;
+  }
+}
+
+.pt-xs-8 {
+  @include media-breakpoint('lt-sm') {
+    padding-top: 8px;
+  }
+}
+
+.py-xs-8 {
+  @include media-breakpoint('lt-sm') {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+}
+
+.pr-xs-16 {
+  @include media-breakpoint('lt-sm') {
+    padding-right: 16px;
+  }
+}
+
+.ml-xs-0 {
+  @include media-breakpoint('xs') {
+    margin-left: 0px !important;
+  }
+}
+
+.ml-xs-8 {
+  @include media-breakpoint('xs') {
+    margin-left: 8px !important;
+  }
+}
+
+.ml-xs-4 {
+  @include media-breakpoint('xs') {
+    margin-left: 4px !important;
+  }
+}
+
+.mt-small-16 {
+  @include media-breakpoint('lt-md') {
+    margin-top: 16px;
+  }
+}
+
+.mb-small-16 {
+  @include media-breakpoint('lt-md') {
+    margin-bottom: 16px;
+  }
+}
+
+.mt-small-8 {
+  @include media-breakpoint('lt-md') {
+    margin-top: 8px;
+  }
+}
+
+.pb-small-0 {
+  @include media-breakpoint('lt-md') {
+    padding-bottom: 0px !important;
+  }
+}
+
+.p-small-8 {
+  @include media-breakpoint('lt-md') {
+    padding: 8px !important;
+  }
+}
+
+.p-xs-0 {
+  @include media-breakpoint('lt-sm') {
+    padding: 0px !important;
+  }
+}
+
+//padding bottom for small screen to manage scroll height
+.small-screens-spacing {
+  @include media-breakpoint('md') {
+    padding-bottom: 24px !important;
+  }
+
+  @include media-breakpoint('lt-md') {
+    padding-bottom: 12px !important;
+  }
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.overflow-none {
+  overflow: hidden;
+}
+
+.file-viewer-height {
+  height: calc(100vh - 115px);
+}
+
+.overflow-x-auto {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+}
+
+.overflow-y-auto {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+.overflow-ellipses {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
+.display-none {
+  display: none !important;
+}
+
+.display-block {
+  display: block !important;
+}
+
+.dynamic-form-control {
+  .mat-error .mat-form-field-wrapper {
+    padding-bottom: unset !important;
+  }
+
+  .primary-label {
+    display: inline !important;
+
+    markdown {
+      margin: 8px 0 !important;
+
+      p {
+        display: inline !important;
+      }
+    }
+  }
+
+  .secondary-label markdown {
+    color: black !important;
+
+    p {
+      display: inline !important;
+    }
+  }
+
+  .selection-list {
+    .mat-list-text {
+      display: block !important;
+    }
+  }
+
+  markdown > ol {
+    padding-inline-start: 15px !important;
+    margin-block: 0em !important;
+  }
+}
+
+//css for white space no wrap
+.scrollable-filters {
+  @include media-breakpoint('lt-md') {
+    overflow: auto !important;
+
+    &::-webkit-scrollbar {
+      /* WebKit */
+      width: 0;
+      height: 0;
+    }
+  }
+}
+
+.box-shadow-none {
+  box-shadow: none !important;
+}
+
+.width-fit-content {
+  width: fit-content;
+}
+
+/// Css for Input control Height//
+.mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0.5em 0 0.5em 0 !important;
+}
+
+.mat-form-field.mat-form-field-appearance-outline.mat-form-field-hide-placeholder
+  .mat-form-field-label-wrapper {
+  top: -1.30375em !important;
+}
+
+/// Css for Input control Height//
+.mat-paginator {
+  border-radius: 0 0 8px 8px;
+}
+
+.scroll-hover {
+  overflow: hidden !important;
+
+  &:hover {
+    overflow: auto !important;
+  }
+
+  @include media-breakpoint('lt-lg') {
+    overflow: auto !important;
+  }
+}
+
+.snack-bar-color {
+  background-color: $cod-gray !important;
+  color: $white !important;
+  box-shadow: 1px 2px 5px rgba($black-color, 0.5) !important;
+  border-radius: 24px !important;
+  font-size: px-to-rem(14) !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.border-bottom-lastChild {
+  &:last-child {
+    border-bottom: none !important;
+  }
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed !important;
+}
+
+.setting-chip {
+  border-radius: 4px !important;
+  font-size: px-to-rem(14) !important;
+  padding: 4px 8px !important;
+}
+
+// CK Editor Styles
+.ck-editor-container {
+  word-break: break-word !important;
+
+  i {
+    font-style: italic !important;
+    font-size: inherit !important;
+    font-family: 'Source Sans Pro', sans-serif !important;
+    color: inherit !important;
+  }
+
+  li {
+    list-style-position: inside;
+  }
+}
+
+.ck-editor__top {
+  border-bottom: 1px solid grey !important;
+}
+
+.mat-hint-prioritize {
+  .mat-form-field-subscript-wrapper {
+    position: static;
+    min-height: 1em;
+  }
+
+  .mat-form-field-underline {
+    position: static;
+  }
+
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+}
+
+.req-list-section {
+  .mat-list-item-content {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+}
+
+#Guidelines .ck.ck-editor__editable {
+  min-height: 50px !important;
+}
+
+#compliance-summary .ck-editor-container {
+  padding-left: 24px !important;
+}
+
+#compliance-summary .text-capitalize {
+  font-size: px-to-rem(16) !important;
+}
+
+.scrollbar-hidden {
+  &::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+}
+
+.scroll-smooth {
+  scroll-behavior: smooth !important;
+}
+
+#location.eval_distribution_page {
+  .notification_grid {
+    exxat-notification-log {
+      .page-layout {
+        .center {
+          .table-rounded-border {
+            overflow-x: auto !important;
+            border-color: transparent !important;
+            border-radius: 0px !important;
+
+            mat-table {
+              padding: 0px !important;
+              width: max-content !important;
+
+              .mat-header-cell,
+              .mat-cell {
+                min-width: 13vw !important;
+                max-width: 13vw !important;
+                width: 13vw !important;
+              }
+
+              .mat-column-subject {
+                min-width: 15vw !important;
+                max-width: 15vw !important;
+                width: 15vw !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.drawer-bg {
+  background: $alabaster;
+}
+
+.box-shadow-sm {
+  box-shadow: 0px 1px 4px rgba(137, 137, 137, 0.25);
+}
+
+.white_space_word_break {
+  white-space: normal !important;
+  word-break: break-all !important;
+}
+
+//Disables check box from multi-select drop down in Site assessemtn form
+.site-assessment-disabled-checkbox {
+  .mat-pseudo-checkbox-disabled {
+    display: none !important;
+  }
+}
+
+location-update-rte {
+  mat-card {
+    header {
+      z-index: 0 !important;
+    }
+  }
+}
+
+// Changelog
+.changelog {
+  .entry {
+    margin-bottom: 24px;
+    padding: 24px 32px;
+    @include mat.elevation(2);
+
+    > .title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+
+      .version {
+        font-size: px-to-rem(24);
+      }
+
+      .date {
+        margin-left: 8px;
+        font-size: px-to-rem(17);
+        opacity: 0.54;
+      }
+    }
+
+    .groups {
+      div {
+        margin-bottom: 32px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      .title {
+        display: inline-flex;
+        font-size: px-to-rem(13);
+        color: white;
+        letter-spacing: 0.015em;
+        line-height: 1;
+        padding: 5px 8px;
+        border-radius: 2px;
+      }
+
+      .breaking-changes {
+        .title {
+          background: $pomegranate;
+        }
+      }
+
+      .new {
+        .title {
+          background: $apple;
+        }
+      }
+
+      .improved {
+        .title {
+          background: $purple-heart;
+        }
+      }
+
+      .fixed {
+        .title {
+          background: $dodger-blue-dark;
+        }
+      }
+
+      ul {
+        padding-left: 24px;
+
+        li {
+          margin-bottom: 6px;
+          letter-spacing: 0.015em;
+
+          ul {
+            margin-top: 6px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.exxat-privacy-policy {
+  p {
+    margin-bottom: 20px;
+    margin-top: 5px;
+    line-height: 20px;
+  }
+
+  ul {
+    li {
+      margin-bottom: 10px;
+    }
+
+    &.information-collection {
+      list-style-type: lower-latin;
+
+      li {
+        ul {
+          list-style-type: decimal;
+
+          ul {
+            list-style-type: upper-roman;
+          }
+        }
+
+        &:before {
+          content: ')';
+          /* Insert content that looks like bullets */
+          padding-right: 8px;
+          color: $black-color;
+          /* Or a color you prefer */
+        }
+      }
+    }
+  }
+}
+
+span.para-ellipses {
+  p {
+    width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+}
+
+#placement-student-view .cdk-virtual-scroll-spacer {
+  height: auto !important;
+}
+
+.wishlist-rank-selection-card .mat-form-field-wrapper {
+  margin-bottom: 0px !important;
+}

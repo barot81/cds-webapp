@@ -1,0 +1,83 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@exxat-common/angular-bootstrap": [
+        "libs/common/angular-bootstrap/src/index.ts"
+      ],
+      "@exxat-common/angular-bootstrap-legacy": [
+        "libs/legacy/angular-bootstrap-legacy/src/index.ts"
+      ],
+      "@exxat-common/angular-extended-http": [
+        "libs/common/angular-extended-http/src/index.ts"
+      ],
+      "@exxat-common/user-idle": ["libs/common/user-idle/src/index.ts"],
+      "@exxat-core/angular-mf": ["libs/core/angular-mf/src/index.ts"],
+      "@exxat-core/angular-oauth-oidc": [
+        "libs/core/angular-oauth-oidc/src/index.ts"
+      ],
+      "@exxat-core/angular-runtime-config": [
+        "libs/core/angular-runtime-config/src/index.ts"
+      ],
+      "@exxat/account": ["libs/legacy/account/src/index.ts"],
+      "@exxat/account/identity": ["libs/legacy/account/identity/src/index.ts"],
+      "@exxat/account/meta": ["libs/legacy/account/meta/src/index.ts"],
+      "@exxat/account/registration": [
+        "libs/legacy/account/registration/src/index.ts"
+      ],
+      "@exxat/assets-legacy": ["libs/legacy/assets/src/index.ts"],
+      "@exxat/fusion": ["libs/legacy/fusion/src/index.ts"],
+      "@exxat/fusion-feature-flag": [
+        "libs/legacy/fusion/feature-flag/src/index.ts"
+      ],
+      "@exxat/fusion/components": [
+        "libs/legacy/fusion/components/src/index.ts"
+      ],
+      "@exxat/fusion/core": ["libs/legacy/fusion/core/src/index.ts"],
+      "@exxat/fusion/directives": [
+        "libs/legacy/fusion/directives/src/index.ts"
+      ],
+      "@exxat/fusion/models": ["libs/legacy/fusion/models/src/index.ts"],
+      "@exxat/fusion/pipes": ["libs/legacy/fusion/pipes/src/index.ts"],
+      "@exxat/fusion/services": ["libs/legacy/fusion/services/src/index.ts"],
+      "@exxat/help-center": ["libs/legacy/help-center/src/index.ts"],
+      "@exxat/plugin": ["libs/legacy/plugin/src/index.ts"],
+      "@exxat/plugin/ckeditor": ["libs/legacy/plugin/ckeditor/src/index.ts"],
+      "@exxat/plugin/data-source": [
+        "libs/legacy/plugin/data-source/src/index.ts"
+      ],
+      "@exxat/plugin/file-upload": [
+        "libs/legacy/plugin/file-upload/src/index.ts"
+      ],
+      "@exxat/plugin/file-viewer": [
+        "libs/legacy/plugin/file-viewer/src/index.ts"
+      ],
+      "@exxat/plugin/notifications": [
+        "libs/legacy/plugin/notifications/src/index.ts"
+      ],
+      "@exxat/plugin/payment": ["libs/legacy/plugin/payment/src/index.ts"],
+      "@exxat/plugin/power-bi": ["libs/legacy/plugin/power-bi/src/index.ts"],
+      "@exxat/plugin/tags": ["libs/legacy/plugin/tags/src/index.ts"],
+      "@exxat/ux": ["libs/legacy/ux/src/index.ts"],
+      "@exxat/zendesk": ["libs/legacy/zendesk/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"],
+  "angularCompilerOptions": {
+    "types": ["node"]
+  }
+}

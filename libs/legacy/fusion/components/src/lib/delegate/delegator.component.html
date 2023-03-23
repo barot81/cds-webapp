@@ -1,0 +1,27 @@
+<ng-template #validationDialog>
+    <h2 matDialogTitle>Link Expired</h2>
+    <div *ngIf="!isLinkExpired">
+      <p>{{errorMessage}}</p>
+    </div>
+    <div *ngIf="isLinkExpired">
+      <p>This link has been deactivated due to link expiration date arrival</p>
+    </div>
+    <div align="right">
+      <button mat-button matDialogClose color="primary">Dismiss</button>
+    </div>
+</ng-template>
+
+<div *ngIf="is400Error" class="page-layout full-width" class="w-100-p" tabindex="0" aria-label="404 error page" id="error-demo-404">
+    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100" class="px-xs-16">
+      <div class="font-weight-600 gradient-color" tabindex="0" aria-label="404 error"  data-text="400">400</div>
+      <span class="accent-fg mb-36 error-desc" tabindex="0" aria-label="Sorry! The page you were looking for, was not found">Sorry! The page you were looking for, was not found</span>
+      <span class="accent-fg mb-36 " tabindex="0" aria-label="Enter valid website URL, please try again!">Enter valid website URL, please try again! </span>
+    </div>
+</div>
+<div *ngIf="is404Error" class="page-layout full-width" class="w-100-p" tabindex="0" aria-label="404 error page" id="error-demo-404">
+  <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100" class="px-xs-16">
+    <div class="font-weight-600 gradient-color" tabindex="0" aria-label="404 error"  data-text="404">404</div>
+    <span class="accent-fg mb-36 error-desc" tabindex="0" aria-label="Sorry! The page you were looking for, was not found">Sorry! We could not find record with provided details</span>
+    <span class="accent-fg mb-36 " tabindex="0" aria-label="Enter valid website URL, please try again!">Please contact administrator </span>
+  </div>
+</div>

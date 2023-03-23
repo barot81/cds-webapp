@@ -1,0 +1,7 @@
+@import './ck-editor';
+@import './perfect-scrollbar';
+@import './prism';
+
+@mixin plugins-theme($theme) {
+  @include ckeditor-theme($theme);
+}

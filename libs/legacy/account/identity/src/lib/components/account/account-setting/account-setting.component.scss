@@ -1,0 +1,244 @@
+.home {
+  width: 87px;
+  height: 87px;
+  margin-top: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.drawerAction {
+  position: absolute;
+  width: inherit;
+  height: auto;
+  left: 4px;
+  top: 273px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+.drawer-actions-save {
+  bottom: 20.62%;
+  position: absolute;
+}
+.info {
+  text-align: center;
+  padding: 4% 0%;
+}
+.logoutbutton {
+  box-shadow: 0px 3px 1px -2px rgba(64, 85, 181, 0.2),
+    0px 2px 2px 0px rgba(64, 85, 181, 0.14),
+    0px 1px 5px 0px rgba(64, 85, 181, 0.12);
+  background: #2cb3b3;
+  border-radius: 0px;
+  border: 2px solid #2cb3b3 !important;
+  color: #ffffff;
+  width: 120px;
+  text-transform: uppercase;
+  margin-top: 5%;
+}
+.batchname {
+  background-color: gainsboro;
+  border-radius: 8.5px;
+  padding: 2px 10px;
+  margin-top: 2%;
+}
+.email {
+  color: #6369fe;
+  line-height: normal;
+  margin-bottom:10px ;
+}
+.changepwd {
+  color: #6369fe;
+  line-height: normal;
+  margin: 2px;
+}
+.emailwrapper {
+  margin-top: 2%;
+}
+.terms {
+  padding: 0px;
+  background: none;
+  border-radius: 0px;
+  line-height: normal;
+}
+.avatar-wrapper {
+  position: relative;
+
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+
+  &:focus {
+    & .edit {
+      background: #26a69a;
+    }
+
+    border: 2px solid #2cb3b3;
+    box-shadow: 0px 0px 10px rgba(44, 179, 179, 0.44);
+  }
+
+  &:hover {
+    border: 2px solid #2cb3b3;
+    box-shadow: 0px 0px 10px rgba(44, 179, 179, 0.44);
+  }
+
+  .profile-pic {
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+
+    &:after {
+      content: '\f007';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      font-size: 190px;
+      background: #ecf0f1;
+      color: #34495e;
+      text-align: center;
+    }
+  }
+
+  .profile-upload {
+    display: none;
+  }
+}
+
+.editOption {
+  width: auto;
+
+  align-content: center;
+  text-align: center;
+}
+
+.removeProfile {
+  cursor: pointer;
+  color: #5a5a5a;
+  line-height: 0px;
+  height: 30px;
+  display: inline-block;
+
+  i {
+    vertical-align: middle;
+    text-align: center;
+    font-size: large;
+    padding: 2px;
+  }
+}
+
+.uploadProfile {
+  cursor: pointer;
+  line-height: 0px;
+  height: 30px;
+  color: #5a5a5a;
+  i {
+    vertical-align: middle;
+    text-align: center;
+    font-size: large;
+    padding: 2px;
+  }
+}
+.upload-button {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+
+  .edit {
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    padding: 5px;
+    font-size: 14px;
+    bottom: 6px;
+    right: -7px;
+    text-align: center;
+    transition: all 0.3s ease;
+    color: #ffffff;
+    cursor: pointer;
+    background: #5a5a5a;
+  }
+
+  &:hover .edit {
+    background: #26a69a;
+  }
+}
+
+.profile-initial {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  text-align: center;
+
+  padding-top: 20px;
+  &:hover {
+    transform: scale(1.05);
+    border: 2px solid rgb(255, 255, 255);
+  }
+
+  .profile-identity-initials {
+    position: relative;
+    color: white !important;
+
+    font-size: 40px;
+  }
+}
+// ::ng-deep .exxat-default-theme .mat-progress-spinner circle,
+// .exxat-default-theme .mat-spinner circle {
+//   stroke: grey !important;
+// }
+mat-spinner {
+  margin: auto;
+
+  margin-top: -2px;
+}
+.setting-list {
+  height: 50vh;
+  overflow: auto;
+}
+@media only screen and (max-width: 1440px) {
+  .setting-list {
+    height: 35vh !important;
+    overflow: auto !important;
+  }
+}
+@media only screen and (max-height: 770px) {
+  .setting-list {
+    height: 25vh !important;
+    overflow: auto !important;
+  }
+
+  .change-password {
+    justify-self: end;
+    color: #497ee4;
+    cursor: pointer;
+  }
+
+  .changepwd {
+
+    button {
+      padding: 12px;
+      width: 100%;
+      background-color: transparent;
+      &:hover {
+        background-color:#e0dddd;
+      }
+    }
+  }
+}
+@media only screen and (max-height: 1000px) {
+  .setting-list {
+    height: 25vh !important;
+    overflow: auto !important;
+  }
+}

@@ -1,0 +1,22 @@
+<div id="subscribe_container" fxLayout="column">
+
+  <div class="overlay_header mb-20" fxLayout="row wrap" fxLayoutAlign="start center">
+    <div>
+      <button mat-icon-button class="mr-4 back_button fuse-white-fg" (click)="cancel()">
+        <mat-icon class="s-20" role="img">
+          arrow_back
+        </mat-icon>
+      </button>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="start center">
+      <h2 class="document_title fuse-white-fg">Documents</h2>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start center" >
+    <mat-card style="width: 100vw;">
+      <div fxLayout="column" class="pt-16">
+        <exxat-file-viewer [documentConfiguration] = "documentConfiguration"></exxat-file-viewer>
+      </div>
+    </mat-card>
+  </div>
+</div>
