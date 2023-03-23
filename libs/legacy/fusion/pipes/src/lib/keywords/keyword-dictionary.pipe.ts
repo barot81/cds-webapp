@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {  SettingsMap, SettingItem } from '@exxat/fusion/models';
-import { FeatureMetadataService } from '@exxat/fusion/services';
+import {  SettingsMap, SettingItem } from '@zhealthcare/fusion/models';
+import { FeatureMetadataService } from '@zhealthcare/fusion/services';
 
 @Pipe({
   name: 'keyword'

@@ -2,7 +2,7 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef, OnDestroy} from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { FusionConfigService, OrgFacade } from '@exxat/fusion/core';
+import { FusionConfigService, OrgFacade } from '@zhealthcare/fusion/core';
 
 
 
@@ -21,7 +21,7 @@ export class PdfViewerComponent implements OnInit, OnDestroy {
  @ViewChild('viewer', { static: false }) public embeddedPdfViewer;
  isPdfLoaded = false;
  zoom = 'auto';
- 
+
  set src(input: string) {
   this.currentPdfLink = this.getEndpoint(input);
 
@@ -42,7 +42,7 @@ private getEndpoint(targetUrl: string) {
   targetUrl = (targetUrl.startsWith('http://') || targetUrl.startsWith('https://')) ? targetUrl : (this.geGatewayUrl() != "" ? this.geGatewayUrl() + targetUrl : targetUrl);
   return targetUrl;
 }
-	
+
 constructor(readonly cdr:ChangeDetectorRef, private orgFacade:OrgFacade, private configService: FusionConfigService) {
     this._unsubscribe = new Subject();
   }

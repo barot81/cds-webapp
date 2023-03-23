@@ -18,15 +18,15 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import {
   FusionFormAdapter,
   FusionFormComponent,
-} from '@exxat/fusion/components';
+} from '@zhealthcare/fusion/components';
 
-// import { ComponentUtils } from '@exxat/fusion/core';
+// import { ComponentUtils } from '@zhealthcare/fusion/core';
 import { LayoutService } from '../../vertical/layout-1/layout-1.service';
 import { FuseSidebarService } from '../../../components/sidebar/sidebar.service';
 import { FuseProgressBarService } from '../../../components/progress-bar/progress-bar.service';
 import { take, takeUntil } from 'rxjs/operators';
-import { RoleBasedAccessService } from '@exxat/fusion/services';
-import { MetaConstants, URLConstants } from '@exxat/fusion/core';
+import { RoleBasedAccessService } from '@zhealthcare/fusion/services';
+import { MetaConstants, URLConstants } from '@zhealthcare/fusion/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { RouterStateFacade } from '../../../store/facade/router.facade';

@@ -3,11 +3,11 @@ import { ResourceSandbox } from '../services/resource.sandbox';
 import { CartSandbox } from '../services/cart.sandbox';
 import { Dictionary } from 'linq-collections';
 import { Router } from '@angular/router';
-import { BaseComponent, MetaConstants } from '@exxat/fusion/core';
+import { BaseComponent, MetaConstants } from '@zhealthcare/fusion/core';
 import { Resource } from '../models/resource';
 import { ActiveSubscription } from '../models/subscription';
-import { FuseProgressBarService } from '@exxat/ux';
-import { PageFacade } from '@exxat/ux';
+import { FuseProgressBarService } from '@zhealthcare/ux';
+import { PageFacade } from '@zhealthcare/ux';
 
 export interface PeriodicElement {
   product: string;

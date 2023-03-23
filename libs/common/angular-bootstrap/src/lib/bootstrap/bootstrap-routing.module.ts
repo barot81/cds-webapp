@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { BOOTSTRAP_DEFINITIONS } from '@exxat-core/angular-mf';
+import { BOOTSTRAP_DEFINITIONS } from '@zhealthcare-core/angular-mf';
 
-import { ExxatAngularBootstrapComponent } from './bootstrap.component';
+import { zhealthcareAngularBootstrapComponent } from './bootstrap.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ExxatAngularBootstrapComponent,
+    component: zhealthcareAngularBootstrapComponent,
     children: BOOTSTRAP_DEFINITIONS,
   }
 ];
@@ -17,4 +17,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ExxatAngularBootstrapRoutingModule {}
+export class zhealthcareAngularBootstrapRoutingModule {}

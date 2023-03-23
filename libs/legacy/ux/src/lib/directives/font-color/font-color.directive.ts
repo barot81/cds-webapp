@@ -310,13 +310,13 @@ export class FontColorDirective implements AfterViewInit {
           this.backgroundColor = this.backgroundColor
             .substring(0, this.backgroundColor.indexOf('-500-bg'))
             .toLowerCase();
-        } else if (element.endsWith('-bg') && !element.startsWith('exxat-')) {
+        } else if (element.endsWith('-bg') && !element.startsWith('zhealthcare-')) {
           this.backgroundColor = element;
           this.backgroundColor = this.backgroundColor
             .substring(0, this.backgroundColor.indexOf('-bg'))
             .toLowerCase();
-        } else if (element.endsWith('-bg') && element.startsWith('exxat-')) {
-          this.backgroundColor = element.replace('exxat-', '');
+        } else if (element.endsWith('-bg') && element.startsWith('zhealthcare-')) {
+          this.backgroundColor = element.replace('zhealthcare-', '');
           this.backgroundColor = this.backgroundColor
             .substring(0, this.backgroundColor.indexOf('-bg'))
             .toLowerCase();

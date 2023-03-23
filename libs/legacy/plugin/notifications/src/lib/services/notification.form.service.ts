@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { ComponentMap } from '@exxat/fusion/core';
+import { ComponentMap } from '@zhealthcare/fusion/core';
 import { NotificationTemplateEditComponent } from '../wizard/template/edit/notification-template-edit.component';
 
 

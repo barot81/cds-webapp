@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Sandbox } from '@exxat/fusion/core';
+import { Sandbox } from '@zhealthcare/fusion/core';
 import { Observable } from 'rxjs';
 import { CartApiClient } from './cart.ApiClient';
 import { CartViewModel } from './../models';

@@ -5,7 +5,7 @@ import {
   GET,
   Header,
   HttpService,
-} from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/core';
 import { Observable } from 'rxjs';
 
 @Injectable({

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ComponentMap } from '@exxat/fusion/core';
+import { ComponentMap } from '@zhealthcare/fusion/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { ThemeSelectionComponent } from '../components/theme-selection.component';
@@ -14,6 +14,6 @@ export class ThemeSelectionService extends ComponentMap {
   constructor() {
     super();
     this.selectedThemeColor$ = new BehaviorSubject(null);
-    this.add('exxat-theme-selection', ThemeSelectionComponent);
+    this.add('zhealthcare-theme-selection', ThemeSelectionComponent);
   }
 }

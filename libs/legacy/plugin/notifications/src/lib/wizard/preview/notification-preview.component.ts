@@ -3,10 +3,10 @@ import {
   OnDestroy, OnInit, Output
 } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
+import * as ClassicEditor from '@zhealthcare/ckeditor5-build-classic';
 import {
   FusionFormAdapter, FusionFormComponent
-} from '@exxat/fusion/components';
+} from '@zhealthcare/fusion/components';
 import moment from 'moment';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -14,7 +14,7 @@ import { NotificationEmailFormModel } from '../../models/notification-emailform.
 import { NotifationSandbox, NotificationService } from '../../services';
 
 @Component({
-  selector: 'exxat-notification-preview',
+  selector: 'zhealthcare-notification-preview',
   templateUrl: './notification-preview.component.html',
   styleUrls: ['./notification-preview.component.scss']
 })

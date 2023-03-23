@@ -7,8 +7,8 @@ import {
   LookupMap,
   SettingsMap,
   Validations,
-} from '@exxat/fusion/models';
-import { Sandbox, OrgFacade, FoundationInjector } from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/models';
+import { Sandbox, OrgFacade, FoundationInjector } from '@zhealthcare/fusion/core';
 import { Observable } from 'rxjs';
 import { KeywordAPIClient } from './keyword-dictionary/keyword.APIClient';
 

@@ -6,7 +6,7 @@ import {
   OrgFacade,
   RoleService,
   UserTypeService,
-} from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/core';
 import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { myAccessRights } from './rbac.constants';

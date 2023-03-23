@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
-import { Sandbox } from '@exxat/fusion/core';
+import { Sandbox } from '@zhealthcare/fusion/core';
 import { NotificationApiClient } from './notofication.ApiClient';
 import { NotificationEmailSendModel, NotificationTemplateModel, NotificationLogModel, NotificationLayoutModel, DataSourceResult } from '../models';
 
@@ -78,7 +78,7 @@ export class NotifationSandbox extends Sandbox {
   }
 
   GetNotificationLogByRawSql(ouCode: any,categoryId,notificationId, cohortIds,pageNumber) {
-    return this.notificationApiClient.GetNotificationLogByRawSql(ouCode,categoryId,notificationId,cohortIds,pageNumber);    
+    return this.notificationApiClient.GetNotificationLogByRawSql(ouCode,categoryId,notificationId,cohortIds,pageNumber);
   }
 
 

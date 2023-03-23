@@ -1,4 +1,4 @@
-import { OuCodeAccessTree, TenantWithOuCodeTree } from '@exxat/fusion/models';
+import { OuCodeAccessTree, TenantWithOuCodeTree } from '@zhealthcare/fusion/models';
 import { OrgActions, OrgActionTypes } from '../actions/org.actions';
 
 

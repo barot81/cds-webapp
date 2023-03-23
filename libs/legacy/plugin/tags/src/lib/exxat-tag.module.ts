@@ -4,15 +4,15 @@ import {
   MaterialModule,
   FuseSharedModule,
   FuseMaterialColorPickerModule,
-  ExxatTooltipModule,
+  zhealthcareTooltipModule,
   AutoOpenMenuModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ExxatTagComponent } from './components/exxat-tag/exxat-tag.component';
-import { ExxatTagShowCaseComponent } from './components/exxat-tag-showcase/exxat-tag-showcase.component';
+import { zhealthcareTagComponent } from './components/zhealthcare-tag/zhealthcare-tag.component';
+import { zhealthcareTagShowCaseComponent } from './components/zhealthcare-tag-showcase/zhealthcare-tag-showcase.component';
 @NgModule({
-  declarations: [ExxatTagComponent, ExxatTagShowCaseComponent],
+  declarations: [zhealthcareTagComponent, zhealthcareTagShowCaseComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -21,9 +21,9 @@ import { ExxatTagShowCaseComponent } from './components/exxat-tag-showcase/exxat
     FuseMaterialColorPickerModule,
     FlexLayoutModule,
     FuseSharedModule,
-    ExxatTooltipModule,
+    zhealthcareTooltipModule,
     AutoOpenMenuModule,
   ],
-  exports: [ExxatTagComponent, ExxatTagShowCaseComponent],
+  exports: [zhealthcareTagComponent, zhealthcareTagShowCaseComponent],
 })
-export class ExxatTagModule {}
+export class zhealthcareTagModule {}

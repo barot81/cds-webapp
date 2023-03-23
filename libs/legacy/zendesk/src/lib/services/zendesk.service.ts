@@ -3,8 +3,8 @@ import { Inject, Injectable } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { NgxZendeskWebwidgetService } from 'ngx-zendesk-webwidget';
 
-import { RuntimeConfigLoaderService } from '@exxat-core/angular-runtime-config';
-import { ThemeSelectionService } from '@exxat/ux';
+import { RuntimeConfigLoaderService } from '@zhealthcare-core/angular-runtime-config';
+import { ThemeSelectionService } from '@zhealthcare/ux';
 
 import { DOCUMENT } from '@angular/common';
 import { ZendeskUser } from '../models/zendesk.model';

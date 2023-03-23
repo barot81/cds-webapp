@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import {
   Cryptography, FusionConfigService, HttpConstants,
   MethodType, OrgFacade, OrgState, OucodeHelper, RequestHeader, UserFacade
-} from '@exxat/fusion/core';
-import { TokenModel } from '@exxat/fusion/models';
+} from '@zhealthcare/fusion/core';
+import { TokenModel } from '@zhealthcare/fusion/models';
 import { Observable } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
 import {
@@ -316,7 +316,7 @@ export class DataSourceService {
                 x.value,
                 condition
               );
-              //Due to Exxat SQE parsing wont happen in the POST request
+              //Due to zhealthcare SQE parsing wont happen in the POST request
               requestPayload.filters.push(newFilter);
             }
           });

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MaterialModule, FuseSharedModule } from '@exxat/ux';
+import { MaterialModule, FuseSharedModule } from '@zhealthcare/ux';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PowerBIComponent } from './power-bi.component';
 import {PowerBIRoutingModule} from './power-bi-routing.module';
-import { PowerBIApiClient } from './services/exxat-web-api-client.service';
-import { PowerBISandbox } from './services/exxat-web-sandbox.service';
+import { PowerBIApiClient } from './services/zhealthcare-web-api-client.service';
+import { PowerBISandbox } from './services/zhealthcare-web-sandbox.service';
 
 @NgModule({
   imports: [

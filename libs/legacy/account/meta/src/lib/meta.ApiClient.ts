@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GET, HttpService, Header, Query, Path } from '@exxat/fusion/core';
+import { GET, HttpService, Header, Query, Path } from '@zhealthcare/fusion/core';
 import {
   LaunchDataModel,
   Organization,
   OrgUnitInformation,
   OuCodeAccessTree,
-} from '@exxat/fusion/models';
+} from '@zhealthcare/fusion/models';
 
 @Injectable({providedIn:'any'})
 export class MetaApiClient extends HttpService {

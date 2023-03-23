@@ -10,10 +10,10 @@ import { FuseDirectivesModule } from '../../../directives';
 import { FuseProgressBarModule } from '../../../components/progress-bar/progress-bar.module';
 import { FuseConfirmDialogModule } from '../../../components/confirm-dialog/confirm-dialog.module';
 import { MaterialModule } from '../../../material.module';
-import { RoleBasedAccessService } from '@exxat/fusion/services';
+import { RoleBasedAccessService } from '@zhealthcare/fusion/services';
 import { A11yModule } from '@angular/cdk/a11y';
 import { UXStoreModule } from '../../../store/store.module';
-import { ExxatTooltipModule } from '../../../components/exxat-tooltip/modules/tooltip.module';
+import { zhealthcareTooltipModule } from '../../../components/zhealthcare-tooltip/modules/tooltip.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { ExxatTooltipModule } from '../../../components/exxat-tooltip/modules/to
     FuseConfirmDialogModule,
     UXStoreModule,
     A11yModule,
-    ExxatTooltipModule
+    zhealthcareTooltipModule
   ],
   exports: [
     DrawerComponent

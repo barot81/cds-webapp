@@ -8,7 +8,7 @@ import {
   TokenModel,
   TokenSessionInfo,
   UserInputModel,
-} from '@exxat/fusion/models';
+} from '@zhealthcare/fusion/models';
 import { AuthService } from './../../services/auth/auth.service';
 import {
   LoggingService,

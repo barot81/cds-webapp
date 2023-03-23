@@ -10,7 +10,7 @@ import {
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { FusionConfigService } from '@exxat/fusion/core';
+import { FusionConfigService } from '@zhealthcare/fusion/core';
 import { slideInBottom, slideOutBottom } from '../../../animations';
 import { ThemeSelectionService } from '../../../components';
 import { ScrollService } from '../../../services';

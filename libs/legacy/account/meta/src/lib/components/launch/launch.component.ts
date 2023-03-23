@@ -13,20 +13,20 @@ import {
   URLConstants,
   UserFacade,
   UserTypeService,
-} from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/core';
 import {
   OrgUnitInformation,
   OuCodeAccessTree,
   TenantWithOuCodeTree,
   UserPersona,
-} from '@exxat/fusion/models';
-import { FusionNavigationService } from '@exxat/fusion/services';
+} from '@zhealthcare/fusion/models';
+import { FusionNavigationService } from '@zhealthcare/fusion/services';
 import {
   FuseProgressBarService,
   HeaderService,
   LayoutService,
   PageFacade,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import lodash from 'lodash';
 import { lastValueFrom, Observable, of, Subject } from 'rxjs';
 import { map, take, takeUntil } from 'rxjs/operators';

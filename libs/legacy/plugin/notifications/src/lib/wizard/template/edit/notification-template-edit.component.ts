@@ -1,18 +1,18 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
+import * as ClassicEditor from '@zhealthcare/ckeditor5-build-classic';
 import {
   FusionFormAdapter, FusionFormComponent
-} from '@exxat/fusion/components';
-import { ManifoldPanelService, SnackbarService } from '@exxat/ux';
+} from '@zhealthcare/fusion/components';
+import { ManifoldPanelService, SnackbarService } from '@zhealthcare/ux';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { NotificationTemplateModel } from '../../../models/notification-template.model';
 import { NotifationSandbox } from '../../../services/notification.sandbox';
 import { NotificationService } from '../../../services/notificaton.service';
 @Component({
-  selector: 'exxat-notification-template-edit',
+  selector: 'zhealthcare-notification-template-edit',
   templateUrl: './notification-template-edit.component.html',
   styleUrls: ['./notification-template-edit.component.scss']
 })

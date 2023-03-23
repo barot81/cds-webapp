@@ -12,7 +12,7 @@ import {
   UserFacade,
   UserSettingsModel,
   UserSettingsSandbox
-} from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { BehaviorSubject, take } from 'rxjs';
 import { ThemeSelectionService } from '../../../../components/theme-selection-sidebar/services/theme-selection.service';
@@ -26,7 +26,7 @@ export type ThemeOption = 'theme-blue' | 'theme-purple' | string;
 export type ModeOption = 'light' | 'dark' | string;
 
 @Component({
-  selector: 'exxat-user-setting-drawer',
+  selector: 'zhealthcare-user-setting-drawer',
   templateUrl: './user-setting-drawer.component.html',
 })
 export class UserSettingDrawerComponent implements OnInit {
@@ -199,7 +199,7 @@ export class UserSettingDrawerComponent implements OnInit {
   }
 
   signOut() {
-    this._eventsService.publish('exxat_user_log_out');
+    this._eventsService.publish('zhealthcare_user_log_out');
     if (this._layoutService.getUser()) this.oauthService.logOut();
     else if (!!this._fusionConfigService.appSettings?.authGuardSettings) {
       const isV3V4 = JSON.parse(localStorage.getItem('isV3V4'));

@@ -2,8 +2,8 @@ import { ChangeDetectorRef, Component, HostBinding, Input, OnDestroy, OnInit } f
 import { merge, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { NavigationItem, NavigationItemClasses} from '@exxat/fusion/models';
-import { FusionNavigationService } from '@exxat/fusion/services';
+import { NavigationItem, NavigationItemClasses} from '@zhealthcare/fusion/models';
+import { FusionNavigationService } from '@zhealthcare/fusion/services';
 
 @Component({
     selector: 'fusion-nav-group',

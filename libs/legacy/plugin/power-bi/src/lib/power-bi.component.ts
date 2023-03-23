@@ -7,12 +7,12 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { Logger } from '@exxat/fusion/core';
+import { Logger } from '@zhealthcare/fusion/core';
 import * as pbi from 'powerbi-client';
 import * as powerBiModels from 'powerbi-models';
 import { PowerBIService } from './power-bi.service';
 @Component({
-  selector: 'exxat-plugin-power-bi',
+  selector: 'zhealthcare-plugin-power-bi',
   templateUrl: './power-bi.component.html',
   styleUrls: ['./power-bi.component.scss'],
   providers: [PowerBIService],

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GET, HttpService, POST, Body, DELETE } from '@exxat/fusion/core';
+import { GET, HttpService, POST, Body, DELETE } from '@zhealthcare/fusion/core';
 import { CartViewModel, PaymentSecurityContext } from './../models';
 
 @Injectable({providedIn: 'any'})

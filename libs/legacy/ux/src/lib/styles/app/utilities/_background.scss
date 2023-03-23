@@ -1,11 +1,11 @@
-// Exxat Custom Label Background Class List
-// EX : exxat-mandy-bg
-@each $color, $value in $exxat-custom-label-bg-colors {
-  .exxat-#{$color}-bg {
+// zhealthcare Custom Label Background Class List
+// EX : zhealthcare-mandy-bg
+@each $color, $value in $zhealthcare-custom-label-bg-colors {
+  .zhealthcare-#{$color}-bg {
     background-color: $value !important;
   }
 
-  .exxat-#{$color}-fg {
+  .zhealthcare-#{$color}-fg {
     color: $value !important;
   }
 }

@@ -2,11 +2,11 @@ import { Router } from '@angular/router';
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import {
   BaseComponent, EventItem, UIState
-} from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/core';
 import { AccountSettingComponent } from './account-setting/account-setting.component';
 import { IdentityApiClient } from './../../identity-api-client.service';
 import { Subject } from 'rxjs';
-import { UserFacade } from '@exxat/fusion/core';
+import { UserFacade } from '@zhealthcare/fusion/core';
 
 @Component({
   selector: 'account',
@@ -35,7 +35,7 @@ export class AccountComponent extends BaseComponent
   }
 
   ngOnInit() {
-    
+
   }
 
   openAccoutSetting() {
@@ -67,7 +67,7 @@ export class AccountComponent extends BaseComponent
       }
     }
   }
-  
+
   ngOnDestroy(): void {
     this._unsubscribe.next(true);
     this._unsubscribe.complete();

@@ -2,9 +2,9 @@ import { ChangeDetectorRef, Component, HostBinding, Input, OnDestroy, OnInit } f
 import { merge, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { NavigationItem, NavigationItemClasses } from '@exxat/fusion/models';
-import { FusionNavigationService } from '@exxat/fusion/services';
-import { Logger } from '@exxat/fusion/core';
+import { NavigationItem, NavigationItemClasses } from '@zhealthcare/fusion/models';
+import { FusionNavigationService } from '@zhealthcare/fusion/services';
+import { Logger } from '@zhealthcare/fusion/core';
 
 
 @Component({
@@ -15,15 +15,15 @@ import { Logger } from '@exxat/fusion/core';
 export class FusionNavItemComponent implements OnInit, OnDestroy {
     @HostBinding('class')
     classes = 'nav-item';
-  
+
     itemClasses = new NavigationItemClasses();
-  
+
     @Input()
     item: NavigationItem;
-  
+
     // Private
     private _unsubscribeAll: Subject<any>;
-  
+
     constructor(
       private _changeDetectorRef: ChangeDetectorRef,
       private _fuseNavigationService: FusionNavigationService
@@ -31,7 +31,7 @@ export class FusionNavItemComponent implements OnInit, OnDestroy {
       // Set the private defaults
       this._unsubscribeAll = new Subject();
     }
-  
+
     ngOnInit(): void {
       // Subscribe to navigation item
       merge(
@@ -44,7 +44,7 @@ export class FusionNavItemComponent implements OnInit, OnDestroy {
           // Mark for check
           this._changeDetectorRef.markForCheck();
         });
-  
+
       if (
         this.item &&
         this.item != null &&
@@ -64,13 +64,13 @@ export class FusionNavItemComponent implements OnInit, OnDestroy {
         }
       }
     }
-  
+
     ngOnDestroy(): void {
       // Unsubscribe from all subscriptions
       this._unsubscribeAll.next(true);
       this._unsubscribeAll.complete();
     }
-  
+
     resetDatasource() {
       localStorage.removeItem('fusionDataSource');
     }

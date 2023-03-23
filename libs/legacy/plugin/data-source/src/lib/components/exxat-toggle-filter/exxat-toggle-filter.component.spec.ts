@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatToggleFilterComponent } from './exxat-toggle-filter.component';
+import { zhealthcareToggleFilterComponent } from './zhealthcare-toggle-filter.component';
 
-describe('ExxatToggleFilterComponent', () => {
-  let component: ExxatToggleFilterComponent;
-  let fixture: ComponentFixture<ExxatToggleFilterComponent>;
+describe('zhealthcareToggleFilterComponent', () => {
+  let component: zhealthcareToggleFilterComponent;
+  let fixture: ComponentFixture<zhealthcareToggleFilterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatToggleFilterComponent ]
+      declarations: [ zhealthcareToggleFilterComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatToggleFilterComponent);
+    fixture = TestBed.createComponent(zhealthcareToggleFilterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

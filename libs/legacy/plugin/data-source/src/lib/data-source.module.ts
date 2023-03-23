@@ -5,14 +5,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   FuseDirectivesModule, FuseSharedModule, MaterialModule
-} from '@exxat/ux';
-import { ExxatDisplayColumnsFormComponent } from './components/exxat-display-columns-form/exxat-display-columns-form.component';
-import { ExxatDropdownFilterComponent } from './components/exxat-dropdown-filter/exxat-dropdown-filter.component';
-import { DataSourceComponentService } from './components/exxat-edit-columns/datasource-component.service';
-import { ExxatEditColumnsComponent } from './components/exxat-edit-columns/exxat-edit-columns.component';
-import { ExxatExportComponent } from './components/exxat-export/exxat-export.component';
-import { ExxatSearchBarComponent } from './components/exxat-search-bar/exxat-search-bar.component';
-import { ExxatToggleFilterComponent } from './components/exxat-toggle-filter/exxat-toggle-filter.component';
+} from '@zhealthcare/ux';
+import { zhealthcareDisplayColumnsFormComponent } from './components/zhealthcare-display-columns-form/zhealthcare-display-columns-form.component';
+import { zhealthcareDropdownFilterComponent } from './components/zhealthcare-dropdown-filter/zhealthcare-dropdown-filter.component';
+import { DataSourceComponentService } from './components/zhealthcare-edit-columns/datasource-component.service';
+import { zhealthcareEditColumnsComponent } from './components/zhealthcare-edit-columns/zhealthcare-edit-columns.component';
+import { zhealthcareExportComponent } from './components/zhealthcare-export/zhealthcare-export.component';
+import { zhealthcareSearchBarComponent } from './components/zhealthcare-search-bar/zhealthcare-search-bar.component';
+import { zhealthcareToggleFilterComponent } from './components/zhealthcare-toggle-filter/zhealthcare-toggle-filter.component';
 import { InfiniteScrollerComponent } from './components/infinite-scroller/infinite-scroller.component';
 import { DataSourceStoreModule } from './store/datasource.store.module';
 
@@ -29,21 +29,21 @@ import { DataSourceStoreModule } from './store/datasource.store.module';
     FuseDirectivesModule,
   ],
   exports: [
-    ExxatSearchBarComponent,
-    ExxatDropdownFilterComponent,
-    ExxatToggleFilterComponent,
-    ExxatEditColumnsComponent,
-    ExxatDisplayColumnsFormComponent,
-    ExxatExportComponent,
+    zhealthcareSearchBarComponent,
+    zhealthcareDropdownFilterComponent,
+    zhealthcareToggleFilterComponent,
+    zhealthcareEditColumnsComponent,
+    zhealthcareDisplayColumnsFormComponent,
+    zhealthcareExportComponent,
     InfiniteScrollerComponent,
   ],
   declarations: [
-    ExxatSearchBarComponent,
-    ExxatDropdownFilterComponent,
-    ExxatToggleFilterComponent,
-    ExxatEditColumnsComponent,
-    ExxatDisplayColumnsFormComponent,
-    ExxatExportComponent,
+    zhealthcareSearchBarComponent,
+    zhealthcareDropdownFilterComponent,
+    zhealthcareToggleFilterComponent,
+    zhealthcareEditColumnsComponent,
+    zhealthcareDisplayColumnsFormComponent,
+    zhealthcareExportComponent,
     InfiniteScrollerComponent,
   ],
   providers: [DataSourceComponentService],

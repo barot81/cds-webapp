@@ -8,7 +8,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { AuthSandbox, OucodeHelper } from '@exxat/fusion/core';
+import { AuthSandbox, OucodeHelper } from '@zhealthcare/fusion/core';
 import { EmailConfiguration } from '../models/notification-configuration.model';
 import { NotificationService } from '../services/notificaton.service';
 import { NotificationPreviewComponent } from './preview/notification-preview.component';

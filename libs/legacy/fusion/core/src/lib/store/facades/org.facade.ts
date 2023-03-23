@@ -7,11 +7,11 @@ import {
     getUserAccessedOuCodes,
     selectedOucode,
   } from './../selectors/app.states';
-  
+
   import { Injectable } from '@angular/core';
   import { Store } from '@ngrx/store';
   import { Observable } from 'rxjs';
-  
+
   import {
     GetTenantWithOucodes,
     SetOuCodeAccessTree,
@@ -19,15 +19,15 @@ import {
     SetTenantWithOucodes,
     UpdateTenantWithOucodes,
   } from '../actions/org.actions';
-  
+
   import {
     AccessedOuCode,
     OuCodeAccessTree,
     TenantWithOuCodeTree,
-  } from '@exxat/fusion/models';
+  } from '@zhealthcare/fusion/models';
   import { distinctUntilChanged } from 'rxjs/operators';
   import { OrgState } from '../reducers/org.reducers';
-  
+
   @Injectable({ providedIn: 'any' })
   export class OrgFacade {
     OrgState$: Observable<OrgState>;
@@ -54,25 +54,24 @@ import {
         .select(getLeafOucodeList)
         .pipe(distinctUntilChanged());
     }
-  
+
     SetTenantWithOucodes(payload: TenantWithOuCodeTree) {
       this.appState$.dispatch(new SetTenantWithOucodes(payload));
     }
-  
+
     UpdateTenantWithOucodes(payload: TenantWithOuCodeTree) {
       this.appState$.dispatch(new UpdateTenantWithOucodes(payload));
     }
-  
+
     GetTenantWithOucodes() {
       this.appState$.dispatch(new GetTenantWithOucodes());
     }
-  
+
     SetTenantName(payload: string) {
       this.appState$.dispatch(new SetTenantName(payload));
     }
-  
+
     SetOuCodeAccessTree(payload: OuCodeAccessTree[]) {
       this.appState$.dispatch(new SetOuCodeAccessTree(payload));
     }
   }
-  

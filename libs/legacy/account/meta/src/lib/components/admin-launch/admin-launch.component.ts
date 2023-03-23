@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RuntimeConfigLoaderService } from '@exxat-core/angular-runtime-config';
+import { RuntimeConfigLoaderService } from '@zhealthcare-core/angular-runtime-config';
 import {
   AppComponentApp,
   AuthSandbox,
@@ -21,21 +21,21 @@ import {
   URLConstants,
   UserFacade,
   UserTypeService,
-} from '@exxat/fusion/core';
-import { FeatureFlagService } from '@exxat/fusion-feature-flag';
-import { UserPersona } from '@exxat/fusion/models';
+} from '@zhealthcare/fusion/core';
+import { FeatureFlagService } from '@zhealthcare/fusion-feature-flag';
+import { UserPersona } from '@zhealthcare/fusion/models';
 import {
   FusionNavigationService,
   ManageUserService,
   NavigationConstants,
-} from '@exxat/fusion/services';
+} from '@zhealthcare/fusion/services';
 import {
   FuseProgressBarService,
   FuseSidebarService,
   HeaderService,
   LayoutService,
   PageFacade,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import moment from 'moment';
 import { BehaviorSubject, Subject, take, takeUntil } from 'rxjs';
 import { MetaSandbox } from '../../meta.sandbox';

@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BehaviorSubject, Subject } from 'rxjs';
 
-import { FusionFormAdapter } from '@exxat/fusion/components';
+import { FusionFormAdapter } from '@zhealthcare/fusion/components';
 
 import { LocationStrategy } from '@angular/common';
-import { FusionNavigationService } from '@exxat/fusion/services';
+import { FusionNavigationService } from '@zhealthcare/fusion/services';
 
-import { AuthService } from '@exxat-core/angular-oauth-oidc';
+import { AuthService } from '@zhealthcare-core/angular-oauth-oidc';
 import { ConfirmDialogService } from '../../../components/confirm-dialog/confirm-dialog.service';
 import { FuseSidebarService } from '../../../components/sidebar/sidebar.service';
 import { ManifoldPanel } from '../../components/manifold-panel/manifold-panel';
@@ -16,7 +16,7 @@ import { ManifoldPanel } from '../../components/manifold-panel/manifold-panel';
 export class LayoutService {
   drawerTitle: BehaviorSubject<string>;
   drawerSize: BehaviorSubject<string>;
-  exxatCloseDrawerAction$: Subject<any>;
+  zhealthcareCloseDrawerAction$: Subject<any>;
   isFormValid$: BehaviorSubject<boolean>;
   showPrimaryActionSpinner$: BehaviorSubject<boolean>;
   componentRef;
@@ -50,7 +50,7 @@ export class LayoutService {
   ) {
     this.drawerTitle = new BehaviorSubject(null);
     this.drawerSize = new BehaviorSubject(null);
-    this.exxatCloseDrawerAction$ = new Subject();
+    this.zhealthcareCloseDrawerAction$ = new Subject();
     this.isFormValid$ = new BehaviorSubject(false);
     this.showPrimaryActionSpinner$ = new BehaviorSubject(false);
     this._orgTimzone$ = new BehaviorSubject(null);
@@ -92,7 +92,7 @@ export class LayoutService {
         this._fuseSidebarService.getSidebar('drawer')?.toggleOpen();
         this._navService.setDefendAgainstBrowserBackButton(false);
       }
-      this.exxatCloseDrawerAction$.next('foldSidebar');
+      this.zhealthcareCloseDrawerAction$.next('foldSidebar');
     } else {
       (this.componentRef.instance as FusionFormAdapter).panelClose();
       this._navService.setDefendAgainstBrowserBackButton(false);
@@ -114,7 +114,7 @@ export class LayoutService {
   public get getChatButtonVisibleValue(): boolean {
     return this._isButtonAvailable.value;
   }
-  
+
   public getUser() {
     return this.oauthService.getIdentityClaims() ?? null;
   }

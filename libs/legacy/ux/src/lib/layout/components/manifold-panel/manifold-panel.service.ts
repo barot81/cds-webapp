@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
 import {
   FusionFormAdapter,
   FusionFormComponent,
-} from '@exxat/fusion/components';
+} from '@zhealthcare/fusion/components';
 
 import { LocationStrategy } from '@angular/common';
 import { FuseProgressBarService } from '../../../components/progress-bar/progress-bar.service';

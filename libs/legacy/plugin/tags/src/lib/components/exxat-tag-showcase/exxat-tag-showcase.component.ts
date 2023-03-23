@@ -1,23 +1,23 @@
 // import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 // import { BehaviorSubject } from 'rxjs';
-// import { ExxatTag } from '../exxat-tag/exxat-tag.component';
+// import { zhealthcareTag } from '../zhealthcare-tag/zhealthcare-tag.component';
 // import { TagView } from '../model';
 
 // @Component({
-//   selector: 'exxat-tag-showcase',
-//   templateUrl: './exxat-tag-showcase.component.html',
-//   styleUrls: ['./exxat-tag-showcase.component.scss'],
+//   selector: 'zhealthcare-tag-showcase',
+//   templateUrl: './zhealthcare-tag-showcase.component.html',
+//   styleUrls: ['./zhealthcare-tag-showcase.component.scss'],
 // })
-// export class ExxatTagShowCaseComponent implements OnChanges {
+// export class zhealthcareTagShowCaseComponent implements OnChanges {
 //   TAGVIEW = TagView;
 
-//   private tags = new BehaviorSubject<Array<ExxatTag>>(new Array<ExxatTag>());
+//   private tags = new BehaviorSubject<Array<zhealthcareTag>>(new Array<zhealthcareTag>());
 //   tags$ = this.tags.asObservable();
 
 //   tagView?: TagView = TagView.LABEL;
 
 //   @Input('tags')
-//   set setTags(value: Array<ExxatTag>) {
+//   set setTags(value: Array<zhealthcareTag>) {
 //     if (value && value !== null) {
 //       let tagsList = value.filter((x) =>
 //         x.isChecked === undefined || x.isChecked === null
@@ -84,13 +84,13 @@
 //     }
 //   }
 
-//   getTagTitle(tag: ExxatTag): string {
+//   getTagTitle(tag: zhealthcareTag): string {
 //     if (tag && tag !== null) {
 //       return tag.name && tag.name !== null ? tag.name : tag.title;
 //     }
 //   }
 
-//   getTagColor(tag: ExxatTag): string {
+//   getTagColor(tag: zhealthcareTag): string {
 //     if (tag && tag !== null) {
 //       return tag.color && tag.color !== null ? tag.color : tag.colorCode;
 //     }
@@ -101,22 +101,22 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { BehaviorSubject } from 'rxjs';
-import { ExxatTag } from '../exxat-tag/exxat-tag.component';
+import { zhealthcareTag } from '../zhealthcare-tag/zhealthcare-tag.component';
 import { MenuTrigger, TagView } from '../model';
 
 @Component({
-  selector: 'exxat-tag-showcase',
-  templateUrl: './exxat-tag-showcase.component.html',
-  styleUrls: ['./exxat-tag-showcase.component.scss']
+  selector: 'zhealthcare-tag-showcase',
+  templateUrl: './zhealthcare-tag-showcase.component.html',
+  styleUrls: ['./zhealthcare-tag-showcase.component.scss']
 })
-export class ExxatTagShowCaseComponent implements OnChanges {
+export class zhealthcareTagShowCaseComponent implements OnChanges {
   enteredButton = false;
   isMatMenuOpen = false;
   prevButtonTrigger: MatMenuTrigger;
 
   TAGVIEW = TagView;
 
-  private tags = new BehaviorSubject<Array<ExxatTag>>(new Array<ExxatTag>());
+  private tags = new BehaviorSubject<Array<zhealthcareTag>>(new Array<zhealthcareTag>());
   tags$ = this.tags.asObservable();
 
   private _triggerOn = new BehaviorSubject<MenuTrigger>('hover');
@@ -129,7 +129,7 @@ export class ExxatTagShowCaseComponent implements OnChanges {
   _isGrid: boolean = false;
 
   @Input('tags')
-  set setTags(value: Array<ExxatTag>) {
+  set setTags(value: Array<zhealthcareTag>) {
     if (value && value !== null) {
       let tagsList = value.filter((x) =>
         x.isChecked === undefined || x.isChecked === null
@@ -250,7 +250,7 @@ export class ExxatTagShowCaseComponent implements OnChanges {
     }
   }
 
-  getTagTitle(tag: ExxatTag): string {
+  getTagTitle(tag: zhealthcareTag): string {
     if (tag && tag !== null) {
       return tag.name && tag.name !== null ? tag.name : tag.title;
     }
@@ -260,7 +260,7 @@ export class ExxatTagShowCaseComponent implements OnChanges {
     return tag?.id && tag?.id !== null ? tag?.id : tag?.tagId;
   }
 
-  getTagColor(tag: ExxatTag): string {
+  getTagColor(tag: zhealthcareTag): string {
     if (tag && tag !== null) {
       return tag.color && tag.color !== null ? tag.color : tag.colorCode;
     }

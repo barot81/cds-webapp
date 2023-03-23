@@ -1,5 +1,5 @@
 
-import { User, TokenSessionInfo } from '@exxat/fusion/models';
+import { User, TokenSessionInfo } from '@zhealthcare/fusion/models';
 import { UserActionTypes, UserActions } from '../actions/user.actions';
 import { EventsService, EventItem } from '../../event';
 import { FoundationInjector } from '../../injector/foundation-injector';

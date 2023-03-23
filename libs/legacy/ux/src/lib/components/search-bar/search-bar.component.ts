@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/cor
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { FusionConfigService } from '@exxat/fusion/core';
+import { FusionConfigService } from '@zhealthcare/fusion/core';
 
 @Component({
     selector   : 'fuse-search-bar',

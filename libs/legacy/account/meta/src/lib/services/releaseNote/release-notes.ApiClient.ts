@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FusionConfigService, GET, HttpService } from '@exxat/fusion/core';
+import { FusionConfigService, GET, HttpService } from '@zhealthcare/fusion/core';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })

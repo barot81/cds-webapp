@@ -3,7 +3,7 @@ import {
   EventEmitter, OnInit,
   Output
 } from '@angular/core';
-import { EventItem, EventsService } from '@exxat/fusion/core';
+import { EventItem, EventsService } from '@zhealthcare/fusion/core';
 import lodash from 'lodash';
 
 

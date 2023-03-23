@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserFacade } from '@exxat/fusion/core';
+import { UserFacade } from '@zhealthcare/fusion/core';
 import { take } from 'rxjs/operators';
 
 @Component({

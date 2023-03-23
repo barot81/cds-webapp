@@ -9,9 +9,9 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 
-import { ExxatAngularOuthOIDCModule } from '@exxat-core/angular-oauth-oidc';
-import { AccountModule } from '@exxat/account';
-import { FusionModule } from '@exxat/fusion';
+import { zhealthcareAngularOuthOIDCModule } from '@zhealthcare-core/angular-oauth-oidc';
+import { AccountModule } from '@zhealthcare/account';
+import { FusionModule } from '@zhealthcare/fusion';
 import {
   FuseSidebarModule,
   MaterialModule,
@@ -19,15 +19,15 @@ import {
   FuseSharedModule,
   FuseDirectivesModule,
   LayoutModule,
-} from '@exxat/ux';
-import { ZendeskModule } from '@exxat/zendesk';
+} from '@zhealthcare/ux';
+import { ZendeskModule } from '@zhealthcare/zendesk';
 
-import { ExxatAngularBootstrapLegacyComponent } from './bootstrap-legacy/bootstrap-legacy.component';
-import { ExxatBootstrapLegacyRoutingModule } from './bootstrap-legacy/bootstrap-legacy-routing.module';
+import { zhealthcareAngularBootstrapLegacyComponent } from './bootstrap-legacy/bootstrap-legacy.component';
+import { zhealthcareBootstrapLegacyRoutingModule } from './bootstrap-legacy/bootstrap-legacy-routing.module';
 
 @NgModule({
-  declarations: [ExxatAngularBootstrapLegacyComponent],
-  exports: [ExxatAngularBootstrapLegacyComponent],
+  declarations: [zhealthcareAngularBootstrapLegacyComponent],
+  exports: [zhealthcareAngularBootstrapLegacyComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -44,13 +44,13 @@ import { ExxatBootstrapLegacyRoutingModule } from './bootstrap-legacy/bootstrap-
     HammerModule,
     SimpleNotificationsModule.forRoot(),
     FusionModule,
-    ExxatAngularOuthOIDCModule,
+    zhealthcareAngularOuthOIDCModule,
     ZendeskModule,
     StoreDevtoolsModule.instrument({
       maxAge: 20,
       logOnly: true,
     }),
-    ExxatBootstrapLegacyRoutingModule
+    zhealthcareBootstrapLegacyRoutingModule
   ],
 })
-export class ExxatAngularBootstrapLegacyModule {}
+export class zhealthcareAngularBootstrapLegacyModule {}

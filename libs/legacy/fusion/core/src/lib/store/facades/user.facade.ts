@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TokenModel, TokenSessionInfo } from '@exxat/fusion/models';
+import { TokenModel, TokenSessionInfo } from '@zhealthcare/fusion/models';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromUserActions from '../actions/user.actions';

@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {  Lookup, LookupItem } from '@exxat/fusion/models';
-import { FeatureMetadataService } from '@exxat/fusion/services';
+import {  Lookup, LookupItem } from '@zhealthcare/fusion/models';
+import { FeatureMetadataService } from '@zhealthcare/fusion/services';
 
 @Pipe({
   name: 'lookups'

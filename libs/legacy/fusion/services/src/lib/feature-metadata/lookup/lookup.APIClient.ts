@@ -3,12 +3,12 @@ import {
   GET,
   Path,
   Header
-} from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/core';
 import { Observable } from 'rxjs';
 import {
   LookupMap,
   Lookup
-} from '@exxat/fusion/models';
+} from '@zhealthcare/fusion/models';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -16,8 +16,8 @@ import { Injectable } from '@angular/core';
 })
 export class LookupAPIClient extends HttpService {
   public serviceName: string;
-  
-  constructor() { 
+
+  constructor() {
     super();
 
   }

@@ -7,7 +7,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { AbstractControl, FormControl, Validators } from '@angular/forms';
-import { PasswordStrengthService } from '@exxat/fusion/core';
+import { PasswordStrengthService } from '@zhealthcare/fusion/core';
 
 /** Colors: this represent actually the state of the password�s strength. */
 export enum Colors {

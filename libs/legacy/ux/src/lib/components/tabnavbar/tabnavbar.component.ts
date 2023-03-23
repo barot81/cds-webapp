@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FusionNavigationService } from '@exxat/fusion/services';
+import { FusionNavigationService } from '@zhealthcare/fusion/services';
 import lodash from 'lodash';
 
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'exxat-tabnavbar',
+  selector: 'zhealthcare-tabnavbar',
   templateUrl: './tabnavbar.component.html'
 })
 export class TabNavbarComponent implements OnInit {
@@ -27,6 +27,6 @@ export class TabNavbarComponent implements OnInit {
     if(link!=undefined){
       const navigationItem = lodash.cloneDeep(this.navigations.find(x => x.id === link.id));
     navigationItem.active = true;
-    }    
+    }
   }
 }

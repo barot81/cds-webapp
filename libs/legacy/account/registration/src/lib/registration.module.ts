@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ExxatTooltipModule, MaterialModule } from '@exxat/ux';
+import { zhealthcareTooltipModule, MaterialModule } from '@zhealthcare/ux';
 
 import { RegistrationApiClient } from './registration.ApiClient';
 import { RegistrationSandbox } from './registration.sandbox';
@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TermsAndConditionsComponent } from './components/terms-and-conditions/terms-and-conditions.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { CustomDirectiveModule } from '@exxat/fusion/directives';
+import { CustomDirectiveModule } from '@zhealthcare/fusion/directives';
 
 const routes: Routes = [
   {
@@ -26,7 +26,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    ExxatTooltipModule,
+    zhealthcareTooltipModule,
     CustomDirectiveModule,
     RouterModule.forChild(routes)
   ],

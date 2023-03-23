@@ -1,7 +1,7 @@
 {
   "projectType": "library",
   "sourceRoot": "libs/legacy/plugin/src",
-  "prefix": "exxat.ui.packages",
+  "prefix": "zhealthcare.ui.packages",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",

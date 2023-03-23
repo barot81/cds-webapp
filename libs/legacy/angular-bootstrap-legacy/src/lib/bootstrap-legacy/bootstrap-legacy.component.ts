@@ -3,8 +3,8 @@ import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, Routes } from '@angular/router';
-import { LookupAPIClientService } from '@exxat/account/meta';
-import { FeatureFlagService } from '@exxat/fusion-feature-flag';
+import { LookupAPIClientService } from '@zhealthcare/account/meta';
+import { FeatureFlagService } from '@zhealthcare/fusion-feature-flag';
 import {
   FusionConfigService,
   NotificationService,
@@ -14,10 +14,10 @@ import {
   LoggingService,
   GlobalVariable,
   Logger,
-} from '@exxat/fusion/core';
-import { ProductNavigation, UserPersona } from '@exxat/fusion/models';
-import { FusionNavigationService } from '@exxat/fusion/services';
-import { SplashScreenService, productNavigation } from '@exxat/ux';
+} from '@zhealthcare/fusion/core';
+import { ProductNavigation, UserPersona } from '@zhealthcare/fusion/models';
+import { FusionNavigationService } from '@zhealthcare/fusion/services';
+import { SplashScreenService, productNavigation } from '@zhealthcare/ux';
 import {
   filter,
   fromEvent,
@@ -31,10 +31,10 @@ import { RoleConfigType } from './type';
 import { ZendeskUtilService } from './utils/zendesk/zendesk-util.service';
 
 @Component({
-  selector: 'exxat-angular-bootstrap-legacy',
+  selector: 'zhealthcare-angular-bootstrap-legacy',
   templateUrl: './bootstrap-legacy.component.html',
 })
-export class ExxatAngularBootstrapLegacyComponent implements OnInit {
+export class zhealthcareAngularBootstrapLegacyComponent implements OnInit {
   @Input() routes: Routes;
   @Input() roleConfig: RoleConfigType;
   fuseConfig: any;

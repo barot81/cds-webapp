@@ -8,7 +8,7 @@ import {
   Organization,
   TenantWithOuCodeTree,
   LaunchDataModel,
-} from '@exxat/fusion/models';
+} from '@zhealthcare/fusion/models';
 import { catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import {OrgFacade} from "../../store/facades/org.facade";

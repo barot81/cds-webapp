@@ -7,13 +7,13 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { ChangeDetectorRef, Component, Input, OnChanges, Output, EventEmitter, OnInit, SimpleChanges } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { FusionFormComponent } from '@exxat/fusion/components';
-import { SecurityContext } from '@exxat/fusion/models';
+import { FusionFormComponent } from '@zhealthcare/fusion/components';
+import { SecurityContext } from '@zhealthcare/fusion/models';
 import {
   FileCard, FileConfiguration,
   FileEndpoint
-} from '@exxat/plugin/file-upload';
-import { HeaderService, SnackbarService } from '@exxat/ux';
+} from '@zhealthcare/plugin/file-upload';
+import { HeaderService, SnackbarService } from '@zhealthcare/ux';
 import lodash from 'lodash';
 import { BehaviorSubject } from 'rxjs';
 import { Subject } from 'rxjs/internal/Subject';
@@ -25,7 +25,7 @@ import {
 import { NotificationService } from '../../services';
 
 @Component({
-  selector: 'exxat-notification-recipient-list',
+  selector: 'zhealthcare-notification-recipient-list',
   templateUrl: 'notification-recipient-list.component.html',
   styleUrls: ['notification-recipient-list.component.scss']
 })
@@ -81,7 +81,7 @@ export class NotificationRecipientListComponent
       cc: new FormControl(''),
       bcc: new FormControl(''),
       fileDescriptions: [],
-      to:new FormControl(''),      
+      to:new FormControl(''),
       adminEmail: new FormControl('')
     });
   }
@@ -89,7 +89,7 @@ export class NotificationRecipientListComponent
     if(!changes?.disableSelectorRecipients?.currentValue)
       this.fusionFormGroup.get("to").setValidators(Validators.required);
   }
-  
+
   ngOnInit() {
     this.emailList = this.emailConfiguration?.to;
     // this.emailList?.sort((a,b) => {
@@ -199,9 +199,9 @@ export class NotificationRecipientListComponent
     if (!formControl.parent) {
       return null;
     }
-    
+
     if (formControl.parent.get('myCheckbox').value) {
-      return Validators.required(formControl); 
+      return Validators.required(formControl);
     }
     return null;
   }

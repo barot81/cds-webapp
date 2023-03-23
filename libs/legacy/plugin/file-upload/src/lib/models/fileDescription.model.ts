@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { ISecurityContext, SecurityContext } from '@exxat/fusion/models';
+import { ISecurityContext, SecurityContext } from '@zhealthcare/fusion/models';
 
 
 export class FileDescription implements ISecurityContext {

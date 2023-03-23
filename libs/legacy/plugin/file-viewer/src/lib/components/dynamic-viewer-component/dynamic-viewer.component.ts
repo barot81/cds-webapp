@@ -3,8 +3,8 @@ import {
   ComponentFactoryResolver, Input, ViewChild, ViewContainerRef, ViewEncapsulation
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FusionConfigService } from '@exxat/fusion/core';
-import { FileSandbox } from '@exxat/plugin/file-upload';
+import { FusionConfigService } from '@zhealthcare/fusion/core';
+import { FileSandbox } from '@zhealthcare/plugin/file-upload';
 import { DocumentViewerConfiguration } from '../../models/document-viewer-config';
 import { ImageViewerComponent } from '../image-viewer/image-viewer.component';
 import { PdfViewerComponent } from '../pdf-viewer/pdf-viewer.component';

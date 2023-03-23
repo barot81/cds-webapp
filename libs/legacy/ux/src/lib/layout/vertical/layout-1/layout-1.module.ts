@@ -12,7 +12,7 @@ import { TabNavBarModule } from '../../../components/tabnavbar/tabnavbar.module'
 import { ManifoldPanelModule } from '../../components/manifold-panel/manifold-panel.module';
 import { QuickPanelModule } from '../../components/quick-panel/quick-panel.module';
 import { HeaderModule } from '../../components/header/header.module';
-import { ExxatAvatarModule } from '../../../components/exxat-avatar/exxat-avatar.module';
+import { zhealthcareAvatarModule } from '../../../components/zhealthcare-avatar/zhealthcare-avatar.module';
 
 import { VerticalLayout1Component } from './layout-1.component';
 import { FuseDirectivesModule } from '../../../directives';
@@ -23,7 +23,7 @@ import { A11yModule } from '@angular/cdk/a11y';
   declarations: [VerticalLayout1Component],
   imports: [
     RouterModule,
-    ExxatAvatarModule,
+    zhealthcareAvatarModule,
     FuseSharedModule,
     FuseSidebarModule,
     FuseDirectivesModule,

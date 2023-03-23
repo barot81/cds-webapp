@@ -16,9 +16,9 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ZendeskAPIClient } from '@exxat/zendesk';
-import { RuntimeConfigLoaderService } from '@exxat-core/angular-runtime-config';
-import { FusionFormComponent } from '@exxat/fusion/components';
+import { ZendeskAPIClient } from '@zhealthcare/zendesk';
+import { RuntimeConfigLoaderService } from '@zhealthcare-core/angular-runtime-config';
+import { FusionFormComponent } from '@zhealthcare/fusion/components';
 import {
   EventItem,
   EventsService,
@@ -26,13 +26,13 @@ import {
   OrgFacade,
   UserFacade,
   UserTypeService
-} from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/core';
 import {
   FileCard,
   FileConfiguration,
   FileEndpoint
-} from '@exxat/plugin/file-upload';
-import { PageFacade, ScrollService, SpinnerOverlayService } from '@exxat/ux';
+} from '@zhealthcare/plugin/file-upload';
+import { PageFacade, ScrollService, SpinnerOverlayService } from '@zhealthcare/ux';
 import lodash from 'lodash';
 import moment from 'moment';
 import { BehaviorSubject, combineLatest, forkJoin } from 'rxjs';
@@ -45,7 +45,7 @@ export interface PeriodicElement {
 }
 
 @Component({
-  selector: 'exxat-help-center-popup',
+  selector: 'zhealthcare-help-center-popup',
   templateUrl: './help-center-popup.component.html',
   styleUrls: ['./help-center-popup.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -61,7 +61,7 @@ export class HelpCenterPopupComponent
     adminToken: string;
   } | null = null;
   fusionFormGroup: FormGroup;
-  exxatHelpForumUrl: string;
+  zhealthcareHelpForumUrl: string;
   selectedTab = 'user';
 
   userDetails: any = {

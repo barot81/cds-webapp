@@ -1,19 +1,19 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ManifoldPanelService, SpinnerOverlayService } from '@exxat/ux';
+import { ManifoldPanelService, SpinnerOverlayService } from '@zhealthcare/ux';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { ZendeskAPIClient } from '@exxat/zendesk';
-import { RuntimeConfigLoaderService } from '@exxat-core/angular-runtime-config';
-import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
-import { FusionFormAdapter } from '@exxat/fusion/components';
+import { ZendeskAPIClient } from '@zhealthcare/zendesk';
+import { RuntimeConfigLoaderService } from '@zhealthcare-core/angular-runtime-config';
+import * as ClassicEditor from '@zhealthcare/ckeditor5-build-classic';
+import { FusionFormAdapter } from '@zhealthcare/fusion/components';
 import {
   EventItem,
   EventsService,
   FusionConfigService,
   OrgFacade,
   UserFacade
-} from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/core';
 import lodash from 'lodash';
 import { combineLatest, forkJoin, lastValueFrom, Subject } from 'rxjs';
 

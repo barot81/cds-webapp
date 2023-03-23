@@ -8,10 +8,10 @@ import { LocalStorageExpiry } from './localstorageexpiry';
 @NgModule({
   providers: [LocalStorage]
 })
-export class ExxatCoreIdleModule {
-  static forRoot(): ModuleWithProviders<ExxatCoreIdleModule> {
+export class zhealthcareCoreIdleModule {
+  static forRoot(): ModuleWithProviders<zhealthcareCoreIdleModule> {
     return {
-      ngModule: ExxatCoreIdleModule,
+      ngModule: zhealthcareCoreIdleModule,
       providers: [
         LocalStorageExpiry,
         { provide: IdleExpiry, useExisting: LocalStorageExpiry },

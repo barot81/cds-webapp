@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ExxatSnackBarModule, MaterialModule } from '@exxat/ux';
-import { ExxatEditableAvatarComponent } from './exxat-editable-avatar.component';
-import { RBACDirectiveModule } from '@exxat/fusion/directives';
+import { zhealthcareSnackBarModule, MaterialModule } from '@zhealthcare/ux';
+import { zhealthcareEditableAvatarComponent } from './zhealthcare-editable-avatar.component';
+import { RBACDirectiveModule } from '@zhealthcare/fusion/directives';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
-  declarations: [ExxatEditableAvatarComponent],
+  declarations: [zhealthcareEditableAvatarComponent],
   imports: [
     CommonModule,
     MaterialModule,
     RBACDirectiveModule,
     MatDialogModule,
     FlexLayoutModule,
-    ExxatSnackBarModule
+    zhealthcareSnackBarModule
   ],
-  exports: [ExxatEditableAvatarComponent]
+  exports: [zhealthcareEditableAvatarComponent]
 })
-export class ExxatEditableAvatarModule { }
+export class zhealthcareEditableAvatarModule { }

@@ -8,7 +8,7 @@ import {
 import { map, catchError, take, switchMap } from 'rxjs/operators';
 
 import { HttpService } from './http.service';
-import { TokenModel, SecurityContext } from '@exxat/fusion/models';
+import { TokenModel, SecurityContext } from '@zhealthcare/fusion/models';
 import { OrgState } from './../../store/reducers/org.reducers';
 import { Type } from '@angular/core';
 import { Cryptography } from '../../helper/cryptography/encryption';

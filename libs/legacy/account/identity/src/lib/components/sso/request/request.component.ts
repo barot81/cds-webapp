@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IdentitySandbox } from '../../../identity.sandbox';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SSOFormData } from '../models/formdata.model';
-import { BaseComponent, FusionConfigService } from '@exxat/fusion/core';
+import { BaseComponent, FusionConfigService } from '@zhealthcare/fusion/core';
 import { UrlConstants } from '../models/constants';
 
 @Component({
@@ -59,14 +59,14 @@ export class RequestComponent extends BaseComponent implements OnInit{
           var userName = resp?.userName;
           if(providerName)
           {
-              this.identitySandbox.getSAMLAuthRequest(providerName, userName, redirectUrl = '').subscribe(data => 
+              this.identitySandbox.getSAMLAuthRequest(providerName, userName, redirectUrl = '').subscribe(data =>
               {
                   this.isRequestProcessed = true;
                   this.formData = data;
               });
           }
         });
-        this.openSnackBar("You'll be directed back to steps.exxat.com after logging in through University Account");
+        this.openSnackBar("You'll be directed back to steps.zhealthcare.com after logging in through University Account");
     }
 
     ngAfterViewChecked() {

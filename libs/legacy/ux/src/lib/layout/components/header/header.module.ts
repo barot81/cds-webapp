@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import {
-  ExxatTooltipModule,
+  zhealthcareTooltipModule,
   FuseSearchBarModule,
   FuseShortcutsModule,
   ThemeSelectionModule,
@@ -32,7 +32,7 @@ import { UserSettingDrawerComponent } from './user-setting-drawer/user-setting-d
     MaterialModule,
     FuseSharedModule,
     FuseSearchBarModule,
-    ExxatTooltipModule,
+    zhealthcareTooltipModule,
     FuseShortcutsModule,
     MatDialogModule,
     FlexLayoutModule,

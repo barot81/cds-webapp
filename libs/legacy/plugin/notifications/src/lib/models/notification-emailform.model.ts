@@ -1,4 +1,4 @@
-import { FileDescription } from '@exxat/plugin/file-upload';
+import { FileDescription } from '@zhealthcare/plugin/file-upload';
 type GUID = string & { isGuid: true };
 
 export class NotificationEmailFormModel {

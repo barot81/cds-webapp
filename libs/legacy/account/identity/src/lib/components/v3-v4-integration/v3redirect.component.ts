@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
-import { HttpService, FusionConfigService } from '@exxat/fusion/core';
+import { HttpService, FusionConfigService } from '@zhealthcare/fusion/core';
 import { IdentitySandbox } from '../../identity.sandbox';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

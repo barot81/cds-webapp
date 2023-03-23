@@ -186,13 +186,13 @@
         "endpoint": "https://timesheet-gw.dev.exxat.net"
       },
       "exxat.forms.site": {
-        "endpoint": "https://exxat-forms-site-gw.dev.exxat.net/ExxatForms/"
+        "endpoint": "https://exxat-forms-site-gw.dev.exxat.net/exxatForms/"
       },
       "exxat.forms.myrequest": {
-        "endpoint": "https://exxat-forms-myrequest-gw.dev.exxat.net/ExxatForms/"
+        "endpoint": "https://exxat-forms-myrequest-gw.dev.exxat.net/exxatForms/"
       },
       "exxat.forms.course.survey": {
-        "endpoint": "https://exxat-forms-course-survey-gw.dev.exxat.net/ExxatForms/"
+        "endpoint": "https://exxat-forms-course-survey-gw.dev.exxat.net/exxatForms/"
       },
       "student.registration": {
         "endpoint": "https://student-registration-gw.dev.exxat.net"

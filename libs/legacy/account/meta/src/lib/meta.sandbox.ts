@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Sandbox } from '@exxat/fusion/core';
+import { Sandbox } from '@zhealthcare/fusion/core';
 import { Observable } from 'rxjs';
 import { MetaApiClient } from './meta.ApiClient';
 import {
   LaunchDataModel,
   OrgUnitInformation,
   OuCodeAccessTree,
-} from '@exxat/fusion/models';
+} from '@zhealthcare/fusion/models';
 
 @Injectable({providedIn:'any'})
 export class MetaSandbox extends Sandbox {

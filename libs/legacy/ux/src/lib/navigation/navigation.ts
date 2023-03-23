@@ -1,4 +1,4 @@
-import { ProductNavigation } from '@exxat/fusion/models';
+import { ProductNavigation } from '@zhealthcare/fusion/models';
 
 export const productNavigation : ProductNavigation[] = [
   {
@@ -32,8 +32,8 @@ export const productNavigation : ProductNavigation[] = [
                 url: '/steps/student/compliance/dashboard'
               }
             ]
-          } 
-        ] 
+          }
+        ]
       },
       {
         id: 'Student',
@@ -73,8 +73,8 @@ export const productNavigation : ProductNavigation[] = [
                 url: '/student/Compliance'
               }
             ]
-          } 
-        ] 
+          }
+        ]
       }
     ]
   },
@@ -103,8 +103,8 @@ export const productNavigation : ProductNavigation[] = [
                 url: '/plan/carriculam/dashboard'
               }
             ]
-          } 
-        ] 
+          }
+        ]
       },
       {
         id: 'Mapping',
@@ -119,8 +119,8 @@ export const productNavigation : ProductNavigation[] = [
             type: 'menu-item',
             icon: 'dashboard',
             url: '/plan/mapping/carriculamMapping'
-          } 
-        ] 
+          }
+        ]
       },
       {
         id: 'Carriculam',

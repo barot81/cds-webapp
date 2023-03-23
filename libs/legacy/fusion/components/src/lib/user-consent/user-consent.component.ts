@@ -2,7 +2,7 @@ import { Component, OnDestroy } from "@angular/core";
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { FusionConfigService, getLaunchUrl, MetaConstants, UserConsentSandbox, UserFacade } from '@exxat/fusion/core';
+import { FusionConfigService, getLaunchUrl, MetaConstants, UserConsentSandbox, UserFacade } from '@zhealthcare/fusion/core';
 
 @Component({
     selector: 'user-consent',

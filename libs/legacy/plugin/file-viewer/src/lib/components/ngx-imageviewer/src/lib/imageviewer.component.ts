@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import {  Button, toSquareAngle, ResourceLoader } from '../../../../models/imageviewer.model';
 import { ImageResourceLoader } from '../../../../models/image.loader';
 import { ImageCacheService } from '../../../../services/imagecache.service';
-import { ImageViewerConfig, IMAGEVIEWER_CONFIG, IMAGEVIEWER_CONFIG_DEFAULT } from '@exxat/plugin/file-upload';
+import { ImageViewerConfig, IMAGEVIEWER_CONFIG, IMAGEVIEWER_CONFIG_DEFAULT } from '@zhealthcare/plugin/file-upload';
 
 
 const MIN_TOOLTIP_WIDTH_SPACE = 500;

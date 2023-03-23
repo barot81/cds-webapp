@@ -1,6 +1,6 @@
 import {
   AccessedOuCode, OuCodeAccessTree, TokenModel
-} from '@exxat/fusion/models';
+} from '@zhealthcare/fusion/models';
 import { ActionReducerMap, createSelector } from '@ngrx/store';
 import { OrgReducer, OrgState } from '../reducers/org.reducers';
 import { UserReducer, UserState } from '../reducers/user.reducers';

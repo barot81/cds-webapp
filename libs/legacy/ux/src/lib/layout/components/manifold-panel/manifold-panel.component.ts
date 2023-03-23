@@ -11,7 +11,7 @@ import {
 import { BehaviorSubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { FusionConfigService } from '@exxat/fusion/core';
+import { FusionConfigService } from '@zhealthcare/fusion/core';
 
 import { FuseSidebarService } from '../../../components/sidebar/sidebar.service';
 import { LayoutService } from '../../vertical/layout-1/layout-1.service';
@@ -140,12 +140,12 @@ export class ManifoldPanelComponent
 
   onRecordSave() {
     this._manifoldPanelService.onPrimaryAction();
-    this._layoutService.exxatCloseDrawerAction$.next('foldSidebar');
+    this._layoutService.zhealthcareCloseDrawerAction$.next('foldSidebar');
   }
 
   onRecordDelete() {
     this._manifoldPanelService.onSecondaryAction();
-    this._layoutService.exxatCloseDrawerAction$.next('foldSidebar');
+    this._layoutService.zhealthcareCloseDrawerAction$.next('foldSidebar');
   }
 
   onBackDropClick() {
@@ -154,7 +154,7 @@ export class ManifoldPanelComponent
 
   clearManifoldPanelInstances() {
     this._manifoldPanelService.closeAllManifoldPanels();
-    this._layoutService.exxatCloseDrawerAction$.next('foldSidebar');
+    this._layoutService.zhealthcareCloseDrawerAction$.next('foldSidebar');
     this._unsubscribeAll.next(true);
     this._unsubscribeAll.complete();
     DrawerFocusHelper.shiftBackFocusFromDrawer(this._fuseSidebarService);

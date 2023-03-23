@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Sandbox } from '@exxat/fusion/core';
-import { PowerBIApiClient } from './exxat-web-api-client.service';
+import { Sandbox } from '@zhealthcare/fusion/core';
+import { PowerBIApiClient } from './zhealthcare-web-api-client.service';
 
 @Injectable({providedIn: 'any'})
 export class PowerBISandbox extends Sandbox {

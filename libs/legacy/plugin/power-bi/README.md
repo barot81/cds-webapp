@@ -1,3 +1,3 @@
-# @exxat/plugin/power-bi
+# @zhealthcare/plugin/power-bi
 
-Secondary entry point of `@exxat/plugin`. It can be used by importing from `@exxat/plugin/power-bi`.
+Secondary entry point of `@zhealthcare/plugin`. It can be used by importing from `@zhealthcare/plugin/power-bi`.

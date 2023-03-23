@@ -5,9 +5,9 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '../../animations';
-import { FusionNavigationService } from '@exxat/fusion/services';
+import { FusionNavigationService } from '@zhealthcare/fusion/services';
 import { FuseSidebarService } from '../sidebar/sidebar.service';
-import { FusionConfigService } from '@exxat/fusion/core';
+import { FusionConfigService } from '@zhealthcare/fusion/core';
 
 @Component({
     selector     : 'fuse-theme-options',

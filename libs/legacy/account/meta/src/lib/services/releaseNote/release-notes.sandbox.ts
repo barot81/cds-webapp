@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Sandbox } from '@exxat/fusion/core';
+import { Sandbox } from '@zhealthcare/fusion/core';
 import { ReleaseNotesApiClient } from './release-notes.ApiClient';
 
 @Injectable({ providedIn: 'root' })

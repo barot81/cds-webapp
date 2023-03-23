@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { GlobalVariable } from '@exxat/fusion/core';
+import { GlobalVariable } from '@zhealthcare/fusion/core';
 
 @Pipe({
   name: 'labelDictionary',

@@ -1,4 +1,4 @@
-import { FileDescription, FileEndpoint } from '@exxat/plugin/file-upload';
+import { FileDescription, FileEndpoint } from '@zhealthcare/plugin/file-upload';
 
 export class DocumentViewerConfiguration {
   public fileEndpoint: FileEndpoint;

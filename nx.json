@@ -1,5 +1,5 @@
 {
-  "npmScope": "exxat.ui.packages",
+  "npmScope": "zhealthcare.ui.packages",
   "affected": {
     "defaultBase": "main"
   },

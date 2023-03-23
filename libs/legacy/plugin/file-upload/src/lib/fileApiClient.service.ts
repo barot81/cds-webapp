@@ -13,8 +13,8 @@ import {
   HttpService,
   Logger,
   OrgState,
-} from '@exxat/fusion/core';
-import { SecurityContext, TokenModel } from '@exxat/fusion/models';
+} from '@zhealthcare/fusion/core';
+import { SecurityContext, TokenModel } from '@zhealthcare/fusion/models';
 import { Observable } from 'rxjs';
 import { catchError, map, switchMap, take } from 'rxjs/operators';
 import { FileDescription } from './models/fileDescription.model';

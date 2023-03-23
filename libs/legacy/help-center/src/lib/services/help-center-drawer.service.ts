@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ComponentMap } from '@exxat/fusion/core';
+import { ComponentMap } from '@zhealthcare/fusion/core';
 import { TicketDetailsComponent } from '../components/ticket-details/ticket-details.component';
 import {ReplyTicketComponent} from "../components/reply/reply-ticket.component";
 

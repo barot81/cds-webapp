@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TokenModel } from '@exxat/fusion/models';
+import { TokenModel } from '@zhealthcare/fusion/models';
 import { IdentitySandbox } from '../../identity.sandbox';
-import { AuthService, UserFacade } from '@exxat/fusion/core';
+import { AuthService, UserFacade } from '@zhealthcare/fusion/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

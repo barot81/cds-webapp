@@ -6,7 +6,7 @@ import {
   GET,
   Header,
   HttpService,
-} from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/core';
 
 @Injectable({ providedIn: 'any' })
 export class LookupAPIClientService extends HttpService {

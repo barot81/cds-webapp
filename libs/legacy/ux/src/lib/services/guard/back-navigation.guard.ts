@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable } from '@angular/core';
 import { CanDeactivate } from '@angular/router';
-import { FusionNavigationService } from '@exxat/fusion/services';
+import { FusionNavigationService } from '@zhealthcare/fusion/services';
 import { take } from 'rxjs/operators';
 import { RouterStateFacade } from '../../store';
 

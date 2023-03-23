@@ -1,0 +1,15 @@
+@import 'libs/legacy/ux/src/lib/styles/app/shared/init';
+
+#zhealthcare_carousel_container {
+  .scroll-button-container {
+    @include media-breakpoint('xs') {
+      display: none !important;
+    }
+  }
+
+  .scroll_button {
+    z-index: 9999;
+    width: 32px;
+    height: 32px;
+  }
+}

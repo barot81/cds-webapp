@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@exxat/ux';
-import { ExxatAvatarComponent } from './exxat-avatar.component';
+import { MaterialModule } from '@zhealthcare/ux';
+import { zhealthcareAvatarComponent } from './zhealthcare-avatar.component';
 
 @NgModule({
-  declarations: [ExxatAvatarComponent],
+  declarations: [zhealthcareAvatarComponent],
   imports: [
     CommonModule,
     MaterialModule
   ],
-  exports: [ExxatAvatarComponent]
+  exports: [zhealthcareAvatarComponent]
 })
-export class ExxatAvatarModule { }
+export class zhealthcareAvatarModule { }

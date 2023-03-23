@@ -9,7 +9,7 @@ import {
 import { DataSourceFacade } from '../../store/facades/index';
 
 @Component({
-  selector: 'exxat-infinite-scroller',
+  selector: 'zhealthcare-infinite-scroller',
   templateUrl: './infinite-scroller.component.html',
   styleUrls: ['./infinite-scroller.component.scss'],
 })

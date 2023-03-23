@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FileUploadComponent } from './components/upload-card/file-upload.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { FuseSharedModule } from '@exxat/ux';
+import { FuseSharedModule } from '@zhealthcare/ux';
 import { FilterByTagPipe } from './pipes/filterbytag.pipe';
 import { SupportedFormatPipe } from './pipes/supported-format.pipe';
 import { FileDndDirective } from './directives/file-dnd.directive';
 import { CardDocumentViewerComponent } from './components/card-document-viewer/card-document-viewer.component';
 import { FileViewerComponent } from './components/file-viewer/file-viewer.component';
 
-import { ExxatTooltipModule, MaterialModule } from '@exxat/ux';
+import { zhealthcareTooltipModule, MaterialModule } from '@zhealthcare/ux';
 import { PdfJsViewerComponent } from './components/ng2-pdfjs-viewer/ng2-pdfjs-viewer.component';
 import { PdfViewerComponent } from './components/pdf-viewer/pdf-viewer.component';
 import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
@@ -45,7 +45,7 @@ const routes: Routes = [
     MaterialModule,
     ImageViewerModule,
     RouterModule.forChild(routes),
-    ExxatTooltipModule,
+    zhealthcareTooltipModule,
   ],
   providers: [FileSandbox, FileApiClient],
   exports: [FileUploadComponent, RouterModule, DynamicViewerComponent, FileViewerComponent],

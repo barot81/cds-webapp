@@ -1,6 +1,6 @@
 {
   "authConfig": {
-    "issuer": "https://auth.dev.exxat.net/realms/ExxatApps",
+    "issuer": "https://auth.dev.zhealthcare.net/realms/zhealthcareApps",
     "clientId": "preceptor-bff",
     "responseType": "code",
     "redirectUri": "http://localhost:9900/preceptor/dashboard",

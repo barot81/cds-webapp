@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import * as Msal from 'msal';
 import { FusionConfigService } from '../../configuration/fusion-config.service';
-import { TokenModel, LoginType } from '@exxat/fusion/models';
+import { TokenModel, LoginType } from '@zhealthcare/fusion/models';
 import { AuthService } from './auth.service';
 import { UserFacade } from '../../store/facades/user.facade';
 import { Router } from '@angular/router';

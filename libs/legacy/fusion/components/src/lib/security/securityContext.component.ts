@@ -1,7 +1,7 @@
 import { Input, Component, TemplateRef, AfterViewInit } from '@angular/core';
-import { SecurityContext, OuCode } from '@exxat/fusion/models';
+import { SecurityContext, OuCode } from '@zhealthcare/fusion/models';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { OrgFacade, OucodeHelper } from '@exxat/fusion/core';
+import { OrgFacade, OucodeHelper } from '@zhealthcare/fusion/core';
 
 
 
@@ -42,11 +42,11 @@ export class SecurityContextComponent implements  ControlValueAccessor,AfterView
   }
   ngAfterViewInit() {
     // tslint:disable-next-line: triple-equals
-    if (this._securityContext !== undefined && 
-      this._securityContext !== null && 
-      this._securityContext["owningOrganizationUnit"] !== undefined && 
-      this._securityContext["owningOrganizationUnit"] !== null && 
-      this._securityContext["owningOrganizationUnit"] === "" && 
+    if (this._securityContext !== undefined &&
+      this._securityContext !== null &&
+      this._securityContext["owningOrganizationUnit"] !== undefined &&
+      this._securityContext["owningOrganizationUnit"] !== null &&
+      this._securityContext["owningOrganizationUnit"] === "" &&
       this.oucodeContext["oucodeList"].length > 1) {
       this.onChange(null);
     }
@@ -56,8 +56,8 @@ export class SecurityContextComponent implements  ControlValueAccessor,AfterView
     this._securityContext = value;
 
     if(this._securityContext !== undefined && this._securityContext !== null &&
-       this._securityContext["owningOrganizationUnit"] !== undefined && 
-       this._securityContext["owningOrganizationUnit"]!==null && 
+       this._securityContext["owningOrganizationUnit"] !== undefined &&
+       this._securityContext["owningOrganizationUnit"]!==null &&
        this._securityContext["owningOrganizationUnit"] !== "")
     {
       this.onChange(this._securityContext);

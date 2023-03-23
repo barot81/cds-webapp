@@ -1,6 +1,6 @@
-import { FoundationInjector } from '@exxat/fusion/core';
+import { FoundationInjector } from '@zhealthcare/fusion/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Validations } from '@exxat/fusion/models';
+import { Validations } from '@zhealthcare/fusion/models';
 import { FeatureMetadataService } from '../feature-metadata.service';
 
 
@@ -28,7 +28,7 @@ export class FormValidation {
 
   public ApplyValidationRules(formGroup: FormGroup, formGroupName:string) {
     this.validations.rules.forEach(validationRule => {
-      if (formGroup.contains(validationRule.formControlName) && 
+      if (formGroup.contains(validationRule.formControlName) &&
         this.compareFormgroupName(validationRule, formGroupName)) {
         const formControl = formGroup.get(
           validationRule.formControlName
@@ -47,7 +47,7 @@ export class FormValidation {
   }
 
   private compareFormgroupName(validationRule, formGroupName) {
-    return (formGroupName === "" || validationRule.formGroupName === (null || undefined) || 
+    return (formGroupName === "" || validationRule.formGroupName === (null || undefined) ||
         formGroupName === validationRule.formGroupName);
   }
 
@@ -90,7 +90,7 @@ export class FormValidation {
         errorMessages['required'] = validator.errorMessage;
         break;
 
-        
+
       default:
         break;
     }

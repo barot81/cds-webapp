@@ -6,9 +6,9 @@ import {
 } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { OrgFacade } from '@exxat/fusion/core';
-import { TimezonePipe } from '@exxat/fusion/pipes';
-import { FlexTableService, HeaderService } from '@exxat/ux';
+import { OrgFacade } from '@zhealthcare/fusion/core';
+import { TimezonePipe } from '@zhealthcare/fusion/pipes';
+import { FlexTableService, HeaderService } from '@zhealthcare/ux';
 import lodash from 'lodash';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { Display } from '../models/display.model';
@@ -19,7 +19,7 @@ import { NotifationSandbox } from '../services/notification.sandbox';
 import { NotificationLogDetailService } from '../services/notificationlog.detail.service';
 
 @Component({
-  selector: 'exxat-notification-log',
+  selector: 'zhealthcare-notification-log',
   templateUrl: './notification-log.component.html',
   styleUrls: ['./notification-log.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

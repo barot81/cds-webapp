@@ -1,10 +1,10 @@
 {
   "authConfig": {
-    "issuer": "https://auth.dev.exxat.net/realms/ExxatApps",
+    "issuer": "https://auth.dev.zhealthcare.net/realms/zhealthcareApps",
     "clientId": "preceptor-bff",
     "responseType": "code",
-    "redirectUri": "https://preceptor.dev.exxat.net/account/login",
-    "silentRefreshRedirectUri": "https://preceptor.dev.exxat.net/silent-refresh.html",
+    "redirectUri": "https://preceptor.dev.zhealthcare.net/account/login",
+    "silentRefreshRedirectUri": "https://preceptor.dev.zhealthcare.net/silent-refresh.html",
     "scope": "openid profile email",
     "useSilentRefresh": true,
     "silentRefreshTimeout": 5000,

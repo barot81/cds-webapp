@@ -1,5 +1,5 @@
 import { HttpHeaders } from '@angular/common/http';
-import { TokenModel } from '@exxat/fusion/models';
+import { TokenModel } from '@zhealthcare/fusion/models';
 import { OrgState } from '../../store/reducers/org.reducers';
 
 

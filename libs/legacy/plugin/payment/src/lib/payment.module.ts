@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MaterialModule, UxModule } from '@exxat/ux';
-import { AuthGuardService } from '@exxat/fusion/core';
+import { MaterialModule, UxModule } from '@zhealthcare/ux';
+import { AuthGuardService } from '@zhealthcare/fusion/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PaymentHomeComponent } from './components/home.component';

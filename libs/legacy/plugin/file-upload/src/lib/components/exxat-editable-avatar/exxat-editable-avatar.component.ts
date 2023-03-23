@@ -18,15 +18,15 @@ import { AvatarInformation } from '../../models/avatar-information.model';
 import { BehaviorSubject } from 'rxjs';
 import { FileUploadModel } from '../../models/fileUpload.model';
 import { MatDialog } from '@angular/material/dialog';
-import { SnackbarService } from '@exxat/ux';
-import { Logger } from '@exxat/fusion/core';
+import { SnackbarService } from '@zhealthcare/ux';
+import { Logger } from '@zhealthcare/fusion/core';
 
 @Component({
-  selector: 'exxat-editable-avatar',
-  templateUrl: './exxat-editable-avatar.component.html',
-  styleUrls: ['./exxat-editable-avatar.component.scss'],
+  selector: 'zhealthcare-editable-avatar',
+  templateUrl: './zhealthcare-editable-avatar.component.html',
+  styleUrls: ['./zhealthcare-editable-avatar.component.scss'],
 })
-export class ExxatEditableAvatarComponent implements OnChanges {
+export class zhealthcareEditableAvatarComponent implements OnChanges {
   @Input() src: string | ArrayBuffer;
   @Input() size: string;
   @Input() firstName: string;
@@ -132,7 +132,7 @@ export class ExxatEditableAvatarComponent implements OnChanges {
             this.upload.nativeElement.value = '';
             this.showError = true;
             Logger.error(
-              `PluginModule : ExxatEditableAvatarComponent =>  uploadFile() => fileKey:${this.postReferenceKey}:${error}`
+              `PluginModule : zhealthcareEditableAvatarComponent =>  uploadFile() => fileKey:${this.postReferenceKey}:${error}`
             );
           }
         );
@@ -197,7 +197,7 @@ export class ExxatEditableAvatarComponent implements OnChanges {
           },
           (error) =>
             Logger.error(
-              `PluginModule : ExxatEditableAvatarComponent =>  downloadAvatar() => fileKey:${this.fileDowloadKey}:${error}`
+              `PluginModule : zhealthcareEditableAvatarComponent =>  downloadAvatar() => fileKey:${this.fileDowloadKey}:${error}`
             )
         );
     }
@@ -243,7 +243,7 @@ export class ExxatEditableAvatarComponent implements OnChanges {
                 this.avatarInformation.loading = false;
                 this.showErrorDelete = true;
                 Logger.error(
-                  `PluginModule : ExxatEditableAvatarComponent =>  deleteAvatar() => fileKey:${this.fileDowloadKey}:${error}`
+                  `PluginModule : zhealthcareEditableAvatarComponent =>  deleteAvatar() => fileKey:${this.fileDowloadKey}:${error}`
                 );
               }
             );

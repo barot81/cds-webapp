@@ -1,3 +1,3 @@
-# @exxat/fusion/models
+# @zhealthcare/fusion/models
 
-Secondary entry point of `@exxat/fusion`. It can be used by importing from `@exxat/fusion/models`.
+Secondary entry point of `@zhealthcare/fusion`. It can be used by importing from `@zhealthcare/fusion/models`.

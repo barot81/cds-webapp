@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatDisplayColumnsFormComponent } from './exxat-display-columns-form.component';
+import { zhealthcareDisplayColumnsFormComponent } from './zhealthcare-display-columns-form.component';
 
-describe('ExxatDisplayColumnsFormComponent', () => {
-  let component: ExxatDisplayColumnsFormComponent;
-  let fixture: ComponentFixture<ExxatDisplayColumnsFormComponent>;
+describe('zhealthcareDisplayColumnsFormComponent', () => {
+  let component: zhealthcareDisplayColumnsFormComponent;
+  let fixture: ComponentFixture<zhealthcareDisplayColumnsFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatDisplayColumnsFormComponent ]
+      declarations: [ zhealthcareDisplayColumnsFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatDisplayColumnsFormComponent);
+    fixture = TestBed.createComponent(zhealthcareDisplayColumnsFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

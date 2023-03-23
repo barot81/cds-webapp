@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { UserConsentSandbox } from '@exxat/fusion/core';
+import { UserConsentSandbox } from '@zhealthcare/fusion/core';
 
 @Component({
-  selector: 'exxat-consent-details-popup',
+  selector: 'zhealthcare-consent-details-popup',
   templateUrl: './consent-details-popup.component.html',
   styleUrls: ['./consent-details-popup.component.scss']
 })

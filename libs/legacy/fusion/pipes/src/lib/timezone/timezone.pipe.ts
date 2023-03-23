@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
-import { OrgUnitInformation } from '@exxat/fusion/models';
+import { OrgUnitInformation } from '@zhealthcare/fusion/models';
 import moment from 'moment-timezone';
 @Pipe({
   name: 'timezone',

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatEditColumnsComponent } from './exxat-edit-columns.component';
+import { zhealthcareEditColumnsComponent } from './zhealthcare-edit-columns.component';
 
-describe('ExxatEditColumnsComponent', () => {
-  let component: ExxatEditColumnsComponent;
-  let fixture: ComponentFixture<ExxatEditColumnsComponent>;
+describe('zhealthcareEditColumnsComponent', () => {
+  let component: zhealthcareEditColumnsComponent;
+  let fixture: ComponentFixture<zhealthcareEditColumnsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatEditColumnsComponent ]
+      declarations: [ zhealthcareEditColumnsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatEditColumnsComponent);
+    fixture = TestBed.createComponent(zhealthcareEditColumnsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

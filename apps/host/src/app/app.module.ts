@@ -9,13 +9,13 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import {
   AuthService,
-  ExxatAngularOuthOIDCModule,
-} from '@exxat-core/angular-oauth-oidc';
+  zhealthcareAngularOuthOIDCModule,
+} from '@zhealthcare-core/angular-oauth-oidc';
 import {
-  ExxatAngularRuntimeConfigModule,
+  zhealthcareAngularRuntimeConfigModule,
   RuntimeConfigLoaderService,
-} from '@exxat-core/angular-runtime-config';
-import { ExxatAngularMfModule } from '@exxat-core/angular-mf';
+} from '@zhealthcare-core/angular-runtime-config';
+import { zhealthcareAngularMfModule } from '@zhealthcare-core/angular-mf';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './routes/app-routing.module';
@@ -31,9 +31,9 @@ import { fetchRuntimeConfigFactory } from './config/appinit-factory';
     MatSnackBarModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
-    ExxatAngularOuthOIDCModule.forRoot(),
-    ExxatAngularRuntimeConfigModule,
-    ExxatAngularMfModule,
+    zhealthcareAngularOuthOIDCModule.forRoot(),
+    zhealthcareAngularRuntimeConfigModule,
+    zhealthcareAngularMfModule,
     StoreDevtoolsModule.instrument({
       maxAge: 20,
       logOnly: true,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GET, Header, HttpService } from '@exxat/fusion/core';
+import { GET, Header, HttpService } from '@zhealthcare/fusion/core';
 
 @Injectable({providedIn: 'any'})
 export class ResourceApiClient extends HttpService {

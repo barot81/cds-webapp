@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { FuseMatchMediaService } from '../../services/match-media.service';
-import { FusionNavigationService } from '@exxat/fusion/services';
+import { FusionNavigationService } from '@zhealthcare/fusion/services';
 
 @Component({
     selector   : 'fuse-shortcuts',

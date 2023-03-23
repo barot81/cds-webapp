@@ -1,0 +1,70 @@
+// .zhealthcare-tree-invisible {
+//   display: none;
+// }
+
+// .zhealthcare-tree ul,
+// .zhealthcare-tree li {
+//   margin-top: 0;
+//   margin-bottom: 0;
+//   list-style-type: none;
+// }
+
+// .mat-tree-node {
+//   min-height: 2.4em !important;s
+//   height: 2.4em;
+// }
+
+:host {
+  .zhealthcare-tree-node {
+    display: flex;
+    align-items: center;
+    min-height: 2.6em !important;
+    height: 2.6em;
+  }
+  & mat-tree-node[role='group']{
+    font-weight: 600 !important;
+    // padding-left: 0px!important;
+  }
+  & mat-tree-node[role='treeitem'][aria-level='1'] {
+    // padding-left: 12px !important;
+    > span {
+      padding: 8px;
+    }
+  }
+  & mat-tree-node[role='treeitem'][aria-level='2'] {
+    // padding-left: 52px !important;
+    > span {
+      padding: 8px;
+    }
+  }
+
+
+
+  .node-icon-hover{
+    .icon-hidden{
+        i{
+            visibility: hidden!important;
+        }
+    }
+
+    &:hover,&.selected-tree-node {
+        .icon-hidden{
+            i{
+                visibility: visible!important;
+                cursor: pointer !important;
+            }
+        }
+     }
+    // &:active {
+    //   .icon-hidden{
+    //     i{
+    //         visibility: visible!important;
+    //         cursor: pointer !important;
+    //     }
+    //   }
+    // }
+
+}
+
+
+}

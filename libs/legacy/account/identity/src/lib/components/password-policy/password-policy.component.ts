@@ -2,12 +2,12 @@ import { Component, OnInit, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { AuthService, FusionConfigService, PasswordStrengthService, UserInfo } from '@exxat/fusion/core';
-import { TooltipDirective } from '@exxat/ux';
+import { AuthService, FusionConfigService, PasswordStrengthService, UserInfo } from '@zhealthcare/fusion/core';
+import { TooltipDirective } from '@zhealthcare/ux';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { IdentitySandbox } from '../../identity.sandbox';
-import { ChangePassword, SharedIdentitySandbox } from '@exxat/ux';
+import { ChangePassword, SharedIdentitySandbox } from '@zhealthcare/ux';
 import { passwordMatchValidator } from './password-match-validator';
 
 @Component({
@@ -22,7 +22,7 @@ export class PasswordPolicyComponent implements OnInit {
   isFormValid = false;
   changePassword: ChangePassword;
   @ViewChildren(TooltipDirective) tooltipDirective;
-  exxatTooltip: any;
+  zhealthcareTooltip: any;
   toolTipOpened = new BehaviorSubject<boolean>(false);
   tooltipOptions = {
       'contentType': 'template',
@@ -44,20 +44,20 @@ export class PasswordPolicyComponent implements OnInit {
   public isPasswordStrong = true;
 
   constructor(
-        private readonly _fb: FormBuilder, 
-        private configService: FusionConfigService, 
+        private readonly _fb: FormBuilder,
+        private configService: FusionConfigService,
         private passwordStrengthService: PasswordStrengthService,
         private identitySandbox:IdentitySandbox,
         private sharedIdentitySandbox:SharedIdentitySandbox,
         private _snackBar: MatSnackBar,
         private router: Router,
         private authService: AuthService
-     ) { 
-      
+     ) {
+
         this._unsubscribe = new Subject();
         this.configService.uiSettings = {
             layout: {
-    
+
             navbar: {
                 hidden: true
             },
@@ -88,9 +88,9 @@ export class PasswordPolicyComponent implements OnInit {
         this.loginForm.valueChanges.pipe(takeUntil(this._unsubscribe)).subscribe(data=> {
             this.matchPassword(data);
         });
-        // this.loginForm.valueChanges.pipe(takeUntil(this._unsubscribe)).subscribe(value=> { 
+        // this.loginForm.valueChanges.pipe(takeUntil(this._unsubscribe)).subscribe(value=> {
         //     if(value.currentPassword !== "" && value.newPassword !== "" && value.repeatNewPassword !== "" && value.newPassword === value.repeatNewPassword && this.passwordStrengthService.strength > 80) {
-            
+
         //     } else {
         //         this.isFormValid =  false;
         //     }
@@ -112,11 +112,11 @@ export class PasswordPolicyComponent implements OnInit {
     checkIsPasswordStrong() {
         const newPassword = this.loginForm.controls.newPassword;
         const confirmPassword = this.loginForm.controls.confirmPassword;
-        if((newPassword.value && newPassword.value !=="" && newPassword.touched) || 
+        if((newPassword.value && newPassword.value !=="" && newPassword.touched) ||
         (confirmPassword.value && confirmPassword.value !== "" &&
           confirmPassword.touched)) {
             const strength = this.passwordStrengthService.getPasswordStrength(newPassword.value);
-            this.updatedPasswordStrength(strength);      
+            this.updatedPasswordStrength(strength);
             this.validatePolicy =  this.isPasswordStrong;
         }else {
             this.validatePolicy = true;
@@ -140,10 +140,10 @@ export class PasswordPolicyComponent implements OnInit {
 
     // Function is to open tooltip
     openTooltip(id: any) {
-        this.exxatTooltip = this.tooltipDirective.find(elem => elem.id === id);
+        this.zhealthcareTooltip = this.tooltipDirective.find(elem => elem.id === id);
         if (this.tooltipDirective && this.tooltipDirective != null && this.tooltipDirective.length > 0) {
             let filteredTooltips: Array<any> = this.tooltipDirective
-                .filter(x => x.createTimeoutId != null && x.id != this.exxatTooltip.id);
+                .filter(x => x.createTimeoutId != null && x.id != this.zhealthcareTooltip.id);
             filteredTooltips.forEach(element => {
                 element.destroyTooltip();
             });
@@ -159,7 +159,7 @@ export class PasswordPolicyComponent implements OnInit {
           this.isPasswordStrong = false;
         }
     }
-    
+
     onClickChangePassword() {
 
         this.changePassword.NewPassword = this.loginForm.controls['newPassword'].value;
@@ -191,17 +191,17 @@ export class PasswordPolicyComponent implements OnInit {
 
     // Function will execute when user click outside of tooltip
     onOutsideClick() {
-        if (this.exxatTooltip && this.exxatTooltip != null) {
-            this.exxatTooltip.destroyTooltip();
+        if (this.zhealthcareTooltip && this.zhealthcareTooltip != null) {
+            this.zhealthcareTooltip.destroyTooltip();
         }
         this.toolTipOpened.next(false);
     }
 
     //#endregion
 
-    
+
     ngOnDestroy() {
         this._unsubscribe.next(true);
         this._unsubscribe.complete();
-    }  
+    }
 }

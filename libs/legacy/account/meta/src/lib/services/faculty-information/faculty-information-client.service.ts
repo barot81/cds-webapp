@@ -8,7 +8,7 @@ import {
   Path,
   HttpService,
   FusionConfigService,
-} from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/core';
 
 @Injectable({providedIn: 'any'})
 export class FacultyInformationApiClient extends HttpService {

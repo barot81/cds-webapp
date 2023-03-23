@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { FusionConfigService, Sandbox } from '@exxat/fusion/core';
-import { SecurityContext } from '@exxat/fusion/models';
+import { FusionConfigService, Sandbox } from '@zhealthcare/fusion/core';
+import { SecurityContext } from '@zhealthcare/fusion/models';
 import { Observable } from 'rxjs';
 import { FileApiClient } from '../fileApiClient.service';
 import { FileEndpoint } from '../models/file-upload-config';

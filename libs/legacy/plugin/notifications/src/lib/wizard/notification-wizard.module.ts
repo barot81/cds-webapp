@@ -7,22 +7,22 @@ import {
   FuseSharedModule,
   FuseSidebarModule,
   FuseDirectivesModule,
-  ExxatTooltipModule,
-} from '@exxat/ux';
+  zhealthcareTooltipModule,
+} from '@zhealthcare/ux';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import { NotificationPreviewComponent } from './preview/notification-preview.component';
 import { NotificationTemplateEditComponent } from './template/edit/notification-template-edit.component';
 import {
   FeatureMetaDataPipesModule,
-} from '@exxat/fusion/pipes';
-import { FileUploadModule } from '@exxat/plugin/file-upload';
-import { CKEditorModule } from '@exxat/plugin/ckeditor';
+} from '@zhealthcare/fusion/pipes';
+import { FileUploadModule } from '@zhealthcare/plugin/file-upload';
+import { CKEditorModule } from '@zhealthcare/plugin/ckeditor';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { NotificationRecipientListComponent } from './recipient-list/notification-recipient-list.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MentionModule } from 'angular-mentions';
-import { FeatureMetadataService } from '@exxat/fusion/services';
+import { FeatureMetadataService } from '@zhealthcare/fusion/services';
 import { NotificationServicesModule } from '../services/notification-services.module';
 
 @NgModule({
@@ -41,7 +41,7 @@ import { NotificationServicesModule } from '../services/notification-services.mo
     CKEditorModule,
     ClipboardModule,
     MentionModule,
-    ExxatTooltipModule,
+    zhealthcareTooltipModule,
   ],
   exports: [NotificationWizardComponent],
   declarations: [

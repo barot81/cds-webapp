@@ -4,17 +4,17 @@ import { InjectionToken, NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRouteSnapshot, RouterModule, Routes } from '@angular/router';
-import { FusionModule } from '@exxat/fusion';
-import { AuthGuardService } from '@exxat/fusion/core';
-import { FeatureMetaDataPipesModule } from '@exxat/fusion/pipes';
+import { FusionModule } from '@zhealthcare/fusion';
+import { AuthGuardService } from '@zhealthcare/fusion/core';
+import { FeatureMetaDataPipesModule } from '@zhealthcare/fusion/pipes';
 import {
-  ExxatSnackBarModule,
-  ExxatTooltipModule,
+  zhealthcareSnackBarModule,
+  zhealthcareTooltipModule,
   FusePipesModule,
   IdentityComponentMapService,
   MaterialModule,
   SharedComponentsAccountModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { LockOutDialogComponent } from './components/account-lockout/lockoutdialog.component';
 import { AccountSettingComponent } from './components/account/account-setting/account-setting.component';
@@ -99,8 +99,8 @@ export const cachedComponent: any = '';
     RecaptchaModule,
     RouterModule.forChild(routes),
     FlexLayoutModule,
-    ExxatTooltipModule,
-    ExxatSnackBarModule,
+    zhealthcareTooltipModule,
+    zhealthcareSnackBarModule,
     SharedComponentsAccountModule,
     FusePipesModule,
     FeatureMetaDataPipesModule,

@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { ComponentMap } from '@exxat/fusion/core';
+import { ComponentMap } from '@zhealthcare/fusion/core';
 import { NotificationLogPreviewComponent } from "../log/preview/notification-log-preview.component";
 
 @Injectable({providedIn: 'any'})

@@ -3,7 +3,7 @@ import { lastValueFrom } from 'rxjs';
 
 import * as jsonLogic from 'json-logic-js';
 
-import { HttpConstants, MetaConstants } from '@exxat/fusion/core';
+import { HttpConstants, MetaConstants } from '@zhealthcare/fusion/core';
 import { FeatureFlagDataService } from './feature-flag-data.service';
 
 @Injectable({

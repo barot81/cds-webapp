@@ -8,7 +8,7 @@ export interface PageState {
 }
 
 const initialPageState: PageState = {
-    pageTitle: "Exxat",
+    pageTitle: "zhealthcare",
     navigationId : "default"
 }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { POST, HttpService, Body, GET, Query } from '@exxat/fusion/core';
+import { POST, HttpService, Body, GET, Query } from '@zhealthcare/fusion/core';
 import { Registration } from './models/registration.model';
 import { Terms } from './models/terms.model';
 

@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { concatMap, lastValueFrom } from 'rxjs';
 
-import { RuntimeConfigLoaderService } from '@exxat-core/angular-runtime-config';
-import { setMFConfig } from '@exxat-core/angular-mf';
-import { AuthService } from '@exxat-core/angular-oauth-oidc';
+import { RuntimeConfigLoaderService } from '@zhealthcare-core/angular-runtime-config';
+import { setMFConfig } from '@zhealthcare-core/angular-mf';
+import { AuthService } from '@zhealthcare-core/angular-oauth-oidc';
 
 export function fetchRuntimeConfigFactory(
   http: HttpClient,

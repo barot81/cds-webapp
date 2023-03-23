@@ -410,7 +410,7 @@ $fuse-navy: (
   ),
 );
 
-$exxat-pink: (
+$zhealthcare-pink: (
   50: #fde5f2,
   100: #f9bedd,
   200: #f693c7,
@@ -443,7 +443,7 @@ $exxat-pink: (
   ),
 );
 
-$exxat-orange: (
+$zhealthcare-orange: (
   50: #fef1e7,
   100: #fcdbc3,
   200: #fac49b,
@@ -476,7 +476,7 @@ $exxat-orange: (
   ),
 );
 
-$exxat-yellow: (
+$zhealthcare-yellow: (
   50: #fffde7,
   100: #fff9c4,
   200: #fff59d,
@@ -509,7 +509,7 @@ $exxat-yellow: (
   ),
 );
 
-$exxat-teal: (
+$zhealthcare-teal: (
   50: #e1f4f4,
   100: #b3e3e3,
   200: #81d0d0,
@@ -547,20 +547,20 @@ $exxat-teal: (
 // -----------------------------------------------------------------------------------------------------
 $matPalettes: (
   'red': mat.$red-palette,
-  'pink': $exxat-pink,
+  'pink': $zhealthcare-pink,
   'purple': mat.$purple-palette,
   'deep-purple': mat.$deep-purple-palette,
   'indigo': mat.$indigo-palette,
   'blue': mat.$blue-palette,
   'light-blue': mat.$light-blue-palette,
   'cyan': mat.$cyan-palette,
-  'teal': $exxat-teal,
+  'teal': $zhealthcare-teal,
   'green': mat.$green-palette,
   'light-green': mat.$light-green-palette,
   'lime': mat.$lime-palette,
-  'yellow': $exxat-yellow,
+  'yellow': $zhealthcare-yellow,
   'amber': mat.$amber-palette,
-  'orange': $exxat-orange,
+  'orange': $zhealthcare-orange,
   'deep-orange': mat.$deep-orange-palette,
   'brown': mat.$brown-palette,
   'grey': mat.$grey-palette,

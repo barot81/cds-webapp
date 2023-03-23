@@ -7,7 +7,7 @@ import {
   LaunchDataModel,
   OrgUnit,
   Organization
-} from '@exxat/fusion/models';
+} from '@zhealthcare/fusion/models';
 import { Injectable } from '@angular/core';
 import { GET, Header, Path, Query } from './../../asyncServices/http/http.decorator';
 import { HttpService } from './../../asyncServices/http/http.service';

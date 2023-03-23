@@ -7,18 +7,18 @@ import {
   FuseSharedModule,
   FuseSidebarModule,
   FuseDirectivesModule,
-  ExxatTooltipModule,
+  zhealthcareTooltipModule,
   FlexTableModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { LayoutModule } from '@angular/cdk/layout';
 import { NotificationlogDetailComponent } from './detail/notification-detail.component';
-import { FeatureMetaDataPipesModule } from '@exxat/fusion/pipes';
+import { FeatureMetaDataPipesModule } from '@zhealthcare/fusion/pipes';
 import { NotificationLogDetailService } from '../services/notificationlog.detail.service';
 import { NotificationLogPreviewComponent } from './preview/notification-log-preview.component';
 import { DrawerService } from '../services/drawer-service';
 import { FileViewerContainerComponent } from './preview/file-viewer-container/file-viewer-container.component';
-import { FileUploadModule } from '@exxat/plugin/file-upload';
-import { TimezonePipe } from '@exxat/fusion/pipes';
+import { FileUploadModule } from '@zhealthcare/plugin/file-upload';
+import { TimezonePipe } from '@zhealthcare/fusion/pipes';
 import { ExternalLinkDirective } from './external-link.directive';
 
 @NgModule({
@@ -30,7 +30,7 @@ import { ExternalLinkDirective } from './external-link.directive';
     FuseSidebarModule,
     FuseDirectivesModule,
     FeatureMetaDataPipesModule,
-    ExxatTooltipModule,
+    zhealthcareTooltipModule,
     FlexTableModule,
     FileUploadModule,
   ],

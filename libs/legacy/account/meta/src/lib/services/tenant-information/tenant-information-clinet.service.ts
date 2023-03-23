@@ -4,7 +4,7 @@ import {
   GET,
   HttpService,
   Path,
-} from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/core';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })

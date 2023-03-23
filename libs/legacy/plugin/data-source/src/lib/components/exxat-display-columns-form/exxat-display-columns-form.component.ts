@@ -1,16 +1,16 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { DrawerAdapter, DrawerService } from '@exxat/ux';
+import { DrawerAdapter, DrawerService } from '@zhealthcare/ux';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DataSourceFacade } from '../../store/facades/datasource.facade';
-import { FusionFormComponent } from '@exxat/fusion/components';
+import { FusionFormComponent } from '@zhealthcare/fusion/components';
 import { ColumnOption } from '../../models/response.model';
 
 @Component({
-  selector: 'exxat-display-columns-form',
-  templateUrl: './exxat-display-columns-form.component.html',
+  selector: 'zhealthcare-display-columns-form',
+  templateUrl: './zhealthcare-display-columns-form.component.html',
 })
-export class ExxatDisplayColumnsFormComponent
+export class zhealthcareDisplayColumnsFormComponent
   extends FusionFormComponent
   implements DrawerAdapter, AfterViewInit
 {

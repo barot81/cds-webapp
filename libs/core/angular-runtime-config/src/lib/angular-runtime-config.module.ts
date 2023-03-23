@@ -31,12 +31,12 @@ export function initConfig(
     },
   ],
 })
-export class ExxatAngularRuntimeConfigModule {
+export class zhealthcareAngularRuntimeConfigModule {
   static forRoot(
     config: RuntimeConfig
-  ): ModuleWithProviders<ExxatAngularRuntimeConfigModule> {
+  ): ModuleWithProviders<zhealthcareAngularRuntimeConfigModule> {
     return {
-      ngModule: ExxatAngularRuntimeConfigModule,
+      ngModule: zhealthcareAngularRuntimeConfigModule,
       providers: [
         {
           provide: RuntimeConfig,

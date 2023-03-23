@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'utils-exxat-export',
-  templateUrl: './exxat-export.component.html'
+  selector: 'utils-zhealthcare-export',
+  templateUrl: './zhealthcare-export.component.html'
 })
-export class ExxatExportComponent implements OnInit {
+export class zhealthcareExportComponent implements OnInit {
 
   constructor() { }
 

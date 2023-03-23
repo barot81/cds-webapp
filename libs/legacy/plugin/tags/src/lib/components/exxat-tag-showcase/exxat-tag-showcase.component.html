@@ -20,7 +20,7 @@
 
   <div *ngIf="tagView === TAGVIEW.CHIP">
     <mat-chip-list #chipList aria-label="tag list">
-      <div fxLayout="row" fxLayoutAlign="start center" class="exxat-chips-tag mr-4">
+      <div fxLayout="row" fxLayoutAlign="start center" class="zhealthcare-chips-tag mr-4">
         <div *ngFor="let tag of tags$ | async; let i = index">
           <mat-chip disableRipple fxLayoutAlign="start center" *ngIf="i <= _tagsLength - 1" removable="false"
             tooltip="{{ getTagTitle(tag) }}" [options]="tooltipOptionsTop" tabindex="0"

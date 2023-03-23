@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistrationSandbox } from '../../registration.sandbox';
-import { BaseComponent } from '@exxat/fusion/core';
+import { BaseComponent } from '@zhealthcare/fusion/core';
 import { Terms } from '../../models/terms.model';
 
 @Component({

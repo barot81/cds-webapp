@@ -7,14 +7,14 @@ import {
   Output
 } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
+import * as ClassicEditor from '@zhealthcare/ckeditor5-build-classic';
 import {
   FusionFormAdapter,
   FusionFormComponent
-} from '@exxat/fusion/components';
-import { SecurityContext } from '@exxat/fusion/models';
-import { FileConfiguration } from '@exxat/plugin/file-upload';
-import { SnackbarService } from '@exxat/ux';
+} from '@zhealthcare/fusion/components';
+import { SecurityContext } from '@zhealthcare/fusion/models';
+import { FileConfiguration } from '@zhealthcare/plugin/file-upload';
+import { SnackbarService } from '@zhealthcare/ux';
 import { compare } from 'fast-json-patch';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
@@ -29,7 +29,7 @@ import { NotificationService } from '../../services/notificaton.service';
 import { TemplateConstants } from '../constants';
 
 @Component({
-  selector: 'exxat-notification-template',
+  selector: 'zhealthcare-notification-template',
   templateUrl: './notification-template.component.html',
   styleUrls: ['./notification-template.component.scss'],
 })
@@ -471,7 +471,7 @@ export class NotificationTemplateComponent
                     5000
                   );
                 }
-              } 
+              }
               );
   }
 

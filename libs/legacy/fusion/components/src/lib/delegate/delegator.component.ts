@@ -5,14 +5,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {
   AppStateHelper, AuthService, FusionConfigService, Logger,
   URLConstants, UserFacade
-} from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/core';
 import {
   OuCode,
   TenantWithOuCodes,
   TokenModel,
   TokenSessionInfo,
   User
-} from '@exxat/fusion/models';
+} from '@zhealthcare/fusion/models';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

@@ -9,17 +9,17 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { RuntimeConfigLoaderService } from '@exxat-core/angular-runtime-config';
-import { FusionConfigService, LoggingService } from '@exxat/fusion/core';
-import { SplashScreenService } from '@exxat/ux';
-import { FusionNavigationService } from '@exxat/fusion/services';
+import { RuntimeConfigLoaderService } from '@zhealthcare-core/angular-runtime-config';
+import { FusionConfigService, LoggingService } from '@zhealthcare/fusion/core';
+import { SplashScreenService } from '@zhealthcare/ux';
+import { FusionNavigationService } from '@zhealthcare/fusion/services';
 
 @UntilDestroy()
 @Component({
-  selector: 'exxat-angular-bootstrap',
+  selector: 'zhealthcare-angular-bootstrap',
   templateUrl: './bootstrap.component.html',
 })
-export class ExxatAngularBootstrapComponent implements OnInit {
+export class zhealthcareAngularBootstrapComponent implements OnInit {
   fuseConfig: any;
   currentUrl: any = '';
   click$: Observable<any>;

@@ -10,7 +10,7 @@ import {
   Query,
   Header,
   FusionConfigService
-} from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/core';
 import { NotificationEmailSendModel, NotificationLogModel, NotificationTemplateModel, NotificationLayoutModel, DataSourceResult } from '../models';
 
 
@@ -89,7 +89,7 @@ export class NotificationApiClient extends HttpService {
     @Query('searchText') search : string
     ): Observable<any> {
     return null;
-  } 
+  }
   @GET<DataSourceResult<NotificationLogModel>>('/NotificationLog/GetNotificationByPayload')
   GetNotificationLogByRawSql(@Header('OuCode') ouCode: any, @Query('categoryId') categoryId: string,@Query('notificationId') notificationId: string, @Query('cohortIds') cohortIds, @Query('pageNumber') pageNumber) : Observable<DataSourceResult<NotificationLogModel>> {
     return null;

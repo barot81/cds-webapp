@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 
 import { FocusDirective } from './accessibility/focus.directive';
 import { ExpandableCellDirective } from './expandable-cell/expandable-cell.directive';
-import { ExxatDrawerActionDirective } from './exxat-sidebar-action/exxat-drawer-action.directive';
-import { ExxatManifoldPanelActionDirective } from './exxat-sidebar-action/exxat-manifold-panel-action.directive';
+import { zhealthcareDrawerActionDirective } from './zhealthcare-sidebar-action/zhealthcare-drawer-action.directive';
+import { zhealthcareManifoldPanelActionDirective } from './zhealthcare-sidebar-action/zhealthcare-manifold-panel-action.directive';
 import { FontColorDirective } from './font-color/font-color.directive';
 import { FuseIfOnDomDirective } from './fuse-if-on-dom/fuse-if-on-dom.directive';
 import { FuseInnerScrollDirective } from './fuse-inner-scroll/fuse-inner-scroll.directive';
@@ -31,8 +31,8 @@ import { SearchDirective } from './search';
     FuseMatSidenavHelperDirective,
     FuseMatSidenavTogglerDirective,
     FusePerfectScrollbarDirective,
-    ExxatDrawerActionDirective,
-    ExxatManifoldPanelActionDirective,
+    zhealthcareDrawerActionDirective,
+    zhealthcareManifoldPanelActionDirective,
     NoWhitespaceDirective,
     FocusDirective,
     NavMenuListDirective,
@@ -53,8 +53,8 @@ import { SearchDirective } from './search';
     FuseMatSidenavHelperDirective,
     FuseMatSidenavTogglerDirective,
     FusePerfectScrollbarDirective,
-    ExxatDrawerActionDirective,
-    ExxatManifoldPanelActionDirective,
+    zhealthcareDrawerActionDirective,
+    zhealthcareManifoldPanelActionDirective,
     NoWhitespaceDirective,
     FocusDirective,
     NavMenuListDirective,

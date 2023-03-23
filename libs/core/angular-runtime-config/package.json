@@ -1,5 +1,5 @@
 {
-  "name": "@exxat-core/angular-runtime-config",
+  "name": "@zhealthcare-core/angular-runtime-config",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^14.0.0",

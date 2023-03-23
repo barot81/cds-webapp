@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'exxat-toggle-filter',
-  templateUrl: './exxat-toggle-filter.component.html',
-  styleUrls: ['./exxat-toggle-filter.component.scss']
+  selector: 'zhealthcare-toggle-filter',
+  templateUrl: './zhealthcare-toggle-filter.component.html',
+  styleUrls: ['./zhealthcare-toggle-filter.component.scss']
 })
-export class ExxatToggleFilterComponent implements OnInit {
+export class zhealthcareToggleFilterComponent implements OnInit {
 
   @Input() filterList;
   selectedFilter: string;

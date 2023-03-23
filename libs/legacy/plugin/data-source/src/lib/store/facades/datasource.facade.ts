@@ -12,7 +12,7 @@ import {
 import { ColumnOption, CustomHeader } from '../../models/response.model';
 import { PatchDataSourceData } from '../../models/patch-datasource-data.model';
 import { ResponseMessage } from '../../models/response-message.model';
-import { MethodType } from '@exxat/fusion/core';
+import { MethodType } from '@zhealthcare/fusion/core';
 @Injectable({ providedIn: 'root' })
 export class DataSourceFacade {
   fusionDataSet$ = this.store.pipe(select(DataSourceQuery.FusionDataSet));

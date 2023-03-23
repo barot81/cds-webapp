@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {  EventItem } from '@exxat/fusion/core';
-import { UIState } from '@exxat/fusion/core';
+import {  EventItem } from '@zhealthcare/fusion/core';
+import { UIState } from '@zhealthcare/fusion/core';
 
 @Injectable({providedIn: 'any'})
 export class AccountNavigtaionService {

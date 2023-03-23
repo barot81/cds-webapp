@@ -5,280 +5,280 @@
     "unauthorizedEndpoints": [],
     "notFoundEndpoints": [],
     "auth": {
-      "endpoint": "https://exxat-eastus-new-identity-service.azurewebsites.net"
+      "endpoint": "https://zhealthcare-eastus-new-identity-service.azurewebsites.net"
     },
     "realtime": {
-      "endpoint": "https://exxat-eastus-new-meta-service.azurewebsites.net/Account"
+      "endpoint": "https://zhealthcare-eastus-new-meta-service.azurewebsites.net/Account"
     },
     "gateway": {
       "endpoint": ""
     },
     "services": {
       "tenantonboarding": {
-        "endpoint": "https://exxat-eastus-new-tenant-onboarding-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-tenant-onboarding-service.azurewebsites.net"
       },
       "foundation.meta": {
-        "endpoint": "https://exxat-eastus-new-meta-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-meta-service.azurewebsites.net"
       },
       "v3.account": {
-        "endpoint": "https://apps.exxat.com/fusion/account/LoginWithToken"
+        "endpoint": "https://apps.zhealthcare.com/fusion/account/LoginWithToken"
       },
       "v3.launch": {
-        "endpoint": "https://apps.exxat.com/Fusion/Home/Launch"
+        "endpoint": "https://apps.zhealthcare.com/Fusion/Home/Launch"
       },
       "v3.login": {
-        "endpoint": "https://apps.exxat.comt/Fusion/Account/Login"
+        "endpoint": "https://apps.zhealthcare.comt/Fusion/Account/Login"
       },
       "help.center.salesForceUrl": {
-        "endpoint": "https://exxat.force.com/v4Help/s/"
+        "endpoint": "https://zhealthcare.force.com/v4Help/s/"
       },
       "help.center.v4SupportUrl": {
-        "endpoint": "http://exxat.com/"
+        "endpoint": "http://zhealthcare.com/"
       },
       "help.center.supportNumber": {
         "endpoint": "323-999-1559"
       },
       "payment": {
-        "endpoint": "https://exxat-eastus-new-payment-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-payment-service.azurewebsites.net"
       },
       "student.profile": {
-        "endpoint": "https://exxat-eastus-new-student-profile-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-student-profile-service.azurewebsites.net"
       },
       "student.report": {
-        "endpoint": "https://exxat-eastus-new-sscp-report-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-sscp-report-service.azurewebsites.net"
       },
       "preceptor.profile": {
-        "endpoint": "https://exxat-eastus-new-preceptor-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-preceptor-service.azurewebsites.net"
       },
       "site.report": {
-        "endpoint": "https://exxat-eastus-new-site-report-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-site-report-service.azurewebsites.net"
       },
       "student.bulkImport": {
-        "endpoint": "https://exxat-eastus-new-student-bulk-import-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-student-bulk-import-service.azurewebsites.net"
       },
       "foundation.registration": {
-        "endpoint": "https://exxat-eastus-new-registration-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-registration-service.azurewebsites.net"
       },
       "site.profile": {
-        "endpoint": "https://exxat-eastus-new-site-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-site-service.azurewebsites.net"
       },
       "site.resources": {
-        "endpoint": "https://exxat-eastus-new-site-resource-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-site-resource-service.azurewebsites.net"
       },
       "communicationlog.information": {
-        "endpoint": "https://exxat-eastus-new-communicationlog-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-communicationlog-service.azurewebsites.net"
       },
       "admin.activity": {
-        "endpoint": "https://exxat-eastus-new-learning-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-learning-service.azurewebsites.net"
       },
       "student.planOfStudy": {
-        "endpoint": "https://exxat-eastus-faculty-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-faculty-service.azurewebsites.net"
       },
       "student.pos": {
-        "endpoint": "https://exxat-eastus-new-planofstudy-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-planofstudy-service.azurewebsites.net"
       },
       "student.cohort": {
-        "endpoint": "https://exxat-eastus-cohort-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-cohort-service.azurewebsites.net"
       },
       "placement-hub": {
-        "endpoint": "https://exxat-eastus-new-placement-hub-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-placement-hub-service.azurewebsites.net"
       },
       "placement": {
-        "endpoint": "https://exxat-eastus-new-placement-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-placement-service.azurewebsites.net"
       },
       "placement.report": {
-        "endpoint": "https://exxat-eastus-new-placement-report-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-placement-report-service.azurewebsites.net"
       },
       "site.communication": {
-        "endpoint": "https://exxat-eastus-new-sitecommunication-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-sitecommunication-service.azurewebsites.net"
       },
       "site.requirement": {
-        "endpoint": "https://exxat-eastus-new-site-requirement-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-site-requirement-service.azurewebsites.net"
       },
       "publish-slot": {
-        "endpoint": "https://exxat-eastus-new-publishslot-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-publishslot-service.azurewebsites.net"
       },
       "slotgroupresponsenotification": {
-        "endpoint": "https://exxat-eastus-new-slotgroupresponsenotification-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-slotgroupresponsenotification-service.azurewebsites.net"
       },
       "slots": {
-        "endpoint": "https://exxat-eastus-new-slot-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-slot-service.azurewebsites.net"
       },
       "contract": {
-        "endpoint": "https://exxat-eastus-new-contract-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-contract-service.azurewebsites.net"
       },
       "service.notification": {
-        "endpoint": "https://exxat-eastus-new-event-scheduler-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-event-scheduler-service.azurewebsites.net"
       },
       "wishlist": {
-        "endpoint": "https://exxat-eastus-new-wishlist-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-wishlist-service.azurewebsites.net"
       },
       "myrequest": {
-        "endpoint": "https://exxat-eastus-new-myrequest-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-myrequest-service.azurewebsites.net"
       },
       "plugin.resourses": {
-        "endpoint": "https://exxat-eastus-resource-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-resource-service.azurewebsites.net"
       },
       "faculty.resource": {
-        "endpoint": "https://exxat-eastus-new-faculty-resource-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-faculty-resource-service.azurewebsites.net"
       },
       "kinesis": {
-        "endpoint": "https://exxat-eastus-new-student-compliance-workflow-service.azurewebsites.net/ComplianceWorkflow/"
+        "endpoint": "https://zhealthcare-eastus-new-student-compliance-workflow-service.azurewebsites.net/ComplianceWorkflow/"
       },
       "kinesis.file": {
-        "endpoint": "https://exxat-eastus-new-student-compliance-workflow-service.azurewebsites.net/Kinesis/Consume"
+        "endpoint": "https://zhealthcare-eastus-new-student-compliance-workflow-service.azurewebsites.net/Kinesis/Consume"
       },
       "platform.report": {
-        "endpoint": "https://exxat-eastus-new-platform-reporting-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-platform-reporting-service.azurewebsites.net"
       },
       "grading": {
-        "endpoint": "https://exxat-eastus-new-grading-service.azurewebsites.net/"
+        "endpoint": "https://zhealthcare-eastus-new-grading-service.azurewebsites.net/"
       },
       "platform.scoring": {
-        "endpoint": "https://exxat-eastus-new-scoring-service.azurewebsites.net/Platform/"
+        "endpoint": "https://zhealthcare-eastus-new-scoring-service.azurewebsites.net/Platform/"
       },
       "student.compliance": {
-        "endpoint": "https://exxat-eastus-new-student-compliance-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-student-compliance-service.azurewebsites.net"
       },
       "course.compliance": {
-        "endpoint": "https://exxat-eastus-new-course-compliance-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-course-compliance-service.azurewebsites.net"
       },
       "complianceWorkflow": {
-        "endpoint": "https://exxat-eastus-new-student-compliance-workflow-service.azurewebsites.net/ComplianceWorkflow/"
+        "endpoint": "https://zhealthcare-eastus-new-student-compliance-workflow-service.azurewebsites.net/ComplianceWorkflow/"
       },
       "evaluation": {
-        "endpoint": "https://exxat-eastus-new-evaluation-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-evaluation-service.azurewebsites.net"
       },
       "evaluationWorkflow": {
-        "endpoint": "https://exxat-eastus-new-evaluation-workflow-service.azurewebsites.net/Evaluation/"
+        "endpoint": "https://zhealthcare-eastus-new-evaluation-workflow-service.azurewebsites.net/Evaluation/"
       },
       "evaluationTargetView": {
-        "endpoint": "https://exxat-eastus-new-evaluation-summaryview-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-evaluation-summaryview-service.azurewebsites.net"
       },
       "evaluationAggregate": {
-        "endpoint": "https://exxat-eastus-new-evaluation-aggregate-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-evaluation-aggregate-service.azurewebsites.net"
       },
       "placementInfo": {
-        "endpoint": "https://exxat-eastus-new-placementinfo-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-placementinfo-service.azurewebsites.net"
       },
       "patientLog": {
-        "endpoint": "https://exxat-eastus-new-patientlog-service.azurewebsites.net/PatientLog/"
+        "endpoint": "https://zhealthcare-eastus-new-patientlog-service.azurewebsites.net/PatientLog/"
       },
       "patientLogAggregate": {
-        "endpoint": "https://exxat-eastus-new-patientlog-aggregate-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-patientlog-aggregate-service.azurewebsites.net"
       },
       "logWorkflow": {
-        "endpoint": "https://exxat-eastus-new-patientlog-workflow-service.azurewebsites.net/PatientLog/"
+        "endpoint": "https://zhealthcare-eastus-new-patientlog-workflow-service.azurewebsites.net/PatientLog/"
       },
       "patientLog.report": {
-        "endpoint": "https://exxat-eastus-new-platform-reporting-service.azurewebsites.net/PatientLog/"
+        "endpoint": "https://zhealthcare-eastus-new-platform-reporting-service.azurewebsites.net/PatientLog/"
       },
       "patientlog.template": {
-        "endpoint": "https://exxat-eastus-new-patientlog-template-service.azurewebsites.net/PatientLog/"
+        "endpoint": "https://zhealthcare-eastus-new-patientlog-template-service.azurewebsites.net/PatientLog/"
       },
       "student.assignment": {
-        "endpoint": "https://exxat-eastus-new-assignment-service.azurewebsites.net/Assignment/"
+        "endpoint": "https://zhealthcare-eastus-new-assignment-service.azurewebsites.net/Assignment/"
       },
       "assignmentsWorkflow": {
-        "endpoint": "https://exxat-eastus-new-assignment-workflow-service.azurewebsites.net/Assignment/"
+        "endpoint": "https://zhealthcare-eastus-new-assignment-workflow-service.azurewebsites.net/Assignment/"
       },
       "azure.patientlog.search": {
-        "endpoint": "https://exxat-eastus-caselog.search.windows.net/"
+        "endpoint": "https://zhealthcare-eastus-caselog.search.windows.net/"
       },
       "timesheet": {
-        "endpoint": "https://exxat-eastus-new-timesheet-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-timesheet-service.azurewebsites.net"
       },
-      "exxat.forms.site": {
-        "endpoint": "https://exxat-eastus-new-forms-service.azurewebsites.net/ExxatForms/"
+      "zhealthcare.forms.site": {
+        "endpoint": "https://zhealthcare-eastus-new-forms-service.azurewebsites.net/zhealthcareForms/"
       },
-      "exxat.forms.myrequest": {
-        "endpoint": "https://exxat-eastus-new-forms-myrequest-service.azurewebsites.net/ExxatForms/"
+      "zhealthcare.forms.myrequest": {
+        "endpoint": "https://zhealthcare-eastus-new-forms-myrequest-service.azurewebsites.net/zhealthcareForms/"
       },
       "student.registration": {
-        "endpoint": "https://exxat-eastus-student-registration-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-student-registration-service.azurewebsites.net"
       },
       "plan.tagging": {
-        "endpoint": "https://exxat-eastus-tagging-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-tagging-service.azurewebsites.net"
       },
       "plan.course": {
-        "endpoint": "https://exxat-eastus-course-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-course-service.azurewebsites.net"
       },
       "plan.programme": {
-        "endpoint": "https://exxat-eastus-program-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-program-service.azurewebsites.net"
       },
       "plan.faculty": {
-        "endpoint": "https://exxat-eastus-faculty-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-faculty-service.azurewebsites.net"
       },
       "plan.curriculum": {
-        "endpoint": "https://exxat-eastus-curriculum-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-curriculum-service.azurewebsites.net"
       },
       "plan.accreditationStandard": {
-        "endpoint": "https://exxat-eastus-accreditation-standard-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-accreditation-standard-service.azurewebsites.net"
       },
       "plan.mapping": {
-        "endpoint": "https://exxat-eastus-mapping-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-mapping-service.azurewebsites.net"
       },
       "plan.clone": {
-        "endpoint": "https://exxat-eastus-plan-clone-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-plan-clone-service.azurewebsites.net"
       },
       "plan.configuration": {
-        "endpoint": "https://exxat-eastus-system-configuration-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-system-configuration-service.azurewebsites.net"
       },
       "plan.report": {
-        "endpoint": "https://exxat-eastus-plan-adf-report-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-plan-adf-report-service.azurewebsites.net"
       },
       "log": {
-        "endpoint": "https://exxat-eastus-new-log-api-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-log-api-service.azurewebsites.net"
       },
       "publicwebsite": {
-        "endpoint": "https://api-publicsite.api.exxat.net"
+        "endpoint": "https://api-publicsite.api.zhealthcare.net"
       },
       "publicWebsiteURL": {
-        "endpoint": "https://public.exxat.com"
+        "endpoint": "https://public.zhealthcare.com"
       },
       "userConfiguration": {
-        "endpoint": "https://exxat-eastus-new-userconfiguration-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-userconfiguration-service.azurewebsites.net"
       },
       "autoplacement": {
-        "endpoint": "https://exxat-eastus-new-autoplacement-service.azurewebsites.net"
+        "endpoint": "https://zhealthcare-eastus-new-autoplacement-service.azurewebsites.net"
       }
     },
     "microfrontends": {
-      "dashboard": "https://dashboard-app.mfe.exxat.com",
-      "profile": "https://profile-app.mfe.exxat.com",
-      "faculty": "https://faculty-app.mfe.exxat.com",
-      "cohort": "https://cohort-app.mfe.exxat.com",
-      "communication": "https://communication-app.mfe.exxat.com",
-      "program": "https://program-app.mfe.exxat.com",
-      "plan-of-study": "https://plan-of-study-app.mfe.exxat.com",
-      "school-contact": "https://school-contact-app.mfe.exxat.com",
-      "compliance": "https://compliance-app.mfe.exxat.com",
-      "faculty-setup": "https://faculty-setup-app.mfe.exxat.com",
-      "plan": "https://plan-app.mfe.exxat.com",
-      "plan-reports": "https://plan-reports-app.mfe.exxat.com",
-      "course": "https://course-app.mfe.exxat.com",
-      "learning-activity": "https://learning-activity-app.mfe.exxat.com",
-      "evaluation": "https://evaluation-app.mfe.exxat.com",
-      "patient-log": "https://patient-log-app.mfe.exxat.com",
-      "assignment": "https://assignment-app.mfe.exxat.com",
-      "timesheet": "https://timesheet-app.mfe.exxat.com",
-      "sites": "https://sites-app.mfe.exxat.com",
-      "preceptor": "https://preceptor-app.mfe.exxat.com",
-      "steps": "https://steps-app.mfe.exxat.com",
-      "slot": "https://slot-app.mfe.exxat.com",
-      "wishlist": "https://wishlist-app.mfe.exxat.com",
-      "my-request": "https://my-request-app.mfe.exxat.com",
-      "placement": "https://placement-app.mfe.exxat.com",
-      "ssr": "https://ssr-app.mfe.exxat.com",
-      "settings": "https://settings-app.mfe.exxat.com",
-      "publicwebsite": "https://publicwebsite-app.mfe.exxat.com",
-      "payment-report": "https://payment-report-app.mfe.exxat.com",
-      "role-configuration": "https://role-configuration-app.mfe.exxat.com",
-      "tenant-onboarding": "https://tenant-onboarding-app.mfe.exxat.com",
-      "audit": "https://audit-app.mfe.exxat.com",
-      "release-notes": "https://release-notes-app.mfe.exxat.com",
-      "ux-demo": "https://ux-demo-app.mfe.exxat.com",
-      "reports": "https://reports-production-app.mfe.exxat.com"
+      "dashboard": "https://dashboard-app.mfe.zhealthcare.com",
+      "profile": "https://profile-app.mfe.zhealthcare.com",
+      "faculty": "https://faculty-app.mfe.zhealthcare.com",
+      "cohort": "https://cohort-app.mfe.zhealthcare.com",
+      "communication": "https://communication-app.mfe.zhealthcare.com",
+      "program": "https://program-app.mfe.zhealthcare.com",
+      "plan-of-study": "https://plan-of-study-app.mfe.zhealthcare.com",
+      "school-contact": "https://school-contact-app.mfe.zhealthcare.com",
+      "compliance": "https://compliance-app.mfe.zhealthcare.com",
+      "faculty-setup": "https://faculty-setup-app.mfe.zhealthcare.com",
+      "plan": "https://plan-app.mfe.zhealthcare.com",
+      "plan-reports": "https://plan-reports-app.mfe.zhealthcare.com",
+      "course": "https://course-app.mfe.zhealthcare.com",
+      "learning-activity": "https://learning-activity-app.mfe.zhealthcare.com",
+      "evaluation": "https://evaluation-app.mfe.zhealthcare.com",
+      "patient-log": "https://patient-log-app.mfe.zhealthcare.com",
+      "assignment": "https://assignment-app.mfe.zhealthcare.com",
+      "timesheet": "https://timesheet-app.mfe.zhealthcare.com",
+      "sites": "https://sites-app.mfe.zhealthcare.com",
+      "preceptor": "https://preceptor-app.mfe.zhealthcare.com",
+      "steps": "https://steps-app.mfe.zhealthcare.com",
+      "slot": "https://slot-app.mfe.zhealthcare.com",
+      "wishlist": "https://wishlist-app.mfe.zhealthcare.com",
+      "my-request": "https://my-request-app.mfe.zhealthcare.com",
+      "placement": "https://placement-app.mfe.zhealthcare.com",
+      "ssr": "https://ssr-app.mfe.zhealthcare.com",
+      "settings": "https://settings-app.mfe.zhealthcare.com",
+      "publicwebsite": "https://publicwebsite-app.mfe.zhealthcare.com",
+      "payment-report": "https://payment-report-app.mfe.zhealthcare.com",
+      "role-configuration": "https://role-configuration-app.mfe.zhealthcare.com",
+      "tenant-onboarding": "https://tenant-onboarding-app.mfe.zhealthcare.com",
+      "audit": "https://audit-app.mfe.zhealthcare.com",
+      "release-notes": "https://release-notes-app.mfe.zhealthcare.com",
+      "ux-demo": "https://ux-demo-app.mfe.zhealthcare.com",
+      "reports": "https://reports-production-app.mfe.zhealthcare.com"
     },
     "localization": {
       "languages": [
@@ -321,13 +321,13 @@
     },
     "azureAdB2C": {
       "clientId": "78b46724-ca0f-44a8-b9e8-8572512a5150",
-      "activeDirectory": "exxatdev",
-      "tenant": "exxatdev.onmicrosoft.com",
+      "activeDirectory": "zhealthcaredev",
+      "tenant": "zhealthcaredev.onmicrosoft.com",
       "signUpSignInPolicyId": "B2C_1_DefaultSignUpAndSignIn",
       "forgotPassword": "B2C_1_DefaultPasswordReset",
       "redirectUri": "http://localhost:4200/admission/login",
       "b2cScopes": [
-        "https://exxatdev.onmicrosoft.com/api/read"
+        "https://zhealthcaredev.onmicrosoft.com/api/read"
       ]
     },
     "authGuardSettings": {
@@ -353,10 +353,10 @@
         "controlSettings": {
           "searchControlSetting": {
             "apiKey": "DE7AB9FEC782395FB0644CAC4A15D58F",
-            "searchUriICD": "https://exxat-eastus-caselog.search.windows.net/indexes/prod-icd-index/docs/search?api-version=2019-05-06",
-            "autocompleteUriICD": "https://exxat-eastus-caselog.search.windows.net/indexes/prod-icd-index/docs/autocomplete?",
-            "searchUriCPT": "https://exxat-eastus-caselog.search.windows.net/indexes/prod-cpt-index/docs/search?api-version=2019-05-06",
-            "autocompleteUriCPT": "https://exxat-eastus-caselog.search.windows.net/indexes/prod-cpt-index/docs/autocomplete?"
+            "searchUriICD": "https://zhealthcare-eastus-caselog.search.windows.net/indexes/prod-icd-index/docs/search?api-version=2019-05-06",
+            "autocompleteUriICD": "https://zhealthcare-eastus-caselog.search.windows.net/indexes/prod-icd-index/docs/autocomplete?",
+            "searchUriCPT": "https://zhealthcare-eastus-caselog.search.windows.net/indexes/prod-cpt-index/docs/search?api-version=2019-05-06",
+            "autocompleteUriCPT": "https://zhealthcare-eastus-caselog.search.windows.net/indexes/prod-cpt-index/docs/autocomplete?"
           }
         }
       }
@@ -365,7 +365,7 @@
       "subscriptionKey": "cmOsYE9rat66qiKh-dAX6CuRbK4nny8Vs7DRpTp-tXk"
     },
     "blobStorage": {
-      "fusionURI": "https://exxatfusion.blob.core.windows.net"
+      "fusionURI": "https://zhealthcarefusion.blob.core.windows.net"
     }
   },
   "uiSettings": {

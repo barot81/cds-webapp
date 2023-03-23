@@ -1,0 +1,47 @@
+<div
+  id="zhealthcare_carousel_container"
+  #zhealthcare_carousel_container
+  fxLayout="row"
+  fxLayoutAlign="start center"
+  [style.width.px]="width + 80"
+>
+  <div fxLayoutAlign="start center" *ngIf="maxItems > 1">
+    <button
+      mat-icon-button
+      aria-label="slide left"
+      (click)="
+        scrolling.value === false && left_scroll_poistion.value > 0
+          ? scrollToDirection('left')
+          : ''
+      "
+      class="action-icon scroll_button"
+      [disabled]="($left_scroll_position | async) <= 0"
+    >
+      <i aria-hidden="true" class="fa-light fa-chevron-left s-24"></i>
+    </button>
+  </div>
+
+  <div
+    #zhealthcare_carousel_content
+    class="zhealthcare_carousel_content overflow-x-auto scrollbar-hidden scroll-smooth mx-8"
+    fxLayout="row"
+  >
+    <ng-content></ng-content>
+  </div>
+
+  <div fxLayoutAlign="end center" *ngIf="maxItems > 1">
+    <button
+      mat-icon-button
+      aria-label="slide right"
+      (click)="
+        scrolling.value === false && right_scroll_visibility.value === true
+          ? scrollToDirection('right')
+          : ''
+      "
+      class="action-icon scroll_button"
+      [disabled]="($right_scroll_visibility | async) === false"
+    >
+      <i aria-hidden="true" class="fa-light fa-chevron-right s-24"></i>
+    </button>
+  </div>
+</div>

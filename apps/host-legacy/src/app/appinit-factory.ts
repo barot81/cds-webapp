@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { concatMap, lastValueFrom } from 'rxjs';
 
-import { RuntimeConfigLoaderService } from '@exxat-core/angular-runtime-config';
+import { RuntimeConfigLoaderService } from '@zhealthcare-core/angular-runtime-config';
 
 export function fetchRuntimeConfigFactory(
   http: HttpClient,

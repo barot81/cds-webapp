@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from '@exxat-core/angular-oauth-oidc';
+import { AuthGuard } from '@zhealthcare-core/angular-oauth-oidc';
 import {
   loadRemoteModuleFromDefinitions,
   setBootstrapDefinitions,
-} from '@exxat-core/angular-mf';
+} from '@zhealthcare-core/angular-mf';
 import { navigations } from '../nav/navigations';
 
 export const routes: Routes = [
@@ -15,8 +15,8 @@ export const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('@exxat-common/angular-bootstrap').then(
-            (m) => m.ExxatAngularBootstrapModule
+          import('@zhealthcare-common/angular-bootstrap').then(
+            (m) => m.zhealthcareAngularBootstrapModule
           ),
         data: { navigations: navigations },
         canLoad: [AuthGuard],

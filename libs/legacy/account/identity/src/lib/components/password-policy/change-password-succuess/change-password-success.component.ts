@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FusionConfigService, UserFacade } from '@exxat/fusion/core';
+import { FusionConfigService, UserFacade } from '@zhealthcare/fusion/core';
 
 @Component({
     selector: 'change-password-success',
@@ -9,13 +9,13 @@ import { FusionConfigService, UserFacade } from '@exxat/fusion/core';
 })
 
 export class ChangePasswordSuccessComponent implements OnInit {
-    constructor(private configService: FusionConfigService, 
+    constructor(private configService: FusionConfigService,
         private userFacade: UserFacade,
         private router: Router
         ) {
         this.configService.uiSettings = {
             layout: {
-    
+
             navbar: {
                 hidden: true
             },
@@ -30,7 +30,7 @@ export class ChangePasswordSuccessComponent implements OnInit {
             }
             }
         };
-   
+
      }
 
     ngOnInit() { }

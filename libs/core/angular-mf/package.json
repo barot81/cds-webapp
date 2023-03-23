@@ -1,5 +1,5 @@
 {
-  "name": "@exxat-core/angular-mf",
+  "name": "@zhealthcare-core/angular-mf",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^14.0.0",

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatExportComponent } from './exxat-export.component';
+import { zhealthcareExportComponent } from './zhealthcare-export.component';
 
-describe('ExxatExportComponent', () => {
-  let component: ExxatExportComponent;
-  let fixture: ComponentFixture<ExxatExportComponent>;
+describe('zhealthcareExportComponent', () => {
+  let component: zhealthcareExportComponent;
+  let fixture: ComponentFixture<zhealthcareExportComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatExportComponent ]
+      declarations: [ zhealthcareExportComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatExportComponent);
+    fixture = TestBed.createComponent(zhealthcareExportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

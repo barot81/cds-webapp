@@ -1,7 +1,7 @@
 import { Directive, Input, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import { MetaConstants } from '@exxat/fusion/core';
-import { RoleBasedAccessService } from '@exxat/fusion/services';
+import { MetaConstants } from '@zhealthcare/fusion/core';
+import { RoleBasedAccessService } from '@zhealthcare/fusion/services';
 
 
 @Directive({

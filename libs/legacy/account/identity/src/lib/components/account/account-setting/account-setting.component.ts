@@ -1,17 +1,17 @@
  import { IdentityApiClient } from './../../../identity-api-client.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { BaseComponent, EventItem } from '@exxat/fusion/core';
+import { BaseComponent, EventItem } from '@zhealthcare/fusion/core';
 import { Router } from '@angular/router';
 import {
   TenantWithOuCodes,
   OuCode,
   TenantWithOuCodeTree,
-} from '@exxat/fusion/models';
+} from '@zhealthcare/fusion/models';
 import { MatDialog } from '@angular/material/dialog';
 import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { ChangePasswordComponent } from '@exxat/ux';
+import { ChangePasswordComponent } from '@zhealthcare/ux';
 import { AccountNavigtaionService } from '../../../services/account-navigation.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { FlatTreeControl } from '@angular/cdk/tree';
@@ -19,7 +19,7 @@ import {
   MatTreeFlatDataSource,
   MatTreeFlattener,
 } from '@angular/material/tree';
-import { OrgFacade, UserFacade, AuthSandbox, UIState } from '@exxat/fusion/core';
+import { OrgFacade, UserFacade, AuthSandbox, UIState } from '@zhealthcare/fusion/core';
 
 /**
  * Node for to-do item

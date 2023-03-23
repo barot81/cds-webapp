@@ -6,8 +6,8 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 
-import { SnackBarWithCloseComponent } from '../components/exxat-snack-bar/components';
-import { CustomSnackbarComponent } from '../components/exxat-snack-bar/components/custom-snackbar/custom-snackbar.component';
+import { SnackBarWithCloseComponent } from '../components/zhealthcare-snack-bar/components';
+import { CustomSnackbarComponent } from '../components/zhealthcare-snack-bar/components/custom-snackbar/custom-snackbar.component';
 
 @Injectable({
   providedIn: 'any',

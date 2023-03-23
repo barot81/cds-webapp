@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { OrgFacade } from '@exxat/fusion/core';
-import { OuCodeAccessTree } from '@exxat/fusion/models';
+import { OrgFacade } from '@zhealthcare/fusion/core';
+import { OuCodeAccessTree } from '@zhealthcare/fusion/models';
 
 @Injectable({
     providedIn: 'root'
 })
 export class HeaderService {
-    
+
     public windowHeight: BehaviorSubject<number>;
     public currentHeaderHeight: BehaviorSubject<number>;
     public showReleaseNotes: BehaviorSubject<boolean>;
@@ -55,9 +55,9 @@ export class HeaderService {
 
     setTenantWithOucodeTreeWithCaption(tenantWithOucodeTreeWithCaption: OuCodeAccessTree) {
         localStorage.setItem('tenantWithOucodeTreeWithCaption', JSON.stringify(tenantWithOucodeTreeWithCaption));
-        this.orgFacade.SetOuCodeAccessTree(tenantWithOucodeTreeWithCaption.Children);    
+        this.orgFacade.SetOuCodeAccessTree(tenantWithOucodeTreeWithCaption.Children);
    }
-   
+
     setWindowHeight(height) {
         this.windowHeight = new BehaviorSubject<number>(height);
         this.scrollContentheight = this.currentHeaderHeight.value + this.defaultAddedHeight;

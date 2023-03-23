@@ -6,7 +6,7 @@ import { debounceTime, filter, takeUntil } from 'rxjs/operators';
 import PerfectScrollbar from 'perfect-scrollbar';
 import * as _ from 'lodash';
 import { FusePerfectScrollbarGeometry, FusePerfectScrollbarPosition } from './fuse-perfect-scrollbar.interfaces';
-import { FusionConfigService } from '@exxat/fusion/core';
+import { FusionConfigService } from '@zhealthcare/fusion/core';
 
 @Directive({
     selector: '[fusePerfectScrollbar]'

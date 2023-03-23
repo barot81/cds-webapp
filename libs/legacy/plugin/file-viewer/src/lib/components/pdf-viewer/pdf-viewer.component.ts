@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef, OnDestroy} from '@angular/core';
-import { FusionConfigService, OrgFacade } from '@exxat/fusion/core';
+import { FusionConfigService, OrgFacade } from '@zhealthcare/fusion/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

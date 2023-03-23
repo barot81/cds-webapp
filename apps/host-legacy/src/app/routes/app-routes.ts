@@ -1,10 +1,11 @@
 import { Routes } from '@angular/router';
-import { RoleConfigType } from '@exxat-common/angular-bootstrap-legacy';
+import { RoleConfigType } from '@zhealthcare-common/angular-bootstrap-legacy';
 import {
   AuthGuardService,
   loadRemoteModuleFromDefinitions,
-} from '@exxat/fusion/core';
-import { UserPersona } from '@exxat/fusion/models';
+} from '@zhealthcare/fusion/core';
+import { UserPersona } from '@zhealthcare/fusion/models';
+import { navigations } from '../nav/navigations';
 
 const routes: Routes = [
   {
@@ -16,6 +17,20 @@ const routes: Routes = [
         'RemoteEntryModule'
       ),
     canActivate: [AuthGuardService],
+  },
+  {
+    path: '',
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('@zhealthcare-common/angular-bootstrap').then(
+            (m) => m.zhealthcareAngularBootstrapModule
+          ),
+        data: { navigations: navigations },
+        canActivate: [AuthGuardService],
+      }
+    ],
   },
   {
     path: 'student/remote-legacy-home',
@@ -31,6 +46,7 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'dashboard',
   },
+
 ];
 
 const roleConfig: RoleConfigType = {

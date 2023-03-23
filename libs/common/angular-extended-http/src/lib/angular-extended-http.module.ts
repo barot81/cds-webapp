@@ -20,7 +20,7 @@ import { setAppInjector } from './utils';
     },
   ],
 })
-export class ExxatAngularExtendedHttpModule {
+export class zhealthcareAngularExtendedHttpModule {
   constructor(injector: Injector) {
     setAppInjector(injector);
   }

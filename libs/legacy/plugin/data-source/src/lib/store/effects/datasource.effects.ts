@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpResponseHandler } from '@exxat/fusion/core';
-import * as DrawerActions from '@exxat/ux';
-import { SnackbarService } from '@exxat/ux';
+import { HttpResponseHandler } from '@zhealthcare/fusion/core';
+import * as DrawerActions from '@zhealthcare/ux';
+import { SnackbarService } from '@zhealthcare/ux';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, debounceTime, switchMap, take } from 'rxjs/operators';

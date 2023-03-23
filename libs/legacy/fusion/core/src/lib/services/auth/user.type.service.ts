@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {UserPersona} from "@exxat/fusion/models";
+import {UserPersona} from "@zhealthcare/fusion/models";
 import {OucodeHelper} from "../../helper/oucodes/oucode-helper";
 import {MetaConstants} from "../../helper/constants";
 import {Subject} from "rxjs";

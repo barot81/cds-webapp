@@ -6,9 +6,9 @@ import {
   HttpService,
   Query
 
-} from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/core';
 import { EmailOTPModel } from './components/forgot-password/EmailOTPModel';
-import { ChangePassword } from '@exxat/ux';
+import { ChangePassword } from '@zhealthcare/ux';
 import { HttpHeaders } from '@angular/common/http';
 import { LoginProvider } from './components/sso/models/login-provider.model';
 import { map } from 'rxjs/operators';

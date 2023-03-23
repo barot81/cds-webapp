@@ -1,4 +1,4 @@
-export class ExxatTagOptions {
+export class zhealthcareTagOptions {
   saveButton?: boolean;
   tagsListLength?: number;
   tagTitleMaxLength?: number;

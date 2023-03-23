@@ -1,7 +1,7 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { RuntimeConfigLoaderService } from '@exxat-core/angular-runtime-config';
+import { RuntimeConfigLoaderService } from '@zhealthcare-core/angular-runtime-config';
 
 import { setMFConfig } from './load-remote';
 
@@ -32,4 +32,4 @@ export function setRemoteConfig(
     },
   ],
 })
-export class ExxatAngularMfModule {}
+export class zhealthcareAngularMfModule {}

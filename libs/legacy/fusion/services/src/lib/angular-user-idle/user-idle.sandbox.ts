@@ -1,7 +1,7 @@
 import { Subscription } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
-import { FusionConfigService } from '@exxat/fusion/core';
+import { FusionConfigService } from '@zhealthcare/fusion/core';
 import { UserIdleService } from './user-idle.service';
 
 @Injectable({providedIn: 'any'})

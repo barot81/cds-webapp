@@ -3,8 +3,8 @@ import {
   GET,
   Path,
   HttpService,
-} from '@exxat/fusion/core';
-import { Validations } from '@exxat/fusion/models';
+} from '@zhealthcare/fusion/core';
+import { Validations } from '@zhealthcare/fusion/models';
 import { Observable } from 'rxjs';
 
 @Injectable({

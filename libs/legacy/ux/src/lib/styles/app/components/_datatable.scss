@@ -16,7 +16,7 @@
     border-right: 3px solid map-get($map: $foreground, $key: divider) !important;
   }
 
-  .exxat-table.multiple-div-one-td {
+  .zhealthcare-table.multiple-div-one-td {
     td {
       padding: 0px !important;
     }
@@ -175,8 +175,8 @@
   }
 
   //css for all tables
-  table.exxat-table,
-  mat-table.exxat-table {
+  table.zhealthcare-table,
+  mat-table.zhealthcare-table {
     .mat-checkbox {
       line-height: 15px !important;
     }
@@ -277,8 +277,8 @@
       border-radius: 8px 8px 8px 8px !important;
     }
 
-    table.exxat-table,
-    mat-table.exxat-table {
+    table.zhealthcare-table,
+    mat-table.zhealthcare-table {
       tr {
         &.mat-header-row {
           .mat-header-cell {
@@ -485,7 +485,7 @@
       overflow-y: auto;
       overflow-x: auto;
 
-      .exxat-sticky-table {
+      .zhealthcare-sticky-table {
         .mat-table-sticky {
           opacity: 1;
         }
@@ -571,7 +571,7 @@
 
   // END: Mat Table Headers Background & Foreground Color Styling
 
-  .exxat-table-min-td-width {
+  .zhealthcare-table-min-td-width {
     td {
       @include media-breakpoint('lt-sm') {
         min-width: 50vw !important;
@@ -648,9 +648,9 @@
     }
   }
 
-  // START : No Border For Exxat Table's Th and Td
-  table.exxat-table.no-border,
-  mat-table.exxat-table.no-border {
+  // START : No Border For zhealthcare Table's Th and Td
+  table.zhealthcare-table.no-border,
+  mat-table.zhealthcare-table.no-border {
     tr {
       th,
       td {
@@ -659,7 +659,7 @@
     }
   }
 
-  // END : No Border For Exxat Table's Th and Td
+  // END : No Border For zhealthcare Table's Th and Td
 }
 
 //mixin closes here

@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ExxatAnimationCurves, ExxatAnimationDurations } from './defaults';
+import { zhealthcareAnimationCurves, zhealthcareAnimationDurations } from './defaults';
 
 // -----------------------------------------------------------------------------------------------------
 // @ Slide in top
@@ -25,7 +25,7 @@ const slideInTop = trigger('slideInTop',
         transition('void => *', animate('{{timings}}'),
             {
                 params: {
-                    timings: `${ExxatAnimationDurations.ENTERING} ${ExxatAnimationCurves.DECELERATION_CURVE}`
+                    timings: `${zhealthcareAnimationDurations.ENTERING} ${zhealthcareAnimationCurves.DECELERATION_CURVE}`
                 }
             }
         )
@@ -56,7 +56,7 @@ const slideInBottom = trigger('slideInBottom',
         transition('void => *', animate('{{timings}}'),
             {
                 params: {
-                    timings: `${ExxatAnimationDurations.ENTERING} ${ExxatAnimationCurves.DECELERATION_CURVE}`
+                    timings: `${zhealthcareAnimationDurations.ENTERING} ${zhealthcareAnimationCurves.DECELERATION_CURVE}`
                 }
             }
         )
@@ -87,7 +87,7 @@ const slideInLeft = trigger('slideInLeft',
         transition('void => *', animate('{{timings}}'),
             {
                 params: {
-                    timings: `${ExxatAnimationDurations.ENTERING} ${ExxatAnimationCurves.DECELERATION_CURVE}`
+                    timings: `${zhealthcareAnimationDurations.ENTERING} ${zhealthcareAnimationCurves.DECELERATION_CURVE}`
                 }
             }
         )
@@ -118,7 +118,7 @@ const slideInRight = trigger('slideInRight',
         transition('void => *', animate('{{timings}}'),
             {
                 params: {
-                    timings: `${ExxatAnimationDurations.ENTERING} ${ExxatAnimationCurves.DECELERATION_CURVE}`
+                    timings: `${zhealthcareAnimationDurations.ENTERING} ${zhealthcareAnimationCurves.DECELERATION_CURVE}`
                 }
             }
         )
@@ -149,7 +149,7 @@ const slideOutTop = trigger('slideOutTop',
         transition('* => void', animate('{{timings}}'),
             {
                 params: {
-                    timings: `${ExxatAnimationDurations.EXITING} ${ExxatAnimationCurves.ACCELERATION_CURVE}`
+                    timings: `${zhealthcareAnimationDurations.EXITING} ${zhealthcareAnimationCurves.ACCELERATION_CURVE}`
                 }
             }
         )
@@ -180,7 +180,7 @@ const slideOutBottom = trigger('slideOutBottom',
         transition('* => void', animate('{{timings}}'),
             {
                 params: {
-                    timings: `${ExxatAnimationDurations.EXITING} ${ExxatAnimationCurves.ACCELERATION_CURVE}`
+                    timings: `${zhealthcareAnimationDurations.EXITING} ${zhealthcareAnimationCurves.ACCELERATION_CURVE}`
                 }
             }
         )
@@ -211,7 +211,7 @@ const slideOutLeft = trigger('slideOutLeft',
         transition('* => void', animate('{{timings}}'),
             {
                 params: {
-                    timings: `${ExxatAnimationDurations.EXITING} ${ExxatAnimationCurves.ACCELERATION_CURVE}`
+                    timings: `${zhealthcareAnimationDurations.EXITING} ${zhealthcareAnimationCurves.ACCELERATION_CURVE}`
                 }
             }
         )
@@ -242,7 +242,7 @@ const slideOutRight = trigger('slideOutRight',
         transition('* => void', animate('{{timings}}'),
             {
                 params: {
-                    timings: `${ExxatAnimationDurations.EXITING} ${ExxatAnimationCurves.ACCELERATION_CURVE}`
+                    timings: `${zhealthcareAnimationDurations.EXITING} ${zhealthcareAnimationCurves.ACCELERATION_CURVE}`
                 }
             }
         )

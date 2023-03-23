@@ -1,3 +1,3 @@
-# @exxat/account/registration
+# @zhealthcare/account/registration
 
-Secondary entry point of `@exxat/account`. It can be used by importing from `@exxat/account/registration`.
+Secondary entry point of `@zhealthcare/account`. It can be used by importing from `@zhealthcare/account/registration`.

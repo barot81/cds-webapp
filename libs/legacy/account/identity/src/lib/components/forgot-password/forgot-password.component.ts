@@ -1,16 +1,16 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnDestroy, OnInit, ViewChildren } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { BaseComponent } from '@exxat/fusion/core';
+import { BaseComponent } from '@zhealthcare/fusion/core';
 import { IdentitySandbox } from '../../identity.sandbox';
 import { EmailOTPModel } from './EmailOTPModel';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { LockOutDialogComponent } from '../account-lockout/lockoutdialog.component';
-import { FusionConfigService } from '@exxat/fusion/core';
+import { FusionConfigService } from '@zhealthcare/fusion/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { LayoutService, SnackbarService, TooltipDirective } from '@exxat/ux';
-import { PasswordStrengthService } from '@exxat/fusion/core';
+import { LayoutService, SnackbarService, TooltipDirective } from '@zhealthcare/ux';
+import { PasswordStrengthService } from '@zhealthcare/fusion/core';
 import { takeUntil } from 'rxjs/operators';
 
 
@@ -43,7 +43,7 @@ export class ForgotPasswordComponent
 
   public form: FormGroup;
   @ViewChildren(TooltipDirective) tooltipDirective;
-  exxatTooltip: any;
+  zhealthcareTooltip: any;
   toolTipOpened = new BehaviorSubject<boolean>(false);
   tooltipOptions = {
     contentType: 'template',
@@ -185,14 +185,14 @@ export class ForgotPasswordComponent
 
   // Function is to open tooltip
   openTooltip(id: any) {
-    this.exxatTooltip = this.tooltipDirective.find((elem) => elem.id === id);
+    this.zhealthcareTooltip = this.tooltipDirective.find((elem) => elem.id === id);
     if (
       this.tooltipDirective &&
       this.tooltipDirective != null &&
       this.tooltipDirective.length > 0
     ) {
       let filteredTooltips: Array<any> = this.tooltipDirective.filter(
-        (x) => x.createTimeoutId != null && x.id != this.exxatTooltip.id
+        (x) => x.createTimeoutId != null && x.id != this.zhealthcareTooltip.id
       );
       filteredTooltips.forEach((element) => {
         element.destroyTooltip();
@@ -204,8 +204,8 @@ export class ForgotPasswordComponent
 
   // Function will execute when user click outside of tooltip
   onOutsideClick() {
-    if (this.exxatTooltip && this.exxatTooltip != null) {
-      this.exxatTooltip.destroyTooltip();
+    if (this.zhealthcareTooltip && this.zhealthcareTooltip != null) {
+      this.zhealthcareTooltip.destroyTooltip();
     }
     this.toolTipOpened.next(false);
   }

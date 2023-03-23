@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { OuCodeAccessTree, TenantWithOuCodeTree } from '@exxat/fusion/models';
+import { OuCodeAccessTree, TenantWithOuCodeTree } from '@zhealthcare/fusion/models';
 
 export enum OrgActionTypes {
 

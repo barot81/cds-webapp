@@ -101,12 +101,12 @@ export class DrawerComponent implements OnInit, AfterViewInit, OnDestroy {
     this._layoutService.isFormValid$.next(false);
     this._layoutService.showPrimaryActionSpinner$.next(true);
     this._drawerService.onPrimaryAction();
-    this._layoutService.exxatCloseDrawerAction$.next('foldSidebar');
+    this._layoutService.zhealthcareCloseDrawerAction$.next('foldSidebar');
   }
 
   onRecordDelete() {
     this._drawerService.onSecondaryAction();
-    this._layoutService.exxatCloseDrawerAction$.next('foldSidebar');
+    this._layoutService.zhealthcareCloseDrawerAction$.next('foldSidebar');
   }
   /**
    * After view init

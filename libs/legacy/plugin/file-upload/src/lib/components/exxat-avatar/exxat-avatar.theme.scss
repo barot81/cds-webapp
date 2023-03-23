@@ -1,5 +1,5 @@
 @use '../../../../../../../node_modules/@angular/material/index' as mat;
-@mixin exxat-avatar-theme($theme) {
+@mixin zhealthcare-avatar-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $background: map-get($theme, background);

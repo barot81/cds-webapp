@@ -1,13 +1,13 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
-import { Sandbox } from '@exxat/fusion/core';
+import { Sandbox } from '@zhealthcare/fusion/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { IdentityApiClient } from './identity-api-client.service';
 import { EmailOTPModel } from './components/forgot-password/EmailOTPModel';
-import { ChangePassword } from '@exxat/ux';
-import { TokenModel } from '@exxat/fusion/models';
+import { ChangePassword } from '@zhealthcare/ux';
+import { TokenModel } from '@zhealthcare/fusion/models';
 import { SSOFormData } from './components/sso/models/formdata.model';
 
 

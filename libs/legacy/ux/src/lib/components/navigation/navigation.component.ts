@@ -12,8 +12,8 @@ import {
 import { BehaviorSubject, merge, Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 
-import { GlobalVariable, OrgFacade } from '@exxat/fusion/core';
-import { FusionNavigationService } from '@exxat/fusion/services';
+import { GlobalVariable, OrgFacade } from '@zhealthcare/fusion/core';
+import { FusionNavigationService } from '@zhealthcare/fusion/services';
 
 @Component({
   selector: 'fusion-navigation',
@@ -53,7 +53,7 @@ export class FusionNavigationComponent implements OnChanges, OnInit, OnDestroy {
       changes?.aliasLabels?.currentValue !== changes?.aliasLabels?.previousValue
     ) {
       this.navigation?.forEach(parent => {
-        if(parent.children?.find(child => child.id === 'admin.site') !== undefined) { 
+        if(parent.children?.find(child => child.id === 'admin.site') !== undefined) {
           const sitelabel = GlobalVariable.settingDictionary.get('Sites')?.value ?? this.siteLabel;
           parent.children.find(child => child.id === 'admin.site').title = sitelabel;
           const desc = parent.children.find(child => child.id === 'admin.site').description.replace(/sites/gi, sitelabel);

@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+@mixin zhealthcare-avatar-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .no-avatar {
+    background: mat.get-color-from-palette(mat.$grey-palette, 400);
+    // color: map-get($background, card);
+    color: #333333;
+  }
+}

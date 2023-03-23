@@ -9,9 +9,9 @@ import {
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
-import { ExxatTagOptions } from '../model';
+import { zhealthcareTagOptions } from '../model';
 
-export interface ExxatTag {
+export interface zhealthcareTag {
   id: any;
   name?: string;
   title?: string;
@@ -26,11 +26,11 @@ export class TagEvent {
 }
 
 @Component({
-  selector: 'exxat-tag',
-  templateUrl: './exxat-tag.component.html',
-  styleUrls: ['./exxat-tag.component.scss']
+  selector: 'zhealthcare-tag',
+  templateUrl: './zhealthcare-tag.component.html',
+  styleUrls: ['./zhealthcare-tag.component.scss']
 })
-export class ExxatTagComponent implements OnChanges, OnInit {
+export class zhealthcareTagComponent implements OnChanges, OnInit {
   tooltipOptions = {
     contentType: 'string',
     placement: 'top',
@@ -47,21 +47,21 @@ export class ExxatTagComponent implements OnChanges, OnInit {
 
   addTagForm: FormGroup;
 
-  public _options = new ExxatTagOptions();
+  public _options = new zhealthcareTagOptions();
 
   editTagForm: FormGroup;
 
   public class: string = 'views';
 
-  @Input() tags: Array<ExxatTag>;
+  @Input() tags: Array<zhealthcareTag>;
 
-  @Input() options?: ExxatTagOptions;
+  @Input() options?: zhealthcareTagOptions;
 
   @Output() onTagChanges: EventEmitter<any> = new EventEmitter<any>();
 
   tagsMenuView: string;
 
-  selectedTag: ExxatTag;
+  selectedTag: zhealthcareTag;
 
   constructor(private fb: FormBuilder) {
     this.tagsMenuView = 'tags';
@@ -88,7 +88,7 @@ export class ExxatTagComponent implements OnChanges, OnInit {
     return this.editTagForm.get('name');
   }
 
-  initEditTagForm(selectedTag: ExxatTag) {
+  initEditTagForm(selectedTag: zhealthcareTag) {
     this.editTagForm = this.fb.group({
       name: [
         selectedTag.name,
@@ -131,7 +131,7 @@ export class ExxatTagComponent implements OnChanges, OnInit {
   }
 
   addNewTag(): void {
-    const latestTag: ExxatTag = {
+    const latestTag: zhealthcareTag = {
       id: Math.random(),
       name: this.addTagForm.controls['name'].value,
       color: this.addTagForm.controls['color'].value,
@@ -171,7 +171,7 @@ export class ExxatTagComponent implements OnChanges, OnInit {
   }
 
   onTagEdited() {
-    const latestTag: ExxatTag = {
+    const latestTag: zhealthcareTag = {
       id: this.selectedTag.id,
       name: this.editTagForm.controls['name'].value,
       color: this.editTagForm.controls['color'].value,
@@ -192,7 +192,7 @@ export class ExxatTagComponent implements OnChanges, OnInit {
     this.tagsMenuView = 'tags';
   }
 
-  onTagAdded(latestTag: ExxatTag) {
+  onTagAdded(latestTag: zhealthcareTag) {
     const tagEvent: TagEvent = {
       tags: latestTag,
       eventType: 'Add'

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Lookup } from '@exxat/fusion/models';
+import { Lookup } from '@zhealthcare/fusion/models';
 
 @Injectable({providedIn: 'any'})
 export class IndexDbService {

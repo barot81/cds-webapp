@@ -8,8 +8,8 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { FusionConfigService } from '@exxat/fusion/core';
-import { FusionNavigationService } from '@exxat/fusion/services';
+import { FusionConfigService } from '@zhealthcare/fusion/core';
+import { FusionNavigationService } from '@zhealthcare/fusion/services';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { delay, filter, take, takeUntil } from 'rxjs/operators';
 import { FuseSidebarService } from '../../../../components/sidebar/sidebar.service';
@@ -27,11 +27,11 @@ export class NavbarVerticalStyle2Component
   fuseConfig: any;
   navigation: any;
 
-  exxat_prism_logo_path = '/asset/exxat_prism_logo.svg';
+  zhealthcare_prism_logo_path = '/asset/zhealthcare_prism_logo.svg';
 
   _logoUrl = new BehaviorSubject<string>(
     this._fusionConfigService.get('blobStorage')?.fusionURI +
-      this.exxat_prism_logo_path
+      this.zhealthcare_prism_logo_path
   );
   _logoUrl$ = this._logoUrl.asObservable();
 
@@ -61,7 +61,7 @@ export class NavbarVerticalStyle2Component
       } else {
         this._logoUrl.next(
           this._fusionConfigService.get('blobStorage')?.fusionURI +
-            this.exxat_prism_logo_path
+            this.zhealthcare_prism_logo_path
         );
       }
     });

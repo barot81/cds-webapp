@@ -8,11 +8,11 @@
       <div id="editColumnContainer">
         <div
           cdkDropList
-          class="exxat-drag-drop-list w-100-p"
+          class="zhealthcare-drag-drop-list w-100-p"
           (cdkDropListDropped)="drop($event)"
         >
           <div *ngFor="let column of displayColumns" cdkDrag>
-            <div *ngIf="!column.hideEditColumn" class="exxat-drag-drop">
+            <div *ngIf="!column.hideEditColumn" class="zhealthcare-drag-drop">
               <div class="icon-drag mr-8" cdkDragHandle>
                 <i class="fa-light fa-grip-vertical s-20"></i>
               </div>

@@ -22,5 +22,5 @@ export class Display {
     public static des_linkClicked  : string = "Recipient visited the URL contained in this email";
     public static des_bounced      : string = "Email could not be delivered";
     public static des_delayed      : string = "Unable to deliver email at this time. Will continue to try for 72 hrs";
-    public static des_dropped      : string = "Exxat failed to deliver this message - please contact v4support@exxat.com";
+    public static des_dropped      : string = "zhealthcare failed to deliver this message - please contact v4support@zhealthcare.com";
 }

@@ -6,7 +6,7 @@ import * as _ from 'lodash';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { RuntimeConfigLoaderService } from '@exxat-core/angular-runtime-config';
+import { RuntimeConfigLoaderService } from '@zhealthcare-core/angular-runtime-config';
 
 import {
   AppSettings,

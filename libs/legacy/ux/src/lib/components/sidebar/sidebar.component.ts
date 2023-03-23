@@ -25,7 +25,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { DOCUMENT } from '@angular/common';
-import { FusionConfigService } from '@exxat/fusion/core';
+import { FusionConfigService } from '@zhealthcare/fusion/core';
 import { DrawerFocusHelper } from '../../services/drawer-focus.helper';
 import { FuseMatchMediaService } from '../../services/match-media.service';
 import { FuseSidebarService } from './sidebar.service';

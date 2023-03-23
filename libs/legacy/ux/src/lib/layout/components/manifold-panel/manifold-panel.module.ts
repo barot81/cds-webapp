@@ -11,7 +11,7 @@ import { ManifoldPanelContentDirective } from './manifold-panel-content.directiv
 import { ManifoldPanelService } from './manifold-panel.service';
 import { ManifoldPanelDirective } from './manifold-panel.directive';
 import { A11yModule } from '@angular/cdk/a11y';
-import { ExxatTooltipModule } from '../../../components/exxat-tooltip/modules/tooltip.module';
+import { zhealthcareTooltipModule } from '../../../components/zhealthcare-tooltip/modules/tooltip.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +20,7 @@ import { ExxatTooltipModule } from '../../../components/exxat-tooltip/modules/to
     FuseProgressBarModule,
     FlexLayoutModule,
     A11yModule,
-    ExxatTooltipModule
+    zhealthcareTooltipModule
   ],
   exports: [
     ManifoldPanelComponent,

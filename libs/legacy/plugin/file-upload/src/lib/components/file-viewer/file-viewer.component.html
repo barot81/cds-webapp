@@ -1,4 +1,4 @@
-<div id="exxat-file-viewer">
+<div id="zhealthcare-file-viewer">
   <div fxLayout="row wrap" *ngIf="isData" class="mobile-scroll">
     <div
       class="overflow-auto file-viewer-height viewer-sidebar"
@@ -13,7 +13,7 @@
           mat-button
           class="p-0 w-100-p text-left"
           *ngFor="let file of fileDescriptions; let i = index"
-          
+
           (click)="loadFile(file, i)"
         >
           <mat-list-item
@@ -76,14 +76,14 @@
     </div>
 
     <div
-      class="exxat-file-viewer-container pl-sm-16 pb-16"
+      class="zhealthcare-file-viewer-container pl-sm-16 pb-16"
       *ngIf="!isNotSupportedFormat"
       fxLayout="column"
       fxFlex="100"
       fxFlex.md="72"
       fxFlex.sm="65"
       fxFlex.gt-md="80"
-      
+
     >
       <ng-container #vc></ng-container>
     </div>

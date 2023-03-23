@@ -205,12 +205,12 @@
             *ngIf="emailConfiguration.showUploadFileInput === true"
           >
             <span class="font-weight-600 mb-8">Upload files</span>
-            <exxat-file-upload
+            <zhealthcare-file-upload
               [fileConfiguration]="fileConfiguration"
               (FileUploadDone)="FileUploadDone($event)"
               (FileDeleteDone)="FileDeleteDone($event)"
               formControlName="fileDescriptions"
-            ></exxat-file-upload>
+            ></zhealthcare-file-upload>
           </div>
         </div>
       </form>

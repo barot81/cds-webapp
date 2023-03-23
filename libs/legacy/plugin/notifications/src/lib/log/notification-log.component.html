@@ -19,7 +19,7 @@
         <div class="content pb-40 mt-16 overflow-auto" (scroll)="onScroll($event)"
         [style.height.px]="headerService.scrollContentheight - ( search_bar_height + settlement_height)">
 
-            <table mat-table [dataSource]="dataSource" class="w-100-p exxat-table condensed-table pt-0"
+            <table mat-table [dataSource]="dataSource" class="w-100-p zhealthcare-table condensed-table pt-0"
               #sort="matSort" matSort matSortActive="sentAt" matSortDisableClear matSortDirection="desc"
               >
 
@@ -60,7 +60,7 @@
                     </th>
                     <td mat-cell *matCellDef="let element" class="pl-16">
                       <button  mat-button color="primary" class="action-icon ml-10 w-100-p py-8" aria-label="Edit"
-                      exxatManifoldPanelAction [componentSelector]="drawerService.get('notification-log-preview')"
+                      zhealthcareManifoldPanelAction [componentSelector]="drawerService.get('notification-log-preview')"
                       [size]="'drawer-sm'"
                       [data]="{'content': element.body,'subject':element.subject,'attachmentsFileDescription':element.attachmentsFileDescription}"
                       [caption]="'View Email Content'" role=""

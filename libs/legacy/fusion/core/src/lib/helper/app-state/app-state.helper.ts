@@ -1,4 +1,4 @@
-import { TokenSessionInfo } from '@exxat/fusion/models';
+import { TokenSessionInfo } from '@zhealthcare/fusion/models';
 
 export class AppStateHelper {
 

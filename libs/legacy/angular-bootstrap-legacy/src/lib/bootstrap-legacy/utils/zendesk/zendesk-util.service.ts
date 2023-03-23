@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { OrgFacade, UserFacade, UserTypeService } from '@exxat/fusion/core';
-import { UserPersona } from '@exxat/fusion/models';
-import { ZendeskService, ZendeskUser } from '@exxat/zendesk';
+import { OrgFacade, UserFacade, UserTypeService } from '@zhealthcare/fusion/core';
+import { UserPersona } from '@zhealthcare/fusion/models';
+import { ZendeskService, ZendeskUser } from '@zhealthcare/zendesk';
 import { NgxZendeskWebwidgetService } from 'ngx-zendesk-webwidget';
 import { combineLatest, take, takeUntil } from 'rxjs';
 

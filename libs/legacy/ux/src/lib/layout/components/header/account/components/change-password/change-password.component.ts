@@ -6,8 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   FusionFormAdapter,
   FusionFormComponent
-} from '@exxat/fusion/components';
-import { PasswordStrengthService, UserFacade } from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/components';
+import { PasswordStrengthService, UserFacade } from '@zhealthcare/fusion/core';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { LayoutService } from '../../../../../vertical/layout-1/layout-1.service';

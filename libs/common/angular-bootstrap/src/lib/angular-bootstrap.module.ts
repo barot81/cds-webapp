@@ -9,12 +9,12 @@ import {
   FuseSharedModule,
   LayoutModule,
   FuseDirectivesModule,
-} from '@exxat/ux';
-import { FusionModule } from '@exxat/fusion';
-import { ZendeskModule } from '@exxat/zendesk';
+} from '@zhealthcare/ux';
+import { FusionModule } from '@zhealthcare/fusion';
+import { ZendeskModule } from '@zhealthcare/zendesk';
 
-import { ExxatAngularBootstrapRoutingModule } from './bootstrap/bootstrap-routing.module';
-import { ExxatAngularBootstrapComponent } from './bootstrap/bootstrap.component';
+import { zhealthcareAngularBootstrapRoutingModule } from './bootstrap/bootstrap-routing.module';
+import { zhealthcareAngularBootstrapComponent } from './bootstrap/bootstrap.component';
 
 @NgModule({
   imports: [
@@ -28,8 +28,8 @@ import { ExxatAngularBootstrapComponent } from './bootstrap/bootstrap.component'
     FuseDirectivesModule,
     ZendeskModule,
     SimpleNotificationsModule.forRoot(),
-    ExxatAngularBootstrapRoutingModule,
+    zhealthcareAngularBootstrapRoutingModule,
   ],
-  declarations: [ExxatAngularBootstrapComponent],
+  declarations: [zhealthcareAngularBootstrapComponent],
 })
-export class ExxatAngularBootstrapModule {}
+export class zhealthcareAngularBootstrapModule {}

@@ -1,7 +1,7 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RoleBasedAccessService } from '@exxat/fusion/services';
+import { RoleBasedAccessService } from '@zhealthcare/fusion/services';
 import { RoleBasedAccessControlDirective } from './role-based-access-control.directive';
 
 @NgModule({

@@ -33,7 +33,7 @@
       .mat-button-toggle-checked {
         background: mat.get-color-from-palette($primary) !important;
         @if ($is-dark) {
-          color: map-get($map: $exxat-foreground, $key: text) !important;
+          color: map-get($map: $zhealthcare-foreground, $key: text) !important;
         } @else {
           color: $white !important;
         }
@@ -46,7 +46,7 @@
     &[color='accent'] {
       .mat-button-toggle-checked {
         background: mat.get-color-from-palette($accent) !important;
-        color: map-get($map: $exxat-foreground, $key: text) !important;
+        color: map-get($map: $zhealthcare-foreground, $key: text) !important;
       }
     }
 

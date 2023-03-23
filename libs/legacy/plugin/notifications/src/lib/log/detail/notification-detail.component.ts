@@ -7,7 +7,7 @@ import { NotificationLogModel } from '../../models/notification-log.model';
 import { NotifationSandbox } from '../../services/notification.sandbox';
 
 @Component({
-  selector: 'exxat-notificationlog-detail',
+  selector: 'zhealthcare-notificationlog-detail',
   templateUrl: './notification-detail.component.html'
 })
 export class NotificationlogDetailComponent implements OnInit {

@@ -1,5 +1,5 @@
 @use '../../../../../../../node_modules/@angular/material/index' as mat;
-@mixin exxat-editable-avatar-theme($theme) {
+@mixin zhealthcare-editable-avatar-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $background: map-get($theme, background);

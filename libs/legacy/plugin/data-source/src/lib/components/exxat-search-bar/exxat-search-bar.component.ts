@@ -12,13 +12,13 @@ import { ColumnOption } from '../../models/response.model';
 import { map, take, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
-import { SearchDirective } from '@exxat/ux';
+import { SearchDirective } from '@zhealthcare/ux';
 
 @Component({
-  selector: 'exxat-search-bar',
-  templateUrl: './exxat-search-bar.component.html'
+  selector: 'zhealthcare-search-bar',
+  templateUrl: './zhealthcare-search-bar.component.html'
 })
-export class ExxatSearchBarComponent implements OnInit, OnDestroy {
+export class zhealthcareSearchBarComponent implements OnInit, OnDestroy {
   private readonly _unsubscribe: Subject<any>;
   @ViewChild(SearchDirective) _searchDirective;
   searchText = new FormControl();

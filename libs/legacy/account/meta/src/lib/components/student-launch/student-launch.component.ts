@@ -11,15 +11,15 @@ import {
   URLConstants,
   UserFacade,
   UserTypeService,
-} from '@exxat/fusion/core';
-import { TenantWithOuCodeTree, UserPersona } from '@exxat/fusion/models';
-import { FusionNavigationService } from '@exxat/fusion/services';
+} from '@zhealthcare/fusion/core';
+import { TenantWithOuCodeTree, UserPersona } from '@zhealthcare/fusion/models';
+import { FusionNavigationService } from '@zhealthcare/fusion/services';
 import {
   FuseProgressBarService,
   HeaderService,
   LayoutService,
   PageFacade,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { of, Subject, takeUntil } from 'rxjs';
 import { MetaSandbox } from '../../meta.sandbox';
 import { LocalStorage } from '../../models/storage.model';

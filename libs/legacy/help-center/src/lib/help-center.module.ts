@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { FileUploadModule } from '@exxat/plugin/file-upload';
-import { FuseDirectivesModule, MaterialModule } from '@exxat/ux';
+import { FileUploadModule } from '@zhealthcare/plugin/file-upload';
+import { FuseDirectivesModule, MaterialModule } from '@zhealthcare/ux';
 
-import { CKEditorModule } from "@exxat/plugin/ckeditor";
+import { CKEditorModule } from "@zhealthcare/plugin/ckeditor";
 import { HelpCenterFileuploadComponent } from "./components/file-upload/file-upload.component";
 import { ReplyTicketComponent } from "./components/reply/reply-ticket.component";
 import { TicketDetailsComponent } from './components/ticket-details/ticket-details.component';

@@ -9,8 +9,8 @@ import {
   GlobalVariable,
   UserFacade,
   UserTypeService,
-} from '@exxat/fusion/core';
-import { NavigationChangeDetector, NavigationItem } from '@exxat/fusion/models';
+} from '@zhealthcare/fusion/core';
+import { NavigationChangeDetector, NavigationItem } from '@zhealthcare/fusion/models';
 import { takeUntil } from 'rxjs/operators';
 import { NavigationConstants } from './navigation.constants';
 import { NavigationHelper } from './navigationHelper';

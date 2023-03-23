@@ -2,9 +2,9 @@ import {
   HttpService,
   GET,
   Header
-} from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/core';
 import { Observable } from 'rxjs';
-import { SettingsMap } from '@exxat/fusion/models';
+import { SettingsMap } from '@zhealthcare/fusion/models';
 import { Injectable } from '@angular/core';
 
 @Injectable({

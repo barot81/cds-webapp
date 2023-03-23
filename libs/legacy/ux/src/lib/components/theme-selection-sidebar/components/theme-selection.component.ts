@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { FusionConfigService } from '@exxat/fusion/core';
+import { FusionConfigService } from '@zhealthcare/fusion/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -9,7 +9,7 @@ export type ThemeOption = 'theme-blue' | 'theme-purple' | string;
 export type SchemeOption = 'light' | 'dark';
 
 @Component({
-  selector: 'exxat-theme-selection',
+  selector: 'zhealthcare-theme-selection',
   templateUrl: './theme-selection.component.html',
 })
 export class ThemeSelectionComponent implements OnInit, OnDestroy {

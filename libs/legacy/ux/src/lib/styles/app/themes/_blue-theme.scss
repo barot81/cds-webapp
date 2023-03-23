@@ -4,9 +4,9 @@
 ///////////// Blue Light Theme  ////////////////
 ////////////////////////////////////////////////////////////////
 
-// @Start --  Exxat Blue Light Theme Color Palates
+// @Start --  zhealthcare Blue Light Theme Color Palates
 
-$exxat-blue-light-theme-primary: (
+$zhealthcare-blue-light-theme-primary: (
   50: #e8eaf6,
   100: #c6cbe9,
   200: #9fa8da,
@@ -38,7 +38,7 @@ $exxat-blue-light-theme-primary: (
     A700: $light-primary-text,
   ),
 );
-$exxat-blue-light-theme-accent: (
+$zhealthcare-blue-light-theme-accent: (
   50: #fef5e7,
   100: #fde6c2,
   200: #fcd599,
@@ -71,7 +71,7 @@ $exxat-blue-light-theme-accent: (
   ),
 );
 
-// @End --  Exxat Blue Light Theme Color Palates
+// @End --  zhealthcare Blue Light Theme Color Palates
 
 // -----------------------------------------------------------------------------------------------------
 // @ Define the default theme
@@ -79,13 +79,13 @@ $exxat-blue-light-theme-accent: (
 
 // Define the primary, accent and warn palettes
 $blue-light-primary-palette: mat.define-palette(
-  $exxat-blue-light-theme-primary,
+  $zhealthcare-blue-light-theme-primary,
   500,
   100,
   900
 );
 $blue-light-accent-palette: mat.define-palette(
-  $exxat-blue-light-theme-accent,
+  $zhealthcare-blue-light-theme-accent,
   500,
   100,
   900
@@ -160,9 +160,9 @@ body.theme-blue-light {
 ///////////// Blue Dark Theme  //////////////// START
 ////////////////////////////////////////////////////////////////
 
-// @Start --  Exxat Blue Dark Theme Color Palates
+// @Start --  zhealthcare Blue Dark Theme Color Palates
 
-$exxat-blue-dark-theme-primary: (
+$zhealthcare-blue-dark-theme-primary: (
   50: #efeeff,
   100: #d8d6ff,
   200: #bebaff,
@@ -195,7 +195,7 @@ $exxat-blue-dark-theme-primary: (
   ),
 );
 
-$exxat-blue-dark-theme-accent: (
+$zhealthcare-blue-dark-theme-accent: (
   50: #fef3e2,
   100: #fce2b6,
   200: #facf85,
@@ -227,7 +227,7 @@ $exxat-blue-dark-theme-accent: (
     A700: $dark-primary-text,
   ),
 );
-// @End --  Exxat Blue Dark Theme Color Palates
+// @End --  zhealthcare Blue Dark Theme Color Palates
 
 // -----------------------------------------------------------------------------------------------------
 // @ Define a Dark theme
@@ -235,14 +235,14 @@ $exxat-blue-dark-theme-accent: (
 
 // Define the primary, accent and warn palettes
 $blue-dark-primary-palette: mat.define-palette(
-  $exxat-blue-dark-theme-primary,
+  $zhealthcare-blue-dark-theme-primary,
   500,
   100,
   900,
   500
 );
 $blue-dark-accent-palette: mat.define-palette(
-  $exxat-blue-dark-theme-accent,
+  $zhealthcare-blue-dark-theme-accent,
   500,
   100,
   900

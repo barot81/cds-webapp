@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { OrgFacade } from '@exxat/fusion/core';
+import { OrgFacade } from '@zhealthcare/fusion/core';
 
 @Injectable()
 export class PowerBIService {

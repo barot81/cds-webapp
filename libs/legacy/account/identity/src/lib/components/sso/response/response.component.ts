@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IdentitySandbox } from '../../../identity.sandbox';
-import { BaseComponent, AuthService, UserFacade, FusionConfigService, UserConsentSandbox } from '@exxat/fusion/core';
-import { TokenModel, User } from '@exxat/fusion/models';
+import { BaseComponent, AuthService, UserFacade, FusionConfigService, UserConsentSandbox } from '@zhealthcare/fusion/core';
+import { TokenModel, User } from '@zhealthcare/fusion/models';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';

@@ -1,4 +1,4 @@
-import { TokenSessionInfo } from '@exxat/fusion/models';
+import { TokenSessionInfo } from '@zhealthcare/fusion/models';
 import { Logger } from '../../services';
 export class UserActivityStatus {
   constructor(public isActive = false, public isActiveOnAnotherTab = false) {}

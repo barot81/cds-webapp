@@ -4,6 +4,6 @@ import { NgxZendeskWebwidgetConfig } from 'ngx-zendesk-webwidget';
   providedIn: 'any',
 })
 export class PrimChatConfig extends NgxZendeskWebwidgetConfig {
-  accountUrl = 'exxat.zendesk.com';
+  accountUrl = 'zhealthcare.zendesk.com';
   callback(zE: any) {}
 }

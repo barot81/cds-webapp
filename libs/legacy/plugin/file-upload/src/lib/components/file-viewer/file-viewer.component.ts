@@ -8,8 +8,8 @@ import { DocumentViewerConfiguration } from '../../models';
 //import { PdfViewerComponent } from './pdf-viewer/pdf-viewer.component';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
-import { UserFacade } from '@exxat/fusion/core';
-import { ExxatOverlayRef, HeaderService } from '@exxat/ux';
+import { UserFacade } from '@zhealthcare/fusion/core';
+import { zhealthcareOverlayRef, HeaderService } from '@zhealthcare/ux';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { FileSandbox } from '../../services/file.sandbox';
@@ -17,7 +17,7 @@ import { ImageViewerComponent } from '../image-viewer/image-viewer.component';
 import { PdfViewerComponent } from '../pdf-viewer/pdf-viewer.component';
 
 @Component({
-  selector: 'exxat-file-viewer',
+  selector: 'zhealthcare-file-viewer',
   templateUrl: './file-viewer.component.html',
   styleUrls: ['./file-viewer.component.scss'],
   encapsulation: ViewEncapsulation.None,
@@ -64,12 +64,12 @@ export class FileViewerComponent implements AfterViewInit, OnDestroy {
     public headerService: HeaderService,
     private r: ComponentFactoryResolver,
     private userFacade: UserFacade,
-    private readonly overlayRef: ExxatOverlayRef,
+    private readonly overlayRef: zhealthcareOverlayRef,
     private changeDetector : ChangeDetectorRef) {
       this._unsubscribe = new Subject();
       this.userFacade.UserState$.pipe(takeUntil(this._unsubscribe)).subscribe((state)=> {
         if(!state.isAuthenticated) {
-          this.ngOnDestroy();      
+          this.ngOnDestroy();
         }
       }
     );
@@ -83,7 +83,7 @@ export class FileViewerComponent implements AfterViewInit, OnDestroy {
     this._unsubscribe.complete();
   }
 
-  
+
   isTextOverflow(elementId: string): boolean {
     // debugger;
     const elem = document.getElementById(elementId);
@@ -98,16 +98,16 @@ export class FileViewerComponent implements AfterViewInit, OnDestroy {
     this.getDocuments();
   }
 
-  /** 
+  /**
  * gets the documents from the document configuration there are two possble flows here.
  * the first one is when the document configuration is passed with isKey fasle, In this case the
  * darwer has allready loaded the doucment and there is no need for a fileCollectionKey.
- * 
+ *
  * the second one is when the document configuration is passed with isKey true or not defined, if documentConfiguration.fileCollectionKey is defined
  * the In this case the, the API is called to get the documents.
  * It might happen there the iskey is not false but the fileCollectionKey is null
  * in this case the documents are not presnet,Thus display no file uploaded message by setting this.isData to false.
- * 
+ *
  */
   public getDocuments(type?) {
     if (type === undefined || type === null) {
@@ -195,13 +195,13 @@ export class FileViewerComponent implements AfterViewInit, OnDestroy {
     this.isFileLoaded = false;
     const ext = file.fileName.substr(file.fileName.lastIndexOf('.') + 1);
     if (this.SupportedExtensions.includes(ext.toLowerCase())) {
-      const fileFormat = file.contentType?.toLowerCase() == "application/pdf" ? 'Original' : 'PdfFormat';            
+      const fileFormat = file.contentType?.toLowerCase() == "application/pdf" ? 'Original' : 'PdfFormat';
 
       this.pdfSource = this.fileService.getFileUrl(
         this.documentConfiguration.fileEndpoint,
         file.id,
         fileFormat
-        );      
+        );
       this.downloadpdfSource = this.fileService.getFileUrl(
         this.documentConfiguration.fileEndpoint,
         file.id,
@@ -271,9 +271,9 @@ export class FileViewerComponent implements AfterViewInit, OnDestroy {
 
   public loadFile(file, index) {
     this.isNotSupportedFormat = false;
-    this.changeDetector.detectChanges(); // Check if ViewContainerRef is not undefined. #BUG - 83555 
+    this.changeDetector.detectChanges(); // Check if ViewContainerRef is not undefined. #BUG - 83555
     if((this.selectedFileId && this.selectedFileId === file.id) || !this.isFileLoaded ){
-      // File already loaded, no need to load it again.  #BUG - 76648 
+      // File already loaded, no need to load it again.  #BUG - 76648
     }
     else{
       this.selectedIndex = index;

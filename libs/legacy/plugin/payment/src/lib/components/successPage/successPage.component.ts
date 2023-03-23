@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { CartSandbox } from '../../services/cart.sandbox';
-import { PageFacade } from '@exxat/ux';
+import { PageFacade } from '@zhealthcare/ux';
 
 @Component({
     selector: 'success-page',

@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: 'account/register',
     loadChildren: () =>
-      import('@exxat/account/registration').then((m) => m.RegistrationModule),
+      import('@zhealthcare/account/registration').then((m) => m.RegistrationModule),
   }
 ];
 
@@ -24,4 +24,4 @@ export const routingConfiguration: ExtraOptions = {
   exports: [RouterModule],
   declarations: [],
 })
-export class ExxatBootstrapLegacyRoutingModule { }
+export class zhealthcareBootstrapLegacyRoutingModule { }

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CartSandbox } from '../../services/cart.sandbox';
 import { Router } from '@angular/router';
-import { FuseProgressBarService } from '@exxat/ux';
-import { PageFacade } from '@exxat/ux';
+import { FuseProgressBarService } from '@zhealthcare/ux';
+import { PageFacade } from '@zhealthcare/ux';
 
 @Component({
     selector: 'cart',

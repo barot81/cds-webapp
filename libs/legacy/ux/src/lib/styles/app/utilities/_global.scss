@@ -147,7 +147,7 @@
     }
   }
 
-  exxat-plugin-power-bi {
+  zhealthcare-plugin-power-bi {
     mat-card {
       section#report {
         > div {
@@ -159,7 +159,7 @@
     }
   }
 
-  .search-wrapper + div div a[exxatdraweraction] {
+  .search-wrapper + div div a[zhealthcaredraweraction] {
     white-space: pre;
   }
 
@@ -298,8 +298,8 @@
   }
 
   .carousel-card {
-    background: map-get($map: $exxat-foreground, $key: chip);
-    color: map-get($map: $exxat-foreground, $key: text);
+    background: map-get($map: $zhealthcare-foreground, $key: chip);
+    color: map-get($map: $zhealthcare-foreground, $key: text);
   }
 
   .dash_logo_container {
@@ -636,11 +636,11 @@
   }
 
   ////////////////////////////////////////////////////////////// @ WeekDay Selector
-  .exxat-chip input {
+  .zhealthcare-chip input {
     display: none !important;
   }
 
-  .exxat-chip input[type='checkbox'] + label {
+  .zhealthcare-chip input[type='checkbox'] + label {
     display: inline-block;
     border-radius: 20px;
     background: $alto;
@@ -657,7 +657,7 @@
     cursor: pointer;
   }
 
-  .exxat-chip input[type='checkbox']:checked + label {
+  .zhealthcare-chip input[type='checkbox']:checked + label {
     background: mat.get-color-from-palette($primary);
     color: map-get($foreground, text);
   }
@@ -694,7 +694,7 @@
   }
 
   ////////////////////////////////////////////////////////////// @Drag Andn Drop
-  .exxat-drag-drop-list {
+  .zhealthcare-drag-drop-list {
     width: 500px;
     max-width: 100%;
     min-height: 40px;
@@ -703,7 +703,7 @@
     overflow: hidden;
   }
 
-  .exxat-drag-drop {
+  .zhealthcare-drag-drop {
     padding: 0px 0px 12px;
     color: map-get($foreground, text);
     display: flex;
@@ -828,10 +828,10 @@
     background-color: $korma;
   }
 
-  .exxat-info-container {
+  .zhealthcare-info-container {
     padding: 12px 16px;
 
-    .exxat-info {
+    .zhealthcare-info {
       padding-bottom: 12px;
       word-break: break-all;
 
@@ -880,7 +880,7 @@
   }
 
   .configuration {
-    .exxat-info {
+    .zhealthcare-info {
       .title {
         padding-bottom: 0px;
       }
@@ -1175,7 +1175,7 @@
     }
   }
 
-  // FOR Exxat Tag Mat Menu Min Height For Single Tag
+  // FOR zhealthcare Tag Mat Menu Min Height For Single Tag
   .mat-menu-panel {
     min-height: 50px !important;
     min-width: 168px !important;
@@ -1760,7 +1760,7 @@
 
 #location.eval_distribution_page {
   .notification_grid {
-    exxat-notification-log {
+    zhealthcare-notification-log {
       .page-layout {
         .center {
           .table-rounded-border {
@@ -1902,7 +1902,7 @@ location-update-rte {
   }
 }
 
-.exxat-privacy-policy {
+.zhealthcare-privacy-policy {
   p {
     margin-bottom: 20px;
     margin-top: 5px;

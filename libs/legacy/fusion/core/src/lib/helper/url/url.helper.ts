@@ -1,4 +1,4 @@
-import { UserPersona } from "@exxat/fusion/models";
+import { UserPersona } from "@zhealthcare/fusion/models";
 import { MetaConstants, URLConstants } from "../constants";
 
 export function getLaunchUrl(userState) {

@@ -27,14 +27,14 @@ export function storageFactory(
   imports: [HttpClientModule, OAuthModule.forRoot()],
   providers: [],
 })
-export class ExxatAngularOuthOIDCModule {
+export class zhealthcareAngularOuthOIDCModule {
   static forRoot(
     authConfig?: AuthConfig,
     authModuleConfig?: OAuthModuleConfig
-  ): ModuleWithProviders<ExxatAngularOuthOIDCModule> {
+  ): ModuleWithProviders<zhealthcareAngularOuthOIDCModule> {
     if (authConfig) {
       return {
-        ngModule: ExxatAngularOuthOIDCModule,
+        ngModule: zhealthcareAngularOuthOIDCModule,
         providers: [
           {
             provide: APP_INITIALIZER,
@@ -49,17 +49,17 @@ export class ExxatAngularOuthOIDCModule {
       };
     } else {
       return {
-        ngModule: ExxatAngularOuthOIDCModule,
+        ngModule: zhealthcareAngularOuthOIDCModule,
       };
     }
   }
 
   constructor(
-    @Optional() @SkipSelf() parentModule: ExxatAngularOuthOIDCModule
+    @Optional() @SkipSelf() parentModule: zhealthcareAngularOuthOIDCModule
   ) {
     if (parentModule) {
       throw new Error(
-        'ExxatAngularOuthOIDCModule is already loaded. Import it in the AppModule only'
+        'zhealthcareAngularOuthOIDCModule is already loaded. Import it in the AppModule only'
       );
     }
   }

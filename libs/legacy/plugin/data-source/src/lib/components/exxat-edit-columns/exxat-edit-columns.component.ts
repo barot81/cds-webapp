@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { DataSourceComponentService } from './datasource-component.service';
 
 @Component({
-  selector: 'exxat-edit-columns',
-  templateUrl: './exxat-edit-columns.component.html',
- // styleUrls: ['./exxat-edit-columns.component.scss']
+  selector: 'zhealthcare-edit-columns',
+  templateUrl: './zhealthcare-edit-columns.component.html',
+ // styleUrls: ['./zhealthcare-edit-columns.component.scss']
 })
-export class ExxatEditColumnsComponent implements OnInit {
+export class zhealthcareEditColumnsComponent implements OnInit {
 
   constructor(public dataSourceComponentService:DataSourceComponentService) { }
 

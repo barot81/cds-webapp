@@ -21,17 +21,17 @@ export * from './lib/services/imagecache.service';
 export * from './lib/services/index';
 
 
-export * from './lib/components/exxat-avatar/exxat-avatar.component';
-export * from './lib/components/exxat-avatar/exxat-avatar.module';
+export * from './lib/components/zhealthcare-avatar/zhealthcare-avatar.component';
+export * from './lib/components/zhealthcare-avatar/zhealthcare-avatar.module';
 
-export * from './lib/components/exxat-editable-avatar/exxat-editable-avatar.component';
-export * from './lib/components/exxat-editable-avatar/exxat-editable-avatar.module';
+export * from './lib/components/zhealthcare-editable-avatar/zhealthcare-editable-avatar.component';
+export * from './lib/components/zhealthcare-editable-avatar/zhealthcare-editable-avatar.module';
 
 //components
 export * from './lib/components/card-document-viewer/card-document-viewer.component';
 export * from './lib/components/dynamic-viewer-component/dynamic-viewer.component';
-export * from './lib/components/exxat-avatar/exxat-avatar.component';
-export * from './lib/components/exxat-editable-avatar/exxat-editable-avatar.component';
+export * from './lib/components/zhealthcare-avatar/zhealthcare-avatar.component';
+export * from './lib/components/zhealthcare-editable-avatar/zhealthcare-editable-avatar.component';
 export * from './lib/components/file-viewer/file-viewer.component';
 export * from './lib/components/image-viewer/image-viewer.component';
 export * from './lib/components/ng2-pdfjs-viewer/ng2-pdfjs-viewer.component';

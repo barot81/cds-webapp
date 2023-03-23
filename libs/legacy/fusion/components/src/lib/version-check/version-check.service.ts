@@ -5,7 +5,7 @@ import {
   Logger,
   MetaConstants,
   UserFacade,
-} from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/core';
 import { VersionCheckConfirmationDialog } from './version-confirm-dialog.component';
 
 @Injectable({ providedIn: 'root' })

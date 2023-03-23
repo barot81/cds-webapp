@@ -4,9 +4,9 @@
 ///////////// Purple Light Theme  ////////////////
 ////////////////////////////////////////////////////////////////
 
-// @Start --  Exxat Purple Light Theme Color Palates
+// @Start --  zhealthcare Purple Light Theme Color Palates
 
-$exxat-purple-light-theme-primary: (
+$zhealthcare-purple-light-theme-primary: (
   50: #f2e7fc,
   100: #dfc2f9,
   200: #c999f5,
@@ -38,7 +38,7 @@ $exxat-purple-light-theme-primary: (
     A700: $light-primary-text,
   ),
 );
-$exxat-purple-light-theme-accent: (
+$zhealthcare-purple-light-theme-accent: (
   50: #fef5e7,
   100: #fde6c2,
   200: #fcd599,
@@ -71,7 +71,7 @@ $exxat-purple-light-theme-accent: (
   ),
 );
 
-// @End --  Exxat Purple Light Theme Color Palates
+// @End --  zhealthcare Purple Light Theme Color Palates
 
 // -----------------------------------------------------------------------------------------------------
 // @ Define the Purple Light theme
@@ -79,13 +79,13 @@ $exxat-purple-light-theme-accent: (
 
 // Define the primary, accent and warn palettes
 $purple-light-primary-palette: mat.define-palette(
-  $exxat-purple-light-theme-primary,
+  $zhealthcare-purple-light-theme-primary,
   500,
   400,
   600
 );
 $purple-light-accent-palette: mat.define-palette(
-  $exxat-purple-light-theme-accent,
+  $zhealthcare-purple-light-theme-accent,
   500
 );
 $purple-light-warn-palette: mat.define-palette(mat.$red-palette);
@@ -158,9 +158,9 @@ body.theme-purple-light {
 ///////////// Purple Dark Theme  //////////////// START
 ////////////////////////////////////////////////////////////////
 
-// @Start --  Exxat Purple Dark Theme Color Palates
+// @Start --  zhealthcare Purple Dark Theme Color Palates
 
-$exxat-purple-dark-theme-primary: (
+$zhealthcare-purple-dark-theme-primary: (
   50: #f2e7fc,
   100: #dfc2f9,
   200: #c999f5,
@@ -193,7 +193,7 @@ $exxat-purple-dark-theme-primary: (
   ),
 );
 
-$exxat-purple-dark-theme-accent: (
+$zhealthcare-purple-dark-theme-accent: (
   50: #fef3e2,
   100: #fce2b6,
   200: #facf85,
@@ -225,7 +225,7 @@ $exxat-purple-dark-theme-accent: (
     A700: $light-primary-text,
   ),
 );
-// @End --  Exxat Purple Dark Theme Color Palates
+// @End --  zhealthcare Purple Dark Theme Color Palates
 
 // -----------------------------------------------------------------------------------------------------
 // @ Define a Purple Dark theme
@@ -233,11 +233,11 @@ $exxat-purple-dark-theme-accent: (
 
 // Define the primary, accent and warn palettes
 $purple-dark-primary-palette: mat.define-palette(
-  $exxat-purple-dark-theme-primary,
+  $zhealthcare-purple-dark-theme-primary,
   500
 );
 $purple-dark-accent-palette: mat.define-palette(
-  $exxat-purple-dark-theme-accent,
+  $zhealthcare-purple-dark-theme-accent,
   500
 );
 $purple-dark-warn-palette: mat.define-palette(mat.$red-palette);

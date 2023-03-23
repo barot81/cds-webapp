@@ -1,3 +1,3 @@
-# @exxat/plugin/data-source
+# @zhealthcare/plugin/data-source
 
-Secondary entry point of `@exxat/plugin`. It can be used by importing from `@exxat/plugin/data-source`.
+Secondary entry point of `@zhealthcare/plugin`. It can be used by importing from `@zhealthcare/plugin/data-source`.

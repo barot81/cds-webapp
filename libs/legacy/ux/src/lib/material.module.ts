@@ -50,7 +50,7 @@ import {
   MatDatetimepickerModule,
   MAT_DATETIME_FORMATS,
 } from '@mat-datetimepicker/core';
-import { Exxat_DATE_TIME_FORMATS } from './models';
+import { ZHEALTHCARE_DATE_TIME_FORMATS } from './models';
 
 @NgModule({
   exports: [
@@ -98,7 +98,7 @@ import { Exxat_DATE_TIME_FORMATS } from './models';
   providers: [
     {
       provide: MAT_DATETIME_FORMATS,
-      useValue: Exxat_DATE_TIME_FORMATS,
+      useValue: ZHEALTHCARE_DATE_TIME_FORMATS,
     },
     {
       provide: MAT_RADIO_DEFAULT_OPTIONS,

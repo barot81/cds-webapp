@@ -14,13 +14,13 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { RoleBasedAccessService } from '@exxat/fusion/services';
+import { RoleBasedAccessService } from '@zhealthcare/fusion/services';
 import {
   ConfirmDialogService,
   OverlayService,
   SnackbarService,
   SpinnerOverlayService,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { forkJoin } from 'rxjs';
 import { DocumentViewerConfiguration } from '../../models';
 import { FileCard, FileConfiguration } from '../../models/file-upload-config';
@@ -31,7 +31,7 @@ import { FileSandbox } from '../../services/file.sandbox';
 import { CardDocumentViewerComponent } from '../card-document-viewer/card-document-viewer.component';
 
 @Component({
-  selector: 'exxat-file-upload',
+  selector: 'zhealthcare-file-upload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.scss'],
   providers: [

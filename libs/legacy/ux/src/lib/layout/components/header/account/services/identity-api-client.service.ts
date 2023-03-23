@@ -4,7 +4,7 @@ import {
   Body,
   POST,
   HttpService
-} from '@exxat/fusion/core';
+} from '@zhealthcare/fusion/core';
 import { ChangePassword } from '../components/change-password/ChangePassword';
 
 @Injectable({providedIn: 'any'})

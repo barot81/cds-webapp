@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AuthSandbox, UserTypeService } from '@exxat/fusion/core';
+import { AuthSandbox, UserTypeService } from '@zhealthcare/fusion/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { RoleNavigation, HashDataModel, NavigationItem } from '@exxat/fusion/models';
+import { RoleNavigation, HashDataModel, NavigationItem } from '@zhealthcare/fusion/models';
 import { NavigationConstants } from '../navigation/navigation.constants';
 
 @Injectable({providedIn: 'any'})

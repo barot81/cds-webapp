@@ -9,15 +9,15 @@ import { FileConfiguration } from '../../models/file-upload-config';
 import { FileSandbox } from '../../services/file.sandbox';
 import { AvatarInformation } from '../../models/avatar-information.model';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Logger } from '@exxat/fusion/core';
+import { Logger } from '@zhealthcare/fusion/core';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'exxat-avatar',
-  templateUrl: './exxat-avatar.component.html',
-  styleUrls: ['./exxat-avatar.component.scss'],
+  selector: 'zhealthcare-avatar',
+  templateUrl: './zhealthcare-avatar.component.html',
+  styleUrls: ['./zhealthcare-avatar.component.scss'],
 })
-export class ExxatAvatarComponent implements OnChanges {
+export class zhealthcareAvatarComponent implements OnChanges {
   private readonly _unsubscribe: Subject<any>;
 
   @Input() src: string | ArrayBuffer;
@@ -108,7 +108,7 @@ export class ExxatAvatarComponent implements OnChanges {
           },
           (error) => {
             this.avatarInformation.loading = false;
-            Logger.error(`ExxatAvatar : Error in ExxatAvatar: ${error}`);
+            Logger.error(`zhealthcareAvatar : Error in zhealthcareAvatar: ${error}`);
           }
         );
     }

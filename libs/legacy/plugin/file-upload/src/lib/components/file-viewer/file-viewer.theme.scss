@@ -2,14 +2,14 @@
 
 @import 'libs/legacy/ux/src/lib/styles/app/shared/init';
 
-@mixin exxat-file-viewer-theme($theme) {
+@mixin zhealthcare-file-viewer-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
   $is-dark: map-get($theme, is-dark);
 
-  #exxat-file-viewer {
+  #zhealthcare-file-viewer {
     button.active-element {
       background: mat.get-color-from-palette($primary) !important;
       color: $white !important;

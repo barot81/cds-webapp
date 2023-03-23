@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ZendeskAPIClient } from '@exxat/zendesk';
-import { RuntimeConfigLoaderService } from '@exxat-core/angular-runtime-config';
-import { FusionFormComponent } from '@exxat/fusion/components';
-import { EventItem, EventsService } from '@exxat/fusion/core';
+import { ZendeskAPIClient } from '@zhealthcare/zendesk';
+import { RuntimeConfigLoaderService } from '@zhealthcare-core/angular-runtime-config';
+import { FusionFormComponent } from '@zhealthcare/fusion/components';
+import { EventItem, EventsService } from '@zhealthcare/fusion/core';
 import {
   FuseProgressBarService,
   ManifoldPanel,
   ManifoldPanelService,
   SpinnerOverlayService
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import moment from 'moment';
 import { HelpCenterDrawerService } from '../../services/help-center-drawer.service';
 

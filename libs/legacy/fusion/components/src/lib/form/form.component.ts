@@ -1,6 +1,6 @@
 import { FormGroup } from '@angular/forms';
-import { Validations } from '@exxat/fusion/models';
-import { FeatureMetadataService, FormValidation } from '@exxat/fusion/services';
+import { Validations } from '@zhealthcare/fusion/models';
+import { FeatureMetadataService, FormValidation } from '@zhealthcare/fusion/services';
 
 export class FusionFormComponent {
   data: any;

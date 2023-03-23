@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { OrgFacade } from '@exxat/fusion/core';
-import { SnackbarService } from '@exxat/ux';
+import { OrgFacade } from '@zhealthcare/fusion/core';
+import { SnackbarService } from '@zhealthcare/ux';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable({ providedIn: 'any' })

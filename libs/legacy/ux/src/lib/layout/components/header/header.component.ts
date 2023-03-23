@@ -18,8 +18,8 @@ import {
   URLConstants,
   UserFacade,
   UserSettingsSandbox,
-} from '@exxat/fusion/core';
-import { TokenModel, User, UserPersona } from '@exxat/fusion/models';
+} from '@zhealthcare/fusion/core';
+import { TokenModel, User, UserPersona } from '@zhealthcare/fusion/models';
 import { NgxZendeskWebwidgetService } from 'ngx-zendesk-webwidget';
 import { ThemeSelectionService } from '../../../components';
 import { productNavigation } from '../../../navigation/navigation';

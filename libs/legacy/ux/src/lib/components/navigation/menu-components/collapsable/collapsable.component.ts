@@ -3,8 +3,8 @@ import { NavigationEnd, Router } from '@angular/router';
 import { merge, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
-import { NavigationItem, NavigationItemClasses } from '@exxat/fusion/models';
-import { FusionNavigationService } from '@exxat/fusion/services';
+import { NavigationItem, NavigationItemClasses } from '@zhealthcare/fusion/models';
+import { FusionNavigationService } from '@zhealthcare/fusion/services';
 import { fuseAnimations } from '../../../animation-folder/index';
 
 @Component({

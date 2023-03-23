@@ -1,4 +1,4 @@
-import { NavigationItem, ProductNavigation } from '@exxat/fusion/models';
+import { NavigationItem, ProductNavigation } from '@zhealthcare/fusion/models';
 
 export class NavigationHelper {
   private static readonly dafaultNavigation: NavigationItem[] = [];

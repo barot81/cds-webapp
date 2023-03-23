@@ -704,7 +704,7 @@
     }
   }
 
-  #exxat-tree-wrapper {
+  #zhealthcare-tree-wrapper {
     .mat-tab-nav-bar {
       @include media-breakpoint('gt-sm') {
         width: 100% !important;
@@ -781,7 +781,7 @@
   }
 
   /*Wizard Control changed SCSS*/
-  // #exxat-wizard-examples {
+  // #zhealthcare-wizard-examples {
   .mat-stepper-horizontal {
     .mat-horizontal-stepper-header-container {
       border-radius: 4px !important;
@@ -1003,10 +1003,10 @@
       position: absolute;
       right: 8px;
       top: 8px;
-      background: map-get($map: $exxat-foreground, $key: chip) !important;
+      background: map-get($map: $zhealthcare-foreground, $key: chip) !important;
 
       &:hover {
-        background: map-get($map: $exxat-foreground, $key: chip) !important;
+        background: map-get($map: $zhealthcare-foreground, $key: chip) !important;
       }
     }
   }
@@ -1015,7 +1015,7 @@
   //////////////////
   .page-layout,
   .drawer,
-  exxat-multi-drawer,
+  zhealthcare-multi-drawer,
   manifold-panel {
     .mat-tab-link {
       padding: 0 16px;
@@ -1199,7 +1199,7 @@
     }
   }
 
-  .exxat-list {
+  .zhealthcare-list {
     .mat-expansion-panel-body {
       padding: 0px !important;
     }
@@ -1704,7 +1704,7 @@
   }
 
   compliance-notification-history-list {
-    exxat-notification-log {
+    zhealthcare-notification-log {
       mat-card {
         height: calc(100vh - 270px) !important;
 
@@ -1716,7 +1716,7 @@
   }
 
   nexus-app-evaluation-dashboard-distribution {
-    exxat-notification-log {
+    zhealthcare-notification-log {
       .search-wrapper.search-grid {
         width: 460px !important;
       }
@@ -2130,14 +2130,14 @@
 
     .mat-radio-outer-circle {
       border-color: map-get(
-        $map: $exxat-foreground,
+        $map: $zhealthcare-foreground,
         $key: disable-radio
       ) !important;
     }
 
     .mat-radio-inner-circle {
       background-color: map-get(
-        $map: $exxat-foreground,
+        $map: $zhealthcare-foreground,
         $key: disable-radio
       ) !important;
     }
@@ -2162,7 +2162,7 @@
     }
   }
 
-  .exxat-chips-tag {
+  .zhealthcare-chips-tag {
     .mat-chip {
       min-width: 96px;
       max-width: 300px;
@@ -2360,11 +2360,11 @@
     }
   }
   // END : Mat Card And Mat Accordian Invalid State Styling
-   // Invalid State For Mat Form Filed -- Mat Date Picker  
+   // Invalid State For Mat Form Filed -- Mat Date Picker
    .mat-form-field.mat-form-field-appearance-fill.mat-invalid {
     .mat-form-field-flex {
       border-color: mat.get-color-from-palette($warn) !important;
-    } 
+    }
     }
 }
 
@@ -2482,7 +2482,7 @@ a.view-as-disabled,
 }
 
 compliance-notification-history-list {
-  exxat-notification-log {
+  zhealthcare-notification-log {
     mat-card {
       height: calc(100vh - 270px) !important;
 
@@ -2494,7 +2494,7 @@ compliance-notification-history-list {
 }
 
 nexus-app-evaluation-dashboard-distribution {
-  exxat-notification-log {
+  zhealthcare-notification-log {
     .search-wrapper.search-grid {
       width: 460px !important;
     }

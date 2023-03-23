@@ -23,8 +23,8 @@ import {
   URLConstants,
   UserConsentSandbox,
   UserFacade,
-} from '@exxat/fusion/core';
-import { FuseMatchMediaService, PageFacade } from '@exxat/ux';
+} from '@zhealthcare/fusion/core';
+import { FuseMatchMediaService, PageFacade } from '@zhealthcare/ux';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { CohereData, ScholarshipData, SupportData } from '../../helper/events';

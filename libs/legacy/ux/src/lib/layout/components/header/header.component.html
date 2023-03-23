@@ -94,9 +94,9 @@
         <button
           mat-icon-button
           class="bell-icon-button bell-icon-toggle-button h-100-p"
-          exxatDrawerAction
+          zhealthcareDrawerAction
           [componentSelector]="
-            _HeaderDrawerService.get('exxat-app-header-notification-drawer')
+            _HeaderDrawerService.get('zhealthcare-app-header-notification-drawer')
           "
           [data]="this.scheduledDowntimes"
           [size]="'drawer-md'"
@@ -181,9 +181,9 @@
         <button
           mat-button
           aria-label="toggle user setting"
-          exxatManifoldPanelAction
+          zhealthcareManifoldPanelAction
           [componentSelector]="
-            _HeaderDrawerService.get('exxat-user-setting-drawer')
+            _HeaderDrawerService.get('zhealthcare-user-setting-drawer')
           "
           [size]="'drawer-x-sm'"
           [data]="loggedInUser$ | async"
@@ -221,7 +221,7 @@
         <!-- <ng-container *ngIf="!(hasDelegateRole$ | async)">
           <button
             mat-menu-item
-            exxatDrawerAction
+            zhealthcareDrawerAction
             [componentSelector]="
               identityComponentMapService.get('change-password')
             "
@@ -239,8 +239,8 @@
           <button
             mat-menu-item
             class=""
-            exxatDrawerAction
-            [componentSelector]="_themeSelection.get('exxat-theme-selection')"
+            zhealthcareDrawerAction
+            [componentSelector]="_themeSelection.get('zhealthcare-theme-selection')"
             [size]="'drawer-sm'"
             [caption]="'Theme Options'"
             fxLayout="row"

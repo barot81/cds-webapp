@@ -16,64 +16,64 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "@exxat-common/angular-bootstrap": [
+      "@zhealthcare-common/angular-bootstrap": [
         "libs/common/angular-bootstrap/src/index.ts"
       ],
-      "@exxat-common/angular-bootstrap-legacy": [
+      "@zhealthcare-common/angular-bootstrap-legacy": [
         "libs/legacy/angular-bootstrap-legacy/src/index.ts"
       ],
-      "@exxat-common/angular-extended-http": [
+      "@zhealthcare-common/angular-extended-http": [
         "libs/common/angular-extended-http/src/index.ts"
       ],
-      "@exxat-common/user-idle": ["libs/common/user-idle/src/index.ts"],
-      "@exxat-core/angular-mf": ["libs/core/angular-mf/src/index.ts"],
-      "@exxat-core/angular-oauth-oidc": [
+      "@zhealthcare-common/user-idle": ["libs/common/user-idle/src/index.ts"],
+      "@zhealthcare-core/angular-mf": ["libs/core/angular-mf/src/index.ts"],
+      "@zhealthcare-core/angular-oauth-oidc": [
         "libs/core/angular-oauth-oidc/src/index.ts"
       ],
-      "@exxat-core/angular-runtime-config": [
+      "@zhealthcare-core/angular-runtime-config": [
         "libs/core/angular-runtime-config/src/index.ts"
       ],
-      "@exxat/account": ["libs/legacy/account/src/index.ts"],
-      "@exxat/account/identity": ["libs/legacy/account/identity/src/index.ts"],
-      "@exxat/account/meta": ["libs/legacy/account/meta/src/index.ts"],
-      "@exxat/account/registration": [
+      "@zhealthcare/account": ["libs/legacy/account/src/index.ts"],
+      "@zhealthcare/account/identity": ["libs/legacy/account/identity/src/index.ts"],
+      "@zhealthcare/account/meta": ["libs/legacy/account/meta/src/index.ts"],
+      "@zhealthcare/account/registration": [
         "libs/legacy/account/registration/src/index.ts"
       ],
-      "@exxat/assets-legacy": ["libs/legacy/assets/src/index.ts"],
-      "@exxat/fusion": ["libs/legacy/fusion/src/index.ts"],
-      "@exxat/fusion-feature-flag": [
+      "@zhealthcare/assets-legacy": ["libs/legacy/assets/src/index.ts"],
+      "@zhealthcare/fusion": ["libs/legacy/fusion/src/index.ts"],
+      "@zhealthcare/fusion-feature-flag": [
         "libs/legacy/fusion/feature-flag/src/index.ts"
       ],
-      "@exxat/fusion/components": [
+      "@zhealthcare/fusion/components": [
         "libs/legacy/fusion/components/src/index.ts"
       ],
-      "@exxat/fusion/core": ["libs/legacy/fusion/core/src/index.ts"],
-      "@exxat/fusion/directives": [
+      "@zhealthcare/fusion/core": ["libs/legacy/fusion/core/src/index.ts"],
+      "@zhealthcare/fusion/directives": [
         "libs/legacy/fusion/directives/src/index.ts"
       ],
-      "@exxat/fusion/models": ["libs/legacy/fusion/models/src/index.ts"],
-      "@exxat/fusion/pipes": ["libs/legacy/fusion/pipes/src/index.ts"],
-      "@exxat/fusion/services": ["libs/legacy/fusion/services/src/index.ts"],
-      "@exxat/help-center": ["libs/legacy/help-center/src/index.ts"],
-      "@exxat/plugin": ["libs/legacy/plugin/src/index.ts"],
-      "@exxat/plugin/ckeditor": ["libs/legacy/plugin/ckeditor/src/index.ts"],
-      "@exxat/plugin/data-source": [
+      "@zhealthcare/fusion/models": ["libs/legacy/fusion/models/src/index.ts"],
+      "@zhealthcare/fusion/pipes": ["libs/legacy/fusion/pipes/src/index.ts"],
+      "@zhealthcare/fusion/services": ["libs/legacy/fusion/services/src/index.ts"],
+      "@zhealthcare/help-center": ["libs/legacy/help-center/src/index.ts"],
+      "@zhealthcare/plugin": ["libs/legacy/plugin/src/index.ts"],
+      "@zhealthcare/plugin/ckeditor": ["libs/legacy/plugin/ckeditor/src/index.ts"],
+      "@zhealthcare/plugin/data-source": [
         "libs/legacy/plugin/data-source/src/index.ts"
       ],
-      "@exxat/plugin/file-upload": [
+      "@zhealthcare/plugin/file-upload": [
         "libs/legacy/plugin/file-upload/src/index.ts"
       ],
-      "@exxat/plugin/file-viewer": [
+      "@zhealthcare/plugin/file-viewer": [
         "libs/legacy/plugin/file-viewer/src/index.ts"
       ],
-      "@exxat/plugin/notifications": [
+      "@zhealthcare/plugin/notifications": [
         "libs/legacy/plugin/notifications/src/index.ts"
       ],
-      "@exxat/plugin/payment": ["libs/legacy/plugin/payment/src/index.ts"],
-      "@exxat/plugin/power-bi": ["libs/legacy/plugin/power-bi/src/index.ts"],
-      "@exxat/plugin/tags": ["libs/legacy/plugin/tags/src/index.ts"],
-      "@exxat/ux": ["libs/legacy/ux/src/index.ts"],
-      "@exxat/zendesk": ["libs/legacy/zendesk/src/index.ts"]
+      "@zhealthcare/plugin/payment": ["libs/legacy/plugin/payment/src/index.ts"],
+      "@zhealthcare/plugin/power-bi": ["libs/legacy/plugin/power-bi/src/index.ts"],
+      "@zhealthcare/plugin/tags": ["libs/legacy/plugin/tags/src/index.ts"],
+      "@zhealthcare/ux": ["libs/legacy/ux/src/index.ts"],
+      "@zhealthcare/zendesk": ["libs/legacy/zendesk/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"],

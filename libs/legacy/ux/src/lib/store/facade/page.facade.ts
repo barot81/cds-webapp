@@ -5,8 +5,8 @@ import * as fromTabActions from '../actions/page.actions';
 import { pageQuery } from '../selectors/page.selctors';
 import { Subject } from 'rxjs';
 import { Title } from '@angular/platform-browser';
-import { FusionNavigationService } from '@exxat/fusion/services';
-import { NavigationItem } from '@exxat/fusion/models';
+import { FusionNavigationService } from '@zhealthcare/fusion/services';
+import { NavigationItem } from '@zhealthcare/fusion/models';
 import { tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'any' })
@@ -14,7 +14,7 @@ export class PageFacade {
   private _unsubscribe: Subject<any>;
   pageTitle$ = this.store.pipe(select(pageQuery.getPageTitle));
 
-  browserTitlePrefix: string = 'Exxat - ';
+  browserTitlePrefix: string = 'zhealthcare - ';
   constructor(
     private store: Store<PageFacade>,
     private titleService: Title,

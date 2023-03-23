@@ -3,9 +3,9 @@ import { Injector, NgModule, Optional, SkipSelf } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {
   DelegatorComponent,
-  ExxatAgreementComponent,
+  zhealthcareAgreementComponent,
   UserConsentComponent,
-} from '@exxat/fusion/components';
+} from '@zhealthcare/fusion/components';
 import {
   AuthGuardService,
   BaseCoreModule,
@@ -13,12 +13,12 @@ import {
   DelegatorSessionTimeoutComponent,
   loadRemoteModuleFromDefinitions,
   setAppInjector,
-} from '@exxat/fusion/core';
-import { CustomDirectiveModule } from '@exxat/fusion/directives';
+} from '@zhealthcare/fusion/core';
+import { CustomDirectiveModule } from '@zhealthcare/fusion/directives';
 import {
   ExportExcelModule,
   RoleNavigationModule,
-} from '@exxat/fusion/services';
+} from '@zhealthcare/fusion/services';
 
 const appRoutes: Routes = [
   { path: 'gateway/delegator', component: DelegatorComponent },
@@ -36,13 +36,13 @@ const appRoutes: Routes = [
     canActivate: [AuthGuardService],
   },
   {
-    path: 'ExxatAgreement/PrivacyPolicy',
-    component: ExxatAgreementComponent,
+    path: 'zhealthcareAgreement/PrivacyPolicy',
+    component: zhealthcareAgreementComponent,
     data: { id: 'privacypolicy' },
   },
   {
-    path: 'ExxatAgreement/TermsOfUse',
-    component: ExxatAgreementComponent,
+    path: 'zhealthcareAgreement/TermsOfUse',
+    component: zhealthcareAgreementComponent,
     data: { id: 'termsofuse' },
   },
   {

@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
-import { BaseComponent, FusionConfigService, PasswordStrengthService } from '@exxat/fusion/core';
-import { TooltipDirective } from '@exxat/ux';
+import { BaseComponent, FusionConfigService, PasswordStrengthService } from '@zhealthcare/fusion/core';
+import { TooltipDirective } from '@zhealthcare/ux';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Registration } from '../../models/registration.model';
@@ -30,7 +30,7 @@ export class RegisterComponent extends BaseComponent implements OnInit, OnDestro
 
 
   @ViewChildren(TooltipDirective) tooltipDirective;
-  exxatTooltip: any;
+  zhealthcareTooltip: any;
   toolTipOpened = new BehaviorSubject<boolean>(false);
   tooltipOptions = {
       'contentType': 'template',
@@ -161,10 +161,10 @@ export class RegisterComponent extends BaseComponent implements OnInit, OnDestro
 
       // Function is to open tooltip
       openTooltip(id: any) {
-        this.exxatTooltip = this.tooltipDirective.find(elem => elem.id === id);
+        this.zhealthcareTooltip = this.tooltipDirective.find(elem => elem.id === id);
         if (this.tooltipDirective && this.tooltipDirective != null && this.tooltipDirective.length > 0) {
             const filteredTooltips: Array<any> = this.tooltipDirective
-                .filter(x => x.createTimeoutId != null && x.id != this.exxatTooltip.id);
+                .filter(x => x.createTimeoutId != null && x.id != this.zhealthcareTooltip.id);
             filteredTooltips.forEach(element => {
                 element.destroyTooltip();
             });
@@ -175,8 +175,8 @@ export class RegisterComponent extends BaseComponent implements OnInit, OnDestro
 
      // Function will execute when user click outside of tooltip
      onOutsideClick() {
-        if (this.exxatTooltip && this.exxatTooltip != null) {
-            this.exxatTooltip.destroyTooltip();
+        if (this.zhealthcareTooltip && this.zhealthcareTooltip != null) {
+            this.zhealthcareTooltip.destroyTooltip();
         }
         this.toolTipOpened.next(false);
       }
@@ -189,9 +189,9 @@ export class RegisterComponent extends BaseComponent implements OnInit, OnDestro
     if(this.isPasswordStrong) {
     this.registrationSandbox.register(this.registration).subscribe({
       next: () => { this.submitted = true; },
-      error: () => { 
-        this.submitted = false; 
-        this.checkForRequestSuccess = false; 
+      error: () => {
+        this.submitted = false;
+        this.checkForRequestSuccess = false;
       },
     });
     } else {

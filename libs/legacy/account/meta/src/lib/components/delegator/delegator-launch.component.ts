@@ -12,15 +12,15 @@ import {
   RoleService,
   UserFacade,
   UserTypeService,
-} from '@exxat/fusion/core';
-import { TenantWithOuCodeTree } from '@exxat/fusion/models';
-import { FusionNavigationService } from '@exxat/fusion/services';
+} from '@zhealthcare/fusion/core';
+import { TenantWithOuCodeTree } from '@zhealthcare/fusion/models';
+import { FusionNavigationService } from '@zhealthcare/fusion/services';
 import {
   FuseProgressBarService,
   HeaderService,
   LayoutService,
   PageFacade,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { of, Subject, takeUntil } from 'rxjs';
 import { SessionStorage } from '../../models/storage.model';
 import { TenantInformationSandbox } from '../../services/tenant-information/tenant-information-snadbox';

@@ -5,10 +5,10 @@ import { Item } from '../../models/Fusion-data-source.model';
 
 
 @Component({
-  selector: 'exxat-dropdown-filter',
-  templateUrl: './exxat-dropdown-filter.component.html'
+  selector: 'zhealthcare-dropdown-filter',
+  templateUrl: './zhealthcare-dropdown-filter.component.html'
 })
-export class ExxatDropdownFilterComponent implements OnInit,OnChanges {
+export class zhealthcareDropdownFilterComponent implements OnInit,OnChanges {
 
   @Input() Items:Item[];
   @Input() isMultiple: boolean;
@@ -16,7 +16,7 @@ export class ExxatDropdownFilterComponent implements OnInit,OnChanges {
   @Input() for:string;
   @Input() selected?:string='';
   @Output() messageToEmit = new EventEmitter<boolean>();
-  
+
   formControl:FormControl;
   dropDownFilterItems$;
   constructor(private dataSourceFacade:DataSourceFacade) {
@@ -38,7 +38,7 @@ export class ExxatDropdownFilterComponent implements OnInit,OnChanges {
         fieldName:this.for,
         operator:'contains',
         value:'',
-        items:this.Items  
+        items:this.Items
       });
     }
   }

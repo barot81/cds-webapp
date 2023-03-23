@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GET, HttpService, Path, Query } from '@exxat/fusion/core';
+import { GET, HttpService, Path, Query } from '@zhealthcare/fusion/core';
 
 @Injectable({providedIn: 'any'})
 export class PowerBIApiClient extends HttpService {
