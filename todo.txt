@@ -1,0 +1,7 @@
+* Use personal laptop
+* Dashboard - 1 Card with all info
+* Menu Items
+* Ux Demo
+* Grid for patients
+* change Login Page to single
+* change Logo everywhere to Zhealthcare
