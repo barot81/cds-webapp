@@ -1,7 +1,10 @@
 * Use personal laptop
 * Dashboard - 1 Card with all info
-* Menu Items
+* Menu Items ( Ux keep only 2 items)  Layouts, component library  (
 * Ux Demo
 * Grid for patients
 * change Login Page to single
 * change Logo everywhere to Zhealthcare
+* Launch - Select Facility ( remove choose user)
+* Edit button on grid to open drawer
+* Json data ( jignesh )
