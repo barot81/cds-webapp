@@ -53,219 +53,18 @@
       "prismChatURL": {
         "endpoint": "https://prism-zendesk-api.dev.exxat.net/"
       },
-      "student.profile": {
-        "endpoint": "https://api-student-profile.dev.exxat.net"
-      },
-      "preceptor.profile": {
-        "endpoint": "https://preceptor-profile-gw.dev.exxat.net"
-      },
-      "site.report": {
-        "endpoint": "https://site-report-gw.dev.exxat.net"
-      },
       "foundation.registration": {
         "endpoint": "https://api-registration.dev.exxat.net"
-      },
-      "site.profile": {
-        "endpoint": "https://site-profile-gw.dev.exxat.net"
-      },
-      "site.resources": {
-        "endpoint": "https://site-resources-gw.dev.exxat.net"
-      },
-      "communicationlog.information": {
-        "endpoint": "https://communicationlog-information-gw.dev.exxat.net"
-      },
-      "admin.activity": {
-        "endpoint": "https://api-learning-activity.dev.exxat.net"
-      },
-      "student.planOfStudy": {
-        "endpoint": "https://student-planofstudy-gw.dev.exxat.net"
-      },
-      "student.pos": {
-        "endpoint": "https://api-plan-of-study.dev.exxat.net"
-      },
-      "student.cohort": {
-        "endpoint": "https://api-cohort.dev.exxat.net"
-      },
-      "placement-hub": {
-        "endpoint": "https://api-placement-hub.dev.exxat.net"
-      },
-      "placement": {
-        "endpoint": "https://api-placement.dev.exxat.net"
-      },
-      "placement.report": {
-        "endpoint": "https://api-placement-report.dev.exxat.net"
-      },
-      "publish-slot": {
-        "endpoint": "https://api-publish-slot.dev.exxat.net"
-      },
-      "slotgroupresponsenotification": {
-        "endpoint": "https://api-slotgroupresponsenotification.dev.exxat.net"
-      },
-      "slots": {
-        "endpoint": "https://slots-gw.dev.exxat.net"
-      },
-      "contract": {
-        "endpoint": "https://contract-gw.dev.exxat.net"
-      },
-      "service.notification": {
-        "endpoint": "https://api-eventscheduler.dev.exxat.net"
-      },
-      "wishlist": {
-        "endpoint": "https://api-wishlist.dev.exxat.net"
-      },
-      "myrequest": {
-        "endpoint": "https://api-myrequest.dev.exxat.net"
-      },
-      "plugin.resourses": {
-        "endpoint": "https://api-resource.dev.exxat.net"
-      },
-      "faculty.resource": {
-        "endpoint": "https://api-faculty-resource.dev.exxat.net"
       },
       "tenantonboarding": {
         "endpoint": "https://api-tenantonboarding.dev.exxat.net"
       },
       "userConfiguration": {
         "endpoint": "https://api-userconfiguration.dev.exxat.net"
-      },
-      "kinesis": {
-        "endpoint": "https://api-compliance-workflow.dev.exxat.net/ComplianceWorkflow/"
-      },
-      "kinesis.file": {
-        "endpoint": "https://kinesis-gw.dev.exxat.net/Kinesis/Consume"
-      },
-      "platform.report": {
-        "endpoint": "https://platform-report-gw.dev.exxat.net"
-      },
-      "student.compliance": {
-        "endpoint": "https://api-compliance.dev.exxat.net"
-      },
-      "course.compliance": {
-        "endpoint": "https://api-course-compliance.dev.exxat.net"
-      },
-      "complianceWorkflow": {
-        "endpoint": "https://api-compliance-workflow.dev.exxat.net/ComplianceWorkflow/"
-      },
-      "student.assignment": {
-        "endpoint": "https://student-assignment-gw.dev.exxat.net/Assignment/"
-      },
-      "assignmentsWorkflow": {
-        "endpoint": "https://assignmentsWorkflow-gw.dev.exxat.net/Assignment"
-      },
-      "evaluation": {
-        "endpoint": "https://api-evaluation.dev.exxat.net"
-      },
-      "evaluationWorkflow": {
-        "endpoint": "https://api-evaluation-workflow.dev.exxat.net/Evaluation/"
-      },
-      "evaluationTargetView": {
-        "endpoint": "https://api-evaluation-summaryview.dev.exxat.net"
-      },
-      "evaluationAggregate": {
-        "endpoint": "https://api-evaluation-aggregate.dev.exxat.net"
-      },
-      "placementInfo": {
-        "endpoint": "https://api-placement-info.dev.exxat.net"
-      },
-      "platform.scoring": {
-        "endpoint": "https://platform-scoring-gw.dev.exxat.net/Platform/"
-      },
-      "grading": {
-        "endpoint": "https://grading-gw.dev.exxat.net"
-      },
-      "patientLog": {
-        "endpoint": "https://patientlog-gw.dev.exxat.net/PatientLog/"
-      },
-      "patientLogAggregate": {
-        "endpoint": "https://patientlogaggregate-gw.dev.exxat.net"
-      },
-      "logWorkflow": {
-        "endpoint": "https://logworkflow-gw.dev.exxat.net/PatientLog/"
-      },
-      "patientLog.report": {
-        "endpoint": "https://patientlog-report-gw.dev.exxat.net/PatientLog/"
-      },
-      "patientlog.template": {
-        "endpoint": "https://patientlog-template-gw.dev.exxat.net/PatientLog/"
-      },
-      "azure.patientlog.search": {
-        "endpoint": "https://datasearchexxat.search.windows.net/"
-      },
-      "timesheet": {
-        "endpoint": "https://timesheet-gw.dev.exxat.net"
-      },
-      "exxat.forms.site": {
-        "endpoint": "https://api-exxat-forms.dev.exxat.net/exxatForms/"
-      },
-      "exxat.forms.myrequest": {
-        "endpoint": "https://exxat-forms-myrequest-gw.dev.exxat.net/exxatForms/"
-      },
-      "exxat.forms.course.survey": {
-        "endpoint": "https://exxat-forms-course-survey-gw.dev.exxat.net/exxatForms/"
-      },
-      "student.registration": {
-        "endpoint": "https://api-student-registration.dev.exxat.net"
-      },
-      "plan.tagging": {
-        "endpoint": "https://api-tagging.dev.exxat.net"
-      },
-      "plan.report": {
-        "endpoint": "https://api-plan-report.dev.exxat.net"
-      },
-      "plan.course": {
-        "endpoint": "https://api-course.dev.exxat.net"
-      },
-      "plan.programme": {
-        "endpoint": "https://api-programme.dev.exxat.net"
-      },
-      "plan.faculty": {
-        "endpoint": "https://api-faculty.dev.exxat.net"
-      },
-      "plan.curriculum": {
-        "endpoint": "https://api-curriculum.dev.exxat.net"
-      },
-      "plan.accreditationStandard": {
-        "endpoint": "https://api-accreditation-standard.dev.exxat.net"
-      },
-      "plan.mapping": {
-        "endpoint": "https://api-mapping.dev.exxat.net"
-      },
-      "plan.clone": {
-        "endpoint": "https://api-plan-clone.dev.exxat.net"
-      },
-      "plan.configuration": {
-        "endpoint": "https://plan-configuration-gw.dev.exxat.net"
-      },
-      "log": {
-        "endpoint": "https://exxat-dev-integration-log-api.azurewebsites.net"
-      },
-      "autoplacement": {
-        "endpoint": "https://autoplacement-gw.dev.exxat.net"
-      },
-      "site.communication": {
-        "endpoint": "https://site-communication-gw.dev.exxat.net"
-      },
-      "site.requirement": {
-        "endpoint": "https://site-requirement-gw.dev.exxat.net"
-      },
-      "student.report": {
-        "endpoint": "https://student-report-gw.dev.exxat.net"
-      },
-      "student.bulkImport": {
-        "endpoint": "https://api-student-bulk-import.dev.exxat.net"
-      },
-      "publicwebsite": {
-        "endpoint": "https://api-publicsite.dev.exxat.net"
-      },
-      "publicWebsiteURL": {
-        "endpoint": "https://public.dev.exxat.net"
-      },
-      "events.resources": {
-        "endpoint": "https://exxatapi.voraco.com/"
       }
     },
     "microfrontends": {
-      "remote": "http://localhost:4201"
+      "remote-legacy": "http://localhost:5201"
     },
     "localization": {
       "languages": [
@@ -312,6 +111,10 @@
       "redirectUri": "http://localhost:4200/admission/login",
       "b2cScopes": ["https://exxatdev.onmicrosoft.com/api/read"]
     },
+    "authGuardSettings": {
+      "loginUrl": "/account/login",
+      "launchUrl": "/account/launch"
+    },
     "userIdleSettings": {
       "idle": 1800,
       "timeout": 300
@@ -326,7 +129,7 @@
       "switchOverInfo": "Tickets raised after January 14, 2023 are only listed below"
     },
     "resources": {
-      "eventDaysOffSet": -90,
+      "eventDaysOffSet": 7,
       "voracoAuthKey": "6WoaEYI4fkocpJBjjiNjNN24tyDFpUjb"
     },
     "GoogleReCaptcha": {
@@ -389,20 +192,5 @@
         "position": "right"
       }
     }
-  },
-  "authConfig": {
-    "issuer": "https://auth.dev.exxat.net/realms/exxatApps",
-    "clientId": "Tenant-Service",
-    "responseType": "code",
-    "redirectUri": "http://localhost:4200/remote/dashboard",
-    "silentRefreshRedirectUri": "http://localhost:4200/silent-refresh.html",
-    "scope": "openid profile email",
-    "useSilentRefresh": true,
-    "silentRefreshTimeout": 5000,
-    "timeoutFactor": 0.25,
-    "sessionChecksEnabled": true,
-    "requireHttps": false,
-    "clearHashAfterLogin": false,
-    "nonceStateSeparator": "semicolon"
   }
 }

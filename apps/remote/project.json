@@ -13,7 +13,10 @@
         "polyfills": "apps/remote/src/polyfills.ts",
         "tsConfig": "apps/remote/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/remote/src/favicon.ico", "apps/remote/src/assets"],
+        "assets": [
+          "apps/remote/src/favicon.ico",
+          "apps/remote/src/assets"
+        ],
         "styles": ["apps/remote/src/styles.scss"],
         "scripts": [],
         "customWebpackConfig": {
@@ -68,8 +71,8 @@
       },
       "defaultConfiguration": "development",
       "options": {
-        "port": 4201,
-        "publicHost": "http://localhost:4201"
+        "port": 5201,
+        "publicHost": "http://localhost:5201"
       }
     },
     "extract-i18n": {
@@ -81,7 +84,10 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/remote/**/*.ts", "apps/remote/**/*.html"]
+        "lintFilePatterns": [
+          "apps/remote/**/*.ts",
+          "apps/remote/**/*.html"
+        ]
       }
     },
     "test": {
@@ -97,7 +103,7 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "remote:build",
-        "port": 4201
+        "port": 5201
       },
       "configurations": {
         "development": {

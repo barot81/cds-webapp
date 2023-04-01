@@ -2,7 +2,7 @@ import { Platform } from '@angular/cdk/platform';
 import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { Router, NavigationStart, NavigationEnd, Routes } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd, Routes, ActivatedRoute } from '@angular/router';
 import { LookupAPIClientService } from '@zhealthcare/account/meta';
 import { FeatureFlagService } from '@zhealthcare/fusion-feature-flag';
 import {
@@ -50,6 +50,7 @@ export class zhealthcareAngularBootstrapLegacyComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     @Inject(DOCUMENT) private document: any,
     private platform: Platform,
     private navigationService: FusionNavigationService,
@@ -102,6 +103,16 @@ export class zhealthcareAngularBootstrapLegacyComponent implements OnInit {
     this.routeChangeListener();
     // Set the private defaults
     this._unsubscribeAll = new Subject();
+  }
+
+  setNavigations() {
+    const navigations = this.route.snapshot.data?.navigations;
+    if (navigations) {
+      this.navigationService.updateNavigationIfChanged(
+        navigations,
+        null
+      );
+    }
   }
 
   routeChangeListener() {

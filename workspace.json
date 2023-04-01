@@ -9,8 +9,6 @@
     "core-angular-runtime-config": "libs/core/angular-runtime-config",
     "host": "apps/host",
     "host-e2e": "apps/host-e2e",
-    "host-legacy": "apps/host-legacy",
-    "host-legacy-e2e": "apps/host-legacy-e2e",
     "legacy-account": "libs/legacy/account",
     "legacy-angular-bootstrap-legacy": "libs/legacy/angular-bootstrap-legacy",
     "legacy-assets": "libs/legacy/assets",
@@ -21,8 +19,6 @@
     "legacy-ux": "libs/legacy/ux",
     "legacy-zendesk": "libs/legacy/zendesk",
     "remote": "apps/remote",
-    "remote-e2e": "apps/remote-e2e",
-    "remote-legacy": "apps/remote-legacy",
-    "remote-legacy-e2e": "apps/remote-legacy-e2e"
+    "remote-e2e": "apps/remote-e2e"
   }
 }

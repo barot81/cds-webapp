@@ -8,13 +8,15 @@ import {
   Organization,
   TenantWithOuCodeTree,
   LaunchDataModel,
+  ProductNavigation,
 } from '@zhealthcare/fusion/models';
 import { catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import {OrgFacade} from "../../store/facades/org.facade";
-import {UserTypeService} from "./user.type.service";
+import { OrgFacade } from '../../store/facades/org.facade';
+import { UserTypeService } from './user.type.service';
+import { navigations } from './nav/navigations';
 
-@Injectable({providedIn: 'any'})
+@Injectable({ providedIn: 'any' })
 export class AuthSandbox {
   constructor(
     private readonly authService: AuthService,
@@ -58,27 +60,13 @@ export class AuthSandbox {
 
   public navigation(
     hash: string,
-    userType?: string,
+    userType?: string
   ): Observable<NavigationChangeDetector> {
-    const selectedTenantId = this.userTypeService.currentTenantId;
-    const selectedOucode = this.userTypeService.currentOucode;
-    const isFaculty = this.userTypeService.isFacultyPersonaSelected();
-      return selectedOucode
-        ? this.authService.Navigation(
-            'Base',
-            '1000',
-            selectedTenantId,
-            selectedOucode,
-            hash,
-            userType,
-            isFaculty
-          )
-        : of({
-            isModified: false,
-            hash: '',
-            data: []
-          });
-
+    // const selectedTenantId = this.userTypeService.currentTenantId;
+    // const selectedOucode = this.userTypeService.currentOucode;
+    // const isFaculty = this.userTypeService.isFacultyPersonaSelected();
+    console.log(navigations);
+    return of(<NavigationChangeDetector>navigations);
   }
 
   // })

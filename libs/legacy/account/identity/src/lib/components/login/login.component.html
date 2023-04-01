@@ -1,597 +1,107 @@
-<!-- START : For Larger Screen -->
-<div
-  id="login"
-  fxShow.gt-md="true"
-  fxHide
-  class="margin-auto w-100-p h-100-p p-16"
-  fxLayout="column"
-  fxFlex="100"
->
-  <div
-    fxLayout="column"
-    fxFlex="100"
-    fxLayoutAlign="center center"
-    class="mx-lg-32"
-  >
-    <div fxLayout="row" fxFlex="100" fxLayoutAlign="center center">
-      <div fxLayout="column" fxLayoutAlign="center center">
-        <!-- START : Login Card -->
-        <mat-card class="login-form-card px-24 py-24 border-radius-0">
-          <ng-template [ngTemplateOutlet]="LoginCardRef"></ng-template>
-        </mat-card>
-        <!-- END : Login Card -->
-      </div>
-      <div fxLayout="column" class="ml-16">
-        <!-- START : Cohere Card -->
-        <mat-card class="w-100-p p-0 mb-12">
-          <ng-template [ngTemplateOutlet]="CohereCardRef"></ng-template>
-        </mat-card>
-        <!-- END : Cohere Card -->
+<div id="login" fxLayout="row" fxLayoutAlign="center center" class="margin-auto w-100-p"
+  [ngStyle]="{'background' : 'url(assets/images/bg/1.jpg)', 'background-size': 'cover'}">
+  <mat-card>
+    <div fxLayout="column">
+      <div id="login-form-wrapper" fxLayout="column" fxLayoutAlign="start center" fxFlex="100">
 
-        <div fxLayout="row" fxFlex="100">
-          <!-- START : Scholarship Card -->
-          <div fxFlex="75">
-            <mat-card class="w-100-p p-0">
-              <ng-template
-                [ngTemplateOutlet]="ScholorshipCardRef"
-              ></ng-template>
-            </mat-card>
-          </div>
-          <!-- END : Scholarship Card -->
+        <div id="login-form">
 
-          <!-- START : Support Card -->
-          <div fxFlex="25">
-            <mat-card class="w-100-p p-0 ml-8">
-              <ng-template [ngTemplateOutlet]="SupportCardRef"></ng-template>
-            </mat-card>
-          </div>
-          <!-- END : Support Card -->
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- END : For Larger Screen -->
-
-<!-- --------------------------- -->
-
-<!-- START : For Smaller Screen -->
-<div
-  id="login"
-  fxShow.md="true"
-  fxShow.lt-md="true"
-  fxHide
-  fxLayout="column"
-  class="margin-auto w-100-p h-100-p p-16"
->
-  <div fxLayout="column" fxLayoutAlign="center center">
-    <!-- START : Login Card -->
-    <mat-card class="login-form-card px-24 py-24 border-radius-0 mb-12">
-      <ng-template [ngTemplateOutlet]="LoginCardRef"></ng-template>
-    </mat-card>
-    <!-- END : Login Card -->
-
-    <!-- START : Cohere Card -->
-    <mat-card class="w-100-p p-0 mb-12">
-      <ng-template [ngTemplateOutlet]="CohereCardRef"></ng-template>
-    </mat-card>
-    <!-- END : Cohere Card -->
-
-    <!-- START : Scholarship Card -->
-    <mat-card class="w-100-p p-0 mb-12">
-      <ng-template [ngTemplateOutlet]="ScholorshipCardRef"></ng-template>
-    </mat-card>
-    <!-- END : Scholarship Card -->
-
-    <!-- START : Support Card -->
-    <mat-card class="w-100-p p-0">
-      <ng-template [ngTemplateOutlet]="SupportCardRef"></ng-template>
-    </mat-card>
-    <!-- END : Support Card -->
-  </div>
-</div>
-<!-- END : For Smaller Screen -->
-
-<!-- START : Templates -->
-
-<ng-template #InfoBannerRef>
-  <div class="info-box info mb-16" fxLayout="column">
-    <span class="font-weight-600 font-18">Upcoming New Release</span>
-    <span
-      >zhealthcare will be coming up with R25 release with exciting features on Apr 8,
-      2023. Stay Tuned!</span
-    >
-  </div>
-</ng-template>
-
-<ng-template #LoginCardRef>
-  <div fxLayout="column">
-    <div
-      id="login-form-wrapper"
-      fxLayout="column"
-      fxLayoutAlign="start center"
-      fxFlex="100"
-    >
-      <div id="login-form">
-        <div fxLayout="column" fxLayoutAlign="center">
-          <div
-            class="logo mb-16"
-            fxLayout="row"
-            fxLayoutAlign="center center"
-            fxFlex="100"
-          >
-            <img
-              [src]="
-                this.loginAppState.currentState === 0
-                  ? 'assets/images/logo/zhealthcare-pink-large.png'
-                  : 'assets/images/logo/zhealthcare_pink_black.png'
-              "
-              alt="zhealthcare-pink-large"
-              width="150px"
-              height="80px"
-            />
-          </div>
-          <div
-            class="font-weight-400 mb-24"
-            [style.display]="
-              this.loginAppState.currentState === 0 ? 'block' : 'none'
-            "
-          >
-            <h2 class="font-20">Welcome</h2>
-            <p>
-              Login to zhealthcare to access all-in-one Education Management Platform
-              for Health Sciences
-            </p>
-          </div>
-        </div>
-        <mat-error class="warn-fg" *ngIf="usernameInvalid">{{
-          usernameInvalidText
-        }}</mat-error>
-        <mat-error
-          class="warn-fg"
-          *ngIf="isUsernameActive === false"
-          [style.display]="usernameInvalid ? 'none' : 'block'"
-          >{{ usernameActiveText }}</mat-error
-        >
-        <form
-          name="loginForm"
-          [formGroup]="loginForm"
-          novalidate
-          autocomplete="on"
-        >
-          <div
-            fxLayout="column"
-            fxLayoutAlign="center"
-            class="pb-16"
-            *ngIf="this.loginAppState.currentState !== 0"
-          >
-            <mat-error class="warn-fg" *ngIf="isLockedOut"
-              >Your account has been locked due to multiple failed login
-              attempts. Please reach out to support team for further
-              assistance.</mat-error
-            >
-            <mat-error
-              class="warn-fg"
-              *ngIf="invalidLoginAttempts > 0 && invalidLoginAttempts < 5"
-            >
-              {{ 5 - invalidLoginAttempts }} attempts remaining</mat-error
-            >
-          </div>
-
-          <!-- user name field-->
-          <div
-            fxLayout="column"
-            fxLayoutAlign="center center"
-            [style.display]="
-              this.loginAppState.currentState === 0 ? 'block' : 'none'
-            "
-          >
-            <mat-form-field
-              class="form-input-field w-100-p"
-              appearance="fill"
-              (click)="focus()"
-            >
-              <mat-label>Username</mat-label>
-              <input
-                matInput
-                #usernameinput
-                autocomplete="username"
-                formControlName="userName"
-                name="userName"
-                required
-                (focusout)="
-                  getProvidersByUsername(loginForm.controls.userName.value)
-                "
-                (keyup.enter)="
-                  getProvidersByUsername(loginForm.controls.userName.value)
-                "
-              />
-              <button type="button" mat-icon-button matSuffix>
-                <i aria-hidden="true" class="fa-light fa-user"></i>
-              </button>
-              <mat-error class="error"></mat-error>
-            </mat-form-field>
-          </div>
-
-          <div *ngIf="this.loginAppState.currentState === 2">
-            <div *ngFor="let provider of this.providers">
-              <button
-                mat-flat-button
-                class="w-100-p mb-12"
-                color="primary"
-                [attr.aria-label]="
-                  provider.caption + ' - ' + provider.description
-                "
-                (click)="
-                  redirectToSSO(
-                    provider.providerName,
-                    loginForm.controls.userName.value
-                  )
-                "
-              >
-                {{ provider.caption }} - {{ provider.description }}
-              </button>
+          <div>
+            <div class="logo mb-16" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+              <img src="assets/images/logo/z-healthcare-pink-large.png" alt="exxat-pink-large" width="150px" height="80px">
             </div>
           </div>
+          <form name="loginForm" [formGroup]="loginForm" novalidate autocomplete="off">
+            <div fxLayout="column" fxLayoutAlign="center" class="pb-16">
+              <mat-error class="warn-fg" *ngIf="isLockedOut">Your account is locked. Use forgot password to unlock and
+                reset password.</mat-error>
+              <mat-error class="warn-fg" *ngIf="invalidLoginAttempts > 0 && invalidLoginAttempts &lt; 5">
+                {{5-invalidLoginAttempts}} attempts remaining</mat-error>
+            </div>
 
-          <div
-            fxLayout="row"
-            fxLayoutAlign="center center"
-            class="mb-16"
-            *ngIf="this.loginAppState.currentState === 1"
-          >
-            <p
-              fxLayout="row"
-              fxLayoutAlign="center center"
-              class="border border-radius-16 py-4 px-8 text-center word-break-all username-container"
-              (click)="backButtonState()"
-            >
-              <i aria-hidden="true" class="fa-light fa-user s-18 mr-8"></i>
-              {{ loginForm.controls.userName.value }}
-            </p>
-            &nbsp;
-          </div>
+            <!-- user name field-->
+            <div fxLayout="column" fxLayoutAlign="center center">
+              <mat-form-field class="form-input-field w-100-p" appearance="fill" (click)="focus()">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="userName" name="userName" required
+                  (focusout)="getProvidersByUsername(loginForm.controls.userName.value)" />
+                <button type="button" mat-icon-button matSuffix>
+                  <mat-icon class="icon-fill">person</mat-icon>
 
-          <div
-            fxLayout="column"
-            fxLayoutAlign="center center"
-            [ngClass]="
-              this.loginAppState.currentState !== 0
-                ? 'display-block'
-                : 'display-none'
-            "
-          >
-            <mat-form-field
-              class="form-input-field w-100-p"
-              appearance="fill"
-              (click)="focus()"
-            >
-              <mat-label>Password</mat-label>
-              <input
-                matInput
-                required
-                #passwordinput
-                name="password"
-                formControlName="password"
-                autocomplete="current-password"
-                [type]="hide ? 'password' : 'text'"
-                (keyup.enter)="login()"
-              />
-              <button
-                type="button"
-                mat-icon-button
-                matSuffix
-                (click)="hide = !hide"
-              >
-                <i
-                  class="fa-light"
-                  [ngClass]="hide ? 'fa-eye' : 'fa-eye-slash'"
-                  aria-hidden="true"
-                ></i>
-              </button>
-              <mat-error class="error"></mat-error>
-            </mat-form-field>
-          </div>
+                </button>
+                <mat-error class="error"></mat-error>
+              </mat-form-field>
+            </div>
 
-          <!-- forgot password field-->
-          <div *ngIf="this.loginAppState.currentState !== 0">
             <div
-              fxLayout="row"
-              fxLayoutAlign="start center"
-              *ngIf="checkProviders()"
-            >
-              <a class="mb-16" type="button" (click)="forgotpassword()">
+            *ngFor="let provider of this.providers">
+              <button mat-flat-button
+              class="w-100-p mb-12"
+              color="primary"
+              aria-label="Primary"
+              (click)="redirectToSSO(provider.providerName, loginForm.controls.userName.value)">
+              {{provider.caption}} - {{provider.description}}
+              </button>
+            </div>
+
+            <!-- password field-->
+            <div fxLayout="column" fxLayoutAlign="center center">
+              <mat-form-field class="form-input-field w-100-p" *ngIf="checkProviders()" appearance="fill"
+                (click)="focus()">
+                <mat-label>Password</mat-label>
+                <input matInput required name="password" formControlName="password" autocomplete="off" [type]="hide ? 'password' : 'text'"
+                  (keyup.enter)="login()" />
+                <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+                  <mat-icon class="icon-fill">{{ hide ? 'visibility' : 'lock' }}</mat-icon>
+
+                </button>
+                <mat-error class="error"></mat-error>
+              </mat-form-field>
+            </div>
+
+            <!-- forgot password field-->
+            <div fxLayout="row" fxLayoutAlign="start center" *ngIf="checkProviders()">
+              <a class="mb-16" type="button" (click)='forgotpassword()'>
                 Forgot Password?
               </a>
             </div>
-          </div>
 
-          <div
-            *ngIf="errorMessage"
-            fxLayout="row"
-            fxLayoutAlign="start center"
-            class="mb-8"
-          >
-            <span class="warn-fg">{{ errorMessageText }}</span>
-          </div>
-          <div
-            fxLayoutAlign="center center"
-            *ngIf="isCapchaVisible"
-            class="pb-16"
-          >
-            <re-captcha
-              (resolved)="resolved($event)"
-              [siteKey]="siteKey"
-            ></re-captcha>
-          </div>
-
-          <!-- login button field-->
-
-          <div
-            fxLayout="row"
-            fxLayoutAlign="end center"
-            *ngIf="checkProviders()"
-          >
-            <button
-              mat-flat-button
-              color="primary"
-              [attr.aria-label]="
-                this.loginAppState.currentState === 0 ? 'NEXT' : 'LOGIN'
-              "
-              (click)="loginClickCheck()"
-              [disabled]="!loginForm.valid && loading"
-              class="w-100-p"
-              [ngClass]="{ 'my-16': this.loginAppState.currentState === 0 }"
-            >
-              <span
-                >{{ this.loginAppState.currentState === 0 ? 'NEXT' : 'LOGIN' }}
-                <em *ngIf="loading" class="fas fa-spinner fa-pulse"></em
-              ></span>
-            </button>
-          </div>
-          <div class="font-weight-400 mt-16 text-center">
-            <div
-              *ngIf="this.loginAppState.currentState !== 0"
-              class="mb-16"
-              fxLayout="column"
-            >
-              <span>Trouble logging in? Contact</span>
-              <span>
-                <a href="mailto:v4support@zhealthcare.com">v4support@zhealthcare.com</a> for
-                help</span
-              >
+            <div fxLayout="row" fxLayoutAlign="start center" class="mb-8">
+              <span class="warn-fg" *ngIf="errorMessage">{{errorMessageText}}</span>
             </div>
-            <p>Note: Internet Explorer browser is not supported.</p>
-            <p>
-              Please use Chrome, Firefox or Safari browser for a better
-              experience.
-            </p>
-          </div>
-        </form>
-        <div
-          [ngClass]="this.loginAppState.currentState !== 0 ? 'mt-36' : 'mt-48'"
-          fxLayout="row"
-          fxLayoutAlign="center center"
-        >
-          <iframe
-            src="https://www.tinfoilsecurity.com/badge_iframe/9bb9eab8fd2e214d85a8c39b9538154983259ffd?type=a&size=2"
-            sandbox="allow-popups"
-            scrolling="no"
-            title="tinfoilsecurity"
-            style="border: none; overflow: hidden; width: 115px; height: 44px"
-          ></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-template>
-
-<ng-template #CohereCardRef>
-  <header
-    fxLayout="row"
-    fxLayoutAlign="space-between center"
-    class="card-header-title card-header-border-bottom"
-  >
-    <div fxLayout="row" fxLayoutAlign="start center">
-      <span class="primary-heading">{{ cohereSection?.sectionTitle }}</span>
-    </div>
-    <a target="_blank" [href]="cohereSection?.sectionHyperlink"
-      ><button
-        aria-label="Learn More"
-        class="link-btn font-weight-600 ml-20 ng-star-inserted"
-      >
-        Learn More
-      </button></a
-    >
-  </header>
-  <div
-    fxLayout="column"
-    tabindex="0"
-    aria-label="card content"
-    class="card-content"
-    [ngClass]="{
-      'w-100-p': _screenSize === 'xs'
-    }"
-    [ngStyle]="{
-      background:
-        _screenSize === 'xs'
-          ? 'url(' + cohereSection?.mobileBgImage[0].url + ') 80% no-repeat'
-          : 'url(' + cohereSection?.desktopBgImage[0].url + ') 80% no-repeat',
-      'background-size': 'cover',
-      'min-height': _screenSize === 'xs' ? '712px' : 'auto'
-    }"
-  >
-    <div
-      fxLayout="column"
-      class="p-16"
-      [ngClass]="{ 'w-60-p': _screenSize !== 'xs' }"
-    >
-      <span class="mb-16">
-        {{ cohereSection?.bodycontent }}
-      </span>
-
-      <span class="mb-16 text-italic">
-        {{ cohereSection?.italiccontent }}
-      </span>
-
-      <div fxLayout="column" class="w-75-p">
-        <div fxLayout="row wrap" fxLayoutAlign="start center" class="mb-24">
-          <div
-            fxLayout="row"
-            fxLayoutAlign="start center"
-            class="mr-sm-32"
-            [ngClass]="{
-              'pb-12': _screenSize === 'xs' || _screenSize === 'sm'
-            }"
-          >
-            <i
-              aria-hidden="true"
-              class="fa-light fa-calendar-day s-20 mr-8"
-            ></i>
-            <span>{{ cohereSection?.dateField }}</span>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="start center">
-            <i
-              aria-hidden="true"
-              class="fa-light fa-location-dot s-20 mr-8"
-            ></i>
-            <span
-              ><a [href]="cohereSection?.placeHyperLink" target="_blank">{{
-                cohereSection?.placeField
-              }}</a></span
-            >
-          </div>
-        </div>
-        <div>
-          <button
-            *ngIf="_allowRegistration; else commingSoon"
-            mat-flat-button
-            color="primary"
-            class="btn-sm mr-8"
-            [attr.aria-label]="cohereSection?.buttonPlaceholderText"
-          >
-            {{ cohereSection?.buttonPlaceholderText }}
-          </button>
-          <ng-template #commingSoon>
-            <div class="font-weight-600 font-14">
-              <span>Coming Soon...</span>
+            <div fxLayoutAlign="center center" *ngIf="isCapchaVisible" class="pb-16">
+              <re-captcha (resolved)="resolved($event)" [siteKey]="siteKey"></re-captcha>
             </div>
-          </ng-template>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-template>
 
-<ng-template #ScholorshipCardRef>
-  <header
-    fxLayout="row"
-    fxLayoutAlign="space-between center"
-    class="card-header-title card-header-border-bottom"
-  >
-    <div fxLayout="row" fxLayoutAlign="start center">
-      <span class="primary-heading">{{
-        scholarshipSection?.sectionTitle
-      }}</span>
-    </div>
-    <a target="_blank" [href]="scholarshipSection?.sectionHyperlink"
-      ><button
-        aria-label="Learn More"
-        class="link-btn font-weight-600 ml-20 ng-star-inserted"
-      >
-        Learn More
-      </button></a
-    >
-  </header>
-  <div
-    fxLayout="column"
-    tabindex="0"
-    aria-label="card content"
-    class="card-content"
-    [ngClass]="{
-      'h-85-p': _screenSize === 'lg',
-      'w-100-p': _screenSize === 'xs'
-    }"
-    [ngStyle]="{
-      background:
-        _screenSize === 'xs'
-          ? 'url(' +
-            scholarshipSection?.mobileBgImage[0].url +
-            ') 80% no-repeat'
-          : 'url(' +
-            scholarshipSection?.desktopBgImage[0].url +
-            ') 80% no-repeat',
-      'background-size': 'cover'
-    }"
-    [style.height]="_screenSize === 'xs' ? '712px' : '224px !important'"
-  >
-    <div
-      fxLayout="column"
-      class="p-16"
-      [ngClass]="{ 'w-60-p': _screenSize !== 'xs' }"
-    >
-      <span class="font-20 font-weight-600 mb-16">
-        {{ scholarshipSection?.contentTitle }}
-      </span>
+            <!-- login button field-->
 
-      <span class="mb-16">
-        {{ scholarshipSection?.bodycontent }}
-      </span>
-
-      <div fxLayout="column" class="w-75-p">
-        <div fxLayout="column" class="mb-16">
-          <div fxLayout="row" fxLayoutAlign="start center" class="mb-16">
-            <i aria-hidden="true" class="fa-light fa-envelope s-20 mr-8"></i>
-            <span> {{ scholarshipSection?.awardsEmail }}</span>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="start center">
-            <i
-              aria-hidden="true"
-              class="fa-light fa-calendar-day s-20 mr-8"
-            ></i>
-            <span>{{ scholarshipSection?.dateField }}</span>
-          </div>
-        </div>
-        <div>
-          <a [href]="scholarshipSection?.ctaButtonHyperlink" download>
-            <button
-              mat-stroked-button
+            <div fxLayout="row" fxLayoutAlign="end center" *ngIf="checkProviders()">
+              <button mat-flat-button
               color="primary"
-              class="btn-sm mr-8"
-              [attr.aria-label]="scholarshipSection?.ctaButtonPlaceholderText"
-            >
-              {{ scholarshipSection?.ctaButtonPlaceholderText }}
-            </button>
-          </a>
+              aria-label="Primary"
+              (click)="login()"
+              [disabled]="!loginForm.valid && loading" class="w-100-p">
+                <span>LOGIN <em *ngIf="loading" class="fas fa-spinner fa-pulse"></em></span>
+              </button>
+            </div>
+            <div class="font-weight-600 mt-20 text-center">
+              <p>
+                Note: Internet Explorer browser is not supported.
+              </p>
+              <p>
+                Please use Chrome, Firefox or Safari browser for a better experience.
+              </p>
+            </div>
+
+          </form>
+          <div class="mt-64" fxLayout="row" fxLayoutAlign="start center">
+            <iframe
+              src="https://www.tinfoilsecurity.com/badge_iframe/9bb9eab8fd2e214d85a8c39b9538154983259ffd?type=a&size=2"
+              sandbox="allow-popups" scrolling="no" frameborder="0" allowTransparency="true"
+              style="border:none; overflow:hidden; width:115px; height:44px;"></iframe>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</ng-template>
-
-<ng-template #SupportCardRef>
-  <header
-    fxLayout="row"
-    fxLayoutAlign="space-between center"
-    class="card-header-title card-header-border-bottom"
-  >
-    <div fxLayout="row" fxLayoutAlign="start center">
-      <span class="primary-heading">{{ supportSection?.sectionTitle }}</span>
-    </div>
-  </header>
-  <div
-    fxLayout="column"
-    tabindex="0"
-    aria-label="card content"
-    class="card-content"
-    [ngStyle]="{ height: _screenSize === 'xs' ? 'auto' : '224px' }"
-  >
-    <div
-      fxLayout="column"
-      class="p-16"
-      [innerHTML]="supportSection?.bodycontent | safeHTML"
-    ></div>
-  </div>
-</ng-template>
-
-<!-- END : Templates -->
+  </mat-card>
+</div>

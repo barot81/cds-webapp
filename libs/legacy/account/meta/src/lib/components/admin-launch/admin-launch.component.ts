@@ -119,7 +119,6 @@ export class AdminLaunchComponent
       MetaConstants.MANAGE_ACCOUNT_SWITCH_BACK_KEY
     );
     this.showProgressBar();
-    this.getReleaseNotesNotification();
     this._TenantInformationSandbox
       .getTenantInformationNameList()
       .pipe(takeUntil(this._unsubscribeAll))
@@ -217,7 +216,6 @@ export class AdminLaunchComponent
               orgCode.tenentWithOucodeAccessTrees[0].key
             )
           );
-          this.loadTenantnavigations();
           this.next(orgCode.tenentWithOucodeAccessTrees[0], true);
           this.hideProgressBar();
         }
@@ -302,7 +300,6 @@ export class AdminLaunchComponent
       this._featureFlagService.resetFeatureFlags();
       this._headerService.setCurrentTenantName(tenant.name);
       this.setSelectedTenant(tenant);
-      this.loadTenantnavigations();
       const updatedTenantWithOucode = this.tenantWithOuCodes.find(
         (x) => x.key === tenant.tenantId
       );

@@ -16,7 +16,6 @@
         "assets": [
           "apps/host/src/favicon.ico",
           "apps/host/src/assets",
-          "apps/host/src/silent-refresh.html",
           {
             "glob": "**/*",
             "input": "libs/legacy/assets/global/",
@@ -26,12 +25,12 @@
         "styles": [
           "apps/host/src/styles.scss",
           {
-            "input": "node_modules/@zhealthcare/styles/_blue-theme.scss",
+            "input": "libs/legacy/ux/src/lib/styles/themes/_blue-theme.scss",
             "inject": false,
             "bundleName": "theme-blue"
           },
           {
-            "input": "node_modules/@zhealthcare/styles/_purple-theme.scss",
+            "input": "libs/legacy/ux/src/lib/styles/themes/_purple-theme.scss",
             "inject": false,
             "bundleName": "theme-purple"
           },
@@ -90,8 +89,8 @@
       },
       "defaultConfiguration": "development",
       "options": {
-        "port": 4200,
-        "publicHost": "http://localhost:4200"
+        "port": 5200,
+        "publicHost": "http://localhost:5200"
       }
     },
     "extract-i18n": {
@@ -103,7 +102,10 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/host/**/*.ts", "apps/host/**/*.html"]
+        "lintFilePatterns": [
+          "apps/host/**/*.ts",
+          "apps/host/**/*.html"
+        ]
       }
     },
     "test": {
