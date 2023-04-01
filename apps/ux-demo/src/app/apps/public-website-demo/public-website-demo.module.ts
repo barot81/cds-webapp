@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PublicWebsiteDemoRoutingModule } from './public-website-demo-routing.module';
 import { PublicWebsiteDemoComponent } from './public-website-demo.component';
-import { ExxatAvatarListItemModule, ExxatAvatarModule, FuseSharedModule, FuseSidebarModule, MaterialModule } from '@exxat/ux';
+import { zhealthcareAvatarListItemModule, zhealthcareAvatarModule, FuseSharedModule, FuseSidebarModule, MaterialModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PublicWebsiteAppComponent } from './pages/public-website-app/public-website-app.component';
 
@@ -16,8 +16,8 @@ import { PublicWebsiteAppComponent } from './pages/public-website-app/public-web
     FlexLayoutModule,
     FuseSidebarModule,
     MaterialModule,
-    ExxatAvatarListItemModule,
-    ExxatAvatarModule
+    zhealthcareAvatarListItemModule,
+    zhealthcareAvatarModule
   ]
 })
 export class PublicWebsiteDemoModule { }

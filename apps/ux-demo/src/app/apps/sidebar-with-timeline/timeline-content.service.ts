@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ComponentMap } from '@exxat/fusion/core';
+import { ComponentMap } from '@zhealthcare/fusion/core';
 import { StepOneContentComponent } from './content/step-one-content/step-one-content.component';
 import { StepTwoContentComponent } from './content/step-two-content/step-two-content.component';
 import { StepThreeContentComponent } from './content/step-three-content/step-three-content.component';

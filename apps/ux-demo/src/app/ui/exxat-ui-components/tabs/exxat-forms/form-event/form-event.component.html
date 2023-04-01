@@ -3,7 +3,7 @@
     <span class="font-16">
       <ul tabindex="0" aria-label="instruction list">
         <li tabindex="0" aria-label="one , Material tree example with checkbox and add functionality">
-          When an action is performed on the form, both exxat forms front-end and back-end publish an event
+          When an action is performed on the form, both zhealthcare forms front-end and back-end publish an event
           which the product can subscribe to and take necessary actions governed by the business.
         </li>
       </ul>
@@ -23,43 +23,43 @@
                   data: Data;
                   contextIds?: ContextIds;
                 }
-                
+
                 export type SecurityContext = {
                     tenantId: string;
                     owningOrganizationUnit: string;
                     owningUser: string;
                 }
-                
+
                 export type Data = {
                     response: Response;
                     logs: Logs;
                 }
-                
+
                 export type Response = {
                     responseId: string;
                     sections: Sections[];
                     securityContext: SecurityContext;
                     contextIds?: ContextIds;
                 }
-                
+
                 export type ContextIds = {
                     groupId?: string;
                     formId?: string;
                     targetId?: string;
                 }
-                
+
                 export type Logs = {
                     responseId: string;
                     performedActions: PerformedActions;
                     securityContext: SecurityContext;
                     contextIds?: ContextIds;
                 }
-                
+
                 export type Sections = {
                     sectionId: string;
                     values: any;
                 }
-                
+
                 export type PerformedActions = {
                     actionId: string;
                     label: string;
@@ -67,7 +67,7 @@
                     updatedBy: string;
                     updatedByUserId: string;
                     comment: string;
-                }       
+                }
               </textarea>
             </fuse-highlight>
           </div>
@@ -75,7 +75,7 @@
 
         <mat-tab label="Form Response UML">
           <div class="pt-16 img-container">
-            <img src="assets/images/exxat-forms/FormEvent.png" />
+            <img src="assets/images/zhealthcare-forms/FormEvent.png" />
           </div>
         </mat-tab>
 

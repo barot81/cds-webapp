@@ -6,10 +6,10 @@ import {
   OnInit,
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { FuseSidebarService, HeaderService } from '@exxat/ux';
+import { FuseSidebarService, HeaderService } from '@zhealthcare/ux';
 import { StickyTableHeaderLayoutService } from '../services';
 import { FormControl } from '@angular/forms';
-import { TagView, ExxatTag } from '@exxat/plugin/tags';
+import { TagView, zhealthcareTag } from '@zhealthcare/plugin/tags';
 
 @Component({
   selector: 'container',
@@ -23,7 +23,7 @@ export class ContainerComponent implements AfterViewInit, OnInit {
 
   public tagView = TagView;
 
-  tags: Array<ExxatTag> = [
+  tags: Array<zhealthcareTag> = [
     {
       id: Math.random(),
       name: 'Tag Label 1 Bigger Text',

@@ -1,7 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardService } from '@exxat/fusion/core';
+import { AuthGuardService } from '@zhealthcare/fusion/core';
 import { TheCompleteDemoPageComponent } from './the-complete-demo-page.component';
 
 const routes: Routes = [

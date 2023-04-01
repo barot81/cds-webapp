@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FullScreenService } from '@exxat/ux';
+import { FullScreenService } from '@zhealthcare/ux';
 import { FormControl } from '@angular/forms';
 import { GridService } from '../../../../../apps/student-grid/grid.service';
 import { UXDemoDrawerService } from '../../../../../remote-entry/ux-demo-drawer.service';
@@ -7,7 +7,7 @@ import { UXDemoDrawerService } from '../../../../../remote-entry/ux-demo-drawer.
 
 
 @Component({
-  selector: 'exxat-sticky-column-grid-header',
+  selector: 'zhealthcare-sticky-column-grid-header',
   templateUrl: './sticky-column-grid-header.component.html',
 })
 export class StickyColumnGridHeaderComponent {

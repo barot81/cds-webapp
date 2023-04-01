@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { StudentWishlistDemoRoutingModule } from './student-wishlist-demo-routing.module';
 import { StudentWishlistDemoComponent } from './student-wishlist-demo.component';
-import { ExxatTooltipModule, FuseSharedModule, FuseSidebarModule, MaterialModule } from '@exxat/ux';
+import { zhealthcareTooltipModule, FuseSharedModule, FuseSidebarModule, MaterialModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { ExploreSitesDemoPageComponent } from './explore-sites-demo-page/explore-sites-demo-page.component';
@@ -18,7 +18,7 @@ import { ExploreSitesDemoPageComponent } from './explore-sites-demo-page/explore
     MaterialModule,
     FlexLayoutModule,
     NgxMatSelectSearchModule,
-    ExxatTooltipModule 
+    zhealthcareTooltipModule 
   ]
 })
 export class StudentWishlistDemoModule { }

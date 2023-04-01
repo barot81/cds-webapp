@@ -2,7 +2,7 @@
   aria-label="This is a Simple table"
   mat-table
   [dataSource]="dataSource"
-  class="w-100-p exxat-table"
+  class="w-100-p zhealthcare-table"
   matSort
 >
   <!-- Name Column -->
@@ -11,11 +11,11 @@
     <td mat-cell *matCellDef="let element; let i = index" class="name-column">
       <div fxLayout="row" fxLayoutAlign="start center">
         <a>{{ element.name }}</a>
-        <exxat-tag-showcase
+        <zhealthcare-tag-showcase
           [tags]="tags"
           class="ml-4"
           *ngIf="i % 3 == 0"
-        ></exxat-tag-showcase>
+        ></zhealthcare-tag-showcase>
       </div>
     </td>
   </ng-container>

@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigationEnd, Router } from '@angular/router';
-import { FuseSidebarService, ScrollService } from '@exxat/ux';
+import { FuseSidebarService, ScrollService } from '@zhealthcare/ux';
 import { filter } from 'rxjs/operators';
-import { SidebarFocusHelper } from '../../exxat-sidebar.service';
+import { SidebarFocusHelper } from '../../zhealthcare-sidebar.service';
 import { SidebarLayoutPopupFourComponent } from '../popups/layout-popup-four/layout-popup-four.component';
 
 @Component({
@@ -15,7 +15,7 @@ export class SidebarFourComponent implements OnInit {
   @ViewChild('sidebarHeader') sidebarHeader: ElementRef;
   selectedId: number = 1;
   private currentURL =
-  'admin/ux/ui/exxat-sidebar/sidebar-four';
+  'admin/ux/ui/zhealthcare-sidebar/sidebar-four';
 
   students = [
     {id:0, firstName:'Anna', lastName: 'Strong'},

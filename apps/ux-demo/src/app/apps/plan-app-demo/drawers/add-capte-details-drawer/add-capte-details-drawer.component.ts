@@ -3,7 +3,7 @@ import { FlatTreeControl } from '@angular/cdk/tree';
 import { Component } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { TodoItemFlatNode, TodoItemNode } from '../../plan-mapping-demo/plan-mapping-tree.service';
-import { ChecklistDatabase } from '../../../../ui/exxat-ui-components/tabs/exxat-tree-demo/variations/tree-data.service';
+import { ChecklistDatabase } from '../../../../ui/zhealthcare-ui-components/tabs/zhealthcare-tree-demo/variations/tree-data.service';
 import { PlanAppDemoDrawerService } from '../../plan-app-demo-drawer.service';
 
 @Component({

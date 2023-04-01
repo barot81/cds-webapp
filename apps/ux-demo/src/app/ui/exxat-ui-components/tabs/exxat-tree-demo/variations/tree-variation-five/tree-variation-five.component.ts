@@ -6,7 +6,7 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 import { ChecklistDatabase, TodoItemFlatNode, TodoItemNode } from '../tree-data.service';
 
 @Component({
-  selector: 'exxat-app-tree-variation-five',
+  selector: 'zhealthcare-app-tree-variation-five',
   templateUrl: './tree-variation-five.component.html',
 })
 export class TreeVariationFiveComponent {

@@ -1,4 +1,4 @@
-<div id="exxat-search-dropdown" class="page-layout carded">
+<div id="zhealthcare-search-dropdown" class="page-layout carded">
   <div>
     <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="100">
       <div
@@ -16,11 +16,11 @@
           Search bar with Dropdown for cards and Pages without Grid
         </h5>
         <mat-card class="w-100-p">
-          <exxat-search-bar
+          <zhealthcare-search-bar
             [listofOptions]="SearchFields"
             (onClearClick)="onClearClick($event)"
             (searchedValues)="searchedValues($event)"
-          ></exxat-search-bar>
+          ></zhealthcare-search-bar>
         </mat-card>
       </div>
 
@@ -33,7 +33,7 @@
         fxFlex="100"
       >
         <textarea #source hidden="hidden">
-        <exxat-search-bar [listofOptions]="SearchFields" (onClearClick)="onClearClick($event)" (searchedValues)="searchedValues($event)"></exxat-search-bar>
+        <zhealthcare-search-bar [listofOptions]="SearchFields" (onClearClick)="onClearClick($event)" (searchedValues)="searchedValues($event)"></zhealthcare-search-bar>
       </textarea
         >
       </fuse-highlight>
@@ -62,19 +62,19 @@
           fxLayout="column"
         >
           <div fxLayout="row" fxLayoutAlign="start center">
-            <exxat-search-bar
+            <zhealthcare-search-bar
               [listofOptions]="SearchFields"
               (onClearClick)="onClearClick($event)"
               (searchedValues)="searchedValues($event)"
               class="table-search-with-dropdown"
-            ></exxat-search-bar>
+            ></zhealthcare-search-bar>
           </div>
           <div class="overflow-auto">
             <table
               aria-label="This is a Simple table"
               mat-table
               [dataSource]="dataSource"
-              class="w-100-p exxat-table"
+              class="w-100-p zhealthcare-table"
               matSort
             >
               <!-- Name Column -->
@@ -127,7 +127,7 @@
           <mat-paginator [pageSize]="30"></mat-paginator>
         </div>
 
-        
+
       </div>
 
       <fuse-highlight
@@ -138,19 +138,19 @@
         <textarea #source hidden="hidden">
                   <div class="white-background table-rounded-border" fxLayout="column">
                     <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
-                      <exxat-search-bar
+                      <zhealthcare-search-bar
                         [listofOptions]="SearchFields"
                         (onClearClick)="onClearClick($event)"
                         (searchedValues)="searchedValues($event)"
                         class="table-search-with-dropdown"
-                      ></exxat-search-bar>
+                      ></zhealthcare-search-bar>
                     </div>
                     <div>
                       <table
                         aria-label="This is a Simple table"
                         mat-table
                         [dataSource]="dataSource"
-                        class="w-100-p exxat-table"
+                        class="w-100-p zhealthcare-table"
                         matSort
                       >
                         <!-- Name Column -->
@@ -162,17 +162,17 @@
                             <a>element.name </a>
                           </td>
                         </ng-container>
-              
+
                         <!-- address Column -->
                         <ng-container matColumnDef="address">
                           <th mat-header-cell *matHeaderCellDef class="address-column">
                             Address
                           </th>
                           <td mat-cell *matCellDef="let element" class="address-column">
-                            element.address 
+                            element.address
                           </td>
                         </ng-container>
-              
+
                         <!-- email Column -->
                         <ng-container matColumnDef="email">
                           <th mat-header-cell *matHeaderCellDef class="email-width">Email</th>
@@ -180,17 +180,17 @@
                             <a> element.email </a>
                           </td>
                         </ng-container>
-              
+
                         <!-- phone Column -->
                         <ng-container matColumnDef="phone">
                           <th mat-header-cell *matHeaderCellDef class="column-width">
                             Phone
                           </th>
                           <td mat-cell *matCellDef="let element" class="column-width">
-                            element.phone 
+                            element.phone
                           </td>
                         </ng-container>
-              
+
                         <tr
                           mat-header-row
                           *matHeaderRowDef="displayedColumns; sticky: true"
@@ -214,7 +214,7 @@
       >
       <a
         ><strong class="word-break-all"
-          >http://devintegration.westindia.cloudapp.azure.com:5200/admin/ux/ui/exxat-grids</strong
+          >http://devintegration.westindia.cloudapp.azure.com:5200/admin/ux/ui/zhealthcare-grids</strong
         ></a
       >
     </mat-card>

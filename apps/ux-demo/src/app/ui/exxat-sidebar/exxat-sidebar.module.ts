@@ -10,8 +10,8 @@ import {
   LayoutModule,
   FuseDirectivesModule,
   FuseThemeOptionsModule,
-  ExxatAvatarListItemModule
-} from '@exxat/ux';
+  zhealthcareAvatarListItemModule
+} from '@zhealthcare/ux';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
@@ -30,35 +30,35 @@ import { SidebarContainerComponent } from './container/container.component';
 import { SidebarOneComponent } from './examples/sidebar-one/sidebar-one.component';
 import { SidebarTwoComponent } from './examples/sidebar-two/sidebar-two.component';
 import { SidebarThreeComponent } from './examples/sidebar-three/sidebar-three.component';
-import { SidebarFocusHelper } from './exxat-sidebar.service';
+import { SidebarFocusHelper } from './zhealthcare-sidebar.service';
 
 const routes: Routes = [
   {
-    path: 'exxat-sidebar',
+    path: 'zhealthcare-sidebar',
     component: SidebarContainerComponent,
   },
   {
-    path: 'exxat-sidebar/sidebar-one',
+    path: 'zhealthcare-sidebar/sidebar-one',
     component: SidebarOneComponent,
   },
   {
-    path: 'exxat-sidebar/sidebar-two',
+    path: 'zhealthcare-sidebar/sidebar-two',
     component: SidebarTwoComponent,
   },
   {
-    path: 'exxat-sidebar/sidebar-three',
+    path: 'zhealthcare-sidebar/sidebar-three',
     component: SidebarThreeComponent,
   },
   {
-    path: 'exxat-sidebar/sidebar-four',
+    path: 'zhealthcare-sidebar/sidebar-four',
     component: SidebarFourComponent,
   },
   {
-    path: 'exxat-sidebar/sidebar-five',
+    path: 'zhealthcare-sidebar/sidebar-five',
     component: SidebarFiveComponent,
   },
   {
-    path: 'exxat-sidebar/sidebar-six',
+    path: 'zhealthcare-sidebar/sidebar-six',
     component: SidebarSixComponent,
   }
   
@@ -97,8 +97,8 @@ const routes: Routes = [
     FuseDirectivesModule,
     MatDialogModule,
     FuseThemeOptionsModule,
-    ExxatAvatarListItemModule
+    zhealthcareAvatarListItemModule
   ],
   providers: [SidebarFocusHelper],
 })
-export class ExxatSidebarModule {}
+export class zhealthcareSidebarModule {}

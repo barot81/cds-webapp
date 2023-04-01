@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardService } from '@exxat/fusion/core';
+import { AuthGuardService } from '@zhealthcare/fusion/core';
 import { SlotBySiteComponent } from './slot-by-site.component';
 
 

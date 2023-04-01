@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-import { FusionFormComponent, FusionFormAdapter } from '@exxat/fusion/components';
-import { ExxatDrawerFormService } from '../../exxat-drawer-forms-shared.service';
+import { FusionFormComponent, FusionFormAdapter } from '@zhealthcare/fusion/components';
+import { zhealthcareDrawerFormService } from '../../zhealthcare-drawer-forms-shared.service';
 
 @Component({
-  selector: 'exxat-multi-drawer',
-  templateUrl: './exxat-multi-drawer.component.html',
+  selector: 'zhealthcare-multi-drawer',
+  templateUrl: './zhealthcare-multi-drawer.component.html',
 })
-export class ExxatMultiDrawerComponent implements FusionFormAdapter {
+export class zhealthcareMultiDrawerComponent implements FusionFormAdapter {
   /**
    *
    */
-  constructor(public readonly _drawerService: ExxatDrawerFormService) {}
+  constructor(public readonly _drawerService: zhealthcareDrawerFormService) {}
 
   primaryAction() {}
   secondaryAction() {}

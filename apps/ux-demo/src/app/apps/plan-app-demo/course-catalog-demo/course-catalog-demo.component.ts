@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ExxatDrawerFormService } from '../../../ui/exxat-drawers/exxat-drawer-forms-shared.service';
+import { zhealthcareDrawerFormService } from '../../../ui/zhealthcare-drawers/zhealthcare-drawer-forms-shared.service';
 
 export interface ButtonToggle {
   value: string;
@@ -51,7 +51,7 @@ export class CourseCatalogDemoComponent implements OnInit {
   ];
   
 
-  constructor(public _ExxatDrawerFormService: ExxatDrawerFormService) { }
+  constructor(public _zhealthcareDrawerFormService: zhealthcareDrawerFormService) { }
 
   ngOnInit() {
   }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PlanStaticDemoPagesComponent } from './plan-static-demo-pages.component';
-import { AuthGuardService } from '@exxat/fusion/core';
+import { AuthGuardService } from '@zhealthcare/fusion/core';
 import { PlanCourseDetailsDemoComponent } from '../plan-course-details-demo/plan-course-details-demo.component';
 import { EventScheduleDemoComponent } from './event-schedule-demo/event-schedule-demo.component';
 import { ResourcesDemoComponent } from './resources-demo/resources-demo.component';

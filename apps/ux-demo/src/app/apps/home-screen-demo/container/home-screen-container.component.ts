@@ -7,12 +7,12 @@ import {
   ViewChild
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavigationItem, NavigationItemClasses } from '@exxat/fusion/models';
-import { FusionNavigationService } from '@exxat/fusion/services';
-import { HeaderService } from '@exxat/ux';
+import { NavigationItem, NavigationItemClasses } from '@zhealthcare/fusion/models';
+import { FusionNavigationService } from '@zhealthcare/fusion/services';
+import { HeaderService } from '@zhealthcare/ux';
 
 @Component({
-  selector: 'exxat-home-screen-container',
+  selector: 'zhealthcare-home-screen-container',
   templateUrl: './home-screen-container.component.html',
   styleUrls: ['./home-screen-container.component.scss']
 })

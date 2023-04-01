@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatDropdownFilterExampleComponent } from './exxat-dropdown-filter-example.component';
+import { zhealthcareDropdownFilterExampleComponent } from './zhealthcare-dropdown-filter-example.component';
 
-describe('ExxatDropdownFilterExampleComponent', () => {
-  let component: ExxatDropdownFilterExampleComponent;
-  let fixture: ComponentFixture<ExxatDropdownFilterExampleComponent>;
+describe('zhealthcareDropdownFilterExampleComponent', () => {
+  let component: zhealthcareDropdownFilterExampleComponent;
+  let fixture: ComponentFixture<zhealthcareDropdownFilterExampleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatDropdownFilterExampleComponent ]
+      declarations: [ zhealthcareDropdownFilterExampleComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatDropdownFilterExampleComponent);
+    fixture = TestBed.createComponent(zhealthcareDropdownFilterExampleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
-  ExxatTooltipModule,
+  zhealthcareTooltipModule,
   FuseDirectivesModule,
   FuseSidebarModule,
   MaterialModule
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import {
   FormStepComponent,
   LayoutHeaderComponent,
@@ -33,7 +33,7 @@ import { ScrollableFormRoutingModule } from './scrollable-form-routing.module';
     FuseSidebarModule,
     FuseDirectivesModule,
     ScrollableFormRoutingModule,
-    ExxatTooltipModule
+    zhealthcareTooltipModule
   ]
 })
 export class ScrollableFormModule {}

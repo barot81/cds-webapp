@@ -1,9 +1,9 @@
 
 import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ExxatTag, ExxatTagOptions, TagEvent } from '@exxat/plugin/tags';
-import {  FullScreenService, FuseSidebarService } from '@exxat/ux';
-import { HeaderService } from '@exxat/ux';
+import { zhealthcareTag, zhealthcareTagOptions, TagEvent } from '@zhealthcare/plugin/tags';
+import {  FullScreenService, FuseSidebarService } from '@zhealthcare/ux';
+import { HeaderService } from '@zhealthcare/ux';
 import { FormControl } from '@angular/forms';
 import { UXDemoDrawerService } from '../../../../remote-entry/ux-demo-drawer.service';
 import { GridService } from '../../../../apps/student-grid/grid.service';
@@ -62,9 +62,9 @@ export class OnclickArrowExpandCollapseGridComponent implements OnInit {
   searchItem = new FormControl();
   //tags component
 
-    public tagOptions = new ExxatTagOptions();
+    public tagOptions = new zhealthcareTagOptions();
 
-    tags: Array<ExxatTag> = [
+    tags: Array<zhealthcareTag> = [
       { id: Math.random(), name: 'Tag Label 1 Bigger Text', color: 'indigo-500', isChecked: true },
       { id: Math.random(), name: 'Tag Label 2', color: 'deep-orange-500', isChecked: true },
       { id: Math.random(), name: 'Tag Label 3', color: 'pink-500', isChecked: false },
@@ -81,7 +81,7 @@ export class OnclickArrowExpandCollapseGridComponent implements OnInit {
 
     onTagChanges(event: TagEvent) {
       if (event.eventType.toLowerCase() === 'change') {
-        this.tags = new Array<ExxatTag>();
+        this.tags = new Array<zhealthcareTag>();
         Object.assign(this.tags, event.tags);
       }
     }

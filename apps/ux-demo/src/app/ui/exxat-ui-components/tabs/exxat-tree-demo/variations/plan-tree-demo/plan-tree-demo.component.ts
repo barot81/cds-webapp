@@ -6,7 +6,7 @@ import { PlanAppDemoDrawerService } from '../../../../../../apps/plan-app-demo/p
 import { ChecklistDatabase, TodoItemFlatNode, TodoItemNode } from '../tree-data.service';
 
 @Component({
-  selector: 'exxat-app-plan-tree-demo',
+  selector: 'zhealthcare-app-plan-tree-demo',
   templateUrl: './plan-tree-demo.component.html',
   styleUrls: ['./plan-tree-demo.component.scss']
 })

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ExxatFileViewerGuidelineOverlayDemoComponent } from './examples/exxat-file-viewer-guideline-overlay-demo/exxat-file-viewer-guideline-overlay-demo.component';
-import { ExxatFileViewerOverlayDemoComponent } from './examples/exxat-file-viewer-overlay-demo/exxat-file-viewer-overlay-demo.component';
+import { zhealthcareFileViewerGuidelineOverlayDemoComponent } from './examples/zhealthcare-file-viewer-guideline-overlay-demo/zhealthcare-file-viewer-guideline-overlay-demo.component';
+import { zhealthcareFileViewerOverlayDemoComponent } from './examples/zhealthcare-file-viewer-overlay-demo/zhealthcare-file-viewer-overlay-demo.component';
 import { FileViewerOverlayDemo3Component } from './examples/file-viewer-overlay-demo3/file-viewer-overlay-demo3.component';
 import { OverlayComponentExampleComponent } from './examples/overlay-component-example/overlay-component-example.component';
-import { ExxatOverlayDemoComponent } from './exxat-overlay-demo.component';
+import { zhealthcareOverlayDemoComponent } from './zhealthcare-overlay-demo.component';
 import { FileViewerOverlayDemo3ContainerComponent } from './file-viewer-overlay-demo3-container/file-viewer-overlay-demo3-container.component';
 
 const routes: Routes = [
   {
-    path: 'exxat-overlay',
-    component: ExxatOverlayDemoComponent,
+    path: 'zhealthcare-overlay',
+    component: zhealthcareOverlayDemoComponent,
     children: [
       {
         path: '',
@@ -19,11 +19,11 @@ const routes: Routes = [
       },
       {
         path: 'file-viewer-guideline',
-        component: ExxatFileViewerGuidelineOverlayDemoComponent,
+        component: zhealthcareFileViewerGuidelineOverlayDemoComponent,
       },
       {
         path: 'file-viewer',
-        component: ExxatFileViewerOverlayDemoComponent,
+        component: zhealthcareFileViewerOverlayDemoComponent,
       },
       {
         path: 'component',
@@ -37,4 +37,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ExxatOverlayDemoRoutingModule {}
+export class zhealthcareOverlayDemoRoutingModule {}

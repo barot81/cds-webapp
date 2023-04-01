@@ -8,7 +8,7 @@
   <!-- Main Header -->
   <ng-container *ngIf="!_fullScreenService.getFullScreenModeEnabled">
     <div class="mb-16" #mainHeader>
-      <exxat-main-header></exxat-main-header>
+      <zhealthcare-main-header></zhealthcare-main-header>
     </div>
   </ng-container>
   <!-- / Main Header -->
@@ -20,7 +20,7 @@
       <fuse-sidebar class="sidebar overflow-none" name="simple-left-sidebar" position="left" lockedOpen="gt-md"
         fxFlex.gt-md="25">
         <!-- SIDEBAR CONTENT -->
-        <exxat-sidebar></exxat-sidebar>
+        <zhealthcare-sidebar></zhealthcare-sidebar>
         <!-- / SIDEBAR CONTENT -->
       </fuse-sidebar>
     </ng-container>
@@ -32,13 +32,13 @@
       <!-- Content Header -->
       <ng-container *ngIf="!_fullScreenService.getFullScreenModeEnabled">
         <div #contentHeader class="mb-16">
-          <exxat-content-header></exxat-content-header>
+          <zhealthcare-content-header></zhealthcare-content-header>
         </div>
       </ng-container>
       <!-- / Content Header -->
 
       <div>
-        <exxat-layout-scroll-grid></exxat-layout-scroll-grid>
+        <zhealthcare-layout-scroll-grid></zhealthcare-layout-scroll-grid>
       </div>
     </div>
   </div>

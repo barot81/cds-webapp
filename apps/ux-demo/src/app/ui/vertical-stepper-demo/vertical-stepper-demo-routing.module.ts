@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardService } from '@exxat/fusion/core';
+import { AuthGuardService } from '@zhealthcare/fusion/core';
 import { VerticalStepperDemoContainerComponent } from './container';
 import { ExampleOneComponent } from './pages';
 

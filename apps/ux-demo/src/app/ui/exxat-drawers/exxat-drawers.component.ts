@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ryzen-exxat-drawers',
-  templateUrl: './exxat-drawers.component.html',
+  selector: 'ryzen-zhealthcare-drawers',
+  templateUrl: './zhealthcare-drawers.component.html',
 })
-export class ExxatDrawersComponent implements OnInit {
+export class zhealthcareDrawersComponent implements OnInit {
 
   constructor() { }
 

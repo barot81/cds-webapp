@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { FuseSidebarService, HeaderService } from '@exxat/ux';
+import { FuseSidebarService, HeaderService } from '@zhealthcare/ux';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 

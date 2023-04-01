@@ -6,7 +6,7 @@ import { PlanSetupDemoContainerComponent } from './plan-setup-demo-container/pla
 import { CourseMeasuresComponent } from './course-measures/course-measures.component';
 import { CurriculumAttributesComponent } from './curriculum-attributes/curriculum-attributes.component';
 import { AssignAttributeComponent } from './assign-attribute/assign-attribute.component';
-import { MaterialModule, FuseSharedModule, FuseSidebarModule, ExxatTreeModule } from '@exxat/ux';
+import { MaterialModule, FuseSharedModule, FuseSidebarModule, zhealthcareTreeModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PlanAppDemoDrawerService } from '../plan-app-demo-drawer.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -27,7 +27,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     PlanSetupDemoRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    ExxatTreeModule
+    zhealthcareTreeModule
   ],
   providers: [
     PlanAppDemoDrawerService

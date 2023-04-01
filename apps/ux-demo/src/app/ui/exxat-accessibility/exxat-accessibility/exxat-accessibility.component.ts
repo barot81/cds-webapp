@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ryzen-exxat-accessibility',
-  templateUrl: './exxat-accessibility.component.html',
-  styleUrls: ['./exxat-accessibility.component.scss']
+  selector: 'ryzen-zhealthcare-accessibility',
+  templateUrl: './zhealthcare-accessibility.component.html',
+  styleUrls: ['./zhealthcare-accessibility.component.scss']
 })
-export class ExxatAccessibilityComponent implements OnInit {
+export class zhealthcareAccessibilityComponent implements OnInit {
 
   constructor() { }
 

@@ -4,7 +4,7 @@
     <fuse-sidebar class="sidebar width-x-sm" name="carded-left-sidebar-tabbed-2" position="left" lockedOpen="gt-md"
         *ngIf="!(_fullScreenService.fullScreenModeEnabled$ | async)"
         [style.height.px]="_headerService.scrollContentheight">
-        <exxat-demo-side-bar></exxat-demo-side-bar>
+        <zhealthcare-demo-side-bar></zhealthcare-demo-side-bar>
     </fuse-sidebar>
     <!-- END : SIDEBAR -->
 
@@ -20,8 +20,8 @@
 
 
         <div class="content pb-16">
-            <exxat-demo-scroll-table [parentHeaderHeight]="(header_height$ | async)">
-            </exxat-demo-scroll-table>
+            <zhealthcare-demo-scroll-table [parentHeaderHeight]="(header_height$ | async)">
+            </zhealthcare-demo-scroll-table>
         </div>
     </div>
 

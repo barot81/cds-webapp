@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatToggleExampleComponent } from './exxat-toggle-example.component';
+import { zhealthcareToggleExampleComponent } from './zhealthcare-toggle-example.component';
 
-describe('ExxatToggleExampleComponent', () => {
-  let component: ExxatToggleExampleComponent;
-  let fixture: ComponentFixture<ExxatToggleExampleComponent>;
+describe('zhealthcareToggleExampleComponent', () => {
+  let component: zhealthcareToggleExampleComponent;
+  let fixture: ComponentFixture<zhealthcareToggleExampleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatToggleExampleComponent ]
+      declarations: [ zhealthcareToggleExampleComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatToggleExampleComponent);
+    fixture = TestBed.createComponent(zhealthcareToggleExampleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

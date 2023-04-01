@@ -1,9 +1,9 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigationEnd, Router } from '@angular/router';
-import { FuseSidebarService, HeaderService, ScrollService } from '@exxat/ux';
+import { FuseSidebarService, HeaderService, ScrollService } from '@zhealthcare/ux';
 import { filter } from 'rxjs/operators';
-import { SidebarFocusHelper } from '../../../../exxat-sidebar/exxat-sidebar.service';
+import { SidebarFocusHelper } from '../../../../zhealthcare-sidebar/zhealthcare-sidebar.service';
 import { LayoutPopupSixComponent } from '../../common/popups/layout-popup-six/layout-popup-six.component';
 
 @Component({

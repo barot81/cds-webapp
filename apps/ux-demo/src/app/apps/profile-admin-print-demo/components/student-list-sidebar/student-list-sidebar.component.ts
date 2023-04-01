@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 
 @Component({
-    selector: 'exxat-student-list-sidebar',
+    selector: 'zhealthcare-student-list-sidebar',
     templateUrl: 'student-list-sidebar.component.html',
 })
 export class StudentListSidebarComponent { }

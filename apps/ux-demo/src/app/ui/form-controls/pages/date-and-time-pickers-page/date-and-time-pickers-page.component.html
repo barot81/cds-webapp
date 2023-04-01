@@ -24,7 +24,7 @@
         <div fxLayout="column" fxLayoutAlign="start" class="w-100-p">
           <mat-form-field appearance="fill" fxFlex="100">
             <mat-label>Multiple Date Selection</mat-label>
-            <exxat-calendar
+            <zhealthcare-calendar
               class="overflow-ellipses"
               [matDatepicker]="datePicker"
               formControlName="multipleDate"
@@ -33,7 +33,7 @@
               [matDatepickerFilter]="dateFilter"
               required
             >
-            </exxat-calendar>
+            </zhealthcare-calendar>
             <mat-error></mat-error>
             <mat-datepicker-toggle
               matSuffix
@@ -71,8 +71,8 @@
 
         <!-- Time Picker -->
         <!-- <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" class="w-50-p">
-        <exxat-time-picker class="w-100-p" color="primary" label="Time Picker" appearance="fill">
-        </exxat-time-picker>
+        <zhealthcare-time-picker class="w-100-p" color="primary" label="Time Picker" appearance="fill">
+        </zhealthcare-time-picker>
         </div> -->
 
         <!-- NG Time Picker-->
@@ -172,7 +172,7 @@
               <div fxLayout="column" fxLayoutAlign="start" class="w-100-p">
                 <mat-form-field appearance="fill" fxFlex="100">
                   <mat-label>Multiple Date Selection</mat-label>
-                  <exxat-calendar
+                  <zhealthcare-calendar
                     class="overflow-ellipses"
                     [matDatepicker]="datePicker"
                     formControlName="multipleDate"
@@ -181,7 +181,7 @@
                     [matDatepickerFilter]="dateFilter"
                     required
                   >
-                  </exxat-calendar>
+                  </zhealthcare-calendar>
                   <mat-error></mat-error>
                   <mat-datepicker-toggle
                     matSuffix
@@ -219,8 +219,8 @@
 
             <!-- Time Picker -->
             <!-- <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" class="w-50-p">
-            <exxat-time-picker class="w-100-p" color="primary" label="Time Picker" appearance="fill">
-            </exxat-time-picker>
+            <zhealthcare-time-picker class="w-100-p" color="primary" label="Time Picker" appearance="fill">
+            </zhealthcare-time-picker>
             </div> -->
 
             <!-- Time Picker-->
@@ -300,7 +300,7 @@
             export class DateAndTimePickersPageComponent implements OnInit {
               form: FormGroup;
 
-              //pass min/max date for selection 
+              //pass min/max date for selection
               //@param year — The full year designation is required for cross-century date accuracy. If year is between 0 and 99 is used, then year is assumed to be 1900 + year.
               //@param monthIndex — The month as a number between 0 and 11 (January to December).
               //@param date — The date as a number between 1 and 31.
@@ -326,14 +326,14 @@
                 });
               }
 
-              //demo example for filter can change or remove filter logic according to requirement 
+              //demo example for filter can change or remove filter logic according to requirement
               dateFilter(date: Date | null):boolean {
                 const day = new Date(date).getDay()
                 return day !== 0 && day !== 6;
-              } 
+              }
 
-              ngOnInit(): void { 
-                //demo example for patching values based on dateFilter if required 
+              ngOnInit(): void {
+                //demo example for patching values based on dateFilter if required
                 //can be modified/removed according to requirement
                 let filteredDate = this.modelPredefined.map((dates) => {
                   return dates.toDate()
@@ -341,11 +341,11 @@
                   const day = new Date(date).getDay()
                   if(day !== 0 && day !== 6){
                     return date
-                  } 
+                  }
                 }).map((date) => {
                   return _moment(date)
                 })
-                
+
                 this.form.patchValue({multipleDate: filteredDate});
               }
 

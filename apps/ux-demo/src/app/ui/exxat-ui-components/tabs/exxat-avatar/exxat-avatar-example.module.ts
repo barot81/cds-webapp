@@ -1,22 +1,22 @@
 import { Routes, RouterModule } from "@angular/router";
 import { NgModule } from '@angular/core';
-import { MaterialModule, FuseSharedModule, ExxatAvatarModule, FuseThemeOptionsModule, ExxatAvatarListItemModule } from '@exxat/ux';
+import { MaterialModule, FuseSharedModule, zhealthcareAvatarModule, FuseThemeOptionsModule, zhealthcareAvatarListItemModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FuseHighlightModule } from "../../../../helpers/highlight/highlight.module";
 import { CommonModule } from '@angular/common';
-import { ExxatAvatarComponent } from './exxat-avatar.component';
+import { zhealthcareAvatarComponent } from './zhealthcare-avatar.component';
 
 const routes: Routes = [
     {
-        path: 'exxat-avatar-demo',
-        component: ExxatAvatarComponent
+        path: 'zhealthcare-avatar-demo',
+        component: zhealthcareAvatarComponent
     }
 ];
 
 
 @NgModule(
     {
-        declarations: [ExxatAvatarComponent],
+        declarations: [zhealthcareAvatarComponent],
         imports: [
             CommonModule,
             RouterModule.forChild(routes),
@@ -24,12 +24,12 @@ const routes: Routes = [
             MaterialModule,
             FlexLayoutModule,
             FuseHighlightModule,
-            ExxatAvatarModule,
+            zhealthcareAvatarModule,
             FuseThemeOptionsModule,
-            ExxatAvatarListItemModule
+            zhealthcareAvatarListItemModule
         ]
     }
 )
-export class ExxatAvatarDemoModule {
+export class zhealthcareAvatarDemoModule {
 
 }

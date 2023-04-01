@@ -10,15 +10,15 @@
       <div fxLayoutAlign="start" fxLayout="row wrap">
         <div>
           <mat-menu #tagsMenu="matMenu" [overlapTrigger]="false">
-            <exxat-tag
+            <zhealthcare-tag
               [tags]="tags"
               (onTagChanges)="tagsChanged($event)"
               [options]="tagOptions"
-            ></exxat-tag>
+            ></zhealthcare-tag>
           </mat-menu>
         </div>
         <div fxLayout="row wrap" fxLayoutAlign="start center">
-          <exxat-tag-showcase [tags]="tagsCopy"></exxat-tag-showcase>
+          <zhealthcare-tag-showcase [tags]="tagsCopy"></zhealthcare-tag-showcase>
         </div>
         <button
           *ngIf="selectedtagsCount < 1"
@@ -60,11 +60,11 @@
             <div fxLayoutAlign="start" fxLayout="row wrap">
               <div>
                 <mat-menu #tagsMenu="matMenu" [overlapTrigger]="false">
-                  <exxat-tag [tags]="tags" (onTagChanges)="tagsChanged($event)" [options]="tagOptions"></exxat-tag>
+                  <zhealthcare-tag [tags]="tags" (onTagChanges)="tagsChanged($event)" [options]="tagOptions"></zhealthcare-tag>
                 </mat-menu>
               </div>
               <div fxLayout="row wrap" fxLayoutAlign="start center">
-                <exxat-tag-showcase [tags]="tagsCopy"></exxat-tag-showcase>
+                <zhealthcare-tag-showcase [tags]="tagsCopy"></zhealthcare-tag-showcase>
               </div>
               <button *ngIf="selectedtagsCount < 1" mat-stroked-button color="primary" [matMenuTriggerFor]="tagsMenu"
                 (menuOpened)="openTagswithButtons()">
@@ -75,7 +75,7 @@
                 <i aria-hidden="true" class="fa-light fa-plus s-18"></i>
               </button>
             </div>
-    
+
         </textarea
           >
         </fuse-highlight>
@@ -93,22 +93,22 @@
 
           import { Component, Output, EventEmitter, ViewChild } from '@angular/core';
           import { MatMenuTrigger } from '@angular/material/menu';
-          import { ExxatTag, ExxatTagOptions } from '@exxat/plugin/tags';
+          import { zhealthcareTag, zhealthcareTagOptions } from '@zhealthcare/plugin/tags';
 
           @Component({
-            selector: 'exxat-app-exxat-tag-example-two',
-            templateUrl: './exxat-tag-example-two.component.html',
-            styleUrls: ['./exxat-tag-example-two.component.scss']
+            selector: 'zhealthcare-app-zhealthcare-tag-example-two',
+            templateUrl: './zhealthcare-tag-example-two.component.html',
+            styleUrls: ['./zhealthcare-tag-example-two.component.scss']
           })
-          export class ExxatTagExampleTwoComponent {
+          export class zhealthcareTagExampleTwoComponent {
 
-            public tagOptions = new ExxatTagOptions();
+            public tagOptions = new zhealthcareTagOptions();
 
             @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
             @Output() menuOpened: EventEmitter<void>;
 
-            tags: Array<ExxatTag> = [
+            tags: Array<zhealthcareTag> = [
               { id: Math.random(), name: 'Tag Label 1 Bigger Text', color: 'indigo-500', isChecked: true },
               { id: Math.random(), name: 'Tag Label 2', color: 'deep-orange-500', isChecked: true },
               { id: Math.random(), name: 'Tag Label 3', color: 'pink-500', isChecked: false },
@@ -148,9 +148,9 @@
 
           }
 
-          
-                  
-    
+
+
+
         </textarea
           >
         </fuse-highlight>

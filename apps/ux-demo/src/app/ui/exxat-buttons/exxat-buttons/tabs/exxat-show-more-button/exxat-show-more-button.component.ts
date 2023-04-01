@@ -35,11 +35,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 @Component({
-  selector: 'ryzen-exxat-show-more-button',
-  templateUrl: './exxat-show-more-button.component.html',
-  styleUrls: ['./exxat-show-more-button.component.scss']
+  selector: 'ryzen-zhealthcare-show-more-button',
+  templateUrl: './zhealthcare-show-more-button.component.html',
+  styleUrls: ['./zhealthcare-show-more-button.component.scss']
 })
-export class ExxatShowMoreButtonComponent implements OnInit {
+export class zhealthcareShowMoreButtonComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   // dataSource = ELEMENT_DATA;

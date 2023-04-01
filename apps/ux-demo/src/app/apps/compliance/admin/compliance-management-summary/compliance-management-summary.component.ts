@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { FormControl } from '@angular/forms';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 import { BehaviorSubject } from 'rxjs';
 import { ComplianceManagementHeaderLayoutService } from '../compliace_management_header.service';
 import { GridService } from '../../../student-grid/grid.service';

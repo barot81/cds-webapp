@@ -1,8 +1,8 @@
 import { Component, ComponentFactoryResolver, TemplateRef } from '@angular/core';
-import { OverlayService } from '@exxat/ux';
+import { OverlayService } from '@zhealthcare/ux';
 import { ComponentType } from '@angular/cdk/portal';
-import { DocumentViewerConfiguration } from '@exxat/plugin/file-upload';
-import { FileEndpoint } from '@exxat/plugin/file-upload';
+import { DocumentViewerConfiguration } from '@zhealthcare/plugin/file-upload';
+import { FileEndpoint } from '@zhealthcare/plugin/file-upload';
 import { FileViewerOverlayDemo3ContainerComponent } from '../../file-viewer-overlay-demo3-container/file-viewer-overlay-demo3-container.component';
 
 @Component({

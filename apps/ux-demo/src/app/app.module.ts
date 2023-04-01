@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Bootstrap } from '@exxat/bootstrap';
+import { Bootstrap } from '@zhealthcare/bootstrap';
 import { AppComponent } from './app.component';
 @NgModule({
   imports: [Bootstrap],

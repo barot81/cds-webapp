@@ -16,11 +16,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 @Component({
-  selector: 'ryzen-exxat-weekday-picker',
-  templateUrl: './exxat-weekday-picker.component.html',
-  styleUrls: ['./exxat-weekday-picker.component.scss']
+  selector: 'ryzen-zhealthcare-weekday-picker',
+  templateUrl: './zhealthcare-weekday-picker.component.html',
+  styleUrls: ['./zhealthcare-weekday-picker.component.scss']
 })
-export class ExxatWeekdayPickerComponent implements OnInit {
+export class zhealthcareWeekdayPickerComponent implements OnInit {
 
   @ViewChild('search_table') search_table: ElementRef;
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
-import { FusionFormAdapter, FusionFormComponent } from '@exxat/fusion/components';
+import * as ClassicEditor from '@zhealthcare/ckeditor5-build-classic';
+import { FusionFormAdapter, FusionFormComponent } from '@zhealthcare/fusion/components';
 
 
 interface Prop {
@@ -9,10 +9,10 @@ interface Prop {
   value: string;
 }
 @Component({
-  selector: 'exxat-drawer-reactive-form',
-  templateUrl: './exxat-drawer-reactive-form.component.html',
+  selector: 'zhealthcare-drawer-reactive-form',
+  templateUrl: './zhealthcare-drawer-reactive-form.component.html',
 })
-export class ExxatDrawerReactiveFormComponent
+export class zhealthcareDrawerReactiveFormComponent
   extends FusionFormComponent
   implements OnInit, FusionFormAdapter
 {

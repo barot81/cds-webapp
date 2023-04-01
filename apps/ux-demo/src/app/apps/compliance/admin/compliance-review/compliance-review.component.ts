@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { FuseSidebarService, HeaderService } from '@exxat/ux';
+import { FuseSidebarService, HeaderService } from '@zhealthcare/ux';
 import { BehaviorSubject } from 'rxjs';
 import { ComplianceManagementHeaderLayoutService } from '../compliace_management_header.service';
 

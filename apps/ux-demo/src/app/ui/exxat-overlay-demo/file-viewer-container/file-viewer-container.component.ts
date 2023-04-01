@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ExxatOverlayRef } from '@exxat/ux';
-import { DocumentViewerConfiguration } from '@exxat/plugin/file-upload';
+import { zhealthcareOverlayRef } from '@zhealthcare/ux';
+import { DocumentViewerConfiguration } from '@zhealthcare/plugin/file-upload';
 
 @Component({
   selector: 'ryzen-file-viewer-container',
@@ -11,7 +11,7 @@ export class FileViewerContainerComponent {
 
   documentConfiguration: DocumentViewerConfiguration;
   
-  constructor(private overlayRef: ExxatOverlayRef) {
+  constructor(private overlayRef: zhealthcareOverlayRef) {
     this.documentConfiguration = this.overlayRef.data;
   }
   

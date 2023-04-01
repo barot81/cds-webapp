@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FuseSidebarService, HighLightNavMenuService } from '@exxat/ux';
+import { FuseSidebarService, HighLightNavMenuService } from '@zhealthcare/ux';
 
 
 @Component({

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatTwoColumnDrawerComponent } from './exxat-two-column-drawer.component';
+import { zhealthcareTwoColumnDrawerComponent } from './zhealthcare-two-column-drawer.component';
 
-describe('ExxatTwoColumnDrawerComponent', () => {
-  let component: ExxatTwoColumnDrawerComponent;
-  let fixture: ComponentFixture<ExxatTwoColumnDrawerComponent>;
+describe('zhealthcareTwoColumnDrawerComponent', () => {
+  let component: zhealthcareTwoColumnDrawerComponent;
+  let fixture: ComponentFixture<zhealthcareTwoColumnDrawerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatTwoColumnDrawerComponent ]
+      declarations: [ zhealthcareTwoColumnDrawerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatTwoColumnDrawerComponent);
+    fixture = TestBed.createComponent(zhealthcareTwoColumnDrawerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

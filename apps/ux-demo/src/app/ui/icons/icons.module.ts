@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-import { FuseSharedModule, FuseThemeOptionsModule } from '@exxat/ux';
+import { FuseSharedModule, FuseThemeOptionsModule } from '@zhealthcare/ux';
 
 import { IconsComponent } from './icons.component';
 

@@ -5,9 +5,9 @@ import {
   ElementRef,
   HostListener,
 } from '@angular/core';
-import { FullScreenService, HeaderService } from '@exxat/ux';
+import { FullScreenService, HeaderService } from '@zhealthcare/ux';
 import { MatTableDataSource } from '@angular/material/table';
-import { ExxatTag } from '@exxat/plugin/tags';
+import { zhealthcareTag } from '@zhealthcare/plugin/tags';
 
 import { UXDemoDrawerService } from '../../../../remote-entry/ux-demo-drawer.service';
 import { GridService } from 'apps/ux-demo/src/app/apps/student-grid/grid.service';
@@ -122,7 +122,7 @@ export class NoSearchGridComponent implements OnInit {
   highlightedRows = new Set<PeriodicElement>();
 
 
-  tags: Array<ExxatTag> = [
+  tags: Array<zhealthcareTag> = [
     { id: Math.random(), name: 'Tag Label 1 Bigger Text', color: 'indigo-500', isChecked: true },
     { id: Math.random(), name: 'Tag Label 2', color: 'deep-orange-500', isChecked: true },
     { id: Math.random(), name: 'Tag Label 3', color: 'pink-500', isChecked: false },
@@ -138,11 +138,11 @@ export class NoSearchGridComponent implements OnInit {
   settingsList: any[] = [
     {
       name: 'One fish swimming in the pond',
-      color: 'exxat-picasso'
+      color: 'zhealthcare-picasso'
     },
     {
       name: 'One fish swimming in the pond',
-      color: 'exxat-picasso'
+      color: 'zhealthcare-picasso'
     },
   ];
 

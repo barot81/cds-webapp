@@ -2,9 +2,9 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 import { startWith, map } from 'rxjs/operators';
-import { FullScreenService, GoToColumnComponent } from '@exxat/ux';
+import { FullScreenService, GoToColumnComponent } from '@zhealthcare/ux';
 import { GridService } from '../../../student-grid/grid.service';
 import { UXDemoDrawerService } from '../../../../remote-entry/ux-demo-drawer.service';
 

@@ -60,7 +60,7 @@
                 *ngFor="let item of _list"
                 [value]="item.value"
                 >
-                item.viewValue 
+                item.viewValue
                 </mat-option>
                 </mat-select>
                 </mat-form-field>
@@ -244,7 +244,7 @@
                 >
                   <mat-chip-list>
                     <mat-chip
-                      class="exxat-{{ setting.color }}-bg"
+                      class="zhealthcare-{{ setting.color }}-bg"
                       [attr.aria-label]="setting.title"
                       fontColor
                     >
@@ -262,7 +262,7 @@
             >
               <mat-chip-list aria-label="Selected">
                 <mat-chip
-                  class="exxat-{{ item.color }}-bg"
+                  class="zhealthcare-{{ item.color }}-bg"
                   [attr.aria-label]="item.title"
                   fontColor
                   *ngFor="let item of selectedSettings$ | async"
@@ -289,7 +289,7 @@
                           *ngFor="let setting of settingList"
                           [value]="setting">
                           <mat-chip-list>
-                            <mat-chip class="exxat- setting.color -bg" [attr.aria-label]="setting.title" fontColor>
+                            <mat-chip class="zhealthcare- setting.color -bg" [attr.aria-label]="setting.title" fontColor>
                                setting.title </mat-chip>
                           </mat-chip-list>
                         </mat-option>
@@ -301,14 +301,14 @@
                     class="mb-16">
                     <mat-chip-list aria-label="Selected">
                       <mat-chip
-                        class="exxat-item.color-bg"
+                        class="zhealthcare-item.color-bg"
                         [attr.aria-label]="item.title"
                         fontColor
                         *ngFor="let item of selectedSettings$ | async">
                          item.title
                       </mat-chip>
                     </mat-chip-list>
-                    </div> 
+                    </div>
 
               </textarea
                   >
@@ -329,7 +329,7 @@
                     title: string;
                     color: string;
                   }
-                  
+
                   @Component({
                     selector: 'dropdown-component',
                     templateUrl: 'dropdown-component.html',
@@ -340,7 +340,7 @@
                     selectedSettings = new BehaviorSubject<Array<SettingItem>>(
                       new Array<SettingItem>()
                     );
-                  
+
                     selectedSettings$ = this.selectedSettings.asObservable();
 
                     settingList: Array<SettingItem> = [
@@ -653,7 +653,7 @@
                   <textarea #source hidden="hidden">
                   import {Component, OnInit} from '@angular/core';
                   import {FormControl, Validators} from '@angular/forms';
-                  
+
                   @Component({
                     selector: 'dropdown-component',
                     templateUrl: 'dropdown-component.html',
@@ -725,8 +725,8 @@
               <mat-label> Mat select with search </mat-label>
               <mat-select>
                 <mat-option>
-                  <exxat-mat-select-search [formControl]="_searchFormControl">
-                  </exxat-mat-select-search>
+                  <zhealthcare-mat-select-search [formControl]="_searchFormControl">
+                  </zhealthcare-mat-select-search>
                 </mat-option>
                 <mat-option
                   *ngFor="let item of filteredDropdownSearchData | async"
@@ -744,13 +744,13 @@
                   <span class="warn-fg"
                     ><strong>"ngx-mat-select-search" </strong> is deprecate from
                     our system, if you have used it please replace with
-                    <strong>"exxat-mat-select-search"</strong></span
+                    <strong>"zhealthcare-mat-select-search"</strong></span
                   >
                 </li>
                 <li>
                   <span class="warn-fg">
-                    import <strong>"exxat-mat-select-search"</strong> from
-                    <strong>"@exxat/ux"</strong> library.
+                    import <strong>"zhealthcare-mat-select-search"</strong> from
+                    <strong>"@zhealthcare/ux"</strong> library.
                   </span>
                 </li>
               </ul>
@@ -770,8 +770,8 @@
                       <mat-label> Mat select with search </mat-label>
                       <mat-select>
                         <mat-option>
-                          <exxat-mat-select-search [formControl]="_searchFormControl">
-                          </exxat-mat-select-search>
+                          <zhealthcare-mat-select-search [formControl]="_searchFormControl">
+                          </zhealthcare-mat-select-search>
                         </mat-option>
                         <mat-option
                           *ngFor="let item of filteredDropdownSearchData | async"
@@ -847,7 +847,7 @@
 
                     private _filterDropdownSearchData(value: string): Array<DropdownSearchItem> {
                       const filterValue = value.toLowerCase();
-                  
+
                       return this.dropdownSearchData.filter((option) =>
                         option.title.toLowerCase().includes(filterValue)
                       );
@@ -909,11 +909,11 @@
                 #multiSelect
               >
                 <mat-option>
-                  <exxat-mat-select-search
+                  <zhealthcare-mat-select-search
                     [formControl]="_multiFilterFormControl"
                     (toggleAll)="toggleSelectAll($event)"
                   >
-                  </exxat-mat-select-search>
+                  </zhealthcare-mat-select-search>
                 </mat-option>
                 <mat-option
                   tabindex="0"
@@ -949,13 +949,13 @@
                   <span class="warn-fg"
                     ><strong>"ngx-mat-select-search" </strong> is deprecate from
                     our system, if you have used it please replace with
-                    <strong>"exxat-mat-select-search"</strong></span
+                    <strong>"zhealthcare-mat-select-search"</strong></span
                   >
                 </li>
                 <li>
                   <span class="warn-fg">
-                    import <strong>"exxat-mat-select-search"</strong> from
-                    <strong>"@exxat/ux"</strong> library.
+                    import <strong>"zhealthcare-mat-select-search"</strong> from
+                    <strong>"@zhealthcare/ux"</strong> library.
                   </span>
                 </li>
               </ul>
@@ -979,11 +979,11 @@
                         #multiSelect
                       >
                         <mat-option>
-                          <exxat-mat-select-search
+                          <zhealthcare-mat-select-search
                             [formControl]="_multiFilterFormControl"
                             (toggleAll)="toggleSelectAll($event)"
                           >
-                          </exxat-mat-select-search>
+                          </zhealthcare-mat-select-search>
                         </mat-option>
                         <mat-option
                           *ngFor="
@@ -1027,10 +1027,10 @@
                   <textarea #source hidden="hidden">
                   import {Component, OnInit} from '@angular/core';
                   import {FormControl, Validators} from '@angular/forms';
-                  import { ToggleAllType } from '@exxat/ux';
+                  import { ToggleAllType } from '@zhealthcare/ux';
                   import { BehaviorSubject, Observable, Subject } from 'rxjs';
-                  import { map, startWith, take, takeUntil } from 'rxjs/operators'; 
-                  
+                  import { map, startWith, take, takeUntil } from 'rxjs/operators';
+
                   export class DropdownSearchItem {
                     id: number;
                     title: string;
@@ -1085,7 +1085,7 @@
 
                     /** Subject that emits when the component has been destroyed. */
                     protected _onDestroy = new Subject<void>();
-                  
+
                     filteredMultiSearchData: Observable<Array<DropdownSearchItem>>;
 
                     ngOnInit()
@@ -1099,12 +1099,12 @@
 
                     private _filterMultiSearchData(value: string): Array<DropdownSearchItem> {
                       const filterValue = value.toLowerCase();
-                  
+
                       return this.multiSearchData.filter((option) =>
                         option.title.toLowerCase().includes(filterValue)
                       );
                     }
-                  
+
                     toggleSelectAll($event: ToggleAllType) {
                       this._multiSearchFormControl.patchValue(<any>$event.values);
                     }

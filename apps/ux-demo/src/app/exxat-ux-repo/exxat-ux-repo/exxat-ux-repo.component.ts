@@ -13,11 +13,11 @@ export interface ux_repo_item {
 }
 
 @Component({
-  selector: 'ryzen-exxat-ux-repo',
-  templateUrl: './exxat-ux-repo.component.html',
-  styleUrls: ['./exxat-ux-repo.component.scss'],
+  selector: 'ryzen-zhealthcare-ux-repo',
+  templateUrl: './zhealthcare-ux-repo.component.html',
+  styleUrls: ['./zhealthcare-ux-repo.component.scss'],
 })
-export class ExxatUxRepoComponent {
+export class zhealthcareUxRepoComponent {
   searchItem = new FormControl();
 
   ux_repo_list: ux_repo_item[] = [
@@ -41,9 +41,9 @@ export class ExxatUxRepoComponent {
     },
     {
       icon: 'fa-gallery-thumbnails',
-      title: 'Exxat Carousel Demo',
-      description: 'Exxat Carousel Demo',
-      page: '/admin/ux/ui/exxat-carousel-demo',
+      title: 'zhealthcare Carousel Demo',
+      description: 'zhealthcare Carousel Demo',
+      page: '/admin/ux/ui/zhealthcare-carousel-demo',
     },
     {
       icon: 'fa-grip-dots-vertical',
@@ -65,9 +65,9 @@ export class ExxatUxRepoComponent {
     },
     {
       icon: 'fa-chart-area',
-      title: 'Exxat Graphs Standards',
-      description: 'Exxat Graphs Standards',
-      page: '/admin/ux/ui/exxat_graphs_standards',
+      title: 'zhealthcare Graphs Standards',
+      description: 'zhealthcare Graphs Standards',
+      page: '/admin/ux/ui/zhealthcare_graphs_standards',
     },
     {
       icon: 'fa-microchip',
@@ -85,7 +85,7 @@ export class ExxatUxRepoComponent {
     {
       icon: 'fa-comment-dots',
       title: 'Tooltip',
-      description: 'Exxat tooltip examples',
+      description: 'zhealthcare tooltip examples',
       page: '/admin/ux/ui/tooltip-demo',
     },
     {
@@ -105,7 +105,7 @@ export class ExxatUxRepoComponent {
       icon: 'fa-map',
       title: 'Drawer',
       description: 'Drawer with forms and different types of sizes.',
-      page: '/admin/ux/ui/exxat-drawers',
+      page: '/admin/ux/ui/zhealthcare-drawers',
     },
     {
       icon: 'fa-paintbrush',
@@ -116,7 +116,7 @@ export class ExxatUxRepoComponent {
     {
       icon: 'fa-text',
       title: 'Typography',
-      description: 'Exxat Theme Typography',
+      description: 'zhealthcare Theme Typography',
       page: '/admin/ux/ui/typography',
     },
     // {
@@ -138,7 +138,7 @@ export class ExxatUxRepoComponent {
       icon: 'fa-file',
       title: 'File Viewer Overlay',
       description: '4 types of file viewer overlay examples.',
-      page: '/admin/ux/ui/exxat-overlay',
+      page: '/admin/ux/ui/zhealthcare-overlay',
     },
     {
       icon: 'fa-file',
@@ -162,19 +162,19 @@ export class ExxatUxRepoComponent {
       icon: 'fa-play-pause',
       title: 'Buttons',
       description: 'Example of different types of buttons',
-      page: '/admin/ux/ui/exxat-buttons',
+      page: '/admin/ux/ui/zhealthcare-buttons',
     },
     {
       icon: 'fa-tasks-alt',
       title: 'Skeleton',
       description: 'Example of different types of skeletons.',
-      page: '/admin/ux/ui/exxat-skeleton-example',
+      page: '/admin/ux/ui/zhealthcare-skeleton-example',
     },
     {
       icon: 'fa-tags',
-      title: 'Exxat Tag Component',
-      description: '2 types of exxat tag component.',
-      page: '/admin/ux/ui/exxat-tags',
+      title: 'zhealthcare Tag Component',
+      description: '2 types of zhealthcare tag component.',
+      page: '/admin/ux/ui/zhealthcare-tags',
 
       isUxApproved: false,
     },
@@ -194,9 +194,9 @@ export class ExxatUxRepoComponent {
     // },
     // {
     //   icon: 'fa-wpforms',
-    //   title: 'Exxat Forms',
+    //   title: 'zhealthcare Forms',
     //   description: 'Platform based forms with workflow, layout and responses',
-    //   page: '/admin/ux/ui/exxat-forms',
+    //   page: '/admin/ux/ui/zhealthcare-forms',
     //
     //   isUxApproved: false,
     //
@@ -205,13 +205,13 @@ export class ExxatUxRepoComponent {
       icon: 'fa-angle-double-down',
       title: 'Accordian',
       description: 'Example of accordian.',
-      page: '/admin/ux/ui/exxat-accordian',
+      page: '/admin/ux/ui/zhealthcare-accordian',
     },
     {
       icon: 'fa-user-tie',
       title: 'Avatar',
       description: 'Example of avatar.',
-      page: '/admin/ux/ui/exxat-avatar-demo',
+      page: '/admin/ux/ui/zhealthcare-avatar-demo',
     },
     {
       icon: 'fa-spinner',
@@ -221,7 +221,7 @@ export class ExxatUxRepoComponent {
     },
     {
       icon: 'fa-palette',
-      title: 'Exxat Setting Color ',
+      title: 'zhealthcare Setting Color ',
       description: 'Custom colors for settings.',
       page: '/admin/ux/ui/color-shades-grid',
     },
@@ -233,21 +233,21 @@ export class ExxatUxRepoComponent {
     },
     {
       icon: 'fa-folder-tree',
-      title: 'Exxat Tree',
-      description: 'Example of exxat tree.',
-      page: '/admin/ux/ui/exxat-trees',
+      title: 'zhealthcare Tree',
+      description: 'Example of zhealthcare tree.',
+      page: '/admin/ux/ui/zhealthcare-trees',
     },
     {
       icon: 'fa-stairs',
       title: 'Wizard',
       description: 'Example of wizard.',
-      page: '/admin/ux/ui/exxat-wizards',
+      page: '/admin/ux/ui/zhealthcare-wizards',
     },
     {
       icon: 'fa-sidebar',
       title: 'Sidebar',
       description: 'Example of sidebars.',
-      page: '/admin/ux/ui/exxat-sidebar',
+      page: '/admin/ux/ui/zhealthcare-sidebar',
     },
     //{ icon: 'fa-layer-group', title: 'Horizontal Tree Control', description: 'Demo of horizontal tree control.', page: '/admin/ux/apps/horizontal-tree-control/tab1',isAccessible: true }
   ];

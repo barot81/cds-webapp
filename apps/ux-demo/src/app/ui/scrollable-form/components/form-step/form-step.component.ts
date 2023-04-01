@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ScrollableListService } from '@exxat/ux';
+import { ScrollableListService } from '@zhealthcare/ux';
 import { FormStep, FormStepStatusEnum } from '../../types';
 
 @Component({

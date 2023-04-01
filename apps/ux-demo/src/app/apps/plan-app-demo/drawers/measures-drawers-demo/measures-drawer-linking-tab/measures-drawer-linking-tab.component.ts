@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'exxat-app-measures-drawer-linking-tab',
+  selector: 'zhealthcare-app-measures-drawer-linking-tab',
   templateUrl: './measures-drawer-linking-tab.component.html',
   styleUrls: ['./measures-drawer-linking-tab.component.scss']
 })

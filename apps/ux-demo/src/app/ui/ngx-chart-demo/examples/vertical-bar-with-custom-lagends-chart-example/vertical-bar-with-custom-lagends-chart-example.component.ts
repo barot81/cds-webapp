@@ -25,7 +25,7 @@ export var single_custom = [
 
 @Component(
     {
-        selector: 'exxat-vertical-bar-with-custom-lagends-chart-example',
+        selector: 'zhealthcare-vertical-bar-with-custom-lagends-chart-example',
         templateUrl: 'vertical-bar-with-custom-lagends-chart-example.component.html',
     }
 )

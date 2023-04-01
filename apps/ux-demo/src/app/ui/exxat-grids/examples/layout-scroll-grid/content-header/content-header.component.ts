@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'exxat-content-header',
+  selector: 'zhealthcare-content-header',
   templateUrl: './content-header.component.html',
 })
 export class ContentHeaderComponent {

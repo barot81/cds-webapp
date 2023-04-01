@@ -7,9 +7,9 @@ import { MatAutocompleteSelectedEvent, MatAutocomplete, MatAutocompleteTrigger }
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { FileConfiguration, FileEndpoint, FileCard } from '@exxat/plugin/file-upload';
-import { SecurityContext } from '@exxat/fusion/models';
-import { HeaderService } from '@exxat/ux';
+import { FileConfiguration, FileEndpoint, FileCard } from '@zhealthcare/plugin/file-upload';
+import { SecurityContext } from '@zhealthcare/fusion/models';
+import { HeaderService } from '@zhealthcare/ux';
 
 export interface Task {
   name: string;
@@ -45,7 +45,7 @@ export class EssWizardComponent {
 
     // File Upload Configuration  -- START
     this.fileConfiguration = new FileConfiguration();
-    this.fileConfiguration.fileEndpoint = new FileEndpoint('exxat.ux', 'Demo');
+    this.fileConfiguration.fileEndpoint = new FileEndpoint('zhealthcare.ux', 'Demo');
     this.fileConfiguration.fileCards = [];
     const fileCard = new FileCard();
     this.fileConfiguration.fileCards.push(fileCard);

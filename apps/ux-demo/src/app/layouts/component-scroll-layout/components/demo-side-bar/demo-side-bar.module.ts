@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { FuseSharedModule, FuseSidebarModule, MaterialModule } from "@exxat/ux";
+import { FuseSharedModule, FuseSidebarModule, MaterialModule } from "@zhealthcare/ux";
 import { DemoSidebarComponent } from "./components";
 
 @NgModule({

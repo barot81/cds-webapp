@@ -7,10 +7,10 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 @Component({
-  selector: 'ryzen-exxat-autocomplete-chips',
-  templateUrl: './exxat-autocomplete-chips.component.html',
+  selector: 'ryzen-zhealthcare-autocomplete-chips',
+  templateUrl: './zhealthcare-autocomplete-chips.component.html',
 })
-export class ExxatAutocompleteChipsComponent {
+export class zhealthcareAutocompleteChipsComponent {
 
   visible = true;
   selectable = true;

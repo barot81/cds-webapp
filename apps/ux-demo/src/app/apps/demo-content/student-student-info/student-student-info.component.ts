@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'exxat-app-student-student-info',
+  selector: 'zhealthcare-app-student-student-info',
   templateUrl: './student-student-info.component.html',
   styleUrls: ['./student-student-info.component.scss']
 })

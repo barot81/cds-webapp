@@ -3,14 +3,14 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSortModule } from '@angular/material/sort';
 import { MatStepperModule } from '@angular/material/stepper';
-import { CKEditorModule } from '@exxat/plugin/ckeditor';
-import { DataSourceModule } from '@exxat/plugin/data-source';
-import { FileUploadModule } from '@exxat/plugin/file-upload';
+import { CKEditorModule } from '@zhealthcare/plugin/ckeditor';
+import { DataSourceModule } from '@zhealthcare/plugin/data-source';
+import { FileUploadModule } from '@zhealthcare/plugin/file-upload';
 import {
-  ExxatAvatarModule,
-  ExxatBreadcrumbModule,
-  ExxatCarouselModule,
-  ExxatTooltipModule,
+  zhealthcareAvatarModule,
+  zhealthcareBreadcrumbModule,
+  zhealthcareCarouselModule,
+  zhealthcareTooltipModule,
   FlexTableModule,
   FuseModule,
   FuseSharedModule,
@@ -18,7 +18,7 @@ import {
   LayoutModule,
   MaterialModule,
   NgxMaterialTimepickerModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { EssWizardPageNewComponentRoutingModule } from './ess-wizard-page-new-routing.module';
 import { EssWizardPageNewComponent } from './ess-wizard-page-new.component';
 
@@ -37,10 +37,10 @@ import { EssWizardPageNewComponent } from './ess-wizard-page-new.component';
     FuseSidebarModule,
     FuseModule,
     FileUploadModule,
-    ExxatBreadcrumbModule,
-    ExxatAvatarModule,
-    ExxatCarouselModule,
-    ExxatTooltipModule,
+    zhealthcareBreadcrumbModule,
+    zhealthcareAvatarModule,
+    zhealthcareCarouselModule,
+    zhealthcareTooltipModule,
     MatStepperModule,
     CKEditorModule,
     NgxMaterialTimepickerModule,

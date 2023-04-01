@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 
 @Component({
     selector   : 'content-demo-one',

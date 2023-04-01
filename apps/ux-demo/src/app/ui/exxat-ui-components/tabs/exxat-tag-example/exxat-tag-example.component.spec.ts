@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatTagExampleComponent } from './exxat-tag-example.component';
+import { zhealthcareTagExampleComponent } from './zhealthcare-tag-example.component';
 
-describe('ExxatTagExampleComponent', () => {
-  let component: ExxatTagExampleComponent;
-  let fixture: ComponentFixture<ExxatTagExampleComponent>;
+describe('zhealthcareTagExampleComponent', () => {
+  let component: zhealthcareTagExampleComponent;
+  let fixture: ComponentFixture<zhealthcareTagExampleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatTagExampleComponent ]
+      declarations: [ zhealthcareTagExampleComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatTagExampleComponent);
+    fixture = TestBed.createComponent(zhealthcareTagExampleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

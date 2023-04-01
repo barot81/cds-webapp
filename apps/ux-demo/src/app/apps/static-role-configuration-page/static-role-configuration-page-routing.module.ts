@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardService } from '@exxat/fusion/core';
+import { AuthGuardService } from '@zhealthcare/fusion/core';
 import { RoleInfoComponent } from './role-info/role-info.component';
 import { StaticRoleConfigurationPageComponent } from './static-role-configuration-page.component';
 import { StudentInfoComponent } from './student-info/student-info.component';

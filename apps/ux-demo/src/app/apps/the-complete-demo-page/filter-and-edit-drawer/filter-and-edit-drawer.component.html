@@ -203,11 +203,11 @@
         <div id="editColumnContainer">
           <div
             cdkDropList
-            class="exxat-drag-drop-list w-100-p"
+            class="zhealthcare-drag-drop-list w-100-p"
             (cdkDropListDropped)="drop($event)"
           >
             <div *ngFor="let column of columnsList" cdkDrag>
-              <div *ngIf="!column.hideEditColumn" class="exxat-drag-drop">
+              <div *ngIf="!column.hideEditColumn" class="zhealthcare-drag-drop">
                 <div class="icon-drag">
                   <mat-icon class="primary-fg font-22">drag_indicator</mat-icon>
                 </div>

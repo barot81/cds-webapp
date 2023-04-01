@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FileConfiguration, FileEndpoint, FileCard } from '@exxat/plugin/file-upload';
-import { SecurityContext } from '@exxat/fusion/models';
+import { FileConfiguration, FileEndpoint, FileCard } from '@zhealthcare/plugin/file-upload';
+import { SecurityContext } from '@zhealthcare/fusion/models';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -23,7 +23,7 @@ export class AddEventScheduleDrawerComponent implements OnInit {
   constructor() {
      // File Upload Configuration  -- START
      this.fileConfiguration = new FileConfiguration();
-     this.fileConfiguration.fileEndpoint = new FileEndpoint('exxat.ux', 'Demo');
+     this.fileConfiguration.fileEndpoint = new FileEndpoint('zhealthcare.ux', 'Demo');
      this.fileConfiguration.fileCards = [];
      const fileCard = new FileCard();
      this.fileConfiguration.fileCards.push(fileCard);

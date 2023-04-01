@@ -142,7 +142,7 @@
         <div fxHide.xs fxLayout="column" class="m-16" fxFlex="100" fxFlex.gt-sm="75" fxFlex.gt-md="85">
           <div fxLayout.gt-md="row" fxLayoutAlign="end">
 
-            <mat-icon exxatDrawerAction [componentSelector]="gridService.get('ryzen-edit-columns')" [size]="'drawer-sm'"
+            <mat-icon zhealthcareDrawerAction [componentSelector]="gridService.get('ryzen-edit-columns')" [size]="'drawer-sm'"
               [caption]="'Edit Columns'" role="img"
               class="pr-28 mat-icon notranslate teal-500-fg material-icons mat-icon-no-color" aria-hidden="true">build
             </mat-icon>
@@ -163,7 +163,7 @@
       <!-- CONTENT -->
       <div class="content">
         <!-- TABLE -->
-        <table mat-table [dataSource]="dataSource" class=" w-100-p exxat-table pt-0">
+        <table mat-table [dataSource]="dataSource" class=" w-100-p zhealthcare-table pt-0">
 
           <!-- Checkbox Column -->
           <ng-container matColumnDef="select" [sticky]="true">
@@ -186,8 +186,8 @@
               Name </th>
             <td mat-cell *matCellDef="let element" class="student-name">
               <a routerLink="/admin/ux/apps/student/details">
-                <exxat-avatar-list-item class="accent-fg" [src]="element.src" [firstName]="element.firstName"
-                  [lastName]="element.lastName"></exxat-avatar-list-item>
+                <zhealthcare-avatar-list-item class="accent-fg" [src]="element.src" [firstName]="element.firstName"
+                  [lastName]="element.lastName"></zhealthcare-avatar-list-item>
               </a>
             </td>
           </ng-container>

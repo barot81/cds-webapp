@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FuseSharedModule, FuseSidebarModule, MaterialModule } from '@exxat/ux';
+import { FuseSharedModule, FuseSidebarModule, MaterialModule } from '@zhealthcare/ux';
 import { LayoutOneRoutingModule } from './layout-one-routing.module';
 import { LayoutOneContainerComponent } from './container/layout-one-container.component';
 import { LayoutNavBarComponent } from './layout-one-nav-bar/layout-one-nav-bar.component';

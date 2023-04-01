@@ -5,15 +5,15 @@ import {
   FuseSidebarModule,
   FuseThemeOptionsModule,
   MaterialModule,
-  ExxatTooltipModule,
-} from '@exxat/ux';
+  zhealthcareTooltipModule,
+} from '@zhealthcare/ux';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { PagesContainerComponent } from './container/pages-container.component';
-import { EXXATGRAPHSPAGES } from './pages';
+import { zhealthcareGRAPHSPAGES } from './pages';
 import { PagesRoutingModule } from './pages-routing.module';
 
 @NgModule({
-  declarations: [PagesContainerComponent, ...EXXATGRAPHSPAGES],
+  declarations: [PagesContainerComponent, ...zhealthcareGRAPHSPAGES],
   imports: [
     MaterialModule,
     FlexLayoutModule,
@@ -22,7 +22,7 @@ import { PagesRoutingModule } from './pages-routing.module';
     FuseSidebarModule,
     PagesRoutingModule,
     FuseThemeOptionsModule,
-    ExxatTooltipModule,
+    zhealthcareTooltipModule,
   ],
   providers: [],
 })

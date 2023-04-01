@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ryzen-exxat-edit-columns-form-example',
-  templateUrl: './exxat-edit-columns-form-example.component.html',
-  styleUrls: ['./exxat-edit-columns-form-example.component.scss']
+  selector: 'ryzen-zhealthcare-edit-columns-form-example',
+  templateUrl: './zhealthcare-edit-columns-form-example.component.html',
+  styleUrls: ['./zhealthcare-edit-columns-form-example.component.scss']
 })
-export class ExxatEditColumnsFormExampleComponent implements OnInit {
+export class zhealthcareEditColumnsFormExampleComponent implements OnInit {
 
   columnsList = [
     'Student Name',

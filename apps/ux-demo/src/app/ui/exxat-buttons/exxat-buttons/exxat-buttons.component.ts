@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ryzen-exxat-buttons',
-  templateUrl: './exxat-buttons.component.html',
+  selector: 'ryzen-zhealthcare-buttons',
+  templateUrl: './zhealthcare-buttons.component.html',
 })
-export class ExxatButtonsComponent implements OnInit {
+export class zhealthcareButtonsComponent implements OnInit {
 
   constructor() { }
 

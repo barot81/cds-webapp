@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ExxatAvatarModule, ExxatBreadcrumbModule, ExxatCarouselModule, FlexTableModule, FuseModule, FuseSharedModule, FuseSidebarModule, LayoutModule, MaterialModule } from '@exxat/ux';
+import { zhealthcareAvatarModule, zhealthcareBreadcrumbModule, zhealthcareCarouselModule, FlexTableModule, FuseModule, FuseSharedModule, FuseSidebarModule, LayoutModule, MaterialModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DataSourceModule } from '@exxat/plugin/data-source';
+import { DataSourceModule } from '@zhealthcare/plugin/data-source';
 import { MatSortModule } from '@angular/material/sort';
-import { FileUploadModule } from '@exxat/plugin/file-upload';
+import { FileUploadModule } from '@zhealthcare/plugin/file-upload';
 import { FacultyProfilePageRoutingModule } from './faculty-profile-page-routing.modue';
 import { FacultyProfilePageComponent } from './faculty-profile-page.component';
 
@@ -23,9 +23,9 @@ import { FacultyProfilePageComponent } from './faculty-profile-page.component';
     FuseSidebarModule,
     FuseModule,
     FileUploadModule,
-    ExxatBreadcrumbModule,
-    ExxatAvatarModule,
-    ExxatCarouselModule
+    zhealthcareBreadcrumbModule,
+    zhealthcareAvatarModule,
+    zhealthcareCarouselModule
   ]
 })
 export class FacultyProfilePageModule { }

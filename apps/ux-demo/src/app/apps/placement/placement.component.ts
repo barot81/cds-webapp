@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 
 @Component({
   selector: 'ryzen-placement',

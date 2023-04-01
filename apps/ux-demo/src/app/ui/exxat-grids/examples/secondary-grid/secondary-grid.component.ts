@@ -6,10 +6,10 @@ import { FormControl } from '@angular/forms';
 import { GridService } from '../../../../apps/student-grid/grid.service';
 import { UXDemoDrawerService } from '../../../../remote-entry/ux-demo-drawer.service';
 
-import { FullScreenService, ScrollService } from '@exxat/ux';
+import { FullScreenService, ScrollService } from '@zhealthcare/ux';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { ExxatTag } from '@exxat/plugin/tags';
+import { zhealthcareTag } from '@zhealthcare/plugin/tags';
 
 export interface PeriodicElement {
   src: string;
@@ -127,7 +127,7 @@ export class SecondaryGridComponent {
     this.scroll_pointer = (event.target as HTMLElement).scrollLeft;
   }
 
-  tags: Array<ExxatTag> = [
+  tags: Array<zhealthcareTag> = [
     {
       id: Math.random(),
       name: 'Tag Label 1 Bigger Text',

@@ -4,12 +4,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSortModule } from '@angular/material/sort';
 import { RouterModule, Routes } from '@angular/router';
-import { DataSourceModule } from '@exxat/plugin/data-source';
-import { ExxatTagModule } from '@exxat/plugin/tags';
+import { DataSourceModule } from '@zhealthcare/plugin/data-source';
+import { zhealthcareTagModule } from '@zhealthcare/plugin/tags';
 import {
-  ExxatAvatarListItemModule, ExxatAvatarModule,
-  ExxatTooltipModule, FlexTableModule, FuseDirectivesModule, FuseModule, FusePipesModule, FuseSharedModule, FuseSidebarModule, FuseThemeOptionsModule, LayoutModule, MaterialModule, ShowMoreModule
-} from '@exxat/ux';
+  zhealthcareAvatarListItemModule, zhealthcareAvatarModule,
+  zhealthcareTooltipModule, FlexTableModule, FuseDirectivesModule, FuseModule, FusePipesModule, FuseSharedModule, FuseSidebarModule, FuseThemeOptionsModule, LayoutModule, MaterialModule, ShowMoreModule
+} from '@zhealthcare/ux';
 import { GridService } from '../../apps/student-grid/grid.service';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
 import { UXDemoDrawerService } from '../../remote-entry/ux-demo-drawer.service';
@@ -18,8 +18,8 @@ import { ColorShadesGridComponent } from './examples/color-shades-grid/color-sha
 import { CondensedGridComponent } from './examples/condensed-grid/condensed-grid.component';
 import { ExpandableCellGridComponent } from './examples/expandable-cell-grid/expandable-cell-grid.component';
 import { ExpandableGridExampleComponent } from './examples/expandable-grid-example/expandable-grid-example.component';
-import { ExxatGridsExample1Component } from './examples/exxat-grids-example1/exxat-grids-example1.component';
-import { ExxatSiteDemoGridComponent } from './examples/exxat-site-demo-grid/exxat-site-demo-grid.component';
+import { zhealthcareGridsExample1Component } from './examples/zhealthcare-grids-example1/zhealthcare-grids-example1.component';
+import { zhealthcareSiteDemoGridComponent } from './examples/zhealthcare-site-demo-grid/zhealthcare-site-demo-grid.component';
 import { GridNavBarListComponent } from './examples/grid-nav-bar-list/grid-nav-bar-list.component';
 import { GridWithTwoHeaderRowsComponent } from './examples/grid-with-two-header-rows/grid-with-two-header-rows.component';
 import { HeaderHoverGridComponent } from './examples/header-hover-grid/header-hover-grid.component';
@@ -56,13 +56,13 @@ import { StickyColumnGridHeaderComponent } from './examples/sticky-column-grid/s
 import { StickyColumnGridComponent } from './examples/sticky-column-grid/sticky-column-grid.component';
 import { TableWithColspanComponent } from './examples/table-with-colspan/table-with-colspan.component';
 import { TableWithShowMoreComponent } from './examples/table-with-show-more/table-with-show-more.component';
-import { ExxatGridsComponent } from './exxat-grids.component';
+import { zhealthcareGridsComponent } from './zhealthcare-grids.component';
 
 
 const routes: Routes = [
   {
-    path: 'exxat-grids',
-    component: ExxatGridsComponent
+    path: 'zhealthcare-grids',
+    component: zhealthcareGridsComponent
   },
   {
     path: 'search-bar-grids',
@@ -94,7 +94,7 @@ const routes: Routes = [
   },
   {
     path: 'grid-with-tabs',
-    component: ExxatSiteDemoGridComponent
+    component: zhealthcareSiteDemoGridComponent
   },
   {
     path: 'condensed-grid',
@@ -178,18 +178,18 @@ const routes: Routes = [
     component: NoSearchGridComponent
   },
   {
-    path: 'exxat-layout-scroll',
+    path: 'zhealthcare-layout-scroll',
     component: ContainerComponent
   }
 ];
 
 @NgModule({
   declarations: [
-    ExxatGridsComponent,
-    ExxatGridsExample1Component,
+    zhealthcareGridsComponent,
+    zhealthcareGridsExample1Component,
     ExpandableGridExampleComponent,
     StickyColumnGridComponent,
-    ExxatSiteDemoGridComponent,
+    zhealthcareSiteDemoGridComponent,
     GridNavBarListComponent,
     CondensedGridComponent,
     ColorShadesGridComponent,
@@ -236,8 +236,8 @@ const routes: Routes = [
     FlexLayoutModule,
     FuseSharedModule,
     FuseHighlightModule,
-    ExxatAvatarListItemModule,
-    ExxatAvatarModule,
+    zhealthcareAvatarListItemModule,
+    zhealthcareAvatarModule,
     LayoutModule,
     FuseModule,
     FuseSidebarModule,
@@ -246,12 +246,12 @@ const routes: Routes = [
     DataSourceModule,
     MatSortModule,
     ShowMoreModule,
-    ExxatTooltipModule,
+    zhealthcareTooltipModule,
     FuseThemeOptionsModule,
-    ExxatTagModule,
+    zhealthcareTagModule,
     FuseDirectivesModule,
     FusePipesModule
   ],
   providers: [GridService, UXDemoDrawerService, LayoutScrollService]
 })
-export class ExxatGridsModule {}
+export class zhealthcareGridsModule {}

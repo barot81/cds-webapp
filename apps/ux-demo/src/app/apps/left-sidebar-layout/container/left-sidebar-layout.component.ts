@@ -1,10 +1,10 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { FuseSidebarService, ScrollService } from '@exxat/ux';
+import { FuseSidebarService, ScrollService } from '@zhealthcare/ux';
 import { filter } from 'rxjs/operators';
 
 @Component({
-    selector: 'exxat-left-sidebar-component',
+    selector: 'zhealthcare-left-sidebar-component',
     templateUrl: './left-sidebar-layout.component.html',
 })
 export class LeftSidebarLayoutComponent {

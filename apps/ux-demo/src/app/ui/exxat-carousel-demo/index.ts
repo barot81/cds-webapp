@@ -1,1 +1,1 @@
-export * from './exxat-carousel-demo.module';
+export * from './zhealthcare-carousel-demo.module';

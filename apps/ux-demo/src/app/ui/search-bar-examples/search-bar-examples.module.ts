@@ -7,16 +7,16 @@ import { Routes, RouterModule } from '@angular/router';
 import {
   MaterialModule,
   FuseSharedModule,
-  ExxatAvatarListItemModule,
+  zhealthcareAvatarListItemModule,
   LayoutModule,
   FuseModule,
   FuseSidebarModule,
   FuseThemeOptionsModule,
   FuseDirectivesModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
-import { DataSourceModule } from '@exxat/plugin/data-source';
+import { DataSourceModule } from '@zhealthcare/plugin/data-source';
 import { SearchBarExamplesComponent } from './search-bar-examples.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -62,7 +62,7 @@ const routes: Routes = [
     FlexLayoutModule,
     FuseSharedModule,
     FuseHighlightModule,
-    ExxatAvatarListItemModule,
+    zhealthcareAvatarListItemModule,
     LayoutModule,
     FuseModule,
     FuseSidebarModule,

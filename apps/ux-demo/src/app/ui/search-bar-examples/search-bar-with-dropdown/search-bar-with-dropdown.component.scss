@@ -3,7 +3,7 @@
 
 
 :host {
-  #exxat-search-dropdown {
+  #zhealthcare-search-dropdown {
     mat-icon {
       cursor: pointer;
     }
@@ -22,7 +22,7 @@
         margin-bottom: 8px !important;
       }
     }
-    .exxat-table {
+    .zhealthcare-table {
       th,
       td {
         @include media-breakpoint('lt-sm') {

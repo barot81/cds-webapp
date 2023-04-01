@@ -1,20 +1,20 @@
 import { Component, Output, EventEmitter, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
-import { ExxatTag, ExxatTagOptions } from '@exxat/plugin/tags';
+import { zhealthcareTag, zhealthcareTagOptions } from '@zhealthcare/plugin/tags';
 
 @Component({
-  selector: 'exxat-app-exxat-tag-example-two',
-  templateUrl: './exxat-tag-example-two.component.html',
-  styleUrls: ['./exxat-tag-example-two.component.scss']
+  selector: 'zhealthcare-app-zhealthcare-tag-example-two',
+  templateUrl: './zhealthcare-tag-example-two.component.html',
+  styleUrls: ['./zhealthcare-tag-example-two.component.scss']
 })
-export class ExxatTagExampleTwoComponent {
-  public tagOptions = new ExxatTagOptions();
+export class zhealthcareTagExampleTwoComponent {
+  public tagOptions = new zhealthcareTagOptions();
 
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
   @Output() menuOpened: EventEmitter<void>;
 
-  tags: Array<ExxatTag> = [
+  tags: Array<zhealthcareTag> = [
     {
       id: Math.random(),
       name: 'Tag with 30 characters allowed',

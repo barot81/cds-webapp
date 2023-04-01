@@ -1,49 +1,49 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ExxatUiComponentsComponent } from './exxat-ui-components.component';
+import { zhealthcareUiComponentsComponent } from './zhealthcare-ui-components.component';
 import { Routes, RouterModule } from '@angular/router';
-import { ExxatSearchComponent } from './tabs/exxat-search/exxat-search.component';
+import { zhealthcareSearchComponent } from './tabs/zhealthcare-search/zhealthcare-search.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
-import { FuseSharedModule, MaterialModule, FuseProgressBarModule, FuseModule, FuseSidebarModule, ExxatTreeModule, ExxatAvatarModule,  FuseMaterialColorPickerModule, ExxatAvatarListItemModule, FuseConfirmDialogModule } from '@exxat/ux';
+import { FuseSharedModule, MaterialModule, FuseProgressBarModule, FuseModule, FuseSidebarModule, zhealthcareTreeModule, zhealthcareAvatarModule,  FuseMaterialColorPickerModule, zhealthcareAvatarListItemModule, FuseConfirmDialogModule } from '@zhealthcare/ux';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatDividerModule } from '@angular/material/divider';
-import { ExxatWeekdayPickerComponent } from './tabs/exxat-weekday-picker/exxat-weekday-picker.component';
-import { PluginModule } from '@exxat/plugin';
-import { ExxatTagModule } from '@exxat/plugin/tags';
-import { ExxatFileViewerTabComponent } from './tabs/exxat-file-viewer-tab/exxat-file-viewer-tab.component';
+import { zhealthcareWeekdayPickerComponent } from './tabs/zhealthcare-weekday-picker/zhealthcare-weekday-picker.component';
+import { PluginModule } from '@zhealthcare/plugin';
+import { zhealthcareTagModule } from '@zhealthcare/plugin/tags';
+import { zhealthcareFileViewerTabComponent } from './tabs/zhealthcare-file-viewer-tab/zhealthcare-file-viewer-tab.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { ExxatExpandedFilterExampleComponent } from './tabs/exxat-expanded-filter-example/exxat-expanded-filter-example.component';
-import { ExxatAutocompleteChipsComponent } from './tabs/exxat-autocomplete-chips/exxat-autocomplete-chips.component';
+import { zhealthcareExpandedFilterExampleComponent } from './tabs/zhealthcare-expanded-filter-example/zhealthcare-expanded-filter-example.component';
+import { zhealthcareAutocompleteChipsComponent } from './tabs/zhealthcare-autocomplete-chips/zhealthcare-autocomplete-chips.component';
 import { ChipsWithoutCustomInputComponent } from './tabs/chips-without-custom-input/chips-without-custom-input.component';
-import { ExxatSkeletonExampleModule } from './tabs/exxat-skeleton-example/exxat-skeleton-example.module';
-import { ExxatTagExampleModule } from './tabs/exxat-tag-example/exxat-tag-example.module';
+import { zhealthcareSkeletonExampleModule } from './tabs/zhealthcare-skeleton-example/zhealthcare-skeleton-example.module';
+import { zhealthcareTagExampleModule } from './tabs/zhealthcare-tag-example/zhealthcare-tag-example.module';
 import { ConfirmDialogBoxDemoModule } from './tabs/confirm-dialog-box-demo/confirm-dialog-box-demo.module';
-import { ExxatAccordianDemoModule } from './tabs/exxat-accordian/exxat-accordian.module';
-import { ExxatAvatarDemoModule } from './tabs/exxat-avatar/exxat-avatar-example.module';
+import { zhealthcareAccordianDemoModule } from './tabs/zhealthcare-accordian/zhealthcare-accordian.module';
+import { zhealthcareAvatarDemoModule } from './tabs/zhealthcare-avatar/zhealthcare-avatar-example.module';
 import { SpinnerExampleModule } from './tabs/spinner-example/spinner-example.module';
-import { ExxatTreeDemoModule } from './tabs/exxat-tree-demo/exxat-tree-demo.module';
-import { ExxatFileUploadDemoModule } from './tabs/exxat-file-upload/exxat-file-upload-demo.module';
+import { zhealthcareTreeDemoModule } from './tabs/zhealthcare-tree-demo/zhealthcare-tree-demo.module';
+import { zhealthcareFileUploadDemoModule } from './tabs/zhealthcare-file-upload/zhealthcare-file-upload-demo.module';
 import { EvaluationDrawerExamplesModule } from './tabs/evaluation-drawer-examples/evaluation-drawer-examples.module';
-import { ExxatFormsModule } from './tabs/exxat-forms/exxat-forms.module';
-import { FileUploadModule } from '@exxat/plugin/file-upload';
+import { zhealthcareFormsModule } from './tabs/zhealthcare-forms/zhealthcare-forms.module';
+import { FileUploadModule } from '@zhealthcare/plugin/file-upload';
 
 const routes: Routes = [
   {
-    path: 'exxat-ui-components',
-    component: ExxatUiComponentsComponent
+    path: 'zhealthcare-ui-components',
+    component: zhealthcareUiComponentsComponent
   }
 ];
 
 @NgModule({
   declarations: [
-    ExxatUiComponentsComponent,
-    ExxatSearchComponent,
-    ExxatWeekdayPickerComponent,
-    ExxatFileViewerTabComponent,
-    ExxatExpandedFilterExampleComponent,
-    ExxatAutocompleteChipsComponent,
+    zhealthcareUiComponentsComponent,
+    zhealthcareSearchComponent,
+    zhealthcareWeekdayPickerComponent,
+    zhealthcareFileViewerTabComponent,
+    zhealthcareExpandedFilterExampleComponent,
+    zhealthcareAutocompleteChipsComponent,
     ChipsWithoutCustomInputComponent
   ],
   imports: [
@@ -61,25 +61,25 @@ const routes: Routes = [
     FuseModule,
     FuseSidebarModule,
     MatDividerModule,
-    ExxatAvatarModule,
+    zhealthcareAvatarModule,
     FileUploadModule,
     FuseMaterialColorPickerModule,
     PluginModule,
-    ExxatTagModule,
-    ExxatAvatarListItemModule,
-    ExxatTreeModule,
+    zhealthcareTagModule,
+    zhealthcareAvatarListItemModule,
+    zhealthcareTreeModule,
     MatTooltipModule,
     FuseConfirmDialogModule,
-    ExxatSkeletonExampleModule,
-    ExxatTagExampleModule,
+    zhealthcareSkeletonExampleModule,
+    zhealthcareTagExampleModule,
     ConfirmDialogBoxDemoModule,
     EvaluationDrawerExamplesModule,
-    ExxatAccordianDemoModule,
-    ExxatAvatarDemoModule,
+    zhealthcareAccordianDemoModule,
+    zhealthcareAvatarDemoModule,
     SpinnerExampleModule,
-    ExxatTreeDemoModule,
-    ExxatFileUploadDemoModule,
-    ExxatFormsModule
+    zhealthcareTreeDemoModule,
+    zhealthcareFileUploadDemoModule,
+    zhealthcareFormsModule
   ]
 })
-export class ExxatUiComponentsModule { }
+export class zhealthcareUiComponentsModule { }

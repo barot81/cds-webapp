@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
-import { FuseSidebarService } from '@exxat/ux';
-import { HeaderService } from '@exxat/ux';
+import { FuseSidebarService } from '@zhealthcare/ux';
+import { HeaderService } from '@zhealthcare/ux';
 @Component({
   selector: 'ryzen-map-of-affiliation-demo',
   templateUrl: './map-of-affiliation-demo.component.html',

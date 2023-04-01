@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, OnInit } from "@angular/core";
-import { HeaderService } from "@exxat/ux";
+import { HeaderService } from "@zhealthcare/ux";
 
 @Component({
-    selector: 'exxat-profiel-admin-container',
+    selector: 'zhealthcare-profiel-admin-container',
     templateUrl: 'profiel-admin-container.component.html',
 })
 export class ProfileAdminContainerComponent implements AfterViewInit {

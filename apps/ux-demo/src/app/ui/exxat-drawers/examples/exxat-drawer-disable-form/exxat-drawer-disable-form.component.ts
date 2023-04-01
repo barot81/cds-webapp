@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { DrawerAdapter } from '@exxat/ux';
+import { DrawerAdapter } from '@zhealthcare/ux';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
-import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
-import { FusionFormComponent, FusionFormAdapter } from '@exxat/fusion/components';
+import * as ClassicEditor from '@zhealthcare/ckeditor5-build-classic';
+import { FusionFormComponent, FusionFormAdapter } from '@zhealthcare/fusion/components';
 
 interface Prop {
   title: string;
   value: string;
 }
 @Component({
-  selector: 'exxat-drawer-disable-form',
-  templateUrl: './exxat-drawer-disable-form.component.html',
+  selector: 'zhealthcare-drawer-disable-form',
+  templateUrl: './zhealthcare-drawer-disable-form.component.html',
 })
-export class ExxatDrawerDisableFormComponent
+export class zhealthcareDrawerDisableFormComponent
   extends FusionFormComponent
   implements OnInit, FusionFormAdapter
 {

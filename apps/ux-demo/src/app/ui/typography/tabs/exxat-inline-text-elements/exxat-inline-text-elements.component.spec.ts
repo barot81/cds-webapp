@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatInlineTextElementsComponent } from './exxat-inline-text-elements.component';
+import { zhealthcareInlineTextElementsComponent } from './zhealthcare-inline-text-elements.component';
 
-describe('ExxatInlineTextElementsComponent', () => {
-  let component: ExxatInlineTextElementsComponent;
-  let fixture: ComponentFixture<ExxatInlineTextElementsComponent>;
+describe('zhealthcareInlineTextElementsComponent', () => {
+  let component: zhealthcareInlineTextElementsComponent;
+  let fixture: ComponentFixture<zhealthcareInlineTextElementsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatInlineTextElementsComponent ]
+      declarations: [ zhealthcareInlineTextElementsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatInlineTextElementsComponent);
+    fixture = TestBed.createComponent(zhealthcareInlineTextElementsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

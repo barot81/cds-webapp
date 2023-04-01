@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ExxatTooltipDemoRoutingModule } from './exxat-tooltip-demo-routing.module';
-import { ExxatTooltipComponent } from './exxat-tooltip/exxat-tooltip.component';
-import { MaterialModule } from '@exxat/ux';
+import { zhealthcareTooltipDemoRoutingModule } from './zhealthcare-tooltip-demo-routing.module';
+import { zhealthcareTooltipComponent } from './zhealthcare-tooltip/zhealthcare-tooltip.component';
+import { MaterialModule } from '@zhealthcare/ux';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TooltipComponent } from './tooltip/tooltip.component';
 
 @NgModule({
-  declarations: [ExxatTooltipComponent, TooltipComponent],
+  declarations: [zhealthcareTooltipComponent, TooltipComponent],
   imports: [
     CommonModule,
-    ExxatTooltipDemoRoutingModule,
+    zhealthcareTooltipDemoRoutingModule,
     MaterialModule,
     FuseHighlightModule,
     FlexLayoutModule
   ]
 })
-export class ExxatTooltipDemoModule { }
+export class zhealthcareTooltipDemoModule { }

@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { HeaderService } from "@exxat/ux";
+import { HeaderService } from "@zhealthcare/ux";
 
 export var single = [
     {
@@ -116,7 +116,7 @@ export var single = [
 ];
 
 @Component({
-    selector: 'exxat-graphs-layout-one',
+    selector: 'zhealthcare-graphs-layout-one',
     templateUrl: 'layout-one.component.html',
 })
 export class LayoutOneComponent {

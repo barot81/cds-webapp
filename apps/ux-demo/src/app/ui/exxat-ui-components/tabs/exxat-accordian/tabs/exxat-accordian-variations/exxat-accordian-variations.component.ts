@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
-  selector: 'exxat-accordian-variations',
-  templateUrl: './exxat-accordian-variations.component.html',
-  styleUrls: ['./exxat-accordian-variations.component.scss']
+  selector: 'zhealthcare-accordian-variations',
+  templateUrl: './zhealthcare-accordian-variations.component.html',
+  styleUrls: ['./zhealthcare-accordian-variations.component.scss']
 })
-export class ExxatAccordianVariationsComponent implements OnInit {
+export class zhealthcareAccordianVariationsComponent implements OnInit {
   form: FormGroup;
 
   constructor(public _formBuilder: FormBuilder) {

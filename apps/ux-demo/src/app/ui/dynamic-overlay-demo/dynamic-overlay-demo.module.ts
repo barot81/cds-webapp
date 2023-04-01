@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FileUploadModule } from '@exxat/plugin/file-upload';
+import { FileUploadModule } from '@zhealthcare/plugin/file-upload';
 import {
   DynamicOverlayModule,
   FuseThemeOptionsModule,
   MaterialModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
 import { ComponentPassingExampleComponent } from './containers';
 import { DynamicOverlayDemoRoutingModule } from './dynamic-overlay-demo-routing.module';

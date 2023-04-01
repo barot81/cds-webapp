@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ExxatTooltipModule, FuseSharedModule, MaterialModule } from '@exxat/ux';
+import { zhealthcareTooltipModule, FuseSharedModule, MaterialModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LOGINCONTAINTERS } from './container';
 import { LoginDemoRoutingModule } from './login-routing.module';
@@ -14,7 +14,7 @@ import { LOGINPAGES } from './pages';
         FlexLayoutModule,
         MaterialModule,
         LoginDemoRoutingModule,
-        ExxatTooltipModule
+        zhealthcareTooltipModule
     ]
 })
 export class LoginDemoModule { }

@@ -1,1 +1,1 @@
-export * from './exxat-graphs-standard.module';
+export * from './zhealthcare-graphs-standard.module';

@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 
 @Component({
   selector: 'ryzen-student-wishlist-demo',

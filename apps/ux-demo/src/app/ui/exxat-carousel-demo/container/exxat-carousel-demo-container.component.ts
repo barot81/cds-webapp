@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
-import { CarouselEvent, HeaderService } from "@exxat/ux";
+import { CarouselEvent, HeaderService } from "@zhealthcare/ux";
 
 interface HeaderContentItem {
     id: string;
@@ -180,10 +180,10 @@ const ELEMENT_DATA: Array<GridElement> = [
 ];
 
 @Component({
-    selector: 'exxat-carousel-demo',
-    templateUrl: './exxat-carousel-demo-container.component.html'
+    selector: 'zhealthcare-carousel-demo',
+    templateUrl: './zhealthcare-carousel-demo-container.component.html'
 })
-export class ExxatCarouselDemoContainerComponent implements AfterViewInit {
+export class zhealthcareCarouselDemoContainerComponent implements AfterViewInit {
 
     @ViewChild('header_content') header_content: ElementRef;
 

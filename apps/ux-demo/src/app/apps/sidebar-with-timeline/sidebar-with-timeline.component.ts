@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, QueryList, ViewChildren, ViewChild, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { Subject } from 'rxjs';
-import { FuseSidebarService, FusePerfectScrollbarDirective, fuseAnimations } from '@exxat/ux';
+import { FuseSidebarService, FusePerfectScrollbarDirective, fuseAnimations } from '@zhealthcare/ux';
 import { TimelineContentService } from './timeline-content.service';
 
 @Component({

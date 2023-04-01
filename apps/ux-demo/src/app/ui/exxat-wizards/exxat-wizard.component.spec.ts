@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatWizardComponent } from './exxat-wizard.component';
+import { zhealthcareWizardComponent } from './zhealthcare-wizard.component';
 
-describe('ExxatWizardComponent', () => {
-  let component: ExxatWizardComponent;
-  let fixture: ComponentFixture<ExxatWizardComponent>;
+describe('zhealthcareWizardComponent', () => {
+  let component: zhealthcareWizardComponent;
+  let fixture: ComponentFixture<zhealthcareWizardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatWizardComponent ]
+      declarations: [ zhealthcareWizardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatWizardComponent);
+    fixture = TestBed.createComponent(zhealthcareWizardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

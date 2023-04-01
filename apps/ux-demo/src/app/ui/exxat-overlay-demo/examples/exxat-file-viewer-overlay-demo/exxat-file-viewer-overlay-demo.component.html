@@ -1,4 +1,4 @@
-<div id="exxat-overlay-component-container-examples">
+<div id="zhealthcare-overlay-component-container-examples">
   <div class="center">
     <div class="content">
       <div fxLayout="column" fxLayout.gt-md="row">
@@ -67,18 +67,18 @@
                 <textarea #source hidden="hidden">
 
                   import { Component, ComponentFactoryResolver, TemplateRef } from '@angular/core';
-                  import { OverlayService } from '@exxat/ux';
+                  import { OverlayService } from '@zhealthcare/ux';
                   import { ComponentType } from '@angular/cdk/portal';
-                  import { DocumentViewerConfiguration } from '@exxat/plugin/file-upload';
-                  import { FileEndpoint } from '@exxat/plugin/file-upload';
+                  import { DocumentViewerConfiguration } from '@zhealthcare/plugin/file-upload';
+                  import { FileEndpoint } from '@zhealthcare/plugin/file-upload';
                   import { FileViewerContainerComponent } from '../../file-viewer-container/file-viewer-container.component';
                   
                   @Component({
-                    selector: 'exxat-app-exxat-file-viewer-overlay-demo',
-                    templateUrl: './exxat-file-viewer-overlay-demo.component.html',
-                    styleUrls: ['./exxat-file-viewer-overlay-demo.component.scss']
+                    selector: 'zhealthcare-app-zhealthcare-file-viewer-overlay-demo',
+                    templateUrl: './zhealthcare-file-viewer-overlay-demo.component.html',
+                    styleUrls: ['./zhealthcare-file-viewer-overlay-demo.component.scss']
                   })
-                  export class ExxatFileViewerOverlayDemoComponent {
+                  export class zhealthcareFileViewerOverlayDemoComponent {
                     
                     fileViewerComponentRef: any;
                     documentConfiguration: DocumentViewerConfiguration;
@@ -126,7 +126,7 @@
                     </div>
                     <div fxLayout="row" fxLayoutAlign="center center" >
                       <mat-card class="file_viewer_container">
-                        <exxat-file-viewer [documentConfiguration]="documentConfiguration"></exxat-file-viewer>
+                        <zhealthcare-file-viewer [documentConfiguration]="documentConfiguration"></zhealthcare-file-viewer>
                       </mat-card>
                     </div>
                   </div>
@@ -146,8 +146,8 @@
               >
                 <textarea #source hidden="hidden">
                   import { Component } from '@angular/core';
-                  import { ExxatOverlayRef } from '@exxat/ux';
-                  import { DocumentViewerConfiguration } from '@exxat/plugin/file-upload';
+                  import { zhealthcareOverlayRef } from '@zhealthcare/ux';
+                  import { DocumentViewerConfiguration } from '@zhealthcare/plugin/file-upload';
                   
                   @Component({
                     selector: 'ryzen-file-viewer-container',
@@ -158,7 +158,7 @@
                   
                     documentConfiguration: DocumentViewerConfiguration;
                     
-                    constructor(private overlayRef: ExxatOverlayRef) {
+                    constructor(private overlayRef: zhealthcareOverlayRef) {
                       this.documentConfiguration = this.overlayRef.data;
                     }
                     

@@ -1,5 +1,5 @@
 :host {
-    #exxat-drawers-form-examples {
+    #zhealthcare-drawers-form-examples {
       mat-icon{
         cursor: pointer;
       }
@@ -7,25 +7,24 @@
         position: relative;
         margin-bottom: 16px;
         min-height: 100px;
-  
+
         code {
           background: none !important;
         }
       }
-  
+
       .preview {
         padding: 16px;
         margin-bottom: 16px;
         min-height: 100px;
-  
+
         &:last-child {
           margin-bottom: 0;
         }
-  
+
         .mat-caption {
           margin-bottom: 16px;
         }
       }
     }
   }
-  

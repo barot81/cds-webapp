@@ -3,11 +3,11 @@
     <mat-label> Select Item </mat-label>
     <mat-select [formControl]="multiCtrl" [multiple]="true" #multiSelect>
       <mat-option>
-        <exxat-mat-select-search
+        <zhealthcare-mat-select-search
           [formControl]="filterCtrl"
           (toggleAll)="toggleSelectAll($event)"
         >
-        </exxat-mat-select-search>
+        </zhealthcare-mat-select-search>
       </mat-option>
       <mat-option
         *ngFor="let item of filteredDropdownSearchData | async; let i = index"

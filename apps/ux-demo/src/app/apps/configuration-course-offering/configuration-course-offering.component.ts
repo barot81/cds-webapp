@@ -1,9 +1,9 @@
 
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { FileCard, FileConfiguration, FileEndpoint } from '@exxat/plugin/file-upload';
-import { BreadCrumbType, CarouselEvent, FuseSidebarService } from '@exxat/ux';
-import { SecurityContext } from '@exxat/fusion/models';
+import { FileCard, FileConfiguration, FileEndpoint } from '@zhealthcare/plugin/file-upload';
+import { BreadCrumbType, CarouselEvent, FuseSidebarService } from '@zhealthcare/ux';
+import { SecurityContext } from '@zhealthcare/fusion/models';
 import { UXDemoDrawerService } from '../../remote-entry/ux-demo-drawer.service';
 import { GridService } from '../student-grid/grid.service';
 

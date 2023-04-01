@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 import { LayoutPopupTwoComponent } from '../../common/popups/layout-popup-two/layout-popup-two.component';
 
 @Component({

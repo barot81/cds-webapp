@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
+import * as ClassicEditor from '@zhealthcare/ckeditor5-build-classic';
 import { InnerDrawerService } from '../../drawers';
 
 @Component({

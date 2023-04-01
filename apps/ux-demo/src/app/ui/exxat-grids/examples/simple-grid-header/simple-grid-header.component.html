@@ -1,10 +1,10 @@
 <div fxLayout="column">
   <div fxLayout="row" fxLayoutAlign="space-between center" class="w-100-p">
     <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
-      <exxat-search-bar
+      <zhealthcare-search-bar
         [listofOptions]="SearchFields"
         class="table-search-with-dropdown"
-      ></exxat-search-bar>
+      ></zhealthcare-search-bar>
       <div
         fxLayout="row"
         fxLayoutAlign="start center"
@@ -28,7 +28,7 @@
           </mat-chip-list>
         </div>
         <a
-          exxatDrawerAction
+          zhealthcareDrawerAction
           [componentSelector]="
             _UXDemoDrawerService.get('ryzen-show-more-filter-drawer')
           "
@@ -76,7 +76,7 @@
         <button
           tabindex="0"
           aria-label="Edit Columns"
-          exxatDrawerAction
+          zhealthcareDrawerAction
           [componentSelector]="gridService.get('ryzen-edit-columns')"
           [size]="'drawer-sm'"
           [caption]="'Edit Columns'"
@@ -120,7 +120,7 @@
           mat-icon-button
           class="ml-4 filter-icon-button"
           aria-label="filters"
-          exxatDrawerAction
+          zhealthcareDrawerAction
           [componentSelector]="_UXDemoDrawerService.get('ryzen-filter-drawer')"
           [size]="'drawer-lg'"
           [caption]="'Filters'"
@@ -154,7 +154,7 @@
           <button
             mat-menu-item
             aria-label="Edit Columns"
-            exxatDrawerAction
+            zhealthcareDrawerAction
             [componentSelector]="gridService.get('ryzen-edit-columns')"
             [size]="'drawer-sm'"
             [caption]="'Edit Columns'"

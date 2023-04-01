@@ -31,11 +31,11 @@
                 <mat-icon>label</mat-icon>
               </button>
               <mat-menu #tagsMenu="matMenu" [overlapTrigger]="false">
-                <exxat-tag
+                <zhealthcare-tag
                   [tags]="tags"
                   (onTagChanges)="tagsChanged($event)"
                   [options]="tagOptions"
-                ></exxat-tag>
+                ></zhealthcare-tag>
               </mat-menu>
             </div>
 
@@ -80,7 +80,7 @@
         <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="100">
           <div
             fxLayout="column"
-            class="exxat-info pb-16"
+            class="zhealthcare-info pb-16"
             fxFlex.gt-xs="33.33"
             fxFlex="100"
           >
@@ -89,7 +89,7 @@
           </div>
           <div
             fxLayout="column"
-            class="exxat-info pb-16"
+            class="zhealthcare-info pb-16"
             fxFlex.gt-xs="33.33"
             fxFlex="100"
           >
@@ -100,7 +100,7 @@
           </div>
           <div
             fxLayout="column"
-            class="exxat-info pb-16"
+            class="zhealthcare-info pb-16"
             fxFlex.gt-xs="33.33"
             fxFlex="100"
           >
@@ -116,7 +116,7 @@
           mat-icon-button
           class="action-icon"
           aria-label="edit more information of course"
-          exxatDrawerAction
+          zhealthcareDrawerAction
           [size]="'drawer-sm'"
           [caption]="'Status'"
           [primaryAction]="'Save'"
@@ -165,7 +165,7 @@
           <button
             mat-icon-button
             class="icon-fill-bg"
-            exxatDrawerAction
+            zhealthcareDrawerAction
             [componentSelector]="
               _PlanAppDemoDrawerService.get('ryzen-add-course-details')
             "
@@ -204,7 +204,7 @@
 
         <div fxLayout="row wrap" class="pt-16 pl-16">
           <div
-            class="exxat-info mb-16 pr-16"
+            class="zhealthcare-info mb-16 pr-16"
             fxLayout="column"
             fxFlex="100"
             fxFlex.gt-sm="33.33"
@@ -221,7 +221,7 @@
             </div>
           </div>
           <div
-            class="exxat-info mb-16 pr-16"
+            class="zhealthcare-info mb-16 pr-16"
             fxLayout="column"
             fxFlex="100"
             fxFlex.gt-sm="33.33"
@@ -238,7 +238,7 @@
             </div>
           </div>
           <div
-            class="exxat-info mb-16 pr-16"
+            class="zhealthcare-info mb-16 pr-16"
             fxLayout="column"
             fxFlex="100"
             fxFlex.gt-sm="33.33"
@@ -259,7 +259,7 @@
             </div>
           </div>
           <div
-            class="exxat-info mb-16 pr-16"
+            class="zhealthcare-info mb-16 pr-16"
             fxLayout="column"
             fxFlex="100"
             fxFlex.gt-sm="33.33"
@@ -276,7 +276,7 @@
             </div>
           </div>
           <div
-            class="exxat-info mb-16 pr-16"
+            class="zhealthcare-info mb-16 pr-16"
             fxLayout="column"
             fxFlex="100"
             fxFlex.gt-sm="33.33"
@@ -321,7 +321,7 @@
             mat-icon-button
             class="icon-fill-bg"
             aria-label="Edit Course requirements"
-            exxatDrawerAction
+            zhealthcareDrawerAction
             [size]="'drawer-sm'"
             [caption]="'Status'"
             [primaryAction]="'Save'"
@@ -336,7 +336,7 @@
 
         <div FXlayout="column" class="pt-16 px-16">
           <div fxLayout="row" fxLayoutAlign="space-between start">
-            <div fxLayout="column" class="exxat-info pb-16 pr-16">
+            <div fxLayout="column" class="zhealthcare-info pb-16 pr-16">
               <span class="title" tabindex="0" aria-label="title Prerequistites"
                 >Prerequistites</span
               >
@@ -369,7 +369,7 @@
           </div>
 
           <div fxLayout="row" fxLayoutAlign="space-between start">
-            <div fxLayout="column" class="exxat-info pb-16 pr-16">
+            <div fxLayout="column" class="zhealthcare-info pb-16 pr-16">
               <span class="title" tabindex="0" aria-label="title Corequistites"
                 >Corequistites</span
               >
@@ -423,7 +423,7 @@
         </header>
 
         <div fxLayout="column" fxLayoutAlign="start start" class="px-16 pt-16">
-          <div fxLayout="column" class="exxat-info pb-16">
+          <div fxLayout="column" class="zhealthcare-info pb-16">
             <div
               fxLayout="row"
               fxLayoutAlign="space-between start"
@@ -557,7 +557,7 @@
             mat-icon-button
             class="action-icon"
             aria-label="edit Assesment weightages"
-            exxatDrawerAction
+            zhealthcareDrawerAction
             [size]="'drawer-sm'"
             [caption]="'Status'"
             [primaryAction]="'Save'"
@@ -575,7 +575,7 @@
           <table
             mat-table
             [dataSource]="dataSource"
-            class="w-100-p exxat-table slot-demo-table table-border border-left-right"
+            class="w-100-p zhealthcare-table slot-demo-table table-border border-left-right"
           >
             <!-- Assessment name  -->
             <ng-container matColumnDef="assessment">
@@ -638,7 +638,7 @@
             mat-icon-button
             class="action-icon"
             aria-label="edit Grading"
-            exxatDrawerAction
+            zhealthcareDrawerAction
             [size]="'drawer-sm'"
             [caption]="'Status'"
             [primaryAction]="'Save'"
@@ -652,7 +652,7 @@
           <table
             mat-table
             [dataSource]="dataSource"
-            class="w-100-p exxat-table slot-demo-table table-border border-left-right"
+            class="w-100-p zhealthcare-table slot-demo-table table-border border-left-right"
           >
             <!-- grade Column -->
             <ng-container matColumnDef="grade">
@@ -736,7 +736,7 @@
             mat-icon-button
             class="icon-fill-bg"
             aria-label="add to Course Policies"
-            exxatDrawerAction
+            zhealthcareDrawerAction
             [size]="'drawer-sm'"
             [caption]="'Status'"
             [primaryAction]="'Save'"
@@ -749,7 +749,7 @@
           </button>
         </header>
 
-        <div fxLayout="column" class="pt-16 pl-16 exxat-info">
+        <div fxLayout="column" class="pt-16 pl-16 zhealthcare-info">
           <div
             fxLayout="row"
             fxLayoutAlign="space-between center"
@@ -805,7 +805,7 @@
           <button
             mat-icon-button
             aria-label="add to Attributes"
-            exxatDrawerAction
+            zhealthcareDrawerAction
             class="icon-fill-bg"
             [primaryAction]="'Save'"
             [secondaryAction]="'Delete'"
@@ -821,7 +821,7 @@
         </header>
 
         <div FXlayout="column" class="pl-28">
-          <div fxLayout="column" class="exxat-info pb-16">
+          <div fxLayout="column" class="zhealthcare-info pb-16">
             <span class="title" tabindex="0" aria-label="Learning experiences"
               >Learning experiences</span
             >
@@ -835,7 +835,7 @@
 
           <mat-divider class="w-100-p margin-auto"></mat-divider>
 
-          <div fxLayout="column" class="exxat-info py-16">
+          <div fxLayout="column" class="zhealthcare-info py-16">
             <span class="title" tabindex="0" aria-label="Assessment methods"
               >Assessment methods</span
             >
@@ -850,7 +850,7 @@
 
           <mat-divider class="w-100-p margin-auto"></mat-divider>
 
-          <div fxLayout="column" class="exxat-info py-16">
+          <div fxLayout="column" class="zhealthcare-info py-16">
             <span
               class="title"
               tabindex="0"
@@ -869,7 +869,7 @@
 
           <mat-divider class="w-100-p margin-auto"></mat-divider>
 
-          <div fxLayout="column" class="exxat-info pt-16">
+          <div fxLayout="column" class="zhealthcare-info pt-16">
             <span class="title" tabindex="0" aria-label="Theme"> Theme</span>
             <span class="description" tabindex="0" aria-label="Pain, Cardiology"
               >Pain, Cardiology</span
@@ -898,7 +898,7 @@
           <button
             mat-icon-button
             aria-label="add to Faculty"
-            exxatDrawerAction
+            zhealthcareDrawerAction
             class="icon-fill-bg"
             [primaryAction]="'Save'"
             [secondaryAction]="'Delete'"
@@ -919,10 +919,10 @@
             fxLayoutAlign="space-between center"
           >
             <div fxLayout="row" fxLayoutAlign="start center">
-              <exxat-avatar
+              <zhealthcare-avatar
                 firstName="Devon"
                 lastName="Robertson"
-              ></exxat-avatar>
+              ></zhealthcare-avatar>
               <div fxLayout="column" fxLayoutAlign="start start">
                 <span
                   class="font-14"
@@ -943,10 +943,10 @@
             fxLayoutAlign="space-between center"
           >
             <div fxLayout="row" fxLayoutAlign="start center">
-              <exxat-avatar
+              <zhealthcare-avatar
                 firstName="Gregory"
                 lastName="Hawkins"
-              ></exxat-avatar>
+              ></zhealthcare-avatar>
               <div fxLayout="column" fxLayoutAlign="start start">
                 <span
                   class="font-14"

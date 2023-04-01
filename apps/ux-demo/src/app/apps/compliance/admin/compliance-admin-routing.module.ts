@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthGuardService } from '@exxat/fusion/core';
+import { AuthGuardService } from '@zhealthcare/fusion/core';
 import { ComplianceAdminComponent } from './compliance-admin/compliance-admin.component';
 import { ComplianceManagementSummaryComponent } from './compliance-management-summary/compliance-management-summary.component';
 import { ComplianceReviewComponent } from './compliance-review/compliance-review.component';

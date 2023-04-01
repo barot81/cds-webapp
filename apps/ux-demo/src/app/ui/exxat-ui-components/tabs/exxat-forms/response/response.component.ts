@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'exxat-forms-response',
+  selector: 'zhealthcare-forms-response',
   templateUrl: './response.component.html',
   styleUrls: ['./response.component.scss']
 })

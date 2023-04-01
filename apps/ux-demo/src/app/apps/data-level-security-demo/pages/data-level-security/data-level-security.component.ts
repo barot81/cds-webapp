@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
-import { FullScreenService, HeaderService } from "@exxat/ux";
+import { FullScreenService, HeaderService } from "@zhealthcare/ux";
 import { DataLevelSecurityDrawerService } from "../../drawers";
 
 

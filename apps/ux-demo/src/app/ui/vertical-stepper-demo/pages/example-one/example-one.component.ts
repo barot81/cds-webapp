@@ -2,7 +2,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 
 export interface PeriodicElement {
   dataBucket: string;
@@ -138,7 +138,7 @@ export class ExampleOneComponent implements OnInit {
   // dataSource = ELEMENT_DATA;
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
-  role_description = `Short Description about the role............ 
+  role_description = `Short Description about the role............
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Sem mauris consectetur vulputate aenean in enim ultrices.
                         Odio gravida eget ultricies lacinia ornare elit at nunc.

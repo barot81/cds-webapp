@@ -1,10 +1,10 @@
 import { Injectable, OnInit } from '@angular/core';
-import { ComponentMap } from '@exxat/fusion/core';
+import { ComponentMap } from '@zhealthcare/fusion/core';
 import { ViewInstructionDemoComponent } from '../ui/scroll-spy-demo/examples/component-level-scroll-example/view-instruction-demo/view-instruction-demo/view-instruction-demo.component';
-import { DrawerWithTableComponent } from '../ui/exxat-ui-components/tabs/evaluation-drawer-examples/drawer-with-table/drawer-with-table.component';
-import { DrawerWithSectionsComponent } from '../ui/exxat-ui-components/tabs/evaluation-drawer-examples/drawer-with-sections/drawer-with-sections.component';
-import { createNewStandardFormComponent } from '../ui/exxat-ui-components/tabs/evaluation-drawer-examples/create-new-standard-form/create-new-standard-form.component';
-import { addBenchmarkComponent } from '../ui/exxat-ui-components/tabs/evaluation-drawer-examples/add-benchmark/add-benchmark.component';
+import { DrawerWithTableComponent } from '../ui/zhealthcare-ui-components/tabs/evaluation-drawer-examples/drawer-with-table/drawer-with-table.component';
+import { DrawerWithSectionsComponent } from '../ui/zhealthcare-ui-components/tabs/evaluation-drawer-examples/drawer-with-sections/drawer-with-sections.component';
+import { createNewStandardFormComponent } from '../ui/zhealthcare-ui-components/tabs/evaluation-drawer-examples/create-new-standard-form/create-new-standard-form.component';
+import { addBenchmarkComponent } from '../ui/zhealthcare-ui-components/tabs/evaluation-drawer-examples/add-benchmark/add-benchmark.component';
 import { AddFormDrawerComponent } from '../apps/configuration-course-offering/add-form-drawer/add-form-drawer.component';
 import { AddRecordsDrawerDemoComponent } from '../apps/add-records-tenant-onboarding/add-records-drawer-demo/add-records-drawer-demo.component';
 import { AssociateClinicalInstructorDrawerComponent } from '../apps/drawer-examples-demo/associate-clinical-instructor-drawer/associate-clinical-instructor-drawer.component';
@@ -37,7 +37,7 @@ export class UXDemoDrawerService extends ComponentMap {
       'ryzen-associate-clinical-instructor-drawer',
       AssociateClinicalInstructorDrawerComponent
     );
-    this.add('exxat-app-preview-demo-content', PreviewDemoContentComponent);
+    this.add('zhealthcare-app-preview-demo-content', PreviewDemoContentComponent);
     this.add('ryzen-add-institution-drawer', AddInstitutionDrawerComponent);
     this.add(
       'ryzen-tenant-onboarding-edit-columns',

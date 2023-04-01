@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FuseThemeOptionsModule, MaterialModule } from '@exxat/ux';
+import { FuseThemeOptionsModule, MaterialModule } from '@zhealthcare/ux';
 import { MessageBoxesRoutingModule } from './message-boxes-routing.module';
 import { MessageBoxesComponent } from './pages/message-boxes.component';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';

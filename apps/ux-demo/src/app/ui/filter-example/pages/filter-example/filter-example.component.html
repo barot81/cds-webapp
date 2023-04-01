@@ -8,7 +8,7 @@
               mat-icon-button
               aria-label="Click to go back"
               class="action-icon mx-8"
-              routerLink="/admin/ux/ui/exxat-component-library"
+              routerLink="/admin/ux/ui/zhealthcare-component-library"
             >
               <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
             </button>
@@ -36,9 +36,9 @@
               mat-icon-button
               class="ml-4 filter-icon-button"
               aria-label="filters"
-              exxatDrawerAction
+              zhealthcareDrawerAction
               [componentSelector]="
-                _exxatDrawerFormService.get('ryzen-drawer-filter-example-one')
+                _zhealthcareDrawerFormService.get('ryzen-drawer-filter-example-one')
               "
               [size]="'drawer-md'"
               [caption]="'Filters'"
@@ -72,9 +72,9 @@
                     mat-icon-button
                     class="ml-4 filter-icon-button"
                     aria-label="filters"
-                    exxatDrawerAction
+                    zhealthcareDrawerAction
                     [componentSelector]="
-                      _exxatDrawerFormService.get('ryzen-drawer-filter-example-one')
+                      _zhealthcareDrawerFormService.get('ryzen-drawer-filter-example-one')
                     "
                     [size]="'drawer-md'"
                     [caption]="'Filters'"
@@ -99,14 +99,14 @@
                 <textarea #source hidden="hidden">
  
                     import { Component } from '@angular/core';
-                    import { ExxatDrawerFormService } from '../../../exxat-drawers/exxat-drawer-forms-shared.service';
+                    import { zhealthcareDrawerFormService } from '../../../zhealthcare-drawers/zhealthcare-drawer-forms-shared.service';
 
                     @Component({
-                    selector: 'exxat-filter-example',
+                    selector: 'zhealthcare-filter-example',
                     templateUrl: './filter-example.component.html',
                     })
                     export class FilterExampleComponent {
-                    constructor(public _exxatDrawerFormService: ExxatDrawerFormService) {}
+                    constructor(public _zhealthcareDrawerFormService: zhealthcareDrawerFormService) {}
                     }
                 </textarea>
               </fuse-highlight>
@@ -370,8 +370,8 @@
  
                   import { Component } from '@angular/core';
                   import { FormControl } from '@angular/forms';
-                  import { ExxatTag, TagView } from '@exxat/plugin';
-                  import { SidebarFocusHelper } from '../../../ui/exxat-sidebar/exxat-sidebar.service';
+                  import { zhealthcareTag, TagView } from '@zhealthcare/plugin';
+                  import { SidebarFocusHelper } from '../../../ui/zhealthcare-sidebar/zhealthcare-sidebar.service';
 
                   export interface filterListItem {
                     id: string;
@@ -389,7 +389,7 @@
                     templateUrl: './filter-drawer.component.html'
                   })
                   export class FilterDrawerComponent {
-                    tags: Array<ExxatTag> = [
+                    tags: Array<zhealthcareTag> = [
                       {
                         id: Math.random(),
                         name: 'Tag with 30 characters allowed',
@@ -456,13 +456,13 @@
                     selectedCohort = '';
                     selectedDocument = [];
 
-                    getTagTitle(tag: ExxatTag): string {
+                    getTagTitle(tag: zhealthcareTag): string {
                       if (tag && tag !== null) {
                         return tag.name && tag.name !== null ? tag.name : tag.title;
                       }
                     }
 
-                    getTagColor(tag: ExxatTag): string {
+                    getTagColor(tag: zhealthcareTag): string {
                       if (tag && tag !== null) {
                         return tag.color && tag.color !== null ? tag.color : tag.colorCode;
                       }

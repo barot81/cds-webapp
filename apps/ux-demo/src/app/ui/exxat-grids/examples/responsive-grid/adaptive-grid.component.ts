@@ -2,7 +2,7 @@ import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { ExxatTag } from '@exxat/plugin/tags';
+import { zhealthcareTag } from '@zhealthcare/plugin/tags';
 import { GridService } from 'apps/ux-demo/src/app/apps/student-grid/grid.service';
 import { UXDemoDrawerService } from 'apps/ux-demo/src/app/remote-entry/ux-demo-drawer.service';
 // import { WithoutStickyHeaderPopupComponent } from '../../components';
@@ -308,7 +308,7 @@ export class AdaptiveGridExampleComponenent {
   clickedRows = new Set<PeriodicElement>();
   highlightedRows = new Set<PeriodicElement>();
 
-  tags: Array<ExxatTag> = [
+  tags: Array<zhealthcareTag> = [
     {
       id: Math.random(),
       name: 'Tag Label 1 Bigger Text',

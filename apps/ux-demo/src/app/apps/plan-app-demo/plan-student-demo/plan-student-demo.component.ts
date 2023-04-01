@@ -1,7 +1,7 @@
 
 
 import { Component, OnInit , ViewChild} from '@angular/core';
-import { FuseSidebarService } from '@exxat/ux';
+import { FuseSidebarService } from '@zhealthcare/ux';
 
 @Component({
   selector: 'ryzen-plan-student-demo-plan',

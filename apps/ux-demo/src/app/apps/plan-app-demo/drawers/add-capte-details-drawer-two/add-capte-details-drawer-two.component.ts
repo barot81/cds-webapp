@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { SecurityContext } from '@exxat/fusion/models';
-import { FileCard, FileConfiguration, FileEndpoint } from '@exxat/plugin/file-upload';
+import { SecurityContext } from '@zhealthcare/fusion/models';
+import { FileCard, FileConfiguration, FileEndpoint } from '@zhealthcare/plugin/file-upload';
 import { Fruit } from '../objective-drawer-demo/objective-drawer-demo.component';
 
 @Component({
@@ -49,7 +49,7 @@ export class AddCAPTEDetailsDrawerTwoComponent implements OnInit {
   constructor() {
         // File Upload Configuration  -- START
         this.fileConfiguration = new FileConfiguration();
-        this.fileConfiguration.fileEndpoint = new FileEndpoint('exxat.ux', 'Demo');
+        this.fileConfiguration.fileEndpoint = new FileEndpoint('zhealthcare.ux', 'Demo');
         this.fileConfiguration.fileCards = [];
         const fileCard = new FileCard();
         this.fileConfiguration.fileCards.push(fileCard);

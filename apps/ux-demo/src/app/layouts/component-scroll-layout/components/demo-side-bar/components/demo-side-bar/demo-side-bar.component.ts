@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, Input, ViewChild } from "@angular/core";
-import { HeaderService } from "@exxat/ux";
+import { HeaderService } from "@zhealthcare/ux";
 
 @Component({
-    selector: 'exxat-demo-side-bar',
+    selector: 'zhealthcare-demo-side-bar',
     templateUrl: 'demo-side-bar.component.html'
 })
 export class DemoSidebarComponent implements AfterViewInit {

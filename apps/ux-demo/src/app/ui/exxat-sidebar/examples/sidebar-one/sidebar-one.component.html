@@ -21,7 +21,7 @@
           mat-icon-button
           aria-label="Click to go back"
           class="action-icon mx-8"
-          routerLink="/admin/ux/ui/exxat-sidebar"
+          routerLink="/admin/ux/ui/zhealthcare-sidebar"
         >
           <i aria-hidden="true" class="fal fa-long-arrow-left"></i>
         </button>
@@ -64,13 +64,13 @@
           <mat-list-item
             [ngClass]="{ 'active-list-item': student.id === selectedId }"
           >
-            <exxat-avatar-list-item
+            <zhealthcare-avatar-list-item
               [firstName]="student.firstName"
               [lastName]="student.lastName"
               src="assets/images/avatars/anna-strong.png"
               aria-hidden="true"
             >
-            </exxat-avatar-list-item>
+            </zhealthcare-avatar-list-item>
           </mat-list-item>
         </button>
       </mat-list>

@@ -1,7 +1,7 @@
 
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { FuseSidebarService, HeaderService } from '@exxat/ux';
+import { FuseSidebarService, HeaderService } from '@zhealthcare/ux';
 import { FormControl } from '@angular/forms';
 import { GridService } from '../student-grid/grid.service';
 import { BehaviorSubject } from 'rxjs';

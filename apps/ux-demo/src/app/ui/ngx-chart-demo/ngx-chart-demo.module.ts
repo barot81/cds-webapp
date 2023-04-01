@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { MaterialModule } from "@exxat/ux";
+import { MaterialModule } from "@zhealthcare/ux";
 import { FuseHighlightModule } from "../../helpers/highlight/highlight.module";
 import { ContainerComponent } from "./container/container.component";
 import { NGXCHARTEXAMPLES } from "./examples";

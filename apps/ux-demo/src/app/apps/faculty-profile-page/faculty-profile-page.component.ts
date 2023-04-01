@@ -1,8 +1,8 @@
 
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FileCard, FileConfiguration, FileEndpoint } from '@exxat/plugin/file-upload';
-import { BreadCrumbType, CarouselEvent, FuseSidebarService } from '@exxat/ux';
-import { SecurityContext } from '@exxat/fusion/models';
+import { FileCard, FileConfiguration, FileEndpoint } from '@zhealthcare/plugin/file-upload';
+import { BreadCrumbType, CarouselEvent, FuseSidebarService } from '@zhealthcare/ux';
+import { SecurityContext } from '@zhealthcare/fusion/models';
 import { BehaviorSubject } from 'rxjs';
 import { UXDemoDrawerService } from '../../remote-entry/ux-demo-drawer.service';
 
@@ -21,7 +21,7 @@ export class FacultyProfilePageComponent {
   constructor( private _fuseSidebarService: FuseSidebarService, public _UXDemoDrawerService: UXDemoDrawerService) {
     // File Upload Configuration  -- START
     this.fileConfiguration = new FileConfiguration();
-    this.fileConfiguration.fileEndpoint = new FileEndpoint('exxat.ux', 'Demo');
+    this.fileConfiguration.fileEndpoint = new FileEndpoint('zhealthcare.ux', 'Demo');
     this.fileConfiguration.fileCards = [];
     const fileCard = new FileCard();
     this.fileConfiguration.fileCards.push(fileCard);

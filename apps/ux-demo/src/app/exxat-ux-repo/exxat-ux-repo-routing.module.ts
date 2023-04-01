@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ExxatUxRepoComponent } from './exxat-ux-repo/exxat-ux-repo.component';
+import { zhealthcareUxRepoComponent } from './zhealthcare-ux-repo/zhealthcare-ux-repo.component';
 
 const routes: Routes = [
   {
-    path: 'exxat-component-library',
-    component: ExxatUxRepoComponent,
+    path: 'zhealthcare-component-library',
+    component: zhealthcareUxRepoComponent,
   },
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ExxatUxRepoRoutingModule {}
+export class zhealthcareUxRepoRoutingModule {}

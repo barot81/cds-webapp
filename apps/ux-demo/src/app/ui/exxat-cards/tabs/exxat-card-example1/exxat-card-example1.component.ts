@@ -1,20 +1,20 @@
 import { Component, ElementRef, ViewChild ,EventEmitter,Output, AfterViewInit} from '@angular/core';
-import { CarouselEvent } from '@exxat/ux';
+import { CarouselEvent } from '@zhealthcare/ux';
 import { UXDemoDrawerService } from '../../../../remote-entry/ux-demo-drawer.service';
 
 import { MatMenuTrigger } from '@angular/material/menu';
-import { ExxatTag, ExxatTagOptions } from '@exxat/plugin/tags';
+import { zhealthcareTag, zhealthcareTagOptions } from '@zhealthcare/plugin/tags';
 interface HeaderContentItem {
   id: string;
   name: string;
 }
 
 @Component({
-  selector: 'ryzen-exxat-card-example1',
-  templateUrl: './exxat-card-example1.component.html',
-  styleUrls: ['./exxat-card-example1.component.scss']
+  selector: 'ryzen-zhealthcare-card-example1',
+  templateUrl: './zhealthcare-card-example1.component.html',
+  styleUrls: ['./zhealthcare-card-example1.component.scss']
 })
-export class ExxatCardExample1Component {
+export class zhealthcareCardExample1Component {
 
   tooltipOptions = {
     contentType: 'string',
@@ -93,13 +93,13 @@ onHeaderCarouselEvent($event: CarouselEvent) {
     this.currentHeaderStep = $event.currentStep;
 }
 
-public tagOptions = new ExxatTagOptions();
+public tagOptions = new zhealthcareTagOptions();
 
 @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
 @Output() menuOpened: EventEmitter<void>;
 
-tags: Array<ExxatTag> = [
+tags: Array<zhealthcareTag> = [
   { id: Math.random(), name: 'Tag Label 1 Bigger Text', color: 'indigo-500', isChecked: true },
   { id: Math.random(), name: 'Tag Label 2', color: 'deep-orange-500', isChecked: true },
   { id: Math.random(), name: 'Tag Label 3', color: 'pink-500', isChecked: false },

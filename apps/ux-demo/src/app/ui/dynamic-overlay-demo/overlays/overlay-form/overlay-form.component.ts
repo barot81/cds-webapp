@@ -2,7 +2,7 @@
 /* eslint-disable @angular-eslint/component-selector */
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DynamicOverlayService } from '@exxat/ux';
+import { DynamicOverlayService } from '@zhealthcare/ux';
 
 @Component({
   selector: 'overlay-form',

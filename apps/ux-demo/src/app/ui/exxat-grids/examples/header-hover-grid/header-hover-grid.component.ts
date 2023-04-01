@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { FullScreenService, HeaderService } from '@exxat/ux';
+import { FullScreenService, HeaderService } from '@zhealthcare/ux';
 import { MatSort } from '@angular/material/sort';
 import { UXDemoDrawerService } from '../../../../remote-entry/ux-demo-drawer.service';
 import { GridService } from '../../../../apps/student-grid/grid.service';

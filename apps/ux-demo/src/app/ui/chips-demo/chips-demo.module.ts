@@ -10,12 +10,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import {
-  ExxatTooltipModule,
+  zhealthcareTooltipModule,
   FuseDirectivesModule,
   FuseThemeOptionsModule,
   MaterialModule,
   SpecializedChipsModule
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
 import { ChipsDemoNavBarComponent } from './chips-demo-nav-bar/chips-demo-nav-bar.component';
 import { ChipsDemoRoutingModule } from './chips-demo-routing.module';
@@ -52,7 +52,7 @@ import { SpecializedChipDemoComponent } from './specialized-chip-demo/specialize
     FlexLayoutModule,
     FuseThemeOptionsModule,
     FuseDirectivesModule,
-    ExxatTooltipModule,
+    zhealthcareTooltipModule,
     SpecializedChipsModule,
   ],
 })

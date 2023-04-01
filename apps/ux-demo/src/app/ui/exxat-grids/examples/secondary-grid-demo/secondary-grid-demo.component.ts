@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 import { GridService } from '../../../../apps/student-grid/grid.service';
 import { UXDemoDrawerService } from '../../../../remote-entry/ux-demo-drawer.service';
 
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 
 export interface PeriodicElement {
   src: string;

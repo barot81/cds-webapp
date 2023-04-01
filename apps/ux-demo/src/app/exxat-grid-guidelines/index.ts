@@ -1,1 +1,1 @@
-export * from './exxat-grid-guidelines.module';
+export * from './zhealthcare-grid-guidelines.module';

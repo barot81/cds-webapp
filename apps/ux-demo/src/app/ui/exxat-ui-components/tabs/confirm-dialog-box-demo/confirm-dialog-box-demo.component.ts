@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogService } from '@exxat/ux';
+import { ConfirmDialogService } from '@zhealthcare/ux';
 import { checkboxPopupExampleDemoComponent } from './checkbox-popup-example-demo/checkbox-popup-example-demo.component';
 import { dialogBoxWithHeadingDemoComponent } from './dialog-box-with-heading-demo/dialog-box-with-heading-demo.component';
 import { DialogBoxWithImageDemoComponent } from './dialog-box-with-image-demo/dialog-box-with-image-demo.component';
@@ -72,8 +72,8 @@ export class ConfirmDialogBoxDemoComponent implements OnInit {
     });
   }
 
-  
 
-  
+
+
 
 }

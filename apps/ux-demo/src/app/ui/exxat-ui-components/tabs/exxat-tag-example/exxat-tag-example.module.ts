@@ -4,21 +4,21 @@ import {
   MaterialModule,
   FuseSharedModule,
   FuseThemeOptionsModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FuseHighlightModule } from "../../../../helpers/highlight/highlight.module";
 import { CommonModule } from '@angular/common';
-import { ExxatTagExampleComponent } from './exxat-tag-example.component';
-import { ExxatTagModule } from '@exxat/plugin/tags';
-import { ExxatTagExampleOneComponent } from './examples/exxat-tag-example-one/exxat-tag-example-one.component';
-import { ExxatTagExampleTwoComponent } from './examples/exxat-tag-example-two/exxat-tag-example-two.component';
-import { ExxatTagExampleThreeComponent } from './examples/exxat-tag-example-three/exxat-tag-example-three.component';
+import { zhealthcareTagExampleComponent } from './zhealthcare-tag-example.component';
+import { zhealthcareTagModule } from '@zhealthcare/plugin/tags';
+import { zhealthcareTagExampleOneComponent } from './examples/zhealthcare-tag-example-one/zhealthcare-tag-example-one.component';
+import { zhealthcareTagExampleTwoComponent } from './examples/zhealthcare-tag-example-two/zhealthcare-tag-example-two.component';
+import { zhealthcareTagExampleThreeComponent } from './examples/zhealthcare-tag-example-three/zhealthcare-tag-example-three.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
   {
-    path: 'exxat-tags',
-    component: ExxatTagExampleComponent,
+    path: 'zhealthcare-tags',
+    component: zhealthcareTagExampleComponent,
     children: [
       {
         path: '',
@@ -27,17 +27,17 @@ const routes: Routes = [
       },
       {
         path: 'example-one',
-        component: ExxatTagExampleOneComponent,
+        component: zhealthcareTagExampleOneComponent,
         pathMatch: 'full'
       },
       {
         path: 'example-two',
-        component: ExxatTagExampleTwoComponent,
+        component: zhealthcareTagExampleTwoComponent,
         pathMatch: 'full'
       },
       {
         path: 'example-three',
-        component: ExxatTagExampleThreeComponent,
+        component: zhealthcareTagExampleThreeComponent,
         pathMatch: 'full'
       }
     ]
@@ -46,10 +46,10 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ExxatTagExampleComponent,
-    ExxatTagExampleOneComponent,
-    ExxatTagExampleTwoComponent,
-    ExxatTagExampleThreeComponent,
+    zhealthcareTagExampleComponent,
+    zhealthcareTagExampleOneComponent,
+    zhealthcareTagExampleTwoComponent,
+    zhealthcareTagExampleThreeComponent,
     NavbarComponent
   ],
   imports: [
@@ -57,10 +57,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FuseSharedModule,
     MaterialModule,
-    ExxatTagModule,
+    zhealthcareTagModule,
     FlexLayoutModule,
     FuseHighlightModule,
     FuseThemeOptionsModule
   ]
 })
-export class ExxatTagExampleModule {}
+export class zhealthcareTagExampleModule {}

@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnChanges, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { HeaderService } from '@exxat/ux';
-import { FullScreenService, FuseSidebarService, GoToColumnComponent } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
+import { FullScreenService, FuseSidebarService, GoToColumnComponent } from '@zhealthcare/ux';
 import { UXDemoDrawerService } from '../../../../../../remote-entry/ux-demo-drawer.service';
 
 import { Observable } from 'rxjs';
@@ -57,7 +57,7 @@ const ELEMENT_DATA: PeriodicTableElement[] = [
 
 
 @Component({
-    selector: 'exxat-demo-full-scroll-table',
+    selector: 'zhealthcare-demo-full-scroll-table',
     templateUrl: 'demo-full-scroll-table.component.html',
 })
 export class DemoFullScrollTableComponent extends GoToColumnComponent implements OnChanges {

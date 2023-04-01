@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatTypographyComponent } from './exxat-typography.component';
+import { zhealthcareTypographyComponent } from './zhealthcare-typography.component';
 
-describe('ExxatTypographyComponent', () => {
-  let component: ExxatTypographyComponent;
-  let fixture: ComponentFixture<ExxatTypographyComponent>;
+describe('zhealthcareTypographyComponent', () => {
+  let component: zhealthcareTypographyComponent;
+  let fixture: ComponentFixture<zhealthcareTypographyComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatTypographyComponent ]
+      declarations: [ zhealthcareTypographyComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatTypographyComponent);
+    fixture = TestBed.createComponent(zhealthcareTypographyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

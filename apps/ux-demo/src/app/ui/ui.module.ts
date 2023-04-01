@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 
 import { MatStepperModule } from '@angular/material/stepper';
-import { ExxatTagModule } from '@exxat/plugin/tags';
-import { ExxatCalendarModule, MaterialModule } from '@exxat/ux';
-import { ExxatAppsRepoModule } from '../exxat-apps-repo/exxat-apps-repo.module';
-import { ExxatGridGuidelinesModule } from '../exxat-grid-guidelines';
-import { ExxatUxRepoModule } from '../exxat-ux-repo/exxat-ux-repo.module';
+import { zhealthcareTagModule } from '@zhealthcare/plugin/tags';
+import { zhealthcareCalendarModule, MaterialModule } from '@zhealthcare/ux';
+import { zhealthcareAppsRepoModule } from '../zhealthcare-apps-repo/zhealthcare-apps-repo.module';
+import { zhealthcareGridGuidelinesModule } from '../zhealthcare-grid-guidelines';
+import { zhealthcareUxRepoModule } from '../zhealthcare-ux-repo/zhealthcare-ux-repo.module';
 import { ComponentScrollLayoutModule } from '../layouts';
 import { ChipsDemoModule } from './chips-demo/chips-demo.module';
 import { CkEditorDemoModule } from './ck-editor-demo/ck-editor-demo.module';
@@ -14,19 +14,19 @@ import { ComponentScrollDocModule } from './component-scroll-doc/component-scrol
 import { DataSourceDemoModule } from './data-source/data-source.module';
 import { DragAndDropModule } from './drag-and-drop';
 import { DynamicOverlayDemoModule } from './dynamic-overlay-demo';
-import { ExxatAccessibilityModule } from './exxat-accessibility/exxat-accessibility.module';
-import { UIExxatButtonsModule } from './exxat-buttons/exxat-buttons.module';
-import { ExxatCardsModule } from './exxat-cards/exxat-cards.module';
-import { ExxatCarouselDemoModule } from './exxat-carousel-demo';
-import { UIExxatDrawersModule } from './exxat-drawers/exxat-drawers.module';
-import { ExxatGraphsStandardModule } from './exxat-graphs-standard';
-import { ExxatGridsModule } from './exxat-grids/exxat-grids.module';
-import { ExxatOverlayDemoModule } from './exxat-overlay-demo/exxat-overlay-demo.module';
-import { ExxatSidebarModule } from './exxat-sidebar/exxat-sidebar.module';
-import { ExxatTooltipDemoModule } from './exxat-tooltip-demo/exxat-tooltip-demo.module';
-import { ExxatUiComponentsModule } from './exxat-ui-components/exxat-ui-components.module';
-import { SnackbarDemoModule } from './exxat-ui-components/tabs/snackbar-demo/snackbar-demo.module';
-import { ExxatWizardsModule } from './exxat-wizards/exxat-wizards.module';
+import { zhealthcareAccessibilityModule } from './zhealthcare-accessibility/zhealthcare-accessibility.module';
+import { UIzhealthcareButtonsModule } from './zhealthcare-buttons/zhealthcare-buttons.module';
+import { zhealthcareCardsModule } from './zhealthcare-cards/zhealthcare-cards.module';
+import { zhealthcareCarouselDemoModule } from './zhealthcare-carousel-demo';
+import { UIzhealthcareDrawersModule } from './zhealthcare-drawers/zhealthcare-drawers.module';
+import { zhealthcareGraphsStandardModule } from './zhealthcare-graphs-standard';
+import { zhealthcareGridsModule } from './zhealthcare-grids/zhealthcare-grids.module';
+import { zhealthcareOverlayDemoModule } from './zhealthcare-overlay-demo/zhealthcare-overlay-demo.module';
+import { zhealthcareSidebarModule } from './zhealthcare-sidebar/zhealthcare-sidebar.module';
+import { zhealthcareTooltipDemoModule } from './zhealthcare-tooltip-demo/zhealthcare-tooltip-demo.module';
+import { zhealthcareUiComponentsModule } from './zhealthcare-ui-components/zhealthcare-ui-components.module';
+import { SnackbarDemoModule } from './zhealthcare-ui-components/tabs/snackbar-demo/snackbar-demo.module';
+import { zhealthcareWizardsModule } from './zhealthcare-wizards/zhealthcare-wizards.module';
 import { FileViewerdocModule } from './file-viewer/file-viewer.module';
 import { FilterExampleModule } from './filter-example';
 import { FontAwesomeModule } from './font-awesome/font-awesome.module';
@@ -57,30 +57,30 @@ import { VerticalStepperDemoDemoModule } from './vertical-stepper-demo';
     UIHelperClassesModule,
     UIPageLayoutsModule,
     UIColorsModule,
-    UIExxatDrawersModule,
-    UIExxatButtonsModule,
-    ExxatUiComponentsModule,
+    UIzhealthcareDrawersModule,
+    UIzhealthcareButtonsModule,
+    zhealthcareUiComponentsModule,
     DataSourceDemoModule,
-    ExxatCardsModule,
-    ExxatWizardsModule,
+    zhealthcareCardsModule,
+    zhealthcareWizardsModule,
     MatStepperModule,
     FormControlsModule,
     MaterialModule,
     NavigationModule,
-    ExxatGridsModule,
+    zhealthcareGridsModule,
     FileViewerdocModule,
     FontAwesomeModule,
-    ExxatOverlayDemoModule,
-    ExxatTooltipDemoModule,
+    zhealthcareOverlayDemoModule,
+    zhealthcareTooltipDemoModule,
     SearchBarExamplesModule,
-    ExxatAccessibilityModule,
+    zhealthcareAccessibilityModule,
     HighLightNavMenuItemModule,
     UxProcessModule,
     SideNavDemoModule,
     ChipsDemoModule,
-    ExxatUxRepoModule,
-    ExxatAppsRepoModule,
-    ExxatGridGuidelinesModule,
+    zhealthcareUxRepoModule,
+    zhealthcareAppsRepoModule,
+    zhealthcareGridGuidelinesModule,
     ResizableDemoModule,
     SnackbarDemoModule,
     TooltipDemoModule,
@@ -89,18 +89,18 @@ import { VerticalStepperDemoDemoModule } from './vertical-stepper-demo';
     NgxChartDemoModule,
     VerticalStepperDemoDemoModule,
     ComponentScrollLayoutModule,
-    ExxatGraphsStandardModule,
+    zhealthcareGraphsStandardModule,
     ComponentScrollDocModule,
     CkEditorDemoModule,
-    ExxatCarouselDemoModule,
+    zhealthcareCarouselDemoModule,
     MessageBoxesModule,
     InfoBoxesModule,
-    ExxatSidebarModule,
-    ExxatTagModule,
+    zhealthcareSidebarModule,
+    zhealthcareTagModule,
     DragAndDropModule,
     FilterExampleModule,
     ScrollableFormModule,
-    ExxatCalendarModule,
+    zhealthcareCalendarModule,
     DynamicOverlayDemoModule,
   ],
 })

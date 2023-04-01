@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FuseSharedModule, FuseThemeOptionsModule, MaterialModule } from '@exxat/ux';
+import { FuseSharedModule, FuseThemeOptionsModule, MaterialModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { VERTICALSTEPPERCONTAINERS } from './container';
 import { VerticalStepperDemoRoutingModule } from './vertical-stepper-demo-routing.module';

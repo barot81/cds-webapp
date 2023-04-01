@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
-import { FusionFormComponent } from "@exxat/fusion/components";
+import * as ClassicEditor from '@zhealthcare/ckeditor5-build-classic';
+import { FusionFormComponent } from "@zhealthcare/fusion/components";
 
 @Component({
-    selector: 'exxat-ck-editor-drawer-example',
+    selector: 'zhealthcare-ck-editor-drawer-example',
     templateUrl: './ck-editor-drawer-example.component.html'
 })
 export class CkEditorDrawerExampleComponent extends FusionFormComponent {

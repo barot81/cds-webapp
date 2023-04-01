@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FuseSidebarService } from '@exxat/ux';
+import { FuseSidebarService } from '@zhealthcare/ux';
 import { FormControl } from '@angular/forms';
 
 @Component({

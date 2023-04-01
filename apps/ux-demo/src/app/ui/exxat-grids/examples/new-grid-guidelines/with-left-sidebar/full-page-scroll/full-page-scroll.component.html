@@ -78,7 +78,7 @@
             <button
               mat-icon-button
               class="icon-fill-bg filter-icon"
-              exxatDrawerAction
+              zhealthcareDrawerAction
               aria-hidden="false"
               aria-label="Open Filters"
               [componentSelector]="
@@ -163,7 +163,7 @@
       >
         <div fxLayout="row" fxLayoutAlign="start center">
           <div fxLayout="column">
-            <exxat-search-bar [listofOptions]=""></exxat-search-bar>
+            <zhealthcare-search-bar [listofOptions]=""></zhealthcare-search-bar>
             <div>
               <span
                 tabindex="0"
@@ -201,11 +201,11 @@
       <flex-table>
         <div id="sticky-column-table">
           <div #auto_scroll_grid class="content flex_table_content">
-            <div class="exxat-sticky-table">
+            <div class="zhealthcare-sticky-table">
               <table
                 tabindex="1"
                 aria-hidden="false"
-                class="exxat-table no-alternate-color"
+                class="zhealthcare-table no-alternate-color"
                 mat-table
                 [dataSource]="dataSource"
                 *ngFor="let table of tables"

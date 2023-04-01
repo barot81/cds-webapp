@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatFileUploadComponent } from './exxat-file-upload.component';
+import { zhealthcareFileUploadComponent } from './zhealthcare-file-upload.component';
 
-describe('ExxatFileUploadComponent', () => {
-  let component: ExxatFileUploadComponent;
-  let fixture: ComponentFixture<ExxatFileUploadComponent>;
+describe('zhealthcareFileUploadComponent', () => {
+  let component: zhealthcareFileUploadComponent;
+  let fixture: ComponentFixture<zhealthcareFileUploadComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatFileUploadComponent ]
+      declarations: [ zhealthcareFileUploadComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatFileUploadComponent);
+    fixture = TestBed.createComponent(zhealthcareFileUploadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

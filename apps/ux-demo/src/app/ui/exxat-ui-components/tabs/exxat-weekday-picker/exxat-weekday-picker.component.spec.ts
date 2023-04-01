@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatWeekdayPickerComponent } from './exxat-weekday-picker.component';
+import { zhealthcareWeekdayPickerComponent } from './zhealthcare-weekday-picker.component';
 
-describe('ExxatWeekdayPickerComponent', () => {
-  let component: ExxatWeekdayPickerComponent;
-  let fixture: ComponentFixture<ExxatWeekdayPickerComponent>;
+describe('zhealthcareWeekdayPickerComponent', () => {
+  let component: zhealthcareWeekdayPickerComponent;
+  let fixture: ComponentFixture<zhealthcareWeekdayPickerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatWeekdayPickerComponent ]
+      declarations: [ zhealthcareWeekdayPickerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatWeekdayPickerComponent);
+    fixture = TestBed.createComponent(zhealthcareWeekdayPickerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

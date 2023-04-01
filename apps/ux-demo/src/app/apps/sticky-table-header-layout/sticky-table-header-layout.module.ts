@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DataSourceModule } from '@exxat/plugin/data-source';
-import { ExxatTagModule } from '@exxat/plugin/tags';
+import { DataSourceModule } from '@zhealthcare/plugin/data-source';
+import { zhealthcareTagModule } from '@zhealthcare/plugin/tags';
 import {
-  ExxatAvatarListItemModule,
-  ExxatAvatarModule,
+  zhealthcareAvatarListItemModule,
+  zhealthcareAvatarModule,
   FuseSidebarModule,
   MaterialModule,
   FuseDirectivesModule,
   FusePipesModule,
   ShowMoreModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { UXDemoDrawerService } from '../../remote-entry/ux-demo-drawer.service';
 import { GridService } from '../student-grid/grid.service';
 import { NavbarComponent } from './components';
@@ -36,14 +36,14 @@ import { StickyTableHeaderLayoutRoutingModule } from './sticky-table-header-layo
   imports: [
     CommonModule,
     StickyTableHeaderLayoutRoutingModule,
-    ExxatAvatarListItemModule,
+    zhealthcareAvatarListItemModule,
     MaterialModule,
     FuseSidebarModule,
     FlexLayoutModule,
-    ExxatAvatarModule,
+    zhealthcareAvatarModule,
     DataSourceModule,
     FuseDirectivesModule,
-    ExxatTagModule,
+    zhealthcareTagModule,
     FusePipesModule,
     ShowMoreModule
   ],

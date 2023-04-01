@@ -34,7 +34,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 @Component({
-    selector: 'exxat-demo-table',
+    selector: 'zhealthcare-demo-table',
     templateUrl: 'demo-table.component.html'
 })
 export class DemoTableComponent {

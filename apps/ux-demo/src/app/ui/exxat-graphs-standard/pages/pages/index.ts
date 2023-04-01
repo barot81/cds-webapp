@@ -8,7 +8,7 @@ export * from './page-7/page-seven.component';
 
 import { PageOneComponent, PageTwoComponent, PageThreeComponent, PageFourComponent, PageFiveComponent, PageSixComponent, PageSevenComponent } from './';
 
-export const EXXATGRAPHSPAGES = [
+export const zhealthcareGRAPHSPAGES = [
     PageOneComponent,
     PageTwoComponent,
     PageThreeComponent,

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'ryzen-exxat-expanded-filter-example',
-  templateUrl: './exxat-expanded-filter-example.component.html',
+  selector: 'ryzen-zhealthcare-expanded-filter-example',
+  templateUrl: './zhealthcare-expanded-filter-example.component.html',
 })
-export class ExxatExpandedFilterExampleComponent implements OnInit {
+export class zhealthcareExpandedFilterExampleComponent implements OnInit {
 
   cohort = new FormControl();
 

@@ -1,9 +1,9 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from "@angular/core";
-import { HeaderService } from "@exxat/ux";
+import { HeaderService } from "@zhealthcare/ux";
 import { graphs_data, graphs_data_medium } from '../../data';
 
 @Component({
-    selector: 'exxat-graphs-page-one',
+    selector: 'zhealthcare-graphs-page-one',
     templateUrl: 'page-one.component.html',
     styleUrls: ['page-one.component.scss']
 })

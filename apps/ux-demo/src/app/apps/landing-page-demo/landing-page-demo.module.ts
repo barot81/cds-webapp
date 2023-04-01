@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LandingPageDemoRoutingModule } from './landing-page-demo-routing.module';
 import { LandingPageDemoComponent } from './landing-page-demo.component';
-import { ExxatAvatarListItemModule, ExxatAvatarModule, FuseSharedModule, FuseSidebarModule, MaterialModule } from '@exxat/ux';
+import { zhealthcareAvatarListItemModule, zhealthcareAvatarModule, FuseSharedModule, FuseSidebarModule, MaterialModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -15,8 +15,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule,
     FuseSidebarModule,
     MaterialModule,
-    ExxatAvatarListItemModule,
-    ExxatAvatarModule
+    zhealthcareAvatarListItemModule,
+    zhealthcareAvatarModule
   ]
 })
 export class LandingPageDemoModule { }

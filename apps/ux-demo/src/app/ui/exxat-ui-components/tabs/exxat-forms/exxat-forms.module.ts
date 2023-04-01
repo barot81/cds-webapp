@@ -6,11 +6,11 @@ import {
   FuseSharedModule,
   FuseThemeOptionsModule,
   MaterialModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 
 import { FuseHighlightModule } from '../../../../helpers/highlight/highlight.module';
-import { ExxatFormsComponent } from './exxat-forms.component';
-import { ExxatFormsRoutingModule } from './exxat-forms-routing.module';
+import { zhealthcareFormsComponent } from './zhealthcare-forms.component';
+import { zhealthcareFormsRoutingModule } from './zhealthcare-forms-routing.module';
 import { LayoutComponent } from './layout/layout.component';
 import { WorkflowComponent } from './workflow/workflow.component';
 import { ResponseComponent } from './response/response.component';
@@ -28,12 +28,12 @@ import { NavbarComponent } from './navbar/navbar.component';
     FuseHighlightModule,
     FuseSharedModule,
     FlexLayoutModule,
-    ExxatFormsRoutingModule,
+    zhealthcareFormsRoutingModule,
     FuseThemeOptionsModule,
   ],
-  exports: [ExxatFormsComponent],
+  exports: [zhealthcareFormsComponent],
   declarations: [
-    ExxatFormsComponent,
+    zhealthcareFormsComponent,
     LayoutComponent,
     WorkflowComponent,
     ResponseComponent,
@@ -46,4 +46,4 @@ import { NavbarComponent } from './navbar/navbar.component';
   ],
   providers: [],
 })
-export class ExxatFormsModule {}
+export class zhealthcareFormsModule {}

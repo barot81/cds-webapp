@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BreadCrumbType } from '@exxat/ux';
+import { BreadCrumbType } from '@zhealthcare/ux';
 
 @Component({
   selector: 'ryzen-breadcrumb',

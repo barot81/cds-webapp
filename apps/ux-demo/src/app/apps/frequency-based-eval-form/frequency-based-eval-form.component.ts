@@ -1,6 +1,6 @@
 
 import { AfterViewInit, Component,ElementRef, ViewChild  } from '@angular/core';
-import { FuseSidebarService,ScrollSpyService } from '@exxat/ux';
+import { FuseSidebarService,ScrollSpyService } from '@zhealthcare/ux';
 import { MatDialog } from '@angular/material/dialog';
 
 //#endregion

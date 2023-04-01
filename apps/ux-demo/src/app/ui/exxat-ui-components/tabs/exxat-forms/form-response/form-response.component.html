@@ -13,55 +13,55 @@
                   data: Data;
                   actions: Action[];
                 }
-              
+
                 export type Status = {
                     stepId: string;
                     status: string;
                     permissionId: string;
                 }
-                
+
                 export type Layout = {
                     parent: Section;
                     children: Section[];
                 }
-                
+
                 export type Section = {
                     sectionId: string;
                     caption: string;
                     fields: Field[];
                     disable?: boolean;
                 }
-                
+
                 export type Data = {
                     response: Response;
                     logs: Logs;
                 }
-                
+
                 export type Response = {
                     responseId: string;
                     sections: Sections[];
                     securityContext: SecurityContext;
                     contextIds?: ContextIds;
                 }
-                
+
                 export type ContextIds = {
                     groupId?: string;
                     formId?: string;
                     targetId?: string;
                 }
-                
+
                 export type Logs = {
                     responseId: string;
                     performedActions: PerformedActions;
                     securityContext: SecurityContext;
                     contextIds?: ContextIds;
                 }
-                
+
                 export type Sections = {
                     sectionId: string;
                     values: any;
                 }
-                
+
                 export type PerformedActions = {
                     actionId: string;
                     label: string;
@@ -70,13 +70,13 @@
                     updatedByUserId: string;
                     comment: string;
                 }
-                
+
                 export type SecurityContext = {
                     tenantId: string;
                     owningOrganizationUnit: string;
                     owningUser: string;
                 }
-                
+
                 export type Field = {
                     fieldId: string;
                     propertyName: string;
@@ -99,13 +99,13 @@
                     mask: string;
                     characterLimit?: number;
                 }
-                
+
                 export type Validator = {
                     name: string;
                     validator: any;
                     message: string;
                 }
-                
+
                 export type Options = {
                     label: string;
                     selected: boolean;
@@ -114,39 +114,39 @@
                     disable: boolean;
                     color: string;
                 }
-                
+
                 export type Action = {
                     actionId: string;
                     label: string;
                     type: enum;
                     events: ActionEvents;
                 }
-                
+
                 export type ActionEvents = {
                     preEvents: PreEvent;
                     postEvents: PostEvent;
                 }
-                
+
                 export type PreEvent = {
                     dialogBox: DialogBox;
                 }
-                
+
                 export type PostEvent = {
                     snackBar: SnackBar;
                 }
-                
+
                 export type DialogBox = {
                     commands: any;
                     message: string;
                     width: string;
                 }
-                
+
                 export type SnackBar = {
                     duration: number;
                     position: string;
                     successMessage: string;
                     failureMessage: string;
-                }              
+                }
               </textarea>
             </fuse-highlight>
           </div>
@@ -154,7 +154,7 @@
 
         <mat-tab label="Form Response UML">
           <div class="pt-16 img-container">
-            <img src="assets/images/exxat-forms/Form_Response.png" />
+            <img src="assets/images/zhealthcare-forms/Form_Response.png" />
           </div>
         </mat-tab>
 

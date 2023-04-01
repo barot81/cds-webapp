@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 
 export interface PeriodicElement {
   name: string;
@@ -48,11 +48,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 @Component({
-  selector: 'ryzen-exxat-site-demo-grid',
-  templateUrl: './exxat-site-demo-grid.component.html',
-  styleUrls: ['./exxat-site-demo-grid.component.scss']
+  selector: 'ryzen-zhealthcare-site-demo-grid',
+  templateUrl: './zhealthcare-site-demo-grid.component.html',
+  styleUrls: ['./zhealthcare-site-demo-grid.component.scss']
 })
-export class ExxatSiteDemoGridComponent implements OnInit {
+export class zhealthcareSiteDemoGridComponent implements OnInit {
 
   @ViewChild('gray_header') $gray_header: ElementRef;
   @ViewChild('search_bar_filter_container') $search_bar_filter_container: ElementRef;

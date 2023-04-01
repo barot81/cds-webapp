@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatGridsComponent } from './exxat-grids.component';
+import { zhealthcareGridsComponent } from './zhealthcare-grids.component';
 
-describe('ExxatGridsComponent', () => {
-  let component: ExxatGridsComponent;
-  let fixture: ComponentFixture<ExxatGridsComponent>;
+describe('zhealthcareGridsComponent', () => {
+  let component: zhealthcareGridsComponent;
+  let fixture: ComponentFixture<zhealthcareGridsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatGridsComponent ]
+      declarations: [ zhealthcareGridsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatGridsComponent);
+    fixture = TestBed.createComponent(zhealthcareGridsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

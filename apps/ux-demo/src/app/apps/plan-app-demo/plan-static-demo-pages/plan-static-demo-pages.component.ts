@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit , ViewChild} from '@angular/core';
-import { ExxatTagOptions } from '@exxat/plugin/tags';
+import { zhealthcareTagOptions } from '@zhealthcare/plugin/tags';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { PlanDemoHeaderLayoutService } from './plan-static-header-service';
 
@@ -37,7 +37,7 @@ export class PlanStaticDemoPagesComponent implements OnInit, AfterViewInit {
     }
   ];
 
-  public tagOptions = new ExxatTagOptions();
+  public tagOptions = new zhealthcareTagOptions();
 
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
   @ViewChild('header_container') header_container: ElementRef;

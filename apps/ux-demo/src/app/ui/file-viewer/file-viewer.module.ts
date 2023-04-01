@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FileViewerComponent } from './file-viewer.component';
-import {FileUploadModule } from '@exxat/plugin/file-upload'
+import {FileUploadModule } from '@zhealthcare/plugin/file-upload'
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [

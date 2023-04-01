@@ -1,7 +1,7 @@
 import { Component, ViewChildren } from '@angular/core';
-import { TooltipDirective } from '@exxat/ux';
+import { TooltipDirective } from '@zhealthcare/ux';
 import { BehaviorSubject } from 'rxjs';
-import { ExxatDrawerFormService } from '../../../exxat-drawers/exxat-drawer-forms-shared.service';
+import { zhealthcareDrawerFormService } from '../../../zhealthcare-drawers/zhealthcare-drawer-forms-shared.service';
 
 @Component({
   selector: 'ryzen-tooltip-example-two',
@@ -10,7 +10,7 @@ import { ExxatDrawerFormService } from '../../../exxat-drawers/exxat-drawer-form
 export class TooltipExampleTwoComponent {
 
   @ViewChildren(TooltipDirective) tooltipDirective;
-  exxatTooltip: any;
+  zhealthcareTooltip: any;
   toolTipOpened = new BehaviorSubject<boolean>(false);
   tooltipOptions = {
     'contentType': 'template',
@@ -23,16 +23,16 @@ export class TooltipExampleTwoComponent {
     'pointerEvents': 'auto'
   }
 
-  constructor(public readonly exxatDrawerFormService: ExxatDrawerFormService) { }
+  constructor(public readonly zhealthcareDrawerFormService: zhealthcareDrawerFormService) { }
 
 
   //#region [Tooltip Handlers]
 
   // Function is to open tooltip
   // openTooltip(id: any) {
-  //   this.exxatTooltip = this.tooltipDirective.find(elem => elem.id === id);
+  //   this.zhealthcareTooltip = this.tooltipDirective.find(elem => elem.id === id);
   //   if (this.tooltipDirective && this.tooltipDirective != null && this.tooltipDirective.length > 0) {
-  //     let filteredTooltips: Array<any> = this.tooltipDirective.filter(x => x.createTimeoutId != null && x.id != this.exxatTooltip.id);
+  //     let filteredTooltips: Array<any> = this.tooltipDirective.filter(x => x.createTimeoutId != null && x.id != this.zhealthcareTooltip.id);
   //     filteredTooltips.forEach(element => {
   //       element.destroyTooltip();
   //     });
@@ -43,8 +43,8 @@ export class TooltipExampleTwoComponent {
 
   // Function will execute when user click outside of tooltip
   // onOutsideClick() {
-  //   if (this.exxatTooltip && this.exxatTooltip != null) {
-  //     this.exxatTooltip.destroyTooltip();
+  //   if (this.zhealthcareTooltip && this.zhealthcareTooltip != null) {
+  //     this.zhealthcareTooltip.destroyTooltip();
   //   }
   //   this.toolTipOpened.next(false);
   // }

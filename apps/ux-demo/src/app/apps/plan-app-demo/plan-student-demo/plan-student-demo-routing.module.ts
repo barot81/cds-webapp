@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PlanStudentDemoPlanComponent } from './plan-student-demo.component';
-import { AuthGuardService } from '@exxat/fusion/core';
+import { AuthGuardService } from '@zhealthcare/fusion/core';
 import { PlanStudentProfileDemoComponent } from './plan-student-profile-demo/plan-student-profile-demo.component';
 
 const routes: Routes = [

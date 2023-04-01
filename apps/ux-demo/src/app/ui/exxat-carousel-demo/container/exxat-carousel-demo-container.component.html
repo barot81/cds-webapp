@@ -7,7 +7,7 @@
             mat-icon-button
             aria-label="Click to go back"
             class="action-icon mx-8"
-            routerLink="/admin/ux/ui/exxat-component-library"
+            routerLink="/admin/ux/ui/zhealthcare-component-library"
           >
             <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
           </button>
@@ -24,7 +24,7 @@
     <div class="mb-16" fxLayout="row wrap" fxLayoutAlign="start center">
       <span class="font-weight-600 warn-fg">Note: </span>
       <span>
-        import <strong>ExxatCarouselModule </strong> from '@exxat/ux'</span
+        import <strong>zhealthcareCarouselModule </strong> from '@zhealthcare/ux'</span
       >
     </div>
     <div class="mb-16">
@@ -32,7 +32,7 @@
     </div>
 
     <div>
-      <exxat-carousel
+      <zhealthcare-carousel
         [width]="
           headerItems.length === 1 ? screenWidth - 55 : screenWidth - 120
         "
@@ -52,13 +52,13 @@
         >
           <header *ngIf="currentHeaderStep === i">
             <div fxLayout="row" fxLayoutAlign="start center">
-              <exxat-avatar
+              <zhealthcare-avatar
                 src="assets/images/avatars/anna-strong.png"
                 firstName="Anna"
                 lastName="Strong"
                 size="sm"
               >
-              </exxat-avatar>
+              </zhealthcare-avatar>
 
               <div fxLayout="column" class="ml-4">
                 <div
@@ -68,7 +68,7 @@
                 >
                   <span class="font-16 font-weight-600">{{ item.title }}</span>
                   <span
-                    class="ml-12 px-8 border-radius-20 exxat-gorse-bg"
+                    class="ml-12 px-8 border-radius-20 zhealthcare-gorse-bg"
                     fontColor
                     >Family Medicine</span
                   >
@@ -86,7 +86,7 @@
             </div>
           </header>
         </mat-card>
-      </exxat-carousel>
+      </zhealthcare-carousel>
     </div>
 
     <div class="my-16">
@@ -117,7 +117,7 @@
               >
                 <textarea #source hidden="hidden">
  
-              <exxat-carousel
+              <zhealthcare-carousel
               [width]="
                 headerItems.length === 1 ? screenWidth - 55 : screenWidth - 120
               "
@@ -137,13 +137,13 @@
               >
                 <header *ngIf="currentHeaderStep === i">
                   <div fxLayout="row" fxLayoutAlign="start center">
-                    <exxat-avatar
+                    <zhealthcare-avatar
                       src="assets/images/avatars/anna-strong.png"
                       firstName="Anna"
                       lastName="Strong"
                       size="sm"
                     >
-                    </exxat-avatar>
+                    </zhealthcare-avatar>
       
                     <div fxLayout="column" class="ml-4">
                       <div
@@ -153,7 +153,7 @@
                       >
                         <span class="font-16 font-weight-600">item.title</span>
                         <span
-                          class="ml-12 px-8 border-radius-20 exxat-gorse-bg"
+                          class="ml-12 px-8 border-radius-20 zhealthcare-gorse-bg"
                           fontColor
                           >Family Medicine</span
                         >
@@ -171,7 +171,7 @@
                   </div>
                 </header>
               </mat-card>
-              </exxat-carousel>
+              </zhealthcare-carousel>
             </textarea
                 >
               </fuse-highlight>
@@ -187,7 +187,7 @@
  
               import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
               import { MatTableDataSource } from "@angular/material/table";
-              import { CarouselEvent, HeaderService } from "@exxat/ux";
+              import { CarouselEvent, HeaderService } from "@zhealthcare/ux";
               
               interface HeaderContentItem {
                   id: string;
@@ -367,10 +367,10 @@
               ];
               
               @Component({
-                  selector: 'exxat-carousel-demo',
-                  templateUrl: './exxat-carousel-demo-container.component.html'
+                  selector: 'zhealthcare-carousel-demo',
+                  templateUrl: './zhealthcare-carousel-demo-container.component.html'
               })
-              export class ExxatCarouselDemoContainerComponent implements AfterViewInit {
+              export class zhealthcareCarouselDemoContainerComponent implements AfterViewInit {
               
                   @ViewChild('header_content') header_content: ElementRef;
               

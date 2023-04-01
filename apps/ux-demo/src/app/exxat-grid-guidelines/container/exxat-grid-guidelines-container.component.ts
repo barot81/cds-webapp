@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 
-export interface exxat_grid_guideline_item {
+export interface zhealthcare_grid_guideline_item {
     title: string;
     icon: string;
     description?: Array<string>;
@@ -13,11 +13,11 @@ export interface exxat_grid_guideline_item {
 
 
 @Component({
-    selector: 'exxat-grid-guidelines',
-    templateUrl: './exxat-grid-guidelines-container.component.html',
-    styleUrls: ['./exxat-grid-guidelines-container.component.scss']
+    selector: 'zhealthcare-grid-guidelines',
+    templateUrl: './zhealthcare-grid-guidelines-container.component.html',
+    styleUrls: ['./zhealthcare-grid-guidelines-container.component.scss']
 })
-export class ExxatGrdiGuidelinesContainerComponent {
+export class zhealthcareGrdiGuidelinesContainerComponent {
     searchByItem: FormControl;
 
     listofOptions = [
@@ -27,12 +27,12 @@ export class ExxatGrdiGuidelinesContainerComponent {
 
     searchItem = new FormControl();
 
-    exxat_grid_guideline_list: exxat_grid_guideline_item[] = [
+    zhealthcare_grid_guideline_list: zhealthcare_grid_guideline_item[] = [
         {
             icon: 'fab fa-blackberry',
             title: 'Simple Grid',
             description: ['This example has Simple GRID with static pagination from material , also with placeholder for Search, Full screen, Primary and secondary actions'],
-            page: '/admin/ux/ui/exxat-grids'
+            page: '/admin/ux/ui/zhealthcare-grids'
         },
         {
             icon: 'fab fa-blackberry',
@@ -150,16 +150,16 @@ export class ExxatGrdiGuidelinesContainerComponent {
         },
     ];
 
-    filtered_exxat_grid_guideline_list = new BehaviorSubject<exxat_grid_guideline_item[]>(new Array<exxat_grid_guideline_item>());
-    filtered_exxat_grid_guideline_list$ = this.filtered_exxat_grid_guideline_list.asObservable();
+    filtered_zhealthcare_grid_guideline_list = new BehaviorSubject<zhealthcare_grid_guideline_item[]>(new Array<zhealthcare_grid_guideline_item>());
+    filtered_zhealthcare_grid_guideline_list$ = this.filtered_zhealthcare_grid_guideline_list.asObservable();
 
     constructor() {
 
         this.searchByItem = new FormControl(this.listofOptions[0].fieldName);
 
-        this.exxat_grid_guideline_list = this.exxat_grid_guideline_list.sort((a, b) => (a.title > b.title) ? 1 : -1);
+        this.zhealthcare_grid_guideline_list = this.zhealthcare_grid_guideline_list.sort((a, b) => (a.title > b.title) ? 1 : -1);
 
-        this.filtered_exxat_grid_guideline_list.next(this.exxat_grid_guideline_list);
+        this.filtered_zhealthcare_grid_guideline_list.next(this.zhealthcare_grid_guideline_list);
 
         this.searchItem.valueChanges.subscribe(changes => {
             if (changes && changes !== null && changes.length > 0) {
@@ -172,28 +172,28 @@ export class ExxatGrdiGuidelinesContainerComponent {
                         return index === self.indexOf(elem);
                     })
 
-                    this.filtered_exxat_grid_guideline_list.next(unique);
+                    this.filtered_zhealthcare_grid_guideline_list.next(unique);
                 }
 
                 else if (this._filter(changes, 'title').length > 0) {
 
-                    this.filtered_exxat_grid_guideline_list.next(this._filter(changes, 'title'));
+                    this.filtered_zhealthcare_grid_guideline_list.next(this._filter(changes, 'title'));
                 }
                 else {
-                    this.filtered_exxat_grid_guideline_list.next(this._filter(changes, 'description'));
+                    this.filtered_zhealthcare_grid_guideline_list.next(this._filter(changes, 'description'));
                 }
             }
             else {
-                this.filtered_exxat_grid_guideline_list.next(this.exxat_grid_guideline_list);
+                this.filtered_zhealthcare_grid_guideline_list.next(this.zhealthcare_grid_guideline_list);
             }
         });
 
     }
 
-    private _filter(value: string, searchItem: string): exxat_grid_guideline_item[] {
+    private _filter(value: string, searchItem: string): zhealthcare_grid_guideline_item[] {
 
         const filterValue = value.toLowerCase();
 
-        return this.exxat_grid_guideline_list.filter(item => item[searchItem].toString().toLowerCase().indexOf(filterValue) > -1);
+        return this.zhealthcare_grid_guideline_list.filter(item => item[searchItem].toString().toLowerCase().indexOf(filterValue) > -1);
     }
 }

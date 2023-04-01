@@ -9,11 +9,11 @@
     #header_content
   >
     <div fxLayout="column">
-      <exxat-breadcrumb
+      <zhealthcare-breadcrumb
         [dataSource]="breadcrumbs"
         [type]="_breadCrumbType.PARTIAL"
       >
-      </exxat-breadcrumb>
+      </zhealthcare-breadcrumb>
       <div
         fxLayout="row wrap"
         fxLayoutAlign="start center"
@@ -333,7 +333,7 @@
             aria-label="This is a slot placement table"
             mat-table
             [dataSource]="dataSource"
-            class="w-100-p exxat-table pt-0"
+            class="w-100-p zhealthcare-table pt-0"
             id="expand-collapse-grid"
           >
             <!-- id Column -->
@@ -545,21 +545,21 @@
                       </div>
                       <div fxLayoutAlign="start" fxLayout="row">
                         <mat-menu #tagsMenu="matMenu" [overlapTrigger]="false">
-                          <exxat-tag
+                          <zhealthcare-tag
                             [tags]="tags"
                             [options]="tagOptions"
                             (onTagChanges)="onTagChanges($event)"
                           >
-                          </exxat-tag>
+                          </zhealthcare-tag>
                         </mat-menu>
                         <div
                           fxLayout="row wrap"
                           fxLayoutAlign="start center"
                           class="pt-4"
                         >
-                          <exxat-tag-showcase
+                          <zhealthcare-tag-showcase
                             [tags]="tags"
-                          ></exxat-tag-showcase>
+                          ></zhealthcare-tag-showcase>
                         </div>
                       </div>
                     </div>
@@ -619,7 +619,7 @@
                   <div fxLayout="row" fxLayoutAlign="start center" class="mb-8">
                     <a class="mr-8"> 6 slots offered</a>
                     <span
-                      class="exxat-robin-egg-blue-bg py-4 width-fit-content px-16 border-radius-16 mr-16 mt-4"
+                      class="zhealthcare-robin-egg-blue-bg py-4 width-fit-content px-16 border-radius-16 mr-16 mt-4"
                       >Internal medicine
                     </span>
                   </div>

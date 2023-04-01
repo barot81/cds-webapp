@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ryzen-exxat-dropdown-filter-example',
-  templateUrl: './exxat-dropdown-filter-example.component.html',
-  styleUrls: ['./exxat-dropdown-filter-example.component.scss']
+  selector: 'ryzen-zhealthcare-dropdown-filter-example',
+  templateUrl: './zhealthcare-dropdown-filter-example.component.html',
+  styleUrls: ['./zhealthcare-dropdown-filter-example.component.scss']
 })
-export class ExxatDropdownFilterExampleComponent implements OnInit {
+export class zhealthcareDropdownFilterExampleComponent implements OnInit {
 
   rotationList = [
     { viewName: 'Rotation 1', value: 'rotation1' },

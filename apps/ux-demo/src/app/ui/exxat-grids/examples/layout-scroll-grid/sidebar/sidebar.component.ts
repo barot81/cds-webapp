@@ -1,17 +1,17 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { ScrollService } from '@exxat/ux';
-import { SidebarFocusHelper } from '../../../../exxat-sidebar/exxat-sidebar.service';
+import { ScrollService } from '@zhealthcare/ux';
+import { SidebarFocusHelper } from '../../../../zhealthcare-sidebar/zhealthcare-sidebar.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 @Component({
-  selector: 'exxat-sidebar',
+  selector: 'zhealthcare-sidebar',
   templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent {
   @ViewChild('sidebarHeader') sidebarHeader: ElementRef;
 
-  private currentURL = '/admin/ux/ui/exxat-layout-scroll';
+  private currentURL = '/admin/ux/ui/zhealthcare-layout-scroll';
 
   private settlementHeight: number = 40;
 

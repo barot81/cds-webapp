@@ -11,7 +11,7 @@
           mat-button
           class="action-icon mb-16"
           aria-label="Add Institution"
-          exxatDrawerAction
+          zhealthcareDrawerAction
           [size]="'drawer-lg'"
           [componentSelector]="
             _UXDemoDrawerService.get('ryzen-add-institution-drawer')
@@ -27,7 +27,7 @@
             mat-button
             class="action-icon mr-16 mb-16"
             aria-label="Edit columns"
-            exxatDrawerAction
+            zhealthcareDrawerAction
             [size]="'drawer-xs'"
             [componentSelector]="
               _UXDemoDrawerService.get('ryzen-tenant-onboarding-edit-columns')
@@ -58,7 +58,7 @@
         class="content table-rounded-border white-background p-16 overflow-auto"
       >
         <div fxLayout="row" fxLayoutAlign="start center" class="pb-16">
-          <exxat-search-bar [listofOptions]="SearchFields"></exxat-search-bar>
+          <zhealthcare-search-bar [listofOptions]="SearchFields"></zhealthcare-search-bar>
         </div>
         <div class="">
           <table
@@ -68,7 +68,7 @@
             aria-label="This is a Tenent onboarding table"
             mat-table
             [dataSource]="dataSource"
-            class="w-100-p exxat-table pt-0"
+            class="w-100-p zhealthcare-table pt-0"
           >
             <!-- Institute Name Column -->
             <ng-container matColumnDef="name">

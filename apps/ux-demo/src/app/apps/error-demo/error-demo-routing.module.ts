@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { AuthGuardService } from "@exxat/fusion/core";
+import { AuthGuardService } from "@zhealthcare/fusion/core";
 import { ErrorDemoComponent } from "./container/error-demo.component";
 
 const routes: Routes = [{

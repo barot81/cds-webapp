@@ -1,7 +1,7 @@
 
 
 import { Component, OnInit } from '@angular/core';
-import { FuseSidebarService } from '@exxat/ux';
+import { FuseSidebarService } from '@zhealthcare/ux';
 
 export class PlacementItem {
   id: number;

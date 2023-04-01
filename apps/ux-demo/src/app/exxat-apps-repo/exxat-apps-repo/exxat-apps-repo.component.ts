@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 
-export interface exxat_apps_repo_item {
+export interface zhealthcare_apps_repo_item {
   title: string;
   icon: string;
   description?: Array<string>;
@@ -12,11 +12,11 @@ export interface exxat_apps_repo_item {
 }
 
 @Component({
-  selector: 'ryzen-exxat-apps-repo',
-  templateUrl: './exxat-apps-repo.component.html',
-  styleUrls: ['./exxat-apps-repo.component.scss'],
+  selector: 'ryzen-zhealthcare-apps-repo',
+  templateUrl: './zhealthcare-apps-repo.component.html',
+  styleUrls: ['./zhealthcare-apps-repo.component.scss'],
 })
-export class ExxatAppsRepoComponent {
+export class zhealthcareAppsRepoComponent {
   searchByItem: FormControl;
 
   listofOptions = [
@@ -26,7 +26,7 @@ export class ExxatAppsRepoComponent {
 
   searchItem = new FormControl();
 
-  exxat_apps_repo_list: exxat_apps_repo_item[] = [
+  zhealthcare_apps_repo_list: zhealthcare_apps_repo_item[] = [
     // { icon: 'fa-light fa-file-lines', title: 'Profile - Admin Print Demo', description: 'Profile - Admin Print Demo', page: '/admin/ux/apps/profile-admin-print-demo' },
     {
       icon: 'fa-light fa-file-lines',
@@ -229,21 +229,21 @@ export class ExxatAppsRepoComponent {
     },
   ];
 
-  filtered_exxat_apps_repo_list = new BehaviorSubject<exxat_apps_repo_item[]>(
-    new Array<exxat_apps_repo_item>()
+  filtered_zhealthcare_apps_repo_list = new BehaviorSubject<zhealthcare_apps_repo_item[]>(
+    new Array<zhealthcare_apps_repo_item>()
   );
 
-  filtered_exxat_apps_repo_list$ =
-    this.filtered_exxat_apps_repo_list.asObservable();
+  filtered_zhealthcare_apps_repo_list$ =
+    this.filtered_zhealthcare_apps_repo_list.asObservable();
 
   constructor() {
     this.searchByItem = new FormControl(this.listofOptions[0].fieldName);
 
-    this.exxat_apps_repo_list = this.exxat_apps_repo_list.sort((a, b) =>
+    this.zhealthcare_apps_repo_list = this.zhealthcare_apps_repo_list.sort((a, b) =>
       a.title > b.title ? 1 : -1
     );
 
-    this.filtered_exxat_apps_repo_list.next(this.exxat_apps_repo_list);
+    this.filtered_zhealthcare_apps_repo_list.next(this.zhealthcare_apps_repo_list);
 
     this.searchItem.valueChanges.subscribe((changes) => {
       if (changes && changes !== null && changes.length > 0) {
@@ -259,26 +259,26 @@ export class ExxatAppsRepoComponent {
             return index === self.indexOf(elem);
           });
 
-          this.filtered_exxat_apps_repo_list.next(unique);
+          this.filtered_zhealthcare_apps_repo_list.next(unique);
         } else if (this._filter(changes, 'title').length > 0) {
-          this.filtered_exxat_apps_repo_list.next(
+          this.filtered_zhealthcare_apps_repo_list.next(
             this._filter(changes, 'title')
           );
         } else {
-          this.filtered_exxat_apps_repo_list.next(
+          this.filtered_zhealthcare_apps_repo_list.next(
             this._filter(changes, 'description')
           );
         }
       } else {
-        this.filtered_exxat_apps_repo_list.next(this.exxat_apps_repo_list);
+        this.filtered_zhealthcare_apps_repo_list.next(this.zhealthcare_apps_repo_list);
       }
     });
   }
 
-  private _filter(value: string, searchItem: string): exxat_apps_repo_item[] {
+  private _filter(value: string, searchItem: string): zhealthcare_apps_repo_item[] {
     const filterValue = value.toLowerCase();
 
-    return this.exxat_apps_repo_list.filter(
+    return this.zhealthcare_apps_repo_list.filter(
       (item) =>
         item[searchItem].toString().toLowerCase().indexOf(filterValue) > -1
     );

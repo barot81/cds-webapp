@@ -4,11 +4,11 @@
   <!-- HEADER -->
   <div fxLayout="column">
     <div class="mb-16 pt-xs-16 pl-xs-16">
-      <exxat-breadcrumb
+      <zhealthcare-breadcrumb
         [dataSource]="breadcrumbs"
         [type]="_breadCrumbType.PARTIAL"
       >
-      </exxat-breadcrumb>
+      </zhealthcare-breadcrumb>
     </div>
 
     <div fxLayout="row wrap" fxLayoutAlign="start center" class="px-xs-16">
@@ -374,7 +374,7 @@
                 mat-icon-button
                 class="icon-fill-bg"
                 aria-label="add form"
-                exxatDrawerAction
+                zhealthcareDrawerAction
                 [size]="'drawer-lg'"
                 [componentSelector]="
                   _UXDemoDrawerService.get('add-form-drawer')
@@ -391,7 +391,7 @@
                 aria-label="This is a table"
                 mat-table
                 [dataSource]="dataSourceRight"
-                class="w-100-p exxat-table condensed-table"
+                class="w-100-p zhealthcare-table condensed-table"
               >
                 <!-- form Column -->
                 <ng-container matColumnDef="form">

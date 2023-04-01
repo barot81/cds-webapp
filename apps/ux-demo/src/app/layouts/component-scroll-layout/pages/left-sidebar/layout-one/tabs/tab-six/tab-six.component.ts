@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { FuseSidebarService, HeaderService, FullScreenService } from '@exxat/ux';
+import { FuseSidebarService, HeaderService, FullScreenService } from '@zhealthcare/ux';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-    selector: 'exxat-tab-six',
+    selector: 'zhealthcare-tab-six',
     templateUrl: 'tab-six.component.html',
 })
 export class TabSixComponent {

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from './../services/navigation.service';
-import { ManifoldPanelService } from '@exxat/ux';
-import { EmailConfiguration } from '@exxat/plugin/notifications';
+import { ManifoldPanelService } from '@zhealthcare/ux';
+import { EmailConfiguration } from '@zhealthcare/plugin/notifications';
 @Component({
-  selector: 'exxat-wizard',
+  selector: 'zhealthcare-wizard',
   templateUrl: './navigation-wizard.component.html',
   styleUrls: ['./navigtion-wizard.component.scss']
 })

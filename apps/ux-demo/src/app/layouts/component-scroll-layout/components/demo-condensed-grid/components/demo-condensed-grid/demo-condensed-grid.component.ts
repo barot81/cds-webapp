@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { FullScreenService, FuseSidebarService, GoToColumnComponent, HeaderService } from '@exxat/ux';
+import { FullScreenService, FuseSidebarService, GoToColumnComponent, HeaderService } from '@zhealthcare/ux';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
@@ -54,7 +54,7 @@ const ELEMENT_DATA: PeriodicCondensedGridElement[] = [
 
 
 @Component({
-    selector: 'exxat-demo-condensed-grid',
+    selector: 'zhealthcare-demo-condensed-grid',
     templateUrl: './demo-condensed-grid.component.html',
     styleUrls: ['demo-condensed-grid.component.scss']
 })

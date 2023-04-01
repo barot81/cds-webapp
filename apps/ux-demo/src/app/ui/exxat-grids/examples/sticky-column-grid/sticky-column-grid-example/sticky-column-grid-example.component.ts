@@ -99,7 +99,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 @Component({
-  selector: 'exxat-sticky-column-grid-example',
+  selector: 'zhealthcare-sticky-column-grid-example',
   templateUrl: './sticky-column-grid-example.component.html',
   styleUrls: ['./sticky-column-grid-example.component.scss'],
 })

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DrawerAdapter } from '@exxat/ux';
+import { DrawerAdapter } from '@zhealthcare/ux';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({

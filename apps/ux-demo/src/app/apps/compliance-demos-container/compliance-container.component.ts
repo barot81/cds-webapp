@@ -8,7 +8,7 @@ interface RepoItem {
 }
 
 @Component({
-    selector: 'exxat-compliance-demo-container',
+    selector: 'zhealthcare-compliance-demo-container',
     templateUrl: './compliance-container.component.html'
 })
 export class ComplianceDemoContainerComponent {

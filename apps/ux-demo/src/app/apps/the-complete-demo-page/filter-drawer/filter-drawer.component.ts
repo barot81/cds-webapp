@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ExxatTag, TagView } from '@exxat/plugin/tags';
-import { SidebarFocusHelper } from '../../../ui/exxat-sidebar/exxat-sidebar.service';
+import { zhealthcareTag, TagView } from '@zhealthcare/plugin/tags';
+import { SidebarFocusHelper } from '../../../ui/zhealthcare-sidebar/zhealthcare-sidebar.service';
 
 export interface filterListItem {
   id: string;
@@ -21,7 +21,7 @@ export interface statusBadge {
   templateUrl: './filter-drawer.component.html'
 })
 export class FilterDrawerComponent {
-  tags: Array<ExxatTag> = [
+  tags: Array<zhealthcareTag> = [
     {
       id: Math.random(),
       name: 'Tag with 30 characters allowed',
@@ -88,13 +88,13 @@ export class FilterDrawerComponent {
   selectedCohort = '';
   selectedDocument = [];
 
-  getTagTitle(tag: ExxatTag): string {
+  getTagTitle(tag: zhealthcareTag): string {
     if (tag && tag !== null) {
       return tag.name && tag.name !== null ? tag.name : tag.title;
     }
   }
 
-  getTagColor(tag: ExxatTag): string {
+  getTagColor(tag: zhealthcareTag): string {
     if (tag && tag !== null) {
       return tag.color && tag.color !== null ? tag.color : tag.colorCode;
     }

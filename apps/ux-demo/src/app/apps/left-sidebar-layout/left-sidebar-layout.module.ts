@@ -4,8 +4,8 @@ import {
   FuseSharedModule,
   FuseSidebarModule,
   MaterialModule,
-  ExxatTooltipModule
-} from '@exxat/ux';
+  zhealthcareTooltipModule
+} from '@zhealthcare/ux';
 import { LeftSidebarLayoutComponent } from './container/left-sidebar-layout.component';
 import { LeftSidebarRoutingLayoutModule } from './left-sidebar-layout-routing.module';
 
@@ -16,7 +16,7 @@ import { LeftSidebarRoutingLayoutModule } from './left-sidebar-layout-routing.mo
     FuseSharedModule,
     MaterialModule,
     LeftSidebarRoutingLayoutModule,
-    ExxatTooltipModule
+    zhealthcareTooltipModule
   ],
   declarations: [LeftSidebarLayoutComponent]
 })

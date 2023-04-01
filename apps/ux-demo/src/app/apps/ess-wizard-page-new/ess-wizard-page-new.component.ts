@@ -2,12 +2,12 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { FileCard, FileConfiguration, FileEndpoint } from '@exxat/plugin/file-upload';
-import { BreadCrumbType, CarouselEvent, FuseSidebarService, HeaderService } from '@exxat/ux';
-import { SecurityContext } from '@exxat/fusion/models';
+import { FileCard, FileConfiguration, FileEndpoint } from '@zhealthcare/plugin/file-upload';
+import { BreadCrumbType, CarouselEvent, FuseSidebarService, HeaderService } from '@zhealthcare/ux';
+import { SecurityContext } from '@zhealthcare/fusion/models';
 import { UXDemoDrawerService } from '../../remote-entry/ux-demo-drawer.service';
 import { GridService } from '../student-grid/grid.service';
-import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
+import * as ClassicEditor from '@zhealthcare/ckeditor5-build-classic';
 interface HeaderContentItem {
     id: string;
     title: string;

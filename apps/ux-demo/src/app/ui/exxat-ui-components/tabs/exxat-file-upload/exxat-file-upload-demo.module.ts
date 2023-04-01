@@ -1,22 +1,22 @@
 import { Routes, RouterModule } from "@angular/router";
 import { NgModule } from '@angular/core';
-import { MaterialModule, FuseSharedModule, FileUploadModule, FuseThemeOptionsModule } from '@exxat/ux';
+import { MaterialModule, FuseSharedModule, FileUploadModule, FuseThemeOptionsModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FuseHighlightModule } from "../../../../helpers/highlight/highlight.module";
 import { CommonModule } from '@angular/common';
-import { ExxatFileUploadComponent } from './exxat-file-upload.component';
+import { zhealthcareFileUploadComponent } from './zhealthcare-file-upload.component';
 
 const routes: Routes = [
     {
         path: 'file-upload-example',
-        component: ExxatFileUploadComponent
+        component: zhealthcareFileUploadComponent
     }
 ];
 
 
 @NgModule(
     {
-        declarations: [ExxatFileUploadComponent],
+        declarations: [zhealthcareFileUploadComponent],
         imports: [
             CommonModule,
             RouterModule.forChild(routes),
@@ -29,6 +29,6 @@ const routes: Routes = [
         ]
     }
 )
-export class ExxatFileUploadDemoModule {
+export class zhealthcareFileUploadDemoModule {
 
 }

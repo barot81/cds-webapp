@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SliderTrack } from '@exxat/ux';
+import { SliderTrack } from '@zhealthcare/ux';
 
 @Component({
   selector: 'ryzen-range-slider-example-one',

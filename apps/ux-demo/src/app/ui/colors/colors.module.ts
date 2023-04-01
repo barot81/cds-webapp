@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 
-import { FuseSharedModule, FuseThemeOptionsModule } from '@exxat/ux';
+import { FuseSharedModule, FuseThemeOptionsModule } from '@zhealthcare/ux';
 
 import { ColorsComponent } from './colors.component';
 

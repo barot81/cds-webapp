@@ -118,12 +118,12 @@
               aria-label="parent node"
             >
               <div fxLayout="row" fxLayoutAlign="start center">
-                <exxat-avatar
+                <zhealthcare-avatar
                   firstName="Strong"
                   lastName="Anna"
                   tabindex="0"
                   aria-label="avatar "
-                ></exxat-avatar>
+                ></zhealthcare-avatar>
                 <span class="" tabindex="0" aria-label="Strong Anna"
                   >Strong Anna</span
                 >
@@ -168,10 +168,10 @@
                         </div>
                         <span tabindex="0" aria-label="110">110</span>
                       </div>
-                     
+
                   </div>
                 </mat-tree-node>
-        
+
                 <!-- parent node without plus icon -->
                 <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding tabindex="0" aria-label="parent node">
                   <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" class="tree-node-hover py-8 px-16 tree-node-bg" (click)="activeNode = node" [ngClass]="{ 'tree-node-active': activeNode === node }">
@@ -180,20 +180,20 @@
                         <i [ngClass]="treeControl.isExpanded(node) ? 'fa-light fa-chevron-down' : 'fa-light fa-chevron-right'"
                           ></i>
                       </button>
-        
+
                       <mat-checkbox [checked]="descendantsAllSelected(node)" [indeterminate]="descendantsPartiallySelected(node)"
                         (change)="todoItemSelectionToggle(node)" class="ml-8 mr-16">
                       </mat-checkbox>
-                        <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100"  tabindex="0" aria-label="parent node"> 
+                        <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100"  tabindex="0" aria-label="parent node">
                           <div fxLayout="row" fxLayoutAlign="start center">
-                            <exxat-avatar firstName="Strong" lastName="Anna" tabindex="0" aria-label="avatar "></exxat-avatar>
+                            <zhealthcare-avatar firstName="Strong" lastName="Anna" tabindex="0" aria-label="avatar "></zhealthcare-avatar>
                             <span class="" tabindex="0" aria-label="Strong Anna">Strong Anna</span>
                           </div>
                           <div tabindex="0" aria-label="200">200</div>
                         </div>
-                
+
                   </div>
-        
+
                 </mat-tree-node>
               </mat-tree>
            </textarea

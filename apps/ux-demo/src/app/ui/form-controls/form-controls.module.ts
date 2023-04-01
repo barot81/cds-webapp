@@ -8,20 +8,20 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule, Routes } from '@angular/router';
 import {
-  ExxatCalendarModule,
-  ExxatMatSelectSearchModule,
-  ExxatTimePickerModule,
-  ExxatTooltipModule,
-  Exxat_DATE_FORMATS,
+  zhealthcareCalendarModule,
+  zhealthcareMatSelectSearchModule,
+  zhealthcareTimePickerModule,
+  zhealthcareTooltipModule,
+  zhealthcare_DATE_FORMATS,
   FuseModule,
   FuseSharedModule,
   FuseThemeOptionsModule,
   MaterialModule,
   NgxMaterialTimepickerModule
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
-import { ExxatDrawerFormService } from '../exxat-drawers/exxat-drawer-forms-shared.service';
-import { ExxatMatSelectSearchExample } from './exxat-mat-select-search-example/exxat-mat-select-search-example.component';
+import { zhealthcareDrawerFormService } from '../zhealthcare-drawers/zhealthcare-drawer-forms-shared.service';
+import { zhealthcareMatSelectSearchExample } from './zhealthcare-mat-select-search-example/zhealthcare-mat-select-search-example.component';
 import { FormControlsComponent } from './form-controls.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {
@@ -67,7 +67,7 @@ const routes: Routes = [
     CommonControlsPageComponent,
     DateAndTimePickersPageComponent,
     DropDownListPageComponent,
-    ExxatMatSelectSearchExample,
+    zhealthcareMatSelectSearchExample,
     NavbarComponent,
     CheckboxAndRadioButtonExampleComponent,
   ],
@@ -84,16 +84,16 @@ const routes: Routes = [
     MaterialModule,
     MatTabsModule,
     MatFormFieldModule,
-    ExxatTimePickerModule,
+    zhealthcareTimePickerModule,
     NgxMaterialTimepickerModule,
-    ExxatTooltipModule,
-    ExxatMatSelectSearchModule,
+    zhealthcareTooltipModule,
+    zhealthcareMatSelectSearchModule,
     FuseThemeOptionsModule,
-    ExxatCalendarModule
+    zhealthcareCalendarModule
   ],
   providers: [
-    ExxatDrawerFormService,
-    { provide: MAT_DATE_FORMATS, useValue: Exxat_DATE_FORMATS },
+    zhealthcareDrawerFormService,
+    { provide: MAT_DATE_FORMATS, useValue: zhealthcare_DATE_FORMATS },
   ],
 })
 export class FormControlsModule {}

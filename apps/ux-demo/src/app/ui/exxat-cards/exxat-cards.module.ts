@@ -6,24 +6,24 @@ import {
   FuseModule,
   FuseSidebarModule,
   FuseProgressBarModule,
-  ExxatCarouselModule,
+  zhealthcareCarouselModule,
   FuseThemeOptionsModule,
-  ExxatAvatarModule,
-  ExxatTooltipModule,
+  zhealthcareAvatarModule,
+  zhealthcareTooltipModule,
   FuseDirectivesModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
 import { MatDividerModule } from '@angular/material/divider';
 import { Routes, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { ExxatCardExample1Component } from './tabs/exxat-card-example1/exxat-card-example1.component';
-import { ExxatCardsComponent } from './exxat-cards/exxat-cards.component';
+import { zhealthcareCardExample1Component } from './tabs/zhealthcare-card-example1/zhealthcare-card-example1.component';
+import { zhealthcareCardsComponent } from './zhealthcare-cards/zhealthcare-cards.component';
 import { CheckboxRowExampleComponent } from './tabs/checkbox-row-example/checkbox-row-example.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ExxatTagModule } from '@exxat/plugin/tags';
+import { zhealthcareTagModule } from '@zhealthcare/plugin/tags';
 import { CardWithTableAndAccordianComponent } from './tabs/card-with-table-and-accordian/card-with-table-and-accordian.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
@@ -31,7 +31,7 @@ import { MatCardModule } from '@angular/material/card';
 const routes: Routes = [
   {
     path: 'cards',
-    component: ExxatCardsComponent,
+    component: zhealthcareCardsComponent,
     children: [
       {
         path: '',
@@ -40,7 +40,7 @@ const routes: Routes = [
       },
       {
         path: 'card-example-one',
-        component: ExxatCardExample1Component,
+        component: zhealthcareCardExample1Component,
       },
       {
         path: 'card-example-two',
@@ -56,8 +56,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ExxatCardsComponent,
-    ExxatCardExample1Component,
+    zhealthcareCardsComponent,
+    zhealthcareCardExample1Component,
     CheckboxRowExampleComponent,
     NavbarComponent,
     CardWithTableAndAccordianComponent
@@ -67,7 +67,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MatIconModule,
     MatTabsModule,
-    ExxatAvatarModule,
+    zhealthcareAvatarModule,
     FuseSharedModule,
     FuseHighlightModule,
     MaterialModule,
@@ -78,14 +78,14 @@ const routes: Routes = [
     FuseModule,
     FuseSidebarModule,
     MatDividerModule,
-    ExxatCarouselModule,
+    zhealthcareCarouselModule,
     FlexLayoutModule,
     FuseThemeOptionsModule,
-    ExxatTagModule,
-    ExxatTooltipModule,
+    zhealthcareTagModule,
+    zhealthcareTooltipModule,
     MatChipsModule,
     MatCardModule,
     FuseDirectivesModule
   ],
 })
-export class ExxatCardsModule {}
+export class zhealthcareCardsModule {}

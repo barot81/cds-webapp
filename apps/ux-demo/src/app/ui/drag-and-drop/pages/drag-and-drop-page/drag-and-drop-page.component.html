@@ -8,7 +8,7 @@
               mat-icon-button
               aria-label="Click to go back"
               class="action-icon mx-8"
-              routerLink="/admin/ux/ui/exxat-component-library"
+              routerLink="/admin/ux/ui/zhealthcare-component-library"
             >
               <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
             </button>
@@ -41,11 +41,11 @@
               <div fxFlex="100">
                 <div
                   cdkDropList
-                  class="exxat-drag-drop-list"
+                  class="zhealthcare-drag-drop-list"
                   (cdkDropListDropped)="drop($event)"
                 >
                   <div
-                    class="exxat-drag-drop"
+                    class="zhealthcare-drag-drop"
                     *ngFor="let column of columnsList"
                     cdkDrag
                   >
@@ -126,11 +126,11 @@
                         <div fxFlex="100">
                           <div
                             cdkDropList
-                            class="exxat-drag-drop-list"
+                            class="zhealthcare-drag-drop-list"
                             (cdkDropListDropped)="drop($event)"
                           >
                             <div
-                              class="exxat-drag-drop"
+                              class="zhealthcare-drag-drop"
                               *ngFor="let column of columnsList"
                               cdkDrag
                             >
@@ -184,7 +184,7 @@
                     import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
                     @Component({
-                    selector: 'exxat-drag-and-drop-page',
+                    selector: 'zhealthcare-drag-and-drop-page',
                     templateUrl: './drag-and-drop-page.component.html',
                     })
                     export class DragAndDropPageComponent {

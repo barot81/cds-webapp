@@ -3,9 +3,9 @@ import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
-import { ExxatTag } from '@exxat/plugin/tags';
+import { zhealthcareTag } from '@zhealthcare/plugin/tags';
 
-import { FullScreenService, ScrollService } from '@exxat/ux';
+import { FullScreenService, ScrollService } from '@zhealthcare/ux';
 import { GridService } from '../../../../../apps/student-grid/grid.service';
 import { UXDemoDrawerService } from '../../../../../remote-entry/ux-demo-drawer.service';
 
@@ -286,7 +286,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 @Component({
-  selector: 'exxat-layout-scroll-grid',
+  selector: 'zhealthcare-layout-scroll-grid',
   templateUrl: './layout-scroll-grid.component.html',
 })
 export class LayoutScrollGridComponent {
@@ -297,7 +297,7 @@ export class LayoutScrollGridComponent {
 
   private settlementHeight: number = 36;
 
-  private currentURL = '/admin/ux/ui/exxat-layout-scroll';
+  private currentURL = '/admin/ux/ui/zhealthcare-layout-scroll';
 
   _unsubscribeAll = new Subject();
 
@@ -314,7 +314,7 @@ export class LayoutScrollGridComponent {
   clickedRows = new Set<PeriodicElement>();
   highlightedRows = new Set<PeriodicElement>();
 
-  tags: Array<ExxatTag> = [
+  tags: Array<zhealthcareTag> = [
     {
       id: Math.random(),
       name: 'Tag Label 1 Bigger Text',

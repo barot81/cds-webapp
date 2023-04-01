@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { FuseSidebarService } from '@exxat/ux';
+import { FuseSidebarService } from '@zhealthcare/ux';
 import { Template3DialogBoxComponent } from './template3-dialog-box/template3-dialog-box.component';
 import { MatDialog } from '@angular/material/dialog';
 

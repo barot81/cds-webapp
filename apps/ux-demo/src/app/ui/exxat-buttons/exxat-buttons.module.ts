@@ -8,27 +8,27 @@ import {
   FuseProgressBarModule,
   FlexTableModule,
   FuseThemeOptionsModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
 import { MatDividerModule } from '@angular/material/divider';
 import { Routes, RouterModule } from '@angular/router';
-import { ExxatButtonsComponent } from './exxat-buttons/exxat-buttons.component';
+import { zhealthcareButtonsComponent } from './zhealthcare-buttons/zhealthcare-buttons.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { GenericButtonsComponent } from './exxat-buttons/tabs/generic-buttons/generic-buttons.component';
-import { CustomBadgeComponent } from './exxat-buttons/tabs/custom-badge/custom-badge.component';
-import { SpinnerButtonsComponent } from './exxat-buttons/tabs/spinner-buttons/spinner-buttons.component';
-import { ExxatShowMoreButtonComponent } from './exxat-buttons/tabs/exxat-show-more-button/exxat-show-more-button.component';
-import { ButtonToggleComponent } from './exxat-buttons/tabs/button-toggle/button-toggle.component';
+import { GenericButtonsComponent } from './zhealthcare-buttons/tabs/generic-buttons/generic-buttons.component';
+import { CustomBadgeComponent } from './zhealthcare-buttons/tabs/custom-badge/custom-badge.component';
+import { SpinnerButtonsComponent } from './zhealthcare-buttons/tabs/spinner-buttons/spinner-buttons.component';
+import { zhealthcareShowMoreButtonComponent } from './zhealthcare-buttons/tabs/zhealthcare-show-more-button/zhealthcare-show-more-button.component';
+import { ButtonToggleComponent } from './zhealthcare-buttons/tabs/button-toggle/button-toggle.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { menuExampleComponent } from './exxat-buttons/tabs/menu-Example/menu-Example.component';
-import { NavbarComponent } from './exxat-buttons/navbar/navbar.component';
+import { menuExampleComponent } from './zhealthcare-buttons/tabs/menu-Example/menu-Example.component';
+import { NavbarComponent } from './zhealthcare-buttons/navbar/navbar.component';
 
 const routes: Routes = [
   {
-    path: 'exxat-buttons',
-    component: ExxatButtonsComponent,
+    path: 'zhealthcare-buttons',
+    component: zhealthcareButtonsComponent,
     children: [
       {
         path: '',
@@ -41,7 +41,7 @@ const routes: Routes = [
       },
       {
         path: 'show-more',
-        component: ExxatShowMoreButtonComponent,
+        component: zhealthcareShowMoreButtonComponent,
       },
       {
         path: 'generic-buttons',
@@ -65,8 +65,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ExxatButtonsComponent,
-    ExxatShowMoreButtonComponent,
+    zhealthcareButtonsComponent,
+    zhealthcareShowMoreButtonComponent,
     GenericButtonsComponent,
     CustomBadgeComponent,
     SpinnerButtonsComponent,
@@ -95,4 +95,4 @@ const routes: Routes = [
   ],
   providers: [],
 })
-export class UIExxatButtonsModule {}
+export class UIzhealthcareButtonsModule {}

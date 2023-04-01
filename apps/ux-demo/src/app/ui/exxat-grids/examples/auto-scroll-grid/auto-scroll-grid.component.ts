@@ -1,5 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { GoToColumnComponent, HeaderService } from '@exxat/ux';
+import { GoToColumnComponent, HeaderService } from '@zhealthcare/ux';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map, } from 'rxjs/operators';

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { FuseSidebarService } from '@exxat/ux';
+import { FuseSidebarService } from '@zhealthcare/ux';
 import { MatDialog } from '@angular/material/dialog';
 import { ComposeComponent } from '../compose/compose.component';
 import { LeftSidebarSeparateScrollComponent } from './left-sidebar-separate-scroll/left-sidebar-separate-scroll.component';

@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 import { BehaviorSubject } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { StickyTableHeaderLayoutService } from '../../services';

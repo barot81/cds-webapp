@@ -7,13 +7,13 @@ import {
   MatTreeFlatDataSource,
   MatTreeFlattener,
 } from '@angular/material/tree';
-import { FuseSidebarService, HeaderService } from '@exxat/ux';
+import { FuseSidebarService, HeaderService } from '@zhealthcare/ux';
 import { BehaviorSubject } from 'rxjs';
 import {
   ChecklistDatabase,
   TodoItemFlatNode,
   TodoItemNode,
-} from '../../ui/exxat-ui-components/tabs/exxat-tree-demo/variations/tree-data.service';
+} from '../../ui/zhealthcare-ui-components/tabs/zhealthcare-tree-demo/variations/tree-data.service';
 import { UXDemoDrawerService } from '../../remote-entry/ux-demo-drawer.service';
 import { PlanAppDemoDrawerService } from '../plan-app-demo/plan-app-demo-drawer.service';
 import { StickyTableHeaderLayoutService } from '../sticky-table-header-layout/services/sticky-header-table-layout.service';

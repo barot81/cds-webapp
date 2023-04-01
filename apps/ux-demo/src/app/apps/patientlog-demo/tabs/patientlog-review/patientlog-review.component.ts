@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderService, FuseSidebarService } from '@exxat/ux';
+import { HeaderService, FuseSidebarService } from '@zhealthcare/ux';
 
 @Component({
   selector: 'ryzen-patientlog-review',

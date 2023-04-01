@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ExxatTag } from '@exxat/plugin/tags';
+import { zhealthcareTag } from '@zhealthcare/plugin/tags';
 
 
 export interface PeriodicElement {
@@ -278,7 +278,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 @Component({
-  selector: 'exxat-simple-grid',
+  selector: 'zhealthcare-simple-grid',
   templateUrl: './simple-grid.component.html',
 })
 export class SimpleGridComponent {
@@ -295,7 +295,7 @@ export class SimpleGridComponent {
   clickedRows = new Set<PeriodicElement>();
   highlightedRows = new Set<PeriodicElement>();
 
-  tags: Array<ExxatTag> = [
+  tags: Array<zhealthcareTag> = [
     {
       id: Math.random(),
       name: 'Tag Label 1 Bigger Text',

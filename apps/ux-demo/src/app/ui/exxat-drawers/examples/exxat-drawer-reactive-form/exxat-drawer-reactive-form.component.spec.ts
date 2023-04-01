@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ExxatDrawerReactiveFormComponent } from './exxat-drawer-reactive-form.component';
+import { zhealthcareDrawerReactiveFormComponent } from './zhealthcare-drawer-reactive-form.component';
 
-describe('ExxatDrawerFormExampleComponent', () => {
-  let component: ExxatDrawerReactiveFormComponent;
-  let fixture: ComponentFixture<ExxatDrawerReactiveFormComponent>;
+describe('zhealthcareDrawerFormExampleComponent', () => {
+  let component: zhealthcareDrawerReactiveFormComponent;
+  let fixture: ComponentFixture<zhealthcareDrawerReactiveFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatDrawerReactiveFormComponent ]
+      declarations: [ zhealthcareDrawerReactiveFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatDrawerReactiveFormComponent);
+    fixture = TestBed.createComponent(zhealthcareDrawerReactiveFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,14 +1,14 @@
 import { Component } from "@angular/core";
-import { ExxatDrawerFormService } from "../../exxat-drawer-forms-shared.service";
+import { zhealthcareDrawerFormService } from "../../zhealthcare-drawer-forms-shared.service";
 
 @Component({
     selector: 'ryzen-drawer-with-highlight-menu-container',
-    templateUrl: './exxat-drawer-with-highlight-menu-container.component.html',
+    templateUrl: './zhealthcare-drawer-with-highlight-menu-container.component.html',
 })
 
-export class ExxatDrawerWithHighlightMenuContainerComponent{
+export class zhealthcareDrawerWithHighlightMenuContainerComponent{
 
-    constructor(public exxatDrawerFormService: ExxatDrawerFormService){    
+    constructor(public zhealthcareDrawerFormService: zhealthcareDrawerFormService){
     }
 
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FuseSidebarService, HeaderService } from '@exxat/ux';
+import { FuseSidebarService, HeaderService } from '@zhealthcare/ux';
 
 @Component({
-    selector: 'exxat-tab-one',
+    selector: 'zhealthcare-tab-one',
     templateUrl: 'tab-one.component.html',
 })
 export class TabOneComponent implements OnInit {

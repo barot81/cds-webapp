@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatDrawerWithDragDropComponent } from "./ExxatDrawerWithDragDropComponent";
+import { zhealthcareDrawerWithDragDropComponent } from "./zhealthcareDrawerWithDragDropComponent";
 
-describe('ExxatDrawerWithDragDropComponent', () => {
-  let component: ExxatDrawerWithDragDropComponent;
-  let fixture: ComponentFixture<ExxatDrawerWithDragDropComponent>;
+describe('zhealthcareDrawerWithDragDropComponent', () => {
+  let component: zhealthcareDrawerWithDragDropComponent;
+  let fixture: ComponentFixture<zhealthcareDrawerWithDragDropComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatDrawerWithDragDropComponent ]
+      declarations: [ zhealthcareDrawerWithDragDropComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatDrawerWithDragDropComponent);
+    fixture = TestBed.createComponent(zhealthcareDrawerWithDragDropComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

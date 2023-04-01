@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FuseSharedModule, FuseSidebarModule, MaterialModule } from '@exxat/ux';
+import { FuseSharedModule, FuseSidebarModule, MaterialModule } from '@zhealthcare/ux';
 import { HighLightNavMenuItemComponentLevelComponent } from './high-light-nav-menu-item-component-level/high-light-nav-menu-item-component-level.component';
 import { HighLightNavMenuItemPageLevelComponent } from './high-light-nav-menu-item-page-level/high-light-nav-menu-item-page-level.component';
 

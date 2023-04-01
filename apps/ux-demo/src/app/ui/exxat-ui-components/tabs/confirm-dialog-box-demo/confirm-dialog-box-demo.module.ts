@@ -1,6 +1,6 @@
 import { Routes, RouterModule } from "@angular/router";
 import { NgModule } from '@angular/core';
-import { MaterialModule, FuseSharedModule, FuseThemeOptionsModule, ExxatAvatarModule } from '@exxat/ux';
+import { MaterialModule, FuseSharedModule, FuseThemeOptionsModule, zhealthcareAvatarModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FuseHighlightModule } from "../../../../helpers/highlight/highlight.module";
 
@@ -30,7 +30,7 @@ const routes: Routes = [
             FlexLayoutModule,
             FuseHighlightModule,
             FuseThemeOptionsModule,
-            ExxatAvatarModule
+            zhealthcareAvatarModule
         ]
     }
 )

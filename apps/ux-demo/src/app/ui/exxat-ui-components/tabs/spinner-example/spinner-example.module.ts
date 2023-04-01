@@ -1,6 +1,6 @@
 import { Routes, RouterModule } from "@angular/router";
 import { NgModule } from '@angular/core';
-import { MaterialModule, FuseSharedModule, FuseThemeOptionsModule } from '@exxat/ux';
+import { MaterialModule, FuseSharedModule, FuseThemeOptionsModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FuseHighlightModule } from "../../../../helpers/highlight/highlight.module";
 import { CommonModule } from '@angular/common';

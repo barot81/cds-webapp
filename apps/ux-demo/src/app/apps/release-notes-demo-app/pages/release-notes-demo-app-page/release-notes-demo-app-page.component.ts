@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FuseSidebarService } from '@exxat/ux';
+import { FuseSidebarService } from '@zhealthcare/ux';
 import { ReleaseNotesDemoAppDrawerService } from '../../release-notes-demo-app-drawer.service';
 
 export class ReleaseNoteListItem {

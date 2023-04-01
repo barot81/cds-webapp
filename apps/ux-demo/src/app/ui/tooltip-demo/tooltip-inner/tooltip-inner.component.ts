@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TooltipDirective } from '@exxat/ux';
-import { ExxatDrawerFormService } from '../../exxat-drawers/exxat-drawer-forms-shared.service';
+import { TooltipDirective } from '@zhealthcare/ux';
+import { zhealthcareDrawerFormService } from '../../zhealthcare-drawers/zhealthcare-drawer-forms-shared.service';
 
 @Component({
   selector: 'ryzen-tooltip-inner',
@@ -8,7 +8,7 @@ import { ExxatDrawerFormService } from '../../exxat-drawers/exxat-drawer-forms-s
 })
 export class TooltipInnerComponent implements OnInit {
   constructor(
-    public readonly exxatDrawerFormService: ExxatDrawerFormService,
+    public readonly zhealthcareDrawerFormService: zhealthcareDrawerFormService,
     private readonly _tooltipDirective: TooltipDirective
   ) {}
 

@@ -1,12 +1,12 @@
 
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DemoPageDialogComponent } from './demo-page-dialog/demo-page-dialog.component';
-import { ExxatDrawerFormService } from '../../ui/exxat-drawers/exxat-drawer-forms-shared.service';
-import { PageFacade } from '@exxat/ux';
+import { zhealthcareDrawerFormService } from '../../ui/zhealthcare-drawers/zhealthcare-drawer-forms-shared.service';
+import { PageFacade } from '@zhealthcare/ux';
 import { UXDemoDrawerService } from '../../remote-entry/ux-demo-drawer.service';
 import { GridService } from '../student-grid/grid.service';
 
@@ -130,7 +130,7 @@ export class TheCompleteDemoPageComponent implements OnInit {
     { value: "Class 2022", viewValue: "Class 2022" },
   ];
 
-  constructor(private pageFacade: PageFacade, public exxatDrawerFormService: ExxatDrawerFormService,
+  constructor(private pageFacade: PageFacade, public zhealthcareDrawerFormService: zhealthcareDrawerFormService,
     public gridService: GridService, public dialog: MatDialog, public _UXDemoDrawerService: UXDemoDrawerService) { }
 
   openDialog() {

@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { DrawerAdapter } from '@exxat/ux';
+import { DrawerAdapter } from '@zhealthcare/ux';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 

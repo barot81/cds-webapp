@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { GridService } from '../../../student-grid/grid.service';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 import { FormControl } from '@angular/forms';
 export interface PeriodicElement {
   name: string,

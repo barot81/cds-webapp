@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigationEnd, Router } from '@angular/router';
-import { FuseSidebarService, HeaderService, ScrollService } from '@exxat/ux';
+import { FuseSidebarService, HeaderService, ScrollService } from '@zhealthcare/ux';
 import { filter } from 'rxjs/operators';
 import { LayoutPopupFourComponent } from '../../common/popups/layout-popup-four/layout-popup-four.component';
 import { LayoutPopupTwoComponent } from '../../common/popups/layout-popup-two/layout-popup-two.component';

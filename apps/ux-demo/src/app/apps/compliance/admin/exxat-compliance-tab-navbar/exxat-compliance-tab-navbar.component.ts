@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ryzen-exxat-compliance-tab-navbar',
-  templateUrl: './exxat-compliance-tab-navbar.component.html',
+  selector: 'ryzen-zhealthcare-compliance-tab-navbar',
+  templateUrl: './zhealthcare-compliance-tab-navbar.component.html',
 })
-export class ExxatComplianceTabNavbarComponent implements OnInit {
+export class zhealthcareComplianceTabNavbarComponent implements OnInit {
 
   navigations = [
     {

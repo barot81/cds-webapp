@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ryzen-exxat-media-query',
-  templateUrl: './exxat-media-query.component.html',
-  styleUrls: ['./exxat-media-query.component.scss']
+  selector: 'ryzen-zhealthcare-media-query',
+  templateUrl: './zhealthcare-media-query.component.html',
+  styleUrls: ['./zhealthcare-media-query.component.scss']
 })
-export class ExxatMediaQueryComponent implements OnInit {
+export class zhealthcareMediaQueryComponent implements OnInit {
 
   constructor() { }
 

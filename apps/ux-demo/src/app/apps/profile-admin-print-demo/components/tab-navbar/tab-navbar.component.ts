@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-    selector: 'exxat-tab-navbar',
+    selector: 'zhealthcare-tab-navbar',
     templateUrl: 'tab-navbar.component.html',
 })
 export class TabnavBarComponent implements OnInit {

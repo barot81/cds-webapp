@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'exxat-tab-nav-bar',
+  selector: 'zhealthcare-tab-nav-bar',
   templateUrl: './tab-nav-bar.component.html',
 })
 export class TabNavBarComponenent {

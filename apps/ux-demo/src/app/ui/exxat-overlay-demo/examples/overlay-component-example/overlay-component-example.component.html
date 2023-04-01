@@ -1,4 +1,4 @@
-<div id="exxat-overlay-component-container-examples">
+<div id="zhealthcare-overlay-component-container-examples">
   <div class="center">
     <div class="content">
       <div fxLayout="column" fxLayout.gt-md="row">
@@ -103,16 +103,16 @@
                 <textarea #source hidden="hidden">
 
               import { Component, TemplateRef, ComponentFactoryResolver } from '@angular/core';
-              import { OverlayService } from '@exxat/ux';
+              import { OverlayService } from '@zhealthcare/ux';
               import { ComponentType } from '@angular/cdk/portal';
               import { SubscribeComponent } from './subscribe/subscribe.component';
               
               @Component({
-                selector: 'ryzen-exxat-overlay-demo',
-                templateUrl: './exxat-overlay-demo.component.html',
-                styleUrls: ['./exxat-overlay-demo.component.scss']
+                selector: 'ryzen-zhealthcare-overlay-demo',
+                templateUrl: './zhealthcare-overlay-demo.component.html',
+                styleUrls: ['./zhealthcare-overlay-demo.component.scss']
               })
-              export class ExxatOverlayDemoComponent {
+              export class zhealthcareOverlayDemoComponent {
               
                 subscribeData = null;
                 subscribeComponentRef: any;
@@ -214,7 +214,7 @@
               >
                 <textarea #source hidden="hidden">
               import { Component, OnInit } from '@angular/core';
-              import { ExxatOverlayRef } from '@exxat/ux';
+              import { zhealthcareOverlayRef } from '@zhealthcare/ux';
               import { FormBuilder, FormGroup, Validators } from '@angular/forms';
               
               @Component({
@@ -226,7 +226,7 @@
               
                 frmSubscribe: FormGroup;
                 
-                constructor(private fb: FormBuilder, private overlayRef: ExxatOverlayRef) {
+                constructor(private fb: FormBuilder, private overlayRef: zhealthcareOverlayRef) {
                   this.frmSubscribe = this.fb.group({
                     name: this.overlayRef.data.name,
                     email: [

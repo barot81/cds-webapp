@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { MaterialModule } from "@exxat/ux";
+import { MaterialModule } from "@zhealthcare/ux";
 import { HomeScreenContainerComponent } from "./container/home-screen-container.component";
 import { HomeScreenRoutingModule } from "./home-screen-demo-routing.module";
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Template8DialogBoxComponent } from './layout-popup/layout-popup.component';
-import { FuseSidebarService } from '@exxat/ux';
+import { FuseSidebarService } from '@zhealthcare/ux';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({

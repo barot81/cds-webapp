@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatDataSourceComponent } from './exxat-data-source.component';
+import { zhealthcareDataSourceComponent } from './zhealthcare-data-source.component';
 
-describe('ExxatDataSourceComponent', () => {
-  let component: ExxatDataSourceComponent;
-  let fixture: ComponentFixture<ExxatDataSourceComponent>;
+describe('zhealthcareDataSourceComponent', () => {
+  let component: zhealthcareDataSourceComponent;
+  let fixture: ComponentFixture<zhealthcareDataSourceComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatDataSourceComponent ]
+      declarations: [ zhealthcareDataSourceComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatDataSourceComponent);
+    fixture = TestBed.createComponent(zhealthcareDataSourceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

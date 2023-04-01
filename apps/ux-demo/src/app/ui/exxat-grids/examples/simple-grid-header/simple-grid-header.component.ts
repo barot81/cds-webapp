@@ -1,10 +1,10 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { FullScreenService } from '@exxat/ux';
+import { FullScreenService } from '@zhealthcare/ux';
 import { GridService } from '../../../../apps/student-grid/grid.service';
 import { UXDemoDrawerService } from '../../../../remote-entry/ux-demo-drawer.service';
 
 @Component({
-  selector: 'exxat-simple-grid-header',
+  selector: 'zhealthcare-simple-grid-header',
   templateUrl: './simple-grid-header.component.html',
 })
 export class SimpleGridHeaderComponent {

@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'exxat-drag-and-drop-page',
+  selector: 'zhealthcare-drag-and-drop-page',
   templateUrl: './drag-and-drop-page.component.html',
 })
 export class DragAndDropPageComponent {

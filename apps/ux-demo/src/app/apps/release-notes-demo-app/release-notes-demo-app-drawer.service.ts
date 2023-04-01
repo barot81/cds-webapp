@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ComponentMap } from "@exxat/fusion/core";
+import { ComponentMap } from "@zhealthcare/fusion/core";
 import { AddReleaseNotesDrawerComponent } from "./drawers/add-release-notes-drawer/add-release-notes-drawer.component";
 
 @Injectable({providedIn: 'any'})

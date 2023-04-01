@@ -6,7 +6,7 @@ import {
   ViewChild,
   Input,
 } from '@angular/core';
-import { ScrollService } from '@exxat/ux';
+import { ScrollService } from '@zhealthcare/ux';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 @Component({

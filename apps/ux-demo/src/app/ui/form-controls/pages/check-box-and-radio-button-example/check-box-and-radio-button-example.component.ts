@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'exxat-checkbox-and-radio-button-example',
+  selector: 'zhealthcare-checkbox-and-radio-button-example',
   templateUrl: './check-box-and-radio-button-example.component.html',
   styleUrls: ['./check-box-and-radio-button-example.component.scss'],
 })
@@ -11,7 +11,7 @@ export class CheckboxAndRadioButtonExampleComponent {
   list = [
     { value: 'usc', viewValue: 'USC' },
     { value: 'losrios', viewValue: 'LosRios' },
-    { value: 'exxat', viewValue: 'Exxat' },
+    { value: 'zhealthcare', viewValue: 'zhealthcare' },
     { value: 'common', viewValue: 'Common' },
   ];
 

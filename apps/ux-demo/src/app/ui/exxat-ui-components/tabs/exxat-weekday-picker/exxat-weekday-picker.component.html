@@ -1,9 +1,9 @@
-<div #exxat_weekday_selector id="exxat-weekday-selector" class="p-24">
-  <div class="mat-title">Exxat Chips</div>
+<div #zhealthcare_weekday_selector id="zhealthcare-weekday-selector" class="p-24">
+  <div class="mat-title">zhealthcare Chips</div>
 
 
 <div class="mb-52">
-  <ryzen-exxat-autocomplete-chips></ryzen-exxat-autocomplete-chips>
+  <ryzen-zhealthcare-autocomplete-chips></ryzen-zhealthcare-autocomplete-chips>
 </div>
 
 <div class="mb-16">
@@ -14,10 +14,10 @@
   <div fxLayout="column" fxLayout.gt-md="row">
 
     <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
-      <div class="mat-caption secondary-text">Exxat Chips</div>
+      <div class="mat-caption secondary-text">zhealthcare Chips</div>
       <div class="mat-card mat-elevation-z4">
 
-        <div class="exxat-chip">
+        <div class="zhealthcare-chip">
           <span *ngFor="let chip of chipList">
             <input type="checkbox" [id]="chip" />
             <label [for]="chip">{{chip}}</label>
@@ -30,13 +30,13 @@
     <fuse-highlight lang="html" class="source-code" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
       <textarea #source hidden="hidden">
 
-        <div class="exxat-chip">
+        <div class="zhealthcare-chip">
           <span *ngFor="let chip of chipList">
             <input type="checkbox" [id]="chip" />
             <label [for]="chip">chip</label>
           </span>
         </div>
-  
+
       </textarea>
     </fuse-highlight>
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { FuseSidebarService } from '@exxat/ux';
+import { FuseSidebarService } from '@zhealthcare/ux';
 import { MatDialog } from '@angular/material/dialog';
 import { LayoutPopupComponent } from './layout-popup/layout-popup.component';
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ComponentMap } from '@exxat/fusion/core';
+import { ComponentMap } from '@zhealthcare/fusion/core';
 import { AddCourseOfferingComponent } from './drawers/add-course-offering/add-course-offering.component';
 import { AddCourseMeasuresComponent } from './drawers/add-course-measures/add-course-measures.component';
 import { EditCourseMeasureComponent } from './drawers/edit-course-measure/edit-course-measure.component';
@@ -38,9 +38,9 @@ export class PlanAppDemoDrawerService extends ComponentMap {
         this.add('ryzen-licensure-info-drawer', LicensureInfoDrawerComponent);
         this.add('ryzen-certification-info-drawer', CertificationInfoDrawerComponent);
         this.add('ryzen-general-employement-details-drawer', GeneralEmployementDetailsDrawerComponent);
-        this.add('exxat-app-measures-drawers-demo', MeasuresDrawersDemoComponent);
-        this.add('exxat-app-objective-drawer-demo', ObjectiveDrawerDemoComponent);
-        this.add('exxat-app-reorder-tree-drawer', ReorderTreeDrawerComponent);
+        this.add('zhealthcare-app-measures-drawers-demo', MeasuresDrawersDemoComponent);
+        this.add('zhealthcare-app-objective-drawer-demo', ObjectiveDrawerDemoComponent);
+        this.add('zhealthcare-app-reorder-tree-drawer', ReorderTreeDrawerComponent);
         this.add('ryzen-add-capte-details-drawer', AddCAPTEDetailsDrawerComponent);
         this.add('ryzen-add-capte-details-drawer-two', AddCAPTEDetailsDrawerTwoComponent);
         this.add('ryzen-add-mapping-drawer', AddMappingDrawerComponent);

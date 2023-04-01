@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { HeaderService } from "@exxat/ux";
+import { HeaderService } from "@zhealthcare/ux";
 
 export var layout_three_single = [
     {
@@ -75,7 +75,7 @@ export var layout_three_single = [
 ];
 
 @Component({
-    selector: 'exxat-graphs-layout-three',
+    selector: 'zhealthcare-graphs-layout-three',
     templateUrl: 'layout-three.component.html',
 })
 export class LayoutThreeComponent {

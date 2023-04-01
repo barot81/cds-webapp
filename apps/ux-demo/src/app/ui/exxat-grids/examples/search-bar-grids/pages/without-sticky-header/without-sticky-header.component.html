@@ -77,7 +77,7 @@
             *ngIf="fruits.length > 2"
           >
             <a
-              exxatDrawerAction
+              zhealthcareDrawerAction
               [componentSelector]="
                 _UXDemoDrawerService.get('ryzen-show-more-filter-drawer')
               "
@@ -126,7 +126,7 @@
 
           <button
             aria-label="Edit Columns"
-            exxatDrawerAction
+            zhealthcareDrawerAction
             matTooltip="Edit columns"
             [componentSelector]="gridService.get('ryzen-edit-columns')"
             [size]="'drawer-sm'"
@@ -142,7 +142,7 @@
             mat-icon-button
             class="ml-4 filter-icon-button"
             aria-label="filters"
-            exxatDrawerAction
+            zhealthcareDrawerAction
             matTooltip="Filter"
             [componentSelector]="
               _UXDemoDrawerService.get('ryzen-filter-drawer')
@@ -179,7 +179,7 @@
             <button
               mat-menu-item
               aria-label="Edit Columns"
-              exxatDrawerAction
+              zhealthcareDrawerAction
               [componentSelector]="gridService.get('ryzen-edit-columns')"
               [size]="'drawer-sm'"
               [caption]="'Edit Columns'"
@@ -214,7 +214,7 @@
       aria-label="This is a Simple table"
       mat-table
       [dataSource]="dataSource"
-      class="w-100-p exxat-table"
+      class="w-100-p zhealthcare-table"
       matSort
     >
       <!-- Name Column -->
@@ -227,11 +227,11 @@
         >
           <div fxLayout="row" fxLayoutAlign="start center">
             <a>{{ element.name }}</a>
-            <exxat-tag-showcase
+            <zhealthcare-tag-showcase
               [tags]="tags"
               class="ml-4"
               *ngIf="i % 3 == 0"
-            ></exxat-tag-showcase>
+            ></zhealthcare-tag-showcase>
           </div>
         </td>
       </ng-container>

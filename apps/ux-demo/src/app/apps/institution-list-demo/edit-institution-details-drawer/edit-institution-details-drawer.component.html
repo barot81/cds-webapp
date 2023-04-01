@@ -12,7 +12,7 @@
       <div fxLayout="column">
         <div class="pl-16 pt-16" fxLayout="row wrap" fxFlex="100">
           <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
-              <mat-form-field appearance="fill" fxFlex="100" class="exxat-form-field-outline">
+              <mat-form-field appearance="fill" fxFlex="100" class="zhealthcare-form-field-outline">
                 <mat-label>Institute Name</mat-label>
                 <input matInput formControlName="instituteName" required>
                 <mat-error>Institute Name is required!</mat-error>
@@ -49,15 +49,15 @@
           <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
             <div fxLayout="column" class="w-100-p">
               <span class="font-weight-600 mb-8 font-16 accent-fg" tabindex="0" aria-label="title Institution Logo for Website">Institution Logo for Website</span>
-              <exxat-file-upload  [fileConfiguration]="fileConfiguration"
-              formControlName="fileDescriptions" tabindex="0" aria-label="Browse to upload files"></exxat-file-upload>
+              <zhealthcare-file-upload  [fileConfiguration]="fileConfiguration"
+              formControlName="fileDescriptions" tabindex="0" aria-label="Browse to upload files"></zhealthcare-file-upload>
             </div>
           </div>
           <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16 mt-small-16">
             <div fxLayout="column" class="w-100-p">
               <span class="font-weight-600 mb-8 font-16 accent-fg" tabindex="0" aria-label="title Institution Logo for Website">Institution Logo for Email</span>
-              <exxat-file-upload  [fileConfiguration]="fileConfiguration"
-              formControlName="fileDescriptions" tabindex="0" aria-label="Browse to upload files"></exxat-file-upload>
+              <zhealthcare-file-upload  [fileConfiguration]="fileConfiguration"
+              formControlName="fileDescriptions" tabindex="0" aria-label="Browse to upload files"></zhealthcare-file-upload>
             </div>
           </div>
         </div>

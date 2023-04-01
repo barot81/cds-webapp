@@ -4,7 +4,7 @@ export * from './layout-3/layout-three.component';
 
 import { LayoutOneComponent, LayoutTwoComponent, LayoutThreeComponent } from './';
 
-export const EXXATGRAPHSLAYOUTS = [
+export const zhealthcareGRAPHSLAYOUTS = [
     LayoutOneComponent,
     LayoutTwoComponent,
     LayoutThreeComponent

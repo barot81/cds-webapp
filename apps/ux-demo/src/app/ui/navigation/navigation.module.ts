@@ -8,9 +8,9 @@ import {
   MaterialModule,
   FuseSharedModule,
   FuseModule,
-  ExxatBreadcrumbModule,
+  zhealthcareBreadcrumbModule,
   FuseThemeOptionsModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { FlexModule, FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
@@ -77,7 +77,7 @@ const routes: Routes = [
     MatTabsModule,
     MatFormFieldModule,
     MatIconModule,
-    ExxatBreadcrumbModule,
+    zhealthcareBreadcrumbModule,
     FlexLayoutModule,
     FuseThemeOptionsModule,
   ],

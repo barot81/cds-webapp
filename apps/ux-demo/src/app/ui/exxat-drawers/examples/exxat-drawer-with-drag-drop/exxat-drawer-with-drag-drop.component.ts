@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { DrawerAdapter } from '@exxat/ux';
+import { DrawerAdapter } from '@zhealthcare/ux';
 
 @Component({
-  selector: 'ryzen-exxat-drawer-with-drag-drop',
-  templateUrl: './exxat-drawer-with-drag-drop.component.html',
-  styleUrls: ['./exxat-drawer-with-drag-drop.component.scss']
+  selector: 'ryzen-zhealthcare-drawer-with-drag-drop',
+  templateUrl: './zhealthcare-drawer-with-drag-drop.component.html',
+  styleUrls: ['./zhealthcare-drawer-with-drag-drop.component.scss']
 })
-export class ExxatDrawerWithDragDropComponent implements OnInit, DrawerAdapter {
+export class zhealthcareDrawerWithDragDropComponent implements OnInit, DrawerAdapter {
   columnsList = [
     'Student Name',
     'Email',

@@ -10,7 +10,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { MatTableDataSource } from '@angular/material/table';
-import { FullScreenService, ScrollService } from '@exxat/ux';
+import { FullScreenService, ScrollService } from '@zhealthcare/ux';
 import { UXDemoDrawerService } from '../../../../remote-entry/ux-demo-drawer.service';
 
 import { NavigationEnd, Router } from '@angular/router';

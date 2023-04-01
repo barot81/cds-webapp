@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigationEnd, Router } from '@angular/router';
-import { FuseSidebarService, ScrollService } from '@exxat/ux';
+import { FuseSidebarService, ScrollService } from '@zhealthcare/ux';
 import { filter } from 'rxjs/operators';
 import { SidebarLayoutPopupThreeComponent } from '../popups/layout-popup-three/layout-popup-three.component';
 
@@ -13,7 +13,7 @@ export class SidebarThreeComponent {
 
     @ViewChild('sidebarHeader') sidebarHeader: ElementRef;
     private currentURL =
-    'admin/ux/ui/exxat-sidebar/sidebar-three';
+    'admin/ux/ui/zhealthcare-sidebar/sidebar-three';
 
     tooltipOptions = {
       'contentType': 'string',

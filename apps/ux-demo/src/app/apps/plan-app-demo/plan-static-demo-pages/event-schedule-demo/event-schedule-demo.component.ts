@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { MatTableDataSource } from '@angular/material/table';
 import { ExecSyncOptionsWithStringEncoding } from 'child_process';
 import { PlanAppDemoDrawerService } from '../../plan-app-demo-drawer.service';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 import { BehaviorSubject } from 'rxjs';
 import { PlanDemoHeaderLayoutService } from '../plan-static-header-service';
 import { GridService } from '../../../student-grid/grid.service';

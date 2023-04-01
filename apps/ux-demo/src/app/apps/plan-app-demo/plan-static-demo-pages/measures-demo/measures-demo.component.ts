@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PlanAppDemoDrawerService } from '../../plan-app-demo-drawer.service';
 
 @Component({
-  selector: 'exxat-app-measures-demo',
+  selector: 'zhealthcare-app-measures-demo',
   templateUrl: './measures-demo.component.html',
   styleUrls: ['./measures-demo.component.scss']
 })

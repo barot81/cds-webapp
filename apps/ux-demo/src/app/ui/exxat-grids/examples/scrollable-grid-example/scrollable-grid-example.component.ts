@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { HeaderService, FlexTableService } from '@exxat/ux';
+import { HeaderService, FlexTableService } from '@zhealthcare/ux';
 
 export interface PeriodicElement {
   src: string;

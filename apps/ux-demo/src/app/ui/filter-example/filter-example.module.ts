@@ -8,9 +8,9 @@ import {
   FuseThemeOptionsModule,
   LayoutModule,
   MaterialModule
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
-import { UIExxatDrawersModule } from '../exxat-drawers/exxat-drawers.module';
+import { UIzhealthcareDrawersModule } from '../zhealthcare-drawers/zhealthcare-drawers.module';
 import { FilterExampleComponent } from './pages';
 
 const routes: Routes = [
@@ -26,7 +26,7 @@ const routes: Routes = [
     MaterialModule,
     FuseHighlightModule,
     LayoutModule,
-    UIExxatDrawersModule,
+    UIzhealthcareDrawersModule,
     RouterModule.forChild(routes),
     FuseThemeOptionsModule,
     FuseDirectivesModule,

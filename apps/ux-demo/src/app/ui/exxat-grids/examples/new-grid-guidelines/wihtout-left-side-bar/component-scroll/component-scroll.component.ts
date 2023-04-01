@@ -2,11 +2,11 @@ import { Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewInit } fr
 import { UXDemoDrawerService } from '../../../../../../remote-entry/ux-demo-drawer.service';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 import { startWith, map } from 'rxjs/operators';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { FullScreenService, GoToColumnComponent } from '@exxat/ux';
+import { FullScreenService, GoToColumnComponent } from '@zhealthcare/ux';
 
 export interface PeriodicElement {
   src: string;

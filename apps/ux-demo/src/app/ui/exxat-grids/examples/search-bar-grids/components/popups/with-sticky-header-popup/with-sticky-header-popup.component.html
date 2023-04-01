@@ -14,16 +14,16 @@
             carded
             fullwidth
             inner-scroll
-            exxat-new-grid
+            zhealthcare-new-grid
             full-width-page
             "
             >
             <div class="overflow-y-auto">
             <!-- Main Header -->
             <div class="mb-16" #mainHeader>
-            <exxat-tab-nav-bar
+            <zhealthcare-tab-nav-bar
             *ngIf="!(_fullScreen.fullScreenModeEnabled$ | async)"
-            ></exxat-tab-nav-bar>
+            ></zhealthcare-tab-nav-bar>
             </div>
             <!-- / Main Header -->
 
@@ -48,12 +48,12 @@
         <textarea #source hidden="hidden">
 
             import { Component, ElementRef, ViewChild } from '@angular/core';
-            import { FullScreenService, ScrollService } from '@exxat/ux';
+            import { FullScreenService, ScrollService } from '@zhealthcare/ux';
             import { NavigationEnd, Router } from '@angular/router';
             import { filter } from 'rxjs/operators';
             
             @Component({
-              selector: 'exxat-container',
+              selector: 'zhealthcare-container',
               templateUrl: './container.component.html',
             })
             export class SearchBarGridsContainerComponenent {
@@ -175,7 +175,7 @@
                           *ngIf="fruits.length > 2"
                         >
                           <a
-                            exxatDrawerAction
+                            zhealthcareDrawerAction
                             [componentSelector]="
                               _UXDemoDrawerService.get('ryzen-show-more-filter-drawer')
                             "
@@ -224,7 +224,7 @@
                         <button
                           matTooltip="Edit Columns"
                           aria-label="Edit Columns"
-                          exxatDrawerAction
+                          zhealthcareDrawerAction
                           [componentSelector]="gridService.get('ryzen-edit-columns')"
                           [size]="'drawer-sm'"
                           [caption]="'Edit Columns'"
@@ -240,7 +240,7 @@
                           mat-icon-button
                           class="ml-4 filter-icon-button"
                           aria-label="filters"
-                          exxatDrawerAction
+                          zhealthcareDrawerAction
                           [componentSelector]="
                             _UXDemoDrawerService.get('ryzen-filter-drawer')
                           "
@@ -274,7 +274,7 @@
                           <button
                             mat-menu-item
                             aria-label="Edit Columns"
-                            exxatDrawerAction
+                            zhealthcareDrawerAction
                             [componentSelector]="gridService.get('ryzen-edit-columns')"
                             [size]="'drawer-sm'"
                             [caption]="'Edit Columns'"
@@ -304,7 +304,7 @@
                     aria-label="This is a Simple table"
                     mat-table
                     [dataSource]="dataSource"
-                    class="w-100-p exxat-table"
+                    class="w-100-p zhealthcare-table"
                     matSort
                   >
                     <!-- Table Code -->
@@ -339,9 +339,9 @@
               import { MatDialog } from '@angular/material/dialog';
               import { MatTableDataSource } from '@angular/material/table';
               import { NavigationEnd, Router } from '@angular/router';
-              import { ExxatTag } from '@exxat/plugin';
+              import { zhealthcareTag } from '@zhealthcare/plugin';
               import { FormControl } from '@angular/forms';
-              import { FullScreenService, ScrollService } from '@exxat/ux';
+              import { FullScreenService, ScrollService } from '@zhealthcare/ux';
               import { GridService } from 'libs/ux-demo/src/lib/apps/student-grid/grid.service';
               import { UXDemoDrawerService } from 'libs/ux-demo/src/lib/ux-demo-drawer.service';
               import { filter } from 'rxjs/operators';
@@ -622,7 +622,7 @@
               ];
               
               @Component({
-                selector: 'exxat-with-sticky-header-grid',
+                selector: 'zhealthcare-with-sticky-header-grid',
                 templateUrl: './with-sticky-header.component.html',
               })
               export class WithStickyHeaderGridComponenent implements AfterViewInit {
@@ -643,7 +643,7 @@
                 clickedRows = new Set<PeriodicElement>();
                 highlightedRows = new Set<PeriodicElement>();
               
-                tags: Array<ExxatTag> = [
+                tags: Array<zhealthcareTag> = [
                   {
                     id: Math.random(),
                     name: 'Tag Label 1 Bigger Text',

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatComplianceTabNavbarComponent } from './exxat-compliance-tab-navbar.component';
+import { zhealthcareComplianceTabNavbarComponent } from './zhealthcare-compliance-tab-navbar.component';
 
-describe('ExxatComplianceTabNavbarComponent', () => {
-  let component: ExxatComplianceTabNavbarComponent;
-  let fixture: ComponentFixture<ExxatComplianceTabNavbarComponent>;
+describe('zhealthcareComplianceTabNavbarComponent', () => {
+  let component: zhealthcareComplianceTabNavbarComponent;
+  let fixture: ComponentFixture<zhealthcareComplianceTabNavbarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatComplianceTabNavbarComponent ]
+      declarations: [ zhealthcareComplianceTabNavbarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatComplianceTabNavbarComponent);
+    fixture = TestBed.createComponent(zhealthcareComplianceTabNavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

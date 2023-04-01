@@ -1,9 +1,9 @@
 
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 import { PlanAppDemoDrawerService } from '../plan-app-demo-drawer.service';
-import { ExxatDrawerFormService } from '../../../ui/exxat-drawers/exxat-drawer-forms-shared.service';
+import { zhealthcareDrawerFormService } from '../../../ui/zhealthcare-drawers/zhealthcare-drawer-forms-shared.service';
 import { BehaviorSubject } from 'rxjs';
 import { UXDemoDrawerService } from '../../../remote-entry/ux-demo-drawer.service';
 import { GridService } from '../../student-grid/grid.service';
@@ -108,7 +108,7 @@ export class PlanDemoAppContainerComponent implements OnInit {
 
   constructor(public headerService: HeaderService, public gridService: GridService,
     public _PlanAppDemoDrawerService: PlanAppDemoDrawerService,
-    public _ExxatDrawerFormService: ExxatDrawerFormService,public _UXDemoDrawerService: UXDemoDrawerService) { }
+    public _zhealthcareDrawerFormService: zhealthcareDrawerFormService,public _UXDemoDrawerService: UXDemoDrawerService) { }
 
   ngAfterViewInit() {
     setTimeout(async () => {

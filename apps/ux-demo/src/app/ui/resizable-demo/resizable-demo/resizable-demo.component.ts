@@ -1,5 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { HeaderService, FuseSidebarService } from '@exxat/ux';
+import { HeaderService, FuseSidebarService } from '@zhealthcare/ux';
 
 @Component({
   selector: 'ryzen-resizable-demo',

@@ -2,7 +2,7 @@
 import { Component, AfterViewInit, ViewChild, ElementRef, OnInit, HostListener } from '@angular/core';
 import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { FormControl } from '@angular/forms';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 import { MatTableDataSource } from '@angular/material/table';
 import { StickyTableHeaderLayoutService } from '../../sticky-table-header-layout/services/sticky-header-table-layout.service';
 import { BehaviorSubject } from 'rxjs';

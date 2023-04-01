@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
-import { FuseSidebarService } from "@exxat/ux";
+import { FuseSidebarService } from "@zhealthcare/ux";
 
 @Component({
-    selector: 'exxat-profile-header',
+    selector: 'zhealthcare-profile-header',
     templateUrl: 'profile-header.component.html',
 })
 export class ProfileHeaderComponent {

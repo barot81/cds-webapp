@@ -3,9 +3,9 @@ import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationEnd, Router } from '@angular/router';
-import { ExxatTag } from '@exxat/plugin/tags';
+import { zhealthcareTag } from '@zhealthcare/plugin/tags';
 
-import { FullScreenService, ScrollService } from '@exxat/ux';
+import { FullScreenService, ScrollService } from '@zhealthcare/ux';
 import { GridService } from '../../../../../../apps/student-grid/grid.service';
 import { UXDemoDrawerService } from '../../../../../../remote-entry/ux-demo-drawer.service';
 
@@ -288,7 +288,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 @Component({
-  selector: 'exxat-without-sticky-header-grid',
+  selector: 'zhealthcare-without-sticky-header-grid',
   templateUrl: './without-sticky-header.component.html'
 })
 export class WithoutStickyHeaderGridComponenent {
@@ -312,7 +312,7 @@ export class WithoutStickyHeaderGridComponenent {
   clickedRows = new Set<PeriodicElement>();
   highlightedRows = new Set<PeriodicElement>();
 
-  tags: Array<ExxatTag> = [
+  tags: Array<zhealthcareTag> = [
     {
       id: Math.random(),
       name: 'Tag Label 1 Bigger Text',

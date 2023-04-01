@@ -83,7 +83,7 @@
             fxLayoutAlign="center"
           >
             <textarea #source hidden="hidden">
- 
+
             <mat-card>
               <form [formGroup]="form">
                 <div>
@@ -100,7 +100,7 @@
                       [ngClass]="{ 'mb-12': i < list.length - 1 }"
                       formControlName="checkBoxControl"
                     >
-                      item.viewValue 
+                      item.viewValue
                     </mat-checkbox>
                   </div>
                   <mat-error class="mb-16" *ngIf="getControlError('checkBoxControl')"
@@ -144,12 +144,12 @@
             fxLayoutAlign="center"
           >
             <textarea #source hidden="hidden">
- 
+
             import { Component } from '@angular/core';
             import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-            
+
             @Component({
-              selector: 'exxat-checkbox-and-radio-button-example',
+              selector: 'zhealthcare-checkbox-and-radio-button-example',
               templateUrl: './check-box-and-radio-button-example.component.html',
             })
             export class CheckboxAndRadioButtonExampleComponent {
@@ -157,17 +157,17 @@
               list = [
                 { value: 'usc', viewValue: 'USC' },
                 { value: 'losrios', viewValue: 'LosRios' },
-                { value: 'exxat', viewValue: 'Exxat' },
+                { value: 'zhealthcare', viewValue: 'zhealthcare' },
                 { value: 'common', viewValue: 'Common' },
               ];
-            
+
               /**
                *
                */
               constructor(private _fb: FormBuilder) {
                 this.initForm();
               }
-            
+
               private initForm() {
                 this.form = this._fb.group({
                   checkBoxControl: [
@@ -188,7 +188,7 @@
                   ],
                 });
               }
-            
+
               getControlError(control: any) {
                 if (this.form.touched) {
                   const value =
@@ -197,7 +197,7 @@
                 }
               }
             }
-            
+
           </textarea
             >
           </fuse-highlight>

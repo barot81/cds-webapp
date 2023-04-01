@@ -35,7 +35,7 @@ export class AuthService extends HttpService {
   login(userInputModel: UserInputModel): Observable<any> {
     if(userInputModel.userName === 'vishal') {
       userInputModel = Object.assign({}, userInputModel, {
-        userName: 'Exxat.superadmin'
+        userName: 'zhealthcare.superadmin'
       });
     }
       let url = this.getEndpoint(`${this.BASE_URL}/account/login`);

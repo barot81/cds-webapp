@@ -11,7 +11,7 @@
       mat-button
       class="action-icon"
       aria-hidden="false"
-      exxatDrawerAction
+      zhealthcareDrawerAction
       aria-hidden="false"
       aria-label="Open Filters"
       [componentSelector]="_drawerService.get('ryzen-add-rule-drawer')"
@@ -45,7 +45,7 @@
       >
         <div fxLayout="row" fxLayoutAlign="start center">
           <div fxLayout="column">
-            <exxat-search-bar [listofOptions]=""></exxat-search-bar>
+            <zhealthcare-search-bar [listofOptions]=""></zhealthcare-search-bar>
           </div>
         </div>
 
@@ -79,7 +79,7 @@
           aria-label="This is a Multi row table"
           mat-table
           [dataSource]="dataSource"
-          class="w-100-p exxat-table table-border pt-0"
+          class="w-100-p zhealthcare-table table-border pt-0"
         >
           <ng-container matColumnDef="user">
             <th

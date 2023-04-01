@@ -1,19 +1,19 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FullScreenService, ScrollService } from '@exxat/ux';
+import { FullScreenService, ScrollService } from '@zhealthcare/ux';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { LayoutScrollService } from '../services';
 
 @Component({
-  selector: 'exxat-container',
+  selector: 'zhealthcare-container',
   templateUrl: './container.component.html',
 })
 export class ContainerComponent {
   @ViewChild('mainHeader') mainHeader: ElementRef;
   @ViewChild('contentHeader') contentHeader: ElementRef;
 
-  private currentURL = '/admin/ux/ui/exxat-layout-scroll';
+  private currentURL = '/admin/ux/ui/zhealthcare-layout-scroll';
 
   _unsubscribeAll = new Subject();
   /**

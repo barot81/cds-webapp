@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ryzen-exxat-skeleton-example',
-  templateUrl: './exxat-skeleton-example.component.html',
-  styleUrls: ['./exxat-skeleton-example.component.scss']
+  selector: 'ryzen-zhealthcare-skeleton-example',
+  templateUrl: './zhealthcare-skeleton-example.component.html',
+  styleUrls: ['./zhealthcare-skeleton-example.component.scss']
 })
-export class ExxatSkeletonExampleComponent implements OnInit {
+export class zhealthcareSkeletonExampleComponent implements OnInit {
 
   constructor() { }
 

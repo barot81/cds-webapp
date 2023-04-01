@@ -1,9 +1,9 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthGuardService } from '@exxat/fusion/core';
+import { AuthGuardService } from '@zhealthcare/fusion/core';
 
-import { ExxatFormsComponent } from './exxat-forms.component';
+import { zhealthcareFormsComponent } from './zhealthcare-forms.component';
 import { FormEventComponent } from './form-event/form-event.component';
 import { FormRequestComponent } from './form-request/form-request.component';
 import { FormResponseComponent } from './form-response/form-response.component';
@@ -15,17 +15,17 @@ import { WorkflowComponent } from './workflow/workflow.component';
 
 const routes: Routes = [
   {
-    path: 'exxat-forms',
-    component: ExxatFormsComponent,
+    path: 'zhealthcare-forms',
+    component: zhealthcareFormsComponent,
     canActivate: [AuthGuardService],
     children: [
       {
         path: '',
-        redirectTo: 'exxat-forms-ui',
+        redirectTo: 'zhealthcare-forms-ui',
         pathMatch: 'full',
       },
       {
-        path: 'exxat-forms-ui',
+        path: 'zhealthcare-forms-ui',
         component: FormsUiComponent,
       },
       {
@@ -64,4 +64,4 @@ const routes: Routes = [
   exports: [RouterModule],
   declarations: [],
 })
-export class ExxatFormsRoutingModule {}
+export class zhealthcareFormsRoutingModule {}

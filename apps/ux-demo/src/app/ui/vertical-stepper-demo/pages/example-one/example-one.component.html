@@ -60,7 +60,7 @@
                 aria-label="This is a Simple table"
                 mat-table
                 [dataSource]="dataSource"
-                class="w-100-p exxat-table bx pt-0"
+                class="w-100-p zhealthcare-table bx pt-0"
               >
                 <ng-container matColumnDef="dataBucket">
                   <th class="pl-16" mat-header-cell *matHeaderCellDef>
@@ -487,9 +487,9 @@
                             [stepControl]="roleInfoFormGroup">
                             <form [formGroup]="roleInfoFormGroup" class="w-100-p">
                                 <ng-template matStepLabel>Role Info</ng-template>
-                            
+
                                 <div fxLayout="column" class="w-100-p py-16">
-                            
+
                                     <div fxLayout="row" fxLayoutAlign="start">
                                         <mat-form-field appearance="fill" fxFlex="100">
                                             <mat-label>Role Code / Name</mat-label>
@@ -497,19 +497,19 @@
                                             <mat-error>Role Code / Name is required!</mat-error>
                                         </mat-form-field>
                                     </div>
-                            
+
                                     <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
                                         <div class="text-center w-100-p">
                                                 <!-- Add Text Area -->
                                         </div>
                                     </div>
-                            
+
                                     <div fxLayout="row" fxLayoutAlign="end center">
-                            
+
                                         <button mat-stroked-button color="primary" class=""
                                             matStepperNext>Next</button>
                                     </div>
-                            
+
                                 </div>
                             </form>
                             </mat-step>
@@ -518,25 +518,25 @@
                                     <ng-template matStepLabel>Student</ng-template>
                                     <div tabindex="0" class="py-16 grid_container scroll-hover">
                                         <table aria-hidden="false" aria-label="This is a Simple table" mat-table
-                                            [dataSource]="dataSource" class="w-100-p exxat-table bx pt-0">
-            
-            
+                                            [dataSource]="dataSource" class="w-100-p zhealthcare-table bx pt-0">
+
+
                                             <ng-container matColumnDef="dataBucket">
                                                 <th class="pl-16" mat-header-cell
                                                     *matHeaderCellDef>Data Bucket</th>
                                                 <td  mat-cell
                                                     *matCellDef="let element" class="pl-16"> element.dataBucket </td>
                                             </ng-container>
-            
-            
+
+
                                             <ng-container matColumnDef="feature">
                                                 <th  mat-header-cell *matHeaderCellDef> Feature
                                                 </th>
                                                 <td  mat-cell
                                                     *matCellDef="let element"> element.feature</td>
                                             </ng-container>
-            
-            
+
+
                                             <ng-container matColumnDef="create">
                                                 <th  mat-header-cell *matHeaderCellDef>
                                                     <div fxLayoutAlign="start" fxLayout="column">
@@ -546,15 +546,15 @@
                                                             </mat-checkbox>
                                                         </div>
                                                     </div>
-            
+
                                                 </th>
                                                 <td mat-cell *matCellDef="let element" class="text-center">
                                                     <mat-checkbox [checked]="element.create" [color]="color">
                                                     </mat-checkbox>
                                                 </td>
                                             </ng-container>
-            
-            
+
+
                                             <ng-container matColumnDef="read">
                                                 <th mat-header-cell *matHeaderCellDef>
                                                     <div fxLayoutAlign="start" fxLayout="column">
@@ -570,7 +570,7 @@
                                                     </mat-checkbox>
                                                 </td>
                                             </ng-container>
-            
+
                                             <ng-container matColumnDef="update">
                                                 <th mat-header-cell *matHeaderCellDef>
                                                     <div fxLayoutAlign="start" fxLayout="column">
@@ -586,7 +586,7 @@
                                                     </mat-checkbox>
                                                 </td>
                                             </ng-container>
-            
+
                                             <ng-container matColumnDef="delete">
                                                 <th mat-header-cell *matHeaderCellDef>
                                                     <div fxLayoutAlign="start" fxLayout="column">
@@ -602,7 +602,7 @@
                                                     </mat-checkbox>
                                                 </td>
                                             </ng-container>
-            
+
                                             <ng-container matColumnDef="noaccess">
                                                 <th mat-header-cell *matHeaderCellDef
                                                     class="p-16">
@@ -619,16 +619,16 @@
                                                     </mat-checkbox>
                                                 </td>
                                             </ng-container>
-            
+
                                             <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
                                             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                                         </table>
                                     </div>
                                     <div fxLayout="row" fxLayoutAlign="end center">
-            
+
                                         <button mat-stroked-button color="accent" class="accent-border-btn mr-16"
                                             matStepperPrevious>Previous</button>
-            
+
                                         <button mat-stroked-button color="accent" class="accent-border-btn"
                                             matStepperNext>Next</button>
                                     </div>
@@ -645,10 +645,10 @@
                                         </mat-form-field>
                                     </div>
                                     <div fxLayout="row" fxLayoutAlign="end center">
-            
+
                                         <button mat-stroked-button color="primary" class=" mr-16"
                                             matStepperPrevious>Previous</button>
-            
+
                                         <button mat-stroked-button color="primary" class=""
                                             matStepperNext>Next</button>
                                     </div>
@@ -665,10 +665,10 @@
                                         </mat-form-field>
                                     </div>
                                     <div fxLayout="row" fxLayoutAlign="end center">
-            
+
                                         <button mat-stroked-button color="primary" class=" mr-16"
                                             matStepperPrevious>Previous</button>
-            
+
                                         <button mat-stroked-button color="primary" class=""
                                             matStepperNext>Next</button>
                                     </div>
@@ -685,10 +685,10 @@
                                         </mat-form-field>
                                     </div>
                                     <div fxLayout="row" fxLayoutAlign="end center">
-            
+
                                         <button mat-stroked-button color="primary" class=" mr-16"
                                             matStepperPrevious>Previous</button>
-            
+
                                         <button mat-stroked-button color="primary" class=""
                                             matStepperNext>Next</button>
                                     </div>
@@ -705,10 +705,10 @@
                                         </mat-form-field>
                                     </div>
                                     <div fxLayout="row" fxLayoutAlign="end center">
-            
+
                                         <button mat-stroked-button color="primary" class=" mr-16"
                                             matStepperPrevious>Previous</button>
-            
+
                                         <button mat-stroked-button color="primary" class=""
                                             matStepperNext>Next</button>
                                     </div>
@@ -743,15 +743,15 @@
                                         (click)="stepper.reset()">Reset</button>
                                 </div>
                             </mat-step>
-            
+
                             <!-- START : Overriding Error State Icon -->
                             <ng-template matStepperIcon="error">
                                 <i aria-hidden="true" class="fa-light fa-exclamation-circle warn-fg"></i>
                             </ng-template>
                             <!-- END : Overriding Error State Icon -->
-            
+
                         </mat-vertical-stepper>
-       
+
            </textarea
           >
         </fuse-highlight>
@@ -770,7 +770,7 @@
                     import { Component, OnInit } from '@angular/core';
                     import { FormBuilder, FormGroup, Validators } from '@angular/forms';
                     import { MatTableDataSource } from '@angular/material/table';
-                    import { HeaderService } from '@exxat/ux';
+                    import { HeaderService } from '@zhealthcare/ux';
 
 
                     export interface PeriodicElement {
@@ -812,7 +812,7 @@
                     // dataSource = ELEMENT_DATA;
                     dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
-                    role_description = `Short Description about the role............ 
+                    role_description = `Short Description about the role............
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Sem mauris consectetur vulputate aenean in enim ultrices.
                     Odio gravida eget ultricies lacinia ornare elit at nunc.
@@ -842,8 +842,8 @@
                     });
                     }
                     }
-                        
-                        
+
+
             </textarea
           >
         </fuse-highlight>

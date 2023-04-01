@@ -1,5 +1,5 @@
 import { Component, TemplateRef, ComponentFactoryResolver } from '@angular/core';
-import { OverlayService } from '@exxat/ux';
+import { OverlayService } from '@zhealthcare/ux';
 import { ComponentType } from '@angular/cdk/portal';
 import { SubscribeComponent } from '../../subscribe/subscribe.component';
 

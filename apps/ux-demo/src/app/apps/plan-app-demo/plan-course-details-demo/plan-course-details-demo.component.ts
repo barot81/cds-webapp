@@ -1,16 +1,16 @@
 
 import { Component, OnInit ,Output, EventEmitter, ViewChild ,ComponentFactoryResolver, TemplateRef } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { FuseSidebarService } from '@exxat/ux';
+import { FuseSidebarService } from '@zhealthcare/ux';
 import { FormControl } from '@angular/forms';
 import { MatMenuTrigger } from '@angular/material/menu';
-import { ExxatTagOptions } from '@exxat/plugin/tags';
+import { zhealthcareTagOptions } from '@zhealthcare/plugin/tags';
 import { GridService } from '../../student-grid/grid.service';
 import { PlanAppDemoDrawerService } from '../plan-app-demo-drawer.service';
-import { OverlayService } from '@exxat/ux';
+import { OverlayService } from '@zhealthcare/ux';
 import { ComponentType } from '@angular/cdk/portal';
-import { DocumentViewerConfiguration, FileEndpoint } from '@exxat/plugin/file-upload';
-import { FileViewerContainerComponent } from '../../../ui/exxat-overlay-demo/file-viewer-container/file-viewer-container.component';
+import { DocumentViewerConfiguration, FileEndpoint } from '@zhealthcare/plugin/file-upload';
+import { FileViewerContainerComponent } from '../../../ui/zhealthcare-overlay-demo/file-viewer-container/file-viewer-container.component';
 
 export interface PeriodicElement {
     weightage: string;
@@ -72,7 +72,7 @@ export class PlanCourseDetailsDemoComponent implements OnInit {
   fileViewerComponentRef: any;
   documentConfiguration: DocumentViewerConfiguration;
 
-  public tagOptions = new ExxatTagOptions();
+  public tagOptions = new zhealthcareTagOptions();
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
   @Output() menuOpened: EventEmitter<void>;

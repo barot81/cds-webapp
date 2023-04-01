@@ -1,8 +1,8 @@
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { CKEditorModule } from '@exxat/plugin/ckeditor';
-import { FuseSharedModule, FuseThemeOptionsModule, MaterialModule } from '@exxat/ux';
+import { CKEditorModule } from '@zhealthcare/plugin/ckeditor';
+import { FuseSharedModule, FuseThemeOptionsModule, MaterialModule } from '@zhealthcare/ux';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
 import { CkEditorDemoRoutingModule } from './ck-editor-demo-routing.module';
 import { CkEditorDemoComponent } from './pages';

@@ -3,22 +3,22 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, Output, EventEmitter, AfterViewInit } from '@angular/core';
-import { ExxatTag, ExxatTagOptions, TagEvent, TagView } from '@exxat/plugin/tags';
+import { zhealthcareTag, zhealthcareTagOptions, TagEvent, TagView } from '@zhealthcare/plugin/tags';
 
 @Component({
-  selector: 'exxat-app-exxat-tag-example-three',
-  templateUrl: './exxat-tag-example-three.component.html'
+  selector: 'zhealthcare-app-zhealthcare-tag-example-three',
+  templateUrl: './zhealthcare-tag-example-three.component.html'
 })
-export class ExxatTagExampleThreeComponent implements AfterViewInit {
+export class zhealthcareTagExampleThreeComponent implements AfterViewInit {
   public tagView = TagView;
 
-  public tagOptions = new ExxatTagOptions();
+  public tagOptions = new zhealthcareTagOptions();
 
   public tagsLength = 4;
 
   @Output() menuOpened: EventEmitter<void>;
 
-  tags: Array<ExxatTag> = [
+  tags: Array<zhealthcareTag> = [
     {
       id: Math.random(),
       name: 'Tag with 30 characters allowed',
@@ -98,7 +98,7 @@ export class ExxatTagExampleThreeComponent implements AfterViewInit {
 
   onTagChanges(event: TagEvent) {
     if (event.eventType.toLowerCase() === 'change') {
-      this.tags = new Array<ExxatTag>();
+      this.tags = new Array<zhealthcareTag>();
       Object.assign(this.tags, event.tags);
       this.selectedtagsCount = this.tags.filter(
         (val) => val.isChecked === true

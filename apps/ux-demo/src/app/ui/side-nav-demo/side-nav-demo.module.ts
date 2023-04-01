@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SideNavContainerComponent } from './side-nav-container/side-nav-container.component';
 import { Routes, RouterModule } from '@angular/router';
-import { MaterialModule } from '@exxat/ux';
+import { MaterialModule } from '@zhealthcare/ux';
 
 
 const routes: Routes = [

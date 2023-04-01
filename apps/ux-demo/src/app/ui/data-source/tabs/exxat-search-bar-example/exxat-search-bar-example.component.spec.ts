@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatSearchBarExampleComponent } from './exxat-search-bar-example.component';
+import { zhealthcareSearchBarExampleComponent } from './zhealthcare-search-bar-example.component';
 
-describe('ExxatSearchBarExampleComponent', () => {
-  let component: ExxatSearchBarExampleComponent;
-  let fixture: ComponentFixture<ExxatSearchBarExampleComponent>;
+describe('zhealthcareSearchBarExampleComponent', () => {
+  let component: zhealthcareSearchBarExampleComponent;
+  let fixture: ComponentFixture<zhealthcareSearchBarExampleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatSearchBarExampleComponent ]
+      declarations: [ zhealthcareSearchBarExampleComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatSearchBarExampleComponent);
+    fixture = TestBed.createComponent(zhealthcareSearchBarExampleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

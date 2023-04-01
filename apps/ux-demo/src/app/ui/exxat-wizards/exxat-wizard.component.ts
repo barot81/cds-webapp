@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'ryzen-exxat-wizard',
-  templateUrl: './exxat-wizard.component.html',
-  styleUrls: ['./exxat-wizard.component.scss']
+  selector: 'ryzen-zhealthcare-wizard',
+  templateUrl: './zhealthcare-wizard.component.html',
+  styleUrls: ['./zhealthcare-wizard.component.scss']
 })
-export class ExxatWizardComponent implements OnInit {
+export class zhealthcareWizardComponent implements OnInit {
 
   isLinear = false;
   firstFormGroup: FormGroup;

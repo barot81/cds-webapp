@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TermsAndConditionPageDemoComponent } from './terms-and-condition-page-demo.component';
-import { FuseSharedModule, FuseSidebarModule, MaterialModule, ExxatAvatarModule } from '@exxat/ux';
+import { FuseSharedModule, FuseSidebarModule, MaterialModule, zhealthcareAvatarModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TermsAndConditionPageDemoRoutingModule } from './terms-and-condition-page-demo-routing.module';
 
@@ -13,7 +13,7 @@ import { TermsAndConditionPageDemoRoutingModule } from './terms-and-condition-pa
     FuseSidebarModule,
     MaterialModule,
     FlexLayoutModule,
-    ExxatAvatarModule,
+    zhealthcareAvatarModule,
     TermsAndConditionPageDemoRoutingModule
   ]
 })

@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { FuseSidebarService, HeaderService } from '@exxat/ux';
+import { FuseSidebarService, HeaderService } from '@zhealthcare/ux';
 import { GridService } from '../../../student-grid/grid.service';
 import { PlanAppDemoDrawerService } from '../../plan-app-demo-drawer.service';
 

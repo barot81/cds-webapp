@@ -10,19 +10,19 @@ export class NavbarComponent {
       id: 'example-one',
       title: 'Without Apply Button',
       type: 'item',
-      url: '/admin/ux/ui/exxat-tags/example-one',
+      url: '/admin/ux/ui/zhealthcare-tags/example-one',
     },
     {
       id: 'example-two',
       title: 'With Apply Button',
       type: 'item',
-      url: '/admin/ux/ui/exxat-tags/example-two',
+      url: '/admin/ux/ui/zhealthcare-tags/example-two',
     },
     {
       id: 'example-two',
       title: 'Chips View Example',
       type: 'item',
-      url: '/admin/ux/ui/exxat-tags/example-three',
+      url: '/admin/ux/ui/zhealthcare-tags/example-three',
     },
   ];
 }

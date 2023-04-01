@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ComponentMap } from '@exxat/fusion/core';
+import { ComponentMap } from '@zhealthcare/fusion/core';
 import { OverlayFormComponent } from '../overlays';
 
 @Injectable({ providedIn: 'any' })

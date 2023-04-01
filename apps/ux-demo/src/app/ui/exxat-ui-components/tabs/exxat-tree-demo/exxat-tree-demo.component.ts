@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-import { ExxatTreeNode } from '@exxat/ux';
+import { zhealthcareTreeNode } from '@zhealthcare/ux';
 
 @Component({
-  selector: 'ryzen-exxat-tree-demo',
-  templateUrl: './exxat-tree-demo.component.html',
-  styleUrls: ['./exxat-tree-demo.component.scss']
+  selector: 'ryzen-zhealthcare-tree-demo',
+  templateUrl: './zhealthcare-tree-demo.component.html',
+  styleUrls: ['./zhealthcare-tree-demo.component.scss']
 })
-export class ExxatTreeDemoComponent {
+export class zhealthcareTreeDemoComponent {
 
-  selectedNode: ExxatTreeNode;
+  selectedNode: zhealthcareTreeNode;
 
-  dataSource: ExxatTreeNode[] = [
+  dataSource: zhealthcareTreeNode[] = [
     {
       name: 'Fruit',
       value: 'Fruit',
@@ -46,7 +46,7 @@ export class ExxatTreeDemoComponent {
   constructor() {
   }
 
-  onNodeClick(node: ExxatTreeNode) {
+  onNodeClick(node: zhealthcareTreeNode) {
     this.selectedNode = node;
   }
 }

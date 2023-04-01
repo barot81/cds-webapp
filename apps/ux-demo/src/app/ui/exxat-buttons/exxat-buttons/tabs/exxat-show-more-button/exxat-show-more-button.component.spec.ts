@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatShowMoreButtonComponent } from './exxat-show-more-button.component';
+import { zhealthcareShowMoreButtonComponent } from './zhealthcare-show-more-button.component';
 
-describe('ExxatShowMoreButtonComponent', () => {
-  let component: ExxatShowMoreButtonComponent;
-  let fixture: ComponentFixture<ExxatShowMoreButtonComponent>;
+describe('zhealthcareShowMoreButtonComponent', () => {
+  let component: zhealthcareShowMoreButtonComponent;
+  let fixture: ComponentFixture<zhealthcareShowMoreButtonComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatShowMoreButtonComponent ]
+      declarations: [ zhealthcareShowMoreButtonComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatShowMoreButtonComponent);
+    fixture = TestBed.createComponent(zhealthcareShowMoreButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

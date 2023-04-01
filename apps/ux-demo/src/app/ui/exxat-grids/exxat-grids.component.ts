@@ -1,14 +1,14 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { ScrollService } from '@exxat/ux';
+import { ScrollService } from '@zhealthcare/ux';
 import { filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'ryzen-exxat-grids',
-  templateUrl: './exxat-grids.component.html',
-  styleUrls: ['./exxat-grids.component.scss'],
+  selector: 'ryzen-zhealthcare-grids',
+  templateUrl: './zhealthcare-grids.component.html',
+  styleUrls: ['./zhealthcare-grids.component.scss'],
 })
-export class ExxatGridsComponent {
+export class zhealthcareGridsComponent {
   @ViewChild('mainHeader') mainHeader: ElementRef;
   @ViewChild('pagination') pagination: ElementRef;
 

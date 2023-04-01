@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ExxatDrawerFormService } from '../../exxat-drawer-forms-shared.service';
+import { zhealthcareDrawerFormService } from '../../zhealthcare-drawer-forms-shared.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'ryzen-exxat-drawer-form-examples',
-  templateUrl: './exxat-drawer-form-examples.component.html',
-  styleUrls: ['./exxat-drawer-form-examples.component.scss']
+  selector: 'ryzen-zhealthcare-drawer-form-examples',
+  templateUrl: './zhealthcare-drawer-form-examples.component.html',
+  styleUrls: ['./zhealthcare-drawer-form-examples.component.scss']
 })
-export class ExxatDrawerFormExamplesComponent implements OnInit {
+export class zhealthcareDrawerFormExamplesComponent implements OnInit {
 
   form: FormGroup;
   data: any;
@@ -40,7 +40,7 @@ export class ExxatDrawerFormExamplesComponent implements OnInit {
     { value: "non-hispanic", viewValue: "Non-Hispanic" }
   ];
 
-  constructor(public exxatDrawerFormService: ExxatDrawerFormService, private _formBuilder: FormBuilder) {
+  constructor(public zhealthcareDrawerFormService: zhealthcareDrawerFormService, private _formBuilder: FormBuilder) {
     // Reactive Form
     this.form = this._formBuilder.group({
       firstName: ['', Validators.required],

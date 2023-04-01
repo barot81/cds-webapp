@@ -3,7 +3,7 @@
 
 
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 import { MatTableDataSource } from '@angular/material/table';
 import { GridService } from '../../student-grid/grid.service';
 import { UXDemoDrawerService } from '../../../remote-entry/ux-demo-drawer.service';

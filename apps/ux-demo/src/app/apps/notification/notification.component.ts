@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FuseSidebarService } from '@exxat/ux'
+import { FuseSidebarService } from '@zhealthcare/ux'
 import { NotificationService } from './services/navigation.service';
-import { NotificationService as emailservice, NotificationEmailFormModel } from '@exxat/plugin/notifications';
+import { NotificationService as emailservice, NotificationEmailFormModel } from '@zhealthcare/plugin/notifications';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 
 @Component({
-  selector: 'exxat-app-profile',
+  selector: 'zhealthcare-app-profile',
   templateUrl: './notification.component.html',
 })
 export class NotificationComponent implements OnInit {

@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EvaluationDrawerExamplesComponent } from './evaluation-drawer-examples.component';
 import { RouterModule, Routes } from '@angular/router';
-import { ExxatDrawerFormService } from '../../../exxat-drawers/exxat-drawer-forms-shared.service';
+import { zhealthcareDrawerFormService } from '../../../zhealthcare-drawers/zhealthcare-drawer-forms-shared.service';
 import {
-  ExxatAvatarModule,
+  zhealthcareAvatarModule,
   FuseModule,
   FuseSharedModule,
   FuseSidebarModule,
   FuseThemeOptionsModule,
   LayoutModule,
   MaterialModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
-import { DataSourceModule } from '@exxat/plugin/data-source';
+import { DataSourceModule } from '@zhealthcare/plugin/data-source';
 import { DrawerWithTableComponent } from './drawer-with-table/drawer-with-table.component';
 import { DrawerWithSectionsComponent } from './drawer-with-sections/drawer-with-sections.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -47,7 +47,7 @@ const routes: Routes = [
     LayoutModule,
     FuseSidebarModule,
     DataSourceModule,
-    ExxatAvatarModule,
+    zhealthcareAvatarModule,
     ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
@@ -57,6 +57,6 @@ const routes: Routes = [
     MatSlideToggleModule,
     FuseThemeOptionsModule
   ],
-  providers: [ExxatDrawerFormService],
+  providers: [zhealthcareDrawerFormService],
 })
 export class EvaluationDrawerExamplesModule {}

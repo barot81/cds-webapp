@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { FusionFormComponent } from '@exxat/fusion/components';
-import { DrawerAdapter } from '@exxat/ux';
-import { SidebarFocusHelper } from '../../../../../exxat-sidebar/exxat-sidebar.service';
+import { FusionFormComponent } from '@zhealthcare/fusion/components';
+import { DrawerAdapter } from '@zhealthcare/ux';
+import { SidebarFocusHelper } from '../../../../../zhealthcare-sidebar/zhealthcare-sidebar.service';
 
 export interface filterListItem {
   id: string;

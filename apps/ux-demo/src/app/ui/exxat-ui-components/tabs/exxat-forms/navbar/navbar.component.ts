@@ -7,52 +7,52 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
   navigations = [
     {
-      id: 'Exxat-Forms-UI',
-      title: 'Exxat Forms UI',
+      id: 'zhealthcare-Forms-UI',
+      title: 'zhealthcare Forms UI',
       type: 'item',
-      url: '/admin/ux/ui/exxat-forms/exxat-forms-ui',
+      url: '/admin/ux/ui/zhealthcare-forms/zhealthcare-forms-ui',
     },
     {
       id: 'layout',
       title: 'Layout',
       type: 'item',
-      url: '/admin/ux/ui/exxat-forms/layout',
+      url: '/admin/ux/ui/zhealthcare-forms/layout',
     },
     {
       id: 'workflow',
       title: 'Workflow',
       type: 'item',
-      url: '/admin/ux/ui/exxat-forms/workflow',
+      url: '/admin/ux/ui/zhealthcare-forms/workflow',
     },
     {
       id: 'response',
       title: 'Response',
       type: 'item',
-      url: '/admin/ux/ui/exxat-forms/response',
+      url: '/admin/ux/ui/zhealthcare-forms/response',
     },
     {
       id: 'forms-ingterface',
-      title: 'Product - Exxat Forms Interface',
+      title: 'Product - zhealthcare Forms Interface',
       type: 'item',
-      url: '/admin/ux/ui/exxat-forms/forms-ingterface',
+      url: '/admin/ux/ui/zhealthcare-forms/forms-ingterface',
     },
     {
       id: 'form-request',
       title: 'Form Request',
       type: 'item',
-      url: '/admin/ux/ui/exxat-forms/form-request',
+      url: '/admin/ux/ui/zhealthcare-forms/form-request',
     },
     {
       id: 'form-response',
       title: 'Response',
       type: 'item',
-      url: '/admin/ux/ui/exxat-forms/form-response',
+      url: '/admin/ux/ui/zhealthcare-forms/form-response',
     },
     {
       id: 'form-event',
       title: 'Form Event',
       type: 'item',
-      url: '/admin/ux/ui/exxat-forms/form-event',
+      url: '/admin/ux/ui/zhealthcare-forms/form-event',
     },
   ];
 }

@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { FullScreenService, HeaderService } from "@exxat/ux";
+import { FullScreenService, HeaderService } from "@zhealthcare/ux";
 
 @Component({
-    selector: 'exxat-layout-one-container',
+    selector: 'zhealthcare-layout-one-container',
     templateUrl: 'layout-one-container.component.html'
 })
 export class LayoutOneContainerComponent implements AfterViewInit, OnInit {

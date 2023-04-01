@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
-import { HeaderService } from "@exxat/ux";
+import { HeaderService } from "@zhealthcare/ux";
 
 @Component({
-    selector: 'exxat-academic-info',
+    selector: 'zhealthcare-academic-info',
     templateUrl: 'academic-info.component.html',
 })
 export class AcademicInfoComponent {

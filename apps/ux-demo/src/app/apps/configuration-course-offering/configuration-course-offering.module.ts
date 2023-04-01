@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ExxatAvatarModule, ExxatBreadcrumbModule, ExxatCarouselModule, ExxatTooltipModule, FlexTableModule, FuseModule, FuseSharedModule, FuseSidebarModule, LayoutModule, MaterialModule } from '@exxat/ux';
+import { zhealthcareAvatarModule, zhealthcareBreadcrumbModule, zhealthcareCarouselModule, zhealthcareTooltipModule, FlexTableModule, FuseModule, FuseSharedModule, FuseSidebarModule, LayoutModule, MaterialModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DataSourceModule } from '@exxat/plugin/data-source';
+import { DataSourceModule } from '@zhealthcare/plugin/data-source';
 import { MatSortModule } from '@angular/material/sort';
 import { ConfigurationCourseOfferingRoutingModule } from './configuration-course-offering-routing.module';
 import { ConfigurationCourseOfferingComponent } from './configuration-course-offering.component';
 import { AddFormDrawerComponent } from './add-form-drawer/add-form-drawer.component';
-import { FileUploadModule } from '@exxat/plugin/file-upload';
+import { FileUploadModule } from '@zhealthcare/plugin/file-upload';
 
 @NgModule({
   declarations: [ConfigurationCourseOfferingComponent, AddFormDrawerComponent],
@@ -24,10 +24,10 @@ import { FileUploadModule } from '@exxat/plugin/file-upload';
     FuseSidebarModule,
     FuseModule,
     FileUploadModule,
-    ExxatBreadcrumbModule,
-    ExxatAvatarModule,
-    ExxatCarouselModule,
-    ExxatTooltipModule
+    zhealthcareBreadcrumbModule,
+    zhealthcareAvatarModule,
+    zhealthcareCarouselModule,
+    zhealthcareTooltipModule
   ]
 })
 export class ConfigurationCourseOfferingModule { }

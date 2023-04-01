@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 
-import { FuseSharedModule } from '@exxat/ux';
+import { FuseSharedModule } from '@zhealthcare/ux';
 
 import { HelperClassesComponent } from './helper-classes.component';
 import { HelperClassesPaddingMarginComponent } from './tabs/padding-margin/padding-margin.component';

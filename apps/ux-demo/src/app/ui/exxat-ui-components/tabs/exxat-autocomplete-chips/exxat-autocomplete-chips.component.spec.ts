@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatAutocompleteChipsComponent } from './exxat-autocomplete-chips.component';
+import { zhealthcareAutocompleteChipsComponent } from './zhealthcare-autocomplete-chips.component';
 
-describe('ExxatAutocompleteChipsComponent', () => {
-  let component: ExxatAutocompleteChipsComponent;
-  let fixture: ComponentFixture<ExxatAutocompleteChipsComponent>;
+describe('zhealthcareAutocompleteChipsComponent', () => {
+  let component: zhealthcareAutocompleteChipsComponent;
+  let fixture: ComponentFixture<zhealthcareAutocompleteChipsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatAutocompleteChipsComponent ]
+      declarations: [ zhealthcareAutocompleteChipsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatAutocompleteChipsComponent);
+    fixture = TestBed.createComponent(zhealthcareAutocompleteChipsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'exxat-graphs-tab-nav-bar',
+    selector: 'zhealthcare-graphs-tab-nav-bar',
     templateUrl: './tab-nav-bar.component.html'
 })
 export class TabNavBarComponent implements OnInit {
@@ -11,19 +11,19 @@ export class TabNavBarComponent implements OnInit {
             id: 'graph-layout-one',
             title: 'Layout One',
             type: 'item',
-            url: '/admin/ux/ui/exxat_graphs_standards/layouts/layout_one'
+            url: '/admin/ux/ui/zhealthcare_graphs_standards/layouts/layout_one'
         },
         {
             id: 'graph-layout-two',
             title: 'Layout Two',
             type: 'item',
-            url: '/admin/ux/ui/exxat_graphs_standards/layouts/layout_two'
+            url: '/admin/ux/ui/zhealthcare_graphs_standards/layouts/layout_two'
         },
         {
             id: 'graph-layout-three',
             title: 'Layout Three',
             type: 'item',
-            url: '/admin/ux/ui/exxat_graphs_standards/layouts/layout_three'
+            url: '/admin/ux/ui/zhealthcare_graphs_standards/layouts/layout_three'
         },
     ]
 

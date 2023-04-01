@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ryzen-exxat-search-bar-example',
-  templateUrl: './exxat-search-bar-example.component.html',
-  styleUrls: ['./exxat-search-bar-example.component.scss']
+  selector: 'ryzen-zhealthcare-search-bar-example',
+  templateUrl: './zhealthcare-search-bar-example.component.html',
+  styleUrls: ['./zhealthcare-search-bar-example.component.scss']
 })
-export class ExxatSearchBarExampleComponent implements OnInit {
+export class zhealthcareSearchBarExampleComponent implements OnInit {
 
   SearchFields = [
     { value: 'Student Name', id: 1 },

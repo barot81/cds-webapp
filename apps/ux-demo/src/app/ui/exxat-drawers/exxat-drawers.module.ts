@@ -7,7 +7,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule, Routes } from '@angular/router';
-import { CKEditorModule } from '@exxat/plugin/ckeditor';
+import { CKEditorModule } from '@zhealthcare/plugin/ckeditor';
 import {
   BackNavigationGuard,
   FileUploadModule,
@@ -19,9 +19,9 @@ import {
   FuseThemeOptionsModule,
   LayoutModule,
   MaterialModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
-import { SidebarFocusHelper } from '../exxat-sidebar/exxat-sidebar.service';
+import { SidebarFocusHelper } from '../zhealthcare-sidebar/zhealthcare-sidebar.service';
 import { DialogBoxComponent } from './examples/dialog-box/dialog-box.component';
 import { DrawerFiltersDemoComponent } from './examples/drawer-filters-demo/drawer-filters-demo/drawer-filters-demo.component';
 import { DrawerFilterExampleOneComponent } from './examples/drawer-filters-demo/drawers/drawer-filter-example-one/drawer-filter-example-one.component';
@@ -30,25 +30,25 @@ import { DrawerWithCardsComponent } from './examples/drawer-with-cards-container
 import { DrawerWithStickyButtonsContainerComponent } from './examples/drawer-with-sticky-buttons-container/drawer-with-sticky-buttons-container.component';
 import { DrawerWithStickyButtonsComponent } from './examples/drawer-with-sticky-buttons/drawer-with-sticky-buttons.component';
 import { drawerWithWizardComponent } from './examples/drawer-with-wizard/drawer-with-wizard.component';
-import { ExxatDrawerDisableFormComponent } from './examples/exxat-drawer-disable-form/exxat-drawer-disable-form.component';
-import { ExxatDrawerFormExamplesComponent } from './examples/exxat-drawer-form-examples/exxat-drawer-form-examples.component';
-import { ExxatDrawerReactiveFormComponent } from './examples/exxat-drawer-reactive-form/exxat-drawer-reactive-form.component';
-import { ExxatDrawerWithDragDropComponent } from './examples/exxat-drawer-with-drag-drop/exxat-drawer-with-drag-drop.component';
-import { ExxatDrawerWithHighlightMenuContainerComponent } from './examples/exxat-drawer-with-highlight-menu-container/exxat-drawer-with-highlight-menu-container.component';
-import { ExxatDrawerWithHighlightMenuComponent } from './examples/exxat-drawer-with-highlight-menu/exxat-drawer-with-highlight-menu.component';
-import { ExxatDrawersSizesComponent } from './examples/exxat-drawers-sizes/exxat-drawers-sizes.component';
-import { ExxatMultiDrawerContainerComponent } from './examples/exxat-multi-drawer-container/exxat-multi-drawer-container.component';
-import { ExxatMultiDrawerComponent } from './examples/exxat-multi-drawer/exxat-multi-drawer.component';
-import { DrawerColumnsComponent } from './examples/exxat-two-column-drawer/drawer-columns/drawer-columns.component';
-import { ExxatTwoColumnDrawerComponent } from './examples/exxat-two-column-drawer/exxat-two-column-drawer.component';
-import { ExxatDrawerFormService } from './exxat-drawer-forms-shared.service';
-import { ExxatDrawersComponent } from './exxat-drawers.component';
+import { zhealthcareDrawerDisableFormComponent } from './examples/zhealthcare-drawer-disable-form/zhealthcare-drawer-disable-form.component';
+import { zhealthcareDrawerFormExamplesComponent } from './examples/zhealthcare-drawer-form-examples/zhealthcare-drawer-form-examples.component';
+import { zhealthcareDrawerReactiveFormComponent } from './examples/zhealthcare-drawer-reactive-form/zhealthcare-drawer-reactive-form.component';
+import { zhealthcareDrawerWithDragDropComponent } from './examples/zhealthcare-drawer-with-drag-drop/zhealthcare-drawer-with-drag-drop.component';
+import { zhealthcareDrawerWithHighlightMenuContainerComponent } from './examples/zhealthcare-drawer-with-highlight-menu-container/zhealthcare-drawer-with-highlight-menu-container.component';
+import { zhealthcareDrawerWithHighlightMenuComponent } from './examples/zhealthcare-drawer-with-highlight-menu/zhealthcare-drawer-with-highlight-menu.component';
+import { zhealthcareDrawersSizesComponent } from './examples/zhealthcare-drawers-sizes/zhealthcare-drawers-sizes.component';
+import { zhealthcareMultiDrawerContainerComponent } from './examples/zhealthcare-multi-drawer-container/zhealthcare-multi-drawer-container.component';
+import { zhealthcareMultiDrawerComponent } from './examples/zhealthcare-multi-drawer/zhealthcare-multi-drawer.component';
+import { DrawerColumnsComponent } from './examples/zhealthcare-two-column-drawer/drawer-columns/drawer-columns.component';
+import { zhealthcareTwoColumnDrawerComponent } from './examples/zhealthcare-two-column-drawer/zhealthcare-two-column-drawer.component';
+import { zhealthcareDrawerFormService } from './zhealthcare-drawer-forms-shared.service';
+import { zhealthcareDrawersComponent } from './zhealthcare-drawers.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
   {
-    path: 'exxat-drawers',
-    component: ExxatDrawersComponent,
+    path: 'zhealthcare-drawers',
+    component: zhealthcareDrawersComponent,
     canDeactivate: [BackNavigationGuard],
     children: [
       {
@@ -58,12 +58,12 @@ const routes: Routes = [
       },
       {
         path: 'drawer-sizes',
-        component: ExxatDrawersSizesComponent,
+        component: zhealthcareDrawersSizesComponent,
         canDeactivate: [BackNavigationGuard],
       },
       {
         path: 'multi-drawer',
-        component: ExxatMultiDrawerContainerComponent,
+        component: zhealthcareMultiDrawerContainerComponent,
         canDeactivate: [BackNavigationGuard],
       },
       {
@@ -74,12 +74,12 @@ const routes: Routes = [
 
       {
         path: 'drawer-with-drag-drop',
-        component: ExxatDrawerWithDragDropComponent,
+        component: zhealthcareDrawerWithDragDropComponent,
         canDeactivate: [BackNavigationGuard],
       },
       {
         path: 'drawer-with-two-column',
-        component: ExxatTwoColumnDrawerComponent,
+        component: zhealthcareTwoColumnDrawerComponent,
         canDeactivate: [BackNavigationGuard],
       },
       {
@@ -94,7 +94,7 @@ const routes: Routes = [
       },
       {
         path: 'drawer-with-highlight-menu',
-        component: ExxatDrawerWithHighlightMenuContainerComponent,
+        component: zhealthcareDrawerWithHighlightMenuContainerComponent,
         canDeactivate: [BackNavigationGuard],
       },
     ],
@@ -103,26 +103,26 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ExxatDrawersComponent,
-    ExxatDrawersSizesComponent,
-    ExxatDrawerReactiveFormComponent,
+    zhealthcareDrawersComponent,
+    zhealthcareDrawersSizesComponent,
+    zhealthcareDrawerReactiveFormComponent,
     DrawerWithStickyButtonsContainerComponent,
     DrawerWithStickyButtonsComponent,
-    ExxatDrawerFormExamplesComponent,
-    ExxatDrawerWithDragDropComponent,
-    ExxatTwoColumnDrawerComponent,
+    zhealthcareDrawerFormExamplesComponent,
+    zhealthcareDrawerWithDragDropComponent,
+    zhealthcareTwoColumnDrawerComponent,
     DrawerColumnsComponent,
     DialogBoxComponent,
     DrawerFiltersDemoComponent,
     DrawerFilterExampleOneComponent,
     DrawerWithCardsContainerComponent,
     DrawerWithCardsComponent,
-    ExxatMultiDrawerComponent,
-    ExxatMultiDrawerContainerComponent,
-    ExxatDrawerWithHighlightMenuComponent,
-    ExxatDrawerWithHighlightMenuContainerComponent,
+    zhealthcareMultiDrawerComponent,
+    zhealthcareMultiDrawerContainerComponent,
+    zhealthcareDrawerWithHighlightMenuComponent,
+    zhealthcareDrawerWithHighlightMenuContainerComponent,
     NavbarComponent,
-    ExxatDrawerDisableFormComponent,
+    zhealthcareDrawerDisableFormComponent,
     drawerWithWizardComponent,
   ],
   imports: [
@@ -148,6 +148,6 @@ const routes: Routes = [
     CKEditorModule,
     FileUploadModule,
   ],
-  providers: [ExxatDrawerFormService, SidebarFocusHelper],
+  providers: [zhealthcareDrawerFormService, SidebarFocusHelper],
 })
-export class UIExxatDrawersModule {}
+export class UIzhealthcareDrawersModule {}

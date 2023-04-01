@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ryzen-exxat-forms',
-  templateUrl: './exxat-forms.component.html',
-  styleUrls: ['./exxat-forms.component.scss']
+  selector: 'ryzen-zhealthcare-forms',
+  templateUrl: './zhealthcare-forms.component.html',
+  styleUrls: ['./zhealthcare-forms.component.scss']
 })
-export class ExxatFormsComponent implements OnInit {
+export class zhealthcareFormsComponent implements OnInit {
 
   constructor() { }
 

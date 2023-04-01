@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { FuseSidebarService, ScrollSpyService } from '@exxat/ux';
+import { FuseSidebarService, ScrollSpyService } from '@zhealthcare/ux';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatDialog } from '@angular/material/dialog';

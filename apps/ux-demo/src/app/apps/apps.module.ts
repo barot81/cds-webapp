@@ -6,7 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TestComponentComponent } from './dashboard/test-component/test-component.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
-import { AuthGuardService } from '@exxat/fusion/core';
+import { AuthGuardService } from '@zhealthcare/fusion/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {
   FuseProgressBarModule,
@@ -14,9 +14,9 @@ import {
   FuseSidebarModule,
   MaterialModule,
   FuseModule,
-  ExxatAvatarModule,
-  ExxatAvatarListItemModule,
-} from '@exxat/ux';
+  zhealthcareAvatarModule,
+  zhealthcareAvatarListItemModule,
+} from '@zhealthcare/ux';
 import { StudentStudentInfoComponent } from './demo-content/student-student-info/student-student-info.component';
 import { DemoContentComponent } from './demo-content/demo-content.component';
 import { ComplianceComponent } from './compliance/compliance.component';
@@ -31,13 +31,13 @@ import { WizardComponent } from './notification/wizard/navigation-wizard.compone
 import {
   NotificationWizardModule,
   NotificationLogModule,
-} from '@exxat/plugin/notifications';
+} from '@zhealthcare/plugin/notifications';
 import { NotificationService } from './notification/services/navigation.service';
 import { AddSlotComponent } from './placemet/pages/add-slot/add-slot.component';
-import { DataSourceModule } from '@exxat/plugin/data-source';
+import { DataSourceModule } from '@zhealthcare/plugin/data-source';
 import { NotificationLogComponent } from './notification/log/notification-log.component';
 import { ComplianceSiteDemoModule } from './compliance-site-demo/compliance-site-demo.module';
-import { FileUploadModule } from '@exxat/plugin/file-upload';
+import { FileUploadModule } from '@zhealthcare/plugin/file-upload';
 import { InnerPageModule } from './inner-page/inner-page.module';
 import { TermsAndConditionPageDemoModule } from './terms-and-condition-page-demo/terms-and-condition-page-demo.module';
 import { TheCompleteDemoPageModule } from './the-complete-demo-page/the-complete-demo-page.module';
@@ -548,9 +548,9 @@ const appRoutes: Routes = [
     ComplianceAdminModule,
     NotificationLogModule,
     DragDropModule,
-    ExxatAvatarModule,
+    zhealthcareAvatarModule,
     SiteDemoModule,
-    ExxatAvatarListItemModule,
+    zhealthcareAvatarListItemModule,
     NotificationWizardModule,
     DataSourceModule,
     ComplianceSiteDemoModule,

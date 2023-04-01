@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 
-import { FuseSharedModule, MaterialModule } from '@exxat/ux';
+import { FuseSharedModule, MaterialModule } from '@zhealthcare/ux';
 
 import { CardedFullWidth1Component } from './carded/full-width-1/full-width-1.component';
 import { CardedFullWidth2Component } from './carded/full-width-2/full-width-2.component';
@@ -30,7 +30,7 @@ import { SimpleRightSidebar3Component } from './simple/right-sidebar-3/right-sid
 import { SimpleRightSidebar4Component } from './simple/right-sidebar-4/right-sidebar-4.component';
 import { BlankComponent } from './blank/blank.component';
 
-import { FuseSidebarModule } from '@exxat/ux';
+import { FuseSidebarModule } from '@zhealthcare/ux';
 import { FuseDemoModule } from '../../pages/demo/demo.module';
 import { CardedCustomWidth1Component } from './carded/custom-width-1/custom-width-1.component';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
@@ -41,7 +41,7 @@ import { FullWidthComponent } from './simple/full-width-1/full-width/full-width.
 import { CustomWidthComponent } from './carded/custom-width-1/custom-width/custom-width.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ExxatMasonryComponent } from './carded/exxat-masonry/exxat-masonry.component';
+import { zhealthcareMasonryComponent } from './carded/zhealthcare-masonry/zhealthcare-masonry.component';
 import { LayoutPopComponent } from './carded/left-sidebar-1/layout-popup/layout-popup.component';
 import { LayoutPopupComponent } from './carded/left-sidebar-2/layout-popup/layout-popup.component';
 import { Template3DialogBoxComponent } from './carded/left-sidebar-tabbed-1/template3-dialog-box/template3-dialog-box.component';
@@ -171,8 +171,8 @@ const routes: Routes = [
     component: BlankComponent
   },
   {
-    path: 'page-layouts/exxat-masonry',
-    component: ExxatMasonryComponent
+    path: 'page-layouts/zhealthcare-masonry',
+    component: zhealthcareMasonryComponent
   },
   {
     path:'page-layouts/layouts/fullwidth-component-scroll',
@@ -232,7 +232,7 @@ const routes: Routes = [
     FullWidthComponent,
     CustomWidthComponent,
     ComposeComponent,
-    ExxatMasonryComponent,
+    zhealthcareMasonryComponent,
     LayoutPopupComponent,
     LayoutPopComponent,
     Template3DialogBoxComponent,

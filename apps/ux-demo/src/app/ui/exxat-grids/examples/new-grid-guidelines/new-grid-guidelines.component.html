@@ -61,7 +61,7 @@
             <button
               mat-icon-button
               class="icon-fill-bg filter-icon"
-              exxatDrawerAction
+              zhealthcareDrawerAction
               [componentSelector]="
                 _uXDemoDrawerService.get('ryzen-filter-and-edit-drawer')
               "
@@ -162,7 +162,7 @@
       >
         <div fxLayout="row" fxLayoutAlign="start center">
           <div fxLayout="column">
-            <exxat-search-bar [listofOptions]=""></exxat-search-bar>
+            <zhealthcare-search-bar [listofOptions]=""></zhealthcare-search-bar>
             <div>
               <span class="font-12 secondary-text text-italic">
                 Total record 50
@@ -200,9 +200,9 @@
             class="content flex_table_content"
             [style.height.px]="headerService.scrollContentheight"
           >
-            <div class="exxat-sticky-table">
+            <div class="zhealthcare-sticky-table">
               <table
-                class="exxat-table no-alternate-color"
+                class="zhealthcare-table no-alternate-color"
                 mat-table
                 [dataSource]="dataSource"
                 *ngFor="let table of tables"

@@ -5,7 +5,7 @@
         mat-icon-button
         aria-label="Click to go back"
         class="action-icon mx-8"
-        routerLink="/admin/ux/ui/exxat-apps-repo"
+        routerLink="/admin/ux/ui/zhealthcare-apps-repo"
       >
         <i aria-hidden="true" class="fal fa-long-arrow-left"></i>
       </button>
@@ -26,7 +26,7 @@
                     <mat-icon>label</mat-icon>
                   </button>
                   <mat-menu #tagsMenu="matMenu" [overlapTrigger]="false">
-                    <exxat-tag [tags]="tags" (onTagChanges)="tagsChanged($event)" [options]="tagOptions"></exxat-tag>
+                    <zhealthcare-tag [tags]="tags" (onTagChanges)="tagsChanged($event)" [options]="tagOptions"></zhealthcare-tag>
                   </mat-menu>
                 </div>
     
@@ -58,20 +58,20 @@
       <!-- <div class="mb-16 pt-xs-16 px-xs-16" fxFlex.gt-sm="50" fxFlex="100">
         <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="100" tabindex="0" aria-label="more information of course">
           <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="100">
-            <div fxLayout="column" class="exxat-info pb-16" fxFlex.gt-xs="33.33" fxFlex="100">
+            <div fxLayout="column" class="zhealthcare-info pb-16" fxFlex.gt-xs="33.33" fxFlex="100">
               <span class="title" tabindex="0" aria-label="Credits">Credits</span>
               <span class="description" tabindex="0" aria-label="12">12</span>
             </div>
-            <div fxLayout="column" class="exxat-info pb-16" fxFlex.gt-xs="33.33" fxFlex="100">
+            <div fxLayout="column" class="zhealthcare-info pb-16" fxFlex.gt-xs="33.33" fxFlex="100">
               <span class="title" tabindex="0" aria-label="Cours Hours">Cours Hours</span>
               <span class="description" tabindex="0" aria-label="243">243</span>
             </div>
-            <div fxLayout="column" class="exxat-info pb-16" fxFlex.gt-xs="33.33" fxFlex="100">
+            <div fxLayout="column" class="zhealthcare-info pb-16" fxFlex.gt-xs="33.33" fxFlex="100">
               <span class="title" tabindex="0" aria-label="Course Duration">Course Duration</span>
               <span class="description" tabindex="0" aria-label="3 months">3 months</span>
             </div>
           </div>
-          <button mat-icon-button class="action-icon" aria-label="edit more information of course" exxatDrawerAction
+          <button mat-icon-button class="action-icon" aria-label="edit more information of course" zhealthcareDrawerAction
           [size]="'drawer-sm'"
           [caption]="'Status'" [primaryAction]="'Save'" role="img">
           <i aria-hidden="true" class="fa-light fa-pen icon-fill s-18"></i>

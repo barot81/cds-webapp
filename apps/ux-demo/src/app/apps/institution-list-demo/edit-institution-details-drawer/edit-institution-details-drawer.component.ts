@@ -1,8 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { FileCard, FileConfiguration, FileEndpoint } from '@exxat/plugin/file-upload';
-import { SecurityContext } from '@exxat/fusion/models';
+import { FileCard, FileConfiguration, FileEndpoint } from '@zhealthcare/plugin/file-upload';
+import { SecurityContext } from '@zhealthcare/fusion/models';
 
 @Component({
   selector: 'ryzen-edit-institution-details-drawer',
@@ -17,7 +17,7 @@ export class EditInstitutionDetailsDrawerComponent implements OnInit {
   constructor() {
      // File Upload Configuration  -- START
      this.fileConfiguration = new FileConfiguration();
-     this.fileConfiguration.fileEndpoint = new FileEndpoint('exxat.ux', 'Demo');
+     this.fileConfiguration.fileEndpoint = new FileEndpoint('zhealthcare.ux', 'Demo');
      this.fileConfiguration.fileCards = [];
      const fileCard = new FileCard();
      this.fileConfiguration.fileCards.push(fileCard);

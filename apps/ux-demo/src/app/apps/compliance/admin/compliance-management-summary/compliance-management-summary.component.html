@@ -1,4 +1,4 @@
-<div class="page-layout carded fullwidth inner-scroll exxat-new-grid">
+<div class="page-layout carded fullwidth inner-scroll zhealthcare-new-grid">
   <div class="center p-0">
     <div class="content-card border">
       <div fxLayout="column" #table_header>
@@ -61,7 +61,7 @@
               <button
                 tabindex="0"
                 aria-label="Edit Columns"
-                exxatDrawerAction
+                zhealthcareDrawerAction
                 [componentSelector]="gridService.get('ryzen-edit-columns')"
                 [size]="'drawer-sm'"
                 [caption]="'Edit Columns'"
@@ -86,7 +86,7 @@
                 mat-button
                 class="pr-8"
                 aria-label="filters"
-                exxatDrawerAction
+                zhealthcareDrawerAction
                 [componentSelector]="
                   _UXDemoDrawerService.get('ryzen-filter-drawer')
                 "
@@ -122,7 +122,7 @@
                 <button
                   mat-menu-item
                   aria-label="Edit Columns"
-                  exxatDrawerAction
+                  zhealthcareDrawerAction
                   [componentSelector]="gridService.get('ryzen-edit-columns')"
                   [size]="'drawer-sm'"
                   [caption]="'Edit Columns'"
@@ -152,7 +152,7 @@
       </div>
       <!-- CONTENT -->
       <div
-        class="content exxat-sticky-table overflow-auto"
+        class="content zhealthcare-sticky-table overflow-auto"
         [style.height.px]="
           _headerService.scrollContentheight -
           ((_complainerHeaderLayoutService.container_header_height$ | async) +
@@ -163,7 +163,7 @@
         aria-label="This is compliance management summary table"
       >
         <table
-          class="exxat-table table-first-col-border table-x-border-none"
+          class="zhealthcare-table table-first-col-border table-x-border-none"
           mat-table
           [dataSource]="dataSource"
           id="stickyColumnTable"

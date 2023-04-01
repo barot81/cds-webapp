@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 
 @Component({
-    selector: 'exxat-masonry-layout',
+    selector: 'zhealthcare-masonry-layout',
     templateUrl: 'masonry-layout.component.html',
     styleUrls: ['masonry-layout.component.scss']
 })

@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { ToggleAllType } from '@exxat/ux';
+import { ToggleAllType } from '@zhealthcare/ux';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 

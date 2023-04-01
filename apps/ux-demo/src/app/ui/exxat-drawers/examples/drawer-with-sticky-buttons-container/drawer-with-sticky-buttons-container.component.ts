@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ExxatDrawerFormService } from '../../exxat-drawer-forms-shared.service';
+import { zhealthcareDrawerFormService } from '../../zhealthcare-drawer-forms-shared.service';
 
 @Component({
   selector: 'ryzen-drawer-with-sticky-buttons-container',
@@ -7,7 +7,7 @@ import { ExxatDrawerFormService } from '../../exxat-drawer-forms-shared.service'
 })
 export class DrawerWithStickyButtonsContainerComponent implements OnInit {
 
-  constructor(public exxatDrawerFormService: ExxatDrawerFormService) { }
+  constructor(public zhealthcareDrawerFormService: zhealthcareDrawerFormService) { }
 
   ngOnInit() {
   }

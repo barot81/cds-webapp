@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { FuseSidebarService } from '@exxat/ux';
+import { FuseSidebarService } from '@zhealthcare/ux';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'exxat-main-header',
+  selector: 'zhealthcare-main-header',
   templateUrl: './main-header.component.html',
 })
 export class MainHeaderComponent {

@@ -5,7 +5,7 @@ import { PatientlogDemoRoutingModule } from './patientlog-demo-routing.module';
 import { PatientlogDemoComponent } from './patientlog-demo.component';
 import { PatientlogReviewComponent } from './tabs/patientlog-review/patientlog-review.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FuseSharedModule, FuseSidebarModule, MaterialModule, ExxatAvatarModule, ExxatAvatarListItemModule } from '@exxat/ux';
+import { FuseSharedModule, FuseSidebarModule, MaterialModule, zhealthcareAvatarModule, zhealthcareAvatarListItemModule } from '@zhealthcare/ux';
 import { PatientLogDemoNavbarComponent } from './patient-log-demo-navbar/patient-log-demo-navbar.component';
 import { RouterModule } from '@angular/router';
 import { PatientlogStatisticsComponent } from './tabs/patientlog-statistics/patientlog-statistics.component';
@@ -20,8 +20,8 @@ import { PatientlogStatisticsComponent } from './tabs/patientlog-statistics/pati
     FuseSidebarModule,
     MaterialModule, 
     RouterModule,
-    ExxatAvatarModule,
-    ExxatAvatarListItemModule
+    zhealthcareAvatarModule,
+    zhealthcareAvatarListItemModule
   ]
 })
 export class PatientlogDemoModule { }

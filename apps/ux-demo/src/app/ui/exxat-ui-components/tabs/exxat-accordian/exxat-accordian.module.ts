@@ -1,6 +1,6 @@
 import { Routes, RouterModule } from "@angular/router";
 import { NgModule } from '@angular/core';
-import { MaterialModule, FuseSharedModule, FuseThemeOptionsModule, FuseProgressBarModule, ExxatAvatarModule, ExxatCarouselModule, ExxatTooltipModule, FuseDirectivesModule, FuseModule, FuseSidebarModule } from '@exxat/ux';
+import { MaterialModule, FuseSharedModule, FuseThemeOptionsModule, FuseProgressBarModule, zhealthcareAvatarModule, zhealthcareCarouselModule, zhealthcareTooltipModule, FuseDirectivesModule, FuseModule, FuseSidebarModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonModule } from '@angular/common';
 import { FuseHighlightModule } from "../../../../helpers/highlight/highlight.module";
@@ -10,16 +10,16 @@ import { MatChipsModule } from "@angular/material/chips";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatIconModule } from "@angular/material/icon";
 import { MatTabsModule } from "@angular/material/tabs";
-import { ExxatTagModule } from "@exxat/plugin/tags";
-import { ExxatAccordiansComponent } from './exxat-accordians/exxat-accordians.component';
+import { zhealthcareTagModule } from "@zhealthcare/plugin/tags";
+import { zhealthcareAccordiansComponent } from './zhealthcare-accordians/zhealthcare-accordians.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ExxatAccordianVariationsComponent } from './tabs/exxat-accordian-variations/exxat-accordian-variations.component';
-import { ExxatAccordianWithGridComponent } from './tabs/exxat-accordian-with-grid/exxat-accordian-with-grid.component';
+import { zhealthcareAccordianVariationsComponent } from './tabs/zhealthcare-accordian-variations/zhealthcare-accordian-variations.component';
+import { zhealthcareAccordianWithGridComponent } from './tabs/zhealthcare-accordian-with-grid/zhealthcare-accordian-with-grid.component';
 
 const routes: Routes = [
     {
-      path: 'exxat-accordian',
-      component: ExxatAccordiansComponent,
+      path: 'zhealthcare-accordian',
+      component: zhealthcareAccordiansComponent,
       children: [
         {
           path: '',
@@ -28,21 +28,21 @@ const routes: Routes = [
         },
         {
           path: 'accordian-example-one',
-          component: ExxatAccordianVariationsComponent
+          component: zhealthcareAccordianVariationsComponent
         },
         {
           path: 'accordian-example-two',
-          component: ExxatAccordianWithGridComponent
+          component: zhealthcareAccordianWithGridComponent
         }
       ]
     }
   ];
-  
+
   @NgModule({
     declarations: [
-      ExxatAccordiansComponent,
-      ExxatAccordianVariationsComponent,
-      ExxatAccordianWithGridComponent,
+      zhealthcareAccordiansComponent,
+      zhealthcareAccordianVariationsComponent,
+      zhealthcareAccordianWithGridComponent,
       NavbarComponent
     ],
     imports: [
@@ -50,7 +50,7 @@ const routes: Routes = [
       RouterModule.forChild(routes),
       MatIconModule,
       MatTabsModule,
-      ExxatAvatarModule,
+      zhealthcareAvatarModule,
       FuseSharedModule,
       FuseHighlightModule,
       MaterialModule,
@@ -61,15 +61,15 @@ const routes: Routes = [
       FuseModule,
       FuseSidebarModule,
       MatDividerModule,
-      ExxatCarouselModule,
+      zhealthcareCarouselModule,
       FlexLayoutModule,
       FuseThemeOptionsModule,
-      ExxatTagModule,
-      ExxatTooltipModule,
+      zhealthcareTagModule,
+      zhealthcareTooltipModule,
       MatChipsModule,
       MatCardModule,
       FuseDirectivesModule
     ]
   })
-  export class ExxatAccordianDemoModule {}
-  
+  export class zhealthcareAccordianDemoModule {}
+

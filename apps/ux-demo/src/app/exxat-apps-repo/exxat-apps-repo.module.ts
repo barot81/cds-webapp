@@ -4,18 +4,18 @@ import {
   FuseDirectivesModule,
   FuseSharedModule,
   MaterialModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ExxatAppsRepoRoutingModule } from './exxat-apps-repo-routing.module';
-import { ExxatAppsRepoComponent } from './exxat-apps-repo/exxat-apps-repo.component';
+import { zhealthcareAppsRepoRoutingModule } from './zhealthcare-apps-repo-routing.module';
+import { zhealthcareAppsRepoComponent } from './zhealthcare-apps-repo/zhealthcare-apps-repo.component';
 
 @NgModule({
-  declarations: [ExxatAppsRepoComponent],
+  declarations: [zhealthcareAppsRepoComponent],
   imports: [
     CommonModule,
-    ExxatAppsRepoRoutingModule,
+    zhealthcareAppsRepoRoutingModule,
     FuseSharedModule,
     FlexLayoutModule,
     MaterialModule,
@@ -24,4 +24,4 @@ import { ExxatAppsRepoComponent } from './exxat-apps-repo/exxat-apps-repo.compon
     FuseDirectivesModule,
   ],
 })
-export class ExxatAppsRepoModule {}
+export class zhealthcareAppsRepoModule {}

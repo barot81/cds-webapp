@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { FuseSidebarService, HeaderService } from '@exxat/ux'
+import { FuseSidebarService, HeaderService } from '@zhealthcare/ux'
 import { BehaviorSubject, from } from 'rxjs';
 
 @Component({
-  selector: 'exxat-app-profile',
+  selector: 'zhealthcare-app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })

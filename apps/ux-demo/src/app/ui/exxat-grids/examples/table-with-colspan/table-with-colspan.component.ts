@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { FullScreenService, HeaderService } from '@exxat/ux';
+import { FullScreenService, HeaderService } from '@zhealthcare/ux';
 import { UXDemoDrawerService } from '../../../../remote-entry/ux-demo-drawer.service';
 import { GridService } from '../../../../apps/student-grid/grid.service';
 

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
-import { FusionFormComponent, FusionFormAdapter } from '@exxat/fusion/components';
+import { FusionFormComponent, FusionFormAdapter } from '@zhealthcare/fusion/components';
 @Component({
-  selector: 'exxat-drawer-with-sticky-buttons',
+  selector: 'zhealthcare-drawer-with-sticky-buttons',
   templateUrl: './drawer-with-sticky-buttons.component.html',
 })
 export class DrawerWithStickyButtonsComponent extends FusionFormComponent implements OnInit, FusionFormAdapter {

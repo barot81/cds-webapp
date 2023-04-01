@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 
-import { AuthGuardService, loadRemoteModuleFromDefinitions } from '@exxat/fusion/core';
+import { AuthGuardService, loadRemoteModuleFromDefinitions } from '@zhealthcare/fusion/core';
 import { loadRemoteModule } from '@nrwl/angular/mf';
 
 const routes: Routes = [
@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: 'account/register',
     loadChildren: () =>
-      import('@exxat/account/registration').then((m) => m.RegistrationModule),
+      import('@zhealthcare/account/registration').then((m) => m.RegistrationModule),
   }
 ];
 

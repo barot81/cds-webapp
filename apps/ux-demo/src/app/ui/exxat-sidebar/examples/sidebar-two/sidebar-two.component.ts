@@ -4,9 +4,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { NavigationEnd, Router } from '@angular/router';
-import { FuseSidebarService, ScrollService } from '@exxat/ux';
+import { FuseSidebarService, ScrollService } from '@zhealthcare/ux';
 import { filter } from 'rxjs/operators';
-import { ChecklistDatabase, TodoItemFlatNode, TodoItemNode } from '../../../exxat-ui-components/tabs/exxat-tree-demo/variations/tree-data.service';
+import { ChecklistDatabase, TodoItemFlatNode, TodoItemNode } from '../../../zhealthcare-ui-components/tabs/zhealthcare-tree-demo/variations/tree-data.service';
 import { SidebarLayoutPopupTwoComponent } from '../popups/layout-popup-two/layout-popup-two.component';
 
 @Component({
@@ -17,7 +17,7 @@ export class SidebarTwoComponent implements OnInit {
 
   @ViewChild('sidebarHeader') sidebarHeader: ElementRef;
   private currentURL =
-  'admin/ux/ui/exxat-sidebar/sidebar-two';
+  'admin/ux/ui/zhealthcare-sidebar/sidebar-two';
   activeNode;
   flatNodeMap = new Map<TodoItemFlatNode, TodoItemNode>();
   nestedNodeMap = new Map<TodoItemNode, TodoItemFlatNode>();

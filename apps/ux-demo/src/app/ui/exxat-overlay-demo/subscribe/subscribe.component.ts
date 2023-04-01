@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ExxatOverlayRef } from '@exxat/ux';
+import { zhealthcareOverlayRef } from '@zhealthcare/ux';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -11,7 +11,7 @@ export class SubscribeComponent {
 
   frmSubscribe: FormGroup;
   
-  constructor(private fb: FormBuilder, private overlayRef: ExxatOverlayRef) {
+  constructor(private fb: FormBuilder, private overlayRef: zhealthcareOverlayRef) {
     this.frmSubscribe = this.fb.group({
       name: this.overlayRef.data.name,
       email: [

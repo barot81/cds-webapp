@@ -4,7 +4,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { FormControl } from '@angular/forms';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { GridService } from './grid.service';
-import { DataSourceFacade, ColumnOption } from '@exxat/plugin/data-source';
+import { DataSourceFacade, ColumnOption } from '@zhealthcare/plugin/data-source';
 
 export interface FiltertedList {
   name: string;

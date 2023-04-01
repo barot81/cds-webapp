@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SnackbarService } from '@exxat/ux';
+import { SnackbarService } from '@zhealthcare/ux';
 
 @Component({
   selector: 'ryzen-snackbar-example-two',

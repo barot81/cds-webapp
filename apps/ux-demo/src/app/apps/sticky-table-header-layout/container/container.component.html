@@ -78,17 +78,17 @@
             [ngClass]="{ 'active-list-item': student.id === selectedId }"
           >
             <div fxLayout="row" fxLayoutAlign="start center">
-              <exxat-avatar-list-item
+              <zhealthcare-avatar-list-item
                 [firstName]="student.name"
                 [lastName]=""
                 src="assets/images/avatars/anna-strong.png"
               >
-              </exxat-avatar-list-item>
-              <exxat-tag-showcase
+              </zhealthcare-avatar-list-item>
+              <zhealthcare-tag-showcase
                 [tags]="tags"
                 class="ml-4"
                 *ngIf="i % 2 == 0"
-              ></exxat-tag-showcase>
+              ></zhealthcare-tag-showcase>
             </div>
           </mat-list-item>
         </button>
@@ -117,13 +117,13 @@
               </div>
 
               <div fxLayout="row" fxLayoutAlign="start center">
-                <exxat-avatar
+                <zhealthcare-avatar
                   src="assets/images/avatars/anna-strong.png"
                   firstName="Anna"
                   lastName="Strong"
                   size="lg"
                 >
-                </exxat-avatar>
+                </zhealthcare-avatar>
               </div>
 
               <div fxLayout="column" class="mr-16">
@@ -136,14 +136,14 @@
                       '.universityname.com'
                   }}</a
                 >
-                <exxat-tag-showcase
+                <zhealthcare-tag-showcase
                   class="mt-4"
                   [tags]="tags"
                   [tagView]="tagView.CHIP"
                   [isGrid]="false"
                   [tagsLength]="3"
                 >
-                </exxat-tag-showcase>
+                </zhealthcare-tag-showcase>
               </div>
             </div>
           </header>

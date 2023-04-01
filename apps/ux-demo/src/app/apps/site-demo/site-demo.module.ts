@@ -6,13 +6,13 @@ import { SiteDemoComponent } from './site-demo.component';
 import { LocationComponent } from './tabs/location/location.component';
 import { SiteNavbarComponent } from './site-navbar/site-navbar.component';
 import {
-  ExxatAvatarModule,
+  zhealthcareAvatarModule,
   MaterialModule,
   FuseSidebarModule,
   FuseSharedModule,
-  ExxatTooltipModule,
-} from '@exxat/ux';
-import { ExxatTagModule } from '@exxat/plugin/tags';
+  zhealthcareTooltipModule,
+} from '@zhealthcare/ux';
+import { zhealthcareTagModule } from '@zhealthcare/plugin/tags';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ContractsComponent } from './tabs/contracts/contracts.component';
 import { RoutingChecklistDrawerComponent } from './tabs/contracts/routing-checklist-drawer/routing-checklist-drawer.component';
@@ -40,9 +40,9 @@ import {MatDatepicker, MatDatepickerModule} from "@angular/material/datepicker";
     FuseSidebarModule,
     MaterialModule,
     FlexLayoutModule,
-    ExxatTagModule,
-    ExxatAvatarModule,
-    ExxatTooltipModule,
+    zhealthcareTagModule,
+    zhealthcareAvatarModule,
+    zhealthcareTooltipModule,
   ],
 })
 export class SiteDemoModule {}

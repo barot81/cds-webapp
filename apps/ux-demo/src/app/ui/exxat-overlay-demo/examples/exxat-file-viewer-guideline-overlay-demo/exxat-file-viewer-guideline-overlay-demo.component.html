@@ -1,4 +1,4 @@
-<div id="exxat-overlay-component-container-examples">
+<div id="zhealthcare-overlay-component-container-examples">
   <div class="center">
     <div class="content">
       <div fxLayout="column" fxLayout.gt-md="row">
@@ -63,18 +63,18 @@
               >
                 <textarea #source hidden="hidden">
                   import { Component, ComponentFactoryResolver, TemplateRef } from '@angular/core';
-                  import { OverlayService } from '@exxat/ux';
+                  import { OverlayService } from '@zhealthcare/ux';
                   import { ComponentType } from '@angular/cdk/portal';
-                  import { DocumentViewerConfiguration } from '@exxat/plugin/file-upload';
-                  import { FileEndpoint } from '@exxat/plugin/file-upload';
+                  import { DocumentViewerConfiguration } from '@zhealthcare/plugin/file-upload';
+                  import { FileEndpoint } from '@zhealthcare/plugin/file-upload';
                   import { FileViewerGuidelineContainerComponent } from '../../file-viewer-guideline-container/file-viewer-guideline-container.component';
                   
                   @Component({
-                    selector: 'ryzen-exxat-file-viewer-guideline-overlay-demo',
-                    templateUrl: './exxat-file-viewer-guideline-overlay-demo.component.html',
-                    styleUrls: ['./exxat-file-viewer-guideline-overlay-demo.component.scss']
+                    selector: 'ryzen-zhealthcare-file-viewer-guideline-overlay-demo',
+                    templateUrl: './zhealthcare-file-viewer-guideline-overlay-demo.component.html',
+                    styleUrls: ['./zhealthcare-file-viewer-guideline-overlay-demo.component.scss']
                   })
-                  export class ExxatFileViewerGuidelineOverlayDemoComponent {
+                  export class zhealthcareFileViewerGuidelineOverlayDemoComponent {
                   
                     
                     fileViewerComponentRef: any;
@@ -121,7 +121,7 @@
                     <div class="fileViewer_container_content" fxLayout="row wrap" fxLayoutAlign="start"  [style.height.px]="headerService.scrollContentheight + 25">
                       <div  class="fileViewer_container_left_content" fxLayout="column" fxFlex="100" fxFlex.gt-md="70">
                         <mat-card>
-                          <exxat-file-viewer [documentConfiguration]="documentConfiguration"></exxat-file-viewer>
+                          <zhealthcare-file-viewer [documentConfiguration]="documentConfiguration"></zhealthcare-file-viewer>
                         </mat-card>
                       </div>
                       <div class="px-16 guidline_container" fxLayout="column" fxFlex="100" fxFlex.gt-md="30">
@@ -164,8 +164,8 @@
               >
                 <textarea #source hidden="hidden">
                   import { Component, ChangeDetectionStrategy } from '@angular/core';
-                  import { ExxatOverlayRef, HeaderService } from '@exxat/ux';
-                  import { DocumentViewerConfiguration } from '@exxat/plugin/file-upload';
+                  import { zhealthcareOverlayRef, HeaderService } from '@zhealthcare/ux';
+                  import { DocumentViewerConfiguration } from '@zhealthcare/plugin/file-upload';
                   
                   @Component({
                     selector: 'ryzen-file-viewer-guideline-container',
@@ -177,7 +177,7 @@
                   
                     documentConfiguration: DocumentViewerConfiguration;
                     
-                    constructor(private overlayRef: ExxatOverlayRef, public headerService: HeaderService) {
+                    constructor(private overlayRef: zhealthcareOverlayRef, public headerService: HeaderService) {
                       this.documentConfiguration = this.overlayRef.data;
                     }
                     

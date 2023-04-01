@@ -171,7 +171,7 @@
                     aria-label="This is a Simple table"
                     mat-table
                     [dataSource]="dataSource"
-                    class="w-100-p exxat-table"
+                    class="w-100-p zhealthcare-table"
                     matSort
                   >
                     <!-- Name Column -->
@@ -434,7 +434,7 @@
                     aria-label="This is a Simple table"
                     mat-table
                     [dataSource]="dataSource"
-                    class="w-100-p exxat-table"
+                    class="w-100-p zhealthcare-table"
                     matSort
                   >
                     <!-- Name Column -->
@@ -583,7 +583,7 @@
                                             [formControl]="searchItem"
                                             fxFlex
                                             />
-                
+
                                             <button
                                             mat-icon-button
                                             aria-label="clear search"
@@ -594,7 +594,7 @@
                                         </div>
                                         </div>
                                     </div>
-                
+
                                     <div fxLayout="row" fxLayoutAlign="end center">
                                         <div
                                         fxLayout="row"
@@ -613,7 +613,7 @@
                                         >
                                             <i aria-hidden="true" class="fa-light fa-file-export s-18"></i>
                                         </button>
-                
+
                                         <button
                                             aria-label="Edit Columns"
                                             matTooltip="Edit columns"
@@ -623,7 +623,7 @@
                                         >
                                             <i aria-hidden="true" class="fa-light fa-wrench s-18"></i>
                                         </button>
-                
+
                                         <button
                                             mat-icon-button
                                             class="ml-4 filter-icon-button"
@@ -635,7 +635,7 @@
                                             <span> 12 </span>
                                             </div>
                                         </button>
-                
+
                                         <button
                                             tabindex="0"
                                             aria-label="mat menu"
@@ -672,13 +672,13 @@
                                 <div
                                     class="overflow-auto"
                                     [style.maxHeight.px]="_scrollService.contentHeight - 190"
-                                    
+
                                 >
                                     <table
                                     aria-label="This is a Simple table"
                                     mat-table
                                     [dataSource]="dataSource"
-                                    class="w-100-p exxat-table"
+                                    class="w-100-p zhealthcare-table"
                                     matSort
                                     >
                                     <!-- Name Column -->
@@ -696,11 +696,11 @@
                                         class="name-column"
                                         >
                                         <div fxLayout="row" fxLayoutAlign="start center">
-                                             element.name 
+                                             element.name
                                         </div>
                                         </td>
                                     </ng-container>
-                
+
                                     <!-- email Column -->
                                     <ng-container matColumnDef="email">
                                         <th
@@ -718,7 +718,7 @@
                                         <a> element.email </a>
                                         </td>
                                     </ng-container>
-                
+
                                     <!-- cohort Column -->
                                     <ng-container matColumnDef="cohort">
                                         <th
@@ -733,10 +733,10 @@
                                         *matCellDef="let element"
                                         class="column-width"
                                         >
-                                        element.cohort 
+                                        element.cohort
                                         </td>
                                     </ng-container>
-                
+
                                     <!-- status Column -->
                                     <ng-container matColumnDef="status">
                                         <th
@@ -754,11 +754,11 @@
                                         <div
                                             class="status-badge  element.statusClass w-88 text-center"
                                         >
-                                            element.status 
+                                            element.status
                                         </div>
                                         </td>
                                     </ng-container>
-                
+
                                     <tr
                                         mat-header-row
                                         *matHeaderRowDef="displayedColumns; sticky: true"
@@ -825,7 +825,7 @@
                                             [formControl]="searchItem"
                                             fxFlex
                                             />
-                
+
                                             <button
                                             mat-icon-button
                                             aria-label="clear search"
@@ -836,7 +836,7 @@
                                         </div>
                                         </div>
                                     </div>
-                
+
                                     <div fxLayout="row" fxLayoutAlign="end center">
                                         <div
                                         fxLayout="row"
@@ -855,33 +855,33 @@
                                         >
                                             <i aria-hidden="true" class="fa-light fa-file-export s-18"></i>
                                         </button>
-                
+
                                         <button
                                             aria-label="Edit Columns"
-                                            
+
                                             matTooltip="Edit columns"
-                                          
+
                                             mat-icon-button
                                             class="ml-4"
                                             fxHide.lt-md
                                         >
                                             <i aria-hidden="true" class="fa-light fa-wrench s-18"></i>
                                         </button>
-                
+
                                         <button
                                             mat-icon-button
                                             class="ml-4 filter-icon-button"
                                             aria-label="filters"
-                                            
+
                                             matTooltip="Filter"
-                                        
+
                                         >
                                             <div fxLayout="row" fxLayoutAlign="start center">
                                             <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
                                             <span> 12 </span>
                                             </div>
                                         </button>
-                
+
                                         <button
                                             tabindex="0"
                                             aria-label="mat menu"
@@ -902,7 +902,7 @@
                                             <button
                                             mat-menu-item
                                             aria-label="Edit Columns"
-                                            
+
                                             >
                                             <i aria-hidden="true" class="fa-light fa-wrench s-18 mr-8"></i>Edit
                                             columns
@@ -924,7 +924,7 @@
                                     aria-label="This is a Simple table"
                                     mat-table
                                     [dataSource]="dataSource"
-                                    class="w-100-p exxat-table"
+                                    class="w-100-p zhealthcare-table"
                                     matSort
                                     >
                                     <!-- Name Column -->
@@ -942,11 +942,11 @@
                                         class="name-column"
                                         >
                                         <div fxLayout="row" fxLayoutAlign="start center">
-                                             element.name 
+                                             element.name
                                         </div>
                                         </td>
                                     </ng-container>
-                
+
                                     <!-- email Column -->
                                     <ng-container matColumnDef="email">
                                         <th
@@ -964,7 +964,7 @@
                                         <a> element.email </a>
                                         </td>
                                     </ng-container>
-                
+
                                     <!-- cohort Column -->
                                     <ng-container matColumnDef="cohort">
                                         <th
@@ -982,7 +982,7 @@
                                         element.cohort
                                         </td>
                                     </ng-container>
-                
+
                                     <!-- status Column -->
                                     <ng-container matColumnDef="status">
                                         <th
@@ -1000,11 +1000,11 @@
                                         <div
                                             class="status-badge element.statusClass w-88 text-center"
                                         >
-                                            element.status 
+                                            element.status
                                         </div>
                                         </td>
                                     </ng-container>
-                
+
                                     <tr
                                         mat-header-row
                                         *matHeaderRowDef="displayedColumns; sticky: true"

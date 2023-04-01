@@ -1,4 +1,4 @@
-<div id="exxat-drawers-sizes" class="p-24">
+<div id="zhealthcare-drawers-sizes" class="p-24">
   <div class="mat-title">Drawer With Highlight Menu Example</div>
 
   <div fxLayout="column" fxLayout.gt-md="row" class="mb-16">
@@ -13,9 +13,9 @@
         <button
           mat-icon-button
           aria-label="Edit"
-          exxatDrawerAction
+          zhealthcareDrawerAction
           [componentSelector]="
-            exxatDrawerFormService.get('exxat-drawer-with-highlight-menu')
+            zhealthcareDrawerFormService.get('zhealthcare-drawer-with-highlight-menu')
           "
           [size]="'drawer-lg'"
           [caption]="'Drawer With Highlight Menu'"
@@ -143,16 +143,16 @@
             <textarea #source hidden="hidden">
 
               import { Component } from "@angular/core";
-              import { FuseSidebarService, HighLightNavMenuService } from "@exxat/ux";
-              import { SidebarFocusHelper } from "../../../exxat-sidebar/exxat-sidebar.service";
+              import { FuseSidebarService, HighLightNavMenuService } from "@zhealthcare/ux";
+              import { SidebarFocusHelper } from "../../../zhealthcare-sidebar/zhealthcare-sidebar.service";
               
               @Component({
-                  selector: 'exxat-drawer-with-highlight-menu',
-                  templateUrl:'./exxat-drawer-with-highlight-menu.component.html',
-                  styleUrls: ['./exxat-drawer-with-highlight-menu.component.scss']
+                  selector: 'zhealthcare-drawer-with-highlight-menu',
+                  templateUrl:'./zhealthcare-drawer-with-highlight-menu.component.html',
+                  styleUrls: ['./zhealthcare-drawer-with-highlight-menu.component.scss']
               })
               
-              export class ExxatDrawerWithHighlightMenuComponent{
+              export class zhealthcareDrawerWithHighlightMenuComponent{
                   
                   scrollLevel = 'component'
               

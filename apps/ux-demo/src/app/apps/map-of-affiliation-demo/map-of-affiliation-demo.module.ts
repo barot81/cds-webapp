@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MapOfAffiliationDemoRoutingModule } from './map-of-affiliation-demo-routing.module';
 import { MapOfAffiliationDemoComponent } from './map-of-affiliation-demo.component';
-import { ExxatAvatarModule, ExxatTooltipModule, FuseSharedModule, FuseSidebarModule, MaterialModule } from '@exxat/ux';
+import { zhealthcareAvatarModule, zhealthcareTooltipModule, FuseSharedModule, FuseSidebarModule, MaterialModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -15,8 +15,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FuseSidebarModule,
     MaterialModule,
     FlexLayoutModule,
-    ExxatAvatarModule,
-    ExxatTooltipModule 
+    zhealthcareAvatarModule,
+    zhealthcareTooltipModule 
   ]
 })
 export class MapOfAffiliationDemoModule { }

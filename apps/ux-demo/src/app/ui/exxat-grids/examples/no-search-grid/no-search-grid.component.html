@@ -1,5 +1,5 @@
 <div
-  class="page-layout carded fullwidth full-width-page inner-scroll exxat-new-grid no-search-grid"
+  class="page-layout carded fullwidth full-width-page inner-scroll zhealthcare-new-grid no-search-grid"
   id="noSearchGrid"
 >
   <div class="center p-0">
@@ -9,7 +9,7 @@
           aria-label="This is a no search table"
           mat-table
           [dataSource]="dataSource"
-          class="w-100-p exxat-table"
+          class="w-100-p zhealthcare-table"
           matSort
         >
           <!-- Name Column -->
@@ -24,11 +24,11 @@
             >
               <div fxLayout="row" fxLayoutAlign="start center">
                 <a>{{ element.name }}</a>
-                <exxat-tag-showcase
+                <zhealthcare-tag-showcase
                   [tags]="tags"
                   class="ml-4"
                   *ngIf="i % 3 == 0"
-                ></exxat-tag-showcase>
+                ></zhealthcare-tag-showcase>
               </div>
             </td>
           </ng-container>

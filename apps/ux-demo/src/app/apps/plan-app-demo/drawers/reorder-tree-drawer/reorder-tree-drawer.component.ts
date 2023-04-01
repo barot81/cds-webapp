@@ -2,11 +2,11 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { Component } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
-import { FileDatabase, FileFlatNode, FileNode } from '../../../../ui/exxat-ui-components/tabs/exxat-tree-demo/variations/tree-variation-six/file-database.service';
+import { FileDatabase, FileFlatNode, FileNode } from '../../../../ui/zhealthcare-ui-components/tabs/zhealthcare-tree-demo/variations/tree-variation-six/file-database.service';
 import { Observable, of as observableOf } from 'rxjs';
 
 @Component({
-  selector: 'exxat-app-reorder-tree-drawer',
+  selector: 'zhealthcare-app-reorder-tree-drawer',
   templateUrl: './reorder-tree-drawer.component.html',
 })
 export class ReorderTreeDrawerComponent {

@@ -3,8 +3,8 @@
       <div fxLayout="column">
         <span class="font-16 mb-16" tabindex="0" aria-label="Add or remove columns. To change the column order, drag and drop a field.">Add or remove columns. To change the column order, drag and drop a field. </span>
         <div id="editColumnContainer">
-          <div cdkDropList class="exxat-drag-drop-list" (cdkDropListDropped)="drop($event)">
-            <div class="exxat-drag-drop" *ngFor="let column of columnsList" cdkDrag >
+          <div cdkDropList class="zhealthcare-drag-drop-list" (cdkDropListDropped)="drop($event)">
+            <div class="zhealthcare-drag-drop" *ngFor="let column of columnsList" cdkDrag >
               <div class="icon-drag"><mat-icon class="primary-fg font-22">drag_indicator</mat-icon></div>
               <div class="content" tabindex="0">{{column}}</div>
               <button aria-label="close button"><mat-icon class="warn-fg font-22 ml-16">close</mat-icon></button>

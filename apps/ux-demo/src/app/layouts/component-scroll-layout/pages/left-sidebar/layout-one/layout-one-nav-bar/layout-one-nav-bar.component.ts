@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'exxat-layout-one-nav-bar',
+    selector: 'zhealthcare-layout-one-nav-bar',
     templateUrl: 'layout-one-nav-bar.component.html',
 })
 export class LayoutNavBarComponent implements OnInit {

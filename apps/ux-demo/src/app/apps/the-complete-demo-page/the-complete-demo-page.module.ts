@@ -6,17 +6,17 @@ import { RouterModule, Routes } from '@angular/router';
 import {
   MaterialModule,
   FuseSharedModule,
-  ExxatAvatarListItemModule,
+  zhealthcareAvatarListItemModule,
   LayoutModule,
   FuseModule,
   FuseSidebarModule,
   FuseDirectivesModule
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
-import { DataSourceModule } from '@exxat/plugin/data-source';
+import { DataSourceModule } from '@zhealthcare/plugin/data-source';
 import { DemoPageDialogComponent } from './demo-page-dialog/demo-page-dialog.component';
-import { ExxatDrawerFormService } from '../../ui/exxat-drawers/exxat-drawer-forms-shared.service';
+import { zhealthcareDrawerFormService } from '../../ui/zhealthcare-drawers/zhealthcare-drawer-forms-shared.service';
 import { FilterDrawerComponent } from './filter-drawer/filter-drawer.component';
 import { UXDemoDrawerService } from '../../remote-entry/ux-demo-drawer.service';
 import { ShowMoreFilterDrawerComponent } from './show-more-filter-drawer/show-more-filter-drawer.component';
@@ -40,13 +40,13 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     FlexLayoutModule,
     FuseSharedModule,
     FuseHighlightModule,
-    ExxatAvatarListItemModule,
+    zhealthcareAvatarListItemModule,
     LayoutModule,
     FuseSidebarModule,
     DataSourceModule,
     DragDropModule,
     FuseDirectivesModule
   ],
-  providers: [ExxatDrawerFormService, UXDemoDrawerService]
+  providers: [zhealthcareDrawerFormService, UXDemoDrawerService]
 })
 export class TheCompleteDemoPageModule {}

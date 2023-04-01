@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatAvatarListItemExampleComponent } from './exxat-avatar-list-item-example.component';
+import { zhealthcareAvatarListItemExampleComponent } from './zhealthcare-avatar-list-item-example.component';
 
-describe('ExxatAvatarListItemExampleComponent', () => {
-  let component: ExxatAvatarListItemExampleComponent;
-  let fixture: ComponentFixture<ExxatAvatarListItemExampleComponent>;
+describe('zhealthcareAvatarListItemExampleComponent', () => {
+  let component: zhealthcareAvatarListItemExampleComponent;
+  let fixture: ComponentFixture<zhealthcareAvatarListItemExampleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatAvatarListItemExampleComponent ]
+      declarations: [ zhealthcareAvatarListItemExampleComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatAvatarListItemExampleComponent);
+    fixture = TestBed.createComponent(zhealthcareAvatarListItemExampleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

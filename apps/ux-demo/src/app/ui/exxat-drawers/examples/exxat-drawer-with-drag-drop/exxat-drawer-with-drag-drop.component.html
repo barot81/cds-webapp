@@ -1,4 +1,4 @@
-<div id="exxat-drag-drop-examples" class="p-gt.sm-24">
+<div id="zhealthcare-drag-drop-examples" class="p-gt.sm-24">
   <div fxLayout="column" fxLayout.gt-md="row">
     <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
       <div class="">
@@ -12,11 +12,11 @@
             <div fxFlex="100">
               <div
                 cdkDropList
-                class="exxat-drag-drop-list"
+                class="zhealthcare-drag-drop-list"
                 (cdkDropListDropped)="drop($event)"
               >
                 <div
-                  class="exxat-drag-drop"
+                  class="zhealthcare-drag-drop"
                   *ngFor="let column of columnsList"
                   cdkDrag
                 >
@@ -70,26 +70,26 @@
               fxFlex="100"
             >
               <textarea #source hidden="hidden">
-            
+
                 <mat-card>
                   <div fxLayout="column">
                   <div id="editColumnContainer">
-                      <div cdkDropList class="exxat-drag-drop-list" (cdkDropListDropped)="drop($event)">
-                        <div class="exxat-drag-drop" *ngFor="let column of columnsList" cdkDrag>
+                      <div cdkDropList class="zhealthcare-drag-drop-list" (cdkDropListDropped)="drop($event)">
+                        <div class="zhealthcare-drag-drop" *ngFor="let column of columnsList" cdkDrag>
                           <div class="icon-drag"><mat-icon class="primary-fg font-22">drag_indicator</mat-icon></div>
                           <div class="content">column</div>
                         </div>
                       </div>
                     </div>
-              
+
                     <div fxLayout="row" fxLayoutAlign="start center">
                       <mat-icon class="mr-8 accent-fg">add</mat-icon>
                       <span class="accent-fg">Add a Column</span>
                     </div>
-              
+
                   </div>
                 </mat-card>
-              
+
             </textarea
               >
             </fuse-highlight>
@@ -112,14 +112,14 @@
               import { Component, OnInit } from '@angular/core';
               import { FormGroup, FormBuilder, Validators } from '@angular/forms';
               import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-              import { DrawerAdapter } from '@exxat/ux';
+              import { DrawerAdapter } from '@zhealthcare/ux';
 
               @Component({
-                selector: 'ryzen-exxat-drawer-with-drag-drop',
-                templateUrl: './exxat-drawer-with-drag-drop.component.html',
-                styleUrls: ['./exxat-drawer-with-drag-drop.component.scss']
+                selector: 'ryzen-zhealthcare-drawer-with-drag-drop',
+                templateUrl: './zhealthcare-drawer-with-drag-drop.component.html',
+                styleUrls: ['./zhealthcare-drawer-with-drag-drop.component.scss']
               })
-              export class ExxatDrawerWithDragDropComponent implements OnInit, DrawerAdapter {
+              export class zhealthcareDrawerWithDragDropComponent implements OnInit, DrawerAdapter {
                 columnsList = [
                   'Student Name',
                   'Email',

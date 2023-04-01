@@ -4,14 +4,14 @@
   <!-- HEADER -->
   <div fxLayout="column">
     <div class="mb-16 pt-xs-16 pl-xs-16">
-      <exxat-breadcrumb
+      <zhealthcare-breadcrumb
         [dataSource]="breadcrumbs"
         [type]="_breadCrumbType.PARTIAL"
       >
-      </exxat-breadcrumb>
+      </zhealthcare-breadcrumb>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center">
-      <exxat-carousel
+      <zhealthcare-carousel
         [width]="
           headerItems.length === 1 ? screenWidth - 55 : screenWidth - 120
         "
@@ -39,13 +39,13 @@
             class="py-xs-8 w-100-p"
           >
             <div fxLayout="row" fxLayoutAlign="start center">
-              <exxat-avatar
+              <zhealthcare-avatar
                 src="assets/images/avatars/anna-strong.png"
                 size="lg"
                 tabindex="0"
                 aria-label="persons image"
                 fxHide.xs
-              ></exxat-avatar>
+              ></zhealthcare-avatar>
               <div
                 fxLayout="column"
                 fxLayoutAlign="center start"
@@ -115,7 +115,7 @@
             </div>
           </header>
         </mat-card>
-      </exxat-carousel>
+      </zhealthcare-carousel>
     </div>
     <button
       mat-icon-button
@@ -263,7 +263,7 @@
                 <button
                   mat-icon-button
                   aria-label="Edit"
-                  exxatDrawerAction
+                  zhealthcareDrawerAction
                   [size]="'drawer-sm'"
                   [caption]="'Status'"
                   [primaryAction]="'Save'"
@@ -525,7 +525,7 @@
                   mat-icon-button
                   class="action-icon"
                   aria-label="add"
-                  exxatDrawerAction
+                  zhealthcareDrawerAction
                   [size]="'drawer-sm'"
                   [caption]="'Status'"
                   [primaryAction]="'Save'"
@@ -562,7 +562,7 @@
                   mat-icon-button
                   class="action-icon"
                   aria-label="add"
-                  exxatDrawerAction
+                  zhealthcareDrawerAction
                   [size]="'drawer-sm'"
                   [caption]="'Status'"
                   [primaryAction]="'Save'"
@@ -594,7 +594,7 @@
                   mat-icon-button
                   class="action-icon"
                   aria-label="add"
-                  exxatDrawerAction
+                  zhealthcareDrawerAction
                   [size]="'drawer-sm'"
                   [caption]="'Status'"
                   [primaryAction]="'Save'"
@@ -626,7 +626,7 @@
                   mat-icon-button
                   class="action-icon"
                   aria-label="add"
-                  exxatDrawerAction
+                  zhealthcareDrawerAction
                   [size]="'drawer-sm'"
                   [caption]="'Status'"
                   [primaryAction]="'Save'"
@@ -666,7 +666,7 @@
                 <button
                   mat-icon-button
                   aria-label="add button"
-                  exxatDrawerAction
+                  zhealthcareDrawerAction
                   [size]="'drawer-sm'"
                   [caption]="'Status'"
                   [primaryAction]="'Save'"
@@ -695,7 +695,7 @@
                     </mat-expansion-panel-header>
                     <div fxLayout="column">
                       <div
-                        class="exxat-info pr-16 pb-16"
+                        class="zhealthcare-info pr-16 pb-16"
                         fxLayout="column"
                         fxLayoutAlign="center start"
                       >
@@ -717,7 +717,7 @@
                         </div>
                       </div>
                       <div
-                        class="exxat-info pr-16 pb-16"
+                        class="zhealthcare-info pr-16 pb-16"
                         fxLayout="column"
                         fxLayoutAlign="center start"
                       >
@@ -739,7 +739,7 @@
                         </div>
                       </div>
                       <div
-                        class="exxat-info pr-16 pb-16"
+                        class="zhealthcare-info pr-16 pb-16"
                         fxLayout="column"
                         fxLayoutAlign="center start"
                       >
@@ -778,7 +778,7 @@
                 <button
                   mat-icon-button
                   aria-label="add"
-                  exxatDrawerAction
+                  zhealthcareDrawerAction
                   [size]="'drawer-sm'"
                   [caption]="'Status'"
                   [primaryAction]="'Save'"
@@ -792,11 +792,11 @@
                 </button>
               </header>
               <div class="px-8 pt-16">
-                <exxat-file-upload
+                <zhealthcare-file-upload
                   [fileConfiguration]="fileConfiguration"
                   formControlName="fileDescriptions"
                 >
-                </exxat-file-upload>
+                </zhealthcare-file-upload>
               </div>
             </div>
           </div>

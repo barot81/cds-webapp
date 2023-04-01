@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { GridService } from '../../../student-grid/grid.service';
-import { FuseSidebarService, HeaderService } from '@exxat/ux';
+import { FuseSidebarService, HeaderService } from '@zhealthcare/ux';
 import { FormControl } from '@angular/forms';
 import { UXDemoDrawerService } from 'apps/ux-demo/src/app/remote-entry/ux-demo-drawer.service';
 export interface PeriodicElement {

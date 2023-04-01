@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MatColors } from '@exxat/ux';
+import { MatColors } from '@zhealthcare/ux';
 
 @Component({
   selector: 'colors',

@@ -1,9 +1,9 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FullScreenService, FuseSidebarService, HeaderService } from '@exxat/ux';
+import { FullScreenService, FuseSidebarService, HeaderService } from '@zhealthcare/ux';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-    selector: 'exxat-tab-four',
+    selector: 'zhealthcare-tab-four',
     templateUrl: 'tab-four.component.html',
 })
 export class TabFourComponent {

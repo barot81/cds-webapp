@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { PlanAppDemoDrawerService } from '../../plan-app-demo-drawer.service';
-import { HeaderService, ExxatTreeNode } from '@exxat/ux';
+import { HeaderService, zhealthcareTreeNode } from '@zhealthcare/ux';
 
 @Component({
   selector: 'ryzen-curriculum-attributes',
@@ -8,7 +8,7 @@ import { HeaderService, ExxatTreeNode } from '@exxat/ux';
 })
 export class CurriculumAttributesComponent implements OnInit, AfterViewInit {
 
-  dataSource: ExxatTreeNode[] = [
+  dataSource: zhealthcareTreeNode[] = [
     {
       name: 'Themes',
       value: 'Themes',

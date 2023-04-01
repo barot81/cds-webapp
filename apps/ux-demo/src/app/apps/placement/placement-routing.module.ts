@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthGuardService } from '@exxat/fusion/core';
+import { AuthGuardService } from '@zhealthcare/fusion/core';
 import { PlacementComponent } from './placement.component';
 import { ManagePlacementsComponent } from './tabs/manage-placements/manage-placements.component';
 import { PlacementDashboardComponent } from './tabs/placement-dashboard/placement-dashboard.component';

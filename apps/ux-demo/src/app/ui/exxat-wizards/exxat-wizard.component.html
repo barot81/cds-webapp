@@ -1,4 +1,4 @@
-<div class="page-layout carded fullwidth p-12" id="exxat-wizard-examples">
+<div class="page-layout carded fullwidth p-12" id="zhealthcare-wizard-examples">
   <div class="">
     <div class="gray-header mb-16">
       <div fxLayout="row wrap" fxLayoutAlign="space-between center">
@@ -7,12 +7,12 @@
             <button
               mat-icon-button
               aria-label="Click to go back"
-              routerLink="/admin/ux/ui/exxat-component-library"
+              routerLink="/admin/ux/ui/zhealthcare-component-library"
             >
               <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
             </button>
           </div>
-          <div class="mat-title">Exxat Wizard Examples</div>
+          <div class="mat-title">zhealthcare Wizard Examples</div>
         </div>
         <div fxLayout="row" fxLayoutAlign="end center">
           <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
@@ -20,7 +20,7 @@
       </div>
     </div>
     <!--  Accordian Example -->
-    <div id="exxat-wizard-examples">
+    <div id="zhealthcare-wizard-examples">
       <div fxLayout="column" fxLayout.gt-md="row">
         <div
           class="preview"
@@ -226,11 +226,11 @@
           import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
           @Component({
-            selector: 'ryzen-exxat-wizard',
-            templateUrl: './exxat-wizard.component.html',
-            styleUrls: ['./exxat-wizard.component.scss']
+            selector: 'ryzen-zhealthcare-wizard',
+            templateUrl: './zhealthcare-wizard.component.html',
+            styleUrls: ['./zhealthcare-wizard.component.scss']
           })
-          export class ExxatWizardComponent implements OnInit {
+          export class zhealthcareWizardComponent implements OnInit {
 
             isLinear = false;
             firstFormGroup: FormGroup;

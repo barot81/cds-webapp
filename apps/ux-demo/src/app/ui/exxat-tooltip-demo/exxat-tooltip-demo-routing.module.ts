@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ExxatTooltipComponent } from './exxat-tooltip/exxat-tooltip.component';
+import { zhealthcareTooltipComponent } from './zhealthcare-tooltip/zhealthcare-tooltip.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 
 const routes: Routes = [
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ExxatTooltipDemoRoutingModule { }
+export class zhealthcareTooltipDemoRoutingModule { }

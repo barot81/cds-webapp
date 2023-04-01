@@ -8,8 +8,8 @@ import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationEnd, Router } from '@angular/router';
-import { ExxatTag, TagView } from '@exxat/plugin/tags';
-import { FullScreenService, ScrollService } from '@exxat/ux';
+import { zhealthcareTag, TagView } from '@zhealthcare/plugin/tags';
+import { FullScreenService, ScrollService } from '@zhealthcare/ux';
 import { GridService } from '../../../../../../apps/student-grid/grid.service';
 import { UXDemoDrawerService } from '../../../../../../remote-entry/ux-demo-drawer.service';
 
@@ -319,7 +319,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 @Component({
-  selector: 'exxat-with-sticky-header-grid',
+  selector: 'zhealthcare-with-sticky-header-grid',
   templateUrl: './with-sticky-header.component.html',
   styleUrls: ['./with-sticky-header.component.scss']
 })
@@ -346,7 +346,7 @@ export class WithStickyHeaderGridComponenent implements AfterViewInit {
   clickedRows = new Set<PeriodicElement>();
   highlightedRows = new Set<PeriodicElement>();
 
-  tags: Array<ExxatTag> = [
+  tags: Array<zhealthcareTag> = [
     {
       id: Math.random(),
       name: 'Tag Label 1 Bigger Text',

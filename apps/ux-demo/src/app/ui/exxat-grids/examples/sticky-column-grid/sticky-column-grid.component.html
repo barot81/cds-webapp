@@ -4,16 +4,16 @@
     fullwidth
     inner-scroll
     full-width-page
-    exxat-new-grid
+    zhealthcare-new-grid
   ">
   <div class="center p-0">
     <div class="content-card border" fusePerfectScrollbar>
       <div #mainHeader>
-        <exxat-sticky-column-grid-header></exxat-sticky-column-grid-header>
+        <zhealthcare-sticky-column-grid-header></zhealthcare-sticky-column-grid-header>
       </div>
-      <div tabindex="0" class="content exxat-sticky-table overflow-auto"
+      <div tabindex="0" class="content zhealthcare-sticky-table overflow-auto"
         [style.height.px]="_scrollService.contentHeight" (scroll)="scrollHandler($event)">
-        <exxat-sticky-column-grid-example [scroll_pointer]="scroll_pointer"></exxat-sticky-column-grid-example>
+        <zhealthcare-sticky-column-grid-example [scroll_pointer]="scroll_pointer"></zhealthcare-sticky-column-grid-example>
       </div>
     </div>
 

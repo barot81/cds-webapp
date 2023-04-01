@@ -70,14 +70,14 @@
             class="py-8 px-8"
             [ngClass]="{ 'active-list-item': student.id === selectedId }"
           >
-            <exxat-avatar-list-item
+            <zhealthcare-avatar-list-item
               [firstName]="student.firstName"
               [lastName]="student.lastName"
               src="assets/images/avatars/anna-strong.png"
               role="img"
               aria-hidden="true"
             >
-            </exxat-avatar-list-item>
+            </zhealthcare-avatar-list-item>
           </mat-list-item>
         </button>
       </mat-list>
@@ -102,13 +102,13 @@
 
           <header *ngIf="!(loading$ | async); else loading">
             <div fxLayout="row" fxLayoutAlign="start center">
-              <exxat-avatar
+              <zhealthcare-avatar
                 src="assets/images/avatars/anna-strong.png"
                 firstName="Anna"
                 lastName="Strong"
                 size="lg"
               >
-              </exxat-avatar>
+              </zhealthcare-avatar>
 
               <div fxLayout="column">
                 <h2 tabindex="0">{{ students[selectedId].name }}</h2>

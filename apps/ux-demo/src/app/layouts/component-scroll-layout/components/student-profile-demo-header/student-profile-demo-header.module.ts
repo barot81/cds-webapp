@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
-import { ExxatAvatarModule, FuseSharedModule, MaterialModule } from "@exxat/ux";
+import { zhealthcareAvatarModule, FuseSharedModule, MaterialModule } from "@zhealthcare/ux";
 import { StudentProfileDemoHeaderComponent } from "./components/student-profile-demo-header.component";
 
 @NgModule({
     declarations: [StudentProfileDemoHeaderComponent],
-    imports: [FuseSharedModule, MaterialModule, ExxatAvatarModule],
+    imports: [FuseSharedModule, MaterialModule, zhealthcareAvatarModule],
     exports: [StudentProfileDemoHeaderComponent]
 })
 export class StudentProfileDemoHeaderContentModule {

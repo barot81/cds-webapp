@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { HorizontalTreeControlRoutingModule } from './horizontal-tree-control-routing.module';
 import { HorizontalTreeControlComponent } from './horizontal-tree-control.component';
-import { MaterialModule, FuseSharedModule, LayoutModule, FuseSidebarModule, FuseModule, ExxatBreadcrumbModule, FuseThemeOptionsModule } from '@exxat/ux';
+import { MaterialModule, FuseSharedModule, LayoutModule, FuseSidebarModule, FuseModule, zhealthcareBreadcrumbModule, FuseThemeOptionsModule } from '@zhealthcare/ux';
 import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
-import { DataSourceModule } from '@exxat/plugin/data-source';
+import { DataSourceModule } from '@zhealthcare/plugin/data-source';
 import { MatStepperModule } from '@angular/material/stepper';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -31,7 +31,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatTabsModule,
     MatFormFieldModule,
     MatIconModule,
-    ExxatBreadcrumbModule,
+    zhealthcareBreadcrumbModule,
     FuseThemeOptionsModule
   ],
 })

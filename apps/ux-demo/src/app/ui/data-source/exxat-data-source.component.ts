@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ryzen-exxat-data-source',
-  templateUrl: './exxat-data-source.component.html',
+  selector: 'ryzen-zhealthcare-data-source',
+  templateUrl: './zhealthcare-data-source.component.html',
 })
-export class ExxatDataSourceComponent implements OnInit {
+export class zhealthcareDataSourceComponent implements OnInit {
 
   constructor() { }
 

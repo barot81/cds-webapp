@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ExxatDrawerFormService } from '../../exxat-drawer-forms-shared.service';
+import { zhealthcareDrawerFormService } from '../../zhealthcare-drawer-forms-shared.service';
 
 @Component({
-  selector: 'ryzen-exxat-drawers-sizes',
-  templateUrl: './exxat-drawers-sizes.component.html',
-  styleUrls: ['./exxat-drawers-sizes.component.scss']
+  selector: 'ryzen-zhealthcare-drawers-sizes',
+  templateUrl: './zhealthcare-drawers-sizes.component.html',
+  styleUrls: ['./zhealthcare-drawers-sizes.component.scss']
 })
-export class ExxatDrawersSizesComponent implements OnInit {
+export class zhealthcareDrawersSizesComponent implements OnInit {
 
-  constructor(public exxatDrawerFormService: ExxatDrawerFormService) { }
+  constructor(public zhealthcareDrawerFormService: zhealthcareDrawerFormService) { }
 
   ngOnInit() {
   }

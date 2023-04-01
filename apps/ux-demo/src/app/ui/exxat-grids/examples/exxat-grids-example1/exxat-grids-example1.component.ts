@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 import { MatTableDataSource } from '@angular/material/table';
 import { GridService } from '../../../../apps/student-grid/grid.service';
 
@@ -31,11 +31,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 @Component({
-  selector: 'ryzen-exxat-grids-example1',
-  templateUrl: './exxat-grids-example1.component.html',
-  styleUrls: ['./exxat-grids-example1.component.scss']
+  selector: 'ryzen-zhealthcare-grids-example1',
+  templateUrl: './zhealthcare-grids-example1.component.html',
+  styleUrls: ['./zhealthcare-grids-example1.component.scss']
 })
-export class ExxatGridsExample1Component implements OnInit {
+export class zhealthcareGridsExample1Component implements OnInit {
 
   displayedColumns: string[] = ['name', 'rotation1', 'rotation2', 'rotation3', 'rotation4', 'unassignedSetting'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);

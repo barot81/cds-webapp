@@ -3,14 +3,14 @@ import { NgModule } from '@angular/core';
 import {
   MaterialModule,
   FuseSharedModule,
-  ExxatTreeModule,
-  ExxatAvatarModule,
+  zhealthcareTreeModule,
+  zhealthcareAvatarModule,
   FuseThemeOptionsModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FuseHighlightModule } from "../../../../helpers/highlight/highlight.module";
 import { CommonModule } from '@angular/common';
-import { ExxatTreeDemoComponent } from './exxat-tree-demo.component';
+import { zhealthcareTreeDemoComponent } from './zhealthcare-tree-demo.component';
 import { TreeVariationOneComponent } from './variations/tree-variation-one/tree-variation-one.component';
 import { TreeVariationTwoComponent } from './variations/tree-variation-two/tree-variation-two.component';
 import { TreeVariationThreeComponent } from './variations/tree-variation-three/tree-variation-three.component';
@@ -31,8 +31,8 @@ import { PlanAppDemoDrawerService } from '../../../../apps/plan-app-demo/plan-ap
 
 const routes: Routes = [
   {
-    path: 'exxat-trees',
-    component: ExxatTreeDemoComponent,
+    path: 'zhealthcare-trees',
+    component: zhealthcareTreeDemoComponent,
     children: [
       {
         path: '',
@@ -77,7 +77,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ExxatTreeDemoComponent,
+    zhealthcareTreeDemoComponent,
     TreeVariationOneComponent,
     TreeVariationTwoComponent,
     TreeVariationThreeComponent,
@@ -96,10 +96,10 @@ const routes: Routes = [
     MaterialModule,
     FlexLayoutModule,
     FuseHighlightModule,
-    ExxatTreeModule,
+    zhealthcareTreeModule,
     MatTabsModule,
     MatTreeModule,
-    ExxatAvatarModule,
+    zhealthcareAvatarModule,
     DragDropModule,
     FuseThemeOptionsModule,
   ],
@@ -111,4 +111,4 @@ const routes: Routes = [
   ],
   exports: [PlanTreeDemoComponent],
 })
-export class ExxatTreeDemoModule {}
+export class zhealthcareTreeDemoModule {}

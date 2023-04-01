@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthGuardService } from '@exxat/fusion/core';
+import { AuthGuardService } from '@zhealthcare/fusion/core';
 import { ProgramsDashboardComponent } from './programs-dashboard.component';
 import { ProgramsDemoComponent } from './pages/programs-demo/programs-demo.component';
 

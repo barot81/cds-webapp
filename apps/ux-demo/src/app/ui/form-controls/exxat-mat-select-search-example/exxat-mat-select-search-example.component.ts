@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ToggleAllType } from '@exxat/ux';
+import { ToggleAllType } from '@zhealthcare/ux';
 import { Observable, Subject } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
@@ -10,10 +10,10 @@ class DropdownSearchItem {
 }
 
 @Component({
-  selector: 'exxat-mat-select-search-example',
-  templateUrl: './exxat-mat-select-search-example.component.html',
+  selector: 'zhealthcare-mat-select-search-example',
+  templateUrl: './zhealthcare-mat-select-search-example.component.html',
 })
-export class ExxatMatSelectSearchExample implements OnInit {
+export class zhealthcareMatSelectSearchExample implements OnInit {
   /** control for the selected for multi-selection */
   public multiCtrl: FormControl = new FormControl();
 

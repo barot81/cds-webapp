@@ -1,6 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 
 export interface PeriodicElement {
   name: string;
@@ -46,7 +46,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 @Component({
-  selector: 'exxat-app-expandable-cell-grid',
+  selector: 'zhealthcare-app-expandable-cell-grid',
   templateUrl: './expandable-cell-grid.component.html'
 })
 export class ExpandableCellGridComponent implements AfterViewInit {

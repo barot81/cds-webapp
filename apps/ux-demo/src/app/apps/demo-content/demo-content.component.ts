@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'exxat-app-demo-content',
+  selector: 'zhealthcare-app-demo-content',
   templateUrl: './demo-content.component.html',
 })
 export class DemoContentComponent implements OnInit {

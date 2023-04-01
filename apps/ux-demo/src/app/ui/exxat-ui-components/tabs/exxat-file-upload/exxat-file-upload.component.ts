@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ryzen-exxat-file-upload',
-  templateUrl: './exxat-file-upload.component.html',
-  styleUrls: ['./exxat-file-upload.component.scss']
+  selector: 'ryzen-zhealthcare-file-upload',
+  templateUrl: './zhealthcare-file-upload.component.html',
+  styleUrls: ['./zhealthcare-file-upload.component.scss']
 })
-export class ExxatFileUploadComponent implements OnInit {
+export class zhealthcareFileUploadComponent implements OnInit {
 
   constructor() { }
 

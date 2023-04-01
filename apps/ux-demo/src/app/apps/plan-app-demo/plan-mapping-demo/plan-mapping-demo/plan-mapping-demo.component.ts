@@ -2,7 +2,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { AfterViewInit, Component } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
-import { FuseSidebarService, HeaderService } from '@exxat/ux';
+import { FuseSidebarService, HeaderService } from '@zhealthcare/ux';
 import { TodoItemFlatNode, TodoItemNode } from '../plan-mapping-tree.service';
 import { PlanAppDemoDrawerService } from '../../plan-app-demo-drawer.service';
 import { PlanMappingTreeDB } from '../plan-mapping-tree.service';

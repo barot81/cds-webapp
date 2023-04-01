@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FileConfiguration, FileEndpoint, FileCard } from '@exxat/plugin/file-upload';
+import { FileConfiguration, FileEndpoint, FileCard } from '@zhealthcare/plugin/file-upload';
 import { FormControl } from '@angular/forms';
-import { SecurityContext } from '@exxat/fusion/models';
+import { SecurityContext } from '@zhealthcare/fusion/models';
 
 export interface Fruit {
   name: string;
 }
 @Component({
-  selector: 'exxat-app-measures-drawer-details-tab',
+  selector: 'zhealthcare-app-measures-drawer-details-tab',
   templateUrl: './measures-drawer-details-tab.component.html',
 })
 export class MeasuresDrawerDetailsTabComponent implements OnInit {
@@ -50,7 +50,7 @@ export class MeasuresDrawerDetailsTabComponent implements OnInit {
   constructor() {
         // File Upload Configuration  -- START
         this.fileConfiguration = new FileConfiguration();
-        this.fileConfiguration.fileEndpoint = new FileEndpoint('exxat.ux', 'Demo');
+        this.fileConfiguration.fileEndpoint = new FileEndpoint('zhealthcare.ux', 'Demo');
         this.fileConfiguration.fileCards = [];
         const fileCard = new FileCard();
         this.fileConfiguration.fileCards.push(fileCard);

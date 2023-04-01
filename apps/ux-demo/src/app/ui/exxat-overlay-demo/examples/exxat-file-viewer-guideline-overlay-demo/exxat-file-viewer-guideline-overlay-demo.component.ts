@@ -1,16 +1,16 @@
 import { Component, ComponentFactoryResolver, TemplateRef } from '@angular/core';
-import { OverlayService } from '@exxat/ux';
+import { OverlayService } from '@zhealthcare/ux';
 import { ComponentType } from '@angular/cdk/portal';
-import { DocumentViewerConfiguration } from '@exxat/plugin/file-upload';
-import { FileEndpoint } from '@exxat/plugin/file-upload';
+import { DocumentViewerConfiguration } from '@zhealthcare/plugin/file-upload';
+import { FileEndpoint } from '@zhealthcare/plugin/file-upload';
 import { FileViewerGuidelineContainerComponent } from '../../file-viewer-guideline-container/file-viewer-guideline-container.component';
 
 @Component({
-  selector: 'ryzen-exxat-file-viewer-guideline-overlay-demo',
-  templateUrl: './exxat-file-viewer-guideline-overlay-demo.component.html',
-  styleUrls: ['./exxat-file-viewer-guideline-overlay-demo.component.scss']
+  selector: 'ryzen-zhealthcare-file-viewer-guideline-overlay-demo',
+  templateUrl: './zhealthcare-file-viewer-guideline-overlay-demo.component.html',
+  styleUrls: ['./zhealthcare-file-viewer-guideline-overlay-demo.component.scss']
 })
-export class ExxatFileViewerGuidelineOverlayDemoComponent {
+export class zhealthcareFileViewerGuidelineOverlayDemoComponent {
 
   
   fileViewerComponentRef: any;

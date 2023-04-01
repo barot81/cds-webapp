@@ -11,10 +11,10 @@
         >
           <mat-card class="mt-lg-32 mt-16">
             <div class="header" fxLayout="column" fxLayoutAlign="center start">
-              <exxat-breadcrumb
+              <zhealthcare-breadcrumb
                 [dataSource]="breadcrumbs"
                 (onLinkClick)="onLickClick($event)"
-              ></exxat-breadcrumb>
+              ></zhealthcare-breadcrumb>
             </div>
           </mat-card>
         </div>
@@ -28,10 +28,10 @@
         >
           <textarea #source hidden="hidden">
 
-            <exxat-breadcrumb
+            <zhealthcare-breadcrumb
             [dataSource]="breadcrumbs"
             (onLinkClick)="onLickClick($event)">
-            </exxat-breadcrumb>
+            </zhealthcare-breadcrumb>
 
           </textarea>
         </fuse-highlight>
@@ -46,12 +46,12 @@
         >
           <mat-card class="mt-lg-32 mt-16">
             <div class="header" fxLayout="column" fxLayoutAlign="center start">
-              <exxat-breadcrumb
+              <zhealthcare-breadcrumb
                 [dataSource]="breadcrumbs"
                 [type]="_breadCrumbType.PARTIAL"
                 (onLinkClick)="onLickClick($event)"
               >
-              </exxat-breadcrumb>
+              </zhealthcare-breadcrumb>
             </div>
           </mat-card>
         </div>
@@ -62,9 +62,9 @@
               <fuse-highlight lang="html" class="source-code mt-16">
                 <textarea #source hidden="hidden">
 
-                    <exxat-breadcrumb [dataSource]="breadcrumbs" [type]="_breadCrumbType.PARTIAL" 
+                    <zhealthcare-breadcrumb [dataSource]="breadcrumbs" [type]="_breadCrumbType.PARTIAL" 
                     (onLinkClick)="onLickClick($event)">
-                    </exxat-breadcrumb>
+                    </zhealthcare-breadcrumb>
       
       
                   </textarea
@@ -76,7 +76,7 @@
                 <textarea #source hidden="hidden">
 
                   import { Component, } from '@angular/core';
-                  import { BreadCrumbType } from '@exxat/ux';
+                  import { BreadCrumbType } from '@zhealthcare/ux';
                   
                   @Component({
                     selector: 'ryzen-breadcrumb',

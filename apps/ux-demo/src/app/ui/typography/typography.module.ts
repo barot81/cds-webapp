@@ -10,7 +10,7 @@ import {
   FuseModule,
   FuseSidebarModule,
   FuseThemeOptionsModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
 
 import { TypographyComponent } from './typography.component';
@@ -18,13 +18,13 @@ import { TypographyHeadingsComponent } from './tabs/headings/headings.component'
 import { TypographyInlineTextElementsComponent } from './tabs/inline-text-elements/inline-text-elements.component';
 import { TypographyBlockquotesListsComponent } from './tabs/blockquotes-lists/blockquotes-lists.component';
 import { TypographyHelpersComponent } from './tabs/helpers/helpers.component';
-import { ExxatTypographyComponent } from './tabs/exxat-typography/exxat-typography.component';
-import { ExxatCardsComponent } from './tabs/exxat-cards/exxat-cards.component';
-import { ExxatThemesComponent } from './tabs/exxat-themes/exxat-themes.component';
+import { zhealthcareTypographyComponent } from './tabs/zhealthcare-typography/zhealthcare-typography.component';
+import { zhealthcareCardsComponent } from './tabs/zhealthcare-cards/zhealthcare-cards.component';
+import { zhealthcareThemesComponent } from './tabs/zhealthcare-themes/zhealthcare-themes.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { ExxatMediaQueryComponent } from './tabs/exxat-media-query/exxat-media-query.component';
+import { zhealthcareMediaQueryComponent } from './tabs/zhealthcare-media-query/zhealthcare-media-query.component';
 import { MatDividerModule } from '@angular/material/divider';
-import { ExxatInlineTextElementsComponent } from './tabs/exxat-inline-text-elements/exxat-inline-text-elements.component';
+import { zhealthcareInlineTextElementsComponent } from './tabs/zhealthcare-inline-text-elements/zhealthcare-inline-text-elements.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
@@ -39,11 +39,11 @@ const routes: Routes = [
       },
       {
         path: 'typography',
-        component: ExxatTypographyComponent,
+        component: zhealthcareTypographyComponent,
       },
       {
         path: 'inline-text-elements',
-        component: ExxatInlineTextElementsComponent,
+        component: zhealthcareInlineTextElementsComponent,
       },
       {
         path: 'blockquotes-lists',
@@ -55,7 +55,7 @@ const routes: Routes = [
       },
       {
         path: 'media-query',
-        component: ExxatMediaQueryComponent,
+        component: zhealthcareMediaQueryComponent,
       },
     ],
   },
@@ -68,11 +68,11 @@ const routes: Routes = [
     TypographyInlineTextElementsComponent,
     TypographyBlockquotesListsComponent,
     TypographyHelpersComponent,
-    ExxatTypographyComponent,
-    ExxatCardsComponent,
-    ExxatThemesComponent,
-    ExxatMediaQueryComponent,
-    ExxatInlineTextElementsComponent,
+    zhealthcareTypographyComponent,
+    zhealthcareCardsComponent,
+    zhealthcareThemesComponent,
+    zhealthcareMediaQueryComponent,
+    zhealthcareInlineTextElementsComponent,
     NavbarComponent,
   ],
   imports: [

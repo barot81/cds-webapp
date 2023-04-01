@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { DocumentViewerConfiguration } from '@exxat/plugin/file-upload';
-import { FileEndpoint } from '@exxat/plugin/file-upload';
+import { DocumentViewerConfiguration } from '@zhealthcare/plugin/file-upload';
+import { FileEndpoint } from '@zhealthcare/plugin/file-upload';
 
 @Component({
-  selector: 'ryzen-exxat-file-viewer-tab',
-  templateUrl: './exxat-file-viewer-tab.component.html',
-  styleUrls: ['./exxat-file-viewer-tab.component.scss']
+  selector: 'ryzen-zhealthcare-file-viewer-tab',
+  templateUrl: './zhealthcare-file-viewer-tab.component.html',
+  styleUrls: ['./zhealthcare-file-viewer-tab.component.scss']
 })
-export class ExxatFileViewerTabComponent implements OnInit {
+export class zhealthcareFileViewerTabComponent implements OnInit {
 
   documentConfiguration: DocumentViewerConfiguration;
 

@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { AddRecordsTenantOnboardingRoutingModule } from './add-records-tenant-onboarding-routing.module';
 import { AddRecordsTenantOnboardingComponent } from './add-records-tenant-onboarding.component';
-import { FlexTableModule, FuseModule, FuseSharedModule, FuseSidebarModule, LayoutModule, MaterialModule } from '@exxat/ux';
+import { FlexTableModule, FuseModule, FuseSharedModule, FuseSidebarModule, LayoutModule, MaterialModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DataSourceModule } from '@exxat/plugin/data-source';
+import { DataSourceModule } from '@zhealthcare/plugin/data-source';
 import { MatSortModule } from '@angular/material/sort';
 import { AddRecordsDrawerDemoComponent } from './add-records-drawer-demo/add-records-drawer-demo.component';
 import { AddRecordTenantGridComponent } from './add-records-tenant-grid/add-records-tenant-grid.component';
-import { FileUploadModule } from '@exxat/plugin/file-upload';
+import { FileUploadModule } from '@zhealthcare/plugin/file-upload';
 
 @NgModule({
   declarations: [AddRecordsTenantOnboardingComponent, AddRecordsDrawerDemoComponent, AddRecordTenantGridComponent],

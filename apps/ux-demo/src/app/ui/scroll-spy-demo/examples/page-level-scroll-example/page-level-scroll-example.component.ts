@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FuseSidebarService, ScrollSpyService } from '@exxat/ux';
+import { FuseSidebarService, ScrollSpyService } from '@zhealthcare/ux';
 
 @Component({
   selector: 'ryzen-page-level-scroll-example',

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ResizableDemoRoutingModule } from './resizable-demo-routing.module';
 import { ResizableDemoComponent } from './resizable-demo/resizable-demo.component';
-import { MaterialModule, FuseSharedModule, FuseSidebarModule, FuseThemeOptionsModule } from '@exxat/ux';
+import { MaterialModule, FuseSharedModule, FuseSidebarModule, FuseThemeOptionsModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DemoContentComponent } from './demo-content/demo-content.component';
 

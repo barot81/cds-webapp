@@ -4,8 +4,8 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { Component } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
-import { FuseSidebarService } from '@exxat/ux';
-import { ChecklistDatabase, TodoItemFlatNode, TodoItemNode } from '../../ui/exxat-ui-components/tabs/exxat-tree-demo/variations/tree-data.service';
+import { FuseSidebarService } from '@zhealthcare/ux';
+import { ChecklistDatabase, TodoItemFlatNode, TodoItemNode } from '../../ui/zhealthcare-ui-components/tabs/zhealthcare-tree-demo/variations/tree-data.service';
 import { UXDemoDrawerService } from '../../remote-entry/ux-demo-drawer.service';
 import { PlanAppDemoDrawerService } from '../plan-app-demo/plan-app-demo-drawer.service';
 

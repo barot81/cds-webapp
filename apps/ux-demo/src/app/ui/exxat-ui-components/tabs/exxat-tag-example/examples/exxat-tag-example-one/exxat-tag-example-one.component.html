@@ -10,16 +10,16 @@
       <div fxLayoutAlign="start" fxLayout="row wrap">
         <div>
           <mat-menu #tagsMenu="matMenu" [overlapTrigger]="false">
-            <exxat-tag
+            <zhealthcare-tag
               [tags]="tags"
               [options]="tagOptions"
               (onTagChanges)="onTagChanges($event)"
-            ></exxat-tag>
+            ></zhealthcare-tag>
           </mat-menu>
         </div>
 
         <div fxLayout="row wrap" fxLayoutAlign="start center">
-          <exxat-tag-showcase [tags]="tags"></exxat-tag-showcase>
+          <zhealthcare-tag-showcase [tags]="tags"></zhealthcare-tag-showcase>
         </div>
 
         <button
@@ -62,14 +62,14 @@
               <div fxLayoutAlign="start" fxLayout="row wrap">
                 <div>
                   <mat-menu #tagsMenu="matMenu" [overlapTrigger]="false">
-                    <exxat-tag [tags]="tags" [options]="tagOptions" (onTagChanges)="onTagChanges($event)"></exxat-tag>
+                    <zhealthcare-tag [tags]="tags" [options]="tagOptions" (onTagChanges)="onTagChanges($event)"></zhealthcare-tag>
                   </mat-menu>
                 </div>
-          
+
                 <div fxLayout="row wrap" fxLayoutAlign="start center">
-                  <exxat-tag-showcase [tags]="tags"></exxat-tag-showcase>
+                  <zhealthcare-tag-showcase [tags]="tags"></zhealthcare-tag-showcase>
                 </div>
-          
+
                 <button *ngIf="selectedtagsCount < 1" mat-stroked-button color="primary" [matMenuTriggerFor]="tagsMenu"
                   (menuOpened)="openTagswithoutButtons()">
                   Add Tag
@@ -79,7 +79,7 @@
                   <i aria-hidden="true" class="fa-light fa-plus s-18"></i>
                 </button>
               </div>
-  
+
     </textarea
           >
         </fuse-highlight>
@@ -96,18 +96,18 @@
           <textarea #source hidden="hidden">
 
                 import { Component, Output, EventEmitter } from '@angular/core';
-                import { ExxatTag, ExxatTagOptions, TagEvent } from '@exxat/plugin/tags';
-                
+                import { zhealthcareTag, zhealthcareTagOptions, TagEvent } from '@zhealthcare/plugin/tags';
+
                 @Component({
-                  selector: 'exxat-app-exxat-tag-example-one',
-                  templateUrl: './exxat-tag-example-one.component.html',
-                  styleUrls: ['./exxat-tag-example-one.component.scss']
+                  selector: 'zhealthcare-app-zhealthcare-tag-example-one',
+                  templateUrl: './zhealthcare-tag-example-one.component.html',
+                  styleUrls: ['./zhealthcare-tag-example-one.component.scss']
                 })
-                export class ExxatTagExampleOneComponent {
-                
-                  public tagOptions = new ExxatTagOptions();
-                
-                  tags: Array<ExxatTag> = [
+                export class zhealthcareTagExampleOneComponent {
+
+                  public tagOptions = new zhealthcareTagOptions();
+
+                  tags: Array<zhealthcareTag> = [
                     {
                       id: Math.random(),
                       name: 'Tag with 30 characters allowed',
@@ -169,11 +169,11 @@
                       isChecked: true
                     }
                   ];
-                
+
                   public selectedtagsCount: number = this.tags.filter( val => val.isChecked === true).length ;
-                
+
                   @Output() menuOpened: EventEmitter<void>;
-                
+
                   openTagswithoutButtons() {
                     this.tagOptions = {
                       saveButton: false,
@@ -181,18 +181,18 @@
                       tagsListLength: 7
                     }
                   }
-                
+
                   onTagChanges(event: TagEvent) {
                     if (event.eventType.toLowerCase() === 'change') {
-                      this.tags = new Array<ExxatTag>();
+                      this.tags = new Array<zhealthcareTag>();
                       Object.assign(this.tags, event.tags);
                       this.selectedtagsCount = this.tags.filter( val => val.isChecked === true).length;
                     }
                   }
-                
+
                 }
-            
-  
+
+
     </textarea
           >
         </fuse-highlight>

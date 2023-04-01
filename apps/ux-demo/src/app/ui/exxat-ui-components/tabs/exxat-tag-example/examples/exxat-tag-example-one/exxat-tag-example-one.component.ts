@@ -1,17 +1,17 @@
 /* eslint-disable @angular-eslint/component-selector */
 import { Component, Output, EventEmitter } from '@angular/core';
-import { ExxatTag, ExxatTagOptions, TagEvent } from '@exxat/plugin/tags';
+import { zhealthcareTag, zhealthcareTagOptions, TagEvent } from '@zhealthcare/plugin/tags';
 
 
 @Component({
-  selector: 'exxat-app-exxat-tag-example-one',
-  templateUrl: './exxat-tag-example-one.component.html',
-  styleUrls: ['./exxat-tag-example-one.component.scss']
+  selector: 'zhealthcare-app-zhealthcare-tag-example-one',
+  templateUrl: './zhealthcare-tag-example-one.component.html',
+  styleUrls: ['./zhealthcare-tag-example-one.component.scss']
 })
-export class ExxatTagExampleOneComponent {
-  public tagOptions = new ExxatTagOptions();
+export class zhealthcareTagExampleOneComponent {
+  public tagOptions = new zhealthcareTagOptions();
 
-  tags: Array<ExxatTag> = [
+  tags: Array<zhealthcareTag> = [
     {
       id: Math.random(),
       name: 'Tag with 30 characters allowed',
@@ -90,7 +90,7 @@ export class ExxatTagExampleOneComponent {
 
   onTagChanges(event: TagEvent) {
     if (event.eventType.toLowerCase() === 'change') {
-      this.tags = new Array<ExxatTag>();
+      this.tags = new Array<zhealthcareTag>();
       Object.assign(this.tags, event.tags);
       this.selectedtagsCount = this.tags.filter(
         (val) => val.isChecked === true

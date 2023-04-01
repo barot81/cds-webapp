@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { MaterialModule, FuseThemeOptionsModule, ExxatTooltipModule } from '@exxat/ux';
+import { MaterialModule, FuseThemeOptionsModule, zhealthcareTooltipModule } from '@zhealthcare/ux';
 import { DragAndDropPageComponent } from './pages';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
 
@@ -22,7 +22,7 @@ const routes: Routes = [
     DragDropModule,
     FuseThemeOptionsModule,
     FuseHighlightModule,
-    ExxatTooltipModule
+    zhealthcareTooltipModule
   ],
   declarations: [DragAndDropPageComponent],
   providers: [],

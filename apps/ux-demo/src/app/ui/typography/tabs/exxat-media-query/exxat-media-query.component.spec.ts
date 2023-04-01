@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExxatMediaQueryComponent } from './exxat-media-query.component';
+import { zhealthcareMediaQueryComponent } from './zhealthcare-media-query.component';
 
-describe('ExxatMediaQueryComponent', () => {
-  let component: ExxatMediaQueryComponent;
-  let fixture: ComponentFixture<ExxatMediaQueryComponent>;
+describe('zhealthcareMediaQueryComponent', () => {
+  let component: zhealthcareMediaQueryComponent;
+  let fixture: ComponentFixture<zhealthcareMediaQueryComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExxatMediaQueryComponent ]
+      declarations: [ zhealthcareMediaQueryComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExxatMediaQueryComponent);
+    fixture = TestBed.createComponent(zhealthcareMediaQueryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

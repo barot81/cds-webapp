@@ -2,7 +2,7 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { DrawerService } from '@exxat/ux';
+import { DrawerService } from '@zhealthcare/ux';
 
 export interface filterListItem {
   id: string;

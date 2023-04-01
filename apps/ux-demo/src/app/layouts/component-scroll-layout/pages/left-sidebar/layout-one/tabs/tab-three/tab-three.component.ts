@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { FuseSidebarService, HeaderService } from '@exxat/ux';
+import { FuseSidebarService, HeaderService } from '@zhealthcare/ux';
 
 @Component({
-    selector: 'exxat-tab-three',
+    selector: 'zhealthcare-tab-three',
     templateUrl: 'tab-three.component.html',
 })
 export class TabThreeComponent implements AfterViewInit {

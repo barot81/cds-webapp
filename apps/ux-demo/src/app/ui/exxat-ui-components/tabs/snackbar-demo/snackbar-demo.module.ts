@@ -6,9 +6,9 @@ import { SnackbarExampleTwoComponent } from './examples/snackbar-example-two/sna
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   MaterialModule,
-  ExxatSnackBarModule,
+  zhealthcareSnackBarModule,
   FuseThemeOptionsModule,
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { SnackBarDemoRoutingModule } from './snackbar-demo/snack-bar-demo-routing.module';
 import { FuseHighlightModule } from "../../../../helpers/highlight/highlight.module";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -33,7 +33,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     FuseHighlightModule,
     MatSnackBarModule,
     FuseThemeOptionsModule,
-    ExxatSnackBarModule,
+    zhealthcareSnackBarModule,
   ],
 })
 export class SnackbarDemoModule {}

@@ -32,7 +32,7 @@
             <button
               mat-icon-button
               class="icon-fill-bg filter-icon"
-              exxatDrawerAction
+              zhealthcareDrawerAction
               aria-hidden="false"
               aria-label="Open Filters"
               [componentSelector]="
@@ -128,7 +128,7 @@
       >
         <div fxLayout="row" fxLayoutAlign="start center">
           <div fxLayout="column">
-            <exxat-search-bar [listofOptions]=""></exxat-search-bar>
+            <zhealthcare-search-bar [listofOptions]=""></zhealthcare-search-bar>
             <span
               tabindex="0"
               aria-label="toal records found is 50"
@@ -189,11 +189,11 @@
             class="content flex_table_content"
             [style.height.px]="headerService.scrollContentheight"
           >
-            <div class="exxat-sticky-table">
+            <div class="zhealthcare-sticky-table">
               <table
                 tabindex="1"
                 aria-hidden="false"
-                class="exxat-table no-alternate-color"
+                class="zhealthcare-table no-alternate-color"
                 mat-table
                 [dataSource]="dataSource"
                 matSort

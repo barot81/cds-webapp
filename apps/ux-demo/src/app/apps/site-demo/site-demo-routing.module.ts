@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SiteDemoComponent } from './site-demo.component';
-import { AuthGuardService } from '@exxat/fusion/core';
+import { AuthGuardService } from '@zhealthcare/fusion/core';
 import { LocationComponent } from './tabs/location/location.component';
 import { ContractsComponent } from './tabs/contracts/contracts.component';
 

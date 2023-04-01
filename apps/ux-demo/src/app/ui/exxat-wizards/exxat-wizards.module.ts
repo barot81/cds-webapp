@@ -1,25 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { ExxatWizardComponent } from './exxat-wizard.component';
+import { zhealthcareWizardComponent } from './zhealthcare-wizard.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { FuseModule, FuseSharedModule, FuseThemeOptionsModule, MaterialModule } from '@exxat/ux';
+import { FuseModule, FuseSharedModule, FuseThemeOptionsModule, MaterialModule } from '@zhealthcare/ux';
 import { FlexModule } from '@angular/flex-layout';
 import {MatTabsModule} from '@angular/material/tabs';
 
 
 const routes: Routes = [
   {
-    path: 'exxat-wizards',
-    component: ExxatWizardComponent
+    path: 'zhealthcare-wizards',
+    component: zhealthcareWizardComponent
   }
 ];
 
 
 @NgModule({
-  declarations: [ExxatWizardComponent],
+  declarations: [zhealthcareWizardComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -35,4 +35,4 @@ const routes: Routes = [
      FuseThemeOptionsModule
   ]
 })
-export class ExxatWizardsModule { }
+export class zhealthcareWizardsModule { }

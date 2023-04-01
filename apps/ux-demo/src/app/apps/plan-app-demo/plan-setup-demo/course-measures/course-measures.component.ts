@@ -3,7 +3,7 @@ import { PlanAppDemoDrawerService } from '../../plan-app-demo-drawer.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/internal/operators/filter';
 import { isPlatformBrowser } from '@angular/common';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 
 @Component({
   selector: 'ryzen-course-measures',

@@ -1,19 +1,19 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { ExxatGraphsStandardContainerComponent } from "./container/exxat-graphs-containter.component";
+import { zhealthcareGraphsStandardContainerComponent } from "./container/zhealthcare-graphs-containter.component";
 
 
 const routes: Routes = [
     {
-        path: 'exxat_graphs_standards',
-        component: ExxatGraphsStandardContainerComponent,
+        path: 'zhealthcare_graphs_standards',
+        component: zhealthcareGraphsStandardContainerComponent,
     },
     {
-        path: 'exxat_graphs_standards/pages',
+        path: 'zhealthcare_graphs_standards/pages',
         loadChildren: () => import('./pages').then(mod => mod.PagesModule)
     },
     {
-        path: 'exxat_graphs_standards/layouts',
+        path: 'zhealthcare_graphs_standards/layouts',
         loadChildren: () => import('./layouts').then(mod => mod.LayoutsModule)
     }
 ];
@@ -23,6 +23,6 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class ExxatGraphsStandardRoutingModule {
+export class zhealthcareGraphsStandardRoutingModule {
 
 }

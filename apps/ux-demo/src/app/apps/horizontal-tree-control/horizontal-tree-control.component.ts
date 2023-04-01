@@ -1,5 +1,5 @@
 import { Component, Input} from '@angular/core';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 
 @Component({
   selector: 'ryzen-horizontal-tree-control',

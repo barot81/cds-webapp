@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 
 @Component({
-    selector: 'exxat-student-demo-content',
+    selector: 'zhealthcare-student-demo-content',
     templateUrl: 'student-demo-content.component.html'
 })
 export class StudentDemoContent {

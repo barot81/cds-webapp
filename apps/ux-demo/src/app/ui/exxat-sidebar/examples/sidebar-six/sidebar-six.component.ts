@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigationEnd, Router } from '@angular/router';
-import { FuseSidebarService, ScrollService } from '@exxat/ux';
+import { FuseSidebarService, ScrollService } from '@zhealthcare/ux';
 import { filter } from 'rxjs/operators';
-import { SidebarFocusHelper } from '../../exxat-sidebar.service';
+import { SidebarFocusHelper } from '../../zhealthcare-sidebar.service';
 import { SidebarLayoutPopupSixComponent } from '../popups/layout-popup-six/layout-popup-six.component';
 
 @Component({
@@ -14,7 +14,7 @@ export class SidebarSixComponent implements OnInit {
 
   @ViewChild('sidebarHeader') sidebarHeader: ElementRef;
   private currentURL =
-  'admin/ux/ui/exxat-sidebar/sidebar-six';
+  'admin/ux/ui/zhealthcare-sidebar/sidebar-six';
   selectedId = 1;
   items = [
     {id:0},

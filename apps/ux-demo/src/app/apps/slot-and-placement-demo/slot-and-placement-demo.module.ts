@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { SlotAndPlacementDemoRoutingModule } from './slot-and-placement-demo-routing.module';
 import { SlotAndPlacementDemoComponent } from './slot-and-placement-demo.component';
-import { ExxatAvatarModule, ExxatBreadcrumbModule, ExxatTooltipModule, FuseSharedModule, FuseSidebarModule, MaterialModule } from '@exxat/ux';
+import { zhealthcareAvatarModule, zhealthcareBreadcrumbModule, zhealthcareTooltipModule, FuseSharedModule, FuseSidebarModule, MaterialModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatChipsModule } from '@angular/material/chips';
-import { ExxatTagModule } from '@exxat/plugin/tags';
+import { zhealthcareTagModule } from '@zhealthcare/plugin/tags';
 
 @NgModule({
   declarations: [SlotAndPlacementDemoComponent],
@@ -17,10 +17,10 @@ import { ExxatTagModule } from '@exxat/plugin/tags';
     FuseSidebarModule,
     MaterialModule,
     FlexLayoutModule,
-    ExxatAvatarModule,
-    ExxatTooltipModule,
-    ExxatBreadcrumbModule ,
-    ExxatTagModule,
+    zhealthcareAvatarModule,
+    zhealthcareTooltipModule,
+    zhealthcareBreadcrumbModule ,
+    zhealthcareTagModule,
     MatChipsModule
   ]
 })

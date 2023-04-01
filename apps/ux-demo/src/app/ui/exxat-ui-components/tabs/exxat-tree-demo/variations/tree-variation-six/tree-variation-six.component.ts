@@ -6,7 +6,7 @@ import { Observable, of as observableOf } from 'rxjs';
 import { FileDatabase, FileFlatNode, FileNode } from './file-database.service';
 
 @Component({
-  selector: 'exxat-app-tree-variation-six',
+  selector: 'zhealthcare-app-tree-variation-six',
   templateUrl: './tree-variation-six.component.html',
 })
 export class TreeVariationSixComponent {
@@ -62,7 +62,7 @@ export class TreeVariationSixComponent {
    * */
   drop(event: CdkDragDrop<string[]>) {
     // console.log('origin/destination', event.previousIndex, event.currentIndex);
-  
+
     // ignore drops outside of the tree
     if (!event.isPointerOverContainer) return;
 
@@ -106,11 +106,11 @@ export class TreeVariationSixComponent {
       const parentIndex = visibleNodes.findIndex(n => n.id === parent.id) + 1;
       relativeIndex = event.currentIndex - parentIndex;
     }
-    // insert node 
+    // insert node
     const newSiblings = findNodeSiblings(changedData, nodeAtDest.id);
     if (!newSiblings) return;
     newSiblings.splice(relativeIndex, 0, nodeToInsert);
-    
+
     // rebuild tree with mutated data
     this.rebuildTreeForData(changedData);
   }
@@ -146,7 +146,7 @@ export class TreeVariationSixComponent {
   rebuildTreeForData(data: any) {
     this.rememberExpandedTreeNodes(this.treeControl, this.expandedNodeSet);
     this.dataSource.data = data;
-    
+
     this.forgetMissingExpandedNodes(this.treeControl, this.expandedNodeSet);
     this.expandNodesById(this.treeControl.dataNodes, Array.from(this.expandedNodeSet));
   }

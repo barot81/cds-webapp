@@ -8,17 +8,17 @@ import { TooltipExampleOneComponent } from './examples/tooltip-example-one/toolt
 import { FuseHighlightModule } from '../../helpers/highlight/highlight.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
-  ExxatTooltipModule,
+  zhealthcareTooltipModule,
   FuseSharedModule,
   FuseThemeOptionsModule,
   MaterialModule
-} from '@exxat/ux';
+} from '@zhealthcare/ux';
 import { TooltipDemoComponent } from './tooltip-demo/tooltip-demo.component';
 import { TooltipInnerComponent } from './tooltip-inner/tooltip-inner.component';
 import { TooltipExampleTwoComponent } from './examples/tooltip-example-two/tooltip-example-two.component';
 import { TooltipExampleThreeComponent } from './examples/tooltip-example-three/tooltip-example-three.component';
 import { TooltipExampleFourComponent } from './examples/tooltip-example-four/tooltip-example-four.component';
-import { ExxatDrawerFormService } from '../exxat-drawers/exxat-drawer-forms-shared.service';
+import { zhealthcareDrawerFormService } from '../zhealthcare-drawers/zhealthcare-drawer-forms-shared.service';
 import { ConfigurationComponent } from './configuration/configuration.component';
 
 @NgModule({
@@ -37,13 +37,13 @@ import { ConfigurationComponent } from './configuration/configuration.component'
     TooltipDemoRoutingModule,
     FuseHighlightModule,
     FlexLayoutModule,
-    ExxatTooltipModule,
+    zhealthcareTooltipModule,
     MaterialModule,
     FuseSharedModule,
     FuseThemeOptionsModule,
     A11yModule
   ],
-  providers: [ExxatDrawerFormService],
+  providers: [zhealthcareDrawerFormService],
   entryComponents: [TooltipInnerComponent]
 })
 export class TooltipDemoModule {}

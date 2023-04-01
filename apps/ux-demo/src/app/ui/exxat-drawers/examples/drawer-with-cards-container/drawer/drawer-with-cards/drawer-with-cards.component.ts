@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FusionFormComponent, FusionFormAdapter } from '@exxat/fusion/components';
+import { FusionFormComponent, FusionFormAdapter } from '@zhealthcare/fusion/components';
 
 @Component({
   selector: 'ryzen-drawer-with-cards',

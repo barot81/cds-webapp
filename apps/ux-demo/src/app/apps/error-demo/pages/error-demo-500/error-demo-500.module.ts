@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ErrorDemo500RoutingModule } from './error-demo-500-routing.module';
 import { ErrorDemo500Component } from './error-demo500.component';
-import { LayoutModule, MaterialModule } from '@exxat/ux';
+import { LayoutModule, MaterialModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({

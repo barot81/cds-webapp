@@ -5,9 +5,9 @@ import {
   EventEmitter,
   Output,
 } from '@angular/core';
-import { FuseSidebarService } from '@exxat/ux';
-import { ExxatTag, ExxatTagOptions, TagEvent } from '@exxat/plugin/tags';
-import { HeaderService } from '@exxat/ux';
+import { FuseSidebarService } from '@zhealthcare/ux';
+import { zhealthcareTag, zhealthcareTagOptions, TagEvent } from '@zhealthcare/plugin/tags';
+import { HeaderService } from '@zhealthcare/ux';
 
 @Component({
   selector: 'ryzen-location',
@@ -18,9 +18,9 @@ import { HeaderService } from '@exxat/ux';
 export class LocationComponent implements OnInit {
   selectedLoacation: string;
 
-  public tagOptions = new ExxatTagOptions();
+  public tagOptions = new zhealthcareTagOptions();
 
-  tags: Array<ExxatTag> = [
+  tags: Array<zhealthcareTag> = [
     {
       id: Math.random(),
       name: 'Tag Label 1 Bigger Text',
@@ -117,7 +117,7 @@ export class LocationComponent implements OnInit {
 
   onTagChanges(event: TagEvent) {
     if (event.eventType.toLowerCase() === 'change') {
-      this.tags = new Array<ExxatTag>();
+      this.tags = new Array<zhealthcareTag>();
       Object.assign(this.tags, event.tags);
     }
   }

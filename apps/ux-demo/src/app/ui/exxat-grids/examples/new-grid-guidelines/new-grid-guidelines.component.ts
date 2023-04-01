@@ -3,9 +3,9 @@ import { UXDemoDrawerService } from '../../../../remote-entry/ux-demo-drawer.ser
 
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { HeaderService } from '@exxat/ux';
+import { HeaderService } from '@zhealthcare/ux';
 import { startWith, map } from 'rxjs/operators';
-import { GoToColumnComponent } from '@exxat/ux';
+import { GoToColumnComponent } from '@zhealthcare/ux';
 
 export interface PeriodicElement {
   src: string;

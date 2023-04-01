@@ -4,7 +4,7 @@ import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationEnd, Router } from '@angular/router';
-import { ScrollService } from '@exxat/ux';
+import { ScrollService } from '@zhealthcare/ux';
 import { GridService } from '../../../../../../apps/student-grid/grid.service';
 
 import { UXDemoDrawerService } from '../../../../../../remote-entry/ux-demo-drawer.service';
@@ -121,10 +121,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 @Component({
-  selector: 'exxat-accordian-with-grid',
-  templateUrl: './exxat-accordian-with-grid.component.html'
+  selector: 'zhealthcare-accordian-with-grid',
+  templateUrl: './zhealthcare-accordian-with-grid.component.html'
 })
-export class ExxatAccordianWithGridComponent {
+export class zhealthcareAccordianWithGridComponent {
   isTextOverflow(elementId: string): boolean {
     const elem = document.getElementById(elementId);
     if (elem) {

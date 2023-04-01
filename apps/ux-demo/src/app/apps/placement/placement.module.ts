@@ -5,7 +5,7 @@ import { PlacementTabNavBarComponent } from './placement-tab-nav-bar/placement-t
 import { ManagePlacementsComponent } from './tabs/manage-placements/manage-placements.component';
 import { PlacementDashboardComponent } from './tabs/placement-dashboard/placement-dashboard.component';
 import { PlacementRoutingModule } from './placement-routing.module';
-import { MaterialModule, FuseSharedModule, FuseSidebarModule, ExxatAvatarModule, ExxatAvatarListItemModule, ExxatTooltipModule } from '@exxat/ux';
+import { MaterialModule, FuseSharedModule, FuseSidebarModule, zhealthcareAvatarModule, zhealthcareAvatarListItemModule, zhealthcareTooltipModule } from '@zhealthcare/ux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ConfigurationComponent } from './tabs/configuration/configuration.component';
 import { ManageSlotsComponent } from './tabs/manage-slots/manage-slots.component';
@@ -28,10 +28,10 @@ import { AddEditWishlistComponent } from './pages/add-edit-wishlist/add-edit-wis
     FuseSidebarModule,
     MaterialModule,
     FlexLayoutModule,
-    ExxatAvatarModule,
-    ExxatAvatarListItemModule,
+    zhealthcareAvatarModule,
+    zhealthcareAvatarListItemModule,
     DragDropModule,
-    ExxatTooltipModule
+    zhealthcareTooltipModule
   ],
   providers: [UXDemoDrawerService],
 })

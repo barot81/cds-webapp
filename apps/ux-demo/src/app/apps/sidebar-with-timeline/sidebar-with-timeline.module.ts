@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SidebarWithTimelineRoutingModule } from './sidebar-with-timeline-routing.module';
 import { SidebarWithTimelineComponent } from './sidebar-with-timeline.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule, FuseSharedModule, LayoutModule, FuseSidebarModule } from '@exxat/ux';
+import { MaterialModule, FuseSharedModule, LayoutModule, FuseSidebarModule } from '@zhealthcare/ux';
 import { StepThreeContentComponent } from './content/step-three-content/step-three-content.component';
 import { StepFourContentComponent } from './content/step-four-content/step-four-content.component';
 import { StepFiveContentComponent } from './content/step-five-content/step-five-content.component';

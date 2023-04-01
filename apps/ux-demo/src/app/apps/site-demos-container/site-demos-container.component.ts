@@ -8,7 +8,7 @@ interface RepoItem {
 }
 
 @Component({
-    selector: 'exxat-site-demos-container',
+    selector: 'zhealthcare-site-demos-container',
     templateUrl: './site-demos-container.component.html'
 })
 export class SiteDemosContainerComponent {

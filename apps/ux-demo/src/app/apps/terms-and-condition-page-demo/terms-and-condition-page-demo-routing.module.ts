@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { TermsAndConditionPageDemoComponent } from './terms-and-condition-page-demo.component';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardService } from '@exxat/fusion/core';
+import { AuthGuardService } from '@zhealthcare/fusion/core';
 
 const routes: Routes = [{
   path: '',

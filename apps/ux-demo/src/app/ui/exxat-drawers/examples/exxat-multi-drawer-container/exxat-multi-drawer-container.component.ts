@@ -1,16 +1,16 @@
 import { Component } from "@angular/core";
-import { ExxatDrawerFormService } from "../../exxat-drawer-forms-shared.service";
+import { zhealthcareDrawerFormService } from "../../zhealthcare-drawer-forms-shared.service";
 
 @Component({
-    selector: 'exxat-multi-drawer-container',
-    templateUrl: './exxat-multi-drawer-container.component.html'
+    selector: 'zhealthcare-multi-drawer-container',
+    templateUrl: './zhealthcare-multi-drawer-container.component.html'
 })
-export class ExxatMultiDrawerContainerComponent{
+export class zhealthcareMultiDrawerContainerComponent{
 
     /**
      *
      */
-    constructor(public exxatDrawerFormService: ExxatDrawerFormService) {
+    constructor(public zhealthcareDrawerFormService: zhealthcareDrawerFormService) {
     }
-    
+
 }
