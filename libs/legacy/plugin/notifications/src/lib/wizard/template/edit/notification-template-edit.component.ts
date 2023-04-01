@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import * as ClassicEditor from '@zhealthcare/ckeditor5-build-classic';
+import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
 import {
   FusionFormAdapter, FusionFormComponent
 } from '@zhealthcare/fusion/components';

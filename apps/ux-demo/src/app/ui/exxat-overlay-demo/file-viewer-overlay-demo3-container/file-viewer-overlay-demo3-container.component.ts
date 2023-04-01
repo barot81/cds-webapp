@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { zhealthcareOverlayRef, HeaderService } from '@zhealthcare/ux';
+import { ZhealthcareOverlayRef, HeaderService } from '@zhealthcare/ux';
 import { DocumentViewerConfiguration } from '@zhealthcare/plugin/file-upload';
 
 @Component({
@@ -11,7 +11,7 @@ import { DocumentViewerConfiguration } from '@zhealthcare/plugin/file-upload';
 export class FileViewerOverlayDemo3ContainerComponent {
   documentConfiguration: DocumentViewerConfiguration;
   
-  constructor(private overlayRef: zhealthcareOverlayRef, public headerService: HeaderService) {
+  constructor(private overlayRef: ZhealthcareOverlayRef, public headerService: HeaderService) {
     this.documentConfiguration = this.overlayRef.data;
   }
   

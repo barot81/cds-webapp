@@ -7,7 +7,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { UserFacade } from '@zhealthcare/fusion/core';
 import { FileSandbox } from '@zhealthcare/plugin/file-upload';
-import { zhealthcareOverlayRef, HeaderService } from '@zhealthcare/ux';
+import { ZhealthcareOverlayRef, HeaderService } from '@zhealthcare/ux';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ImageViewerComponent } from './image-viewer/image-viewer.component';
@@ -51,7 +51,7 @@ export class FileViewerComponent implements AfterViewInit, OnDestroy {
     public headerService: HeaderService,
     private r: ComponentFactoryResolver,
     private userFacade: UserFacade,
-    private readonly overlayRef: zhealthcareOverlayRef,
+    private readonly overlayRef: ZhealthcareOverlayRef,
     private changeDetector : ChangeDetectorRef) {
       this._unsubscribe = new Subject();
       this.userFacade.UserState$.pipe(takeUntil(this._unsubscribe)).subscribe((state)=> {

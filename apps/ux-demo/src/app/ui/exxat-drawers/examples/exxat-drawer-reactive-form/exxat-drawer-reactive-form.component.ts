@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import * as ClassicEditor from '@zhealthcare/ckeditor5-build-classic';
+import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
 import { FusionFormAdapter, FusionFormComponent } from '@zhealthcare/fusion/components';
 
 

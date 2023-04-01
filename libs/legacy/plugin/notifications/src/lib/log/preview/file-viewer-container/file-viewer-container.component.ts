@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { zhealthcareOverlayRef } from '@zhealthcare/ux';
+import { ZhealthcareOverlayRef } from '@zhealthcare/ux';
 import { DocumentViewerConfiguration } from '@zhealthcare/plugin/file-upload';
 
 @Component({
@@ -9,7 +9,7 @@ import { DocumentViewerConfiguration } from '@zhealthcare/plugin/file-upload';
 
 export class FileViewerContainerComponent {
   documentConfiguration: DocumentViewerConfiguration;
-  constructor(private overlayRef: zhealthcareOverlayRef) {
+  constructor(private overlayRef: ZhealthcareOverlayRef) {
     this.documentConfiguration = this.overlayRef.data;
   }
 

@@ -7,7 +7,7 @@ import { BreadCrumbType, CarouselEvent, FuseSidebarService, HeaderService } from
 import { SecurityContext } from '@zhealthcare/fusion/models';
 import { UXDemoDrawerService } from '../../remote-entry/ux-demo-drawer.service';
 import { GridService } from '../student-grid/grid.service';
-import * as ClassicEditor from '@zhealthcare/ckeditor5-build-classic';
+import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
 interface HeaderContentItem {
     id: string;
     title: string;

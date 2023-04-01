@@ -78,6 +78,7 @@
     "@angular/platform-browser-dynamic": "14.0.5",
     "@angular/router": "14.0.5",
     "@aspnet/signalr": "^1.1.4",
+    "@exxat/ckeditor5-build-classic": "file:ckeditor5-build-classic-1.1.12-beta.tgz",
     "@fortawesome/angular-fontawesome": "^0.10.2",
     "@fortawesome/fontawesome-common-types": "^0.2.28",
     "@fortawesome/fontawesome-pro": "^6.0.0",

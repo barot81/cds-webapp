@@ -17,7 +17,7 @@
           "apps/ux-demo/src/favicon.ico",
           {
             "glob": "**/*",
-            "input": "libs/assets/src/global/",
+            "input": "libs/legacy/assets/src/global/",
             "output": "/assets/"
           },
           {
@@ -28,18 +28,18 @@
         ],
         "styles": [
           "apps/ux-demo/src/styles.scss",
-          "libs/assets/src/global/pdfjs/web/viewer.css",
+          "libs/legacy/assets/global/pdfjs/web/viewer.css",
           "node_modules/@fortawesome/fontawesome-pro/css/all.css",
           "node_modules/@fortawesome/fontawesome-pro/css/fontawesome.css"
         ],
         "scripts": [
-          "libs/assets/src/global/pdfjs/build/pdf.js",
-          "libs/assets/src/global/pdfjs/build/pdf.worker.js",
-          "libs/assets/src/global/pdfjs/web/viewer.js",
-          "libs/assets/src/global/TabCounter.js"
+          "libs/legacy/assets/global/pdfjs/build/pdf.js",
+          "libs/legacy/assets/global/pdfjs/build/pdf.worker.js",
+          "libs/legacy/assets/global/pdfjs/web/viewer.js",
+          "libs/legacy/assets/global/TabCounter.js"
         ],
         "stylePreprocessorOptions": {
-          "includePaths": ["libs/ux/src/lib/styles/app/shared"]
+          "includePaths": ["libs/legacy/ux/src/lib/styles/app/shared"]
         },
         "customWebpackConfig": {
           "path": "apps/ux-demo/webpack.config.js"

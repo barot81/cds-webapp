@@ -2,7 +2,7 @@
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Component, OnInit } from '@angular/core';
-import { zhealthcareOverlayRef } from '@zhealthcare/ux';
+import { ZhealthcareOverlayRef } from '@zhealthcare/ux';
 import { DocumentViewerConfiguration } from '../../models';
 
 @Component({
@@ -13,7 +13,7 @@ export class CardDocumentViewerComponent implements OnInit {
   documentConfiguration :DocumentViewerConfiguration;
   documentName: string;
 
-  constructor(private overlayRef: zhealthcareOverlayRef) {
+  constructor(private overlayRef: ZhealthcareOverlayRef) {
 
     this.documentConfiguration  = new DocumentViewerConfiguration();
     this.documentConfiguration = this.overlayRef.data.viewerConfiguration;
