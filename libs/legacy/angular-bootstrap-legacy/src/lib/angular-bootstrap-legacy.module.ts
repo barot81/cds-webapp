@@ -22,12 +22,12 @@ import {
 } from '@zhealthcare/ux';
 import { ZendeskModule } from '@zhealthcare/zendesk';
 
-import { zhealthcareAngularBootstrapLegacyComponent } from './bootstrap-legacy/bootstrap-legacy.component';
+import { ZhealthcareAngularBootstrapLegacyComponent } from './bootstrap-legacy/bootstrap-legacy.component';
 import { zhealthcareBootstrapLegacyRoutingModule } from './bootstrap-legacy/bootstrap-legacy-routing.module';
 
 @NgModule({
-  declarations: [zhealthcareAngularBootstrapLegacyComponent],
-  exports: [zhealthcareAngularBootstrapLegacyComponent],
+  declarations: [ZhealthcareAngularBootstrapLegacyComponent],
+  exports: [ZhealthcareAngularBootstrapLegacyComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -53,4 +53,4 @@ import { zhealthcareBootstrapLegacyRoutingModule } from './bootstrap-legacy/boot
     zhealthcareBootstrapLegacyRoutingModule
   ],
 })
-export class zhealthcareAngularBootstrapLegacyModule {}
+export class ZhealthcareAngularBootstrapLegacyModule {}

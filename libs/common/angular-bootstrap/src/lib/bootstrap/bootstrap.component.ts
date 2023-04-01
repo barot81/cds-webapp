@@ -19,7 +19,7 @@ import { FusionNavigationService } from '@zhealthcare/fusion/services';
   selector: 'zhealthcare-angular-bootstrap',
   templateUrl: './bootstrap.component.html',
 })
-export class zhealthcareAngularBootstrapComponent implements OnInit {
+export class ZhealthcareAngularBootstrapComponent implements OnInit {
   fuseConfig: any;
   currentUrl: any = '';
   click$: Observable<any>;

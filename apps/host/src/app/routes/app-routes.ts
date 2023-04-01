@@ -6,7 +6,6 @@ import {
 } from '@zhealthcare/fusion/core';
 import { UserPersona } from '@zhealthcare/fusion/models';
 import { navigations } from '../nav/navigations';
-
 const routes: Routes = [
   {
     path: 'admin/remote-legacy-home',
@@ -25,7 +24,7 @@ const routes: Routes = [
         path: '',
         loadChildren: () =>
           import('@zhealthcare-common/angular-bootstrap').then(
-            (m) => m.zhealthcareAngularBootstrapModule
+            (m) => m.ZhealthcareAngularBootstrapModule
           ),
         data: { navigations: navigations },
         canActivate: [AuthGuardService],

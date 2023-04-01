@@ -1,7 +1,7 @@
 import { Platform } from '@angular/cdk/platform';
 import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, Routes, ActivatedRoute } from '@angular/router';
 import { LookupAPIClientService } from '@zhealthcare/account/meta';
 import { FeatureFlagService } from '@zhealthcare/fusion-feature-flag';
@@ -15,9 +15,9 @@ import {
   GlobalVariable,
   Logger,
 } from '@zhealthcare/fusion/core';
-import { ProductNavigation, UserPersona } from '@zhealthcare/fusion/models';
+import { NavigationChangeDetector, ProductNavigation, UserPersona } from '@zhealthcare/fusion/models';
 import { FusionNavigationService } from '@zhealthcare/fusion/services';
-import { SplashScreenService, productNavigation } from '@zhealthcare/ux';
+import { SplashScreenService } from '@zhealthcare/ux';
 import {
   filter,
   fromEvent,
@@ -32,11 +32,13 @@ import { ZendeskUtilService } from './utils/zendesk/zendesk-util.service';
 
 @Component({
   selector: 'zhealthcare-angular-bootstrap-legacy',
-  templateUrl: './bootstrap-legacy.component.html',
+  templateUrl: './bootstrap-legacy.component.html'
 })
-export class zhealthcareAngularBootstrapLegacyComponent implements OnInit {
+export class ZhealthcareAngularBootstrapLegacyComponent implements OnInit, OnChanges, OnDestroy {
   @Input() routes: Routes;
   @Input() roleConfig: RoleConfigType;
+  @Input() navigations: NavigationChangeDetector;
+
   fuseConfig: any;
   currentUrl: any = '';
   navigation: ProductNavigation[];
@@ -67,8 +69,6 @@ export class zhealthcareAngularBootstrapLegacyComponent implements OnInit {
     private zendeskUtilService: ZendeskUtilService,
     private readonly userTypeService: UserTypeService
   ) {
-    // Get default navigation
-    this.navigation = productNavigation;
     LoggingService.setApplicationInsights();
     router.events.subscribe((e) => {
       if (e instanceof NavigationStart) {
@@ -106,10 +106,9 @@ export class zhealthcareAngularBootstrapLegacyComponent implements OnInit {
   }
 
   setNavigations() {
-    const navigations = this.route.snapshot.data?.navigations;
-    if (navigations) {
+    if (this.navigations) {
       this.navigationService.updateNavigationIfChanged(
-        navigations,
+        this.navigations,
         null
       );
     }
@@ -131,6 +130,7 @@ export class zhealthcareAngularBootstrapLegacyComponent implements OnInit {
 
   ngOnChanges(): void {
     this.router.resetConfig([...this.router.config, ...this.routes]);
+    this.setNavigations();
   }
 
   async ngOnInit(): Promise<void> {

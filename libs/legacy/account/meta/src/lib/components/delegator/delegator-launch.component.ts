@@ -135,7 +135,7 @@ export class DelegatorLaunchComponent extends LaunchComponent
       this.selectedTenant.TenantId,
       this.oucodeWithNames[0].key
     );
-    this.fusionNavigatoinService.registration();
+    //this.fusionNavigatoinService.registration();
     this.updateStateAndRedirect(
       this.selectedTenant,
       this.oucodeWithNames[0].key

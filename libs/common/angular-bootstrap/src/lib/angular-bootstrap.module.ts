@@ -13,8 +13,8 @@ import {
 import { FusionModule } from '@zhealthcare/fusion';
 import { ZendeskModule } from '@zhealthcare/zendesk';
 
-import { zhealthcareAngularBootstrapRoutingModule } from './bootstrap/bootstrap-routing.module';
-import { zhealthcareAngularBootstrapComponent } from './bootstrap/bootstrap.component';
+import { ZhealthcareAngularBootstrapRoutingModule } from './bootstrap/bootstrap-routing.module';
+import { ZhealthcareAngularBootstrapComponent } from './bootstrap/bootstrap.component';
 
 @NgModule({
   imports: [
@@ -28,8 +28,8 @@ import { zhealthcareAngularBootstrapComponent } from './bootstrap/bootstrap.comp
     FuseDirectivesModule,
     ZendeskModule,
     SimpleNotificationsModule.forRoot(),
-    zhealthcareAngularBootstrapRoutingModule,
+    ZhealthcareAngularBootstrapRoutingModule,
   ],
-  declarations: [zhealthcareAngularBootstrapComponent],
+  declarations: [ZhealthcareAngularBootstrapComponent],
 })
-export class zhealthcareAngularBootstrapModule {}
+export class ZhealthcareAngularBootstrapModule {}

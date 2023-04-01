@@ -10,9 +10,9 @@ export function fetchRuntimeConfigFactory(
   return () => {
     return new Promise((resolve, reject) => {
       http
-        .get(`${window.location.origin}/assets/config/config.json`)
-        .pipe(
-          concatMap(async (response: any) => {
+          .get(`${window.location.origin}/assets/config/config.json`)
+          .pipe(
+            concatMap(async (response: any) => {
             config.setConfigURL([`${response?.configUrl}`]);
             await lastValueFrom(config.loadConfig());
           })

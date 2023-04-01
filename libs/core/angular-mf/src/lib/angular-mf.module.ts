@@ -32,4 +32,4 @@ export function setRemoteConfig(
     },
   ],
 })
-export class zhealthcareAngularMfModule {}
+export class ZhealthcareAngularMfModule {}

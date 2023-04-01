@@ -17,8 +17,6 @@ import { catchError, tap } from 'rxjs/operators';
 import { UserInfo } from './models/userInfo.model';
 import { Cryptography } from '../../helper/cryptography/encryption';
 import { Logger } from '../logger/logger.extension';
-import { I } from '@angular/cdk/keycodes';
-
 
 @Injectable({providedIn: 'any'})
 export class AuthService extends HttpService {
