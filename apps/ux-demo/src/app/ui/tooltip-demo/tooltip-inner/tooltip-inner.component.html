@@ -1,0 +1,90 @@
+<div
+  fxLayout="column"
+  fxLayoutAlign="start"
+  class="p-8"
+  tabindex="0"
+  cdkTrapFocus
+>
+  <div fxLayoutAlign="space-between center" fxLayout="row wrap">
+    <div>
+      <span class="font-14"
+        >Rotation 20 Jan 2020 (Jan 1, 2020 - Jan 28, 2020)</span
+      >
+    </div>
+    <div>
+      <button
+        mat-icon-button
+        class="action-icon"
+        exxatDrawerAction
+        (click)="_onClick()"
+        [componentSelector]="
+          exxatDrawerFormService.get('exxat-drawer-reactive-form')
+        "
+        [size]="'drawer-sm'"
+        [caption]="'Small Sized Drawer'"
+        aria-label="Edit Item"
+      >
+        <i aria-hidden="true" class="fa-light fa-pen icon-fill s-18"></i>
+      </button>
+    </div>
+  </div>
+
+  <div fxLayoutAlign="start center" fxLayout="row wrap">
+    <span class="font-weight-600 font-18"
+      >Abric mouse homeopathy hospital Test audit retest</span
+    >
+  </div>
+
+  <div class="mt-4" fxLayoutAlign="start center" fxLayout="row wrap">
+    <mat-chip-list>
+      <mat-chip class="amber-bg" fontColor>Family medicine </mat-chip>
+    </mat-chip-list>
+  </div>
+
+  <div fxLayoutAlign="start" fxLayout="column">
+    <div class="mt-16">
+      <div fxLayoutAlign="start center" fxLayout="row wrap">
+        <span class="font-weight-600 font-14">Placement Date</span>
+      </div>
+
+      <div fxLayoutAlign="start center" fxLayout="row wrap">
+        <span
+          class="font-14"
+          tabindex="0"
+          aria-label="Placement Date is (Jan 1,2020 - Jan 8,2020)"
+          >(Jan 1,2020 - Jan 8,2020)</span
+        >
+      </div>
+    </div>
+
+    <div class="mt-16">
+      <div fxLayoutAlign="start center" fxLayout="row wrap">
+        <span class="font-weight-600 font-14">Address</span>
+      </div>
+
+      <div fxLayoutAlign="start center" fxLayout="row wrap">
+        <span class="font-14"
+          >180 Fort Washington Ave, New York, NY 10032, United States</span
+        >
+      </div>
+    </div>
+
+    <div class="mt-16">
+      <div fxLayoutAlign="start center" fxLayout="row wrap">
+        <span class="font-weight-600 font-14">Program requirement</span>
+      </div>
+
+      <div fxLayoutAlign="start" fxLayout="column">
+        <div fxLayoutAlign="start center" fxLayout="row wrap">
+          <span class="font-14">Requirement 1</span>
+        </div>
+        <div fxLayoutAlign="start center" fxLayout="row wrap">
+          <span class="font-14">Requirement 2</span>
+        </div>
+        <div fxLayoutAlign="start center" fxLayout="row wrap">
+          <span class="font-14">Requirement 3</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

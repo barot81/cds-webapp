@@ -1,0 +1,65 @@
+<div fxLayout="column">
+  <div fxLayout="column" #sidebarHeader>
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      fxFlex.xs="100"
+      class="py-8"
+    >
+      <button
+        mat-icon-button
+        aria-label="Click to go back"
+        class="action-icon mx-8"
+        routerLink="/admin/ux/ui/exxat-sidebar"
+      >
+        <i aria-hidden="true" class="fal fa-long-arrow-left"></i>
+      </button>
+      <span class="font-14 font-weight-600 mt-4">Student List</span>
+    </div>
+    <mat-divider></mat-divider>
+
+    <!-- SEARCH -->
+    <div class="search-wrapper" fxFlex.xs="100">
+      <div
+        class="search sidenav-search"
+        fxFlex
+        fxLayout="row"
+        fxLayoutAlign="start center"
+      >
+        <i aria-hidden="true" class="fa-light fa-magnifying-glass s-18"></i>
+        <input
+          type="text"
+          class="font-14"
+          placeholder="Search Student"
+          fxFlex
+        />
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+  <div
+    class="content overflow-auto"
+    [style.height.px]="_scrollService.sidebarContentHeight"
+  >
+    <mat-list>
+      <button
+        mat-button
+        *ngFor="let student of students; let i = index"
+        attr.aria-label="click to view {{ student.firstName }} Details"
+        (click)="activateNavigation(student.id)"
+      >
+        <mat-list-item
+          [ngClass]="{ 'active-list-item': student.id === selectedId }"
+        >
+          <exxat-avatar-list-item
+            [firstName]="student.firstName"
+            [lastName]="student.lastName"
+            src="assets/images/avatars/anna-strong.png"
+            aria-hidden="true"
+          >
+          </exxat-avatar-list-item>
+        </mat-list-item>
+      </button>
+    </mat-list>
+  </div>
+</div>

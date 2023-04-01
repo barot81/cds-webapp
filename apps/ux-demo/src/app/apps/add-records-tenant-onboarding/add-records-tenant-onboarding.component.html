@@ -1,0 +1,308 @@
+<div
+  class="page-layout simple left-sidebar inner-sidebar inner-scroll"
+  id="add-records-tenant-onboarding"
+>
+  <div
+    class="mt-xs-16 mb-16"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    #container_header
+  >
+    <button
+      mat-icon-button
+      aria-label="Click to go back"
+      class="mr-8"
+      routerLink="/admin/ux/ui/exxat-apps-repo"
+    >
+      <i aria-hidden="true" class="fal fa-long-arrow-left"></i>
+    </button>
+    <h2
+      class="font-weight-600 ml-8"
+      tabindex="0"
+      aria-label="heading University of Southern California"
+    >
+      University of Southern California
+    </h2>
+  </div>
+
+  <div class="">
+    <!-- SIDEBAR -->
+    <fuse-sidebar
+      class="sidebar height-fit-content"
+      name="carded-left-sidebar-tabbed-2"
+      position="left"
+      fxFlex.gt-md="30"
+      lockedOpen="gt-md"
+      tabindex="0"
+      aria-label="sidebar with tree control"
+    >
+      <!-- SEARCH -->
+      <div #sidebar_header>
+        <div class="search-wrapper">
+          <div
+            class="search sidenav-search"
+            fxFlex
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <i aria-hidden="true" class="fa-light fa-magnifying-glass s-18"></i>
+            <input
+              type="text"
+              class="font-14"
+              placeholder="Search Student"
+              fxFlex
+            />
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+      </div>
+      <!--  SIDEBAR CONTENT -->
+      <div
+        class="content overflow-auto"
+        [style.height.px]="
+          _headerService.scrollContentheight -
+          ((sidebar_header_height$ | async) +
+            (_stickyTableHeaderLayoutService.container_header_height$ | async) +
+            16)
+        "
+      >
+        <mat-tree
+          [dataSource]="dataSource"
+          [treeControl]="treeControl"
+          class="tree-examples-style"
+          tabindex="0"
+          aria-label="tree control"
+        >
+          <!-- node without child -->
+          <mat-tree-node
+            *matTreeNodeDef="let node"
+            matTreeNodeToggle
+            matTreeNodePadding
+            tabindex="0"
+            aria-label="this is a child node"
+            class=""
+          >
+            <div fxLayout="column" class="w-100-p">
+              <div
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                fxFlex="100"
+                class="tree-node-hover py-8"
+                (click)="activeNode = node"
+                [ngClass]="{ 'tree-node-active': activeNode === node }"
+              >
+                <div fxLayout="row" fxFlex="85" class="node-inner-text mx-8">
+                  <div
+                    class="pl-12 w-100-p"
+                    fxLayout="column"
+                    fxLayoutAlign="start start"
+                  >
+                    <span
+                      class="font-weight-600 node-inner-text"
+                      tabindex="0"
+                      aria-label="Department Name"
+                      >Department Name</span
+                    >
+                    <span
+                      class="node-inner-text"
+                      tabindex="0"
+                      aria-label="Department OU Code"
+                      >Department OU Code</span
+                    >
+                  </div>
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="end center"
+                  class="pr-16 icon-hidden"
+                >
+                  <button
+                    mat-icon-button
+                    [matMenuTriggerFor]="menu"
+                    aria-label="enter for menu"
+                  >
+                    <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <div
+                      mat-menu-item
+                      tabindex="0"
+                      aria-label="option one is Add child"
+                    >
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-plus icon-fill s-18 mr-4"
+                        ></i>
+                        <span tabindex="0">Add Department</span>
+                      </div>
+                    </div>
+                  </mat-menu>
+                </div>
+              </div>
+            </div>
+          </mat-tree-node>
+
+          <!-- parent node -->
+          <mat-tree-node
+            *matTreeNodeDef="let node; when: hasChild"
+            matTreeNodePadding
+            tabindex="0"
+            aria-label="parent node"
+          >
+            <div fxLayout="column" class="w-100-p">
+              <div
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                fxFlex="100"
+                class="tree-node-hover tree-node-bg py-8 pl-8"
+                (click)="activeNode = node"
+                [ngClass]="{ 'tree-node-active': activeNode === node }"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  fxFlex.gt-sm="85"
+                  fxFlex.sm="76"
+                  fxFlex.xs="60"
+                  class=""
+                >
+                  <button
+                    mat-icon-button
+                    matTreeNodeToggle
+                    aria-label="toggle for parent node"
+                  >
+                    <i
+                      aria-hidden="true"
+                      [ngClass]="
+                        treeControl.isExpanded(node)
+                          ? 'fa-light fa-chevron-down s-18'
+                          : 'fa-light fa-chevron-right s-18'
+                      "
+                    ></i>
+                  </button>
+
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    class="node-inner-text mx-8 cursor-pointer"
+                    exxatDrawerAction
+                    [size]="'drawer-lg'"
+                    [caption]="'Add Department Details'"
+                    [primaryAction]="'Save'"
+                    [componentSelector]="
+                      _UXDemoDrawerService.get(
+                        'ryzen-add-department-details-drawer'
+                      )
+                    "
+                    role="img"
+                  >
+                    <div
+                      class="w-100-p"
+                      fxLayout="column"
+                      fxLayoutAlign="start start"
+                    >
+                      <span
+                        class="font-weight-600 node-inner-text"
+                        tabindex="0"
+                        aria-label="University of Southern California"
+                        >University of Southern California</span
+                      >
+                      <span
+                        class="node-inner-text"
+                        tabindex="0"
+                        aria-label="Los Angeles, CA 90007, United States"
+                        >Los Angeles, CA 90007, United States</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="end center"
+                  class="pr-16 icon-hidden"
+                >
+                  <button
+                    mat-icon-button
+                    [matMenuTriggerFor]="menu"
+                    attr.aria-label="enter for menu"
+                    aria-label="enter for more menu items"
+                  >
+                    <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button
+                      mat-menu-item
+                      exxatDrawerAction
+                      [size]="'drawer-lg'"
+                      [caption]="'Add Department Details'"
+                      [primaryAction]="'Save'"
+                      [componentSelector]="
+                        _UXDemoDrawerService.get(
+                          'ryzen-add-department-details-drawer'
+                        )
+                      "
+                      role="button"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-plus icon-fill s-18 mr-4"
+                      ></i>
+                      <span tabindex="0">Add University</span>
+                    </button>
+                  </mat-menu>
+                </div>
+              </div>
+            </div>
+          </mat-tree-node>
+        </mat-tree>
+      </div>
+      <!-- / SIDEBAR CONTENT -->
+    </fuse-sidebar>
+
+    <!-- CENTER -->
+    <div
+      class="center overflow-auto ml-lg-16 ml-0"
+      fxFlex="100"
+      [style.height.px]="
+        _headerService.scrollContentheight -
+        ((_stickyTableHeaderLayoutService.container_header_height$ | async) +
+          14)
+      "
+    >
+      <!--toolbar-->
+      <div
+        fxLayout.lt-lg="row"
+        class="mb-16"
+        fxLayoutAlign.lt-lg="start center"
+        #conditional_content
+      >
+        <div fxLayout="row" fxLayoutAlign="space-between center" fxHide.gt-md>
+          <button
+            mat-icon-button
+            class="sidebar-toggle"
+            fxHide.gt-md
+            (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+        <div
+          fxFlex="100"
+          *ngIf="show"
+          class="info-box warning"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          tabindex="0"
+          aria-label="This is warning info box"
+        >
+          <span tabindex="0" aria-label="message is Please add staff"
+            >Please add staff..</span
+          >
+        </div>
+      </div>
+      <ryzen-add-records-tenant-grid></ryzen-add-records-tenant-grid>
+    </div>
+  </div>
+</div>

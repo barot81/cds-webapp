@@ -1,0 +1,36 @@
+<div
+  id="exxat_graphs_layouts"
+  class="page-layout carded fullwidth inner-scroll p-12"
+>
+  <div class="center pl-0 pr-0">
+    <div #graphs_layouts_header>
+      <div class="gray-header mb-16">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="mr-16">
+              <button
+                mat-icon-button
+                aria-label="Click to go back"
+                class="action-icon mx-8"
+                routerLink="/admin/ux/ui/exxat_graphs_standards"
+              >
+                <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+              </button>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <exxat-graphs-tab-nav-bar> </exxat-graphs-tab-nav-bar>
+      </div>
+    </div>
+
+    <div class="mt-16 content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

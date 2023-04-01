@@ -1,0 +1,21 @@
+@import 'init';
+
+.add-form-drawer {
+  .border-right {
+    @include media-breakpoint('lt-md') {
+      border-right: none !important;
+    }
+  }
+  .drawer-component-scroll {
+    height: calc(100vh - 300px);
+  }
+  .drawer-card {
+    border: 1px solid $alto-light;
+    border-radius: 8px;
+    padding: 12px 16px;
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0px 2px 4px 2px rgba(154, 144, 144, 0.25) !important;
+    }
+  }
+}

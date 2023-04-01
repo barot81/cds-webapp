@@ -1,0 +1,169 @@
+<div class="scrollbale_form_content" scrollableListContent fxLayout="column">
+  <mat-card
+    *ngFor="let item of formSteps"
+    class="p-0 mb-16 scrollable_list_content_item"
+    [ngClass]="'demo_' + item.id"
+    [attr.step_id]="item.id"
+    aria-label="this is a Card contains header with action and some data"
+  >
+    <header
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      class="card-header-title card-header-border-bottom"
+    >
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <span class="primary-heading">{{ item.title }}</span>
+      </div>
+    </header>
+    <div fxLayout="column" class="p-16">
+      <div
+        *ngIf="
+          item.children && item.children !== null && item.children.length > 0
+        "
+      >
+        <div *ngFor="let child of item.children">
+          <div
+            class="mb-12 scrollable_list_content_child_item"
+            [attr.step_id]="child.id"
+          >
+            <span class="font-weight-600 secondary_title">{{
+              child.title
+            }}</span>
+          </div>
+          <div fxLayout="row wrap">
+            <mat-form-field
+              appearance="fill"
+              fxFlex="100"
+              fxFlex.gt-xs="50"
+              fxFlex.gt-sm="33.33"
+              class="pr-sm-16"
+            >
+              <mat-label>Location</mat-label>
+              <input matInput required />
+              <mat-error>Location is required!</mat-error>
+            </mat-form-field>
+            <mat-form-field
+              appearance="fill"
+              fxFlex="100"
+              fxFlex.gt-xs="50"
+              fxFlex.gt-sm="33.33"
+              class="pr-sm-16"
+            >
+              <mat-label>Rotation</mat-label>
+              <input matInput required />
+              <mat-error>Rotation is required!</mat-error>
+            </mat-form-field>
+            <mat-form-field
+              appearance="fill"
+              fxFlex="100"
+              fxFlex.gt-xs="50"
+              fxFlex.gt-sm="33.33"
+              class="pr-sm-16"
+            >
+              <mat-label>Setting</mat-label>
+              <input matInput required />
+              <mat-error>Setting is required!</mat-error>
+            </mat-form-field>
+            <mat-form-field
+              appearance="fill"
+              fxFlex="100"
+              fxFlex.gt-xs="50"
+              fxFlex.gt-sm="33.33"
+              class="pr-sm-16"
+            >
+              <mat-label>Contact with</mat-label>
+              <input matInput required />
+              <mat-error>Contact with is required!</mat-error>
+            </mat-form-field>
+            <mat-form-field
+              appearance="fill"
+              fxFlex="100"
+              fxFlex.gt-xs="50"
+              fxFlex.gt-sm="33.33"
+              class="pr-sm-16"
+            >
+              <mat-label>Contact with</mat-label>
+              <input matInput required />
+              <mat-error>Contact with is required!</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+            fxLayout="column"
+            *ngIf="
+              child.children &&
+              child.children !== null &&
+              child.children.length > 0
+            "
+          >
+            <div *ngFor="let subChild of child.children">
+              <div
+                class="mb-12 scrollable_list_content_child_item"
+                [attr.step_id]="subChild.id"
+              >
+                <span class="font-weight-600">{{ subChild.title }}</span>
+              </div>
+              <div fxLayout="row wrap">
+                <mat-form-field
+                  appearance="fill"
+                  fxFlex="100"
+                  fxFlex.gt-xs="50"
+                  fxFlex.gt-sm="33.33"
+                  class="pr-sm-16"
+                >
+                  <mat-label>Location</mat-label>
+                  <input matInput required />
+                  <mat-error>Location is required!</mat-error>
+                </mat-form-field>
+                <mat-form-field
+                  appearance="fill"
+                  fxFlex="100"
+                  fxFlex.gt-xs="50"
+                  fxFlex.gt-sm="33.33"
+                  class="pr-sm-16"
+                >
+                  <mat-label>Rotation</mat-label>
+                  <input matInput required />
+                  <mat-error>Rotation is required!</mat-error>
+                </mat-form-field>
+                <mat-form-field
+                  appearance="fill"
+                  fxFlex="100"
+                  fxFlex.gt-xs="50"
+                  fxFlex.gt-sm="33.33"
+                  class="pr-sm-16"
+                >
+                  <mat-label>Setting</mat-label>
+                  <input matInput required />
+                  <mat-error>Setting is required!</mat-error>
+                </mat-form-field>
+                <mat-form-field
+                  appearance="fill"
+                  fxFlex="100"
+                  fxFlex.gt-xs="50"
+                  fxFlex.gt-sm="33.33"
+                  class="pr-sm-16"
+                >
+                  <mat-label>Contact with</mat-label>
+                  <input matInput required />
+                  <mat-error>Contact with is required!</mat-error>
+                </mat-form-field>
+                <mat-form-field
+                  appearance="fill"
+                  fxFlex="100"
+                  fxFlex.gt-xs="50"
+                  fxFlex.gt-sm="33.33"
+                  class="pr-sm-16"
+                >
+                  <mat-label>Contact with</mat-label>
+                  <input matInput required />
+                  <mat-error>Contact with is required!</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

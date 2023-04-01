@@ -1,0 +1,28 @@
+<div id="left_side_bar_layout_one_tab_three" class="page-layout carded left-sidebar inner-scroll">
+
+    <!-- START : SIDEBAR -->
+    <fuse-sidebar class="sidebar width-x-sm" name="carded-left-sidebar-tabbed-2" position="left" lockedOpen="gt-md"
+        [style.height.px]="_headerService.scrollContentheight"
+        *ngIf="!(_fullScreenService.fullScreenModeEnabled$ | async)">
+        <exxat-demo-side-bar>
+        </exxat-demo-side-bar>
+    </fuse-sidebar>
+    <!-- END : SIDEBAR -->
+
+    <div class="center ml-lg-16">
+
+        <div fxLayout="row" fxLayoutAlign="start start" fxHide.gt-md>
+
+            <button mat-icon-button class="sidebar-toggle mr-8" (click)="toggleSidebar('carded-left-sidebar-tabbed-2')">
+                <mat-icon>menu</mat-icon>
+            </button>
+
+        </div>
+
+
+        <div class="content pb-16">
+            <exxat-demo-condensed-grid></exxat-demo-condensed-grid>
+        </div>
+    </div>
+
+</div>

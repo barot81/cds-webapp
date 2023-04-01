@@ -1,0 +1,7 @@
+@import 'init';
+.drawer-scrollable-content {
+  @include media-breakpoint('gt-sm') {
+    height: 75%;
+    overflow: auto;
+  }
+}

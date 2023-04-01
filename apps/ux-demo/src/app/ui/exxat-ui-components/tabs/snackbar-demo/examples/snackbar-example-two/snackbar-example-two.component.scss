@@ -1,0 +1,41 @@
+@import 'init';
+:host {
+  #snackbar-example {
+    mat-icon {
+      cursor: pointer;
+    }
+    .source-code {
+      position: relative;
+      margin-bottom: 16px;
+
+      code {
+        background: none !important;
+      }
+    }
+
+    .preview {
+      margin-bottom: 16px;
+      margin-right: 12px;
+      mat-card {
+        margin-bottom: 8px !important;
+        box-shadow: none !important;
+        border: none;
+        border-radius: 4px;
+      }
+      @include media-breakpoint('lt-lg') {
+        margin-right: 0 !important;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .mat-title {
+      margin-bottom: 0 !important;
+      @include media-breakpoint('lt-sm') {
+        margin-bottom: 8px !important;
+      }
+    }
+  }
+}

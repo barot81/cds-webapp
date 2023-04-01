@@ -1,0 +1,266 @@
+<div id="button-toggle-example">
+  <div class="mat-title" tabindex="0" aria-label="Button Toggle Examples ">
+    Button Toggle Examples
+  </div>
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div
+      class="preview mr-md-16 mb-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div
+        class="mat-caption secondary-text"
+        tabindex="0"
+        aria-label="Button Toggle Design 1 "
+      >
+        Primary Button switch Design 1
+      </div>
+
+      <mat-card>
+        <mat-button-toggle-group
+          color="primary"
+          #group="matButtonToggleGroup"
+          [value]="buttonList[0].value"
+        >
+          <mat-button-toggle
+            [value]="item.value"
+            [attr.aria-label]="item.label"
+            *ngFor="let item of buttonList"
+          >
+            <i aria-hidden="true" class="{{ item.icon }} mr-8 s-16"></i>
+            <span>{{ item.label }}</span>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <div class="pt-16" tabindex="0">Selected value: {{ group.value }}</div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code mb-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+
+              <mat-button-toggle-group
+              color="primary"
+              #group="matButtonToggleGroup"
+              [value]="buttonList[0].value"
+            >
+              <mat-button-toggle
+                [value]="item.value"
+                [attr.aria-label]="item.label"
+                *ngFor="let item of buttonList"
+              >
+                <i aria-hidden="true" class=" item.icon  mr-8 s-16"></i>
+                <span> item.label </span>
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+
+            <div class="pt-16" tabindex="0">Selected value:  group.value </div>
+
+      </textarea>
+    </fuse-highlight>
+  </div>
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div
+      class="preview mr-md-16 mb-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div
+        class="mat-caption secondary-text"
+        tabindex="0"
+        aria-label="Accent Button Toggle Design 1"
+      >
+        Accent Button Switch Design 1
+      </div>
+
+      <mat-card>
+        <mat-button-toggle-group
+          color="accent"
+          #group_one="matButtonToggleGroup"
+          [value]="buttonList[0].value"
+        >
+          <mat-button-toggle
+            [value]="item.value"
+            [attr.aria-label]="item.label"
+            *ngFor="let item of buttonList"
+          >
+            <i aria-hidden="true" class="{{ item.icon }} mr-8 s-16"></i>
+            <span>{{ item.label }}</span>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <div class="pt-16" tabindex="0">
+          Selected value: {{ group_one.value }}
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code mb-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+
+              <mat-button-toggle-group
+              color="accent"
+              #group_one="matButtonToggleGroup"
+              [value]="buttonList[0].value"
+            >
+              <mat-button-toggle
+                [value]="item.value"
+                [attr.aria-label]="item.label"
+                *ngFor="let item of buttonList"
+              >
+                <i aria-hidden="true" class="item.icon  mr-8 s-16"></i>
+                <span>item.label </span>
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+
+            <div class="pt-16" tabindex="0">
+              Selected value:  group_one.value 
+            </div>
+
+      </textarea>
+    </fuse-highlight>
+  </div>
+
+  <!-- <div fxLayout="column" fxLayout.gt-md="row">
+    <div
+      class="preview m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div
+        class="mat-caption secondary-text"
+        tabindex="0"
+        aria-label="Primary Button Toggle Design 2 "
+      >
+        Primary Button Toggle Design 2
+      </div>
+
+      <mat-card>
+        <mat-button-toggle-group
+          color="primary"
+          #group_two="matButtonToggleGroup"
+          class="button-toggle-2"
+          [value]="buttonList2[0].value"
+        >
+          <mat-button-toggle
+            [value]="item.value"
+            [attr.aria-label]="item.label"
+            *ngFor="let item of buttonList2"
+          >
+            <span>{{ item.label }}</span>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <div class="pt-16" tabindex="0">
+          Selected value: {{ group_two.value }}
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+
+        <mat-button-toggle-group #group1="matButtonToggleGroup" color="primary" class="button-toggle-2" [value]="buttonList2[0].value">
+          <mat-button-toggle [value]="item.value" [attr.aria-label]="item.label" *ngFor="let item of buttonList2">
+            <span>item.label</span>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <div class="pt-16" tabindex="0">Selected value: group1.value</div>
+
+      </textarea>
+    </fuse-highlight>
+  </div> -->
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div
+      class="preview mr-md-16 mb-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div
+        class="mat-caption secondary-text"
+        tabindex="0"
+        aria-label="Accent Button Switch "
+      >
+        Accent Button Switch
+      </div>
+
+      <mat-card>
+        <mat-button-toggle-group
+          color="accent"
+          #group_three="matButtonToggleGroup"
+          class="button-toggle-2"
+          [value]="buttonList2[0].value"
+        >
+          <mat-button-toggle
+            [value]="item.value"
+            [attr.aria-label]="item.label"
+            *ngFor="let item of buttonList2"
+          >
+            <span>{{ item.label }}</span>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <div class="pt-16" tabindex="0">
+          Selected value: {{ group_three.value }}
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code mb-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+
+            <mat-button-toggle-group
+              color="accent"
+              #group_three="matButtonToggleGroup"
+              class="button-toggle-2"
+              [value]="buttonList2[0].value"
+            >
+              <mat-button-toggle
+                [value]="item.value"
+                [attr.aria-label]="item.label"
+                *ngFor="let item of buttonList2"
+              >
+                <span> item.label </span>
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+
+            <div class="pt-16" tabindex="0">
+              Selected value:  group_three.value 
+            </div>
+
+      </textarea>
+    </fuse-highlight>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+@import 'init';
+
+
+.layout-scroll-sidebar {
+  .content {
+    // For Larger Screens
+    @include media-breakpoint('gt-md') {
+      height: calc(100vh - 255px) !important;
+    }
+    // For Medium Screen
+    @include media-breakpoint('md') {
+      height: calc(100vh - 275px) !important;
+    }
+    // For Smaller Screens (Tablet, Mobile)
+    @include media-breakpoint('lt-md') {
+      height: calc(100vh - 260px) !important;
+    }
+  }
+}

@@ -1,0 +1,949 @@
+<div id="" class="py-24">
+  <div
+    class="mat-title"
+    tabindex="0"
+    aria-label="Exxat Generic Buttons Examples "
+  >
+    Exxat Generic Buttons Examples
+  </div>
+
+  <!-- Flat buttons-->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div
+      class="preview m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div
+        class="mat-caption secondary-text"
+        tabindex="0"
+        aria-label="Flat Button "
+      >
+        Primary Buttons
+      </div>
+      <mat-card>
+        <div class="m-16" fxLayout="row">
+          <!-- <button mat-flat-button class="mr-8">Basic</button> -->
+          <button
+            mat-flat-button
+            color="primary"
+            class="mr-8"
+            aria-label="Primary"
+          >
+            Primary
+          </button>
+          <button
+            mat-flat-button
+            color="primary"
+            class="mr-8"
+            aria-label="Setting"
+          >
+            <i aria-hidden="true" class="fa-light fa-cog s-16"></i>
+            <span class="ml-4">Setting</span>
+          </button>
+
+          <button mat-flat-button disabled class="mr-8" aria-label="Disabled">
+            Disabled
+          </button>
+
+          <button mat-flat-button color="primary" class="" aria-label="Loading">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <div fxLayoutAlign="start center">
+                <span>Loading</span>
+              </div>
+              <div fxLayoutAlign="start center" class="pl-8">
+                <mat-spinner diameter="20" color="accent"></mat-spinner>
+              </div>
+            </div>
+          </button>
+
+          <!-- <a mat-flat-button routerLink="." class="mr-8">Link</a> -->
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+
+        <button
+        mat-flat-button
+        color="primary"
+        class=" mr-8"
+        aria-label="Primary"
+        >
+        Primary
+        </button>
+        <button
+        mat-flat-button
+        color="primary"
+        class=" mr-8"
+        aria-label="Setting"
+        >
+        <i aria-hidden="true" class="fa-light fa-cog s-16"></i>
+        <span class="ml-4">Setting</span>
+        </button>
+    
+        <button
+          mat-flat-button
+          disabled
+          class=" mr-8"
+          aria-label="Disabled"
+        >
+          Disabled
+        </button>
+
+        <button
+          mat-flat-button
+          color="primary"
+          class=""
+          aria-label="Loading"
+          >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayoutAlign="start center">
+              <span>Loading</span>
+            </div>
+            <div fxLayoutAlign="start center" class="pl-8">
+              <mat-spinner diameter="20" color="accent"></mat-spinner>
+            </div>
+          </div>
+        </button>
+
+      </textarea>
+    </fuse-highlight>
+  </div>
+
+  <!-- Flat buttons-->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div
+      class="preview m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div
+        class="mat-caption secondary-text"
+        tabindex="0"
+        aria-label="Flat Button "
+      >
+        Primary Small Buttons
+      </div>
+      <mat-card>
+        <div class="m-16" fxLayout="row">
+          <!-- <button mat-flat-button class="mr-8">Basic</button> -->
+          <button
+            mat-flat-button
+            color="primary"
+            class="btn-sm mr-8"
+            aria-label="Primary"
+          >
+            Primary
+          </button>
+
+          <button
+            mat-flat-button
+            disabled
+            class="btn-sm mr-8"
+            aria-label="Disabled"
+          >
+            Disabled
+          </button>
+
+          <!-- <a mat-flat-button routerLink="." class="mr-8">Link</a> -->
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+        <button
+        mat-flat-button
+        color="primary"
+        class="btn-sm mr-8"
+        aria-label="Primary"
+        >
+        Primary
+        </button>
+
+        <button
+          mat-flat-button
+          disabled
+          class="btn-sm mr-8"
+          aria-label="Disabled"
+        >
+          Disabled
+        </button>
+         
+        </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <!-- Raised buttons-->
+  <!-- <div fxLayout="column" fxLayout.gt-md="row">
+
+    <div class="preview m-16" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <div class="mat-caption secondary-text" tabindex="0" aria-label="Raised Button ">Raised Button</div>
+      <mat-card>
+        <div class="m-16" fxLayout="row">
+
+          <button mat-raised-button color="primary" class=" mr-8">Primary</button>
+          <button mat-raised-button color="accent" class=" mr-8">Accent</button>
+          <button mat-raised-button color="warn" class=" mr-8">Warn</button>
+          <button mat-raised-button disabled class=" mr-8">Disabled</button>
+
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight lang="html" class="source-code m-16" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <textarea #source hidden="hidden">
+
+        <button mat-raised-button color="primary" class="">Primary</button>
+        <button mat-raised-button color="accent" class="">Accent</button>
+        <button mat-raised-button color="warn" class="">Warn</button>
+        <button mat-raised-button disabled class="">Disabled</button>
+     
+    </textarea>
+    </fuse-highlight>
+  </div> -->
+
+  <!-- Stroked buttons-->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div
+      class="preview m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div
+        class="mat-caption secondary-text"
+        tabindex="0"
+        aria-label="Stroked Button "
+      >
+        Primary Stroked Buttons
+      </div>
+      <mat-card>
+        <div class="m-16" fxLayout="row">
+          <!-- <button mat-stroked-button class="mr-8">Basic</button> -->
+          <button
+            mat-stroked-button
+            color="primary"
+            class="mr-8"
+            aria-label="Primary"
+          >
+            Primary
+          </button>
+          <!-- <button
+            mat-stroked-button
+            color="accent"
+            class=" mr-8"
+            aria-label="Accent"
+          >
+            Accent
+          </button> -->
+          <!-- <button
+            mat-stroked-button
+            color="warn"
+            class=" mr-8"
+            aria-label="Warn"
+          >
+            Warn
+          </button> -->
+          <button
+            mat-stroked-button
+            disabled
+            class="mr-8"
+            aria-label="Disabled"
+          >
+            Disabled
+          </button>
+          <button
+            mat-stroked-button
+            color="primary"
+            class="mr-4"
+            aria-label="Invite Student"
+          >
+            <i aria-hidden="true" class="fa-light fa-envelope s-16"></i>
+            <span class="ml-4">Invite Student</span>
+          </button>
+          <!-- <a mat-stroked-button routerLink="." class="mr-8">Link</a> -->
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+
+          <button
+          mat-stroked-button
+          color="primary"
+          class=" mr-8"
+          aria-label="Primary"
+           >
+          Primary
+          </button>
+          <button
+            mat-stroked-button
+            disabled
+            class=" mr-8"
+            aria-label="Disabled"
+            >
+            Disabled
+          </button>
+          <button
+            mat-stroked-button
+            color="primary"
+            class=" mr-4"
+            aria-label="Invite Student"
+            >
+            <i aria-hidden="true" class="fa-light fa-envelope s-16"></i>
+            <span class="ml-4">Invite Student</span>
+          </button>
+     
+    </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <!-- Primary Stroke Small Button-->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div
+      class="preview m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div
+        class="mat-caption secondary-text"
+        tabindex="0"
+        aria-label="Small Button "
+      >
+        Primary Stroke Small Button
+      </div>
+      <mat-card>
+        <div class="m-16" fxLayout="row">
+          <!-- <button
+            mat-button
+            color="primary"
+            class="btn-sm mr-8"
+            aria-label="Primary"
+          >
+            Primary
+          </button> -->
+          <button
+            mat-stroked-button
+            color="primary"
+            class="btn-sm mr-8"
+            aria-label="Primary"
+          >
+            Primary
+          </button>
+          <!-- <button
+            mat-stroked-button
+            color="accent"
+            class="btn-sm mr-8"
+            aria-label="Accent"
+          >
+            Accent
+          </button> -->
+          <button
+            mat-stroked-button
+            disabled
+            class="btn-sm mr-8"
+            aria-label="Disabled"
+          >
+            Disabled
+          </button>
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+        <button
+        mat-stroked-button
+        color="primary"
+        class="btn-sm mr-8"
+        aria-label="Primary"
+        >
+        Primary
+        </button>
+        <button
+        mat-stroked-button
+        disabled
+        class="btn-sm mr-8"
+        aria-label="Disabled"
+        >
+        Disabled
+        </button>
+     
+    </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <!-- Secondary Buttons (Accent button) -->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div
+      class="preview m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div
+        class="mat-caption secondary-text"
+        tabindex="0"
+        aria-label="Small Button "
+      >
+        Secondary Buttons (Accent button)
+      </div>
+      <mat-card>
+        <div class="m-16" fxLayout="row">
+          <button
+            mat-flat-button
+            color="accent"
+            class="mr-8"
+            aria-label="Accent"
+          >
+            Accent
+          </button>
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+        <button
+        mat-flat-button
+        color="accent"
+        class=" mr-8"
+        aria-label="Accent"
+        >
+        Accent
+        </button>
+    </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <!-- Secondary Small Buttons (Accent button) -->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div
+      class="preview m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div
+        class="mat-caption secondary-text"
+        tabindex="0"
+        aria-label="Small Button "
+      >
+        Secondary Small Buttons (Accent button)
+      </div>
+      <mat-card>
+        <div class="m-16" fxLayout="row">
+          <button
+            mat-flat-button
+            color="accent"
+            class="btn-sm mr-8"
+            aria-label="Accent"
+          >
+            Accent
+          </button>
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+          <button
+          mat-flat-button
+          color="accent"
+          class="btn-sm mr-8"
+          aria-label="Accent"
+          >
+          Accent
+          </button>
+    </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <!-- Tertiary button-->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div
+      class="preview m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div
+        class="mat-caption secondary-text"
+        tabindex="0"
+        aria-label="Basic Buttons "
+      >
+        Tertiary Buttons
+      </div>
+      <mat-card>
+        <div class="m-16 ml-8" fxLayout="row">
+          <!-- <button mat-button class="mr-8">Basic</button> -->
+          <!-- <button
+            mat-button
+            color="primary"
+            class=" mr-8"
+            aria-label="Primary"
+          >
+            Primary
+          </button> -->
+          <!-- <button
+            mat-button
+            color="accent"
+            class=" mr-8"
+            aria-label="Accent"
+          >
+            Accent
+          </button> -->
+          <!-- <button
+            mat-button
+            color="warn"
+            class=" mr-8"
+            aria-label="Warn"
+          >
+            Warn
+          </button> -->
+          <button mat-button disabled class="mr-8" aria-label="Disabled">
+            Disabled
+          </button>
+          <!-- <button mat-button color="primary" class=" mr-4">
+              <i aria-hidden="true" class="fa-light fa-plus primary-fg s-16"></i>
+              <span class="ml-4">Add action 1</span>
+            </button> -->
+          <a
+            class="mr-8"
+            fxLayoutAlign="center center"
+            tabindex="0"
+            aria-label="Link"
+            >Link</a
+          >
+          <button class="link-btn" aria-label="Link Button">Link Button</button>
+
+          <button class="link-btn" disabled aria-label="Disabled Link Button">
+            Disabled Link Button
+          </button>
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+          <button
+          mat-button
+          disabled
+          class=" mr-8"
+          aria-label="Disabled"
+          >
+          Disabled
+          </button>
+          <a
+          class="mr-8"
+          fxLayoutAlign="center center"
+          tabindex="0"
+          aria-label="Link"
+          >Link</a
+          >
+          <button class="link-btn " aria-label="Link Button">
+          Link Button
+          </button>
+          
+          <button class="link-btn" disabled aria-label="Disabled Link Button">
+            Disabled Link Button
+          </button>
+      </textarea>
+    </fuse-highlight>
+  </div>
+
+  <!-- Icon buttons-->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div
+      class="preview m-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+    >
+      <div
+        class="mat-caption secondary-text"
+        tabindex="0"
+        aria-label="Icon Button "
+      >
+        Icon Button
+      </div>
+      <mat-card>
+        <div class="m-16" fxLayout="row">
+          <button
+            mat-icon-button
+            aria-label="Example icon-button with a edit icon"
+            class="mr-24 action-icon"
+          >
+            <i aria-hidden="true" class="fa-light fa-pen"></i>
+          </button>
+          <button
+            mat-icon-button
+            color="warn"
+            aria-label="Example icon-button with a delete icon"
+            class="mr-24 delete-icon"
+          >
+            <i aria-hidden="true" class="fa-light fa-trash-alt warn-fg"></i>
+          </button>
+          <button
+            mat-icon-button
+            class="mr-24 ml-4 filter-icon-button"
+            aria-label="filters"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <i aria-hidden="true" class="fa-light fa-filter s-18 mr-4"></i>
+              <span class="warn-fg"> 12 </span>
+            </div>
+          </button>
+
+          <button mat-icon-button disabled aria-label="Settings">
+            <i aria-hidden="true" class="fa-light fa-cog s-18"></i>
+          </button>
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+
+          <button
+          mat-icon-button
+          aria-label="Example icon-button with a edit icon"
+          class="action-icon"
+          >
+          <i aria-hidden="true" class="fa-light fa-pen"></i>
+          </button>
+          <button
+            mat-icon-button
+            color="warn"
+            aria-label="Example icon-button with a delete icon"
+            class="delete-icon"
+          >
+            <i aria-hidden="true" class="fa-light fa-trash-alt warn-fg"></i>
+          </button>
+          <button
+            mat-icon-button
+            class="filter-icon-button"
+            aria-label="filters"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <i aria-hidden="true" class="fa-light fa-filter s-18 mr-4"></i>
+              <span class="warn-fg"> 12 </span>
+            </div>
+          </button>
+
+          <button mat-icon-button disabled aria-label="Settings">
+            <i aria-hidden="true" class="fa-light fa-cog  s-18"></i>
+          </button>
+     
+    </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <!-- Files Icon List-->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div
+      class="preview m-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+    >
+      <div
+        class="mat-caption secondary-text"
+        tabindex="0"
+        aria-label="Files Icon List"
+      >
+        Files Icon List
+      </div>
+      <mat-card>
+        <div class="m-16" fxLayout="row" fxLayoutAlign="start center">
+          <div fxLayout="row" fxLayoutAlign="start center" class="mr-16">
+            <i aria-hidden="true" class="fa-light fa-file-excel s-18"></i>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start center" class="mr-16">
+            <i aria-hidden="true" class="fa-light fa-file-powerpoint s-18"></i>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start center" class="mr-16">
+            <i aria-hidden="true" class="fa-light fa-file-word s-18"></i>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start center" class="mr-16">
+            <i aria-hidden="true" class="fa-light fa-file-pdf s-18"></i>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+     
+          <i aria-hidden="true" class="fa-light fa-file-excel s-18"></i>
+
+          <i aria-hidden="true" class="fa-light fa-file-powerpoint s-18"></i>
+
+          <i aria-hidden="true" class="fa-light fa-file-word s-18"></i>
+        
+          <i aria-hidden="true" class="fa-light fa-file-pdf s-18"></i>
+        
+      </textarea>
+    </fuse-highlight>
+  </div>
+
+  <!-- clickable filter badges-->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div
+      class="preview mr-md-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        class="pb-20 readonly-filter"
+      >
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="mr-16 filter-status-button"
+        >
+          <div
+            class="filter-badge-count status-badge totalcount font-18"
+            tabindex="0"
+            aria-label="400 "
+          >
+            400
+          </div>
+          <span
+            class="ml-8 pl-8 border-left space-no-wrap"
+            tabindex="0"
+            aria-label="Total Emails "
+            >Total Emails</span
+          >
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="mr-16 filter-status-button"
+        >
+          <div
+            class="filter-badge-count status-badge sentcount font-18"
+            tabindex="0"
+            aria-label="300 "
+          >
+            300
+          </div>
+          <span
+            class="ml-8 pl-8 border-left space-no-wrap"
+            tabindex="0"
+            aria-label="Sent Successfully "
+            >Sent Successfully</span
+          >
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="mr-16 filter-status-button"
+        >
+          <div
+            class="filter-badge-count status-badge failedcount font-18"
+            tabindex="0"
+            aria-label="100 "
+          >
+            100
+          </div>
+          <span
+            class="ml-8 pl-8 border-left space-no-wrap"
+            tabindex="0"
+            aria-label="Failed "
+            >Failed</span
+          >
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="mr-16 filter-status-button"
+        >
+          <div
+            class="filter-badge-count status-badge delivered font-18"
+            tabindex="0"
+            aria-label="20 "
+          >
+            20
+          </div>
+          <span
+            class="ml-8 pl-8 border-left space-no-wrap"
+            tabindex="0"
+            aria-label=" Delivered"
+            >Delivered</span
+          >
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="mr-16 filter-status-button"
+        >
+          <div
+            class="filter-badge-count status-badge opened font-18"
+            tabindex="0"
+            aria-label="29 "
+          >
+            29
+          </div>
+          <span
+            class="ml-8 pl-8 border-left space-no-wrap"
+            tabindex="0"
+            aria-label="Opened "
+            >Opened</span
+          >
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="mr-16 filter-status-button"
+        >
+          <div
+            class="filter-badge-count status-badge clicked font-18"
+            tabindex="0"
+            aria-label=" 1"
+          >
+            1
+          </div>
+          <span
+            class="ml-8 pl-8 border-left space-no-wrap"
+            tabindex="0"
+            aria-label=" Clicked"
+            >Clicked</span
+          >
+        </div>
+      </div>
+      <div tabindex="0">
+        <strong>Note:</strong>added active style to filter-button temporarily to
+        understand interaction style.
+      </div>
+      <div tabindex="0">
+        Made one class which developers can use conditionally:
+        <strong>onclick-filter</strong>
+      </div>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code mt-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+      <div fxLayout="row" fxLayoutAlign="start center" class="pb-20 readonly-filter">
+        <div fxLayout="row" fxLayoutAlign="start center"  class="mr-16 filter-status-button">
+          <div class=" filter-badge-count status-badge totalcount font-18" tabindex="0" aria-label="400 ">
+            400
+          </div>
+          <span class=" ml-8 pl-8 border-left space-no-wrap" tabindex="0" aria-label="Total Emails ">Total Emails</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center"  class="mr-16 filter-status-button">
+          <div class=" filter-badge-count status-badge sentcount font-18" tabindex="0" aria-label="300 ">
+            300
+          </div>
+          <span class=" ml-8 pl-8 border-left space-no-wrap" tabindex="0" aria-label="Sent Successfully ">Sent Successfully</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center"  class="mr-16 filter-status-button">
+          <div class=" filter-badge-count status-badge failedcount font-18" tabindex="0" aria-label="100 ">
+            100
+          </div>
+          <span class=" ml-8 pl-8 border-left space-no-wrap" tabindex="0" aria-label="Failed ">Failed</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center"  class="mr-16 filter-status-button">
+          <div class=" filter-badge-count status-badge delivered font-18" tabindex="0" aria-label="20 ">
+            20
+          </div>
+          <span class=" ml-8 pl-8 border-left space-no-wrap" tabindex="0" aria-label=" Delivered">Delivered</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center"  class="mr-16 filter-status-button">
+          <div class=" filter-badge-count status-badge opened font-18" tabindex="0" aria-label="29 ">
+            29
+          </div>
+          <span class=" ml-8 pl-8 border-left space-no-wrap" tabindex="0" aria-label="Opened ">Opened</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center"  class="mr-16 filter-status-button">
+          <div class=" filter-badge-count status-badge clicked font-18" tabindex="0" aria-label=" 1">
+            1
+          </div>
+          <span class=" ml-8 pl-8 border-left space-no-wrap" tabindex="0" aria-label=" Clicked">Clicked</span>
+        </div>
+      </div>
+
+    </textarea
+      >
+    </fuse-highlight>
+  </div>
+</div>

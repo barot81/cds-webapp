@@ -1,0 +1,201 @@
+<!-- REACTIVE FORM EXAMPLE -->
+<form class="drawer-p" name="form" [formGroup]="fusionFormGroup">
+  <mat-card class="p-0" tabindex="0" aria-label="Card for data">
+    <header
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      class="card-header-title card-header-border-bottom"
+      tabindex="0"
+      aria-label="Basic Information"
+    >
+      <div xLayout="row" fxLayoutAlign="start center">
+        <span class="primary-heading">Basic Information</span>
+      </div>
+    </header>
+    <div fxLayout="column" fxLayoutAlign="start" class="p-16">
+      <!-- Mode Field -->
+      <mat-radio-group aria-label="Select mode" formControlName="mode">
+        <div fxLayout="column" fxLayoutAlign="start">
+          <mat-label> Mode </mat-label>
+          <div fxLayout="row wrap" fxLayoutAlign="start center">
+            <mat-radio-button
+              class="mr-8"
+              [value]="item.value"
+              *ngFor="let item of modes"
+            >
+              <span class="font-14">{{ item.title }}</span>
+            </mat-radio-button>
+          </div>
+        </div>
+      </mat-radio-group>
+      <!-- Initiated by Field -->
+      <div fxLayout="column" fxLayoutAlign="start" class="mt-12">
+        <mat-form-field appearance="fill">
+          <mat-label>Initiated by</mat-label>
+          <input matInput formControlName="initiatedBy" required />
+          <mat-error>Error text message!</mat-error>
+        </mat-form-field>
+      </div>
+      <!-- Contact with Field -->
+      <div fxLayout="column" fxLayoutAlign="start">
+        <mat-form-field appearance="fill">
+          <mat-label>Contact with</mat-label>
+          <input matInput formControlName="contactWith" required />
+          <mat-error>Error text message!</mat-error>
+        </mat-form-field>
+      </div>
+      <!-- Rotation field is not configured Field -->
+      <div fxLayout="column" fxLayoutAlign="start">
+        <mat-form-field appearance="fill">
+          <mat-label>Rotation field is not configured</mat-label>
+          <mat-select formControlName="rotationField">
+            <mat-option *ngFor="let item of options" [value]="item.value">
+              {{ item.title }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <!-- Subject Field -->
+      <div fxLayout="column" fxLayoutAlign="start">
+        <mat-form-field appearance="fill">
+          <mat-label>Subject</mat-label>
+          <input matInput formControlName="subject" required />
+          <mat-error>Error text message!</mat-error>
+        </mat-form-field>
+      </div>
+      <!-- Message Field -->
+      <div>
+        <ckeditor
+          fxFlex="100"
+          [config]="ckEditorConfigData"
+          [editor]="Editor"
+          [maxLength]="50"
+          formControlName="message"
+          (onValidate)="onValidate($event)"
+        >
+        </ckeditor>
+      </div>
+      <!-- Date of Intervention Field -->
+      <div fxLayout="column" fxLayoutAlign="start">
+        <mat-form-field appearance="fill">
+          <mat-label>Date of intervention </mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker2"
+            required
+            formControlName="dateOfIntervention"
+          />
+          <mat-error>Error text message!</mat-error>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            #picker2
+            color="primary"
+            openOnFocus="true"
+            class="action-icon"
+          ></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <!-- Staus Field -->
+      <div fxLayout="column" fxLayoutAlign="start">
+        <mat-form-field appearance="fill">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status">
+            <mat-option *ngFor="let item of options" [value]="item.value">
+              {{ item.title }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card>
+  <mat-card class="p-0 mt-8" tabindex="0" aria-label="Card for data">
+    <header
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      class="card-header-title card-header-border-bottom"
+      tabindex="0"
+      aria-label="FollowUp"
+    >
+      <div xLayout="row" fxLayoutAlign="start center">
+        <span class="primary-heading">FollowUp</span>
+      </div>
+    </header>
+    <div fxLayout="column" fxLayoutAlign="start" class="p-16">
+      <!-- Planned followup date Field -->
+      <div fxLayout="column" fxLayoutAlign="start">
+        <mat-form-field appearance="fill">
+          <mat-label>Planned followup date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker3"
+            required
+            formControlName="plannedFollowUpDate"
+          />
+          <mat-error>Error text message!</mat-error>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker3"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            #picker3
+            color="primary"
+            openOnFocus="true"
+            class="action-icon"
+          ></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start center" class="w-100-p">
+        <div fxLayout="column" fxLayoutAlign="start" class="w-100-p">
+          <mat-form-field appearance="fill" class="w-100-p">
+            <mat-label>Actual followup date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker4"
+              required
+              formControlName="actualFollowUpDate"
+            />
+            <mat-error>Error text message!</mat-error>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker4"
+            ></mat-datepicker-toggle>
+            <mat-datepicker
+              #picker4
+              color="primary"
+              openOnFocus="true"
+              class="action-icon"
+            ></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="ml-8">
+          <button mat-icon-button aria-label="reset actual FollowUp date">
+            <i aria-hidden="true" class="fal fa-undo s-18"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Message Field -->
+      <div>
+        <ckeditor
+          fxFlex="100"
+          [config]="ckEditorConfigData"
+          [editor]="Editor"
+          [maxLength]="50"
+          formControlName="FollowUpMessage"
+          (onValidate)="onValidate($event)"
+        >
+        </ckeditor>
+      </div>
+    </div>
+  </mat-card>
+  <div fxLayout="row" fxLayoutAlign="center center" class="mt-8">
+    <button mat-stroked-button color="primary" aria-label="Add Followup">
+      <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+      <span class="ml-4">Add Followup</span>
+    </button>
+  </div>
+</form>

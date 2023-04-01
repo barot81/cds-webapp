@@ -1,0 +1,216 @@
+<div class="page-layout simple left-sidebar inner-scroll page-without-header">
+  <!-- SIDEBAR -->
+  <fuse-sidebar
+    class="sidebar"
+    name="carded-left-sidebar-tabbed-2"
+    position="left"
+    fxFlex.gt-md="30"
+    lockedOpen="gt-md"
+    tabindex="0"
+    aria-label="sidebar with tree control"
+  >
+    <!-- SEARCH -->
+    <div #sidebarHeader>
+      <div class="search-wrapper">
+        <div
+          class="search sidenav-search"
+          fxFlex
+          fxLayout="row"
+          fxLayoutAlign="start center"
+        >
+          <i aria-hidden="true" class="fa-light fa-magnifying-glass s-18"></i>
+          <input
+            type="text"
+            class="font-14"
+            placeholder="Search Student"
+            fxFlex
+          />
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+    <!--  SIDEBAR CONTENT -->
+    <div
+      class="content overflow-auto"
+      [style.height.px]="_scrollService.sidebarContentHeight"
+    >
+      <mat-tree
+        [dataSource]="dataSource"
+        [treeControl]="treeControl"
+        class="tree-examples-style"
+      >
+        <!-- node without child -->
+        <mat-tree-node
+          *matTreeNodeDef="let node"
+          matTreeNodeToggle
+          matTreeNodePadding
+        >
+          <div fxLayout="column" class="w-100-p">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              fxFlex="100"
+              class="tree-node-hover py-8"
+              (click)="activeNode = node"
+              [ngClass]="{ 'tree-node-active': activeNode === node }"
+            >
+              <div fxLayout="row" fxFlex="85" class="node-inner-text mx-8">
+                <div
+                  class="pl-12 w-100-p"
+                  fxLayout="column"
+                  fxLayoutAlign="start start"
+                >
+                  <span class="font-weight-600 node-inner-text"
+                    >Department Name</span
+                  >
+                  <span class="node-inner-text">Department OU Code</span>
+                </div>
+              </div>
+              <div
+                fxLayout="row"
+                fxLayoutAlign="end center"
+                class="pr-16 icon-hidden"
+              >
+                <button
+                  mat-icon-button
+                  [matMenuTriggerFor]="menu"
+                  aria-label="enter for menu"
+                >
+                  <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <div mat-menu-item>
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-plus icon-fill s-18 mr-4"
+                      ></i>
+                      <span>Add Department</span>
+                    </div>
+                  </div>
+                </mat-menu>
+              </div>
+            </div>
+          </div>
+        </mat-tree-node>
+
+        <!-- parent node -->
+        <mat-tree-node
+          *matTreeNodeDef="let node; when: hasChild"
+          matTreeNodePadding
+        >
+          <div fxLayout="column" class="w-100-p">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              fxFlex="100"
+              class="tree-node-hover tree-node-bg py-8 pl-8"
+              (click)="activeNode = node"
+              [ngClass]="{ 'tree-node-active': activeNode === node }"
+            >
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                fxFlex.gt-sm="85"
+                fxFlex.sm="76"
+                fxFlex.xs="60"
+                class=""
+              >
+                <button
+                  mat-icon-button
+                  matTreeNodeToggle
+                  aria-label="toggle for parent node"
+                >
+                  <i
+                    aria-hidden="true"
+                    [ngClass]="
+                      treeControl.isExpanded(node)
+                        ? 'fa-light fa-chevron-down s-18'
+                        : 'fa-light fa-chevron-right s-18'
+                    "
+                  ></i>
+                </button>
+
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="node-inner-text mx-8 cursor-pointer"
+                >
+                  <div
+                    class="w-100-p"
+                    fxLayout="column"
+                    fxLayoutAlign="start start"
+                  >
+                    <span class="font-weight-600 node-inner-text"
+                      >University of Southern California</span
+                    >
+                    <span class="node-inner-text"
+                      >Los Angeles, CA 90007, United States</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div
+                fxLayout="row"
+                fxLayoutAlign="end center"
+                class="pr-16 icon-hidden"
+              >
+                <button
+                  mat-icon-button
+                  [matMenuTriggerFor]="menu"
+                  attr.aria-label="enter for menu"
+                  aria-label="enter for more menu items"
+                >
+                  <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item aria-label="Add University">
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-plus icon-fill s-18 mr-4"
+                    ></i>
+                    <span>Add University</span>
+                  </button>
+                </mat-menu>
+              </div>
+            </div>
+          </div>
+        </mat-tree-node>
+      </mat-tree>
+    </div>
+    <!-- / SIDEBAR CONTENT -->
+  </fuse-sidebar>
+
+  <!-- CENTER -->
+  <div class="center main-right-side-content" role="main">
+    <!-- HEADER -->
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <button
+        mat-icon-button
+        class="sidebar-toggle mr-8 ml-8"
+        fxHide.gt-md
+        (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+      >
+        <i aria-hidden="true" class="fa-light fa-bars"></i>
+      </button>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content ml-lg-16 ml-8">
+      <!-- Keep Content Here -->
+    </div>
+    <!-- / CONTENT -->
+
+    <button
+      mat-flat-button
+      color="accent"
+      class="float-button"
+      (click)="openDialog()"
+    >
+      Press for code
+    </button>
+  </div>
+  <!-- / CENTER -->
+</div>

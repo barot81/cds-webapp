@@ -1,0 +1,559 @@
+<div id="contracts" class="page-layout carded left-sidebar">
+  <div fxLayout="row">
+    <fuse-sidebar
+      tabindex="0"
+      aria-label="sidebar"
+      class="sidebar sidebar-width sidebar-expand-collapse"
+      name="carded-left-sidebar-tabbed-2"
+      position="left"
+      lockedOpen="gt-md"
+      [folded]="false"
+      [foldedWidth]="60"
+      [foldedAutoTriggerOnHover]="true"
+    >
+      <div fxLayout="row" fxLayoutAlign="start center" class="py-16 pr-4">
+        <div
+          class="search-wrapper search-grid hide-content-folded pl-16"
+          fxFlex="80"
+          tabindex="0"
+          aria-label="searchbar"
+        >
+          <div
+            class="search"
+            fxFlex
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <mat-icon class="s-16 secondary-text">search</mat-icon>
+            <input type="text" placeholder="Search" class="w-100-p" fxFlex />
+          </div>
+        </div>
+        <button
+          mat-icon-button
+          class="toggle-sidebar-folded"
+          fxLayoutAlign="center center"
+          class="ml-8"
+          (click)="toggleSidebarFolded()"
+          fxHide.lt-lg
+          tabindex="0"
+          aria-label="toggle arrow for sidebar"
+        >
+          <i
+            aria-hidden="true"
+            class="fa-light fa-chevron-left s-16 left-arrow sidebar-blue-icon"
+          ></i>
+          <i
+            aria-hidden="true"
+            class="fa-light fa-chevron-right s-16 right-arrow display-none sidebar-blue-icon pl-4"
+          ></i>
+          <i
+            aria-hidden="true"
+            class="fa-light fa-thumbtack s-16 pin-sticky sidebar-blue-icon"
+          ></i>
+        </button>
+      </div>
+
+      <div
+        class="content"
+        fusePerfectScrollbar
+        [fusePerfectScrollbarOptions]="{ suppressScrollX: true }"
+        tabindex="0"
+        aria-label="sidebar content"
+      >
+        <mat-list class="p-0" fxLayout="column">
+          <!-- contains submenu -->
+          <div>
+            <button
+              mat-button
+              class="p-0 w-100-p parent"
+              [ngClass]="{ 'expanded-text': showSubmenu }"
+              (click)="showSubmenu = !showSubmenu"
+            >
+              <mat-list-item
+                class="py-12 px-16 w-100-p"
+                fxLayoutAlign="start center"
+              >
+                <i aria-hidden="true" class="fa-light fa-books s-18"></i>
+                <span
+                  class="text-left pl-16 w-100-p"
+                  *ngIf="isExpanded || isShowing"
+                  >Course information</span
+                >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-chevron-down s-16 arrow-expand-collapse hide-content-folded"
+                  [ngClass]="{ rotated: showSubmenu }"
+                  *ngIf="isExpanded || isShowing"
+                ></i>
+              </mat-list-item>
+            </button>
+            <div
+              class="submenu"
+              tabindex="0"
+              aria-label="this is a submenu"
+              [ngClass]="{ expanded: showSubmenu }"
+              *ngIf="isShowing || isExpanded"
+            >
+              <div fxLayout="column" class="w-100-p">
+                <!-- contains sub sub menu -->
+                <div>
+                  <button
+                    mat-button
+                    class="p-0 w-100-p parent"
+                    [ngClass]="{ 'submenu-expanded-text': showSubSubMenu }"
+                    (click)="showSubSubMenu = !showSubSubMenu"
+                  >
+                    <mat-list-item
+                      class="py-12 px-16 w-100-p"
+                      fxLayoutAlign="start center"
+                    >
+                      <span
+                        class="text-left pl-16 w-100-p"
+                        *ngIf="isExpanded || isShowing"
+                        >Set Up</span
+                      >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-chevron-down s-16 arrow-expand-collapse hide-content-folded"
+                        [ngClass]="{ rotated: showSubSubMenu }"
+                        *ngIf="isExpanded || isShowing"
+                      ></i>
+                    </mat-list-item>
+                  </button>
+                  <div
+                    class="submenu sub_sub_menu"
+                    tabindex="0"
+                    aria-label="this is a submenu"
+                    [ngClass]="{ expanded: showSubSubMenu }"
+                    *ngIf="isShowing || isExpanded"
+                  >
+                    <div fxLayout="column" class="w-100-p">
+                      <button
+                        mat-button
+                        class="p-0 w-100-p"
+                        tooltip="Summary Summary Summary Summary Summary"
+                        [options]="tooltipOptions"
+                      >
+                        <mat-list-item
+                          class="py-12 px-16 w-100-p"
+                          fxLayoutAlign="start center"
+                        >
+                          <span class="text-left overflow-ellipses w-100-p"
+                            >Summary Summary Summary Summary Summary</span
+                          >
+                        </mat-list-item>
+                      </button>
+                      <button mat-button class="p-0 w-100-p">
+                        <mat-list-item
+                          class="py-12 px-16 w-100-p"
+                          fxLayoutAlign="start center"
+                        >
+                          <span>Distribution</span>
+                        </mat-list-item>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <button mat-button class="p-0 w-100-p">
+                  <mat-list-item
+                    class="py-12 px-16 w-100-p"
+                    fxLayoutAlign="start center"
+                  >
+                    <span class="text-left pl-16 w-100-p">Evaluation</span>
+                  </mat-list-item>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button mat-button class="p-0 w-100-p">
+            <mat-list-item
+              class="py-12 px-16 w-100-p"
+              fxLayoutAlign="start center"
+            >
+              <i aria-hidden="true" class="fa-light fa-book-reader s-18"></i>
+              <span class="text-left pl-16 w-100-p">Student</span>
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p">
+            <mat-list-item
+              class="py-12 px-16 w-100-p"
+              fxLayoutAlign="start center"
+            >
+              <i aria-hidden="true" class="fa-light fa-file-alt s-18"></i>
+              <span class="text-left pl-16 w-100-p">Compliance</span>
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p">
+            <mat-list-item
+              class="py-12 px-16 w-100-p"
+              fxLayoutAlign="start center"
+            >
+              <i aria-hidden="true" class="fa-light fa-hospital-user s-18"></i>
+              <span class="text-left pl-16 w-100-p">Placement</span>
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p active-item-class">
+            <mat-list-item
+              class="py-12 px-16 w-100-p"
+              fxLayoutAlign="start center"
+            >
+              <i
+                aria-hidden="true"
+                class="fa-light fa-chalkboard-teacher s-18"
+              ></i>
+              <span class="text-left pl-16 w-100-p">Learning activity</span>
+            </mat-list-item>
+          </button>
+        </mat-list>
+      </div>
+    </fuse-sidebar>
+
+    <div class="center ml-lg-16">
+      <!--toolbar-->
+      <div class="">
+        <button
+          mat-icon-button
+          class="sidebar-toggle"
+          fxHide.gt-md
+          (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+
+      <div class="content">
+        <div fxLayout="row wrap">
+          <!-- 1st column-->
+          <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="70">
+            <!-- 1st matcard-->
+            <mat-card class="p-0 mb-16">
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+              >
+                <div fxLayout="column" fxLayoutAlign="center start">
+                  <div fxLayout="row" fxLayoutAlign="start center">
+                    <h2 class="primary-heading font-weight-600 text-capitalize">
+                      Contract HH101
+                    </h2>
+                    <span class="status-badge inprogress ml-4"
+                      >In Development</span
+                    >
+                  </div>
+                  <div class="list secondary-text pt-4">
+                    <span>
+                      <span>02/25/2019 - </span>
+                    </span>
+                    <span>
+                      <span>In open ended</span>
+                      <span class="dot"></span>
+                    </span>
+                    <span>
+                      <span>University template</span>
+                    </span>
+                  </div>
+                </div>
+                <button
+                  mat-icon-button
+                  class="icon-fill-bg"
+                  aria-label="Edit"
+                  exxatDrawerAction
+                  [size]="'drawer-sm'"
+                  [caption]="'Status'"
+                  [primaryAction]="'Save'"
+                  role="img"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-pen fuse-white-fg s-18"
+                  ></i>
+                </button>
+              </header>
+            </mat-card>
+
+            <!-- 2nd matcard-->
+            <mat-card class="p-0 mb-16" fxLayout="column">
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2 class="primary-heading font-weight-600 text-capitalize">
+                    Contract notes
+                  </h2>
+                </div>
+              </header>
+
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxFlex="100"
+                class="p-16"
+              >
+                <div class="description description-text-wrap">
+                  Aliquip ea amet commodo ex sint Lorem Aliquip ea amet commodo
+                  ex sint Lorem Aliquip ea amet commodo ex sint Lorem Aliquip ea
+                  amet commodo ex sint Lorem Aliquip ea amet commodo ex sint
+                  Lorem Aliquip ea amet commodo ex sint Lorem Aliquip ea amet
+                  commodo ex sint Lorem.
+                </div>
+              </div>
+            </mat-card>
+
+            <!--3rd matcard-->
+            <mat-card class="p-0 mb-16">
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2 class="primary-heading font-weight-600 text-capitalize">
+                    Contract documents
+                  </h2>
+                </div>
+                <button
+                  mat-icon-button
+                  class="icon-fill-bg"
+                  aria-label="Edit"
+                  exxatDrawerAction
+                  [size]="'drawer-sm'"
+                  [caption]="'Status'"
+                  [primaryAction]="'Save'"
+                  role="img"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-plus fuse-white-fg s-18"
+                  ></i>
+                </button>
+              </header>
+              <!-- document 1-->
+              <div class="pl-16 pt-16" fxLayout="column">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="pb-16 pr-16"
+                >
+                  <div class="exxat-info" fxLayout="column" fxFlex="100">
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                      class="pb-8"
+                    >
+                      <div class="title accent-fg">Document 1</div>
+                      <div class="list secondary-text">
+                        <span>
+                          <span class="dot"></span>
+                          <span>02/25/2019 </span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="description description-text-wrap">
+                      Tempor culpa tempor ut reprehenderit. Cupidatat aliquip
+                      minim sunt sint magna id amet aliqua. Sint occaecat dolor
+                      do anim consectetur. Enim do aute mollit occaecat minim.
+                      Est enim officia ea minim est ad non duis veniam.
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="pb-16 pr-16"
+                >
+                  <div class="exxat-info" fxLayout="column" fxFlex="100">
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                      class="pb-8"
+                    >
+                      <div class="title accent-fg">Document 2</div>
+                      <div class="list secondary-text">
+                        <span>
+                          <span class="dot"></span>
+                          <span>02/25/2019 </span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="description description-text-wrap">
+                      Tempor culpa tempor ut reprehenderit. Cupidatat aliquip
+                      minim sunt sint magna id amet aliqua. Sint occaecat dolor
+                      do anim consectetur. Enim do aute mollit occaecat minim.
+                      Est enim officia ea minim est ad non duis veniam.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+
+            <!--4th matcard-->
+            <mat-card class="p-0 mb-16">
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2 class="primary-heading font-weight-600 text-capitalize">
+                    Routing checklist
+                  </h2>
+                </div>
+                <button
+                  mat-icon-button
+                  class="icon-fill-bg"
+                  aria-label="Edit"
+                  exxatDrawerAction
+                  [size]="'drawer-sm'"
+                  [caption]="'Status'"
+                  [primaryAction]="'Save'"
+                  role="img"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-pen fuse-white-fg s-18"
+                  ></i>
+                </button>
+              </header>
+              <!-- document 1-->
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                class="pl-16 pt-16"
+              >
+                <div
+                  class="exxat-info pr-16 pb-16"
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="33.33"
+                >
+                  <div class="title">Certificate Of Insurance</div>
+                  <div class="description description-text-wrap">
+                    04/25/2019
+                  </div>
+                </div>
+                <div
+                  class="exxat-info pr-16 pb-16"
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="33.33"
+                >
+                  <div class="title">Date Signed By Provost</div>
+                  <div class="description description-text-wrap">
+                    01/28/2020
+                  </div>
+                </div>
+                <div
+                  class="exxat-info pr-16 pb-16"
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="33.33"
+                >
+                  <div class="title">Copy Sent To Dept. Date</div>
+                  <div class="description description-text-wrap">
+                    12/25/2019
+                  </div>
+                </div>
+              </div>
+
+              <div fxLayout="column" class="px-16 pb-16">
+                <div fxLayout="row" fxLayoutAlign="start center" class="pb-16">
+                  <h4>Routing Checklist Notes</h4>
+                </div>
+                <!-- Note for school only section-->
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <div class="exxat-info" fxLayout="column" fxFlex="100">
+                    <div class="description description-text-wrap">
+                      Aliquip ea amet commodo ex sint Lorem Aliquip ea amet
+                      commodo ex sint Lorem Aliquip ea amet commodo ex sint
+                      Lorem Aliquip ea amet commodo ex sint Lorem Aliquip ea
+                      amet commodo ex sint Lorem Aliquip ea amet commodo ex sint
+                      Lorem Aliquip ea amet commodo ex sint Lorem.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+          <!-- /1st column-->
+
+          <!-- 2nd column-->
+          <div
+            class="pl-16 pr-16"
+            fxLayout="column"
+            fxFlex="100"
+            fxFlex.gt-sm="30"
+          >
+            <header
+              class="secondary-info-header"
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="text-capitalize">Administrative personnel</h2>
+              </div>
+              <button
+                mat-icon-button
+                aria-label="Edit"
+                exxatDrawerAction
+                class="icon-fill-bg"
+                [primaryAction]="'Save'"
+                [secondaryAction]="'Delete'"
+                [size]="'drawer-sm'"
+                role="img"
+                [entityKey]="0"
+                aria-hidden="true"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-plus fuse-white-fg s-18"
+                ></i>
+              </button>
+            </header>
+
+            <div class="" fxLayout="row" fxLayoutAlign="space-between center">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <exxat-avatar
+                  firstName="David"
+                  lastName="Johnson"
+                ></exxat-avatar>
+                <div fxLayout="column" fxLayoutAlign="start start">
+                  <span class="font-14">Dr.David Johnson</span>
+                  <span class="font-14">Lead PT</span>
+                  <span class="font-14"><a>davidjohnson@gmail.com</a></span>
+                  <span class="font-14">521-985-6634 </span>
+                </div>
+              </div>
+              <button
+                mat-icon-button
+                aria-label="Edit"
+                exxatDrawerAction
+                class="action-icon"
+                [primaryAction]="'Save'"
+                [secondaryAction]="'Delete'"
+                [size]="'drawer-sm'"
+                role="img"
+                [entityKey]="0"
+                aria-hidden="true"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-pen icon-fill s-18"
+                ></i>
+              </button>
+            </div>
+          </div>
+          <!-- / 2nd column-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

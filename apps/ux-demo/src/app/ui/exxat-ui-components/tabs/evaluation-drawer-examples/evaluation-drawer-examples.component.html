@@ -1,0 +1,86 @@
+<div fxLayout="column" class="w-100-p">
+  <div class="gray-header mb-16">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="mr-16">
+          <button
+            mat-icon-button
+            aria-label="Click to go back"
+            class="action-icon mx-8"
+            routerLink="/admin/ux/ui/exxat-component-library"
+          >
+            <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+          </button>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-16">
+    <div class="mb-16">
+      <button
+        mat-stroked-button
+        color="primary"
+        exxatDrawerAction
+        [size]="'drawer-lg'"
+        [componentSelector]="
+          _UXDemoDrawerService.get('ryzen-drawer-with-table')
+        "
+        [caption]="'Review'"
+        class=""
+      >
+        Drawer with table
+      </button>
+    </div>
+    <div class="mb-16">
+      <button
+        mat-stroked-button
+        color="primary"
+        exxatDrawerAction
+        [size]="'drawer-lg'"
+        [componentSelector]="
+          _UXDemoDrawerService.get('ryzen-drawer-with-sections')
+        "
+        [caption]="'Review'"
+        class=""
+      >
+        Drawer with Sections
+      </button>
+    </div>
+
+    <div class="mb-16">
+      <button
+        mat-stroked-button
+        color="primary"
+        exxatDrawerAction
+        [size]="'drawer-lg'"
+        [componentSelector]="
+          _UXDemoDrawerService.get('create-new-standard-form')
+        "
+        [caption]="'Basic Setup'"
+        class=""
+        [primaryAction]="'Save'"
+      >
+        Create New Standard Form
+      </button>
+    </div>
+
+    <div class="mb-16">
+      <button
+        mat-stroked-button
+        color="primary"
+        exxatDrawerAction
+        [componentSelector]="_UXDemoDrawerService.get('add-benchmark')"
+        [size]="'drawer-md'"
+        [caption]="'Add Benchmark'"
+        class=""
+        [primaryAction]="'Save'"
+      >
+        Add Benchmark
+      </button>
+    </div>
+  </div>
+</div>

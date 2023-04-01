@@ -1,0 +1,78 @@
+<div class="content pt-16" fxLayout="column">
+  <div>
+    <div
+      class="preview m-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="48"
+    >
+      <mat-card>
+        <button
+          mat-stroked-button
+          color="primary"
+          class=""
+          aria-label="Show snackbar"
+          (click)="openSnackBar()"
+        >
+          Show Snackbar
+        </button>
+      </mat-card>
+    </div>
+
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="48">
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <div class="pt-16">
+            <fuse-highlight lang="html" class="source-code">
+              <textarea #source hidden="hidden">
+                <button
+                mat-stroked-button
+                color="primary"
+                class=""
+                aria-label="Show snackbar"
+                (click)="openSnackBar()"
+                 >
+                Show Snackbar
+               </button>
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Component TS">
+          <div class="pt-16">
+            <fuse-highlight lang="ts" class="source-code">
+              <textarea #source hidden="hidden">
+                        import { Component } from '@angular/core';
+                        import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+
+
+                        @Component({
+                          selector: 'ryzen-snackbar-with-warn-bg',
+                          templateUrl: './snackbar-with-warn-bg.component.html'
+                        })
+                        export class SnackbarWithWarnBgComponent implements OnInit {
+                          verticalPosition: MatSnackBarVerticalPosition = 'top';
+                          durationInSeconds = 3;
+                          constructor(private _snackBar: MatSnackBar) { }
+                        
+                          openSnackBar() {
+                            this._snackBar.open('Unsuccess Snackbar With Text Center', '', {
+                              verticalPosition: this.verticalPosition,
+                              duration: this.durationInSeconds * 1000,
+                              panelClass: ['snackbar-unsuccess', 'snackbar-text-center'],
+                            });
+                          }
+
+
+                        }
+                
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

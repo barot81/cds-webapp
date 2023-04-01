@@ -1,0 +1,40 @@
+<div
+  class="overflow-auto scroll-hover"
+  [style.height.px]="_headerService.scrollContentheight"
+>
+  <mat-card class="p-0 mb-16" fxLayoutAlign="start" fxLayout="column">
+    <header
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      class="card-header-title card-header-border-bottom py-8 px-16"
+    >
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <h2
+          class="primary-heading font-weight-600"
+          tabindex="0"
+          aria-label="Curriculum attributes"
+        >
+          Curriculum attributes
+        </h2>
+      </div>
+      <button
+        #course_measure_title
+        mat-icon-button
+        class="icon-fill-bg"
+        aria-label="Add a Curriculum attributes"
+        exxatDrawerAction
+        [componentSelector]="
+          _PlanAppDemoDrawerService.get('ryzen-add-course-curriculum')
+        "
+        [size]="'drawer-md'"
+        [caption]="'Course Curriculum Attributes'"
+        [primaryAction]="'Save'"
+      >
+        <i aria-hidden="true" class="fa-light fa-plus fuse-white-fg s-18"></i>
+      </button>
+    </header>
+    <div fxLayout="column" fxFlex="100" class="p-16">
+      <exxat-tree [dataSource]="dataSource"> </exxat-tree>
+    </div>
+  </mat-card>
+</div>

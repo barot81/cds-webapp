@@ -1,0 +1,65 @@
+<div fxLayout="column" class="w-100-p">
+    <div class="notices yellow p-16">
+        <p class="font-16">For, Component Scroll Layout Document , please visit <a
+                href="https://exxatsystems-my.sharepoint.com/:w:/r/personal/dixit_oza_exxat_com/_layouts/15/guestaccess.aspx?e=k9TU69&CID=a1761dcd-e3ed-c80d-9d87-20795f41a90b&share=EbOHGZw-vsFEpecpy7AnjpcBwjvAlPlHqTVFc3bVJHn-zQ"
+                target="blank">Link</a>
+        </p>
+    </div>
+    <div class="my-16">
+        <mat-card class="p-0">
+            <header fxLayout="row" fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom py-8 pr-8 pl-16">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <h2 class="primary-heading font-weight-600">Component Scroll Layout
+                    </h2>
+                </div>
+            </header>
+            <div fxLayout="row wrap" class="p-16">
+                <div class="exxat-info mb-16" fxLayout="column" fxFlex="100">
+                    <div class="title">Problem Statement</div>
+                    <div class="description">In current layouts, if we set the page level scroll at the parent level
+                        then whichever page
+                        will render in the router-outlet will have page level scroll, due to this if we need to add
+                        component level scroll in child layout, it will cause a problem to have multiple scroll handler
+                        and also, we cannot achieve the sticky header and left sidebar layout. </div>
+                </div>
+                <div class="exxat-info" fxLayout="column" fxFlex="100">
+                    <div class="title">Solution</div>
+                    <div class="description">Will not have page level scroll on any page. Will only have component level
+                        scroll using header service.</div>
+                </div>
+            </div>
+
+        </mat-card>
+    </div>
+    <div class="my-16">
+        <mat-card class="p-0">
+            <header fxLayout="row" fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom py-8 pr-8 pl-16">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <h2 class="primary-heading font-weight-600">Additional points
+                    </h2>
+                </div>
+            </header>
+            <div fxLayout="row wrap" class="p-16">
+                <div class="exxat-info" fxLayout="column" fxFlex="100">
+                    <li>Body area of any grid vary between screen to screen. In some screen you see more record
+                        whereas in some screen you might relatively less.</li>
+                    <li>No avatar on grid because we are using condensed version of grid to see more record compare
+                        to regular grid.</li>
+                    <li>Whenever we have list of people only student module will have avatar.</li>
+                    <li>We will have component scroll for right sidebar irrespective of it being a card, table,
+                        accordion etc , in order to keep left sidebar fixed.</li>
+                    <li>We can give sticky to table footer, in order to make it easily accessible to users. In
+                        simple words, table body will scroll with respect to table head and table footer.</li>
+                    <li>In search bar we are showing search icon. When user search, we want to introduce “X” /
+                        cancel icon to remove the search query.</li>
+                    <li>One cell one value – condense grid.</li>
+                    <li>Same screen will appear slightly different appearance based on the machine it gets open.
+                    </li>
+                </div>
+            </div>
+
+        </mat-card>
+    </div>
+</div>

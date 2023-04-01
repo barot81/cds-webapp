@@ -1,0 +1,135 @@
+<table aria-label="This is a Sticky Column table" id="stickyColumnTable"
+  class="exxat-table table-first-col-border table-x-border-none" mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="student_name" [sticky]="true">
+    <th mat-header-cell *matHeaderCellDef class="student-column" [ngClass]="{'column-shadow': scroll_pointer !== 0 }">
+      Student (50)
+    </th>
+    <td mat-cell *matCellDef="let element" class="student-column" [ngClass]="{ 'column-shadow': scroll_pointer !== 0 }">
+      <span class="list-item-name">{{ element.student_name }}</span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="is">
+    <th mat-header-cell *matHeaderCellDef>IS</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status-badge getstarted">Get Started</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="mmr">
+    <th mat-header-cell *matHeaderCellDef>MMR</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status-badge disapproved">Disapproved</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="flu">
+    <th mat-header-cell *matHeaderCellDef>FLU</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status-badge inprogress">In Progress</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="tb">
+    <th mat-header-cell *matHeaderCellDef>TB</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status-badge pending">Pending for Review</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="hepb">
+    <th mat-header-cell *matHeaderCellDef>HEP B</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status-badge approved">Approved</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="varicella">
+    <th mat-header-cell *matHeaderCellDef>VARICELLA</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status-badge pending">Pending</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="tdap">
+    <th mat-header-cell *matHeaderCellDef>TDAP</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status-badge expiring">Expiring</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="hi">
+    <th mat-header-cell *matHeaderCellDef>HI</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status-badge expired">Expired</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="cpr">
+    <th mat-header-cell *matHeaderCellDef>CPR</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status-badge getstarted">Get Started</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="pals">
+    <th mat-header-cell *matHeaderCellDef>PALS</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status-badge expired">Expired</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="licensure">
+    <th mat-header-cell *matHeaderCellDef>LICENSURE</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status-badge pending">Pending</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="hipaa">
+    <th mat-header-cell *matHeaderCellDef>HIPAA</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status-badge approved">Approved</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="sis">
+    <th mat-header-cell *matHeaderCellDef>SIS</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status-badge getstarted">Get Started</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="corf">
+    <th mat-header-cell *matHeaderCellDef>CORF</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status-badge getstarted">Get Started</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ds">
+    <th mat-header-cell *matHeaderCellDef>DS</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status-badge pending">Pending</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="bgc">
+    <th mat-header-cell *matHeaderCellDef>BGC</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status-badge getstarted">Get Started</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fp">
+    <th mat-header-cell *matHeaderCellDef>FP</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status-badge approved">Approved</div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+
+  <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="addRow(row)"
+    [class.row-selected]="clickedRows.has(row)" [class.row-highlighted]="highlightedRows.has(row)"></tr>
+</table>

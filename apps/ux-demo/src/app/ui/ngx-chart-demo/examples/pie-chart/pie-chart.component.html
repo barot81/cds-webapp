@@ -1,0 +1,121 @@
+<div fxLayout="column" fxLayout.gt-md="row">
+
+
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="55">
+        <div class="mat-caption secondary-text mb-16">Ngx Vertical Bar Chart Example</div>
+        <mat-card class="mr-16">
+            <ngx-charts-pie-chart [view]="view" [scheme]="colorScheme" [results]="pie_chart_single"
+                [gradient]="gradient" [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels"
+                [doughnut]="isDoughnut" (select)="onSelect($event)" (activate)="onActivate($event)"
+                (deactivate)="onDeactivate($event)">
+            </ngx-charts-pie-chart>
+        </mat-card>
+
+        <mat-card fxFlex="55" class="my-16">
+
+            <div fxLayoutAlign="start center" fxLayout="row">
+                <div fxLayout="column" fxLayoutAlign="start">
+                    <div fxLayoutAlign="start center" fxLayout="row">
+                        <div><span class="mr-16 font-weight-600">For more info visit : </span></div>
+                        <span><a href="https://swimlane.gitbooks.io/ngx-charts/content/" target="_blank">Ngx Chart
+                                Documentation</a></span>
+                    </div>
+
+                    <div class="mt-16 overflow-auto" [style.height.px]="230">
+                        <ngx-chart-helper-table></ngx-chart-helper-table>
+                    </div>
+                </div>
+            </div>
+
+        </mat-card>
+    </div>
+
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="45">
+        <mat-tab-group>
+            <!-- 1st tab content -->
+            <mat-tab label="HTML">
+                <fuse-highlight lang="html" class="source-code mt-16" fxLayout="column" fxLayoutAlign="center">
+                    <textarea #source hidden="hidden">
+                        <ngx-charts-pie-chart
+                        [view]="view"
+                        [scheme]="colorScheme"
+                        [results]="pie_chart_single"
+                        [gradient]="gradient"
+                        [legend]="showLegend"
+                        [legendPosition]="legendPosition"
+                        [labels]="showLabels"
+                        [doughnut]="isDoughnut"
+                        (select)="onSelect($event)"
+                        (activate)="onActivate($event)"
+                        (deactivate)="onDeactivate($event)">
+                         </ngx-charts-pie-chart>
+           </textarea>
+                </fuse-highlight>
+            </mat-tab>
+
+            <!-- 2nd tab content -->
+            <mat-tab label="TS">
+                <fuse-highlight lang="ts" class="source-code mt-16" fxLayout="column" fxLayoutAlign="center">
+                    <textarea #source hidden="hidden">
+                        import { Component } from '@angular/core';
+
+                        export var pie_chart_single = [
+                            {
+                                "name": "Germany",
+                                "value": 8940000
+                            },
+                            {
+                                "name": "USA",
+                                "value": 5000000
+                            },
+                            {
+                                "name": "France",
+                                "value": 7200000
+                            },
+                            {
+                                "name": "UK",
+                                "value": 6200000
+                            }
+                        ];
+                        
+                        @Component({
+                            selector: 'ryzen-pie-chart',
+                            templateUrl: './pie-chart.component.html',
+                        })
+                        export class PieChartComponent {
+                            pie_chart_single: any[];
+                            view: any[] = [700, 400];
+                        
+                            // options
+                            gradient: boolean = true;
+                            showLegend: boolean = true;
+                            showLabels: boolean = false;
+                            isDoughnut: boolean = false;
+                            legendPosition: string = 'below';
+                        
+                            colorScheme = {
+                                domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+                            };
+                        
+                            constructor() {
+                                Object.assign(this, { pie_chart_single });
+                            }
+                        
+                            onSelect(data): void {
+                                console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+                            }
+                        
+                            onActivate(data): void {
+                                console.log('Activate', JSON.parse(JSON.stringify(data)));
+                            }
+                        
+                            onDeactivate(data): void {
+                                console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+                            }
+                        }
+            </textarea>
+                </fuse-highlight>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

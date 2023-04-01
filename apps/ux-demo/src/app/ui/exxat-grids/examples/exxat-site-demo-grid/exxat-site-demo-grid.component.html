@@ -1,0 +1,222 @@
+<div class="page-layout carded full-width inner-scroll">
+  <div class="center">
+    <!-- Header -->
+    <div class="header mb-16" #gray_header>
+      <div>
+        <ryzen-grid-nav-bar-list></ryzen-grid-nav-bar-list>
+      </div>
+    </div>
+    <!-- Header -->
+
+    <div class="content-card">
+      <div class="table-rounded-border white-background" fxLayout="column">
+        <div
+          fxLayout="row"
+          fxLayout.xs="row wrap"
+          fxLayoutAlign="space-between center"
+          fxLayoutAlign.lt-md="start center"
+          id="search_bar_filter_container"
+          #search_bar_filter_container
+        >
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex.xs="100">
+            <div class="search-wrapper" fxFlex.xs="100">
+              <div
+                class="search table-search"
+                fxFlex
+                fxLayout="row"
+                fxLayoutAlign="start center"
+              >
+                <i aria-hidden="true" class="fa-light fa-search s-18"></i>
+                <input type="text" placeholder="Search in 50 student" fxFlex />
+              </div>
+            </div>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <div fxLayout="row" fxLayoutAlign="end center" class="border-right">
+              <button mat-button class="mat-icon-border-radius action-icon">
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-plus s-18 accent-fg"
+                ></i>
+                <span class="ml-4 accent-fg">Add action 1</span>
+              </button>
+              <button mat-button class="mat-icon-border-radius action-icon">
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-plus s-18 accent-fg"
+                ></i>
+                <span class="ml-4 accent-fg">Add action 2</span>
+              </button>
+            </div>
+            <div fxLayout="row">
+              <button
+                tabindex="0"
+                aria-label="Export Table"
+                mat-icon-button
+                class="action-icon mat-icon-border-radius"
+              >
+                <i
+                  aria-hidden="true"
+                  class="accent-fg fa-light fa-file-export"
+                ></i>
+              </button>
+              <button
+                tabindex="0"
+                aria-label="Settings"
+                mat-icon-button
+                class="action-icon mat-icon-border-radius"
+              >
+                <i aria-hidden="true" class="accent-fg fa-light fa-wrench"></i>
+              </button>
+
+              <button
+                tabindex="0"
+                aria-label="Expand Table"
+                mat-icon-button
+                fxHide.xs
+                class="action-icon mat-icon-border-radius"
+              >
+                <i aria-hidden="true" class="accent-fg fa-light fa-expand"></i>
+              </button>
+
+              <button
+                tabindex="0"
+                aria-label="Filters"
+                mat-icon-button
+                class="action-icon filter-icon mat-icon-border-radius ml-0"
+              >
+                <i aria-hidden="true" class="fa-light fa-filter accent-fg"></i>
+                <span class="filter-badge">2</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="overflow-auto scroll-hover content"
+          [style.height.px]="headerService.scrollContentheight - 58"
+        >
+          <table
+            tabindex="0"
+            aria-hidden="false"
+            aria-label="This is a Grid with tabs"
+            mat-table
+            [dataSource]="dataSource"
+            class="w-100-p exxat-table table-x-border-none pt-0"
+          >
+            <!-- Position Column -->
+            <ng-container matColumnDef="name">
+              <th
+                tabindex="0"
+                aria-label="Name"
+                class="pl-16"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                Name
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="Name is {{ element.name }}"
+                mat-cell
+                *matCellDef="let element"
+                class="pl-16"
+              >
+                <a>{{ element.name }}</a>
+              </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="address">
+              <th
+                tabindex="0"
+                aria-label="Address"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                Address
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="Address is {{ element.address }}"
+                mat-cell
+                *matCellDef="let element"
+              >
+                {{ element.address }}
+              </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="phone">
+              <th
+                tabindex="0"
+                aria-label="Phone"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                Phone
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="Phone is {{ element.phone }}"
+                mat-cell
+                *matCellDef="let element"
+              >
+                {{ element.phone }}
+              </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="ein">
+              <th
+                tabindex="0"
+                aria-label="EIN"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                EIN
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="EIN is {{ element.ein }}"
+                mat-cell
+                *matCellDef="let element"
+              >
+                {{ element.ein }}
+              </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="programs">
+              <th
+                tabindex="0"
+                aria-label="Program"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                Program
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="Program is {{ element.programs }}"
+                mat-cell
+                *matCellDef="let element"
+              >
+                {{ element.programs }}
+              </td>
+            </ng-container>
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+        <div>
+          <mat-paginator [pageSize]="30" class="bt"></mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

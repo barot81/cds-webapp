@@ -1,0 +1,24 @@
+<div fxHide.lt-sm>
+  <router-outlet></router-outlet>
+</div>
+
+<div class="chips-footer mr-16" fxHide.gt-sm fxHide.sm>
+  <mat-accordion class="example-headers-align inner-page-panel" fxFlex="100">
+    <mat-expansion-panel  hideToggle fxFlex="100">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+            <h3>Filter by :</h3>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="secondary-tabs ">
+        <ryzen-inner-page-secondary-navbar></ryzen-inner-page-secondary-navbar>
+        <div class="px-16">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

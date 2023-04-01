@@ -1,0 +1,22 @@
+<div class="drawer-p">
+  <mat-card>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <button
+        mat-icon-button
+        class="action-icon icon-fill"
+        aria-label="Edit"
+        exxatManifoldPanelAction
+        [closeOnNavigation]="true"
+        [size]="'drawer-md'"
+        [componentSelector]="_drawerService.get('ryzen-drawer-with-cards')"
+        [caption]="'Secondary Drawer'"
+        [primaryAction]="'Update'"
+      >
+        <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+      </button>
+      <div class="ml-16">
+        <span>Click to open secondary drawer</span>
+      </div>
+    </div>
+  </mat-card>
+</div>

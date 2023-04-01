@@ -1,0 +1,1392 @@
+<div
+  id="plan-of-study-container"
+  class="page-layout carded left-sidebar inner-scroll"
+>
+  <fuse-sidebar
+    class="sidebar width-sm no-box-shadow"
+    name="carded-left-sidebar-tabbed-2"
+    position="left"
+    lockedOpen="gt-md"
+  >
+    <div class="placement-list-container pt-16" fusePerfectScrollbar>
+      <div
+        class="pb-16 placement-list"
+        fxLayout="column"
+        *ngFor="let item of placements"
+      >
+        <div class="pb-16 px-16">
+          <h2 class="sidebar-heading font-weight-600">
+            {{ item.headerTitle }}
+          </h2>
+        </div>
+        <mat-list class="pt-0">
+          <button
+            mat-button
+            class="no-space m-0 p-0"
+            *ngFor="let listItem of item.placements; let i = index"
+          >
+            <mat-list-item
+              class="p-16"
+              [ngClass]="{ 'active-list-item': listItem.isSelected }"
+              (click)="selectPlacement(listItem.id)"
+            >
+              <div fxLayout="column">
+                <div
+                  *ngIf="
+                    listItem.title || listItem.status || listItem.status_color
+                  "
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                >
+                  <h4 class="mr-4">{{ listItem.title }}</h4>
+                  <span *ngIf="listItem.status" class="status-badge info">{{
+                    listItem.status
+                  }}</span>
+                </div>
+                <div
+                  *ngIf="listItem.siteName"
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="mt-4"
+                >
+                  <span class="mr-4 font-14">{{ listItem.siteName }}</span>
+                  <!-- <div *ngIf="listItem.setting" fxLayout="row" fxLayoutAlign="start center"><span class="dot"></span><span
+                    class="font-14">{{listItem.setting}}</span></div> -->
+                </div>
+                <div
+                  *ngIf="
+                    listItem.startDate || listItem.endDate || listItem.duration
+                  "
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="mt-4"
+                >
+                  <span class="mr-4 font-14"
+                    ><em
+                      >{{ listItem.startDate }} - {{ listItem.endDate }}</em
+                    ></span
+                  >
+                  <span class="font-14" *ngIf="listItem.duration"
+                    ><span class="dot"></span>{{ listItem.duration }}</span
+                  >
+                </div>
+                <div
+                  *ngIf="listItem.setting"
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="mt-4"
+                >
+                  <span class="status-badge approved">{{
+                    listItem.setting
+                  }}</span>
+                </div>
+                <div
+                  *ngIf="listItem.attentionMessage"
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="mt-4"
+                >
+                  <span class="font-14 warn-fg">{{
+                    listItem.attentionMessage
+                  }}</span>
+                </div>
+                <div
+                  *ngIf="listItem.wishListmessage"
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="mt-4"
+                >
+                  <span class="font-14 warn-fg"
+                    >Wishlist closes in
+                    <span class="font-14">{{
+                      listItem.wishListmessage
+                    }}</span></span
+                  >
+                </div>
+              </div>
+            </mat-list-item>
+            <mat-divider
+              *ngIf="!listItem.isSelected && i != item.placements.length - 1"
+              class="w-85-p margin-auto"
+            >
+            </mat-divider>
+          </button>
+        </mat-list>
+      </div>
+    </div>
+  </fuse-sidebar>
+
+  <div class="center ml-lg-16">
+    <button
+      mat-icon-button
+      class="sidebar-toggle mr-4"
+      fxHide.gt-md
+      (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div class="content-card">
+      <div class="content pb-64" fusePerfectScrollbar>
+        <div class="p-16 pt-0" fxLayout="column">
+          <div
+            *ngIf="
+              currentPlacements.placements[0].title ||
+              currentPlacements.placements[0].status ||
+              currentPlacements.placements[0].status_color
+            "
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <span class="mr-12 font-20 font-weight-600">{{
+              currentPlacements.placements[0].title
+            }}</span>
+            <span
+              *ngIf="currentPlacements.placements[0].status"
+              class="status-badge info"
+              >{{ currentPlacements.placements[0].status }}</span
+            >
+          </div>
+          <div
+            *ngIf="
+              currentPlacements.placements[0].siteName ||
+              currentPlacements.placements[0].setting
+            "
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <span class="mr-4 font-14 font-weight-600"
+              >Autumn Winds Retirement Lodge</span
+            >|
+            <div
+              *ngIf="currentPlacements.placements[0].setting"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              class="ml-4"
+            >
+              <span class="font-14">{{
+                currentPlacements.placements[0].setting
+              }}</span>
+            </div>
+          </div>
+          <div
+            *ngIf="
+              currentPlacements.placements[0].startDate ||
+              currentPlacements.placements[0].endDate ||
+              currentPlacements.placements[0].duration
+            "
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <span class="mr-4 font-14"
+              >{{ currentPlacements.placements[0].startDate }} -
+              {{ currentPlacements.placements[0].endDate }}</span
+            >
+            <span
+              class="font-14 ml-4"
+              *ngIf="currentPlacements.placements[0].duration"
+            >
+              {{ currentPlacements.placements[0].duration }}
+            </span>
+          </div>
+        </div>
+
+        <div>
+          <mat-card id="attestation-container" class="p-0 mb-16">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="primary-heading font-weight-600 text-capitalize">
+                  Attestation
+                </h2>
+              </div>
+            </header>
+
+            <div fxLayout="column" fxLayoutAlign="start " class="pt-16 pl-16">
+              <div class="pr-16">
+                <span class="font-14"
+                  >It is a long established fact that a reader will be
+                  distracted by the readable content of a page when looking at
+                  its layout. The point of using Lorem Ipsum is that it has a
+                  more-or-less normal distribution of letters, as opposed to
+                  using 'Content here, content here', making it look like
+                  readable English.</span
+                >
+              </div>
+              <div
+                class="mt-16 pr-16"
+                fxLayout="row"
+                fxLayoutAlign="start start"
+              >
+                <mat-checkbox></mat-checkbox>
+                <span class="ml-8"
+                  >I Confirmed that I have reviewed and accept
+                  responsibility</span
+                >
+              </div>
+              <div
+                class="mt-16 pr-16 pb-16"
+                fxLayout="row"
+                fxLayoutAlign="end center"
+              >
+                <button mat-raised-button class="primary">I Agree</button>
+              </div>
+            </div>
+          </mat-card>
+
+          <div class="p-16">
+            <span class="font-20 font-weight-600">Site information</span>
+          </div>
+
+          <mat-card id="general-information-container" class="p-0 mb-16">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="primary-heading font-weight-600 text-capitalize">
+                  General information
+                </h2>
+              </div>
+            </header>
+
+            <div fxLayout="column" class="pl-16 pt-16">
+              <div fxLayout="column" class="">
+                <div fxLayout="row" fxLayoutAlign="start center" class="pr-16">
+                  <span class="font-weight-600">Requirement</span>
+                </div>
+                <div fxLayout="row wrap" class="items-spacing mt-12">
+                  <div
+                    fxLayout="column"
+                    fxFlex="100"
+                    fxFlex.gt-sm="25"
+                    class="pb-16 pr-16"
+                  >
+                    <span>Hepatitis C titer</span>
+                    <span>Current CPR card</span>
+                    <span>10 panel Drug Screen</span>
+                  </div>
+                  <div
+                    fxLayout="column"
+                    fxFlex="100"
+                    fxFlex.gt-sm="25"
+                    class="pb-16 pr-16"
+                  >
+                    <span>Background check</span>
+                    <span>TB Gold/Chest X-Ray</span>
+                  </div>
+                  <div
+                    fxLayout="column"
+                    fxFlex="100"
+                    fxFlex.gt-sm="25"
+                    class="pb-16 pr-16"
+                  >
+                    <span>Hepatitis C titer</span>
+                    <span>Current CPR card</span>
+                    <span>10 panel Drug Screen</span>
+                  </div>
+                  <div
+                    fxLayout="column"
+                    fxFlex="100"
+                    fxFlex.gt-sm="25"
+                    class="pb-16 pr-16"
+                  >
+                    <span>Hepatitis C titer</span>
+                    <span>Current CPR card</span>
+                    <span>10 panel Drug Screen</span>
+                  </div>
+                </div>
+              </div>
+
+              <div fxLayout="column" class="">
+                <div fxLayout="row" fxLayoutAlign="start center" class="pr-16">
+                  <span class="font-weight-600">Site contact</span>
+                </div>
+                <div fxLayout="row wrap" class="items-border mt-12">
+                  <div
+                    fxLayout="column"
+                    fxFlex="100"
+                    fxFlex.gt-sm="25"
+                    class="pb-16 pr-16"
+                  >
+                    <span>Dr.joel Ad, MD</span>
+                    <span>Administrator</span>
+                    <span>joel.ad@example.com</span>
+                    <span>215-231-4683 Ext.123</span>
+                  </div>
+                  <div
+                    fxLayout="column"
+                    fxFlex="100"
+                    fxFlex.gt-sm="25"
+                    class="pb-16 pr-16"
+                  >
+                    <span>Dr.joel Ad, MD</span>
+                    <span>Administrator</span>
+                    <span>joel.ad@example.com</span>
+                    <span>215-231-4683 Ext.123</span>
+                  </div>
+                  <div
+                    fxLayout="column"
+                    fxFlex="100"
+                    fxFlex.gt-sm="25"
+                    class="pb-16 pr-16"
+                  >
+                    <span>Dr.joel Ad, MD</span>
+                    <span>Administrator</span>
+                    <span>joel.ad@example.com</span>
+                    <span>215-231-4683 Ext.123</span>
+                  </div>
+                  <div
+                    fxLayout="column"
+                    fxFlex="100"
+                    fxFlex.gt-sm="25"
+                    class="pb-16 pr-16"
+                  >
+                    <span>Dr.joel Ad, MD</span>
+                    <span>Administrator</span>
+                    <span>joel.ad@example.com</span>
+                    <span>215-231-4683 Ext.123</span>
+                  </div>
+                </div>
+              </div>
+
+              <div fxLayout="column" class="">
+                <div fxLayout="row" fxLayoutAlign="start center" class="pr-16">
+                  <span class="font-weight-600">Documents</span>
+                </div>
+                <div div fxLayout="row wrap" class="items-spacing mt-12">
+                  <div
+                    fxLayout="column"
+                    fxFlex="100"
+                    fxFlex.gt-sm="20"
+                    class="pr-16 pb-16"
+                  >
+                    <span class="accent-fg">Student manual</span>
+                  </div>
+                  <div
+                    fxLayout="column"
+                    fxFlex="100"
+                    fxFlex.gt-sm="20"
+                    class="pr-16 pb-16"
+                  >
+                    <span class="accent-fg">Orientation map</span>
+                  </div>
+                  <div
+                    fxLayout="column "
+                    fxFlex="100"
+                    fxFlex.gt-sm="20"
+                    class="pr-16 pb-16"
+                  >
+                    <span class="accent-fg">Health clearance form</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+
+          <mat-card id="additional-information-container" class="p-0 mb-16">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="primary-heading font-weight-600 text-capitalize">
+                  Additional information
+                </h2>
+              </div>
+            </header>
+
+            <div fxLayout="column" class="pl-16 pt-16">
+              <div
+                class="pb-16 pr-16"
+                fxLayout="row"
+                fxLayoutAlign="start center"
+              >
+                <mat-icon class="s-16">directions_car</mat-icon>
+                <span class="ml-8"
+                  >Student must park in the 35 Getty Avenue lot</span
+                >
+              </div>
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                class="pb-16 pr-16"
+              >
+                <mat-icon class="s-16">home</mat-icon>
+                <span class="ml-8">Housing not provided</span>
+              </div>
+            </div>
+          </mat-card>
+
+          <mat-card id="notes-container" class="p-0 mb-16">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="primary-heading font-weight-600 text-capitalize">
+                  notes
+                </h2>
+              </div>
+            </header>
+
+            <div class="pl-16 pt-16" fxLayout="column">
+              <div fxLayout="column" class="pb-16 pr-16">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <span class="font-weight-600">Site notes</span>
+                </div>
+                <div class="mt-12">
+                  <span
+                    >It is a long established fact that a reader will be
+                    distracted by the readable content of a page when looking at
+                    its layout. The point of using Lorem Ipsum is that it has a
+                    more-or-less normal distribution of letters, as opposed to
+                    using 'Content here, content here', making it look like
+                    readable English.</span
+                  >
+                </div>
+              </div>
+
+              <div fxLayout="column" class="pb-16 pr-16">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <span class="font-weight-600">Placement notes</span>
+                </div>
+                <div class="mt-12">
+                  <span
+                    >It is a long established fact that a reader will be
+                    distracted by the readable content of a page when looking at
+                    its layout. The point of using Lorem Ipsum is that it has a
+                    more-or-less normal distribution of letters, as opposed to
+                    using 'Content here, content here', making it look like
+                    readable English.</span
+                  >
+                </div>
+              </div>
+            </div>
+          </mat-card>
+
+          <mat-card id="school-faculty-container" class="p-0 mb-16">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="primary-heading font-weight-600 text-capitalize">
+                  School faculty
+                </h2>
+              </div>
+            </header>
+
+            <div fxLayout="row wrap" class="pl-16 pt-16">
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="25"
+                class="pb-16 pr-16"
+              >
+                <span>Dr.joel Ad, MD</span>
+                <span>Administrator</span>
+                <span>joel.ad@example.com</span>
+              </div>
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="25"
+                class="pb-16 pr-16"
+              >
+                <span>Dr.joel Ad, MD</span>
+                <span>Administrator</span>
+                <span>joel.ad@example.com</span>
+              </div>
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="25"
+                class="pb-16 pr-16"
+              >
+                <span>Dr.joel Ad, MD</span>
+                <span>Administrator</span>
+                <span>joel.ad@example.com</span>
+              </div>
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="25"
+                class="pb-16 pr-16"
+              >
+                <span>Dr.joel Ad, MD</span>
+                <span>Administrator</span>
+                <span>joel.ad@example.com</span>
+              </div>
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="25"
+                class="pb-16 pr-16"
+              >
+                <span>Dr.joel Ad, MD</span>
+                <span>Administrator</span>
+                <span>joel.ad@example.com</span>
+              </div>
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="25"
+                class="pb-16 pr-16"
+              >
+                <span>Dr.joel Ad, MD</span>
+                <span>Administrator</span>
+                <span>joel.ad@example.com</span>
+              </div>
+            </div>
+          </mat-card>
+
+          <mat-card id="other-student-container" class="p-0 mb-16">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="primary-heading font-weight-600 text-capitalize">
+                  Other students placed here
+                </h2>
+              </div>
+            </header>
+
+            <div fxLayout="row wrap" class="pl-16 pt-16">
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="25"
+                class="pb-16 pr-16"
+              >
+                <span>Dr.joel Ad, MD</span>
+                <span>joel.ad@example.com</span>
+                <span>Class of 2023</span>
+              </div>
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="25"
+                class="pb-16 pr-16"
+              >
+                <span>Dr.joel Ad, MD</span>
+                <span>joel.ad@example.com</span>
+                <span>Class of 2023</span>
+              </div>
+            </div>
+          </mat-card>
+
+          <div class="p-16">
+            <span class="font-20 font-weight-600">To do list</span>
+          </div>
+
+          <mat-card id="clinical-instructor-container" class="p-0 mb-16">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="primary-heading font-weight-600 text-capitalize">
+                  Clinical instructor
+                </h2>
+              </div>
+              <button
+                mat-icon-button
+                class="icon-fill-bg"
+                aria-label="Edit"
+                exxatDrawerAction
+                [size]="'drawer-sm'"
+                [caption]="'Status'"
+                [primaryAction]="'Save'"
+                role="img"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-plus fuse-white-fg s-18"
+                ></i>
+              </button>
+            </header>
+
+            <div fxLayout="row wrap" class="pl-16 pt-16">
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="25"
+                class="pb-16 pr-16"
+              >
+                <span>Hepatitis C titer</span>
+                <span>Current CPR card</span>
+                <span>10 panel Drug Screen</span>
+              </div>
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="25"
+                class="pb-16 pr-16"
+              >
+                <span>Background check</span>
+                <span>TB Gold/Chest X-Ray</span>
+              </div>
+            </div>
+          </mat-card>
+
+          <mat-card id="patient-logs-container" class="p-0 mb-16">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="primary-heading font-weight-600 text-capitalize">
+                  Patient logs
+                </h2>
+              </div>
+              <button
+                mat-icon-button
+                class="icon-fill-bg"
+                aria-label="Edit"
+                exxatDrawerAction
+                [size]="'drawer-sm'"
+                [caption]="'Status'"
+                [primaryAction]="'Save'"
+                role="img"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-plus fuse-white-fg s-18"
+                ></i>
+              </button>
+            </header>
+            <div fxLayout="row wrap" class="pt-16 pl-16">
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="20"
+                class="pb-16 pr-16"
+              >
+                <span class="font-14">Total logs</span>
+                <span class="font-16 font-weight-600">300</span>
+              </div>
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="20"
+                class="pb-16 pr-16"
+              >
+                <span class="font-14">Avg. logs</span>
+                <span class="font-16 font-weight-600">12</span>
+              </div>
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="20"
+                class="pb-16 pr-16"
+              >
+                <span class="font-14">Needs attention</span>
+                <span class="font-16 font-weight-600 warn-fg">6</span>
+              </div>
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="20"
+                class="pb-16 pr-16"
+              >
+                <span class="font-14">In progress</span>
+                <span class="font-16 font-weight-600">20</span>
+              </div>
+            </div>
+          </mat-card>
+
+          <mat-card id="evaluation-container" class="p-0 mb-16">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="primary-heading font-weight-600 text-capitalize">
+                  Evaluation
+                </h2>
+              </div>
+            </header>
+
+            <div class="pl-16 pt-16" fxLayout="column">
+              <div
+                fxLayout="row wrap"
+                fxLayoutAlign="start center"
+                fxFlex="100"
+              >
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                  class="pb-16 pr-16"
+                >
+                  <span class="font-14 accent-fg"
+                    >Student evaluation of the fieldwork experience</span
+                  >
+                </div>
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="20"
+                  class="pb-16 pr-16"
+                >
+                  <span class="status-badge approved">Submitted</span>
+                </div>
+                <div
+                  fxLayout="column"
+                  class="pb-16 pr-16"
+                  fxFlex="100"
+                  fxFlex.gt-sm="30"
+                >
+                  <span>Due on nov 11th , 2020</span>
+                </div>
+              </div>
+
+              <div
+                fxLayout="row wrap"
+                fxLayoutAlign="start center"
+                fxFlex="100"
+              >
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                  class="pb-16 pr-16"
+                >
+                  <span class="font-14 accent-fg"
+                    >Student evaluation of the fieldwork experience</span
+                  >
+                </div>
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="20"
+                  class="pb-16 pr-16"
+                >
+                  <span class="status-badge approved">Submitted</span>
+                </div>
+                <div
+                  fxLayout="column"
+                  class="pb-16 pr-16"
+                  fxFlex="100"
+                  fxFlex.gt-sm="30"
+                >
+                  <span>Due on nov 11th , 2020</span>
+                </div>
+              </div>
+
+              <div
+                fxLayout="row wrap"
+                fxLayoutAlign="start center"
+                fxFlex="100"
+              >
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                  class="pb-16 pr-16"
+                >
+                  <span class="font-14 accent-fg"
+                    >Student evaluation of the fieldwork experience</span
+                  >
+                </div>
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="20"
+                  class="pb-16 pr-16"
+                >
+                  <span class="status-badge approved">Submitted</span>
+                </div>
+                <div
+                  fxLayout="column"
+                  class="pb-16 pr-16"
+                  fxFlex="100"
+                  fxFlex.gt-sm="30"
+                >
+                  <span>Due on nov 11th , 2020</span>
+                </div>
+              </div>
+
+              <div
+                fxLayout="row wrap"
+                fxLayoutAlign="start center"
+                fxFlex="100"
+              >
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                  class="pb-16 pr-16"
+                >
+                  <span class="font-14 accent-fg"
+                    >Student evaluation of the fieldwork experience</span
+                  >
+                </div>
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="20"
+                  class="pb-16 pr-16"
+                >
+                  <span class="status-badge approved">Submitted</span>
+                </div>
+                <div
+                  fxLayout="column"
+                  class="pb-16 pr-16"
+                  fxFlex="100"
+                  fxFlex.gt-sm="30"
+                >
+                  <span>Due on nov 11th , 2020</span>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+
+          <mat-card id="assignments-container" class="p-0 mb-16">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="primary-heading font-weight-600 text-capitalize">
+                  Assignments
+                </h2>
+              </div>
+            </header>
+
+            <div class="pl-16 pt-16" fxLayout="column">
+              <div fxLayout="row wrap" fxLayoutAlign="start center" class="">
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                  class="pr-16 pb-16"
+                >
+                  <span class="font-14 accent-fg"
+                    >Weekly status report experience</span
+                  >
+                </div>
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="20"
+                  class="pr-16 pb-16"
+                >
+                  <span class="status-badge approved">Submitted</span>
+                </div>
+                <div
+                  fxLayout="column"
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-sm="30"
+                  class="pr-16 pb-16"
+                >
+                  <span>Due on nov 11th, 2020</span>
+                </div>
+              </div>
+
+              <div fxLayout="row wrap" fxLayoutAlign="start center" class="">
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                  class="pr-16 pb-16"
+                >
+                  <span class="font-14 accent-fg"
+                    >Weekly status report experience</span
+                  >
+                </div>
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="20"
+                  class="pr-16 pb-16"
+                >
+                  <span class="status-badge approved">Submitted</span>
+                </div>
+                <div
+                  fxLayout="column"
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-sm="30"
+                  class="pr-16 pb-16"
+                >
+                  <span>Due on nov 11th, 2020</span>
+                </div>
+              </div>
+
+              <div fxLayout="row wrap" fxLayoutAlign="start center" class="">
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                  class="pr-16 pb-16"
+                >
+                  <span class="font-14 accent-fg"
+                    >Weekly status report experience</span
+                  >
+                </div>
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="20"
+                  class="pr-16 pb-16"
+                >
+                  <span class="status-badge approved">Submitted</span>
+                </div>
+                <div
+                  fxLayout="column"
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-sm="30"
+                  class="pr-16 pb-16"
+                >
+                  <span>Due on nov 11th, 2020</span>
+                </div>
+              </div>
+
+              <div fxLayout="row wrap" fxLayoutAlign="start center" class="">
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                  class="pr-16 pb-16"
+                >
+                  <span class="font-14 accent-fg"
+                    >Weekly status report experience</span
+                  >
+                </div>
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="20"
+                  class="pr-16 pb-16"
+                >
+                  <span class="status-badge approved">Submitted</span>
+                </div>
+                <div
+                  fxLayout="column"
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-sm="30"
+                  class="pr-16 pb-16"
+                >
+                  <span>Due on nov 11th, 2020</span>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+
+          <mat-card id="timesheet-container" class="p-0 mb-16">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="primary-heading font-weight-600 text-capitalize">
+                  Timesheet
+                </h2>
+              </div>
+              <button
+                mat-icon-button
+                class="icon-fill-bg"
+                aria-label="Edit"
+                exxatDrawerAction
+                [size]="'drawer-sm'"
+                [caption]="'Status'"
+                [primaryAction]="'Save'"
+                role="img"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-plus fuse-white-fg s-18"
+                ></i>
+              </button>
+            </header>
+
+            <div fxLayout="row wrap" class="pl-16 pt-16">
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="25"
+                class="pl-16 pb-16"
+              >
+                <span class="font-14">Total</span>
+                <span class="font-16 font-weight-600">300 hrs 15 mins</span>
+              </div>
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="25"
+                class="pl-16 pb-16"
+              >
+                <span class="font-14">Approved</span>
+                <span class="font-16 font-weight-600">300 hrs 15 min</span>
+              </div>
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="25"
+                class="pl-16 pb-16"
+              >
+                <span class="font-14">Pending for review</span>
+                <span class="font-16 font-weight-600">300 hrs 15 min</span>
+              </div>
+              <div
+                fxLayout="column"
+                fxFlex="100"
+                fxFlex.gt-sm="25"
+                class="pl-16 pb-16"
+              >
+                <span class="font-14">Rejected</span>
+                <span class="font-16 font-weight-600">300 hrs 15 min</span>
+              </div>
+            </div>
+          </mat-card>
+
+          <mat-card id="leaves-container" class="p-0 mb-16">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="primary-heading font-weight-600 text-capitalize">
+                  Leaves
+                </h2>
+              </div>
+              <button
+                mat-icon-button
+                class="icon-fill-bg"
+                aria-label="Edit"
+                exxatDrawerAction
+                [size]="'drawer-sm'"
+                [caption]="'Status'"
+                [primaryAction]="'Save'"
+                role="img"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-plus fuse-white-fg s-18"
+                ></i>
+              </button>
+            </header>
+
+            <div class="pl-16 pt-16">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="40"
+                  class="pr-16 pb-16"
+                >
+                  <span class="font-14 accent-fg">Leave details 1</span>
+                </div>
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="30"
+                  class="pr-16 pb-16"
+                >
+                  <span class="status-badge approved">Submitted</span>
+                </div>
+              </div>
+
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="40"
+                  class="pr-16 pb-16"
+                >
+                  <span class="font-14 accent-fg">Leave details 1</span>
+                </div>
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="30"
+                  class="pr-16 pb-16"
+                >
+                  <span class="status-badge approved">Submitted</span>
+                </div>
+              </div>
+
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="40"
+                  class="pr-16 pb-16"
+                >
+                  <span class="font-14 accent-fg">Leave details 1</span>
+                </div>
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="30"
+                  class="pr-16 pb-16"
+                >
+                  <span class="status-badge approved">Submitted</span>
+                </div>
+              </div>
+
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="40"
+                  class="pr-16 pb-16"
+                >
+                  <span class="font-14 accent-fg">Leave details 1</span>
+                </div>
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="30"
+                  class="pr-16 pb-16"
+                >
+                  <span class="status-badge approved">Submitted</span>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+
+          <div class="p-16">
+            <span class="font-20 font-weight-600">Wishlist</span>
+          </div>
+
+          <mat-card
+            id="wishlist-container"
+            class="p-0 mb-16"
+            tabindex="0"
+            aria-label="wishlist card"
+          >
+            <div class="pl-16">
+              <div
+                fxLayout="row wrap"
+                fxLayoutAlign="start center"
+                class="pt-16 pb-28"
+              >
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                  class="pr-16"
+                >
+                  <a
+                    class="font-weight-600"
+                    tabindex="0"
+                    aria-label="wishlist one"
+                    >Wishlist one</a
+                  >
+                  <div
+                    class="pt-8"
+                    fxLayout="row wrap"
+                    fxLayoutAlign="start center"
+                  >
+                    <span
+                      class="status-badge getstarted mr-16"
+                      tabindex="0"
+                      aria-label="status not started"
+                      >Not started</span
+                    >
+                    <span
+                      class="warn-fg"
+                      tabindex="0"
+                      aria-label="Close on June 29th, 2020, 8:00 PM"
+                      >Close on June 29th, 2020, 8:00 PM</span
+                    >
+                  </div>
+                </div>
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                  class="pr-16 pb-16 mt-small-16"
+                >
+                  <div class="text-container">
+                    <input id="ch" #ch type="checkbox" />
+                    <button
+                      mat-button
+                      color="accent"
+                      class="accent-fg mt-4"
+                      id="show-more-label"
+                      (click)="ch.click()"
+                      [attr.aria-label]="
+                        !ch.checked ? 'Show More' : 'Show Less'
+                      "
+                    ></button>
+                    <div class="text" tabindex="0" aria-label="Notes">
+                      <span class="font-weight-600">Note: </span>I am interested
+                      in expanding my knowledge base and gaining new experiences
+                      while improving my clinical skills in an outpatient
+                      neurologic setting. I will be an asset due to my clinical
+                      experience among patients with neurologic disorders and my
+                      interest in movement analysis. I am creative, driven and
+                      value cultural sensitivity as I come from a multicultural
+                      background. I am interested in expanding my knowledge base
+                      and gaining new experiences while improving my clinical
+                      skills in an outpatient neurologic setting. I will be an
+                      asset due to my clinical experience among patients with
+                      neurologic disorders and my interest in movement analysis.
+                      I am creative, driven and value cultural sensitivity as I
+                      come from a multicultural background. I am interested in
+                      expanding my knowledge base and gaining new experiences
+                      while improving my clinical skills in an outpatient
+                      neurologic setting. I will be an asset due to my clinical
+                      experience among patients with neurologic disorders and my
+                      interest in movement analysis. I am creative, driven and
+                      value cultural sensitivity as I come from a multicultural
+                      background. I am interested in expanding my knowledge base
+                      and gaining new experiences while improving my clinical
+                      skills in an outpatient neurologic setting. I will be an
+                      asset due to my clinical experience among patients with
+                      neurologic disorders and my interest in movement analysis.
+                      I am creative, driven and value cultural sensitivity as I
+                      come from a multicultural background. I am interested in
+                      expanding my knowledge base and gaining new experiences
+                      while improving my clinical skills in an outpatient
+                      neurologic setting. I will be an asset due to my clinical
+                      experience among patients with neurologic disorders and my
+                      interest in movement analysis. I am creative, driven and
+                      value cultural sensitivity as I come from a multicultural
+                      background.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <mat-divider></mat-divider>
+              <div
+                fxLayout="row wrap"
+                fxLayoutAlign="start center"
+                class="pt-16 pb-28"
+              >
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                  class="pr-16"
+                >
+                  <a
+                    class="font-weight-600"
+                    tabindex="0"
+                    aria-label="wishlist one"
+                    >Wishlist one</a
+                  >
+                  <div
+                    class="pt-8"
+                    fxLayout="row wrap"
+                    fxLayoutAlign="start center"
+                  >
+                    <span
+                      class="status-badge getstarted mr-16"
+                      tabindex="0"
+                      aria-label="status not started"
+                      >Not started</span
+                    >
+                    <span
+                      class="warn-fg"
+                      tabindex="0"
+                      aria-label="Close on June 29th, 2020, 8:00 PM"
+                      >Close on June 29th, 2020, 8:00 PM</span
+                    >
+                  </div>
+                </div>
+                <div
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                  class="pr-16 pb-16 mt-small-16"
+                >
+                  <div class="text-container">
+                    <input id="ch" #ch type="checkbox" />
+                    <button
+                      mat-button
+                      color="accent"
+                      class="accent-fg mt-4"
+                      id="show-more-label"
+                      (click)="ch.click()"
+                      [attr.aria-label]="
+                        !ch.checked ? 'Show More' : 'Show Less'
+                      "
+                    ></button>
+                    <div class="text" tabindex="0" aria-label="Notes">
+                      <span class="font-weight-600">Note: </span>I am interested
+                      in expanding my knowledge base and gaining new experiences
+                      while improving my clinical skills in an outpatient
+                      neurologic setting. I will be an asset due to my clinical
+                      experience among patients with neurologic disorders and my
+                      interest in movement analysis. I am creative, driven and
+                      value cultural sensitivity as I come from a multicultural
+                      background. I am interested in expanding my knowledge base
+                      and gaining new experiences while improving my clinical
+                      skills in an outpatient neurologic setting. I will be an
+                      asset due to my clinical experience among patients with
+                      neurologic disorders and my interest in movement analysis.
+                      I am creative, driven and value cultural sensitivity as I
+                      come from a multicultural background. I am interested in
+                      expanding my knowledge base and gaining new experiences
+                      while improving my clinical skills in an outpatient
+                      neurologic setting. I will be an asset due to my clinical
+                      experience among patients with neurologic disorders and my
+                      interest in movement analysis. I am creative, driven and
+                      value cultural sensitivity as I come from a multicultural
+                      background. I am interested in expanding my knowledge base
+                      and gaining new experiences while improving my clinical
+                      skills in an outpatient neurologic setting. I will be an
+                      asset due to my clinical experience among patients with
+                      neurologic disorders and my interest in movement analysis.
+                      I am creative, driven and value cultural sensitivity as I
+                      come from a multicultural background. I am interested in
+                      expanding my knowledge base and gaining new experiences
+                      while improving my clinical skills in an outpatient
+                      neurologic setting. I will be an asset due to my clinical
+                      experience among patients with neurologic disorders and my
+                      interest in movement analysis. I am creative, driven and
+                      value cultural sensitivity as I come from a multicultural
+                      background.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+
+          <div class="p-16">
+            <span class="font-20 font-weight-600">Course details</span>
+          </div>
+
+          <mat-card id="course-details-container">
+            <div fxLayout="column">
+              <div>
+                <span
+                  >It is a long established fact that a reader will be
+                  distracted by the readable content of a page when looking at
+                  its layout. The point of using Lorem Ipsum is that it has a
+                  more-or-less normal distribution of letters, as opposed to
+                  using 'Content here, content here', making it look like
+                  readable English.</span
+                >
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

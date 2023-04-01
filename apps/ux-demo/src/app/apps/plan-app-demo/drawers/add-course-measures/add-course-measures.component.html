@@ -1,0 +1,115 @@
+<div class="drawer-p">
+  <mat-card fxLayout="column" fxLayoutAlign="center" class="pb-0 mb-16">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between">
+      <div fxLayout="row" class="w-75-p">
+        <mat-form-field appearance="fill" fxFlex="100">
+          <input matInput />
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start">
+        <div class="mt-8">
+          <button mat-stroked-button color="accent">Add</button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card fxLayout="column" fxLayoutAlign="center" class="pb-0 mb-16">
+    <form [formGroup]="options">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between" class="mb-16">
+        <div fxLayout="row" class="w-75-p">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Term</mat-label>
+            <input matInput [formControl]="termControl" />
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <div class="mt-4">
+            <button mat-icon-button attr.aria-label="Delete item">
+              <i
+                aria-hidden="true"
+                class="fa-light fa-trash accent-fg s-18"
+              ></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutAlign="space-between" class="mb-16">
+        <div fxLayout="row" class="w-75-p">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Term</mat-label>
+            <input matInput [formControl]="termControl" />
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <div class="mt-4">
+            <button mat-icon-button attr.aria-label="Delete item">
+              <i
+                aria-hidden="true"
+                class="fa-light fa-trash accent-fg s-18"
+              ></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutAlign="space-between" class="mb-16">
+        <div fxLayout="row" class="w-75-p">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Term</mat-label>
+            <input matInput [formControl]="termControl" />
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <div class="mt-4">
+            <button mat-icon-button attr.aria-label="Delete item">
+              <i
+                aria-hidden="true"
+                class="fa-light fa-trash accent-fg s-18"
+              ></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutAlign="space-between" class="mb-16">
+        <div fxLayout="row" class="w-75-p">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Term</mat-label>
+            <input matInput [formControl]="termControl" />
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <div class="mt-4">
+            <button mat-icon-button attr.aria-label="Delete item">
+              <i
+                aria-hidden="true"
+                class="fa-light fa-trash accent-fg s-18"
+              ></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutAlign="space-between">
+        <div fxLayout="row" class="w-75-p">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Term</mat-label>
+            <input matInput [formControl]="termControl" />
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <div class="mt-4">
+            <button mat-icon-button attr.aria-label="Delete item">
+              <i
+                aria-hidden="true"
+                class="fa-light fa-trash accent-fg s-18"
+              ></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+</div>

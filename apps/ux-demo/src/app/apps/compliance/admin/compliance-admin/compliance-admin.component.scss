@@ -1,0 +1,19 @@
+@mixin compliance-admin-theme($theme) {
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $action: map-get($theme, action);
+    $is-dark: map-get($theme, is-dark);
+  
+ 
+    #compliance-admin {
+         .content-card{
+      @if ($is-dark) {
+        background-color: map-get($background, background);
+      } @else {
+        background-color: $gray-header;
+      }
+    }
+  }
+}

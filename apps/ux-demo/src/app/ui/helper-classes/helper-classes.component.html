@@ -1,0 +1,115 @@
+<div
+  id="helper-classes"
+  class="page-layout simple tabbed full-width-page"
+  fxLayout="column"
+>
+  <!-- CONTENT -->
+  <div class="content">
+    <mat-tab-group dynamicHeight="true">
+      <mat-tab label="Padding & Margin Helpers">
+        <helper-classes-padding-margin></helper-classes-padding-margin>
+      </mat-tab>
+
+      <mat-tab label="Width & Height Helpers">
+        <helper-classes-width-height></helper-classes-width-height>
+      </mat-tab>
+
+      <mat-tab label="Flex layout demo">
+        <div fxLayout="column" class="mt-32">
+          <span class="mb-16 font-weight-600 font-20">Row example</span>
+          <span class="mb-16 font-weight-600 font-18"
+            >fxLayout="row" fxFlex="100"</span
+          >
+          <div fxLayout="row" fxFlex="100">
+            <div fxFlex="50" class="pr-16">
+              <div
+                class="h-100 orange-bg"
+                fxlayout="row"
+                fxLayoutAlign="center center"
+              >
+                <span class="font-weight-600 font-18">fxFlex="50"</span>
+              </div>
+            </div>
+            <div fxFlex="50">
+              <div
+                class="h-100 orange-bg"
+                fxlayout="row"
+                fxLayoutAlign="center center"
+              >
+                <span class="font-weight-600 font-18">fxFlex="50"</span>
+              </div>
+            </div>
+          </div>
+
+          <h1 class="mb-16 mt-32">Column example</h1>
+          <h2 class="mb-16">fxLayout="column"</h2>
+          <div fxLayout="column">
+            <div class="mb-16">
+              <div class="h-100 blue-bg"></div>
+            </div>
+            <div>
+              <div class="h-100 blue-bg"></div>
+            </div>
+          </div>
+
+          <h1 class="mb-16 mt-32">Flex layout align example</h1>
+          <h2 class="mb-16">fxLayout="row" fxLayoutAlign="start start"</h2>
+          <h2 class="mb-16">fxLayout="row" fxLayoutAlign="center center"</h2>
+          <div fxLayout="row" fxFlex="100">
+            <div fxFlex="50" class="pr-16">
+              <div
+                class="h-100 green-bg"
+                fxLayout="row"
+                fxLayoutAlign="start start"
+              >
+                <div class="p-8">
+                  Lorem ipsum, or lipsum as it is sometimes known, is dummy text
+                  used in laying out print, graphic or web designs
+                </div>
+              </div>
+            </div>
+            <div fxFlex="50">
+              <div
+                class="h-100 green-bg"
+                fxLayout="row"
+                fxLayoutAlign="center center"
+              >
+                <div class="p-8">
+                  Lorem ipsum, or lipsum as it is sometimes known, is dummy text
+                  used in laying out print, graphic or web designs
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h1 class="mb-16 mt-32">Flex space-between example</h1>
+          <h2 class="mb-16">
+            fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center"
+          </h2>
+          <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
+            <div class="w-100">
+              <div class="h-100 green-bg"></div>
+            </div>
+            <div class="w-100">
+              <div class="h-100 green-bg"></div>
+            </div>
+          </div>
+
+          <h1 class="mb-16 mt-32">Row wrap example</h1>
+          <h2 class="mb-16">
+            fxLayout="row wrap" fxFlex="100" fxLayoutAlign="start center"
+          </h2>
+          <div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="start center">
+            <div fxFlex="50" fxFlex.lt-md="100">
+              <div class="h-100 green-bg"></div>
+            </div>
+            <div fxFlex="50" fxFlex.lt-md="100">
+              <div class="h-100 orange-bg"></div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <!-- / CONTENT -->
+</div>

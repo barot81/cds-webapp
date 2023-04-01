@@ -1,0 +1,554 @@
+<div id="slot-page" class="page-layout simple left-sidebar inner-sidebar">
+  <!--header-->
+
+  <div fxLayout="column">
+    <div
+      fxLayout="row wrap"
+      fxLayoutAlign="space-between start"
+      class="mb-16 pt-xs-16"
+      fxFlex="100"
+    >
+      <div fxLayout="row">
+        <button
+          mat-icon-button
+          role="img"
+          class="action-icon"
+          routerLink=""
+          aria-hidden="true"
+        >
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <div fxLayout="column" fxFlex="100" class="ml-8">
+          <h2 class="font-weight-600 pr-16">Massachussets General Hospital</h2>
+          <span class="font-14"
+            >710 S Business 61- Suite 100, Bowling Green, Missouri-63334</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mb-16 pl-md-48"
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      fxFlex="100"
+    >
+      <nav mat-tab-nav-bar fxFlex="100">
+        <a
+          mat-tab-link
+          *ngFor="let link of navigations"
+          [routerLink]="link.url"
+          routerLinkActive
+          #rla="routerLinkActive"
+          [active]="rla.isActive"
+        >
+          <span>{{ link.title }}</span>
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="content page-content pl-md-48">
+    <!--sidebar-->
+    <fuse-sidebar
+      class="sidebar slot-sidebar"
+      name="slot-sidebar"
+      position="left"
+      lockedOpen="gt-md"
+      fxFlex="100"
+      fxFlex.gt-md="20"
+      fxFlex.md="30"
+      fxFlex.sm="40"
+    >
+      <!-- SEARCH -->
+      <div class="search-wrapper m-16">
+        <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="s-16 secondary-text">search</mat-icon>
+          <input matInput placeholder="Search" fxFlex />
+        </div>
+      </div>
+      <!--  SIDEBAR CONTENT -->
+      <div class="content" fusePerfectScrollbar>
+        <mat-list>
+          <button mat-button class="no-space m-0 p-0">
+            <mat-list-item class="active-list-item py-12">
+              <span class="word-break-all space-pre-wrap text-left"
+                >Strong Anna</span
+              >
+            </mat-list-item>
+          </button>
+          <mat-divider class="w-90-p margin-auto"></mat-divider>
+
+          <button mat-button class="no-space m-0 p-0">
+            <mat-list-item class="py-12">
+              <span class="word-break-all space-pre-wrap text-left"
+                >Strong Anna</span
+              >
+            </mat-list-item>
+          </button>
+          <mat-divider class="w-90-p margin-auto"></mat-divider>
+
+          <button mat-button class="no-space m-0 p-0">
+            <mat-list-item class="py-12">
+              <span class="word-break-all space-pre-wrap text-left"
+                >Strong Anna</span
+              >
+            </mat-list-item>
+          </button>
+          <mat-divider class="w-90-p margin-auto"></mat-divider>
+          <button mat-button class="no-space m-0 p-0">
+            <mat-list-item class="py-12">
+              <span class="word-break-all space-pre-wrap text-left"
+                >Strong Anna</span
+              >
+            </mat-list-item>
+          </button>
+          <mat-divider class="w-90-p margin-auto"></mat-divider>
+          <button mat-button class="no-space m-0 p-0">
+            <mat-list-item class="py-12">
+              <span class="word-break-all space-pre-wrap text-left"
+                >Strong Anna</span
+              >
+            </mat-list-item>
+          </button>
+          <mat-divider class="w-90-p margin-auto"></mat-divider>
+          <button mat-button class="no-space m-0 p-0">
+            <mat-list-item class="py-12">
+              <span class="word-break-all space-pre-wrap text-left"
+                >Strong Anna</span
+              >
+            </mat-list-item>
+          </button>
+          <mat-divider class="w-90-p margin-auto"></mat-divider>
+          <button mat-button class="no-space m-0 p-0">
+            <mat-list-item class="py-12">
+              <span class="word-break-all space-pre-wrap text-left"
+                >Strong Anna</span
+              >
+            </mat-list-item>
+          </button>
+          <mat-divider class="w-90-p margin-auto"></mat-divider>
+
+          <button mat-button class="no-space m-0 p-0">
+            <mat-list-item class="py-12">
+              <span class="word-break-all space-pre-wrap text-left"
+                >Strong Anna</span
+              >
+            </mat-list-item>
+          </button>
+          <mat-divider class="w-90-p margin-auto"></mat-divider>
+          <button mat-button class="no-space m-0 p-0">
+            <mat-list-item class="py-12">
+              <span class="word-break-all space-pre-wrap text-left"
+                >Strong Anna</span
+              >
+            </mat-list-item>
+          </button>
+          <mat-divider class="w-90-p margin-auto"></mat-divider>
+          <button mat-button class="no-space m-0 p-0">
+            <mat-list-item class="py-12">
+              <span class="word-break-all space-pre-wrap text-left"
+                >Strong Anna</span
+              >
+            </mat-list-item>
+          </button>
+          <mat-divider class="w-90-p margin-auto"></mat-divider>
+          <button mat-button class="no-space m-0 p-0">
+            <mat-list-item class="py-12">
+              <span class="word-break-all space-pre-wrap text-left"
+                >Strong Anna</span
+              >
+            </mat-list-item>
+          </button>
+        </mat-list>
+      </div>
+    </fuse-sidebar>
+
+    <!--page content-->
+    <div
+      class="center ml-lg-16 slot-content"
+      fxLayout="column"
+      fxFlex="100"
+      fxFlex.gt-md="80"
+      fusePerfectScrollbar
+    >
+      <div fxLayout="row" fxLayoutAlign="space-between center" fxHide.gt-md>
+        <div class="mb-8 pl-xs-8" fxLayout="row" fxLayoutAlign="start center">
+          <button
+            mat-icon-button
+            class="sidebar-toggle mr-8"
+            fxHide.gt-md
+            (click)="toggleSidebar('slot-sidebar')"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+        <div>
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="card20Menu"
+            aria-label="more"
+            fxHide.gt-sm
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+
+          <mat-menu #card20Menu="matMenu">
+            <button fxLayout="row" fxLayoutAlign="start center" mat-menu-item>
+              <span>About</span>
+            </button>
+            <button fxLayout="row" fxLayoutAlign="start center" mat-menu-item>
+              <span>Clinical Personal</span>
+            </button>
+            <button fxLayout="row" fxLayoutAlign="start center" mat-menu-item>
+              <span>Communications</span>
+            </button>
+            <button fxLayout="row" fxLayoutAlign="start center" mat-menu-item>
+              <span>Placements</span>
+            </button>
+            <button fxLayout="row" fxLayoutAlign="start center" mat-menu-item>
+              <span>Notifications</span>
+            </button>
+            <button fxLayout="row" fxLayoutAlign="start center" mat-menu-item>
+              <span>Assesment</span>
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+
+      <div class="content" fxLayout="row" fxFlex="100">
+        <div fxLayout="column" fxFlex="20" class="mr-4" fxHide.sm fxHide.xs>
+          <mat-card class="box-shadow-none px-0 py-16">
+            <mat-list role="list">
+              <button mat-button class="no-space m-0 p-0">
+                <mat-list-item
+                  role="listitem"
+                  class="word-break-all space-pre-wrap p-16 text-left"
+                >
+                  <span>About</span>
+                </mat-list-item>
+              </button>
+
+              <button mat-button class="no-space m-0 p-0">
+                <mat-list-item
+                  role="listitem"
+                  class="word-break-all p-16 space-pre-wrap text-left"
+                >
+                  <span>Clinical Personal</span>
+                </mat-list-item>
+              </button>
+
+              <button mat-button class="no-space m-0 p-0">
+                <mat-list-item
+                  role="listitem"
+                  class="word-break-all p-16 space-pre-wrap text-left"
+                >
+                  <span>Communications</span>
+                </mat-list-item>
+              </button>
+
+              <button mat-button class="no-space m-0 p-0">
+                <mat-list-item
+                  role="listitem"
+                  class="word-break-all p-16 space-pre-wrap text-left"
+                >
+                  <span>Placements</span>
+                </mat-list-item>
+              </button>
+
+              <button mat-button class="no-space m-0 p-0">
+                <mat-list-item
+                  role="listitem"
+                  class="word-break-all p-16 space-pre-wrap text-left"
+                >
+                  <span>Notifications</span>
+                </mat-list-item>
+              </button>
+
+              <button mat-button class="no-space m-0 p-0">
+                <mat-list-item
+                  role="listitem"
+                  class="word-break-all p-16 space-pre-wrap text-left"
+                >
+                  <span>Assesment</span>
+                </mat-list-item>
+              </button>
+
+              <button mat-button class="no-space m-0 p-0">
+                <mat-list-item
+                  role="listitem"
+                  class="secondary-active-list-item p-16 space-pre-wrap word-break-all text-left"
+                >
+                  <span>Slot</span>
+                </mat-list-item>
+              </button>
+            </mat-list>
+          </mat-card>
+        </div>
+
+        <div fxLayout="column" fxFlex="100" fxFlex.gt-md="80">
+          <div fxLayout="column">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxFlex="100"
+              class="mb-16 mx-16 border-bottom scrollable-filters"
+            >
+              <span class="pt-12 pr-8 font-weight-600 space-no-wrap"
+                >Filter by :
+              </span>
+              <div class="header-tab-control mr-16">
+                <mat-form-field>
+                  <mat-select
+                    placeholder="Cohort"
+                    [formControl]="cohortControl"
+                    multiple
+                  >
+                    <mat-select-trigger>
+                      {{ cohortControl.value ? cohortControl.value[0] : '' }}
+                      <span
+                        *ngIf="cohortControl.value?.length > 1"
+                        class="example-additional-selection"
+                      >
+                        (+{{ cohortControl.value.length - 1 }}
+                        {{
+                          cohortControl.value?.length === 2
+                            ? 'other'
+                            : 'others'
+                        }})
+                      </span>
+                    </mat-select-trigger>
+                    <mat-option
+                      *ngFor="let cohort of cohorts"
+                      [value]="cohort.value"
+                      >{{ cohort.viewValue }}</mat-option
+                    >
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="header-tab-control">
+                <mat-form-field>
+                  <mat-select
+                    placeholder="Setting"
+                    [formControl]="cohortControl"
+                    multiple
+                  >
+                    <mat-select-trigger>
+                      {{ cohortControl.value ? cohortControl.value[0] : '' }}
+                      <span
+                        *ngIf="cohortControl.value?.length > 1"
+                        class="example-additional-selection"
+                      >
+                        (+{{ cohortControl.value.length - 1 }}
+                        {{
+                          cohortControl.value?.length === 2
+                            ? 'other'
+                            : 'others'
+                        }})
+                      </span>
+                    </mat-select-trigger>
+                    <mat-option
+                      *ngFor="let cohort of cohorts"
+                      [value]="cohort.value"
+                      >{{ cohort.viewValue }}</mat-option
+                    >
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div
+              fxLayout="row wrap"
+              fxLayoutAlign="space-between center"
+              class="px-16"
+            >
+              <div fxLayoutAlign="start center">
+                <a
+                  class="mb-16"
+                  aria-label="Edit"
+                  exxatDrawerAction
+                  [size]="'drawer-sm'"
+                  role="img"
+                  [primaryAction]="'Save'"
+                  aria-hidden="true"
+                >
+                  <span>Add slot</span>
+                </a>
+              </div>
+              <div fxLayout="row" class="mb-16" fxLayoutAlign="end center">
+                <!-- <div class="big-color-circle">SP</div> -->
+                <div class="mr-16" fxLayout="row">
+                  <span class="small-circle-background circle-green">23</span>
+                  <span>slots consumed</span>
+                </div>
+                <div fxLayout="row">
+                  <span class="small-circle-background circle-red">23</span>
+                  <span>slots available</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div fxLayout="column" fxFlex="100">
+            <div class="mb-16">
+              <mat-accordion class="right-side-arrow w-100-p">
+                <mat-expansion-panel class="accordian-left-bar">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title
+                      fxLayout="row wrap"
+                      fxFlex="100"
+                      fxLayoutAlign="start start"
+                      class="pl-8 py-8"
+                    >
+                      <div
+                        fxLayout="row"
+                        fxFlex.gt-sm="35"
+                        fxFlex="100"
+                        fxLayoutAlign="start start"
+                      >
+                        <div fxLayout="column" class="py-8 pr-16">
+                          <h3>Massachussets General Hospital- New York</h3>
+                          <a>View documents</a>
+                          <span>Precepter : Ann Cooper</span>
+                        </div>
+                      </div>
+                      <div
+                        fxLayout="row wrap"
+                        fxLayoutAlign="start start"
+                        fxFlex="100"
+                        fxFlex.gt-sm="65"
+                      >
+                        <div
+                          fxLayout="column"
+                          class="py-8 pr-8 word-break-all"
+                          fxFlex="100"
+                          fxFlex.gt-sm="40"
+                        >
+                          <div class="message-box warning py-4">
+                            <span>Internal medicine</span>
+                          </div>
+                          <a class="mt-4" fxHide.lt-md
+                            ><em>Set a placement limit</em></a
+                          >
+                        </div>
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="start start"
+                          fxFlex="100"
+                          fxFlex.gt-sm="60"
+                        >
+                          <div
+                            fxLayout="column"
+                            class="py-8 px-8 word-break-all"
+                            fxFlex="50"
+                          >
+                            <span class="font-weight-600">Slots available</span>
+                            <span>3</span>
+                          </div>
+
+                          <div
+                            fxLayout="column"
+                            class="py-8 pl-8 word-break-all"
+                            fxFlex="50"
+                          >
+                            <span class="font-weight-600">Slots filled</span>
+                            <span>3</span>
+                          </div>
+                        </div>
+                      </div>
+                      <a class="py-8" fxHide.gt-sm
+                        ><em>Set a placement limit</em></a
+                      >
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="overflow-auto ml-40">
+                    <table
+                      mat-table
+                      [dataSource]="dataSource"
+                      class="w-100-p exxat-table slot-demo-table table-border border-left-right mt-16"
+                    >
+                      <!-- schedule Column -->
+                      <ng-container matColumnDef="schedule">
+                        <th class="px-16" mat-header-cell *matHeaderCellDef>
+                          Schedule
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="px-16">
+                          <div>
+                            <i
+                              aria-hidden="true"
+                              class="fa-light fa-calendar-week s-16 mr-4"
+                            ></i>
+                            <span class="font-weight-600"
+                              >June 1st, 2020 - June 15, 2020
+                            </span>
+                          </div>
+                          <div>3 weeks</div>
+                        </td>
+                      </ng-container>
+
+                      <!-- slotsOffered Column -->
+                      <ng-container matColumnDef="slotsOffered">
+                        <th mat-header-cell *matHeaderCellDef class="px-16">
+                          Slots Offered
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="px-16">
+                          12
+                        </td>
+                      </ng-container>
+
+                      <!-- slotsAvailable Column -->
+                      <ng-container matColumnDef="slotsAvailable">
+                        <th mat-header-cell *matHeaderCellDef class="px-16">
+                          Slots Available
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="px-16">
+                          6
+                        </td>
+                      </ng-container>
+
+                      <!-- slotsFilled Column -->
+                      <ng-container matColumnDef="slotsFilled">
+                        <th mat-header-cell *matHeaderCellDef class="px-16">
+                          Slots Filled
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="px-16">
+                          23
+                        </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef class="px-16">
+                          Actions
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="px-16">
+                          <button
+                            mat-icon-button
+                            role="img"
+                            class="action-icon"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="fa-light fa-pen icon-fill s-18"
+                            ></i>
+                          </button>
+                        </td>
+                      </ng-container>
+
+                      <tr
+                        mat-header-row
+                        *matHeaderRowDef="displayedColumns; sticky: true"
+                      ></tr>
+                      <tr
+                        mat-row
+                        *matRowDef="let row; columns: displayedColumns"
+                      ></tr>
+                    </table>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

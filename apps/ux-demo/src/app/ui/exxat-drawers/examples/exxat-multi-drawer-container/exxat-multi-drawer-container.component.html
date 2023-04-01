@@ -1,0 +1,87 @@
+<div id="exxat-drawers-sizes" class="p-12">
+  <div class="mat-title">Multi Drawer Example</div>
+
+  <!-- @ Multi Drawer-->
+  <div fxLayout="column" fxLayout.gt-md="row" class="mb-16">
+    <div
+      class="preview mb-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div class="mat-caption secondary-text">Multi Drawer</div>
+      <mat-card>
+        <button
+          mat-icon-button
+          class="action-icon"
+          aria-label="Edit"
+          exxatManifoldPanelAction
+          [closeOnNavigation]="true"
+          [componentSelector]="exxatDrawerFormService.get('exxat-multi-drawer')"
+          [size]="'drawer-md'"
+          [primaryAction]="'Save'"
+          [caption]="'Primary Drawer'"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+      </mat-card>
+    </div>
+
+    <div class="mr-16" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <mat-tab-group dynamicHeight="true">
+        <mat-tab label="Primary Drawer">
+          <fuse-highlight
+            lang="html"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+            fxFlex="100"
+          >
+            <textarea #source hidden="hidden">
+              <button
+              mat-icon-button
+              class="action-icon"
+              aria-label="Edit"
+              exxatManifoldPanelAction
+              [closeOnNavigation]="true"
+              [componentSelector]="exxatDrawerFormService.get('exxat-multi-drawer')"
+              [size]="'drawer-md'"
+              [primaryAction]="'Save'"
+              [caption]="'Primary Drawer'"
+              >
+              <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+              </button>
+          </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+        <mat-tab label="Secondary Drawer">
+          <fuse-highlight
+            lang="html"
+            class="source-code"
+            fxLayout="column"
+            fxLayoutAlign="center"
+            fxFlex="100"
+          >
+            <textarea #source hidden="hidden">
+              <button
+              mat-icon-button
+              class="action-icon"
+              aria-label="Edit"
+              exxatManifoldPanelAction
+              [closeOnNavigation]="true"
+              [size]="'drawer-md'"
+              [componentSelector]="_drawerService.get('ryzen-drawer-with-cards')"
+              [caption]="'Secondary Drawer'"
+              [primaryAction]="'Update'"
+              >
+              <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+              </button>
+        </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

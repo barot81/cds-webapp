@@ -1,0 +1,20 @@
+// @import 'init';
+@import 'init';
+
+.student-grid {
+  .center {
+    padding: 0 !important;
+
+    .example-headers-align {
+      @include no-box-shadow;
+    }
+  }
+  td.student-name a {
+    display: flex;
+    span {
+      @include media-breakpoint('xs') {
+        font-size: px-to-rem(16);
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+<div
+  id="exxat_graphs_standard_containter"
+  class="page-layout full-width w-100-p p-12"
+>
+  <div class="center">
+    <div class="content width-lg margin-auto">
+      <div class="gray-header">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="mr-16">
+              <button
+                mat-icon-button
+                aria-label="Click to go back"
+                class="action-icon mx-8"
+                routerLink="/admin/ux/ui/exxat-component-library"
+              >
+                <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+              </button>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-16">
+        <span class="font-20 font-weight-600">Exxat Graphs Standard</span>
+      </div>
+      <div fxLayout="row wrap" fxLayoutAlign="start center">
+        <mat-card
+          class="p-16 my-8 mx-8 item_list"
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          *ngFor="let item of component_item_list"
+          fxFlex="100%"
+          fxFlex.gt-sm="30%"
+        >
+          <a routerLink="{{ item.page }}" class="card-link-btn">
+            <div fxLayout="row">
+              <i aria-hidden="true" class="{{ item.icon }} s-32 mr-12"></i>
+              <div fxlayout="column">
+                <div>
+                  <span class="font-18">{{ item.title }}</span>
+                </div>
+                <div>
+                  <span class="font-14 secondary-text">{{
+                    item.description
+                  }}</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

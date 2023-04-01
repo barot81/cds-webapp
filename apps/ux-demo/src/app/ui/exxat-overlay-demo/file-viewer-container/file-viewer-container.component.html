@@ -1,0 +1,28 @@
+<div id="fileViewer_container" fxLayout="column">
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-16">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <button
+        aria-label="Click to exit"
+        mat-icon-button
+        class="mr-4 back_button fuse-white-fg"
+        (click)="cancel()"
+      >
+        <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+      </button>
+      <h2
+        tabindex="0"
+        aria-label="File Title"
+        class="document_title fuse-white-fg"
+      >
+        File Title
+      </h2>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="file_viewer_container">
+      <exxat-file-viewer
+        [documentConfiguration]="documentConfiguration"
+      ></exxat-file-viewer>
+    </mat-card>
+  </div>
+</div>

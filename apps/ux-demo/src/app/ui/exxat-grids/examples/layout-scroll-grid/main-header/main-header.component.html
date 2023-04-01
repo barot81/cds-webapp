@@ -1,0 +1,15 @@
+<div fxLayout="column">
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <div fxLayoutAlign="start center" fxFLex="10">
+      <button
+        mat-icon-button
+        class="sidebar-toggle mr-8"
+        fxHide.gt-md
+        (click)="toggleSidebar('simple-left-sidebar')"
+      >
+        <i aria-hidden="true" class="fa-light fa-bars"></i>
+      </button>
+    </div>
+  </div>
+  <exxat-tab-navbar></exxat-tab-navbar>
+</div>

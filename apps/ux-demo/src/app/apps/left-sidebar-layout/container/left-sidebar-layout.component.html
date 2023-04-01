@@ -1,0 +1,312 @@
+<div class="page-layout simple left-sidebar inner-scroll page-without-header">
+  <!-- SIDEBAR -->
+  <fuse-sidebar
+    class="sidebar sidebar-width sidebar-expand-collapse no-box-shadow"
+    name="carded-left-sidebar-tabbed-2"
+    position="left"
+    lockedOpen="gt-md"
+    [folded]="false"
+    [foldedWidth]="60"
+    [foldedAutoTriggerOnHover]="true"
+    tabindex="0"
+    aria-label="sidebar with expand collapse"
+  >
+    <div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="pr-4">
+        <div class="search-wrapper hide-content-folded" fxFlex="80">
+          <div
+            class="search sidenav-search"
+            fxFlex
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <i
+              aria-hidden="true"
+              class="fa-light fa-magnifying-glass s-18"
+              fxFlex="10"
+            ></i>
+            <input
+              type="text"
+              class="font-14"
+              placeholder="Search"
+              fxFlex="90"
+            />
+          </div>
+        </div>
+        <button
+          mat-icon-button
+          class="toggle-sidebar-folded"
+          fxLayoutAlign="center center"
+          class="ml-8"
+          (click)="toggleSidebarFolded()"
+          fxHide.lt-lg
+          aria-label="toggle arrow for sidebar"
+        >
+          <i
+            aria-hidden="true"
+            class="fa-light fa-chevron-left s-16 left-arrow sidebar-blue-icon mr-4"
+          ></i>
+          <i
+            aria-hidden="true"
+            class="fa-light fa-chevron-right s-16 right-arrow display-none sidebar-blue-icon pl-4"
+          ></i>
+          <i
+            aria-hidden="true"
+            class="fa-light fa-thumbtack s-16 pin-sticky sidebar-blue-icon mr-4"
+          ></i>
+        </button>
+      </div>
+      <mat-divider class="hide-divider"></mat-divider>
+    </div>
+
+    <div
+      class="content position-relative"
+      fusePerfectScrollbar
+      tabindex="0"
+      aria-label="sidebar content"
+    >
+      <mat-list class="p-0" fxLayout="column">
+        <!-- contains submenu -->
+        <div>
+          <button
+            mat-button
+            class="p-0 w-100-p parent"
+            [ngClass]="{ 'expanded-text': showSubmenu }"
+            (click)="showSubmenu = !showSubmenu"
+          >
+            <mat-list-item class="py-12 w-100-p" fxLayoutAlign="start center">
+              <i aria-hidden="true" class="fa-light fa-books s-18"></i>
+              <span
+                class="text-left pl-16 w-100-p hide-content-folded"
+                *ngIf="isExpanded || isShowing"
+                >Course information</span
+              >
+              <i
+                aria-hidden="true"
+                class="fa-light fa-chevron-down s-16 arrow-expand-collapse hide-content-folded"
+                [ngClass]="{ rotated: showSubmenu }"
+                *ngIf="isExpanded || isShowing"
+              ></i>
+            </mat-list-item>
+          </button>
+          <div
+            class="submenu"
+            tabindex="0"
+            aria-label="this is a submenu"
+            [ngClass]="{ expanded: showSubmenu }"
+            *ngIf="isShowing || isExpanded"
+          >
+            <div fxLayout="column" class="w-100-p">
+              <!-- contains sub sub menu -->
+              <div>
+                <button
+                  mat-button
+                  class="p-0 w-100-p parent"
+                  [ngClass]="{ 'submenu-expanded-text': showSubSubMenu }"
+                  (click)="showSubSubMenu = !showSubSubMenu"
+                >
+                  <mat-list-item
+                    class="py-12 w-100-p"
+                    fxLayoutAlign="start center"
+                  >
+                    <span
+                      class="text-left pl-16 w-100-p"
+                      *ngIf="isExpanded || isShowing"
+                      >Set Up</span
+                    >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-chevron-down s-16 arrow-expand-collapse hide-content-folded"
+                      [ngClass]="{ rotated: showSubSubMenu }"
+                      *ngIf="isExpanded || isShowing"
+                    ></i>
+                  </mat-list-item>
+                </button>
+                <div
+                  class="submenu sub_sub_menu"
+                  tabindex="0"
+                  aria-label="this is a submenu"
+                  [ngClass]="{ expanded: showSubSubMenu }"
+                  *ngIf="isShowing || isExpanded"
+                >
+                  <div fxLayout="column" class="w-100-p">
+                    <button
+                      mat-button
+                      class="p-0 w-100-p active-item-class"
+                      tooltip="Summary Summary Summary Summary Summary"
+                      [options]="tooltipOptions"
+                    >
+                      <mat-list-item
+                        class="py-12 w-100-p"
+                        fxLayoutAlign="start center"
+                      >
+                        <span class="text-left overflow-ellipses w-100-p"
+                          >Summary Summary Summary Summary Summary</span
+                        >
+                      </mat-list-item>
+                    </button>
+                    <button mat-button class="p-0 w-100-p">
+                      <mat-list-item
+                        class="py-12 w-100-p"
+                        fxLayoutAlign="start center"
+                      >
+                        <span>Distribution</span>
+                      </mat-list-item>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <button mat-button class="p-0 w-100-p">
+                <mat-list-item
+                  class="py-12 w-100-p"
+                  fxLayoutAlign="start center"
+                >
+                  <span class="text-left pl-16 w-100-p hide-content-folded"
+                    >Evaluation</span
+                  >
+                </mat-list-item>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <button mat-button class="p-0 w-100-p">
+          <mat-list-item class="py-12 w-100-p" fxLayoutAlign="start center">
+            <i aria-hidden="true" class="fa-light fa-book-reader s-18"></i>
+            <span class="text-left pl-16 w-100-p hide-content-folded"
+              >Student</span
+            >
+          </mat-list-item>
+        </button>
+
+        <button mat-button class="p-0 w-100-p active-item-class">
+          <mat-list-item
+            class="py-12 pl-12 w-100-p"
+            fxLayoutAlign="start center"
+          >
+            <i aria-hidden="true" class="fa-light fa-file-alt s-18"></i>
+            <span class="text-left pl-16 w-100-p hide-content-folded"
+              >Compliance</span
+            >
+          </mat-list-item>
+        </button>
+
+        <button mat-button class="p-0 w-100-p">
+          <mat-list-item class="py-12 w-100-p" fxLayoutAlign="start center">
+            <i aria-hidden="true" class="fa-light fa-hospital-user s-18"></i>
+            <span class="text-left pl-16 w-100-p hide-content-folded"
+              >Placement</span
+            >
+          </mat-list-item>
+        </button>
+
+        <button mat-button class="p-0 w-100-p">
+          <mat-list-item class="py-12 w-100-p" fxLayoutAlign="start center">
+            <i
+              aria-hidden="true"
+              class="fa-light fa-chalkboard-teacher s-18"
+            ></i>
+            <span class="text-left pl-16 w-100-p hide-content-folded"
+              >Learning activity</span
+            >
+          </mat-list-item>
+        </button>
+
+        <button mat-button class="p-0 w-100-p">
+          <mat-list-item class="py-12 w-100-p" fxLayoutAlign="start center">
+            <i aria-hidden="true" class="fa-light fa-hospital-user s-18"></i>
+            <span class="text-left pl-16 w-100-p hide-content-folded"
+              >Placement</span
+            >
+          </mat-list-item>
+        </button>
+
+        <button mat-button class="p-0 w-100-p">
+          <mat-list-item class="py-12 w-100-p" fxLayoutAlign="start center">
+            <i
+              aria-hidden="true"
+              class="fa-light fa-chalkboard-teacher s-18"
+            ></i>
+            <span class="text-left pl-16 w-100-p hide-content-folded"
+              >Learning activity</span
+            >
+          </mat-list-item>
+        </button>
+
+        <button mat-button class="p-0 w-100-p">
+          <mat-list-item
+            class="py-12 pl-12 w-100-p"
+            fxLayoutAlign="start center"
+          >
+            <i aria-hidden="true" class="fa-light fa-hospital-user s-18"></i>
+            <span class="text-left pl-16 w-100-p hide-content-folded"
+              >Placement</span
+            >
+          </mat-list-item>
+        </button>
+
+        <button mat-button class="p-0 w-100-p">
+          <mat-list-item
+            class="py-12 pl-12 w-100-p"
+            fxLayoutAlign="start center"
+          >
+            <i
+              aria-hidden="true"
+              class="fa-light fa-chalkboard-teacher s-18"
+            ></i>
+            <span class="text-left pl-16 w-100-p hide-content-folded"
+              >Learning activity</span
+            >
+          </mat-list-item>
+        </button>
+
+        <button mat-button class="p-0 w-100-p">
+          <mat-list-item class="py-12 w-100-p" fxLayoutAlign="start center">
+            <i aria-hidden="true" class="fa-light fa-hospital-user s-18"></i>
+            <span class="text-left pl-16 w-100-p hide-content-folded"
+              >Placement</span
+            >
+          </mat-list-item>
+        </button>
+
+        <button mat-button class="p-0 w-100-p">
+          <mat-list-item class="py-12 w-100-p" fxLayoutAlign="start center">
+            <i
+              aria-hidden="true"
+              class="fa-light fa-chalkboard-teacher s-18"
+            ></i>
+            <span class="text-left pl-16 w-100-p hide-content-folded"
+              >Learning activity</span
+            >
+          </mat-list-item>
+        </button>
+      </mat-list>
+    </div>
+  </fuse-sidebar>
+
+  <!-- CENTER -->
+  <div class="center main-right-side-content">
+    <!-- HEADER -->
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <button
+        mat-icon-button
+        class="sidebar-toggle mr-8 ml-8"
+        fxHide.gt-md
+        (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+      >
+        <i aria-hidden="true" class="fa-light fa-bars"></i>
+      </button>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content ml-lg-16 ml-8">
+      <span class="p-16 primary-fg font-18">
+        Put your right side content here</span
+      >
+      <!-- / CONTENT -->
+    </div>
+    <!-- / CENTER -->
+  </div>
+</div>

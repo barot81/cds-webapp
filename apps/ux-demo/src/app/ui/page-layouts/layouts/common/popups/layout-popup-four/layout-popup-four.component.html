@@ -1,0 +1,61 @@
+<mat-dialog-content>
+  <fuse-highlight
+    lang="html"
+    class=""
+    fxLayout="column"
+    fxLayoutAlign="start start"
+    fxFlex="100"
+  >
+    <textarea #source>
+
+                  <div
+                  class="page-layout simple left-sidebar inner-sidebar inner-scroll page-with-header">
+                  <!-- HEADER -->
+                  <div fxLayout="row" fxLayoutAlign="start center" >
+                    <button
+                      mat-icon-button
+                      class="sidebar-toggle mr-8"
+                      fxHide.gt-md
+                      (click)="toggleSidebar('simple-left-sidebar')"
+                    >
+                      <i aria-hidden="true" class="fa-light fa-bars"></i>
+                    </button>
+                    <!-- add header content here -->
+                    </div>
+                    <!-- / HEADER -->
+                
+                  <!-- CONTENT -->
+                  <div class="content mt-16" fxFlex="100">
+                    <!-- SIDEBAR -->
+                    <fuse-sidebar
+                      class="sidebar"
+                      name="simple-left-sidebar"
+                      position="left"
+                      lockedOpen="gt-md"
+                      fxFlex.gt-md="25"
+                    >
+                      <!-- SIDEBAR CONTENT -->
+                      <div class="content" fusePerfectScrollbar>
+                        <!-- add sidebar content here-->
+                      </div>
+                      <!-- / SIDEBAR CONTENT -->
+                    </fuse-sidebar>
+                    <!-- / SIDEBAR -->
+                
+                    <!-- CENTER -->
+                    <div class="center ml-lg-16" fusePerfectScrollbar fxFlex.gt-md="75">
+                      <!-- CONTENT -->
+                      <div class="content">
+                        <!-- add content here-->
+                      </div>
+                      <!-- / CONTENT -->
+                    </div>
+                    <!-- / CENTER -->
+                  </div>
+                  <!-- / CONTENT -->
+                  </div>
+                
+
+    </textarea>
+  </fuse-highlight>
+</mat-dialog-content>

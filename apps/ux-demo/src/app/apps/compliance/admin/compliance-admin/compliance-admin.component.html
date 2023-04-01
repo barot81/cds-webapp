@@ -1,0 +1,57 @@
+<div id="compliance-admin" class="page-layout carded tabbed left-sidebar fullwidth inner-scroll">
+
+    <div class="center p-0">
+        <div class="content">
+            <div #compliance_Admin_Header class="mb-16">
+                <div fxLayoutAlign="space-between center" fxLayout="row wrap" fxFlex="100">
+                    <div fxFlex.gt-md="30" fxFlex.md="40" fxFlex="100" fxLayout="row" fxLayoutAlign="start center"
+                        class="pt-xs-16">
+                        <ryzen-exxat-compliance-tab-navbar fxFlex="100"></ryzen-exxat-compliance-tab-navbar>
+                    </div>
+
+                    <!-- <div fxLayout="row" class="px-xs-16 pt-xs-16 scrollable-filters">
+                        <span class="pt-20 pr-8 font-weight-600 space-no-wrap">Filter by : </span>
+                        <div class="header-tab-control border-right pr-16">
+                            <mat-form-field class="pl-8">
+                                <mat-select placeholder="Cohort" [formControl]="cohortControl" multiple>
+                                    <mat-select-trigger>
+                                        {{cohortControl.value ? cohortControl.value[0] : ''}}
+                                        <span *ngIf="cohortControl.value?.length > 1"
+                                            class="example-additional-selection">
+                                            (+{{cohortControl.value.length - 1}}
+                                            {{cohortControl.value?.length === 2 ? 'other' : 'others'}})
+                                        </span>
+                                    </mat-select-trigger>
+                                    <mat-option *ngFor="let cohort of cohorts" [value]="cohort.value">
+                                        {{cohort.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="header-tab-control">
+                            <mat-form-field class="ml-16">
+                                <mat-select placeholder="Document Type" [formControl]="documenttypecontrol" multiple>
+                                    <mat-select-trigger>
+                                        {{documenttypecontrol.value ? documenttypecontrol.value[0] : ''}}
+                                        <span *ngIf="documenttypecontrol.value?.length > 1"
+                                            class="example-additional-selection">
+                                            (+{{documenttypecontrol.value.length - 1}}
+                                            {{documenttypecontrol.value?.length === 2 ? 'other' : 'others'}})
+                                        </span>
+                                    </mat-select-trigger>
+                                    <mat-option *ngFor="let doc of documents" [value]="doc.value">{{doc.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="overflow-auto" [style.height.px]="_headerService.scrollContentheight">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+
+</div>

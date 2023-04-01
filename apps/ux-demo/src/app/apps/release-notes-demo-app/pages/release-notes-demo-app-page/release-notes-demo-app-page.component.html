@@ -1,0 +1,367 @@
+<div
+  id="release_notes_demo_app"
+  class="page-layout carded left-sidebar inner-scroll"
+>
+  <!-- SIDEBAR : Start -->
+  <fuse-sidebar
+    class="sidebar width-x-sm"
+    name="carded-left-sidebar-2"
+    position="left"
+    lockedOpen="gt-md"
+    tabindex="0"
+    aria-label="sidebar"
+  >
+    <div class="p-16" fxLayout="row" fxLayoutAlign="space-between center">
+      <div>
+        <span
+          class="font-size-20 font-weight-600"
+          tabindex="0"
+          aria-label="What's New"
+          >What’s New</span
+        >
+      </div>
+      <button
+        mat-icon-button
+        class="icon-fill-bg"
+        aria-label="add release notes"
+        exxatDrawerAction
+        [size]="'drawer-sm'"
+        [caption]="'Add Release Notes'"
+        [primaryAction]="'Save'"
+        [componentSelector]="
+          _drawerService.get('ryzen-add-release-notes-drawer')
+        "
+      >
+        <i aria-hidden="true" class="fa-light fa-plus fuse-white-fg s-18"></i>
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="search-wrapper m-16">
+      <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="s-16 secondary-text" aria-disabled="true"
+          >search</mat-icon
+        >
+        <input
+          matInput
+          type="text"
+          placeholder="Search..."
+          fxFlex
+          tabindex="0"
+          aria-label="Search release notes"
+        />
+      </div>
+    </div>
+
+    <!-- SIDEBAR CONTENT : Start -->
+    <div class="content" fusePerfectScrollbar>
+      <mat-list class="pb-16">
+        <button
+          mat-button
+          class="no-space m-0 p-0"
+          *ngFor="let item of releaseNoteList; let islast = last"
+          [ngClass]="{
+            'active-list-item': item.title.trim().toLowerCase() === selectedItem
+          }"
+          (click)="setSelectedItem(item.title)"
+        >
+          <mat-list-item
+            class="px-8 py-12"
+            [ngClass]="{
+              'active-list-item':
+                item.title.trim().toLowerCase() === selectedItem
+            }"
+          >
+            <div
+              fxLayout="column"
+              fxLayoutAlign="start"
+              class="font-weight-600"
+            >
+              <div fxLayoutAlign="start" fxLayout="row" class="font-size-16">
+                <span tabindex="0" [attr.aria-label]="item.title">{{
+                  item.title
+                }}</span>
+              </div>
+              <div fxLayoutAlign="start" fxLayout="row wrap" class="font-gray">
+                <div>
+                  <span tabindex="0" [attr.aria-label]="item.date">{{
+                    item.date
+                  }}</span>
+                </div>
+                <div class="mx-8">|</div>
+                <div>
+                  <span tabindex="0" [attr.aria-label]="item.release">{{
+                    item.release
+                  }}</span>
+                </div>
+              </div>
+              <div fxLayoutAlign="start" fxLayout="row">
+                <span
+                  class="status-badge {{ item.status_class }}"
+                  tabindex="0"
+                  [attr.aria-label]="item.status"
+                  >{{ item.status }}</span
+                >
+              </div>
+            </div>
+          </mat-list-item>
+          <mat-divider class="w-85-p margin-auto" *ngIf="!islast">
+          </mat-divider>
+        </button>
+      </mat-list>
+    </div>
+    <!-- SIDEBAR CONTENT : End -->
+  </fuse-sidebar>
+  <!-- SIDEBAR : End -->
+
+  <div class="center ml-lg-16">
+    <!-- CONTENT TOOLBAR : Start -->
+    <div class="toolbar px-24 py-8" fxHide.gt-md>
+      <button
+        mat-icon-button
+        class="sidebar-toggle"
+        (click)="toggleSidebar('carded-left-sidebar-2')"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <!-- CONTENT TOOLBAR : End -->
+
+    <!-- CONTENT : Start -->
+    <div class="content" fusePerfectScrollbar>
+      <!-- Header : Start -->
+      <div class="mb-16" fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="column" fxLayoutAlign="start">
+          <div>
+            <span
+              class="font-size-20 font-weight-600"
+              tabindex="0"
+              aria-label="New features for STEPS"
+              >New features for STEPS</span
+            >
+          </div>
+          <div fxLayoutAlign="row start" fxLayout="row">
+            <div>
+              <span tabindex="0" aria-label="Date is Dec 07th, 2020"
+                >Dec 07th, 2020</span
+              >
+            </div>
+            <div class="mx-8">|</div>
+            <div><span tabindex="0" ara-label="Release is R8">R8</span></div>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div class="mr-16">
+            <button
+              mat-stroked-button
+              color="accent"
+              class="accent-border-btn"
+              aria-label="Edit"
+            >
+              Edit
+            </button>
+          </div>
+          <div>
+            <button mat-raised-button color="accent" aria-label="Publish">
+              Publish
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Header : End-->
+
+      <!-- Content : Start-->
+      <div>
+        <mat-card class="p-0" fxLayout="column">
+          <!-- Card Heading : Start -->
+          <header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <h2
+                class="primary-heading font-weight-600"
+                tabindex="0"
+                aria-label="Overall Summary"
+              >
+                Overall Summary
+              </h2>
+            </div>
+          </header>
+          <!-- card Heading : End -->
+
+          <!-- Card Content : Start -->
+          <div fxLayout="column" class="p-16" fxFlex="100">
+            <div>
+              <span
+                >- Navigate using a newly re-designed left side “hamburger” menu
+                with a “Program” section that contains elements that apply, not
+                just to clinical education, but to your program as a whole. This
+                will be a huge value add for any of you who use (or choose to
+                add!) PLAN for Curricular Mapping or ASSESS for Didactic
+                management.
+              </span>
+            </div>
+
+            <div>
+              <span>
+                - Easily find your students thanks to consistent student
+                representation in the format of “Last name, First name” in
+                alphabetical order and accompanied by tags.</span
+              >
+            </div>
+            <div>
+              <span>
+                - Expanded accessibility features on the student side for
+                increased ease in usability for those who require
+                accommodations.</span
+              >
+            </div>
+            <div>
+              <span
+                >- Advanced filtering and search capabilities on many
+                screens.</span
+              >
+            </div>
+            <div>
+              <span>
+                - Override the recipient list on any email to send system
+                generated messages directly to a particular address.</span
+              >
+            </div>
+            <div>
+              <span>
+                - Provide role-based access at the cohort level limiting a team
+                member’s visibility to the cohorts with whom they are
+                associated.</span
+              >
+            </div>
+            <div>
+              <span
+                >- Accurately enter addresses with the addition of ZIP+4 and
+                territories to address entry.
+              </span>
+            </div>
+          </div>
+          <!-- Card Content : End -->
+        </mat-card>
+
+        <mat-card class="p-0 my-16" fxLayout="column">
+          <!-- Card Heading : Start -->
+          <header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <h2
+                class="primary-heading font-weight-600"
+                tabindex="0"
+                aria-label="Compliance"
+              >
+                Compliance
+              </h2>
+            </div>
+          </header>
+          <!-- card Heading : End -->
+
+          <!-- Card Content : Start -->
+          <div fxLayout="column" class="p-16" fxFlex="100">
+            <div *ngFor="let item of notesList">
+              <span tabindex="0" [attr.aria-label]="item">{{ item }}</span>
+            </div>
+          </div>
+          <!-- Card Content : End -->
+        </mat-card>
+
+        <mat-card class="p-0" fxLayout="column">
+          <!-- Card Heading : Start -->
+          <header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <h2
+                class="primary-heading font-weight-600"
+                tabindex="0"
+                aria-label="Placements"
+              >
+                Placements
+              </h2>
+            </div>
+          </header>
+          <!-- card Heading : End -->
+
+          <!-- Card Content : Start -->
+          <div fxLayout="column" class="p-16" fxFlex="100">
+            <div *ngFor="let item of notesList">
+              <span tabindex="0" [attr.aria-label]="item">{{ item }}</span>
+            </div>
+          </div>
+          <!-- Card Content : End -->
+        </mat-card>
+
+        <mat-card class="p-0 my-16" fxLayout="column">
+          <!-- Card Heading : Start -->
+          <header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <h2
+                class="primary-heading font-weight-600"
+                tabindex="0"
+                aria-label="Learning Activities"
+              >
+                Learning Activities
+              </h2>
+            </div>
+          </header>
+          <!-- card Heading : End -->
+
+          <!-- Card Content : Start -->
+          <div fxLayout="column" class="p-16" fxFlex="100">
+            <div *ngFor="let item of notesList">
+              <span tabindex="0" [attr.aria-label]="item">{{ item }}</span>
+            </div>
+          </div>
+          <!-- Card Content : End -->
+        </mat-card>
+
+        <mat-card class="p-0" fxLayout="column">
+          <!-- Card Heading : Start -->
+          <header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <h2
+                class="primary-heading font-weight-600"
+                tabindex="0"
+                aria-label="General Notes"
+              >
+                General Notes
+              </h2>
+            </div>
+          </header>
+          <!-- card Heading : End -->
+
+          <!-- Card Content : Start -->
+          <div fxLayout="column" class="p-16" fxFlex="100">
+            <div *ngFor="let item of notesList">
+              <span tabindex="0" [attr.aria-label]="item">{{ item }}</span>
+            </div>
+          </div>
+          <!-- Card Content : End -->
+        </mat-card>
+      </div>
+      <!-- Content : End-->
+    </div>
+    <!-- / CONTENT: End -->
+  </div>
+  <!-- CENTER : End -->
+</div>

@@ -1,0 +1,62 @@
+<!-- TWO COLUMN EXAMPLE -->
+<div class="drawer-p" fxLayout="row wrap" fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-md="100">
+  <!-- 1st column -->
+  <div fxLayout="column wrap" fxFlex="100" fxFlex.gt-sm="60" fxFlex.gt-md="60">
+    <form name="form" [formGroup]="form">
+      <mat-card fxLayout="column" class="mb-16">
+
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>First name</mat-label>
+            <input matInput formControlName="firstName" required>
+            <mat-error>First Name is required!</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Last 4 digits of SSN</mat-label>
+            <input matInput formControlName="ssn">
+            <mat-error>Last 4 digits of SSN is required!</mat-error>
+          </mat-form-field>
+        </div>
+
+      </mat-card>
+    </form>
+  </div>
+  <!-- /1st column -->
+
+  <!-- 2nd column -->
+  <div class="pl-md-8 pl-0" fxFlex="100" fxFlex.gt-sm="40">
+    <mat-card class="p-0 mb-16">
+      <header fxLayout="row" fxLayoutAlign="space-between center" class="
+        card-header-title card-header-border-bottom
+      ">
+        <span class="primary-heading">Guidelines</span>
+      </header>
+      <div>
+        <ul>
+          <li>
+            Proof of 2 childhood or adult vaccinations
+          </li>
+          <li>
+            A titer lab report for all 3 components Titer reports should not be older than
+          </li>
+          <li>
+            Proof of 2 childhood or adult vaccinations
+          </li>
+          <li>
+            A titer lab report for all 3 components Titer reports should not be older than
+          </li>
+          <li>
+            Proof of 2 childhood or adult vaccinations
+          </li>
+          <li>
+            A titer lab report for all 3 components Titer reports should not be older than
+          </li>
+        </ul>
+      </div>
+    </mat-card>
+  </div>
+
+</div>

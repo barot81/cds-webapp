@@ -1,0 +1,155 @@
+<div
+  class="page-layout carded fullwidth inner-scroll student-wishlist-demo-page"
+  fxLayout="column"
+>
+  <div class="center pl-0 pr-0">
+    <header
+      class="pt-xs-16"
+      #student_wishlist_header
+      tabindex="0"
+      aria-label="this is a page header"
+    >
+      <div fxLayout="row" fxLayoutAlign="start center" class="mb-8 w-100-p">
+        <button
+          mat-icon-button
+          aria-label="Click to go back"
+          class="action-icon mx-8"
+          routerLink="/admin/ux/ui/exxat-apps-repo"
+        >
+          <i aria-hidden="true" class="fal fa-long-arrow-left"></i>
+        </button>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          fxFlex="100"
+          class="ml-8 pr-xs-16"
+          fxHide.lt-sm
+        >
+          <div fxLayout="row wrap" fxLayoutAlign="start center">
+            <span
+              class="font-weight-600 pr-16 font-24"
+              tabindex="0"
+              aria-label="Wishlist-Slot "
+              >Wishlist-Slot
+            </span>
+            <span class="pr-4" tabindex="0" aria-label=" Wishlist closes on"
+              >Wishlist closes on
+            </span>
+            <span
+              class="pr-8 font-weight-600"
+              tabindex="0"
+              aria-label=" Jun 20, 2021"
+            >
+              Jun 20, 2021</span
+            >
+            <span
+              class="pr-8 font-weight-600"
+              tabindex="0"
+              aria-label="09:00 PM  "
+            >
+              09:00 PM
+            </span>
+            |
+            <span
+              class="pl-8"
+              tabindex="0"
+              aria-label="PT601 Clinical experience 1 "
+              >PT601 Clinical experience 1</span
+            >
+          </div>
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <button
+              mat-stroked-button
+              color="accent"
+              aria-label="Save as Draft"
+            >
+              Save as Draft
+            </button>
+          </div>
+        </div>
+
+        <marquee fxHide.gt-xs class="ml-8 mr-16">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <span class="font-weight-600 pr-16 font-24">Wishlist-Slot </span>
+            <span class="pr-4">Wishlist closes on </span>
+            <span class="pr-8 font-weight-600"> Jun 20, 2021</span>
+            <span class="pr-8 font-weight-600"> 09:00 PM </span> |
+            <span class="pl-8">PT601 Clinical experience 1</span>
+          </div>
+        </marquee>
+      </div>
+    </header>
+
+    <div class="">
+      <div id="exxat-wizard-examples" fxFlex="100">
+        <div class="stepper-transparent">
+          <mat-horizontal-stepper
+            #stepper
+            tabindex="0"
+            aria-label=" this is a horizontal stepper"
+          >
+            <mat-step>
+              <ng-template
+                matStepLabel
+                tabindex="0"
+                aria-label="step one is explore sites "
+                >Explore sites</ng-template
+              >
+              <ryzen-explore-sites-demo-page></ryzen-explore-sites-demo-page>
+            </mat-step>
+
+            <mat-step>
+              <ng-template
+                matStepLabel
+                tabindex="0"
+                aria-label="step two is rank selection "
+                >Rank selection
+              </ng-template>
+              <div tabindex="0" aria-label="Add Content Here">
+                add content here
+              </div>
+            </mat-step>
+            <mat-step>
+              <ng-template
+                matStepLabel
+                tabindex="0"
+                aria-label="step three is fill questionaries "
+                >Fill questionnaire
+              </ng-template>
+              <div
+                tabindex="0"
+                aria-label="Put you content here Put you content here Put you content here Put you content here Put you content here Put you content here Put you content here Put you content here Put you content here Put you content here "
+              >
+                Put your content here Put your content here Put your content
+                here Put your content here Put your content here Put your
+                content here Put your content here Put your content here Put
+                your content here Put your content here Put your content here
+                Put your content here Put your content here Put your content
+                here
+              </div>
+            </mat-step>
+            <mat-step>
+              <ng-template
+                matStepLabel
+                tabindex="0"
+                aria-label="step four is review and submit "
+                >Review and Submit
+              </ng-template>
+              <div
+                tabindex="0"
+                aria-label="Put you content here Put you content here Put you content here Put you content here Put you content here Put you content here "
+              >
+                Put your content here Put your content here Put your content
+                here Put your content here Put your content here Put your
+                content here Put your content here Put your content here Put
+                your content here Put your content here Put your content here
+                Put your content here Put your content here Put your content
+                here
+              </div>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

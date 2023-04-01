@@ -1,0 +1,24 @@
+<mat-card class="mb-16">
+  <header *ngIf="!(loading$ | async)">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <exxat-avatar
+        src="assets/images/avatars/anna-strong.png"
+        firstName="Anna"
+        lastName="Strong"
+        size="lg"
+      >
+      </exxat-avatar>
+
+      <div fxLayout="column">
+        <h2 tabindex="0">{{ students[selectedId].name }}</h2>
+        <a
+          class="word-break-all font-14"
+          href="mailto:anna.strong@universityname.com"
+          >{{
+            (students[selectedId].name | lowercase) + '.universityname.com'
+          }}</a
+        >
+      </div>
+    </div>
+  </header>
+</mat-card>

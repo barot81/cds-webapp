@@ -1,0 +1,49 @@
+@import 'init';
+
+.student-wishlist-demo-page {
+  .numbers-color-primary {
+    color: $verdun-green !important;
+  }
+
+  .explore-page-headings {
+    width: auto !important;
+    max-width: 85% !important;
+    @include media-breakpoint('lt-sm') {
+      max-width: 78% !important;
+    }
+  }
+
+  .explore-sites-content {
+    @include media-breakpoint('sm') {
+      padding-bottom: 20px;
+    }
+    @include media-breakpoint('md') {
+      padding-bottom: 20px;
+    }
+  }
+
+  .text-ellipses {
+    @include media-breakpoint('gt-sm') {
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+  }
+
+  .bottom-sticky-buttons {
+    position: fixed;
+    z-index: 9;
+    bottom: 0;
+    width: 100%;
+    height: 48px;
+    background: $white;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .header-info {
+    @include media-breakpoint('gt-md') {
+      background-color: $white;
+      border-radius: 24px;
+    }
+  }
+}

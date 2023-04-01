@@ -1,0 +1,34 @@
+//fuse highlight css
+@import 'init';
+
+:host {
+  width: 100%;
+  #exxat-simple-search {
+    .exxat-table {
+      th,
+      td {
+        @include media-breakpoint('lt-sm') {
+          min-width: 40vw;
+        }
+      }
+    }
+    mat-icon {
+      cursor: pointer;
+    }
+    .source-code {
+      position: relative;
+      margin-bottom: 16px;
+
+      code {
+        background: none !important;
+      }
+    }
+
+    .mat-title {
+      margin-bottom: 0 !important;
+      @include media-breakpoint('lt-sm') {
+        margin-bottom: 8px !important;
+      }
+    }
+  }
+}

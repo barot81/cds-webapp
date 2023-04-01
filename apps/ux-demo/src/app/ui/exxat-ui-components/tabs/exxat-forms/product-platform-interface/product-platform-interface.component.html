@@ -1,0 +1,130 @@
+<div class="content pt-16" fxLayout="column">
+
+  <div class="m-8 ml-16" fxLayout="row">
+    <span class="font-16">
+      <ul tabindex="0" aria-label="instruction list">
+        <li tabindex="0" aria-label="one , Material tree example with checkbox and add functionality">
+          Product calls the front-end exxat forms library with a set of predefined set of inputs which the latter
+          uses to render the form.
+        </li>
+        <li tabindex="0">
+          Calling product passes the module level data to exxat forms via the Route. Both the static and dynamic
+          data can be passed via Route when the Exxat Forms module is invoked.
+        </li>
+      </ul>
+    </span>
+  </div>
+  <div fxLayout="row wrap" fxFlex="100">
+
+    <div class="preview mt-16" fxLayout="column" fxLayoutAlign="start" fxFlex.gt-md="100" fxFlex="100">
+      <mat-tab-group>
+        <mat-tab label="Product HTML">
+          <div class="pt-16">
+            <fuse-highlight lang="html" class="source-code">
+              <textarea #source hidden="hidden">
+                <exxat-forms
+                  [formConfig]=formConfig
+                  [responseId]=responseId
+                  [contextIds]=context
+                  [securityContext]=securityContext
+                  [autoSaveConfig]=autoSaveConfig
+                ></exxat-forms>
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Product-Exxat Forms Interface">
+          <div class="pt-16">
+            <fuse-highlight lang="ts" class="source-code">
+              <textarea #source hidden="hidden">
+                export type FormConfig = {
+                  layoutId: string;
+                  workflowId: string;
+                }
+
+                export type Response = {
+                    responseId: string;
+                }
+
+                export type ContextIds = {
+                    groupId: string;
+                    formId: string;
+                    targetId: string;
+                    appId: string;
+                }
+
+                export type FormServiceEndpointKey = {
+                    formServiceEndpointKey: string;
+                }
+
+                export type ProductServiceEndpointKey= {
+                    productServiceEndpointKey: string;
+                }
+
+                export type AutoSaveConfig = {
+                    enabled: boolean;
+                    debounce?: number;
+                }
+
+                export type ScoreConfig = {
+                    enabled: boolean;
+                }
+
+                export type Permissions = {
+                    featureCode: string;
+                    params: string[];
+                }
+
+                export type SecurityContext = {
+                    tenantId: string;
+                    owningOrganizationUnit: string;
+                    owningUser: string;
+                }
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Product Routing Module">
+          <div class="pt-16">
+            <fuse-highlight lang="ts" class="source-code">
+              <textarea #source hidden="hidden">
+                import { NgModule, Component } from '@angular/core';
+                import { Routes, RouterModule } from '@angular/router';
+
+                import { AuthGuardService } from '@exxat/fusion/core';
+
+                import { ExxatFormsModule } from '@exxat/forms';
+
+                const routes: Routes = [
+                  {
+                    path: 'exxat-forms',
+                    loadChildren: () => import('@exxat/forms').then(m => m.ExxatFormsModule),
+                    canActivate: [AuthGuardService],
+                    inputs: {
+                      staticExxatFormsData: {
+                        formServiceEndpointKey: formServiceEndpointKey,
+                        productServiceEndpointKey: productServiceEndpointKey,
+                        permissions: permissions
+                      }
+                    },
+                    resolve: { dynamicExxatFormsData: ExxatFormsResolver }
+                  }
+                ]
+                @NgModule({
+                  imports: [RouterModule.forChild(routes)],
+                  exports: [RouterModule],
+                  declarations: [],
+                })
+                export class ProductRoutingModule { }
+
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

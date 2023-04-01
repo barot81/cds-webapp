@@ -1,0 +1,195 @@
+<mat-tree
+  [dataSource]="dataSource"
+  [treeControl]="treeControl"
+  class="tree-examples-style"
+  tabindex="0"
+  aria-label="tree control"
+>
+  <!-- node without child -->
+  <mat-tree-node
+    *matTreeNodeDef="let node"
+    matTreeNodeToggle
+    matTreeNodePadding
+    tabindex="0"
+    aria-label="this is a child node"
+  >
+    <div
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      fxFlex="100"
+      class="tree-node-hover pl-24"
+      (click)="activeNode = node"
+      [ngClass]="{ 'tree-node-active': activeNode === node }"
+    >
+      <div fxLayout="row" fxFlex="85" class="node-inner-text mx-8">
+        <span
+          class="pl-12 node-inner-text"
+          tabindex="0"
+          aria-label="1.1 Possess the theoretical and scientific knowledge to perform original research at the basic, applied or clinical lev leading to scientific"
+        >
+          <span class="list-style-tree">1.</span
+          ><span
+            >Possess the theoretical and scientific knowledge to perform
+            original research at the basic, applied or clinical lev leading to
+            scientific</span
+          ></span
+        >
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end center" class="pr-16 icon-hidden">
+        <button
+          mat-icon-button
+          class="mr-8 action-icon"
+          aria-label="edit node"
+          exxatDrawerAction
+          [componentSelector]="
+            _PlanAppDemoDrawerService.get('exxat-app-measures-drawers-demo')
+          "
+          [size]="'drawer-lg'"
+          [caption]="'Goals'"
+          [primaryAction]="'Save'"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          attr.aria-label="menu for {{ node.name }}"
+          aria-label="enter for more options"
+        >
+          <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+        </button>
+        <mat-menu #menu="matMenu" class="mat-secondary-menu">
+          <button mat-menu-item>
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <div class="mr-8 mt-4">
+                <i aria-hidden="true" class="fa-light fa-pen icon-pen s-18"></i>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <span>Add child</span>
+              </div>
+            </div>
+          </button>
+          <button mat-menu-item class="warn-fg">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <div class="mr-8 mt-4">
+                <i aria-hidden="true" class="fa-light fa-trash-alt s-18"></i>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <span>Delete</span>
+              </div>
+            </div>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </mat-tree-node>
+
+  <!-- parent node -->
+  <mat-tree-node
+    *matTreeNodeDef="let node; when: hasChild"
+    matTreeNodePadding
+    tabindex="0"
+    aria-label="parent node"
+  >
+    <div
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      fxFlex="100"
+      class="tree-node-hover tree-node-bg"
+      (click)="activeNode = node"
+      [ngClass]="{ 'tree-node-active': activeNode === node }"
+    >
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxFlex.gt-sm="85"
+        fxFlex.sm="76"
+        fxFlex.xs="60"
+        class="ml-4"
+      >
+        <button
+          mat-icon-button
+          matTreeNodeToggle
+          class="action-icon"
+          aria-label="toggle for parent node"
+        >
+          <i
+            aria-hidden="true"
+            [ngClass]="
+              treeControl.isExpanded(node)
+                ? 'fa-light fa-chevron-down'
+                : 'fa-light fa-chevron-right'
+            "
+          ></i>
+        </button>
+
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="node-inner-text mx-8"
+        >
+          <span
+            class="node-inner-text"
+            tabindex="0"
+            aria-label="1. Possess the theoretical and scientific knowledge to perform original research at the basic, applied or clinical lev leading to scientific"
+          >
+            <span class="list-style-tree">1.</span
+            ><span
+              >Possess the theoretical and scientific knowledge to perform
+              original research at the basic, applied or clinical lev leading to
+              scientific</span
+            ></span
+          >
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="end center" class="pr-16 icon-hidden">
+        <button
+          mat-icon-button
+          class="mr-8 action-icon"
+          aria-label="edit node"
+          exxatDrawerAction
+          [componentSelector]="
+            _PlanAppDemoDrawerService.get('exxat-app-measures-drawers-demo')
+          "
+          [size]="'drawer-lg'"
+          [caption]="'Objective'"
+          [primaryAction]="'Save'"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          attr.aria-label="menu for {{ node.name }}"
+          class="action-icon"
+          aria-label="enter for more menu items"
+        >
+          <i aria-hidden="true" class="fa-light fa-ellipsis-h s-16"></i>
+        </button>
+        <mat-menu #menu="matMenu" class="mat-secondary-menu">
+          <button mat-menu-item>
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <div class="mr-8 mt-4">
+                <i aria-hidden="true" class="fa-light fa-pen icon-pen s-18"></i>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <span>Add child</span>
+              </div>
+            </div>
+          </button>
+          <button mat-menu-item class="warn-fg">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <div class="mr-8 mt-4">
+                <i aria-hidden="true" class="fa-light fa-trash-alt s-18"></i>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <span>Delete</span>
+              </div>
+            </div>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </mat-tree-node>
+</mat-tree>

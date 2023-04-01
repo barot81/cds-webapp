@@ -1,0 +1,91 @@
+<div class="page-layout carded full-width landing-page-layout">
+
+  <div fxLayout.gt-sm="row wrap" fxLayout="column">
+
+    <div fxLayout="column" fxFlex.gt-sm="25" fxFlex="100" class="sidebar p-16 border-radius-16"
+      [style.height.px]="_headerService.scrollContentheight">
+      <div class="content overflow-auto scroll-hover">
+
+        <div class="mb-16" fxLayout="column">
+          <div fxLayoutAlign="center center">
+            <img src="https://exxatcontent.blob.core.windows.net/unioncollege-pa-public/UnionCollegePA.png" alt="" tabindex="0" aria-label="school logo" />
+          </div>
+          <div fxLayoutAlign="start center">
+            <h2 tabindex="0" aria-label="Message from school (6)" class="primary-fg mt-16 ml-16 font-weight-600">Message from school (6)</h2>
+          </div>
+        </div>
+
+        <div>
+          <mat-card *ngFor="let item of announcements" class="my-16">
+            <div class="exxat-info" >
+              <div fxLayout="column">
+              <span tabindex="0" [attr.aria-label]="item.title" class="font-16 title text-with-ellipses">{{item.title}}</span>
+              <span class="date-color" tabindex="0" [attr.aria-label]="item.date">{{item.date}}</span>
+              </div>
+              <div tabindex="0" [attr.aria-label]="item.content" class="mt-8 description-text-color">{{item.content}}
+              </div>
+            </div>
+          </mat-card>
+        </div>
+
+      </div>
+    </div>
+
+    <div fxLayout="column" fxFlex.gt-sm="75" fxFlex="100" class="right-side-content"
+      [style.height.px]="_headerService.scrollContentheight">
+      <div fxLayout="column" class="content ml-md-16" fusePerfectScrollbar>
+        <div class="mb-16">
+          <mat-card fxLayout="column">
+             <h2 class="primary-fg font-weight-600" tabindex="0" aria-label="heading Welcome to the 2020-2021 Academic Year"> Welcome to the 2020-2021 Academic Year</h2>
+             <div fxLayout="column" class="pb-32">
+              <span class="my-16" tabindex="0" aria-label="Dear Students">Dear Students,</span>
+              <span class="mb-16" tabindex="0" aria-label="Welcome to the 2020-2021 academic year!">Welcome to the 2020-2021 academic year!</span>
+              <div class="text-container">
+                <input id="ch" #ch type="checkbox">
+                <button mat-button color="accent" class="accent-fg mt-4" id="show-more-label" (click)="ch.click()" 
+                [attr.aria-label]="!ch.checked ? 'Show More': 'Show Less'"></button>
+                    <div class="text" fxLayout="column">
+                      <span tabindex="0" aria-label="Given the interesting times,Welcome message from scho Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem mauris consectetur vulputate aenean in enim ultrices. Odio gravida eget ultricies lacinia ornare elit at nunc. Consequat at ullamcorper lacus, vestibulum at lectus egestas. Enim, tincidunt dolor amet
+                      Given the interesting times,Welcome message from scho Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem mauris consectetur vulputate aenean in enim ultrices. Odio gravida eget ultricies lacinia ornare elit at nunc. Consequat at ullamcorper lacus, vestibulum at lectus egestas. Enim, tincidunt dolor amet
+                      Given the interesting times,Welcome message from scho Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem mauris consectetur vulputate aenean in enim ultrices. Odio gravida eget ultricies lacinia ornare elit at nunc. Consequat at ullamcorper lacus, vestibulum at lectus egestas. Enim, tincidunt dolor amet">Given the interesting times,Welcome message from scho Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem mauris consectetur vulputate aenean in enim ultrices. Odio gravida eget ultricies lacinia ornare elit at nunc. Consequat at ullamcorper lacus, vestibulum at lectus egestas. Enim, tincidunt dolor amet
+                        Given the interesting times,Welcome message from scho Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem mauris consectetur vulputate aenean in enim ultrices. Odio gravida eget ultricies lacinia ornare elit at nunc. Consequat at ullamcorper lacus, vestibulum at lectus egestas. Enim, tincidunt dolor amet
+                        Given the interesting times,Welcome message from scho Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem mauris consectetur vulputate aenean in enim ultrices. Odio gravida eget ultricies lacinia ornare elit at nunc. Consequat at ullamcorper lacus, vestibulum at lectus egestas. Enim, tincidunt dolor amet
+                      </span>
+                    </div>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+        <div fxLayout="row wrap" fxLayoutAlign="start start">
+          <div *ngFor="let res of dashboardContentList" class="pr-md-16 pb-16" fxFlex="100" fxFlex.gt-sm="50">
+            <mat-card>
+                <div fxLayout="row">
+                  <span class="fa-icon {{res.icon}} s-48 primary-fg mr-32"></span>
+                  <div fxlayout="column" class="text-left">
+                    <h4 class="text-capitalize " tabindex="0" [attr.aria-label]="res.title">{{res.title}}</h4>
+                    <span class="font-14 secondary-text" tabindex="0"
+                      [attr.aria-label]="res.description">{{res.description}}</span>
+                  </div>
+                </div>
+            </mat-card>
+          </div>
+        </div>
+
+        <mat-divider class="mt-16"></mat-divider>
+        <div class=" p-16" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center center">
+          <img width="190" class="mt-32 mr-md-32" alt="Exxat" src="assets/images/logo/exxat-pink-large.png" tabindex="0" aria-label="exxat logo">
+          <div class="exxat-info mt-16 mt-32 pl-md-32 border-left"  fxLayout="column" fxLayoutAlign="center center">
+            <img src="assets/images/steps-logo.png" width="150" alt=""  tabindex="0" aria-label="steps logo" >
+            <div class="font-b-18 mb-8" tabindex="0"
+              aria-label="Student Training and Education Placement System">Student
+              Training and Education Placement System</div>
+            <div class="description" tabindex="0"
+              aria-label="Your clinical education management solution">Your clinical education management solution</div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

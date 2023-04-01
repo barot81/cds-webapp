@@ -1,0 +1,619 @@
+<div
+  class="page-layout carded fullwidth inner-scroll exxat-new-grid"
+  id="secondaryGridDemo"
+>
+  <div class="center overflow-y-auto p-0 m-0">
+    <mat-card class="mb-8">
+      <header>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <exxat-avatar
+            src="assets/images/avatars/anna-strong.png"
+            firstName="Anna"
+            lastName="Strong"
+            size="lg"
+          >
+          </exxat-avatar>
+
+          <div fxLayout="column">
+            <h2 tabindex="0">Anna Strong</h2>
+            <a
+              class="word-break-all font-14"
+              href="mailto:anna.strong@universityname.com"
+              >anna.strong@gmail.com</a
+            >
+          </div>
+        </div>
+      </header>
+    </mat-card>
+    <div class="content table-rounded-border white-background">
+      <div fxLayout="column">
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="w-100-p"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
+            <div class="search-wrapper" fxFlex="100">
+              <div
+                class="search table-search"
+                fxFlex
+                fxLayout="row"
+                fxLayoutAlign="start center"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-magnifying-glass s-18"
+                ></i>
+                <input type="text" placeholder="Search in 50 student" fxFlex />
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="end center"
+              class="border-right h-48 pr-16"
+              fxHide.lt-md
+            >
+              <button
+                mat-stroked-button
+                color="primary"
+                class="mr-12"
+                aria-label="Add action 1"
+              >
+                <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+                <span class="ml-4">Add action 1</span>
+              </button>
+              <button
+                mat-stroked-button
+                color="primary"
+                class=""
+                aria-label="Add action 2"
+              >
+                <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+                <span class="ml-4">Add action 2</span>
+              </button>
+            </div>
+            <div fxLayout="row" class="mr-16 ml-8">
+              <button
+                tabindex="0"
+                aria-label="Export Table"
+                mat-icon-button
+                class="ml-8"
+                fxHide.lt-md
+              >
+                <i aria-hidden="true" class="fa-light fa-file-export s-18"></i>
+              </button>
+
+              <button
+                tabindex="0"
+                aria-label="Edit Columns"
+                exxatDrawerAction
+                [componentSelector]="gridService.get('ryzen-edit-columns')"
+                [size]="'drawer-sm'"
+                [caption]="'Edit Columns'"
+                mat-icon-button
+                class="ml-4"
+                fxHide.lt-md
+              >
+                <i aria-hidden="true" class="fa-light fa-wrench s-18"></i>
+              </button>
+
+              <button
+                tabindex="0"
+                aria-label="Expand Table"
+                mat-icon-button
+                class="ml-4"
+                fxHide.lt-md
+              >
+                <i aria-hidden="true" class="fa-light fa-expand s-18"></i>
+              </button>
+
+              <button
+                mat-icon-button
+                class="ml-4 filter-icon-button"
+                aria-label="filters"
+                exxatDrawerAction
+                [componentSelector]="
+                  _UXDemoDrawerService.get('ryzen-filter-drawer')
+                "
+                [size]="'drawer-lg'"
+                [caption]="'Filters'"
+                [primaryAction]="'Save'"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
+                  <span> 12 </span>
+                </div>
+              </button>
+
+              <button
+                tabindex="0"
+                aria-label="mat menu"
+                mat-icon-button
+                [matMenuTriggerFor]="menu"
+                class="ml-4"
+                fxHide.gt-sm
+              >
+                <i aria-hidden="true" class="fal fa-ellipsis-h s-18"></i>
+              </button>
+              <mat-menu #menu="matMenu" fxHide.gt-sm>
+                <button mat-menu-item aria-label="Action 1">
+                  <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i
+                  >Action 1
+                </button>
+                <button mat-menu-item aria-label="Action 2">
+                  <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i
+                  >Action 2
+                </button>
+                <button
+                  mat-menu-item
+                  aria-label="Edit Columns"
+                  exxatDrawerAction
+                  [componentSelector]="gridService.get('ryzen-edit-columns')"
+                  [size]="'drawer-sm'"
+                  [caption]="'Edit Columns'"
+                >
+                  <i aria-hidden="true" class="fa-light fa-wrench s-18 mr-8"></i
+                  >Edit columns
+                </button>
+                <button mat-menu-item aria-label="Export file">
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-file-export s-18 mr-8"
+                  ></i
+                  >Export file
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="result-found-style w-100-p"
+          tabindex="0"
+          aria-label="2 search results found"
+        >
+          2 Results Found
+        </div>
+      </div>
+      <div class="overflow-x-auto" (scroll)="scrollHandler($event)">
+        <table
+          tabindex="0"
+          aria-label="This is a sticky header table"
+          id="stickyHeaderTable"
+          class="w-100-p exxat-table"
+          mat-table
+          [dataSource]="dataSource"
+        >
+          <ng-container matColumnDef="student_name" [sticky]="true">
+            <th
+              [ngClass]="{ 'column-shadow': scroll_pointer !== 0 }"
+              tabindex="0"
+              aria-label="Student 50"
+              mat-header-cell
+              *matHeaderCellDef
+              class="student-column"
+            >
+              Student (50)
+            </th>
+            <td
+              [ngClass]="{ 'column-shadow': scroll_pointer !== 0 }"
+              tabindex="0"
+              attr.aria-label="Student is {{ element.student_name }}"
+              mat-cell
+              *matCellDef="let element"
+              class="student-column"
+            >
+              <div fxLayout="column">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <span class="list-item-name">{{ element.student_name }}</span>
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-info-circle s-18"
+                    tabindex="0"
+                    aria-label="info-icon"
+                  ></i>
+                </div>
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- address Column -->
+          <ng-container matColumnDef="address">
+            <th
+              tabindex="0"
+              aria-label="address"
+              mat-header-cell
+              *matHeaderCellDef
+              class="address-column overflow-ellipses"
+              tooltip="Address
+              Address Address Address Address Address Address Address"
+              [options]="tooltipOptions"
+            >
+              Address Address Address Address Address Address Address Address
+            </th>
+            <td
+              tabindex="0"
+              mat-cell
+              attr.aria-label="address is 16 Military Ave., Cary, NC 27511"
+              *matCellDef="let element"
+              class="address-column"
+            >
+              16 Military Ave., Cary, NC 27511
+            </td>
+          </ng-container>
+
+          <!-- email Column -->
+          <ng-container matColumnDef="email">
+            <th
+              tabindex="0"
+              aria-label="email"
+              mat-header-cell
+              *matHeaderCellDef
+              class="email-width"
+            >
+              Email
+            </th>
+            <td
+              tabindex="0"
+              attr.aria-label="email is albertortega@example.com"
+              mat-cell
+              *matCellDef="let element"
+              class="email-width"
+            >
+              <a>albertortega@example.com</a>
+            </td>
+          </ng-container>
+
+          <!-- phone Column -->
+          <ng-container matColumnDef="phone">
+            <th
+              tabindex="0"
+              aria-label="phone"
+              mat-header-cell
+              *matHeaderCellDef
+              class="phone-width"
+            >
+              Phone
+            </th>
+            <td
+              tabindex="0"
+              attr.aria-label="phone is (435) 682-9206"
+              mat-cell
+              *matCellDef="let element"
+              class="phone-width"
+            >
+              (435) 682-9206
+            </td>
+          </ng-container>
+
+          <!-- cohort Column -->
+          <ng-container matColumnDef="cohort">
+            <th
+              tabindex="0"
+              aria-label="cohort"
+              mat-header-cell
+              *matHeaderCellDef
+              class="column-width"
+            >
+              Cohort
+            </th>
+            <td
+              tabindex="0"
+              attr.aria-label="cohort is	Cohort XYZ"
+              mat-cell
+              *matCellDef="let element"
+              class="column-width"
+            >
+              Cohort XYZ
+            </td>
+          </ng-container>
+
+          <!-- setting Column -->
+          <ng-container matColumnDef="setting">
+            <th
+              tabindex="0"
+              aria-label="setting"
+              mat-header-cell
+              *matHeaderCellDef
+              class="column-width"
+            >
+              Setting
+            </th>
+            <td
+              tabindex="0"
+              attr.aria-label="Status is active"
+              mat-cell
+              *matCellDef="let element"
+              class="column-width"
+            >
+              <div class="status-badge accent w-88 text-center">
+                IP-Pediatric
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- status Column -->
+          <ng-container matColumnDef="status">
+            <th
+              tabindex="0"
+              aria-label="status"
+              mat-header-cell
+              *matHeaderCellDef
+              class="column-width"
+            >
+              Status
+            </th>
+            <td
+              tabindex="0"
+              attr.aria-label="Status is active"
+              mat-cell
+              *matCellDef="let element"
+              class="column-width"
+            >
+              <div class="status-badge primary w-88 text-center">Active</div>
+            </td>
+          </ng-container>
+
+          <!-- actions Column -->
+          <ng-container matColumnDef="actions">
+            <th
+              tabindex="0"
+              aria-label="actions"
+              mat-header-cell
+              *matHeaderCellDef
+              class="action-width"
+            >
+              Actions
+            </th>
+            <td mat-cell *matCellDef="let element" class="action-width">
+              <div fxLayout="column">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <button mat-icon-button aria-label="edit icon">
+                    <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                  </button>
+                  <button
+                    color="warn"
+                    mat-button
+                    class="grid-content-btn"
+                    tabindex="0"
+                    aria-label="View"
+                  >
+                    <span class="ml-4">View</span>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="hi">
+            <th tabindex="0" aria-label="HI" mat-header-cell *matHeaderCellDef>
+              HI
+            </th>
+            <td
+              tabindex="0"
+              aria-label="HI is Expired"
+              mat-cell
+              *matCellDef="let element"
+            >
+              <button mat-icon-button aria-label="edit icon">
+                <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+              </button>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="cpr">
+            <th
+              tabindex="0"
+              aria-label="Action"
+              mat-header-cell
+              *matHeaderCellDef
+            >
+              Action
+            </th>
+            <td
+              tabindex="0"
+              aria-label="Action is View"
+              mat-cell
+              *matCellDef="let element"
+            >
+              <button
+                mat-button
+                class="grid-content-btn"
+                tabindex="0"
+                aria-label="View"
+              >
+                <span class="ml-4">View</span>
+              </button>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="pals">
+            <th
+              tabindex="0"
+              aria-label="PALS"
+              mat-header-cell
+              *matHeaderCellDef
+              class="column-width"
+            >
+              PALS
+            </th>
+            <td
+              tabindex="0"
+              aria-label="PALS is Expired"
+              mat-cell
+              *matCellDef="let element"
+              class="column-width"
+            >
+              Expired
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="licensure">
+            <th
+              tabindex="0"
+              aria-label="LICENSURE"
+              mat-header-cell
+              *matHeaderCellDef
+              class="column-width"
+            >
+              LICENSURE
+            </th>
+            <td
+              tabindex="0"
+              aria-label="LICENSURE is Pending"
+              mat-cell
+              *matCellDef="let element"
+              class="column-width"
+            >
+              Pending
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="hipaa">
+            <th
+              tabindex="0"
+              aria-label="HIPAA"
+              mat-header-cell
+              *matHeaderCellDef
+              class="column-width"
+            >
+              HIPAA
+            </th>
+            <td
+              tabindex="0"
+              aria-label="HIPAA is Approved"
+              mat-cell
+              *matCellDef="let element"
+              class="column-width"
+            >
+              Approved
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="sis">
+            <th
+              tabindex="0"
+              aria-label="SIS"
+              mat-header-cell
+              *matHeaderCellDef
+              class="column-width"
+            >
+              SIS
+            </th>
+            <td
+              tabindex="0"
+              aria-label="SIS is Get Started"
+              mat-cell
+              *matCellDef="let element"
+              class="column-width"
+            >
+              Get Started
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="corf">
+            <th
+              tabindex="0"
+              aria-label="CORF"
+              mat-header-cell
+              *matHeaderCellDef
+              class="column-width"
+            >
+              CORF
+            </th>
+            <td
+              tabindex="0"
+              aria-label="CORF is Get Started"
+              mat-cell
+              *matCellDef="let element"
+              class="column-width"
+            >
+              Get Started
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="ds">
+            <th
+              tabindex="0"
+              aria-label="DS"
+              mat-header-cell
+              *matHeaderCellDef
+              class="column-width"
+            >
+              DS
+            </th>
+            <td
+              tabindex="0"
+              aria-label="DS is Pending"
+              mat-cell
+              *matCellDef="let element"
+              class="column-width"
+            >
+              Pending
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="bgc">
+            <th
+              tabindex="0"
+              aria-label="BGC"
+              mat-header-cell
+              *matHeaderCellDef
+              class="column-width"
+            >
+              BGC
+            </th>
+            <td
+              tabindex="0"
+              aria-label="BGC is Get Started"
+              mat-cell
+              *matCellDef="let element"
+              class="column-width"
+            >
+              Get Started
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="fp">
+            <th
+              tabindex="0"
+              aria-label="FP"
+              mat-header-cell
+              *matHeaderCellDef
+              class="column-width"
+            >
+              FP
+            </th>
+            <td
+              tabindex="0"
+              aria-label="FP is Approved"
+              mat-cell
+              *matCellDef="let element"
+              class="column-width"
+            >
+              Approved
+            </td>
+          </ng-container>
+
+          <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+          ></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            (click)="addRow(row)"
+            [class.row-selected]="clickedRows.has(row)"
+            [class.row-highlighted]="highlightedRows.has(row)"
+          ></tr>
+        </table>
+      </div>
+      <mat-paginator
+        [pageSize]="30"
+        class="mat-paginator-sticky bt bx bb"
+      ></mat-paginator>
+    </div>
+  </div>
+</div>

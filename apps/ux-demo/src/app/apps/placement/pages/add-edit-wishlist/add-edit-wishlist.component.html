@@ -1,0 +1,27 @@
+<div id="add_edit_wishlist" class="drawer-p">
+        <div cdkDropList (cdkDropListDropped)="drop($event)">
+            <div class="exxat-drag-drop mb-16" *ngFor="let item of wislistItems" cdkDrag>
+                <div fxLayout="row" fxLayoutAlign="space-between start" class="w-100-p">
+                  <div fxLayout="row" fxLayoutAlign="start center">
+                    <div>
+                        <mat-icon class="primary-fg font-22">drag_indicator</mat-icon>
+                    </div>
+                    <div fxLayout="column" fxLayoutAlign="center center" class="px-16">
+                        <span class="accent-fg font-weight-600 text-nowrap">Rank</span>
+                        <span class="font-20">{{item.id}}</span>
+                    </div>
+                    <div fxLayout="column" class="pl-16">
+                        <span class="warn-fg pb-8" *ngIf="item.errorMessage">{{item.errorMessage}}</span>
+                        <h3 class="primary-fg pb-8">{{item.title}}</h3>
+                        <span *ngIf="item.setting" class="pb-8">{{item.setting}}</span>
+                        <span *ngIf="item.address">{{item.address}}</span>
+                        <a *ngIf="item.message" class="pt-8">{{item.message}}</a>
+                    </div>
+                   </div>
+                    <div fxLayout="row" fxLayoutAlign="end start">
+                        <mat-icon class="accent-fg font-22">delete</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

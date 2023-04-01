@@ -1,0 +1,67 @@
+@import 'init';
+
+
+
+:host {
+  #exxat-typography-cards {
+    .source-code {
+      position: relative;
+      margin-bottom: 16px;
+      min-height: 100px;
+
+      code {
+        background: none !important;
+      }
+    }
+
+    .preview {
+      padding: 16px;
+      margin-bottom: 16px;
+      min-height: 100px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .mat-caption {
+        margin-bottom: 16px;
+      }
+
+      .font-22 {
+        font-size: 22px;
+
+        @include media-breakpoint('xs') {
+          font-size: 12px;
+        }
+      }
+
+      .font-14 {
+        font-size: 14px;
+
+        @include media-breakpoint('sm') {
+          font-size: 20px;
+        }
+      }
+
+      .example-box {
+        height: 100px;
+        width: 100%;
+        background-color: green;
+
+        @include media-breakpoint('lt-md') {
+          background-color: pink;
+        }
+      }
+
+      .example-box2 {
+        height: 100px;
+        width: 100%;
+        background-color: red;
+
+        @include media-breakpoint('gt-sm') {
+          background-color: yellow;
+        }
+      }
+    }
+  }
+}

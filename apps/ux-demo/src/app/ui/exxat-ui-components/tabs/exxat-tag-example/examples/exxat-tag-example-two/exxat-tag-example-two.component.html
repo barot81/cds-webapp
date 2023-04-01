@@ -1,0 +1,160 @@
+<div fxLayout="column" fxLayout.gt-md="row" id="chip-without-input">
+  <div
+    class="pr-md-16 pr-0"
+    fxLayout="column"
+    fxLayoutAlign="start"
+    fxFlex="50"
+  >
+    <div class="mat-caption secondary-text mb-16">Tag Example With Button</div>
+    <mat-card>
+      <div fxLayoutAlign="start" fxLayout="row wrap">
+        <div>
+          <mat-menu #tagsMenu="matMenu" [overlapTrigger]="false">
+            <exxat-tag
+              [tags]="tags"
+              (onTagChanges)="tagsChanged($event)"
+              [options]="tagOptions"
+            ></exxat-tag>
+          </mat-menu>
+        </div>
+        <div fxLayout="row wrap" fxLayoutAlign="start center">
+          <exxat-tag-showcase [tags]="tagsCopy"></exxat-tag-showcase>
+        </div>
+        <button
+          *ngIf="selectedtagsCount < 1"
+          mat-stroked-button
+          color="primary"
+          [matMenuTriggerFor]="tagsMenu"
+          (menuOpened)="openTagswithButtons()"
+        >
+          Add Tag
+        </button>
+        <button
+          *ngIf="selectedtagsCount > 0"
+          mat-icon-button
+          [matMenuTriggerFor]="tagsMenu"
+          (menuOpened)="openTagswithButtons()"
+        >
+          <i aria-hidden="true" class="fa-light fa-plus s-18"></i>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+  <div
+    class="pr-md-16 pr-0"
+    fxLayout="column"
+    fxLayoutAlign="start"
+    fxFlex="50"
+  >
+    <mat-tab-group class="mt-lg-0 mt-16">
+      <!-- 1st tab content -->
+      <mat-tab label="HTML">
+        <fuse-highlight
+          lang="html"
+          class="source-code mt-16"
+          fxLayout="column"
+          fxLayoutAlign="center"
+        >
+          <textarea #source hidden="hidden">
+            <div fxLayoutAlign="start" fxLayout="row wrap">
+              <div>
+                <mat-menu #tagsMenu="matMenu" [overlapTrigger]="false">
+                  <exxat-tag [tags]="tags" (onTagChanges)="tagsChanged($event)" [options]="tagOptions"></exxat-tag>
+                </mat-menu>
+              </div>
+              <div fxLayout="row wrap" fxLayoutAlign="start center">
+                <exxat-tag-showcase [tags]="tagsCopy"></exxat-tag-showcase>
+              </div>
+              <button *ngIf="selectedtagsCount < 1" mat-stroked-button color="primary" [matMenuTriggerFor]="tagsMenu"
+                (menuOpened)="openTagswithButtons()">
+                Add Tag
+              </button>
+              <button *ngIf="selectedtagsCount > 0" mat-icon-button [matMenuTriggerFor]="tagsMenu"
+                (menuOpened)="openTagswithButtons()">
+                <i aria-hidden="true" class="fa-light fa-plus s-18"></i>
+              </button>
+            </div>
+    
+        </textarea
+          >
+        </fuse-highlight>
+      </mat-tab>
+
+      <!-- 2nd tab content -->
+      <mat-tab label="TS">
+        <fuse-highlight
+          lang="ts"
+          class="source-code mt-16"
+          fxLayout="column"
+          fxLayoutAlign="center"
+        >
+          <textarea #source hidden="hidden">
+
+          import { Component, Output, EventEmitter, ViewChild } from '@angular/core';
+          import { MatMenuTrigger } from '@angular/material/menu';
+          import { ExxatTag, ExxatTagOptions } from '@exxat/plugin/tags';
+
+          @Component({
+            selector: 'exxat-app-exxat-tag-example-two',
+            templateUrl: './exxat-tag-example-two.component.html',
+            styleUrls: ['./exxat-tag-example-two.component.scss']
+          })
+          export class ExxatTagExampleTwoComponent {
+
+            public tagOptions = new ExxatTagOptions();
+
+            @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
+
+            @Output() menuOpened: EventEmitter<void>;
+
+            tags: Array<ExxatTag> = [
+              { id: Math.random(), name: 'Tag Label 1 Bigger Text', color: 'indigo-500', isChecked: true },
+              { id: Math.random(), name: 'Tag Label 2', color: 'deep-orange-500', isChecked: true },
+              { id: Math.random(), name: 'Tag Label 3', color: 'pink-500', isChecked: false },
+              { id: Math.random(), name: 'Tag Label 4 Bigger Text', color: 'blue-500', isChecked: true },
+              { id: Math.random(), name: 'Tag Label 5', color: 'gray-500', isChecked: true },
+              { id: Math.random(), name: 'Tag Label 6', color: 'purple-500', isChecked: false },
+              { id: Math.random(), name: 'Tag Label 7 Bigger Text', color: 'yellow-500', isChecked: true },
+              { id: Math.random(), name: 'Tag Label 8', color: 'green-500', isChecked: false },
+              { id: Math.random(), name: 'Tag Label 9', color: 'pink-500', isChecked: false },
+              { id: Math.random(), name: 'Tag Label 10 Bigger Text', color: 'indigo-500', isChecked: true }
+            ];
+
+            public selectedtagsCount: number = this.tags.filter( val => val.isChecked === true).length ;
+
+            tagsCopy = JSON.parse(JSON.stringify(this.tags));
+
+            openTagswithButtons() {
+              this.tagOptions = {
+                saveButton: true,
+                tagTitleMaxLength: 50,
+                tagsListLength: 10
+              }
+            }
+
+            tagsChanged($event: any) {
+              if (this.tagOptions.saveButton
+                && $event.eventType.toLowerCase() === 'change') {
+                this.tagsCopy = JSON.parse(JSON.stringify($event.tags));
+                this.selectedtagsCount = this.tags.filter( val => val.isChecked === true).length;
+                this.trigger.closeMenu();
+              }
+              else if ($event.eventType == 'Add') {
+                this.tagsCopy.push(JSON.parse(JSON.stringify($event.tags)));
+                this.selectedtagsCount = this.tags.filter( val => val.isChecked === true).length;
+              }
+            }
+
+          }
+
+          
+                  
+    
+        </textarea
+          >
+        </fuse-highlight>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

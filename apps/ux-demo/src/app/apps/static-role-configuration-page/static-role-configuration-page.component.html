@@ -1,0 +1,127 @@
+<div class="page-layout carded left-sidebar inner-scroll">
+  <!-- SIDEBAR -->
+  <fuse-sidebar
+    class="sidebar width-x-sm"
+    name="carded-left-sidebar-tabbed-2"
+    position="left"
+    lockedOpen="gt-md"
+  >
+    <div fxLayout="column" #sidebar_header>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        fxFlex.xs="100"
+        class="py-8 mx-16"
+      >
+        <span
+          class="font-14 pt-4 font-weight-600"
+          tabindex="0"
+          aria-label="heading List of Roles"
+          >List of Roles</span
+        >
+        <button
+          mat-icon-button
+          class="icon-fill-bg"
+          aria-label="add List of Roles button"
+          exxatDrawerAction
+          [size]="'drawer-lg'"
+          [componentSelector]="
+            _UXDemoDrawerService.get(
+              'ryzen-static-role-configuration-drawer-demo'
+            )
+          "
+          [caption]="'Editing USC.steps.Admin Role'"
+          [primaryAction]="'Save'"
+        >
+          <i aria-hidden="true" class="fa-light fa-plus fuse-white-fg s-18"></i>
+        </button>
+      </div>
+      <mat-divider></mat-divider>
+
+      <!-- SEARCH -->
+      <div class="search-wrapper" fxFlex.xs="100">
+        <div
+          class="search sidenav-search"
+          fxFlex
+          fxLayout="row"
+          fxLayoutAlign="start center"
+        >
+          <i aria-hidden="true" class="fa-light fa-magnifying-glass s-18"></i>
+          <input
+            type="text"
+            class="font-14"
+            placeholder="Search Student"
+            fxFlex
+          />
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+    <!--  SIDEBAR CONTENT -->
+    <div class="content" fusePerfectScrollbar>
+      <mat-list tabindex="0" aria-label="roles list" class="pt-0">
+        <button
+          mat-button
+          *ngFor="let role of roles; let i = index"
+          attr.aria-label="View {{ role.name }} Details"
+          class="no-space m-0 p-0"
+          (click)="activateNavigation(role.id)"
+        >
+          <mat-list-item
+            class="py-12 px-8"
+            [ngClass]="{ 'active-list-item': role.id === selectedId }"
+          >
+            <span class="font-14 m-2">{{ role.name }}</span>
+          </mat-list-item>
+        </button>
+      </mat-list>
+    </div>
+    <!-- / SIDEBAR CONTENT -->
+  </fuse-sidebar>
+  <!-- // SIDEBAR -->
+
+  <!-- CENTER -->
+  <div class="center ml-lg-16" fusePerfectScrollbar>
+    <button
+      mat-icon-button
+      class="sidebar-toggle pt-xs-16"
+      fxHide.gt-md
+      (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <header fxLayout="column">
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        class="pb-16 px-xs-16 pt-xs-16"
+      >
+        <div fxLayout="column" class="pr-16">
+          <h2
+            class="font-weight-600 mb-4"
+            tabindex="0"
+            aria-label="heading USC.Steps.Admin"
+          >
+            USC.Steps.Admin
+          </h2>
+          <span
+            tabindex="0"
+            aria-label="Last Updated on Dec 10th, 2020   |  21:00"
+            >Last Updated on Dec 10th, 2020 | 21:00</span
+          >
+        </div>
+        <div>
+          <button mat-icon-button class="action-icon" aria-label="edit button">
+            <i aria-hidden="true" class="fa-light fa-pen icon-fill s-18"></i>
+          </button>
+        </div>
+      </div>
+      <ryzen-demo-navbar></ryzen-demo-navbar>
+    </header>
+    <div class="content mt-16">
+      <div class="router-container">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

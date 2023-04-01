@@ -1,0 +1,64 @@
+<mat-dialog-content>
+  <fuse-highlight
+    lang="html"
+    class=""
+    fxLayout="column"
+    fxLayoutAlign="start start"
+    fxFlex="100"
+  >
+    <textarea #source>
+
+      <!-- Three Column With Header Component Level Scroll -->
+      <div class="page-layout simple left-sidebar inner-sidebar inner-scroll">
+
+        <!-- HEADER -->
+        <div fxLayout="row" fxLayoutAlign="start center">
+    
+            <button mat-icon-button class="sidebar-toggle mr-8" fxHide.gt-md (click)="toggleSidebar('simple-left-sidebar')">
+                <i aria-hidden="true" class="fa-light fa-bars"></i>
+            </button>
+        </div>
+        <!-- / HEADER -->
+    
+        <!-- CONTENT -->
+        <div class="content mt-8">
+    
+            <!-- SIDEBAR -->
+            <fuse-sidebar class="sidebar w-25-p" name="simple-left-sidebar" position="left" lockedOpen="gt-md">
+    
+                <!-- SIDEBAR CONTENT -->
+                <div class="content" fusePerfectScrollbar>
+                    <fuse-demo-one-sidebar></fuse-demo-one-sidebar>
+                </div>
+                <!-- / SIDEBAR CONTENT -->
+    
+            </fuse-sidebar>
+            <!-- / SIDEBAR -->
+    
+            <!-- CENTER -->
+            <div class="center ml-lg-16" fusePerfectScrollbar>
+    
+                <!-- CONTENT -->
+                <div fxLayout="column" fxLayout.gt-md="row" fxFlex="100">
+                    <div class="content" fusePerfectScrollbar fxFlex.gt-md="65" fxFlex="100">
+                        <!-- Keep Content Here -->
+                    </div>
+    
+                    <div class="content" fusePerfectScrollbar
+                        fxFlex.gt-md="35" fxFlex="100">
+                        <!-- Keep Content Here -->
+                    </div>
+                </div>
+                <!-- / CONTENT -->
+    
+            </div>
+            <!-- / CENTER -->
+          
+        </div>
+        <!-- / CONTENT -->
+    
+    </div>
+
+    </textarea>
+  </fuse-highlight>
+</mat-dialog-content>

@@ -1,0 +1,177 @@
+<div class="page-layout carded full-width inner-scroll">
+  <div class="center">
+    <div class="content-card">
+      <div class="table-rounded-border white-background" fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="h-48">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="search-wrapper search-grid">
+              <div
+                class="search"
+                fxFlex
+                fxLayout="row"
+                fxLayoutAlign="start center"
+              >
+                <i aria-hidden="true" class="fa-light fa-search s-18"></i>
+                <input type="text" placeholder="Search in 50 student" fxFlex />
+              </div>
+            </div>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <button
+              mat-button
+              class="action-icon mr-4"
+              aria-label="Edit"
+              exxatDrawerAction
+              [size]="'drawer-md'"
+              [caption]="'Status'"
+              role="img"
+              aria-hidden="true"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i>
+              Add action 1
+            </button>
+            <button
+              mat-button
+              class="action-icon"
+              aria-label="Edit"
+              exxatDrawerAction
+              [size]="'drawer-md'"
+              [caption]="'Status'"
+              role="img"
+              aria-hidden="true"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i>
+              Add action 2
+            </button>
+            <div fxLayout="row" class="pl-8">
+              <button mat-icon-button>
+                <i aria-hidden="true" class="fa-light fa-file-export"></i>
+              </button>
+              <button mat-icon-button>
+                <i aria-hidden="true" class="fa-light fa-wrench"></i>
+              </button>
+              <button mat-icon-button>
+                <i aria-hidden="true" class="fa-light fa-expand"></i>
+              </button>
+              <button mat-icon-button class="apply-filters-button">
+                <i aria-hidden="true" class="fa-light fa-filter"></i>
+                <span class="applied-filters-number">2</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="content overflow-auto"
+          [style.height.px]="headerService.scrollContentheight - 60"
+        >
+          <table
+            tabindex="0"
+            aria-hidden="false"
+            aria-label="This is a Condensed grid"
+            mat-table
+            [dataSource]="dataSource"
+            class="w-100-p exxat-table condensed-table pt-0"
+          >
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th
+                tabindex="0"
+                aria-label="Number"
+                class="pl-16"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                No.
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="position is {{ element.position }}"
+                mat-cell
+                *matCellDef="let element"
+                class="pl-16"
+              >
+                {{ element.position }}
+              </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th
+                tabindex="0"
+                aria-label="Name"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                Name
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="name is {{ element.name }}"
+                mat-cell
+                *matCellDef="let element"
+              >
+                {{ element.name }}
+              </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+              <th
+                tabindex="0"
+                aria-label="Weight"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                Weight
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="weight is {{ element.weight }}"
+                mat-cell
+                *matCellDef="let element"
+              >
+                {{ element.weight }}
+              </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+              <th
+                tabindex="0"
+                aria-label="Symbol"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                Symbol
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="symbol is {{ element.symbol }}"
+                mat-cell
+                *matCellDef="let element"
+              >
+                {{ element.symbol }}
+              </td>
+            </ng-container>
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+
+        <div class="border-light-top">
+          <mat-paginator [pageSize]="30"></mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

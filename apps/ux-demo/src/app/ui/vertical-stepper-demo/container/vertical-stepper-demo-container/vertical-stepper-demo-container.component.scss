@@ -1,0 +1,25 @@
+@import 'init';
+
+
+:host {
+  #vertical_stepper_demo {
+    mat-icon {
+      cursor: pointer;
+    }
+    .source-code {
+      position: relative;
+      margin-bottom: 16px;
+
+      code {
+        background: none !important;
+      }
+    }
+
+    .mat-title {
+      margin-bottom: 0 !important;
+      @include media-breakpoint('lt-sm') {
+        margin-bottom: 8px !important;
+      }
+    }
+  }
+}

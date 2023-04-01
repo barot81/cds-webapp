@@ -1,0 +1,108 @@
+<div id="site-demo" class="page-layout carded fullwidth inner-scroll">
+  <div class="center p-0">
+    <header fxLayout="row" class="pt-xs-16" #header_container>
+      <button
+        mat-icon-button
+        aria-label="Click to go back"
+        class="action-icon mx-8"
+        routerLink="/admin/ux/ui/exxat-apps-repo"
+      >
+        <i aria-hidden="true" class="fal fa-long-arrow-left"></i>
+      </button>
+      <div class="mb-16 ml-8">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <!-- <div class="header-circle mr-16" fxLayout="row" fxLayoutAlign="center center">
+          <span class="fuse-white-fg font-weight-600">PT509</span>
+        </div> -->
+
+          <div fxLayout="column">
+            <h2 tabindex="0" aria-label="Introduction to Neurology">
+              Introduction to Neurology
+            </h2>
+
+            <!-- <div fxLayoutAlign="start" fxLayout="row wrap">
+                <div tabindex="0" aria-label="tags component">
+                  <button mat-icon-button [matMenuTriggerFor]="tagsMenu" (menuOpened)="openTagswithoutButtons()" tabindex="0" aria-label="select tag from different tags">
+                    <mat-icon>label</mat-icon>
+                  </button>
+                  <mat-menu #tagsMenu="matMenu" [overlapTrigger]="false">
+                    <exxat-tag [tags]="tags" (onTagChanges)="tagsChanged($event)" [options]="tagOptions"></exxat-tag>
+                  </mat-menu>
+                </div>
+    
+                <div fxLayout="row wrap" fxLayoutAlign="start center" class="pt-4">
+                  <div *ngFor="let tag of tags">
+                    <mat-icon matTooltip="{{tag.name}}" matTooltipPosition="above" class="{{tag.color}}-fg">
+                      label_important</mat-icon>
+                  </div>
+                </div>
+              </div> -->
+
+            <span
+              class="font-16 secondary-text pb-8"
+              tabindex="0"
+              aria-label="Class of 2020"
+              >Class of 2020</span
+            >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <span tabindex="0" aria-label="year 1">year 1</span>
+              <span class="dot"></span>
+              <span tabindex="0" aria-label="Fall">Fall</span>
+              <span class="dot"></span>
+              <span tabindex="0" aria-label="2018-2019">2018-2019</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="mb-16 pt-xs-16 px-xs-16" fxFlex.gt-sm="50" fxFlex="100">
+        <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="100" tabindex="0" aria-label="more information of course">
+          <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="100">
+            <div fxLayout="column" class="exxat-info pb-16" fxFlex.gt-xs="33.33" fxFlex="100">
+              <span class="title" tabindex="0" aria-label="Credits">Credits</span>
+              <span class="description" tabindex="0" aria-label="12">12</span>
+            </div>
+            <div fxLayout="column" class="exxat-info pb-16" fxFlex.gt-xs="33.33" fxFlex="100">
+              <span class="title" tabindex="0" aria-label="Cours Hours">Cours Hours</span>
+              <span class="description" tabindex="0" aria-label="243">243</span>
+            </div>
+            <div fxLayout="column" class="exxat-info pb-16" fxFlex.gt-xs="33.33" fxFlex="100">
+              <span class="title" tabindex="0" aria-label="Course Duration">Course Duration</span>
+              <span class="description" tabindex="0" aria-label="3 months">3 months</span>
+            </div>
+          </div>
+          <button mat-icon-button class="action-icon" aria-label="edit more information of course" exxatDrawerAction
+          [size]="'drawer-sm'"
+          [caption]="'Status'" [primaryAction]="'Save'" role="img">
+          <i aria-hidden="true" class="fa-light fa-pen icon-fill s-18"></i>
+          </button>
+        </div>
+      </div> -->
+    </header>
+    <div fxLayout="column" class="ml-md-44">
+      <div
+        class="mb-16"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        #nav_container
+      >
+        <nav mat-tab-nav-bar>
+          <a
+            mat-tab-link
+            *ngFor="let link of navigations"
+            [routerLink]="link.url"
+            routerLinkActive
+            #rla="routerLinkActive"
+            [active]="rla.isActive"
+          >
+            <span>{{ link.title }}</span>
+          </a>
+        </nav>
+      </div>
+      <!-- // Nav Bar Header -->
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

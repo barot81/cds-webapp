@@ -1,0 +1,142 @@
+<div class="page-layout simple left-sidebar inner-scroll page-without-header">
+  <fuse-sidebar
+    class="sidebar"
+    name="carded-left-sidebar-tabbed-2"
+    position="left"
+    fxFlex.gt-md="20"
+    lockedOpen="gt-md"
+    tabindex="0"
+    aria-label="sidebar with action item"
+  >
+    <div fxLayout="column" #sidebarHeader>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxFlex.xs="100"
+        class="py-8"
+      >
+        <button
+          mat-stroked-button
+          color="primary"
+          class="mx-16"
+          aria-label="Add action"
+        >
+          <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+          <span class="ml-4">Add action </span>
+        </button>
+      </div>
+      <mat-divider></mat-divider>
+
+      <!-- SEARCH -->
+      <div class="search-wrapper" fxFlex.xs="100">
+        <div
+          class="search sidenav-search"
+          fxFlex
+          fxLayout="row"
+          fxLayoutAlign="start center"
+        >
+          <i aria-hidden="true" class="fa-light fa-magnifying-glass s-18"></i>
+          <input
+            type="text"
+            class="font-14"
+            placeholder="Search Student"
+            fxFlex
+          />
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+
+    <!--  SIDEBAR CONTENT -->
+    <div
+      class="content overflow-auto"
+      [style.height.px]="_scrollService.sidebarContentHeight"
+    >
+      <mat-list>
+        <button
+          mat-button
+          *ngFor="let item of items"
+          (click)="activateNavigation(item.id)"
+        >
+          <mat-list-item
+            [ngClass]="{ 'active-list-item': item.id === selectedId }"
+          >
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="w-100-p"
+            >
+              <div>
+                <span
+                  class="word-break-all space-pre-wrap text-left"
+                  [attr.aria-label]="location"
+                  >{{ 'Item' + (item.id + 1) }}</span
+                >
+              </div>
+              <div fxLayoutAlign="end center">
+                <button
+                  mat-icon-button
+                  [matMenuTriggerFor]="menu"
+                  aria-label="open menu for delete location"
+                >
+                  <i aria-hidden="true" class="fa-light fa-ellipsis-v"></i>
+                </button>
+                <mat-menu
+                  #menu="matMenu"
+                  xPosition="after"
+                  class="mat-secondary-menu"
+                >
+                  <button mat-menu-item class="warn-fg">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                      <div class="mr-8 mt-4">
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-trash-alt s-18"
+                        ></i>
+                      </div>
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        <span>Delete</span>
+                      </div>
+                    </div>
+                  </button>
+                </mat-menu>
+              </div>
+            </div>
+          </mat-list-item>
+        </button>
+      </mat-list>
+    </div>
+    <!-- / SIDEBAR CONTENT -->
+  </fuse-sidebar>
+
+  <!-- CENTER -->
+  <div class="center main-right-side-content" role="main">
+    <!-- HEADER -->
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <button
+        mat-icon-button
+        class="sidebar-toggle mr-8 ml-8"
+        fxHide.gt-md
+        (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+      >
+        <i aria-hidden="true" class="fa-light fa-bars"></i>
+      </button>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content ml-lg-16 ml-8">
+      <!-- Keep Content Here -->
+    </div>
+    <!-- / CONTENT -->
+    <button
+      mat-flat-button
+      color="accent"
+      class="float-button"
+      (click)="openDialog()"
+    >
+      Press for code
+    </button>
+  </div>
+  <!-- / CENTER -->
+</div>

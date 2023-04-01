@@ -1,0 +1,49 @@
+<div id="exxat-apps-repo" class="page-layout full-width w-100-p">
+  <div class="center">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <div class="mr-16">
+        <button
+          mat-icon-button
+          aria-label="Click to go back"
+          class="action-icon mx-8"
+          routerLink="/admin/ux/ui/exxat-apps-repo"
+        >
+          <i aria-hidden="true" class="fal fa-long-arrow-left"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="content width-lg margin-auto">
+      <div class="p-16">
+        <span class="font-20 font-weight-600"> Plan Demo Apps</span>
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutAlign="start center">
+        <mat-card
+          class="p-16 m-16 item_list"
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          *ngFor="let item of planDemoItems"
+          fxFlex="100%"
+          fxFlex.gt-sm="30%"
+          [ngClass]="{ 'accessiblity-badge': item.isAccessible }"
+        >
+          <a routerLink="{{ item.page }}">
+            <div fxLayout="row">
+              <i
+                aria-hidden="true"
+                class="{{ item.icon }} s-32 accent-fg mr-12"
+              ></i>
+              <div fxlayout="column">
+                <h2 class="primary-fg">{{ item.title | titlecase }}</h2>
+                <span class="font-14 secondary-text">{{
+                  item.description | titlecase
+                }}</span>
+              </div>
+            </div>
+          </a>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

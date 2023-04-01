@@ -1,0 +1,20 @@
+@import 'init';
+
+@mixin navigation-wizard($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $action: map-get($theme, action);
+  $is-dark: map-get($theme, is-dark);
+
+  .gray-stepper {
+    .mat-stepper-horizontal {
+      @if ($is-dark) {
+        background-color: map-get($background, background);
+      } @else {
+        background-color: $gray-stepper !important;
+      }
+    }
+  }
+}

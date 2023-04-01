@@ -1,0 +1,12 @@
+@import 'init';
+
+.border-right {
+  @include media-breakpoint('lt-md') {
+    border-right: none !important;
+  }
+}
+.org_logo_1 {
+  height: 80px !important;
+  width: auto !important;
+  object-fit: contain;
+}

@@ -1,0 +1,258 @@
+<div id="exxat-overlay-component-container-examples">
+  <div class="center">
+    <div class="content">
+      <div fxLayout="column" fxLayout.gt-md="row">
+        <div
+          class="preview"
+          fxLayout="column"
+          fxLayoutAlign="center"
+          fxFlex="50"
+        >
+          <div
+            tabindex="0"
+            aria-label="Pass Component In Overlay"
+            class="mat-caption secondary-text mb-16"
+          >
+            Pass Component In Overlay
+          </div>
+          <mat-card class="m-0">
+            <div>
+              <button
+                aria-label="Click to open"
+                class="link-btn"
+                color="primary"
+                (click)="open(subscribeComponentRef)"
+              >
+                Show Overlay
+              </button>
+            </div>
+            <div *ngIf="subscribeData" class="mt-16" fxLayout="column">
+              <div fxLayoutAlign="start center" fxLayout="row wrap">
+                <span tabindex="0" aria-label="Name" class="font-weight-600"
+                  >Name:</span
+                >
+                <span
+                  tabindex="0"
+                  attr.aria-label="Name is {{ subscribeData.name }}"
+                  class="ml-16"
+                  >{{ subscribeData.name }}</span
+                >
+              </div>
+              <div fxLayoutAlign="start center" fxLayout="row wrap">
+                <span tabindex="0" aria-label="Email" class="font-weight-600"
+                  >Email:</span
+                >
+                <span
+                  tabindex="0"
+                  attr.aria-label="Email is {{ subscribeData.email }}"
+                  class="ml-16"
+                  >{{ subscribeData.email }}</span
+                >
+              </div>
+            </div>
+          </mat-card>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+          <mat-tab-group dynamicHeight="true">
+            <mat-tab label="Parent Component HTML">
+              <fuse-highlight
+                lang="html"
+                class="source-code mt-16"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="100"
+              >
+                <textarea #source hidden="hidden">
+              <div fxLayout="row wrap" fxLayoutAlign="start center">
+                <div>
+                  <button
+                aria-label="Click to open"
+                class="link-btn"
+                color="primary"
+                (click)="open(subscribeComponentRef)"
+              >
+                Show Overlay
+              </button>
+                </div>
+                <div *ngIf="subscribeData" class="ml-16" fxLayout="column">
+                  <div fxLayoutAlign="start center" fxLayout="row wrap">
+                    <span class="font-weight-600">Name:</span>
+                    <span class="ml-16">subscribeData.name</span>
+                  </div>
+                  <div fxLayoutAlign="start center" fxLayout="row wrap">
+                    <span class="font-weight-600">Email:</span>
+                    <span class="ml-16">subscribeData.email</span>
+                  </div>
+                </div>
+              </div>
+        </textarea
+                >
+              </fuse-highlight>
+            </mat-tab>
+
+            <mat-tab label="Parent Component TS">
+              <fuse-highlight
+                class="pt-16"
+                lang="ts"
+                class="source-code"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="100"
+              >
+                <textarea #source hidden="hidden">
+
+              import { Component, TemplateRef, ComponentFactoryResolver } from '@angular/core';
+              import { OverlayService } from '@exxat/ux';
+              import { ComponentType } from '@angular/cdk/portal';
+              import { SubscribeComponent } from './subscribe/subscribe.component';
+              
+              @Component({
+                selector: 'ryzen-exxat-overlay-demo',
+                templateUrl: './exxat-overlay-demo.component.html',
+                styleUrls: ['./exxat-overlay-demo.component.scss']
+              })
+              export class ExxatOverlayDemoComponent {
+              
+                subscribeData = null;
+                subscribeComponentRef: any;
+              
+                constructor(private overlayService: OverlayService, private r: ComponentFactoryResolver) {
+                  this.subscribeComponentRef = this.r.resolveComponentFactory(SubscribeComponent).componentType;
+                }
+              
+                open(content: TemplateRef<any> | ComponentType<any> | string) {
+                  const ref = this.overlayService.open(content, { name: 'DEMO User', email: 'demouser@gmail.com' });
+              
+                  ref.afterClosed$.subscribe(res => {
+                    this.subscribeData = res.data;
+                  });
+                }
+              
+              }
+              
+            
+        </textarea
+                >
+              </fuse-highlight>
+            </mat-tab>
+
+            <mat-tab label="Child Component HTML">
+              <fuse-highlight
+                class="pt-16"
+                lang="html"
+                class="source-code"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="100"
+              >
+                <textarea #source hidden="hidden">
+              <div id="subscribe_container" fxLayout="column">
+
+                <div class="overlay_header mb-20" fxLayout="row wrap" fxLayoutAlign="start center">
+                  <div>
+                    <button mat-icon-button class="mr-4 back_button fuse-white-fg" (click)="cancel()">
+                      <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+                    </button>
+                  </div>
+                  <div fxLayout="row wrap" fxLayoutAlign="start center">
+                    <h2 tabindex="0" aria-label="Overlay Title" class="document_title fuse-white-fg">Overlay Title</h2>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center" >
+                  <mat-card style="width: 92vw;">
+                    <div>
+                      <form [formGroup]="frmSubscribe" (submit)="submit()">
+                        <header fxLayout="row" fxLayoutAlign="space-between start">
+                          <div fxLayout="row" fxLayoutAlign="start center">
+                            <h4 tabindex="0" aria-label="Example Form" class="primary-fg">Example Form
+                            </h4>
+                          </div>
+                        </header>
+                        <div fxLayout="column" class="pt-16">
+                          <div fxLayout="row" fxLayoutAlign="start center">
+                            <mat-form-field appearance="fill" fxFlex="100">
+                              <mat-label>First name</mat-label>
+                              <input matInput formControlName="name" required>
+                              <mat-error tabindex="0" aria-label="First Name is required">First Name is required!</mat-error>
+                            </mat-form-field>
+                          </div>
+                          <div fxLayout="row" fxLayoutAlign="start center">
+                            <mat-form-field appearance="fill" fxFlex="100">
+                              <mat-label>Email</mat-label>
+                              <input matInput formControlName="email" required>
+                              <mat-error tabindex="0" aria-label="Email is required">Email is required!</mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div fxLayoutAlign="start center" fxLayout="row wrap">
+                          <div class="mr-16">
+                            <button type="submit" mat-button color="accent">Save</button>
+                          </div>
+                          <div>
+                            <button (click)="cancel()" mat-button color="warn">Cancel</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </mat-card>
+                </div>
+              </div>
+              </textarea
+                >
+              </fuse-highlight>
+            </mat-tab>
+
+            <mat-tab label="Child Component TS">
+              <fuse-highlight
+                class="pt-16"
+                lang="ts"
+                class="source-code"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="100"
+              >
+                <textarea #source hidden="hidden">
+              import { Component, OnInit } from '@angular/core';
+              import { ExxatOverlayRef } from '@exxat/ux';
+              import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+              
+              @Component({
+                selector: 'ryzen-subscribe',
+                templateUrl: './subscribe.component.html',
+                styleUrls: ['./subscribe.component.scss']
+              })
+              export class SubscribeComponent {
+              
+                frmSubscribe: FormGroup;
+                
+                constructor(private fb: FormBuilder, private overlayRef: ExxatOverlayRef) {
+                  this.frmSubscribe = this.fb.group({
+                    name: this.overlayRef.data.name,
+                    email: [
+                      this.overlayRef.data.email,
+                      Validators.compose([Validators.email, Validators.required])
+                    ]
+                  });
+                }
+              
+                submit() {
+                  this.overlayRef.close(this.frmSubscribe.value);
+                }
+              
+                cancel() {
+                  this.overlayRef.close(null);
+                }
+              
+              }
+              
+            </textarea
+                >
+              </fuse-highlight>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

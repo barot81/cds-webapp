@@ -1,0 +1,10 @@
+.plan-student-expansion-panel {
+    mat-expansion-panel-header {
+      &:hover {
+          background: none !important;
+      }
+    }
+    .mat-expansion-panel-body {
+        padding-bottom: 0px!important;
+    }
+  }

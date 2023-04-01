@@ -19,6 +19,9 @@
     "legacy-ux": "libs/legacy/ux",
     "legacy-zendesk": "libs/legacy/zendesk",
     "remote": "apps/remote",
-    "remote-e2e": "apps/remote-e2e"
+    "remote-e2e": "apps/remote-e2e",
+
+    "ux-demo": "apps/ux-demo",
+    "ux-demo-e2e": "apps/ux-demo-e2e"
   }
 }

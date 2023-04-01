@@ -1,0 +1,238 @@
+<div class="page-layout simple fullwidth full-width-page">
+  <div class="center pl-0 pr-0">
+    <div class="gray-header">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div class="mr-8">
+            <button
+              mat-icon-button
+              aria-label="Click to go back"
+              class="action-icon mx-8"
+              routerLink="/admin/ux/ui/exxat-component-library"
+            >
+              <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+            </button>
+          </div>
+          <div>
+            <span class="font-16 font-weight-600">Drag And Drop Example</span>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+        </div>
+      </div>
+    </div>
+
+    <div class="content mt-16">
+      <div fxLayout="column" fxLayout.gt-md="row">
+        <div
+          class="preview mr-md-16 mb-16"
+          fxLayout="column"
+          fxLayoutAlign="start"
+          fxFlex="50"
+        >
+          <mat-card class="mr-16">
+            <div fxLayout="column">
+              <span class="font-16 mb-16"
+                >Add or remove columns. To change the column order, drag and
+                drop a field.
+              </span>
+
+              <div fxFlex="100">
+                <div
+                  cdkDropList
+                  class="exxat-drag-drop-list"
+                  (cdkDropListDropped)="drop($event)"
+                >
+                  <div
+                    class="exxat-drag-drop"
+                    *ngFor="let column of columnsList"
+                    cdkDrag
+                  >
+                    <div class="icon-drag mr-8" cdkDragHandle>
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-grip-vertical s-20"
+                      ></i>
+                    </div>
+                    <div
+                      [attr.id]="column"
+                      class="content trimmed-content"
+                      [tooltip]="column"
+                      [options]="tooltipOptions"
+                      [display]="isTextOverflow(column)"
+                    >
+                      {{ column }}
+                    </div>
+                    <button
+                      mat-icon-button
+                      color="warn"
+                      aria-label="Example icon-button with a delete icon"
+                      class="ml-8 delete-icon"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-trash-alt warn-fg"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="center center" class="w-500">
+                <button
+                  mat-stroked-button
+                  [matMenuTriggerFor]="menu"
+                  color="primary"
+                  class="width-fit-content"
+                  aria-label="Add a Column"
+                >
+                  <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+                  <span class="ml-4">Add a Column</span>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item aria-label="Action 1">Option 1</button>
+                  <button mat-menu-item aria-label="Edit Columns">
+                    Option 2
+                  </button>
+                </mat-menu>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+
+        <div
+          class="preview"
+          fxLayout="column"
+          fxLayoutAlign="start"
+          fxFlex="50"
+        >
+          <mat-tab-group>
+            <!-- 1st tab content -->
+            <mat-tab label="HTML">
+              <fuse-highlight
+                lang="html"
+                class="source-code mt-16"
+                fxLayout="column"
+                fxLayoutAlign="center"
+              >
+                <textarea #source hidden="hidden">
+ 
+                    <div fxLayout="column">
+                        <span class="font-16 mb-16"
+                          >Add or remove columns. To change the column order, drag and
+                          drop a field.
+                        </span>
+          
+                        <div fxFlex="100">
+                          <div
+                            cdkDropList
+                            class="exxat-drag-drop-list"
+                            (cdkDropListDropped)="drop($event)"
+                          >
+                            <div
+                              class="exxat-drag-drop"
+                              *ngFor="let column of columnsList"
+                              cdkDrag
+                            >
+                              <div class="icon-drag mr-8" cdkDragHandle>
+                                <i aria-hidden="true" class="fa-light fa-grip-vertical s-20"></i>
+                              </div>
+                              <div
+                              [attr.id]="column"
+                              class="content trimmed-content"
+                              [tooltip]="column"
+                              [options]="tooltipOptions"
+                              [display]="isTextOverflow(column)"
+                              >column</div>
+                              <button
+                                mat-icon-button
+                                color="warn"
+                                aria-label="Example icon-button with a delete icon"
+                                class="ml-8 delete-icon"
+                              >
+                                <i aria-hidden="true" class="fa-light fa-trash-alt warn-fg"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center center" class="w-500">
+                          <button
+                            mat-stroked-button
+                            color="primary"
+                            class="width-fit-content"
+                            aria-label="Add a Column"
+                          >
+                            <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+                            <span class="ml-4">Add a Column</span>
+                          </button>
+                        </div>
+                      </div> 
+                </textarea>
+              </fuse-highlight>
+            </mat-tab>
+            <mat-tab label="TS">
+              <fuse-highlight
+                lang="ts"
+                class="source-code mt-16"
+                fxLayout="column"
+                fxLayoutAlign="center"
+              >
+                <textarea #source hidden="hidden">
+ 
+                    import { Component } from '@angular/core';
+                    import { FormGroup, FormBuilder } from '@angular/forms';
+                    import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+
+                    @Component({
+                    selector: 'exxat-drag-and-drop-page',
+                    templateUrl: './drag-and-drop-page.component.html',
+                    })
+                    export class DragAndDropPageComponent {
+                      columnsList = [
+                        'Course Objective 1',
+                        "Now you can browse privately, and other people who use this device won't see your activity. However, downloads, bookmarks and reading list items will be saved.",
+                        'Course Objective 4',
+                        'Course Objective 5',
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
+                        'Time',
+                        "Now you can browse privately, and other people who use this device won't see your activity. However, downloads, bookmarks and reading list items will be saved.",
+                      ];
+                    
+                      tooltipOptions = {
+                        contentType: 'string',
+                        placement: 'bottom',
+                        trigger: 'hover',
+                        theme: 'light',
+                        pointerEvents: 'auto',
+                      };
+                    
+                      editColumnsForm: FormGroup;
+                    
+                      constructor(private _formBuilder: FormBuilder) {
+                        this.editColumnsForm = this._formBuilder.group({
+                          columnControl: [this.columnsList[0]],
+                        });
+                      }
+                    
+                      isTextOverflow(elementId: string): boolean {
+                        const elem = document.getElementById(elementId);
+                        if (elem) {
+                          return elem.offsetHeight < elem.scrollHeight;
+                        } else {
+                          return false;
+                        }
+                      }
+                    
+                      drop(event: CdkDragDrop<string[]>) {
+                        moveItemInArray(this.columnsList, event.previousIndex, event.currentIndex);
+                      }
+                    }
+                </textarea>
+              </fuse-highlight>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

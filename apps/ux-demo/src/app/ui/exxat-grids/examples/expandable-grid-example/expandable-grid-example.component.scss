@@ -1,0 +1,37 @@
+@import 'init';
+
+
+
+@mixin exxat-expandable-grid-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+
+  .expandable-grid-content {
+    overflow: auto;
+    .compliance_notification_expanded_cell {
+      &:hover {
+        background: $white !important;
+      }
+      padding: 0px !important;
+    }
+  }
+  .expandable-expandable-element-row {
+    position: relative;
+  }
+}
+.expandable-element-row :not(.expanded) {
+  cursor: pointer;
+}
+
+.expandable-element-row .expanded {
+  border-bottom-color: transparent;
+}
+
+.mat-column-select {
+  flex: 0 0 50px;
+}
+
+.mat-column-arrow {
+  flex: 0 0 50px;
+}

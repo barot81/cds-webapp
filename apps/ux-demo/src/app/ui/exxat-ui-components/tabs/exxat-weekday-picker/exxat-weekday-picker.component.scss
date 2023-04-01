@@ -1,0 +1,50 @@
+//fuse highlight css
+html {
+  scroll-behavior: smooth;
+}
+
+
+:host {
+  #exxat-weekday-selector {
+    mat-icon {
+      cursor: pointer;
+    }
+    .source-code {
+      position: relative;
+      margin-bottom: 16px;
+      min-height: 100px;
+
+      code {
+        background: none !important;
+      }
+    }
+
+    .preview {
+      padding: 16px;
+      margin-bottom: 16px;
+      min-height: 100px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .mat-caption {
+        margin-bottom: 16px;
+      }
+
+      #search_table {
+        width: 242px;
+        table {
+          th {
+            width: 115px !important;
+          }
+        }
+      }
+      #search_more_button {
+        button {
+          width: 230px !important;
+        }
+      }
+    }
+  }
+}

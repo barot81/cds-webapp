@@ -1,0 +1,39 @@
+<div class="page-layout carded full-width custom-sidebar-layout">
+
+  <div fxLayout.gt-sm="row wrap" fxLayout="column">
+
+    <div fxLayout="column" fxFlex.gt-sm="25" fxFlex="100" class="white-background border-radius-8 p-16"
+      [style.height.px]="_headerService.scrollContentheight+16" >
+        <div class="mb-16 pb-16 header-border-bottom">
+          <div class="text-center">
+            <img src="https://exxatcontent.blob.core.windows.net/unioncollege-pa-public/UnionCollegePA.png" alt="" />
+          </div>
+          <div>
+            <h3 tabindex="0" aria-label="Message from school (6)" class="primary-fg mt-16 font-weight-600">Message from school (6)</h3>
+          </div>
+        </div>
+
+        <div fxLayout="column" class="content overflow-auto " fusePerfectScrollbar>
+          <div *ngFor="let item of announcements" class="mb-8 pb-24 border-bottom">
+            <h4 tabindex="0" attr.aria-label="{{item.title}}" class="font-weight-600 gray-text-color mb-4">{{item.title}}</h4>
+            <div tabindex="0" aria-label="Jun 28, 2021 07:21 PM" class="date-text-color mb-4">Jun 28, 2021 07:21 PM</div>
+            <div tabindex="0" aria-label="Course Offering Name"class="font-weight-600 secondary-text mb-4">Course Offering Name</div>
+            <div class="text-container">
+              <input id="ch" #ch type="checkbox">
+                  <button class="pl-0" id="show-more-label" (click)="ch.click()" 
+                  [attr.aria-label]="!ch.checked ? 'Show More': 'Show Less'"></button>
+                  <div tabindex="0" attr.aria-label="{{item.content}}" class="text gray-text-color">
+                    {{item.content}}
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+
+    <div fxLayout="column" fxFlex.gt-sm="75" fxFlex="100" class="right-side-content"
+      [style.height.px]="_headerService.scrollContentheight">
+   
+    </div>
+
+  </div>
+</div>

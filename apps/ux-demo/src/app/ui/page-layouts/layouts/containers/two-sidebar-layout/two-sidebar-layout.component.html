@@ -1,0 +1,114 @@
+<div class="page-layout simple left-sidebar inner-scroll page-without-header">
+  <!-- SIDEBAR -->
+  <fuse-sidebar
+    class="sidebar"
+    name="simple-left-sidebar-2"
+    position="left"
+    lockedOpen="gt-md"
+    fxFlex="25"
+  >
+    <!-- SIDEBAR CONTENT -->
+    <div class="content" fusePerfectScrollbar>
+      <fuse-demo-one-sidebar></fuse-demo-one-sidebar>
+    </div>
+    <!-- / SIDEBAR CONTENT -->
+  </fuse-sidebar>
+  <!-- / SIDEBAR -->
+
+  <!-- CENTER -->
+  <div class="center overflow-hidden m-16">
+    <!-- HEADER -->
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <button
+        mat-icon-button
+        class="sidebar-toggle mr-8"
+        fxHide.gt-md
+        (click)="toggleSidebar('simple-left-sidebar-2')"
+      >
+        <i aria-hidden="true" class="fa-light fa-bars"></i>
+      </button>
+      <button
+        mat-icon-button
+        class="sidebar-toggle mr-8"
+        fxHide.gt-md
+        (click)="toggleSidebar('simple-right-sidebar-2')"
+      >
+        <i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i>
+      </button>
+    </div>
+    <!-- / HEADER -->
+    <div fxLayout="row">
+      <fuse-sidebar
+        class="sidebar secondary-sidebar-height secondary-sidebar"
+        name="simple-right-sidebar-2"
+        position="right"
+        lockedOpen="gt-md"
+        fxFlex="25"
+      >
+        <div class="font-weight-600 font-16 py-12 px-16 border-bottom">
+          Accrediation standard
+        </div>
+        <!-- SIDEBAR CONTENT -->
+        <div
+          class="content secondary-sidebar-content-scroll"
+          fusePerfectScrollbar
+        >
+          <mat-list>
+            <button
+              mat-button
+              *ngFor="let student of students; let i = index"
+              (click)="activateNavigation(student.id)"
+            >
+              <mat-list-item
+                [ngClass]="{ 'active-list-item': student.id === selectedId }"
+              >
+                Lorem ipsum
+              </mat-list-item>
+            </button>
+          </mat-list>
+        </div>
+        <!-- / SIDEBAR CONTENT -->
+      </fuse-sidebar>
+
+      <!-- CONTENT -->
+      <div class="content ml-lg-16" fxFlex.gt-md="75" fxFlex="100">
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-16">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2 class="mr-16">Lorem ipsum</h2>
+            <button
+              mat-icon-button
+              aria-label="Example icon-button with a edit icon"
+              class="mr-24 action-icon"
+            >
+              <i aria-hidden="true" class="fa-light fa-pen"></i>
+            </button>
+          </div>
+          <button
+            mat-flat-button
+            color="primary"
+            class="mr-8"
+            aria-label="Primary"
+          >
+            Save
+          </button>
+        </div>
+        <div
+          class="container-bg three-column-layout-conent"
+          fusePerfectScrollbar=""
+        >
+          <content-demo-one></content-demo-one>
+        </div>
+      </div>
+    </div>
+    <!-- / CONTENT -->
+    <button
+      mat-flat-button
+      color="accent"
+      class="float-button"
+      (click)="openDialog()"
+    >
+      Press for code
+    </button>
+  </div>
+  <!-- / CENTER -->
+</div>

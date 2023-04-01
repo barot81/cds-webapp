@@ -1,0 +1,57 @@
+<div class="drawer-p">
+  <mat-card fxLayout="column" fxLayoutAlign="center">
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" class="w-100-p">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Description</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" class="w-100-p">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Course type</mat-label>
+        <mat-select name="type">
+          <mat-option *ngFor="let type of types" [value]="type.id">
+            {{type.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center start" fxFlex="1 0 auto" class="w-100-p mb-16">
+      <mat-radio-group aria-label="Select an option">
+        <mat-label class="font-16 mr-4"> Nature of course : </mat-label>
+        <mat-radio-button class="mr-8" value="1"><span class="font-14">Core</span></mat-radio-button>
+        <mat-radio-button value="2"><span class="font-14">Elective</span></mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" class="w-100-p">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Department offering the course</mat-label>
+        <mat-select name="course">
+          <mat-option *ngFor="let course of courses" [value]="course.id">
+            {{course.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" class="w-100-p">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Field(s) of study</mat-label>
+        <input matInput formControlName="fieldName" required>
+        <mat-error>Field is required!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" class="w-100-p">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Clock hours</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+    </div>
+
+  </mat-card>
+</div>

@@ -1,0 +1,273 @@
+<div id="exxat-drawers-sizes" class="p-12">
+  <div class="mat-title">Exxat Drawers Sizes Examples</div>
+
+  <!-- @ Drawer Over Drawer-->
+  <!-- <div fxLayout="column" fxLayout.gt-md="row" class="mb-16">
+
+    <div class="preview mr-16" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <div class="mat-caption secondary-text">Drawer over Drawer</div>
+      <mat-card>
+        <button mat-icon-button  class="action-icon" aria-label="Edit" exxatManifoldPanelAction
+          [componentSelector]="exxatDrawerFormService.get('exxat-drawer-reactive-form')" [size]="'drawer-md'"
+          [caption]="'Drawer over Drawer'" >
+         <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+      </mat-card>
+    </div>
+
+    <fuse-highlight lang="html" class="source-code" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <textarea #source hidden="hidden">
+        <button mat-icon-button  class="action-icon" aria-label="Edit" exxatManifoldPanelAction
+        [componentSelector]="exxatDrawerFormService.get('exxat-drawer-reactive-form')" [size]="'drawer-md'"
+        [caption]="'Drawer over Drawer'" >
+       <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+      </textarea>
+    </fuse-highlight>
+  </div> -->
+
+  <!-- @ Small Sized Drawer-->
+  <div fxLayout="column" fxLayout.gt-md="row" class="mb-16">
+    <div
+      class="preview mr-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div class="mat-caption secondary-text">Small Sized Drawer</div>
+      <mat-card>
+        <button
+          mat-icon-button
+          aria-label="edit item"
+          exxatDrawerAction
+          [componentSelector]="
+            exxatDrawerFormService.get('exxat-drawer-reactive-form')
+          "
+          [size]="'drawer-sm'"
+          [primaryAction]="'Save'"
+          [caption]="
+            'Long Drawer Title Example - Long Drawer Title Example - Long Drawer Title Example - Long Drawer Title Example'
+          "
+        >
+          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+        <button
+          mat-icon-button
+          aria-label="edit item"
+          exxatDrawerAction
+          [componentSelector]="
+            exxatDrawerFormService.get('exxat-drawer-reactive-form')
+          "
+          [size]="'drawer-sm'"
+          [primaryAction]="'Save'"
+          [caption]="'Long Drawer Title Example - Long Drawer Title Example - Long Drawer Title Example - Long Drawer Title Example'"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+        <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+      </button>
+            </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <!-- @ Medium Sized Drawer-->
+  <div fxLayout="column" fxLayout.gt-md="row" class="mb-16">
+    <div
+      class="preview mr-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div class="mat-caption secondary-text">Medium Sized Drawer</div>
+      <mat-card>
+        <button
+          mat-icon-button
+          class="action-icon"
+          aria-label="Edit"
+          exxatDrawerAction
+          [componentSelector]="
+            exxatDrawerFormService.get('exxat-drawer-reactive-form')
+          "
+          [size]="'drawer-md'"
+          [caption]="'Medium Sized Drawer'"
+          [primaryAction]="'Save'"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+        <button mat-icon-button  class="action-icon" aria-label="Edit" exxatDrawerAction
+        [componentSelector]="exxatDrawerFormService.get('exxat-drawer-reactive-form')" [size]="'drawer-md'"
+        [caption]="'Medium Sized Drawer'" [primaryAction]="'Save'">
+        <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+       </button>
+    </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <!-- @ Medium Sized Drawer With Disable Conctrols-->
+  <div fxLayout="column" fxLayout.gt-md="row" class="mb-16">
+    <div
+      class="preview mr-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div class="mat-caption secondary-text">
+        Medium Sized Drawer With Disable Controls
+      </div>
+      <mat-card>
+        <button
+          mat-icon-button
+          class="action-icon"
+          aria-label="Edit"
+          exxatDrawerAction
+          [componentSelector]="
+            exxatDrawerFormService.get('exxat-drawer-disable-form')
+          "
+          [size]="'drawer-md'"
+          [caption]="'Medium Sized Drawer With Disable Controls'"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+          <button mat-icon-button  class="action-icon" aria-label="Edit" exxatDrawerAction
+          [componentSelector]="exxatDrawerFormService.get('exxat-drawer-disable-form')" [size]="'drawer-md'"
+          [caption]="'Medium Sized Drawer With Disable Controls'" >
+         <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+              </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <!-- @ large Sized Drawer-->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div
+      class="preview mr-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div class="mat-caption secondary-text">Large Sized Drawer</div>
+      <mat-card>
+        <button
+          mat-icon-button
+          class="action-icon"
+          aria-label="Edit"
+          exxatDrawerAction
+          [componentSelector]="exxatDrawerFormService.get('drawer-with-wizard')"
+          [size]="'drawer-lg'"
+          [primaryAction]="'Save'"
+          [caption]="
+            'Long Drawer Title Example - Long Drawer Title Example - Long Drawer Title Example - Long Drawer Title Example Long Drawer Title Example - Long Drawer Title Example - Long Drawer Title Example - Long Drawer Title Example'
+          "
+        >
+          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+        <button mat-icon-button  class="action-icon" aria-label="Edit" exxatDrawerAction
+        [componentSelector]="exxatDrawerFormService.get('drawer-with-wizard')" [size]="'drawer-lg'" [primaryAction]="'Save'"
+        [caption]="'Long Drawer Title Example - Long Drawer Title Example - Long Drawer Title Example - Long Drawer Title Example Long Drawer Title Example - Long Drawer Title Example - Long Drawer Title Example - Long Drawer Title Example''" >
+       <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+      </button>
+              </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <!-- @ x-large Sized Drawer-->
+  <div fxLayout="column" fxLayout.gt-md="row" class="mb-16">
+    <div
+      class="preview mr-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <div class="mat-caption secondary-text">X-Large Sized Drawer</div>
+      <mat-card>
+        <button
+          mat-icon-button
+          aria-label="edit item"
+          exxatDrawerAction
+          [componentSelector]="
+            exxatDrawerFormService.get('exxat-drawer-reactive-form')
+          "
+          [size]="'drawer-x-lg'"
+          [primaryAction]="'Save'"
+          [caption]="'X-Large Sized Drawer'"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+                <button
+                  mat-icon-button
+                  aria-label="edit item"
+                  exxatDrawerAction
+                  [componentSelector]="
+                    exxatDrawerFormService.get('exxat-drawer-reactive-form')
+                  "
+                  [size]="'drawer-x-lg'"
+                  [primaryAction]="'Save'"
+                  [caption]="'X-Large Sized Drawer'"
+                  >
+                  <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                  </button>
+                  <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                </button>
+      </textarea>
+    </fuse-highlight>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<mat-dialog-content>
+  <fuse-highlight
+    lang="html"
+    class=""
+    fxLayout="column"
+    fxLayoutAlign="start start"
+    fxFlex="100"
+  >
+    <textarea #source>
+
+          <div class="page-layout carded left-sidebar">
+                <div fxLayout="column" class="w-100-p">
+              
+                  <div fxLayout="column"> 
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            <span> Header with Headings</span>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            <span> Navigation</span>
+                        </div>
+                    </div>
+              
+                    <div fxLayout="row" fxFlex="100">
+                    
+                        <fuse-sidebar class="sidebar" name="carded-left-sidebar-2" position="left" lockedOpen="gt-md" fxFlex.gt-md="20">
+                            <div class="content" fusePerfectScrollbar>
+                                <div fxLayout="column" fxLayoutAlign="center start">
+                                    <span>Place primary sidebar content here</span>
+                                </div>
+                            </div>
+                        </fuse-sidebar>
+          
+                        <div fxLayout="column" fxLayout="row" fxFlex.gt-md="80" fxFlex="100" fxLayout="column">
+                            <div fxLayout="row" fxLayoutAlign="space-between center" class="">
+                                <button mat-icon-button class="sidebar-toggle ml-16 mb-16" fxHide.gt-md
+                                (click)="toggleSidebar('carded-left-sidebar-2')">
+                                <mat-icon>menu</mat-icon>
+                                </button>
+                                <button mat-icon-button class="sidebar-toggle mb-16" fxHide.gt-sm
+                                (click)="toggleSidebar('secondary-left-sidebar')">
+                                <i aria-hidden="true" class="fa-light fa-ellipsis-v"></i>
+                                </button>
+                              </div>
+
+                            <div fxLayout="row" fxFlex="100">
+              
+                              <fuse-sidebar class="sidebar secondary-sidebar ml-lg-16" name="secondary-left-sidebar" position="right" lockedOpen="gt-sm" fxFlex.gt-sm="20">
+                                  <div class="content" fusePerfectScrollbar>
+                                      <div fxLayout="row" fxLayoutAlign="center start">
+                                          <span>Place secondary sidebar content here</span>
+                                      </div>
+                                  </div>
+                              </fuse-sidebar>
+                            
+                              <div class="center ml-md-8" fxFlex.gt-sm="80" fxFlex="100" fxLayout="column">
+                                  <div class="content" fxFlex="100">
+                                      <div fxLayout="row" fxLayoutAlign="center start">
+                                          <span>Place page content here</span>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+              </div>
+          </div>
+          
+    </textarea>
+  </fuse-highlight>
+</mat-dialog-content>

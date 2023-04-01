@@ -1,0 +1,27 @@
+<div id="placement" class="page-layout carded fullwidth">
+  <div class="center pl-0 pr-0">
+
+    <!-- Nav Bar Header -->
+    <div #placement_header class="gray-header">
+
+      <mat-card class="no-box-shadow">
+
+        <div fxlayoutalign="space-between center" fxLayout="row wrap" fxFlex="100">
+              <div fxFlex.gt-sm="70" fxFlex="100">
+                <ryzen-placement-tab-nav-bar></ryzen-placement-tab-nav-bar>
+              </div>
+
+        </div>
+
+      </mat-card>
+    </div>
+    <!-- // Nav Bar Header -->
+
+    <div class="content mt-16">
+      <div class="router-container">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+  </div>
+</div>

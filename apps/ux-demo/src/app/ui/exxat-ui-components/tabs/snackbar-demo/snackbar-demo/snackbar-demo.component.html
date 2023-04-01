@@ -1,0 +1,41 @@
+<div class="page-layout simple tabbed full-width-page" fxLayout="column">
+  <div class="center pl-0 pr-0">
+    <div class="gray-header">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div class="mr-8">
+            <button
+              mat-icon-button
+              aria-label="Click to go back"
+              class="action-icon mt-4"
+              routerLink="/admin/ux/ui/exxat-component-library"
+            >
+              <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+            </button>
+          </div>
+          <div>
+            <span class="font-18 font-weight-600">
+              Snackbar With Close Examples</span
+            >
+          </div>
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="end center"
+          fxFlex.lt-sm="100"
+          class="pt-xs-16"
+        >
+          <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="mt-16">
+      <navbar></navbar>
+    </div> -->
+
+    <div class="mt-16">
+      <ryzen-snackbar-example-two></ryzen-snackbar-example-two>
+    </div>
+  </div>
+</div>

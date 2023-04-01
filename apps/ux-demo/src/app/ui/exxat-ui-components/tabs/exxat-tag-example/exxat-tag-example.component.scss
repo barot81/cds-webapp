@@ -1,0 +1,38 @@
+//fuse highlight css
+:host {
+  #exxat-tag-example {
+    mat-icon {
+      cursor: pointer;
+    }
+    .source-code {
+      position: relative;
+      margin-bottom: 16px;
+      min-height: 100px;
+
+      code {
+        background: none !important;
+      }
+    }
+
+    .preview {
+      padding: 16px;
+      margin-bottom: 16px;
+      min-height: 100px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .mat-caption {
+        margin-bottom: 16px;
+      }
+    }
+  }
+}
+
+.tag-color {
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  margin-right: 12px;
+}

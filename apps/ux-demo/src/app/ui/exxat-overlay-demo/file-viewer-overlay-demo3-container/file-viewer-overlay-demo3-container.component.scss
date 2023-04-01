@@ -1,0 +1,21 @@
+@import 'init';
+
+
+#fileViewer_container {
+  width: 100vw;
+  .fileViewer_container_content {
+    overflow: auto;
+    .fileViewer_container_left_content {
+      @include media-breakpoint('xs') {
+        padding-right: 16px !important;
+      }
+    }
+    .guidline_container {
+      @include media-breakpoint('xs') {
+        padding-left: 0px !important;
+        padding-right: 16px !important;
+        padding-top: 16px !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,140 @@
+<mat-card
+  class="p-0 mb-16"
+  tabindex="0"
+  aria-label="student card"
+  id="role-configuration-student-info"
+>
+  <header
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    class="card-header-title py-8 pr-8 pl-16"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <h2
+        class="primary-heading font-weight-600 text-capitalize"
+        tabindex="0"
+        aria-label="heading student"
+      >
+        Student
+      </h2>
+    </div>
+  </header>
+
+  <div class="overflow-auto" tabindex="0">
+    <table
+      aria-label="This is a table"
+      mat-table
+      [dataSource]="dataSource"
+      class="w-100-p exxat-table pt-0"
+    >
+      <!-- dataBucket Column -->
+      <ng-container matColumnDef="dataBucket">
+        <th class="dataBucket-column" mat-header-cell *matHeaderCellDef>
+          Data Bucket
+        </th>
+        <td mat-cell *matCellDef="let element" class="dataBucket-column">
+          {{ element.dataBucket }}
+        </td>
+      </ng-container>
+
+      <!-- feature Column -->
+      <ng-container matColumnDef="feature">
+        <th mat-header-cell *matHeaderCellDef class="feature-column">
+          Feature
+        </th>
+        <td mat-cell *matCellDef="let element" class="feature-column">
+          {{ element.feature }}
+        </td>
+      </ng-container>
+
+      <!-- create Column -->
+      <ng-container matColumnDef="create">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="check-icon-column text-center"
+        >
+          Create
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="check-icon-column text-center"
+        >
+          <i aria-hidden="true" class="fa-light fa-check icon-disabled"></i>
+        </td>
+      </ng-container>
+
+      <!-- read Column -->
+      <ng-container matColumnDef="read">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="check-icon-column text-center"
+        >
+          Read
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="check-icon-column text-center"
+        >
+          <i aria-hidden="true" class="fa-light fa-check primary-fg"></i>
+        </td>
+      </ng-container>
+
+      <!-- update Column -->
+      <ng-container matColumnDef="update">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="check-icon-column text-center"
+        >
+          Update
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="check-icon-column text-center"
+        >
+          <i aria-hidden="true" class="fa-light fa-check primary-fg"></i>
+        </td>
+      </ng-container>
+
+      <!-- delete Column -->
+      <ng-container matColumnDef="delete">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="check-icon-column text-center"
+        >
+          Delete
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="check-icon-column text-center"
+        >
+          <i aria-hidden="true" class="fa-light fa-check icon-disabled"></i>
+        </td>
+      </ng-container>
+
+      <!-- noAccess Column -->
+      <ng-container matColumnDef="noAccess">
+        <th mat-header-cell *matHeaderCellDef class="check-icon-column">
+          No Access
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="check-icon-column text-center"
+        >
+          <i aria-hidden="true" class="fa-light fa-check primary-fg"></i>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</mat-card>

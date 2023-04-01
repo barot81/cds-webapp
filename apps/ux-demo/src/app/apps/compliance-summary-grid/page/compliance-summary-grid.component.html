@@ -1,0 +1,112 @@
+<div class="page-layout carded fullwidth inner-scroll">
+  <!-- START :: HEADER -->
+
+  <div #compliance_summary_grid_header fxLayout="column">
+    <mat-card class="header">
+      <header>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <exxat-avatar
+            src="assets/images/avatars/anna-strong.png"
+            firstName="Anna"
+            lastName="Strong"
+            size="lg"
+          >
+          </exxat-avatar>
+
+          <div fxLayout="column" class="ml-4">
+            <span class="font-16 font-weight-600">101, PPStudent101</span>
+            <span class="font-14">Cohort-DPT-2021</span>
+            <div fxLayout="row wrap" fxLayoutAlign="start center">
+              <div fxLayoutAlign="start center">
+                <a class="font-14">anna.strong@universityname.com</a>
+              </div>
+              <div fxLayoutAlign="start center" class="mx-4">|</div>
+              <div fxLayoutAlign="start center">
+                <span class="font-14">(212) 123-1231</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </mat-card>
+
+    <div class="mt-16" fxLayout="row" fxLayoutAlign="start center">
+      <ryzen-nav-bar></ryzen-nav-bar>
+    </div>
+  </div>
+
+  <!-- END :: HEADER -->
+
+  <div
+    class="content table-rounded-border overflow-auto mt-16"
+    tabindex="0"
+    [style.height.px]="_headerService.scrollContentheight"
+  >
+    <table
+      aria-label="Compliance Summary Grid"
+      mat-table
+      [dataSource]="dataSource"
+      class="w-100-p exxat-table pt-0"
+    >
+      <!-- Requirements Column -->
+      <ng-container matColumnDef="requirements">
+        <th class="pl-16" mat-header-cell *matHeaderCellDef>
+          Requirements ({{ dataSource.filteredData.length }})
+        </th>
+        <td mat-cell *matCellDef="let element" class="pl-16">
+          {{ element.requirement }}
+        </td>
+      </ng-container>
+
+      <!-- Expiration Date Column -->
+      <ng-container matColumnDef="expiration_date">
+        <th mat-header-cell *matHeaderCellDef>Expiration Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.expiration_date }}
+        </td>
+      </ng-container>
+
+      <!-- Type of Documentation Column -->
+      <ng-container matColumnDef="type_of_documentation">
+        <th mat-header-cell *matHeaderCellDef>Type of Documentation</th>
+        <td mat-cell *matCellDef="let element">
+          <div fxLayout="row wrap" fxLayoutAlign="start">
+            <div
+              *ngFor="
+                let item of element.documentations;
+                let first = first;
+                let last = last
+              "
+              fxLayout="column"
+              fxLayoutAlign="start"
+              class="border-right pr-16"
+              [ngClass]="{ 'border-right pr-24 mr-24': !last }"
+            >
+              <div class="mb-8">
+                <span>{{ item.title }}</span>
+              </div>
+              <div
+                class="mb-8"
+                fxLayout="row"
+                fxLayoutAlign="start"
+                *ngFor="let date of item.dates"
+              >
+                <div>
+                  <span>{{ date.dateType }}</span>
+                </div>
+                <div class="mx-4"><span>:</span></div>
+                <div>
+                  <span>{{ date.date }}</span>
+                </div>
+              </div>
+              <a>View Document</a>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

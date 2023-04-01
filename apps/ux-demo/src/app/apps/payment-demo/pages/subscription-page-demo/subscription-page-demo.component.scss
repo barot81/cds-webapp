@@ -1,0 +1,17 @@
+#subscription_table_container {
+  overflow: auto;
+  .subscription-table {
+    tr {
+      td {
+        padding-right: 25px;
+      }
+      th {
+        background-color: rgb(225, 0, 255);
+        width: 22vw;
+        &:last-child {
+          width: 10vw;
+        }
+      }
+    }
+  }
+}

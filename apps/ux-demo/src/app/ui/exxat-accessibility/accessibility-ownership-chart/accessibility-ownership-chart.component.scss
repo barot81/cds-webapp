@@ -1,0 +1,50 @@
+table{
+   
+ 
+    tr.table-head{
+       
+        height: 50px;
+        th.team {
+            width: 15%;
+        }
+        th.note {
+            width: 25%;
+        }
+        th.control {
+            width: 20%;
+           
+        }
+        th.status {
+            width: 20%;
+           
+        }
+    }
+    tr{
+        td {
+            padding: 10px;
+            &:first-child {
+                color: black;
+                font-size: 16px;
+                font-weight: 600;
+                text-transform: capitalize;
+            }
+        }
+    }
+
+}
+.Grid-accessibility{
+
+
+width: 80%;
+margin: 0 auto;
+}
+
+code {
+    background: #f9f2f4 !important;
+    color: #9c1d3d;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    word-break: break-word;
+    white-space: break-spaces;
+    width: initial;
+  }

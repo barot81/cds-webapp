@@ -1,0 +1,115 @@
+<div
+  id="exxat_graphs_standard_pages"
+  class="page-layout full-width inner-scroll w-100-p"
+>
+  <div class="center">
+    <div class="content" fxFlex="100" fxLayout="column">
+      <div class="gray-header mb-16" #graphs_page_header>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="mr-16">
+              <button
+                mat-icon-button
+                aria-label="Click to go back"
+                class="action-icon mx-8"
+                routerLink="/admin/ux/ui/exxat_graphs_standards/pages"
+              >
+                <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+              </button>
+            </div>
+            <div class="pr-16">
+              <span class="font-20 font-weight-600">Graphs</span>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutAlign="start" fxFlex="100" class="mt-16">
+        <div fxFlex="50">
+          <mat-card
+            tabindex="0"
+            aria-label="graph of population verus Country"
+            class="p-0 mr-16"
+            fxLayout="column"
+          >
+            <header
+              tabindex="0"
+              aria-label="heading of population verus Country"
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <span class="primary-heading">Header Title</span>
+              </div>
+            </header>
+
+            <div
+              class="overflow-auto p-16"
+              fxLayout="column"
+              [style.height.px]="_headerService.scrollContentheight"
+            >
+              <div
+                class="h-600 w-100-p"
+                fxlayout="row"
+                fxLayoutAlign="start"
+                tabindex="0"
+                aria-label="main graph content"
+              >
+                <ngx-charts-bar-vertical
+                  [scheme]="colorScheme"
+                  [results]="graphs_data"
+                  [animations]="false"
+                  [gradient]="gradient"
+                  [xAxis]="showXAxis"
+                  [yAxis]="showYAxis"
+                  [legend]="false"
+                  [showXAxisLabel]="showXAxisLabel"
+                  [showYAxisLabel]="showYAxisLabel"
+                  [xAxisLabel]="xAxisLabel"
+                  [yAxisLabel]="yAxisLabel"
+                  (select)="onSelect($event)"
+                >
+                </ngx-charts-bar-vertical>
+              </div>
+
+              <div fxLayout="row" fxLayoutAlign="start center" class="pt-16">
+                <div class="graph_legend" fxLayout="column" fxFlex="100">
+                  <div class="legend_title font-weight-600 mb-4 font-16">
+                    Legend
+                  </div>
+                  <div
+                    fxLayout="row wrap"
+                    fxLayoutAlign="start center"
+                    class="legend_label_containter"
+                  >
+                    <div
+                      *ngFor="let item of graphs_data"
+                      fxFlex="100"
+                      fxFlex.gt-md="25"
+                      fxFlex.md="50"
+                      class="legend_label"
+                      fxLayoutAlign="start center"
+                      fxLayout="row"
+                    >
+                      <div
+                        class="legend_label_color"
+                        [style.backgroundColor]="item.color"
+                      ></div>
+                      <div [title]="item.name" class="legend_label_text">
+                        <span>{{ item.name }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="page-layout simple right-sidebar">
+
+    <!-- SIDEBAR -->
+    <fuse-sidebar class="sidebar" name="simple-right-sidebar-1" position="right" lockedOpen="gt-md">
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content p-24">
+            <fuse-demo-sidebar></fuse-demo-sidebar>
+        </div>
+        <!-- / SIDEBAR CONTENT -->
+
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+       
+        <!-- / HEADER -->
+
+        <!-- CONTENT -->
+        <div class="content p-24 mr-sm-16">
+            <button mat-icon-button class="sidebar-toggle mr-8" fxHide.gt-md
+                (click)="toggleSidebar('simple-right-sidebar-1')">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <h2>Page layout with right sidebar and single scroll</h2>
+            <p>Place your content here in the content class, You can also add the header above the content.</p>
+            <p>In this page layout the sidebar and the content page has the single scroll</p>
+        </div>
+        <!-- / CONTENT -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

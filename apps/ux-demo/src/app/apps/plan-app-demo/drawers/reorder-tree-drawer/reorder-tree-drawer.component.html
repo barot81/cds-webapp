@@ -1,0 +1,120 @@
+<div class="drawer-p">
+  <div class="w-100-p p-0 mx-0 my-16">
+    <mat-accordion
+      class="w-100-p"
+      tabindex="0"
+      aria-label="expansion panel for Goals"
+    >
+      <mat-expansion-panel class="border-radius-20" expanded="true">
+        <mat-expansion-panel-header
+          class="border-bottom border-radius-0 card-header-title"
+        >
+          <mat-panel-title>
+            <h2
+              class="text-capitalize brown-heading font-weight-600"
+              tabindex="0"
+              aria-label="heading goals"
+            >
+              Goals
+            </h2>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-tree
+          [dataSource]="dataSource"
+          [treeControl]="treeControl"
+          cdkDropList
+          (cdkDropListDropped)="drop($event)"
+          class="tree-examples-style mt-16"
+        >
+          <mat-tree-node
+            *matTreeNodeDef="let node"
+            matTreeNodeToggle
+            matTreeNodePadding
+            cdkDrag
+            [cdkDragData]="node"
+            (mouseenter)="dragHover(node)"
+            (mouseleave)="dragHoverEnd()"
+            (cdkDragStarted)="dragStart()"
+            (cdkDragReleased)="dragEnd()"
+            class="draggable"
+          >
+            <button mat-icon-button disabled></button>
+            <div class="pl-16 mr-8 pt-4">
+              <i
+                aria-hidden="true"
+                class="fa-light fa-grip-vertical s-18 accent-fg"
+              ></i>
+            </div>
+            <div fxLayout="row" fxFlex="85" class="node-inner-text mx-8">
+              <span
+                class="pl-12 node-inner-text"
+                tabindex="0"
+                aria-label="1. Possess the theoretical and scientific knowledge to perform original research at the basic, applied or clinical lev leading to scientific"
+                >1.1 Possess the theoretical and scientific knowledge to perform
+                original research at the basic, applied or clinical lev leading
+                to scientific</span
+              >
+            </div>
+          </mat-tree-node>
+          <mat-tree-node
+            *matTreeNodeDef="let node; when: hasChild"
+            matTreeNodePadding
+            cdkDrag
+            [cdkDragData]="node"
+            (mouseenter)="dragHover(node)"
+            (mouseleave)="dragHoverEnd()"
+            (cdkDragStarted)="dragStart()"
+            (cdkDragReleased)="dragEnd()"
+            class="draggable"
+          >
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxFlex="100"
+              class="tree-node-hover tree-node-bg"
+              (click)="activeNode = node"
+              [ngClass]="{ 'tree-node-active': activeNode === node }"
+            >
+              <div class="pl-16 pt-4">
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-grip-vertical s-18 accent-fg"
+                ></i>
+              </div>
+              <button
+                mat-icon-button
+                matTreeNodeToggle
+                class="action-icon mr-8"
+                [attr.aria-label]="'Toggle ' + node.filename"
+              >
+                <i
+                  aria-hidden="true"
+                  [ngClass]="
+                    treeControl.isExpanded(node)
+                      ? 'fa-light fa-chevron-down s-18'
+                      : 'fa-light fa-chevron-right s-18'
+                  "
+                  class="accent-fg"
+                ></i>
+              </button>
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                class="node-inner-text mx-8"
+              >
+                <span
+                  class="font-weight-600 node-inner-text"
+                  tabindex="0"
+                  aria-label="1. Possess the theoretical and scientific knowledge to perform original research at the basic, applied or clinical lev leading to scientific"
+                  >1. Possess the theoretical and scientific knowledge to
+                  perform original research at the basic, applied or clinical
+                  lev leading to scientific</span
+                >
+              </div>
+            </div>
+          </mat-tree-node>
+        </mat-tree>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

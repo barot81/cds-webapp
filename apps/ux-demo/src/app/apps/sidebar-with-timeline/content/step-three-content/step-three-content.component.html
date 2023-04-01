@@ -1,0 +1,44 @@
+<h1 tabindex="0" aria-label="Step 3 - Create a Firebase project and Set up your app">Step 3 - Create a Firebase project and Set up your app</h1>
+<br>
+<span tabindex="0" aria-label="This is an example step of the course. You can put anything in here from example codes to videos.">This is an example step of the course. You can put anything in here from example codes to videos.</span>
+<br><br>
+<span tabindex="0" aria-label="To install the CLI you need to have installed npmwhich typically comes with NodeJS ">To install the CLI you need to have installed <strong>npm</strong> which typically comes with <strong>NodeJS</strong>. </span>
+<span tabindex="0" aria-label="To install or upgrade the CLI run the following npm command:">To install or upgrade the CLI run the following <strong>npm</strong> command:</span>
+<br><br>
+<code tabindex="0" aria-label="npm -g install @angular/cli">npm -g install @angular/cli</code>
+<br><br>
+<span tabindex="0" aria-label="To verify that the CLI has been installed correctly, open a console and run">To verify that the CLI has been installed correctly, open a console and run:</span>
+<br><br>
+<code tabindex="0" aria-label="ng version">ng version</code>
+<br><br>
+<h2 tabindex="0" aria-label="Install dependencies">Install dependencies</h2>
+<br>
+<span tabindex="0" aria-label="To moderate the images we\ll need a few Node.js packages:"></span>To moderate the images we\ll need a few Node.js packages:
+<br><br>
+<ul>
+  <li tabindex="0" aria-label="  The Google Cloud Vision Client Library for Node.js: @google-cloud/vision to run the image through the Cloud Vision
+  API to detect inappropriate images.">
+    The Google Cloud Vision Client Library for Node.js: @google-cloud/vision to run the image through the Cloud Vision
+    API to detect inappropriate images.
+  </li>
+  <br>
+  <li tabindex="0" aria-label="    The Google Cloud Storage Client Library for Node.js: @google-cloud/storage to download and upload the images from
+  Cloud Storage.">
+    The Google Cloud Storage Client Library for Node.js: @google-cloud/storage to download and upload the images from
+    Cloud Storage.
+  </li>
+  <br>
+  <li tabindex="0" aria-label="    A Node.js library allowing us to run processes: child-process-promise to run ImageMagick since the ImageMagick
+  command-line tool comes pre-installed on all Functions instances.">
+    A Node.js library allowing us to run processes: child-process-promise to run ImageMagick since the ImageMagick
+    command-line tool comes pre-installed on all Functions instances.
+  </li>
+</ul>
+<br>
+<span tabindex="0" aria-label="To install these three packages into your Cloud Functions app, run the following npm install --save command. Make sure
+that you do this from the functions directory.">To install these three packages into your Cloud Functions app, run the following npm install --save command. Make sure
+  that you do this from the functions directory.</span>
+<br><br>
+<code tabindex="0" aria-label="npm install --save @google-cloud/vision @google-cloud/storage child-process-promise">npm install --save @google-cloud/vision @google-cloud/storage child-process-promise</code>
+<br><br>
+<span tabindex="0" aria-label="This will install the three packages locally and add them as declared dependencies in your package.js file.">This will install the three packages locally and add them as declared dependencies in your package.js file.</span>

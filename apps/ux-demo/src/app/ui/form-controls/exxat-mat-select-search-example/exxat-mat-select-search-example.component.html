@@ -1,0 +1,32 @@
+<div fxLayout="column">
+  <mat-form-field appearance="fill" fxFlex="100">
+    <mat-label> Select Item </mat-label>
+    <mat-select [formControl]="multiCtrl" [multiple]="true" #multiSelect>
+      <mat-option>
+        <exxat-mat-select-search
+          [formControl]="filterCtrl"
+          (toggleAll)="toggleSelectAll($event)"
+        >
+        </exxat-mat-select-search>
+      </mat-option>
+      <mat-option
+        *ngFor="let item of filteredDropdownSearchData | async; let i = index"
+        [ngClass]="{
+          'mat-option-text ': isOptionTruncated(
+            'optionText_' + 'id_' + item.id + '_' + item.title
+          )
+        }"
+        [value]="item"
+        id="{{ 'optionText_' + 'id_' + item.id + '_' + item.title }}"
+        class="dropdown-with-tooltip"
+        [options]="tooltipOptions"
+        [display]="
+          isOptionTruncated('optionText_' + 'id_' + item.id + '_' + item.title)
+        "
+        [tooltip]="item.title"
+      >
+        {{ item.title }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

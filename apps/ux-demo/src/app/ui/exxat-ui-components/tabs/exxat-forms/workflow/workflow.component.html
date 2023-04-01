@@ -1,0 +1,158 @@
+<div class="content pt-16" fxLayout="column">
+
+  <div class="m-8 ml-16" fxLayout="row">
+    <span class="font-16">
+      <ul tabindex="0" aria-label="instruction list">
+        <li tabindex="0" aria-label="one , Material tree example with checkbox and add functionality"> 
+          Workflow defines a list of steps where each step holds a list of views for a role and the step as well as actions
+          available for the same.
+        </li>
+      </ul>
+    </span>
+  </div>
+  <div fxLayout="row wrap" fxFlex="100">
+
+    <div class="preview mt-16" fxLayout="column" fxLayoutAlign="start" fxFlex.gt-md="100" fxFlex="100">
+      <mat-tab-group>
+        <mat-tab label="Workflow">
+          <div class="pt-16">
+            <fuse-highlight lang="json" class="source-code">
+              <textarea #source hidden="hidden">
+                {
+                  "workflowId": "Exxat.Evaluation.PTSE1",
+                  "label": "Evaluation",
+                  "steps": [
+                      {
+                          "stepId": "Step.Evaluation.Start",
+                          "name": "Get Started",
+                          "stepType": "Start",
+                          "color": "#ececec",
+                          "views": [
+                              {
+                                  "permissionId": "Summary.PTSE1.Student",
+                                  "roleId": "Student"
+                              },
+                              {
+                                  "permissionId": "Summary.PTSE1.Student",
+                                  "roleId": "Administrator"
+                              }
+                          ],
+                          "actions": [
+                              {
+                                  "actionId": "Action.PTSE1.Save",
+                                  "nextStepId": "Step.Evaluation.Save",
+                                  "allowedRoles": [
+                                      {
+                                          "roleId": "Student"
+                                      },
+                                      {
+                                          "roleId": "Administrator"
+                                      }
+                                  ]
+                              }
+                          ]
+                      },
+                      {
+                          "stepId": "Step.Evaluation.Save",
+                          "name": "In Progress by Student",
+                          "stepType": "Normal",
+                          "color": "#c6f2ff",
+                          "views": [
+                              {
+                                  "permissionId": "Summary.PTSE1.Student",
+                                  "roleId": "Student"
+                              },
+                              {
+                                  "permissionId": "Summary.PTSE1.Student",
+                                  "roleId": "Administrator"
+                              }
+                          ],
+                          "actions": [
+                              {
+                                  "actionId": "Action.PTSE1.Save",
+                                  "allowedRoles": [
+                                      {
+                                          "roleId": "Student"
+                                      },
+                                      {
+                                          "roleId": "Administrator"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "actionId": "Action.PTSE1.Submit",
+                                  "nextStepId": "Step.Evaluation.AdminReview",
+                                  "allowedRoles": [
+                                      {
+                                          "roleId": "Student"
+                                      },
+                                      {
+                                          "roleId": "Administrator"
+                                      }
+                                  ]
+                              }
+                          ]
+                      },
+                      {
+                          "stepId": "Step.Evaluation.AdminReview",
+                          "name": "Submitted",
+                          "stepType": "Normal",
+                          "color": "#6fcf97",
+                          "views": [
+                              {
+                                  "permissionId": "Summary.PTSE1.StudentDisplay",
+                                  "roleId": "Student"
+                              },
+                              {
+                                  "permissionId": "Summary.PTSE1.Admin",
+                                  "roleId": "Administrator"
+                              }
+                          ],
+                          "actions": [
+                              {
+                                  "actionId": "Action.PTSE1.Review",
+                                  "nextStepId": "Step.Evaluation.Complete",
+                                  "allowedRoles": [
+                                      {
+                                          "roleId": "Administrator"
+                                      }
+                                  ]
+                              }
+                          ]
+                      },
+                      {
+                          "stepId": "Step.Evaluation.Complete",
+                          "name": "Reviewed",
+                          "stepType": "Normal",
+                          "color": "#6fcf97",
+                          "views": [
+                              {
+                                  "permissionId": "Summary.PTSE1.StudentDisplay",
+                                  "roleId": "Student"
+                              },
+                              {
+                                  "permissionId": "Summary.PTSE1.AdminDisplay",
+                                  "roleId": "Administrator"
+                              }
+                          ]
+                      }
+                  ],
+                  "partitionKey": "Exxat",
+                  "entityName": "Exxat.Forms.Entity.Workflows.Workflow",
+                  "id": "Exxat.Evaluation.PTSE1"
+              }
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Workflow UML">
+          <div class="pt-16 img-container">
+            <img src="assets/images/exxat-forms/Workflow.png" />
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

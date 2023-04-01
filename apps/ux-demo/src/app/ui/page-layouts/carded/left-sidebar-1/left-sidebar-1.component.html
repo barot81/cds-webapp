@@ -1,0 +1,50 @@
+<div class="page-layout carded left-sidebar">
+    <div fxLayout="column" class="w-100-p">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="p-16">
+            <h2 class="primary-fg">Two Column Layout with header</h2>
+            <button mat-button class="primary" (click)="openDialog()">Click for HTML</button>
+        </div>
+
+       <div fxLayout="column"> 
+            <div fxLayout="row" fxLayoutAlign="center center" class="p-16 h-100 blue-800-bg mb-16">
+                <span class="font-16 font-weight-600 fuse-white-fg"> Header with Headings</span>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="p-16 h-50 blue-800-bg mb-16">
+                <span class="font-16 font-weight-600 fuse-white-fg"> Navigation</span>
+            </div>
+        </div>
+
+        <div fxLayout="row" fxFlex="100">
+        
+                <fuse-sidebar class="sidebar" name="carded-left-sidebar-2" position="left" lockedOpen="gt-md" fxFlex.gt-md="20">
+                    <div class="content pink-bg p-16 h-100-p" fusePerfectScrollbar>
+                        <div fxLayout="row" fxLayoutAlign="center start" class="pt-32">
+                            <span class="font-16 font-weight-600 fuse-white-fg">Sidebar with 20 % width</span>
+                        </div>
+                    </div>
+                </fuse-sidebar>
+                
+                <div class="center ml-lg-16" fxFlex.gt-md="80" fxFlex="100" fxLayout="column">
+                 <div>
+                    <button mat-icon-button class="sidebar-toggle pl-16" fxHide.gt-md
+                    (click)="toggleSidebar('carded-left-sidebar-2')">
+                    <mat-icon>menu</mat-icon>
+                    </button>
+                 </div>
+
+                    <div class="content" fxFlex="100">
+                        <div fxLayout="row" fxLayoutAlign="center start"  class="element-height purple-bg pt-32 px-16 ">
+                            <span class="font-16 font-weight-600 fuse-white-fg">Page content with 80% width.</span>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+   </div>
+</div>
+
+
+
+
+
+

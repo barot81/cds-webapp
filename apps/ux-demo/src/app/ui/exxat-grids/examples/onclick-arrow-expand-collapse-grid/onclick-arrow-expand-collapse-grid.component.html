@@ -1,0 +1,680 @@
+<div
+  class="page-layout simple left-sidebar inner-sidebar full-width-page inner-scroll onclick-arrow-expand-collapse-grid"
+>
+  <div class="content height-inherit">
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+    <div class="center p-0 right-side-content" fxLayout="column">
+      <div
+        class="table-rounded-border white-background w-100-p"
+        fxLayout="column"
+      >
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
+            <div
+              class="search-wrapper"
+              fxFlex="100"
+              search
+              [formControl]="searchItem"
+            >
+              <div
+                class="search table-search"
+                fxFlex
+                fxLayout="row"
+                fxLayoutAlign="start center"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-magnifying-glass s-18"
+                ></i>
+                <input
+                  id="inputBox"
+                  type="text"
+                  placeholder="Search in 50 student"
+                  [formControl]="searchItem"
+                  fxFlex
+                />
+                <button
+                  mat-icon-button
+                  aria-label="clear search"
+                  class="action-icon clear-button"
+                >
+                  <i aria-hidden="true" class="fa-light fa-xmark s-18"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="end center"
+              class="border-right h-48 pr-16"
+              fxHide.lt-md
+            >
+              <button
+                mat-stroked-button
+                color="primary"
+                class="mr-12"
+                aria-label="Add action 1"
+              >
+                <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+                <span class="ml-4">Add action 1</span>
+              </button>
+              <button
+                mat-stroked-button
+                color="primary"
+                class=""
+                aria-label="Add action 2"
+              >
+                <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+                <span class="ml-4">Add action 2</span>
+              </button>
+            </div>
+            <div fxLayout="row" class="mr-16 ml-8">
+              <button
+                matTooltip="Export"
+                aria-label="Export Table"
+                mat-icon-button
+                class="ml-8"
+                fxHide.lt-md
+              >
+                <i aria-hidden="true" class="fa-light fa-file-export s-18"></i>
+              </button>
+
+              <button
+                matTooltip="Edit Columns"
+                aria-label="Edit Columns"
+                exxatDrawerAction
+                [componentSelector]="gridService.get('ryzen-edit-columns')"
+                [size]="'drawer-sm'"
+                [caption]="'Edit Columns'"
+                mat-icon-button
+                class="ml-4"
+                fxHide.lt-md
+              >
+                <i aria-hidden="true" class="fa-light fa-wrench s-18"></i>
+              </button>
+
+              <button
+                matTooltip="Filter"
+                mat-icon-button
+                class="ml-4 filter-icon-button"
+                aria-label="filters"
+                exxatDrawerAction
+                [componentSelector]="
+                  _UXDemoDrawerService.get('ryzen-filter-drawer')
+                "
+                [size]="'drawer-sm'"
+                [caption]="'Filters'"
+                [primaryAction]="'Save'"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
+                  <span> 12 </span>
+                </div>
+              </button>
+
+              <button
+                aria-label="mat menu"
+                mat-icon-button
+                [matMenuTriggerFor]="menu"
+                class="ml-4"
+                fxHide.gt-sm
+              >
+                <i aria-hidden="true" class="fal fa-ellipsis-h s-18"></i>
+              </button>
+              <mat-menu #menu="matMenu" fxHide.gt-sm>
+                <button mat-menu-item aria-label="Action 1">
+                  <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i
+                  >Action 1
+                </button>
+                <button mat-menu-item aria-label="Action 2">
+                  <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i
+                  >Action 2
+                </button>
+                <button mat-menu-item aria-label="Edit Columns">
+                  <i aria-hidden="true" class="fa-light fa-wrench s-18 mr-8"></i
+                  >Edit columns
+                </button>
+                <button mat-menu-item aria-label="Export file">
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-file-export s-18 mr-8"
+                  ></i
+                  >Export file
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-found-style warn-fg">No data found</div>
+        <div class="content overflow-auto w-100-p" fusePerfectScrollbar>
+          <table
+            tabindex="0"
+            aria-hidden="false"
+            aria-label="This is a Expand Collapse table"
+            mat-table
+            [dataSource]="dataSource"
+            class="w-100-p exxat-table pt-0"
+            id="expand-collapse-grid"
+          >
+            <!-- id Column -->
+            <ng-container matColumnDef="id">
+              <th class="id-column" mat-header-cell *matHeaderCellDef></th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="id-column text-center vertical-align-top"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <button
+                    mat-icon-button
+                    (click)="expandCollapse(element)"
+                    aria-label="expand or collapse row button"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-angle-up s-18 icon-fill"
+                      *ngIf="element.isExpandedContent"
+                    ></i>
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-angle-down s-18 icon-fill"
+                      *ngIf="!element.isExpandedContent"
+                    ></i>
+                  </button>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- checkbox Column -->
+            <ng-container matColumnDef="checkbox">
+              <th
+                tabindex="0"
+                aria-label="checkbox column"
+                class="checkbox-column text-center"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                <div>
+                  <mat-checkbox
+                    (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [attr.aria-label]="checkboxLabel()"
+                  >
+                  </mat-checkbox>
+                </div>
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                (click)="clickedRows.add(element)"
+                class="checkbox-column text-center vertical-align-top"
+              >
+                <mat-checkbox
+                  class="mt-4"
+                  (click)="$event.stopPropagation()"
+                  (change)="$event ? selection.toggle(element) : null"
+                  [checked]="selection.isSelected(element)"
+                  [attr.aria-label]="checkboxLabel(element)"
+                >
+                </mat-checkbox>
+              </td>
+            </ng-container>
+
+            <!-- location Column -->
+            <ng-container matColumnDef="location">
+              <th mat-header-cell *matHeaderCellDef class="location-column">
+                Location
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="location-column vertical-align-top"
+              >
+                <div fxLayout="column">
+                  <div fxLayout="column">
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                      class="pb-4"
+                    >
+                      <span class="font-weight-600 mr-8 overflow-ellipses"
+                        >Massachusetts General Hospital - Newyork</span
+                      >
+                      <button
+                        mat-icon-button
+                        [tooltip]="HtmlContent"
+                        [options]="tooltipOptions"
+                        aria-label="tooltip toggle"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-circle-info s-18"
+                        ></i>
+                      </button>
+                      <!-- Tooltip content -->
+                      <ng-template #HtmlContent>
+                        <div
+                          fxLayout="column"
+                          fxLayoutAlign="start start"
+                          class="p-8"
+                        >
+                          <div
+                            fxLayout="row"
+                            fxLayoutAlign="space-between start"
+                          >
+                            <div fxFlex="75">
+                              <span class="accent-fg font-weight-600 font-16"
+                                >Massachusetts General Hospital - Newyork
+                                Newyork
+                              </span>
+                              <span class="ml-8">In-Area</span>
+                            </div>
+                            <div fxFlex="25" class="pt-4">
+                              <a tabindex="0" aria-label="view details link"
+                                >View Details</a
+                              >
+                              <i
+                                aria-hidden="true"
+                                class="far fa-external-link s-16 ml-12 icon-blue-color"
+                              ></i>
+                            </div>
+                          </div>
+                          <span>Rochester, NY</span>
+                          <div fxLayout="column" class="pt-16">
+                            <span class="font-weight-600">Site</span>
+                            <span>Autumn Winds Retirement Lodge</span>
+                          </div>
+
+                          <div fxLayout="row" class="pt-24 w-100-p">
+                            <div fxLayout="column" fxFlex="50">
+                              <span class="font-weight-600"
+                                >Location status</span
+                              >
+                              <div
+                                class="pt-4"
+                                fxLayout="row"
+                                fxLayoutAlign="start center"
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  class="far fa-exclamation-triangle s-16 warn-fg"
+                                ></i>
+                                <span class="warn-fg pl-8">In-Active</span>
+                              </div>
+                            </div>
+                            <div fxLayout="column" fxFlex="50">
+                              <span class="font-weight-600">Contract</span>
+                              <div
+                                class="pt-4"
+                                fxLayout="row"
+                                fxLayoutAlign="start center"
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  class="far fa-exclamation-triangle s-16 warn-fg"
+                                ></i>
+                                <span class="warn-fg pl-8"
+                                  >Valid upto Jan 20, 2021</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+
+                          <div fxLayout="column" class="pt-24">
+                            <span class="font-weight-600">Rotation date</span>
+                            <span>Jan 22, 2021 - Feb 22, 2021</span>
+                          </div>
+                        </div>
+                      </ng-template>
+                      <!-- tooltip content end -->
+                    </div>
+                    <div fxLayout="row wrap" fxLayoutAlign="start center">
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        <span class="mr-8">Rochester, NY</span>
+                        <mat-chip-list>
+                          <mat-chip>10 miles</mat-chip>
+                        </mat-chip-list>
+                      </div>
+                      <div fxLayoutAlign="start" fxLayout="row">
+                        <mat-menu #tagsMenu="matMenu" [overlapTrigger]="false">
+                          <exxat-tag
+                            [tags]="tags"
+                            [options]="tagOptions"
+                            (onTagChanges)="onTagChanges($event)"
+                          >
+                          </exxat-tag>
+                        </mat-menu>
+                        <div
+                          fxLayout="row wrap"
+                          fxLayoutAlign="start center"
+                          class="pt-4"
+                        >
+                          <exxat-tag-showcase
+                            [tags]="tags"
+                          ></exxat-tag-showcase>
+                        </div>
+                      </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                      <span class="pr-8">Class 2023 1st CEE </span>
+                      |
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="px-8"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-hospital-user s-14 mr-12"
+                        ></i>
+
+                        <span>Michel sheen</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    fxLayout="column"
+                    [ngClass]="
+                      element.isExpandedContent ? '' : 'email-content-hide'
+                    "
+                  >
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start start"
+                      class="mt-24"
+                    >
+                      <span class="font-weight-600">Email Status : </span>
+                      <div fxLayout="column" class="pl-4">
+                        <span class="text-italic"> Student: May 15, 2021</span>
+                        <span class="text-italic"> Site: May 15, 2021</span>
+                      </div>
+                    </div>
+                    <span class="text-italic pt-4"
+                      >Last updated by <strong>S. Michel</strong>
+                      on
+                      <strong>May 30, 2021</strong></span
+                    >
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- slots Column -->
+            <ng-container matColumnDef="slots">
+              <th mat-header-cell *matHeaderCellDef class="slots-column">
+                Slots
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="slots-column vertical-align-top"
+              >
+                <div fxLayout="column">
+                  <div fxLayout="row" fxLayoutAlign="start center" class="mb-8">
+                    <a class="mr-8" tabindex="0" aria-label="6 slots offered">
+                      6 slots offered</a
+                    >
+                    <mat-chip-list>
+                      <mat-chip class="exxat-robin-egg-blue-bg" fontColor
+                        >Internal medicine</mat-chip
+                      >
+                    </mat-chip-list>
+                  </div>
+                  <div
+                    [ngClass]="
+                      element.isExpandedContent
+                        ? 'expanded-content'
+                        : 'collapsed-content'
+                    "
+                  >
+                    <span class="mr-16 mb-8">Aug 29, 2022 - Oct 21, 2022</span>
+                    <div
+                      [ngClass]="
+                        element.isExpandedContent
+                          ? 'expanded-content'
+                          : 'collapsed-content'
+                      "
+                    >
+                      <div fxLayoutAlign="start center" fxLayout="row">
+                        <div
+                          fxLayoutAlign="start center"
+                          fxLayout="row"
+                          class="icon-spacing mr-12"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-circle-check s-18 primary-fg"
+                          ></i>
+                          <span class="hide-content space-no-wrap"
+                            >Confirmed (3)</span
+                          >
+                        </div>
+                        <div
+                          fxLayoutAlign="start center"
+                          fxLayout="row"
+                          class="icon-spacing mr-12"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-circle-exclamation orange-fg s-18"
+                          ></i>
+
+                          <span class="hide-content space-no-wrap"
+                            >Tentative (2)</span
+                          >
+                        </div>
+                        <div
+                          fxLayoutAlign="start center"
+                          fxLayout="row"
+                          class="icon-spacing mr-12"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-circle-xmark red-fg s-18"
+                          ></i>
+
+                          <span class="hide-content space-no-wrap"
+                            >Cancelled (1)</span
+                          >
+                        </div>
+                      </div>
+                      <div
+                        fxLayoutAlign="start center"
+                        fxLayout="row"
+                        class="icon-spacing mr-12"
+                      >
+                        <i aria-hidden="true" class="fa-light fa-list s-18"></i>
+
+                        <span class="hide-content"
+                          >FCFS, Resume required &nbsp; |</span
+                        >
+                        <span class="hide-content"
+                          ><i
+                            aria-hidden="true"
+                            class="fa-light fa-user-group s-14 mr-12"
+                          ></i
+                          >1 Student:2 CI'S</span
+                        >
+                      </div>
+                      <div
+                        fxLayoutAlign="start center"
+                        fxLayout="row"
+                        class="icon-spacing mr-12"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-earth-asia s-18"
+                        ></i>
+                        <span class="hide-content"
+                          >Published -May 15, 2021</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start center">
+                    <a tabindex="0" aria-label="7 students interested"
+                      >7 students interested</a
+                    >
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- placements Column -->
+            <ng-container matColumnDef="placements">
+              <th mat-header-cell *matHeaderCellDef class="placements-column">
+                Placements
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="placements-column vertical-align-top"
+              >
+                <div fxLayout="column">
+                  <div>
+                    <button mat-flat-button color="primary" class="btn-sm mt-4">
+                      2 Slots Available
+                    </button>
+                  </div>
+                  <div
+                    fxLayout="row wrap"
+                    fxLayoutAlign="start center"
+                    class="mt-8 mb-4"
+                  >
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                      class="mb-4 mr-8"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-user-graduate s-12 icon-blue-color mr-4"
+                      ></i>
+                      <a tabindex="0" aria-label="Fisher Cody">Fisher Cody</a>
+                    </div>
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                      class="mb-4 mr-8"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-earth-asia s-12 icon-blue-color mr-4"
+                      ></i>
+                      <a tabindex="0" aria-label="Darrell Steward"
+                        >Darrell Steward</a
+                      >
+                      <mat-chip-list class="ml-8">
+                        <mat-chip>PT -756</mat-chip>
+                      </mat-chip-list>
+                    </div>
+                    <div
+                      fxLayout="row wrap"
+                      [ngClass]="
+                        element.isExpandedContent ? '' : 'email-content-hide'
+                      "
+                    >
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="mb-4 mr-8"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-user-graduate s-12 icon-blue-color mr-4"
+                        ></i>
+                        <a tabindex="0" aria-label="Fisher Cody">Fisher Cody</a>
+                      </div>
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="mb-4 mr-8"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-user-graduate s-12 icon-blue-color mr-4"
+                        ></i>
+                        <a tabindex="0" aria-label="Fisher Cody">Fisher Cody</a>
+                      </div>
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="mb-4 mr-8"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-user-graduate s-12 icon-blue-color mr-4"
+                        ></i>
+                        <a tabindex="0" aria-label="Fisher Cody">Fisher Cody</a>
+                      </div>
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="mb-4 mr-8"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-user-graduate s-12 icon-blue-color mr-4"
+                        ></i>
+                        <a tabindex="0" aria-label="Fisher Cody">Fisher Cody</a>
+                      </div>
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="mb-4 mr-8"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-user-graduate s-12 icon-blue-color mr-4"
+                        ></i>
+                        <a tabindex="0" aria-label="Fisher Cody">Fisher Cody</a>
+                      </div>
+                    </div>
+                  </div>
+                  <a class="font-weight-600" (click)="expandCollapse(element)">
+                    <span *ngIf="element.isExpandedContent"></span>
+                    <span *ngIf="!element.isExpandedContent"
+                      >+2 Students Placed</span
+                    >
+                  </a>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"
+            ></tr>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: displayedColumns"
+              [ngClass]="[
+                row.isExpandedContent ? '' : '',
+                selection.isSelected(row) ? 'row-selected' : '',
+                selection.isSelected(row) ? 'row-highlighted' : ''
+              ]"
+            >
+              class="py-8">
+            </tr>
+          </table>
+        </div>
+        <div>
+          <mat-paginator
+            tabindex="0"
+            [pageSize]="30"
+            class="bt"
+          ></mat-paginator>
+        </div>
+      </div>
+      <!-- / CONTENT -->
+    </div>
+    <!-- / CENTER -->
+  </div>
+  <!-- / CONTENT -->
+</div>

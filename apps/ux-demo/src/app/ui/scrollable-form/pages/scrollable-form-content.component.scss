@@ -1,0 +1,25 @@
+@import 'init';
+
+.scrollbale_form_content {
+  overflow: auto !important;
+
+  // For Mobile Screen
+  @include media-breakpoint('lt-sm') {
+    height: calc(100vh - 140px);
+  }
+
+  // For Tablet Screen
+  @include media-breakpoint('sm') {
+    height: calc(100vh - 140px);
+  }
+
+  // For Bigger Screen Than Tablet
+  @include media-breakpoint('gt-sm') {
+    height: calc(100vh - 140px);
+  }
+
+  // For Bigger Screen Small Laptop
+  @include media-breakpoint('gt-md') {
+    height: calc(100vh - 140px);
+  }
+}

@@ -1,0 +1,941 @@
+<div
+  class="pb-128 mt-16 overflow-auto"
+  fxLayout="row wrap"
+  [style.height.px]="_headerService.scrollContentheight - 175"
+>
+  <div
+    class="academic-info-content"
+    fxLayout="column"
+    fxFlex="100"
+    fxFlex.gt-sm="55"
+    fxFlex.gt-md="65"
+  >
+    <!--BASIC INFORMATION SECTION-->
+    <mat-card
+      class="mb-16 p-0"
+      fxLayout="column"
+      tabindex="0"
+      aria-label="this is basic Information card"
+    >
+      <header
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        class="card-header-border-bottom card-header-title py-8 pr-8 pl-16"
+      >
+        <div xLayout="row" fxLayoutAlign="start center">
+          <h2
+            class="primary-heading font-weight-600"
+            tabindex="0"
+            aria-label="Basic Information"
+          >
+            Basic Information
+          </h2>
+        </div>
+        <button
+          mat-icon-button
+          class="icon-fill-bg"
+          aria-label="Edit basic Information"
+          role="button"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen fuse-white-fg s-18"></i>
+        </button>
+      </header>
+      <!--1st row-->
+      <div fxLayout="column" class="pl-16 pt-16">
+        <div fxLayout="column" fxLayout.gt-md="row">
+          <div
+            class="exxat-info pr-16 pb-16 word-break-all"
+            fxLayout="column"
+            fxLayoutAlign="center"
+            fxFlex="50"
+          >
+            <div class="title">First Name</div>
+            <div
+              class="description"
+              tabindex="0"
+              aria-label="First Name is Lindsey"
+            >
+              Lindsey
+            </div>
+          </div>
+          <div
+            class="exxat-info pr-16 pb-16 word-break-all"
+            fxLayout="column"
+            fxLayoutAlign="center"
+            fxFlex="50"
+          >
+            <div class="title">Last Name</div>
+            <div
+              class="description"
+              tabindex="0"
+              aria-label="Last Name is Smothermon"
+            >
+              Smothermon
+            </div>
+          </div>
+        </div>
+        <!--2nd row-->
+        <div fxLayout="column" fxLayout.gt-md="row">
+          <div
+            class="exxat-info pr-16 pb-16 word-break-all"
+            fxLayout="column"
+            fxLayoutAlign="center"
+            fxFlex="50"
+          >
+            <div class="title">Maiden Name</div>
+            <div
+              class="description"
+              tabindex="0"
+              aria-label="Maiden Name is William"
+            >
+              William
+            </div>
+          </div>
+          <div
+            class="exxat-info pr-16 pb-16 word-break-all"
+            fxLayout="column"
+            fxLayoutAlign="center"
+            fxFlex="50"
+          >
+            <div class="title">Date of birth</div>
+            <div
+              class="description"
+              tabindex="0"
+              aria-label="Date of birth is June 20,1990"
+            >
+              June 20,1990
+            </div>
+          </div>
+        </div>
+        <!--3rd row-->
+        <div fxLayout="column" fxLayout.gt-md="row">
+          <div
+            class="exxat-info pr-16 pb-16 word-break-all"
+            fxLayout="column"
+            fxLayoutAlign="center"
+            fxFlex="50"
+          >
+            <div class="title">Gender</div>
+            <div class="description" tabindex="0" aria-label="Gender is Female">
+              Female
+            </div>
+          </div>
+          <div
+            class="exxat-info pr-16 pb-16 word-break-all"
+            fxLayout="column"
+            fxLayoutAlign="center"
+            fxFlex="50"
+          >
+            <div class="title">Race</div>
+            <div
+              class="description"
+              tabindex="0"
+              aria-label="Race is Black or African American"
+            >
+              Black or African American
+            </div>
+          </div>
+        </div>
+        <!--4th row-->
+        <div fxLayout="column" fxLayout.gt-md="row">
+          <div
+            class="exxat-info pr-16 pb-16 word-break-all"
+            fxLayout="column"
+            fxLayoutAlign="center"
+            fxFlex="50"
+          >
+            <div class="title">Cell Phone</div>
+            <div
+              class="description"
+              tabindex="0"
+              aria-label="Cell Phone is 309-566-4688"
+            >
+              309-566-4688
+            </div>
+          </div>
+          <div
+            class="exxat-info pr-16 pb-16 word-break-all"
+            fxLayout="column"
+            fxLayoutAlign="center"
+            fxFlex="50"
+          >
+            <div class="title">Personal Email Address</div>
+            <div
+              class="description"
+              tabindex="0"
+              aria-label="Personal Email Address is lindsey.lyon.081@example.com"
+            >
+              lindsey.lyon.081@example.com
+            </div>
+          </div>
+        </div>
+        <!--5th row-->
+        <div fxLayout="column" fxLayout.gt-md="row">
+          <div
+            class="exxat-info pr-16 pb-16 word-break-all"
+            fxLayout="column"
+            fxLayoutAlign="center"
+            fxFlex="50"
+          >
+            <div class="title">Alternate email Address</div>
+            <div
+              class="description"
+              tabindex="0"
+              aria-label="Alternate email Address is lindsey.Smothermon@example.com"
+            >
+              lindsey.Smothermon@example.com
+            </div>
+          </div>
+        </div>
+        <!--5th row-->
+      </div>
+    </mat-card>
+    <!--/basic info section-->
+
+    <!--Address Section-->
+    <mat-card class="mb-16 p-0" fxLayout="column">
+      <header
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        class="card-header-border-bottom card-header-title py-8 pr-8 pl-16"
+      >
+        <div xLayout="row" fxLayoutAlign="start center">
+          <h2 class="primary-heading font-weight-600">Address Information</h2>
+        </div>
+        <button
+          mat-icon-button
+          class="icon-fill-bg"
+          aria-label="Edit Address Information"
+          role="button"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen fuse-white-fg s-18"></i>
+        </button>
+      </header>
+      <div fxLayout="column">
+        <div fxLayout="column" fxLayout.gt-md="row" class="pt-16 pl-16">
+          <div
+            class="exxat-info pr-16 pb-16 word-break-all"
+            fxLayout="column"
+            fxLayoutAlign="center"
+            fxFlex="50"
+          >
+            <h4 class="accent-fg pb-16">Office Address</h4>
+
+            <div fxLayout="column">
+              <span>dummy address1</span>
+              <span>dummy address1, dummy address1 </span>
+              <span>dummy address</span>
+              <span>dummy address</span>
+            </div>
+          </div>
+          <div
+            class="exxat-info pr-16 pb-16 word-break-all"
+            fxLayout="column"
+            fxLayoutAlign="center"
+            fxFlex="50"
+          >
+            <h4 class="accent-fg pb-16">Residential Address</h4>
+
+            <div fxLayout="column">
+              <span>dummy address1</span>
+              <span>dummy address1, dummy address1 </span>
+              <span>dummy address</span>
+              <span>dummy address</span>
+            </div>
+          </div>
+        </div>
+        <div class="bb"></div>
+
+        <div fxLayout="column" fxLayout.gt-md="row" class="pt-16 pl-16">
+          <div
+            class="exxat-info pr-16 pb-16 word-break-all"
+            fxLayout="column"
+            fxLayoutAlign="center"
+            fxFlex="50"
+          >
+            <h4 class="accent-fg pb-16">Office Address</h4>
+
+            <div fxLayout="column">
+              <span>dummy address1</span>
+              <span>dummy address1, dummy address1 </span>
+              <span>dummy address</span>
+              <span>dummy address</span>
+            </div>
+          </div>
+          <div
+            class="exxat-info pr-16 pb-16 word-break-all"
+            fxLayout="column"
+            fxLayoutAlign="center"
+            fxFlex="50"
+          >
+            <h4 class="accent-fg pb-16">Residential Address</h4>
+
+            <div fxLayout="column">
+              <span>dummy address1</span>
+              <span>dummy address1, dummy address1 </span>
+              <span>dummy address</span>
+              <span>dummy address</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    <!--Address Section-->
+
+    <!--Education Section-->
+    <mat-card class="mb-16 p-0" fxLayout="column">
+      <header
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        class="card-header-border-bottom card-header-title py-8 pr-8 pl-16"
+      >
+        <div xLayout="row" fxLayoutAlign="start center">
+          <h2 class="primary-heading font-weight-600">Education</h2>
+        </div>
+        <button
+          mat-icon-button
+          class="icon-fill-bg"
+          aria-label="Edit Education Information"
+          role="button"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen fuse-white-fg s-18"></i>
+        </button>
+      </header>
+      <div fxLayout="column" class="pl-16 pt-16">
+        <div fxLayout="column" fxLayout.gt-md="column">
+          <h4 class="accent-fg pb-16">Doctor in Physical threapy</h4>
+          <div fxLayout="column" fxLayout.gt-md="row">
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Institution</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Enrolled</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Awarded/Anticipated</label>
+                <div>Abc</div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="column" fxLayout.gt-md="row">
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Institution</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Enrolled</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Awarded/Anticipated</label>
+                <div>Abc</div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="column" fxLayout.gt-md="row">
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Institution</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Enrolled</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Awarded/Anticipated</label>
+                <div>Abc</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bb"></div>
+
+      <div fxLayout="column" class="pl-16 pt-16">
+        <div fxLayout="column" fxLayout.gt-md="column">
+          <h4 class="accent-fg pb-16">Master in Physical threapy</h4>
+          <div fxLayout="column" fxLayout.gt-md="row">
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Institution</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Enrolled</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Awarded/Anticipated</label>
+                <div>Abc</div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="column" fxLayout.gt-md="row">
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Institution</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Enrolled</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Awarded/Anticipated</label>
+                <div>Abc</div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="column" fxLayout.gt-md="row">
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Institution</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Enrolled</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Awarded/Anticipated</label>
+                <div>Abc</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    <!--Education Section-->
+    <!--Licensure Section-->
+    <mat-card class="mb-16 p-0" fxLayout="column">
+      <header
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        class="card-header-border-bottom card-header-title py-8 pr-8 pl-16"
+      >
+        <div xLayout="row" fxLayoutAlign="start center">
+          <h2 class="primary-heading font-weight-600">Licensure</h2>
+        </div>
+        <button
+          mat-icon-button
+          class="icon-fill-bg"
+          aria-label="Edit Licensure Information"
+          role="button"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen fuse-white-fg s-18"></i>
+        </button>
+      </header>
+      <div fxLayout="column" class="pl-16 pt-16">
+        <div fxLayout="column" fxLayout.gt-md="column">
+          <h4 class="accent-fg pb-16">Doctor in Physical threapy</h4>
+          <div fxLayout="column" fxLayout.gt-md="row">
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Institution</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Enrolled</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Awarded/Anticipated</label>
+                <div>Abc</div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="column" fxLayout.gt-md="row">
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Institution</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Enrolled</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Awarded/Anticipated</label>
+                <div>Abc</div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="column" class="pb-16">
+            <label>Notes</label>
+            <div
+              class="exxat-info pr-16 pb-8 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+            >
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book.
+            </div>
+            <a>View Documnet</a>
+          </div>
+        </div>
+      </div>
+      <div class="bb"></div>
+
+      <div fxLayout="column" class="pl-16 pt-16">
+        <div fxLayout="column" fxLayout.gt-md="column">
+          <h4 class="accent-fg pb-16">Master in Physical threapy</h4>
+          <div fxLayout="column" fxLayout.gt-md="row">
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Institution</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Enrolled</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Awarded/Anticipated</label>
+                <div>Abc</div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="column" fxLayout.gt-md="row">
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Institution</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Enrolled</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="33"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Awarded/Anticipated</label>
+                <div>Abc</div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="column" class="pb-16">
+            <label>Notes</label>
+            <div
+              class="exxat-info pr-16 pb-8 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+            >
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book.
+            </div>
+            <a>View Documnet</a>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    <!--Licensure Section-->
+    <!--Certification Section-->
+    <mat-card class="mb-16 p-0" fxLayout="column">
+      <header
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        class="card-header-border-bottom card-header-title py-8 pr-8 pl-16"
+      >
+        <div xLayout="row" fxLayoutAlign="start center">
+          <h2 class="primary-heading font-weight-600">Certification</h2>
+        </div>
+        <button
+          mat-icon-button
+          class="icon-fill-bg"
+          aria-label="Edit Certification Information"
+          role="button"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen fuse-white-fg s-18"></i>
+        </button>
+      </header>
+      <div fxLayout="column" class="pl-16 pt-16">
+        <div fxLayout="column" fxLayout.gt-md="column">
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <h4 class="accent-fg pb-16">Certification in Physical threapy</h4>
+            <button mat-icon-button aria-label="Edit" role="button">
+              <i aria-hidden="true" class="fa-light fa-pen s-18 icon-fill"></i>
+            </button>
+          </div>
+          <div fxLayout="column" fxLayout.gt-md="row">
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="50"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Institution</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="50"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Enrolled</label>
+                <div>Abc</div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="column" fxLayout.gt-md="row">
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="50"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Institution</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="50"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Enrolled</label>
+                <div>Abc</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bb"></div>
+
+      <div fxLayout="column" class="pl-16 pt-16">
+        <div fxLayout="column" fxLayout.gt-md="column">
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <h4 class="accent-fg pb-16">Certification in Physical threapy</h4>
+            <button mat-icon-button aria-label="Edit" role="button">
+              <i aria-hidden="true" class="fa-light fa-pen s-18 icon-fill"></i>
+            </button>
+          </div>
+
+          <div fxLayout="column" fxLayout.gt-md="row">
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="50"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Institution</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="50"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Enrolled</label>
+                <div>Abc</div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="column" fxLayout.gt-md="row">
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="50"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Institution</label>
+                <div>Abc</div>
+              </div>
+            </div>
+            <div
+              class="exxat-info pr-16 pb-16 word-break-all"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="50"
+            >
+              <div fxLayout="column">
+                <label class="font-weight-600">Date Enrolled</label>
+                <div>Abc</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    <!--Certification Section-->
+  </div>
+  <div
+    class="academic-info-sidebar pl-16"
+    fxLayout="column"
+    fxFlex="100"
+    fxFlex.gt-sm="45"
+    fxFlex.gt-md="35"
+  >
+    <div class="mb-40" fxlayout="column">
+      <header
+        class="secondary-info-header"
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+      >
+        <div xLayout="row" fxLayoutAlign="start center">
+          <h2>Associate Courses</h2>
+        </div>
+        <div>
+          <button
+            mat-icon-button
+            aria-label="Add Associate Courses"
+            class="icon-fill-bg"
+            role="button"
+          >
+            <i
+              aria-hidden="true"
+              class="fa-light fa-plus fuse-white-fg s-18"
+            ></i>
+          </button>
+        </div>
+      </header>
+
+      <div class="content pl-28">
+        <div
+          class="mb-16 card-header-border-bottom pb-16"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            PT509- Cellular and systems Physiology
+          </div>
+        </div>
+        <div
+          class="mb-16 card-header-border-bottom pb-16"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            PT509- Cellular and systems Physiology
+          </div>
+        </div>
+        <div
+          class="mb-16 card-header-border-bottom pb-16"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            PT509- Cellular and systems Physiology
+          </div>
+        </div>
+        <div
+          class="mb-16 pb-16"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            PT509- Cellular and systems Physiology
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

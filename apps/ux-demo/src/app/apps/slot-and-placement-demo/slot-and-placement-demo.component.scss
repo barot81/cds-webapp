@@ -1,0 +1,143 @@
+@import 'init';
+.slot-and-placement-demo-page {
+  .right-side-content {
+    .content {
+      background: transparent !important;
+      box-shadow: none !important;
+      border-radius: 0px !important;
+    }
+    .sort-notification {
+      position: absolute;
+      top: 0px;
+      right: 16px;
+    }
+    .table-rounded-border {
+      height: -webkit-fill-available;
+    }
+
+    .id-column,
+    .checkbox-column {
+      min-width: 28px;
+      max-width: 28px;
+      border-right: none !important;
+      @include media-breakpoint('md') {
+        max-width: 4vw;
+        min-width: 4vw;
+      }
+      @include media-breakpoint('sm') {
+        max-width: 6vw;
+        min-width: 6vw;
+      }
+      @include media-breakpoint('lt-sm') {
+        max-width: 10vw;
+        min-width: 10vw;
+      }
+    }
+
+    .id-column {
+      padding-left: 8px !important;
+    }
+
+    .location-column,
+    .placements-column {
+      max-width: 15vw;
+      min-width: 15vw;
+
+      @include media-breakpoint('lg') {
+        max-width: 20vw;
+        min-width: 20vw;
+      }
+
+      @include media-breakpoint('md') {
+        max-width: 35vw;
+        min-width: 35vw;
+      }
+
+      @include media-breakpoint('sm') {
+        max-width: 45vw;
+        min-width: 45vw;
+      }
+
+      @include media-breakpoint('lt-sm') {
+        max-width: 80vw;
+        min-width: 80vw;
+      }
+    }
+
+    .slots-column {
+      max-width: 15vw;
+      min-width: 15vw;
+      @include media-breakpoint('lg') {
+        max-width: 23vw;
+        min-width: 23vw;
+      }
+
+      @include media-breakpoint('md') {
+        max-width: 35vw;
+        min-width: 35vw;
+      }
+
+      @include media-breakpoint('sm') {
+        max-width: 47vw;
+        min-width: 47vw;
+      }
+
+      @include media-breakpoint('lt-sm') {
+        max-width: 84vw;
+        min-width: 84vw;
+      }
+    }
+
+    .location-column,
+    .slots-column,
+    .placements-column {
+      .collapsed-content {
+        flex-flow: row wrap;
+        box-sizing: border-box;
+        display: flex;
+        place-content: center flex-start;
+        align-items: center;
+        .hide-content {
+          display: none;
+        }
+      }
+      .expanded-content {
+        flex-direction: column;
+        box-sizing: border-box;
+        display: flex;
+        place-content: flex-start center;
+        align-items: flex-start;
+        .hide-content {
+          display: visible;
+          margin-left: 6px;
+        }
+      }
+
+      .icon-spacing {
+        margin-bottom: 8px;
+      }
+
+      .email-content-hide {
+        display: none !important;
+      }
+    }
+
+    .miles-chip {
+      padding: 0px 4px;
+      border-radius: 16px;
+      background-color: $mercury;
+    }
+
+    .vertical-align-top {
+      vertical-align: top;
+    }
+  }
+  .sidebar {
+    @include media-breakpoint('gt-md') {
+      max-width: 15vw;
+    }
+    @include media-breakpoint('lt-lg') {
+      max-width: 40vw;
+    }
+  }
+}

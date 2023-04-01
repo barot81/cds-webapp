@@ -1,0 +1,291 @@
+<div class="page-layout carded left-sidebar inner-scroll">
+  <!-- SIDEBAR -->
+  <fuse-sidebar
+    class="sidebar width-x-sm stud-platform-sidebar"
+    name="carded-left-sidebar-tabbed-2"
+    position="left"
+    lockedOpen="gt-md"
+  >
+    <!-- / SIDEBAR HEADER -->
+    <div
+      class="header-tab-control pb-16 pt-8 px-16"
+      fxLayout="row"
+      fxLayoutAlign="start center"
+    >
+      <mat-form-field>
+        <mat-select placeholder="Select status" [formControl]="status" multiple>
+          <mat-select-trigger>
+            {{ status.value ? status.value[0] : '' }}
+            <span
+              *ngIf="status.value?.length > 1"
+              class="example-additional-selection"
+            >
+              (+{{ status.value.length - 1 }}
+              {{ status.value?.length === 2 ? 'other' : 'others' }})
+            </span>
+          </mat-select-trigger>
+          <mat-option *ngFor="let status of statusList" [value]="status">{{
+            status
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="content pt-16" fusePerfectScrollbar>
+      <mat-list>
+        <h4 class="sidebar-heading font-weight-600 text-capitalize pb-16">
+          Health & Immunization
+        </h4>
+        <button mat-button class="no-space m-0 p-0">
+          <mat-list-item class="active-list-item p-16">
+            <div class="" fxLayout="column" fxLayoutAlign="center start">
+              <span class="pb-4">Immunization summary</span>
+              <div class="status-badge pending">Pending</div>
+            </div>
+          </mat-list-item>
+        </button>
+        <mat-divider class="w-85-p margin-auto"></mat-divider>
+
+        <button mat-button class="no-space m-0 p-0">
+          <mat-list-item class="p-16">
+            <div class="" fxLayout="column" fxLayoutAlign="center start">
+              <span class="pb-4">Flu (Influenza)</span>
+              <div class="status-badge inprogress">In progress</div>
+            </div>
+          </mat-list-item>
+        </button>
+      </mat-list>
+      <mat-divider></mat-divider>
+
+      <mat-list>
+        <h4 class="sidebar-heading font-weight-600 text-capitalize py-16">
+          life insurance
+        </h4>
+        <button mat-button class="no-space m-0 p-0">
+          <mat-list-item class="p-16">
+            <div class="" fxLayout="column" fxLayoutAlign="center start">
+              <span class="pb-4">CPR</span>
+              <div class="status-badge expiring">Expering</div>
+            </div>
+          </mat-list-item>
+        </button>
+        <mat-divider class="w-85-p margin-auto"></mat-divider>
+
+        <button mat-button class="no-space m-0 p-0">
+          <mat-list-item class="p-16">
+            <div class="" fxLayout="column" fxLayoutAlign="center start">
+              <span class="pb-4">PALS</span>
+              <div class="status-badge getstarted">Get started</div>
+            </div>
+          </mat-list-item>
+        </button>
+        <mat-divider class="w-85-p margin-auto"></mat-divider>
+
+        <button mat-button class="no-space m-0 p-0">
+          <mat-list-item class="p-16">
+            <div class="" fxLayout="column" fxLayoutAlign="center start">
+              <span class="pb-4">HIPPA</span>
+              <div class="status-badge approved font-12">Approve</div>
+            </div>
+          </mat-list-item>
+        </button>
+      </mat-list>
+    </div>
+  </fuse-sidebar>
+  <!-- // SIDEBAR -->
+
+  <!-- CENTER -->
+  <div class="center pl-lg-16">
+    <div fxLayout="row" fxLayoutAlign="start start" class="mb-16">
+      <button
+        mat-icon-button
+        class="sidebar-toggle mr-8"
+        fxHide.gt-md
+        (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <!-- CONTENT -->
+    <div class="content" fusePerfectScrollbar>
+      <!--selected document section-->
+      <div fxLayout="row wrap" fxFlex="100">
+        <div class="" fxLayout="column" fxFlex="100" fxFlex.gt-sm="65">
+          <div
+            fxLayout="row"
+            fxlayoutalign="space-between center"
+            fxFlex="100"
+            class="mb-16 px-xs-16"
+          >
+            <div fxLayout="column" fxLayoutAlign="center start" fxFlex>
+              <div class="font-20">Immunization summary</div>
+              <div class="status-badge pending font-12">Pending for review</div>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="center end" fxFlex>
+              <button mat-flat-button color="accent">
+                Submit for approval
+              </button>
+            </div>
+          </div>
+
+          <mat-card class="mb-16 p-0">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title py-8 pr-8 pl-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="primary-heading font-weight-600 text-capitalize">
+                  Physical Examination Form
+                </h2>
+              </div>
+              <button
+                mat-icon-button
+                class="icon-fill-bg"
+                aria-label="Edit"
+                exxatDrawerAction
+                [size]="'drawer-sm'"
+                [caption]="'Status'"
+                [primaryAction]="'Save'"
+                role="img"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-plus fuse-white-fg s-18"
+                ></i>
+              </button>
+            </header>
+          </mat-card>
+
+          <mat-card class="mb-16 p-0">
+            <!--status heading and icon-->
+
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="primary-heading font-weight-600 text-capitalize">
+                  Physical Examination Form
+                </h2>
+              </div>
+              <button
+                mat-icon-button
+                class="icon-fill-bg"
+                aria-label="Edit"
+                exxatDrawerAction
+                [size]="'drawer-sm'"
+                [caption]="'Status'"
+                [primaryAction]="'Save'"
+                role="img"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-pen fuse-white-fg s-18"
+                ></i>
+              </button>
+            </header>
+
+            <div fxLayout="column" class="pl-16 pt-16">
+              <div fxLayout="column" class="">
+                <div class="mb-8 font-16 font-weight-600">Dates</div>
+                <div fxLayout="row wrap">
+                  <div
+                    class="exxat-info pr-16 pb-16"
+                    fxLayout="column"
+                    fxFlex="100"
+                    fxFlex.gt-sm="50"
+                  >
+                    <div class="title">Cohort</div>
+                    <div class="description">Mar 20, 2020</div>
+                  </div>
+                  <div
+                    class="exxat-info pr-16 pb-16"
+                    fxLayout="column"
+                    fxFlex="100"
+                    fxFlex.gt-sm="50"
+                  >
+                    <div class="title">Campus</div>
+                    <div class="description">Mar 20, 2020</div>
+                  </div>
+                </div>
+              </div>
+              <div fxLayout="column" class="">
+                <div class="mb-8 font-16 font-weight-600">Notes</div>
+                <div fxLayout="row" class="pr-16 pb-16">
+                  <p>
+                    notes here notes here notes here notes here notes here notes
+                    here notes here notes here notes here notes here notes here
+                    notes here notes here notes here notes here notes here notes
+                    here notes here notes here notes here
+                  </p>
+                </div>
+              </div>
+              <div fxLayout="column" class="">
+                <div class="mb-8 font-16 font-weight-600">Documents</div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="pr-16 pb-16"
+                >
+                  <mat-icon>delete</mat-icon>
+                  <span>Filename</span>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+        <!--Side Bar-->
+        <div
+          class="pl-md-16 px-xs-16"
+          fxLayout="column"
+          fxFlex="100"
+          fxFlex.gt-sm="35"
+        >
+          <header
+            class="secondary-info-header mb-0"
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <h2 class="text-capitalize">Guidelines</h2>
+            </div>
+          </header>
+          <ul>
+            <li class="pb-8">
+              <h5>Proof of 2 childhood or adult vaccinations</h5>
+            </li>
+            <li class="pb-8">
+              <h5>
+                A titer lab report for all 3 components Titer reports should not
+                be older than
+              </h5>
+            </li>
+            <li>
+              <h5>Proof of 2 childhood or adult vaccinations</h5>
+            </li>
+            <li>
+              <h5>
+                A titer lab report for all 3 components Titer reports should not
+                be older than
+              </h5>
+            </li>
+            <li>
+              <h5>Proof of 2 childhood or adult vaccinations</h5>
+            </li>
+            <li>
+              <h5>
+                A titer lab report for all 3 components Titer reports should not
+                be older than
+              </h5>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!--Side Bar-->
+    </div>
+  </div>
+  <!-- / CONTENT CARD -->
+</div>
+<!-- / CENTER -->

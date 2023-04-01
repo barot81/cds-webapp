@@ -1,0 +1,13 @@
+@import 'init';
+
+#release_notes_demo_app {
+  .sidebar {
+    > .content {
+      mat-list {
+        .font-gray {
+          color: $gray-color !important;
+        }
+      }
+    }
+  }
+}

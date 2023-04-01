@@ -1,0 +1,223 @@
+<div fxLayout="column">
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+      <div class="mat-caption secondary-text mb-16">
+        Example of passing a card template to tooltip
+      </div>
+      <div class="mb-16">
+        <span><strong class="accent-fg">Note: </strong> </span>
+        <span>import ExxatTooltipModule from '@exxat/ux';</span>
+      </div>
+      <mat-card class="mr-sm-16">
+        <ng-template #HtmlContent>
+          <div fxLayout="column" fxLayoutAlign="start" class="pt-8 px-8 pb-28">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <div
+                fxLayoutAlign="start center"
+                class="h-80 w-80 border-radius-8"
+              >
+                <img
+                  src="/assets/images/avatars/anna-strong.png"
+                  class="h-80 w-80 border-radius-8"
+                />
+              </div>
+
+              <div fxLayoutAlign="start" fxLayout="column" class="ml-16">
+                <div class="font-16 font-weight-600 mb-4">
+                  <span>Nathan Hawkins, PhD</span>
+                </div>
+                <div class="font-14 mb-4"><span>Full</span></div>
+                <div class="font-14"><span>Department head</span></div>
+              </div>
+            </div>
+
+            <div fxLayout="column" fxLayoutAlign="start" class="mt-12">
+              <div fxLayoutAlign="start center" fxLayout="row" class="mb-8">
+                <div fxLayoutAlign="start" class="mr-16">
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-envelope s-12 icon-fill"
+                  ></i>
+                </div>
+                <div fxLayoutAlign="start">
+                  <a class="font-14">mwallace@usa.edu</a>
+                </div>
+              </div>
+              <div fxLayoutAlign="start center" fxLayout="row" class="mb-8">
+                <div fxLayoutAlign="start" class="mr-16">
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-phone-alt s-12 icon-fill"
+                  ></i>
+                </div>
+                <div fxLayoutAlign="start">
+                  <span class="font-14">000-00-0000</span>
+                </div>
+              </div>
+              <div fxLayoutAlign="start" fxLayout="row">
+                <div fxLayoutAlign="start" class="mr-16 mt-4">
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-file s-12 icon-fill"
+                  ></i>
+                </div>
+                <div class="text-container">
+                  <input id="ch" #ch type="checkbox" />
+                  <button
+                    class="mt-4 pl-0"
+                    id="show-more-label"
+                    (click)="ch.click()"
+                    [attr.aria-label]="!ch.checked ? 'Show More' : 'Show Less'"
+                  ></button>
+                  <div class="text font-14">
+                    I am interested in expanding my knowledge base and gaining
+                    new experiences while improving my clinical skills in an
+                    outpatient neurologic setting. I will be an asset due to my
+                    clinical experience among patients with neurologic disorders
+                    and my interest in movement analysis. I am creative, driven
+                    and value cultural sensitivity as I come from a
+                    multicultural background. I am interested in expanding my
+                    knowledge base and gaining new experiences while improving
+                    my clinical skills in an outpatient neurologic setting. I
+                    will be an asset due to my clinical experience among
+                    patients with neurologic disorders and my interest in
+                    movement analysis. I am creative, driven and value cultural
+                    sensitivity as I come from a multicultural background.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+        <button
+          mat-icon-button
+          [tooltip]="HtmlContent"
+          [options]="tooltipOptions"
+        >
+          <i aria-hidden="true" class="fa-light fa-address-card"></i>
+        </button>
+      </mat-card>
+    </div>
+
+    <div
+      class="preview mt-small-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+    >
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <fuse-highlight
+            lang="html"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+
+                        <button mat-icon-button [tooltip]="HtmlContent" [options]="tooltipOptions">
+                            <i aria-hidden="true" class="fa-light fa-address-card"></i>
+                        </button>
+              
+                        <ng-template #HtmlContent>
+
+                            <div fxLayout="column" fxLayoutAlign="start" class="pt-8 px-8 pb-28">
+        
+        
+                            <div fxLayout="row" fxLayoutAlign="start center">
+        
+                                <div fxLayoutAlign="start center" class="h-80 w-80 border-radius-8">
+                                    <img src="/assets/images/avatars/anna-strong.png" class="h-80 w-80 border-radius-8">
+                                </div>
+        
+                                <div fxLayoutAlign="start" fxLayout="column" class="ml-16">
+                                    <div class="font-16 font-weight-600 mb-4"><span>Nathan Hawkins, PhD</span></div>
+                                    <div class="font-14 mb-4"><span>Full</span></div>
+                                    <div class="font-14"><span>Department head</span></div>
+                                </div>
+                            </div>
+        
+                            <div fxLayout="column" fxLayoutAlign="start" class="mt-24">
+                                <div fxLayoutAlign="start center" fxLayout="row" class="mb-8">
+                                    <div fxLayoutAlign="start" class="mr-16"><i aria-hidden="true" class="fa-light fa-envelope s-12 icon-fill"></i>
+                                    </div>
+                                    <div fxLayoutAlign="start"><a class="font-14">mwallace@usa.edu</a></div>
+                                </div>
+                                <div fxLayoutAlign="start center" fxLayout="row" class="mb-8">
+                                    <div fxLayoutAlign="start" class="mr-16"><i aria-hidden="true" class="fa-light fa-phone-alt s-12 icon-fill"></i>
+                                    </div>
+                                    <div fxLayoutAlign="start"><span class="font-14">000-00-0000</span></div>
+                                </div>
+                                <div fxLayoutAlign="start" fxLayout="row">
+                                    <div fxLayoutAlign="start" class="mr-16 mt-4"><i aria-hidden="true" class="fa-light fa-file s-12 icon-fill"></i></div>
+                                    <div class="text-container">
+                                        <input id="ch" #ch type="checkbox">
+                                        <button class="mt-4 pl-0" id="show-more-label" (click)="ch.click()" 
+                                        [attr.aria-label]="!ch.checked ? 'Show More': 'Show Less'">
+                                        </button>
+                                        <div class="text font-14">
+                                            I am interested in expanding my knowledge base and gaining new
+                                            experiences while improving my clinical skills in an outpatient
+                                            neurologic setting. I will be an asset due to my clinical experience
+                                            among patients with neurologic disorders and my interest in movement
+                                            analysis. I am creative, driven and value cultural sensitivity as I
+                                            come from a multicultural background.
+                                            I am interested in expanding my knowledge base and gaining new
+                                            experiences while improving my clinical skills in an outpatient
+                                            neurologic setting. I will be an asset due to my clinical experience
+                                            among patients with neurologic disorders and my interest in movement
+                                            analysis. I am creative, driven and value cultural sensitivity as I
+                                            come from a multicultural background.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                        </div>
+        
+                        </ng-template>
+  
+                  </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+
+        <!-- 2nd tab content -->
+        <mat-tab label="TS">
+          <fuse-highlight
+            lang="ts"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+                        import { Component } from '@angular/core';
+
+                        @Component({
+                        selector: 'ryzen-tooltip-example-four',
+                        templateUrl: './tooltip-example-four.component.html'
+                        })
+                        export class TooltipExampleFourComponent {
+
+                        tooltipOptions = {
+                        'contentType': 'template',
+                        'placement': 'right',
+                        'trigger': 'click',
+                        'theme': 'light',
+                        'max-width': '470',
+                        'pointerEvents': 'auto'
+                        }
+
+                        }
+  
+                     </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+  <tooltip-configuration></tooltip-configuration>
+</div>

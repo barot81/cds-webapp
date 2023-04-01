@@ -1,0 +1,80 @@
+@import 'init';
+
+
+
+#secondaryGridDemo {
+  .student-column {
+    min-width: 12vw;
+    @include media-breakpoint('lt-md') {
+      min-width: 40vw;
+    }
+  }
+  .name-column {
+    min-width: 10vw;
+    max-width: 10vw;
+    @include media-breakpoint('lt-lg') {
+      min-width: 35vw;
+    }
+    @include media-breakpoint('lt-sm') {
+      min-width: 50vw !important;
+    }
+  }
+
+  .address-column {
+    min-width: 15vw;
+    max-width: 15vw;
+    @include media-breakpoint('lt-lg') {
+      min-width: 30vw;
+    }
+    @include media-breakpoint('sm') {
+      min-width: 36vw !important;
+    }
+    @include media-breakpoint('lt-sm') {
+      min-width: 60vw !important;
+    }
+  }
+
+  .email-width {
+    min-width: 10vw;
+    @include media-breakpoint('md') {
+      min-width: 20vw;
+    }
+    @include media-breakpoint('lt-md') {
+      min-width: 28vw;
+    }
+  }
+
+  .phone-width {
+    min-width: 10vw;
+    @include media-breakpoint('lt-lg') {
+      min-width: 20vw;
+    }
+    @include media-breakpoint('xs') {
+      min-width: 25vw;
+    }
+  }
+
+  .action-width {
+    min-width: 10vw;
+    @include media-breakpoint('lt-lg') {
+      min-width: 20vw;
+    }
+    @include media-breakpoint('xs') {
+      min-width: 25vw;
+    }
+  }
+
+  .column-width {
+    min-width: 7vw;
+    @include media-breakpoint('lt-lg') {
+      min-width: 20vw;
+    }
+    @include media-breakpoint('xs') {
+      min-width: 25vw;
+    }
+  }
+
+  .column-shadow {
+    box-shadow: 5px 0 5px -5px rgba(100, 100, 100, 1);
+  }
+}

@@ -1,0 +1,66 @@
+<div id="exxat-fileupload-examples" class="p-12 w-100-p">
+  <div class="gray-header mb-16">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="mr-8">
+          <button
+            mat-icon-button
+            aria-label="Click to go back"
+            routerLink="/admin/ux/ui/exxat-component-library"
+          >
+            <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+          </button>
+        </div>
+        <div class="mat-title">File Upload Examples</div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+      </div>
+    </div>
+  </div>
+
+  <!-- @ Regular Sized Avatar With src-->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <div class="mat-caption secondary-text mb-16">File Upload Example</div>
+      <mat-card>
+        <div fxLayout="row" fxLayoutAlign="start space-between">
+          <exxat-file-upload></exxat-file-upload>
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+        <exxat-file-upload></exxat-file-upload>
+      </textarea>
+    </fuse-highlight>
+  </div>
+  <div class="mt-16" fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="48">
+      <p class="warn-fg font-16" tabindex="0" aria-label="Note from UI Team">
+        Note from UI Team
+      </p>
+      <p
+        tabindex="0"
+        aria-label="Developers are requested not to make any extra self made Class or
+        write hardcode CSS or add Colors. Since we are following MULTI theme,
+        Theme will break if Material theme structure and guidlines are not
+        followed properly."
+        class="warn-fg font-14"
+      >
+        Developers are requested not to make any extra self made Class or write
+        hardcode CSS or add Colors. Since we are following MULTI theme, Theme
+        will break if Material theme structure and guidlines are not followed
+        properly.
+      </p>
+      <strong>Connect To UI team for any such cases.</strong>
+    </div>
+  </div>
+</div>

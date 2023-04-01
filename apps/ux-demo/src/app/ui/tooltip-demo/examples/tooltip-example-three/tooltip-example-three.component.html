@@ -1,0 +1,83 @@
+<div fxLayout="column">
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+      <div class="mat-caption secondary-text mb-16">
+        Example of passing a string to tooltip
+      </div>
+      <div class="mb-16">
+        <span><strong class="accent-fg">Note: </strong> </span>
+        <span>import ExxatTooltipModule from '@exxat/ux';</span>
+      </div>
+      <mat-card class="mr-sm-16">
+        <button
+          mat-button
+          tooltip="Tooltip on right"
+          [options]="tooltipOptions"
+        >
+          Hover to open tooltip
+        </button>
+      </mat-card>
+    </div>
+
+    <div
+      class="preview mt-small-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+    >
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <fuse-highlight
+            lang="html"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+
+              <button mat-button tooltip="Tooltip on right" [options]="tooltipOptions">
+                Hover to open tooltip
+              </button>
+          
+         </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+
+        <!-- 2nd tab content -->
+        <mat-tab label="TS">
+          <fuse-highlight
+            lang="ts"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+                    import { Component } from '@angular/core';
+
+                    @Component({
+                    selector: 'ryzen-tooltip-example-three',
+                    templateUrl: './tooltip-example-three.component.html'
+                    })
+                    export class TooltipExampleThreeComponent {
+
+                    tooltipOptions = {
+                    'contentType': 'string',
+                    'placement': 'right',
+                    'trigger': 'hover',
+                    'theme': 'light',
+                    'pointerEvents': 'auto'
+                    }
+
+                    }
+      
+          </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+  <tooltip-configuration></tooltip-configuration>
+</div>

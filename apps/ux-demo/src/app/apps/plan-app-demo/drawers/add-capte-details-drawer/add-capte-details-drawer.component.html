@@ -1,0 +1,82 @@
+<div class="drawer-p">
+
+  <div fxLayout="row" class=" p-16 border-radius-4 element-blue-background">
+    <span class="pr-16 font-weight-600">Objective</span>
+    <span>1. Possess the theoretical and scientific knowledge to perform original research at the basic, applied or
+      clinical lev leading to scientific. Report to appropriate authorities suspected cases of fraud and abuse related
+      to the utilization of and payment for physical therapy and other health care services.</span>
+  </div>
+
+  <div class="search-wrapper search-grid my-16">
+    <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+      <mat-icon class="s-16 secondary-text">search</mat-icon>
+      <input type="text" fxFlex placeholder="Search">
+    </div>
+  </div>
+
+  <mat-card fxLayout="column" fxLayoutAlign="center" class="mb-16">
+
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree-examples-style" tabindex="0"
+      aria-label="tree example four">
+      <!-- node with checkbox -->
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding class="mb-4">
+        <button mat-icon-button disabled></button>
+        <div fxLayout="row" fxLayoutAlign="start start" fxFlex="100" class="tree-node-hover py-8 px-16 ml-12"
+          (click)="activeNode = node" [ngClass]="{ 'tree-node-active primary-fg': activeNode === node }">
+          <mat-checkbox class="checklist-leaf-node px-8" [checked]="checklistSelection.isSelected(node)"
+            (change)="todoLeafItemSelectionToggle(node)">
+          </mat-checkbox>
+          <div fxLayout="row wrap" fxFlex="100" tabindex="0" aria-label="child node">
+            <div fxLayout="row" fxFlex.gt-sm="85" fxFlex="100">
+              <span tabindex="0" [ngClass]="{'primary-fg' : checklistSelection.isSelected(node)}"
+                aria-label="8D. Report to appropriate authorities suspected cases of fraud and abuse related to the utilization of and payment for physical therapy and other health care services.">8D.
+                Report to appropriate authorities suspected cases
+                of fraud and abuse related to the utilization of and payment for physical therapy and other health
+                care
+                services.</span>
+            </div>
+            <div fxFlex.gt-sm="15" fxFlex="100" fxLayout="row" fxLayoutAlign="end center">
+              <a tabindex="0" aria-label="edit detail" exxatManifoldPanelAction
+                [componentSelector]="_PlanAppDemoDrawerService.get('ryzen-add-capte-details-drawer-two')"
+                [size]="'drawer-x-sm'" [caption]="'8D. Report to appropriate authorities'" [primaryAction]="'Save'">Edit
+                detail</a>
+            </div>
+          </div>
+
+        </div>
+      </mat-tree-node>
+
+      <!-- parent node without plus icon -->
+      <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding tabindex="0" aria-label="parent node"
+        class="mb-4">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" class="tree-node-hover py-8 px-16 tree-node-bg"
+          (click)="activeNode = node" [ngClass]="{ 'tree-node-active primary-fg': activeNode === node }">
+          <button mat-icon-button matTreeNodeToggle class="action-icon mr-4" aria-label="toggle button for parent node">
+            <i [ngClass]="treeControl.isExpanded(node) ? 'fa-light fa-chevron-down s-18' : 'fa-light fa-chevron-right s-18'"
+              class="accent-fg"></i>
+          </button>
+
+          <mat-checkbox [checked]="descendantsAllSelected(node)" [indeterminate]="descendantsPartiallySelected(node)"
+            (change)="todoItemSelectionToggle(node)" class="ml-8 mr-16">
+          </mat-checkbox>
+          <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="100" tabindex="0" aria-label="parent node">
+            <div fxLayout="row" fxFlex.gt-sm="85" fxFlex="100">
+              <span tabindex="0" [ngClass]="{'primary-fg' : checklistSelection.isSelected(node)}" aria-label="7D. Report to appropriate authorities suspected cases
+              of abuse of vulnerable populations.">7D. Report to appropriate authorities suspected cases
+                of abuse of vulnerable populations.</span>
+            </div>
+            <div fxFlex.gt-sm="15" fxFlex="100" fxLayoutAlign="end center">
+              <a tabindex="0" aria-label="Add detail" exxatManifoldPanelAction
+                [componentSelector]="_PlanAppDemoDrawerService.get('ryzen-add-capte-details-drawer-two')"
+                [size]="'drawer-x-sm'" [caption]="'8D. Report to appropriate authorities'" [primaryAction]="'Save'">
+                Add detail</a>
+            </div>
+          </div>
+        </div>
+
+      </mat-tree-node>
+    </mat-tree>
+
+  </mat-card>
+
+</div>

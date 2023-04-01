@@ -1,0 +1,51 @@
+<form [formGroup]="loginForm" novalidate class="w-100-p">
+
+    <!-- User Name Field-->
+      <div fxLayout="column" fxLayoutAlign="center">
+        <mat-form-field class="w-100-p" appearance="fill">
+            <mat-label>Username</mat-label>
+                <input matInput formControlName="username" type="text"/>
+                    <button type="button" mat-icon-button matSuffix>
+                        <mat-icon class="icon-fill">person</mat-icon>
+                    </button>
+        </mat-form-field>
+    </div>
+
+    <!-- Password Field-->
+    <div fxLayout="column" fxLayoutAlign="center">
+        <mat-form-field class="w-100-p" appearance="fill">
+            <mat-label>Password</mat-label>
+                <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" name="confirmPassword"/>
+                    <button [attr.aria-label]="hide ? 'click to view password' : 'click to hide password'" type="button" mat-icon-button matSuffix (click)="hide = !hide">
+                        <mat-icon class="icon-fill">{{ hide ? 'visibility' : 'lock' }}</mat-icon>
+                    </button>
+        </mat-form-field>
+    </div>
+
+    <!-- forgot password field-->
+    <div fxLayout="row" fxLayoutAlign="start">
+        <a class="mb-32" type="button" tabindex="0" aria-label="forgot password">
+            Forgot Password?
+        </a>
+    </div>
+
+    <!-- Login Button-->
+    <div fxLayout="row" fxLayoutAlign="end center">
+        <button mat-raised-button color="primary" class="w-100-p">
+            <span>LOGIN</span>
+        </button>
+    </div>
+
+    <!-- Helper Text-->
+    <div class="mt-32 text-center">
+        <p>
+            <span class="font-weight-600" tabindex="0" aria-label="Note">Note:</span><span tabindex="0"
+                aria-label="Internet Explorer browser is not supported."> Internet Explorer browser is
+                not supported.</span>
+        </p>
+        <p>
+            <span tabindex="0" aria-label="Please use Chrome, Firefox or Safari browser for a better experience.">Please
+                use Chrome, Firefox or Safari browser for a better experience.</span>
+        </p>
+    </div>
+</form>

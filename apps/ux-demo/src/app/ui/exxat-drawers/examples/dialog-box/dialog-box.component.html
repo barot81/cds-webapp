@@ -1,0 +1,12 @@
+<div class="dialog-box-wrapper" fxLayout="column" class="p-16">
+  <div class="dialog-box-message-container">
+    <span>{{message}}</span>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end">
+    <mat-divider></mat-divider>
+    <button mat-stroked-button (click)="onCancelClick()">{{cancelButtonText}}</button>
+    <button mat-stroked-button class="primary ml-8" (click)="onConfirmClick()">
+      {{confirmButtonText}}
+    </button>
+  </div>
+</div>

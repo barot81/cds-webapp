@@ -1,0 +1,671 @@
+<div class="drawer-p">
+  <form [formGroup]="addMappingConnectionForm">
+    <div fxLayout="column" fxLayoutAlign="start">
+      <div
+        fxLayoutAlign="start"
+        fxLayout="row wrap"
+        fxFlex="100"
+        class="pr-xs-16"
+      >
+        <div fxFlex="88" fxLayoutAlign="start center" fxLayout="row wrap">
+          <div fxFlex="100" fxLayout="row wrap">
+            <div class="mr-16" fxFlex="100" fxFlex.gt-md="31" fxFlex.md="30">
+              <mat-form-field appearance="fill" class="w-100-p">
+                <mat-label>MappingFrom</mat-label>
+                <mat-select formControlName="mappingFrom">
+                  <mat-optgroup
+                    *ngFor="let group of maapingFromGroups"
+                    [label]="group.name"
+                    [disabled]="group.disabled"
+                  >
+                    <mat-option
+                      *ngFor="let optionItem of group.optionItem"
+                      [value]="optionItem.value"
+                    >
+                      {{ optionItem.viewValue }}
+                    </mat-option>
+                  </mat-optgroup>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="mr-16" fxFlex="100" fxFlex.gt-md="31" fxFlex.md="30">
+              <mat-form-field appearance="fill" class="w-100-p">
+                <mat-label>MappingTo</mat-label>
+                <mat-select formControlName="mappingTo">
+                  <mat-option
+                    *ngFor="let optionItem of mappingToItems"
+                    [value]="optionItem.value"
+                  >
+                    {{ optionItem.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="mr-16" fxFlex="100" fxFlex.gt-md="31" fxFlex.md="30">
+              <mat-form-field appearance="fill" class="w-100-p">
+                <mat-label>Attributes</mat-label>
+                <mat-select formControlName="attributes">
+                  <mat-optgroup
+                    *ngFor="let group of maapingFromGroups"
+                    [label]="group.name"
+                    [disabled]="group.disabled"
+                  >
+                    <mat-option
+                      *ngFor="let optionItem of group.optionItem"
+                      [value]="optionItem.value"
+                    >
+                      {{ optionItem.viewValue }}
+                    </mat-option>
+                  </mat-optgroup>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div
+          fxFlex="12"
+          fxLayoutAlign="center center"
+          fxLayoutAlign.gt-md="start"
+          fxLayoutAlign.md="start"
+          fxLayout="row"
+        >
+          <div class="mt-md-8 ml-8">
+            <button mat-stroked-button color="accent" class="accent-border-btn">
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <mat-card class="mb-16">
+        <div fxLayout="column" fxLayoutAlign="start">
+          <div
+            fxLayoutAlign="start"
+            fxLayout="row wrap"
+            class="mb-16 border-bottom"
+            fxFlex="100"
+          >
+            <div fxFlex="90" fxLayoutAlign="start center" fxLayout="row wrap">
+              <div fxFlex="100" fxLayout="row wrap">
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>MappingFrom</mat-label>
+                    <mat-select formControlName="mappingFrom">
+                      <mat-optgroup
+                        *ngFor="let group of maapingFromGroups"
+                        [label]="group.name"
+                        [disabled]="group.disabled"
+                      >
+                        <mat-option
+                          *ngFor="let optionItem of group.optionItem"
+                          [value]="optionItem.value"
+                        >
+                          {{ optionItem.viewValue }}
+                        </mat-option>
+                      </mat-optgroup>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>MappingTo</mat-label>
+                    <mat-select formControlName="mappingTo">
+                      <mat-option
+                        *ngFor="let optionItem of mappingToItems"
+                        [value]="optionItem.value"
+                      >
+                        {{ optionItem.viewValue }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>Attributes</mat-label>
+                    <mat-select formControlName="attributes">
+                      <mat-optgroup
+                        *ngFor="let group of maapingFromGroups"
+                        [label]="group.name"
+                        [disabled]="group.disabled"
+                      >
+                        <mat-option
+                          *ngFor="let optionItem of group.optionItem"
+                          [value]="optionItem.value"
+                        >
+                          {{ optionItem.viewValue }}
+                        </mat-option>
+                      </mat-optgroup>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div
+              fxFlex="10"
+              fxLayoutAlign="center center"
+              fxLayoutAlign.gt-md="start"
+              fxLayoutAlign.md="start"
+              fxLayout="row"
+            >
+              <div class="mt-4 ml-8">
+                <button mat-icon-button class="action-icon" aria-label="delete">
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-trash-alt icon-fill s-18"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            fxLayoutAlign="start"
+            fxLayout="row wrap"
+            class="mb-16 border-bottom"
+            fxFlex="100"
+          >
+            <div fxFlex="90" fxLayoutAlign="start center" fxLayout="row wrap">
+              <div fxFlex="100" fxLayout="row wrap">
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>MappingFrom</mat-label>
+                    <mat-select formControlName="mappingFrom">
+                      <mat-optgroup
+                        *ngFor="let group of maapingFromGroups"
+                        [label]="group.name"
+                        [disabled]="group.disabled"
+                      >
+                        <mat-option
+                          *ngFor="let optionItem of group.optionItem"
+                          [value]="optionItem.value"
+                        >
+                          {{ optionItem.viewValue }}
+                        </mat-option>
+                      </mat-optgroup>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>MappingTo</mat-label>
+                    <mat-select formControlName="mappingTo">
+                      <mat-option
+                        *ngFor="let optionItem of mappingToItems"
+                        [value]="optionItem.value"
+                      >
+                        {{ optionItem.viewValue }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>Attributes</mat-label>
+                    <mat-select formControlName="attributes">
+                      <mat-optgroup
+                        *ngFor="let group of maapingFromGroups"
+                        [label]="group.name"
+                        [disabled]="group.disabled"
+                      >
+                        <mat-option
+                          *ngFor="let optionItem of group.optionItem"
+                          [value]="optionItem.value"
+                        >
+                          {{ optionItem.viewValue }}
+                        </mat-option>
+                      </mat-optgroup>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div
+              fxFlex="10"
+              fxLayoutAlign="center center"
+              fxLayoutAlign.gt-md="start"
+              fxLayoutAlign.md="start"
+              fxLayout="row"
+            >
+              <div class="mt-4 ml-8">
+                <button
+                  mat-icon-button
+                  class="action-icon"
+                  aria-label="delete item"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-trash-alt icon-fill s-18"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            fxLayoutAlign="start"
+            fxLayout="row wrap"
+            class="mb-16 border-bottom"
+            fxFlex="100"
+          >
+            <div fxFlex="90" fxLayoutAlign="start center" fxLayout="row wrap">
+              <div fxFlex="100" fxLayout="row wrap">
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>MappingFrom</mat-label>
+                    <mat-select formControlName="mappingFrom">
+                      <mat-optgroup
+                        *ngFor="let group of maapingFromGroups"
+                        [label]="group.name"
+                        [disabled]="group.disabled"
+                      >
+                        <mat-option
+                          *ngFor="let optionItem of group.optionItem"
+                          [value]="optionItem.value"
+                        >
+                          {{ optionItem.viewValue }}
+                        </mat-option>
+                      </mat-optgroup>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>MappingTo</mat-label>
+                    <mat-select formControlName="mappingTo">
+                      <mat-option
+                        *ngFor="let optionItem of mappingToItems"
+                        [value]="optionItem.value"
+                      >
+                        {{ optionItem.viewValue }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>Attributes</mat-label>
+                    <mat-select formControlName="attributes">
+                      <mat-optgroup
+                        *ngFor="let group of maapingFromGroups"
+                        [label]="group.name"
+                        [disabled]="group.disabled"
+                      >
+                        <mat-option
+                          *ngFor="let optionItem of group.optionItem"
+                          [value]="optionItem.value"
+                        >
+                          {{ optionItem.viewValue }}
+                        </mat-option>
+                      </mat-optgroup>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div
+              fxFlex="10"
+              fxLayoutAlign="center center"
+              fxLayoutAlign.gt-md="start"
+              fxLayoutAlign.md="start"
+              fxLayout="row"
+            >
+              <div class="mt-4 ml-8">
+                <button
+                  mat-icon-button
+                  class="action-icon"
+                  aria-label="delete item"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-trash-alt icon-fill s-18"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            fxLayoutAlign="start"
+            fxLayout="row wrap"
+            class="mb-16 border-bottom"
+            fxFlex="100"
+          >
+            <div fxFlex="90" fxLayoutAlign="start center" fxLayout="row wrap">
+              <div fxFlex="100" fxLayout="row wrap">
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>MappingFrom</mat-label>
+                    <mat-select formControlName="mappingFrom">
+                      <mat-optgroup
+                        *ngFor="let group of maapingFromGroups"
+                        [label]="group.name"
+                        [disabled]="group.disabled"
+                      >
+                        <mat-option
+                          *ngFor="let optionItem of group.optionItem"
+                          [value]="optionItem.value"
+                        >
+                          {{ optionItem.viewValue }}
+                        </mat-option>
+                      </mat-optgroup>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>MappingTo</mat-label>
+                    <mat-select formControlName="mappingTo">
+                      <mat-option
+                        *ngFor="let optionItem of mappingToItems"
+                        [value]="optionItem.value"
+                      >
+                        {{ optionItem.viewValue }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>Attributes</mat-label>
+                    <mat-select formControlName="attributes">
+                      <mat-optgroup
+                        *ngFor="let group of maapingFromGroups"
+                        [label]="group.name"
+                        [disabled]="group.disabled"
+                      >
+                        <mat-option
+                          *ngFor="let optionItem of group.optionItem"
+                          [value]="optionItem.value"
+                        >
+                          {{ optionItem.viewValue }}
+                        </mat-option>
+                      </mat-optgroup>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div
+              fxFlex="10"
+              fxLayoutAlign="center center"
+              fxLayoutAlign.gt-md="start"
+              fxLayoutAlign.md="start"
+              fxLayout="row"
+            >
+              <div class="mt-4 ml-8">
+                <button
+                  mat-icon-button
+                  class="action-icon"
+                  aria-label="delete item"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-trash-alt icon-fill s-18"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            fxLayoutAlign="start"
+            fxLayout="row wrap"
+            class="mb-16 border-bottom"
+            fxFlex="100"
+          >
+            <div fxFlex="90" fxLayoutAlign="start center" fxLayout="row wrap">
+              <div fxFlex="100" fxLayout="row wrap">
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>MappingFrom</mat-label>
+                    <mat-select formControlName="mappingFrom">
+                      <mat-optgroup
+                        *ngFor="let group of maapingFromGroups"
+                        [label]="group.name"
+                        [disabled]="group.disabled"
+                      >
+                        <mat-option
+                          *ngFor="let optionItem of group.optionItem"
+                          [value]="optionItem.value"
+                        >
+                          {{ optionItem.viewValue }}
+                        </mat-option>
+                      </mat-optgroup>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>MappingTo</mat-label>
+                    <mat-select formControlName="mappingTo">
+                      <mat-option
+                        *ngFor="let optionItem of mappingToItems"
+                        [value]="optionItem.value"
+                      >
+                        {{ optionItem.viewValue }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>Attributes</mat-label>
+                    <mat-select formControlName="attributes">
+                      <mat-optgroup
+                        *ngFor="let group of maapingFromGroups"
+                        [label]="group.name"
+                        [disabled]="group.disabled"
+                      >
+                        <mat-option
+                          *ngFor="let optionItem of group.optionItem"
+                          [value]="optionItem.value"
+                        >
+                          {{ optionItem.viewValue }}
+                        </mat-option>
+                      </mat-optgroup>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div
+              fxFlex="10"
+              fxLayoutAlign="center center"
+              fxLayoutAlign.gt-md="start"
+              fxLayoutAlign.md="start"
+              fxLayout="row"
+            >
+              <div class="mt-4 ml-8">
+                <button
+                  mat-icon-button
+                  class="action-icon"
+                  aria-label="delete item"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-trash-alt icon-fill s-18"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div fxLayoutAlign="start" fxLayout="row wrap" fxFlex="100">
+            <div fxFlex="90" fxLayoutAlign="start center" fxLayout="row wrap">
+              <div fxFlex="100" fxLayout="row wrap">
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>MappingFrom</mat-label>
+                    <mat-select formControlName="mappingFrom">
+                      <mat-optgroup
+                        *ngFor="let group of maapingFromGroups"
+                        [label]="group.name"
+                        [disabled]="group.disabled"
+                      >
+                        <mat-option
+                          *ngFor="let optionItem of group.optionItem"
+                          [value]="optionItem.value"
+                        >
+                          {{ optionItem.viewValue }}
+                        </mat-option>
+                      </mat-optgroup>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>MappingTo</mat-label>
+                    <mat-select formControlName="mappingTo">
+                      <mat-option
+                        *ngFor="let optionItem of mappingToItems"
+                        [value]="optionItem.value"
+                      >
+                        {{ optionItem.viewValue }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div
+                  class="mr-16"
+                  fxFlex="100"
+                  fxFlex.gt-md="31"
+                  fxFlex.md="30"
+                >
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>Attributes</mat-label>
+                    <mat-select formControlName="attributes">
+                      <mat-optgroup
+                        *ngFor="let group of maapingFromGroups"
+                        [label]="group.name"
+                        [disabled]="group.disabled"
+                      >
+                        <mat-option
+                          *ngFor="let optionItem of group.optionItem"
+                          [value]="optionItem.value"
+                        >
+                          {{ optionItem.viewValue }}
+                        </mat-option>
+                      </mat-optgroup>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div
+              fxFlex="10"
+              fxLayoutAlign="center center"
+              fxLayoutAlign.gt-md="start"
+              fxLayoutAlign.md="start"
+              fxLayout="row"
+            >
+              <div class="mt-4 ml-8">
+                <button
+                  mat-icon-button
+                  class="action-icon"
+                  aria-label="delete item"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-trash-alt icon-fill s-18"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </form>
+</div>

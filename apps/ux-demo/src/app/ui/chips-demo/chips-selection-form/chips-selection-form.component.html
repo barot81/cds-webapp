@@ -1,0 +1,214 @@
+<div fxLayout="column" fxLayout.gt-md="row" id="chip-custom-input">
+  <div
+    class="pr-md-16 pr-0"
+    fxLayout="column"
+    fxLayoutAlign="start"
+    fxFlex="50"
+  >
+    <div
+      class="mat-caption secondary-text mb-16"
+      tabindex="0"
+      aria-label="Chip Selection Form"
+    >
+      Chip Selection Form
+    </div>
+    <mat-card fxLayout="column">
+      <mat-form-field appearance="fill" class="w-100-p">
+        <mat-label>Add Item</mat-label>
+        <mat-chip-list
+          fxLayout="row wrap"
+          fxLayoutAlign="start center"
+          class="setting-chip-style"
+        >
+          <mat-chip
+            [ngClass]="item.colorClass"
+            *ngFor="let item of selectedItems"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="remove(item)"
+            fontColor
+          >
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <span>
+                  {{ item.name }}
+                </span>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="end center">
+                <mat-icon matChipRemove *ngIf="removable"> cancel </mat-icon>
+              </div>
+            </div>
+          </mat-chip>
+        </mat-chip-list>
+      </mat-form-field>
+
+      <div fxLayout="row wrap" fxLayoutAlign="start center">
+        <mat-chip-list
+          fxLayout="row wrap"
+          fxLayoutAlign="start center"
+          class="setting-chip-style"
+        >
+          <mat-chip
+            *ngFor="let item of items"
+            [ngClass]="item?.colorClass"
+            fontColor
+            (click)="addItem(item)"
+            >{{ item.name }}</mat-chip
+          >
+        </mat-chip-list>
+      </div>
+    </mat-card>
+  </div>
+
+  <div
+    class="pr-md-16 pr-0"
+    fxLayout="column"
+    fxLayoutAlign="start"
+    fxFlex="50"
+  >
+    <mat-tab-group class="mt-lg-0 mt-16">
+      <!-- 1st tab content -->
+      <mat-tab label="HTML">
+        <fuse-highlight
+          lang="html"
+          class="source-code mt-16"
+          fxLayout="column"
+          fxLayoutAlign="center"
+        >
+          <textarea #source hidden="hidden">
+
+            <mat-form-field appearance="fill" class="w-100-p">
+              <mat-label>Add Item</mat-label>
+              <mat-chip-list
+                fxLayout="row wrap"
+                fxLayoutAlign="start center"
+                class="setting-chip-style"
+              >
+                <mat-chip
+                  [ngClass]="item.colorClass"
+                  *ngFor="let item of selectedItems"
+                  [selectable]="selectable"
+                  [removable]="removable"
+                  (removed)="remove(item)"
+                  fontColor
+                >
+                  <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                      <span>
+                         item.name 
+                      </span>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="end center">
+                      <mat-icon matChipRemove *ngIf="removable"> cancel </mat-icon>
+                    </div>
+                  </div>
+                </mat-chip>
+              </mat-chip-list>
+            </mat-form-field>
+          
+            <div fxLayout="row wrap" fxLayoutAlign="start center">
+              <mat-chip-list
+                fxLayout="row wrap"
+                fxLayoutAlign="start center"
+                class="setting-chip-style"
+              >
+                <mat-chip
+                  *ngFor="let item of items"
+                  [ngClass]="item?.colorClass"
+                  fontColor
+                  (click)="addItem(item)"
+                  >item.name </mat-chip
+                >
+              </mat-chip-list>
+            </div>
+     
+         </textarea
+          >
+        </fuse-highlight>
+      </mat-tab>
+
+      <!-- 2nd tab content -->
+      <mat-tab label="TS">
+        <fuse-highlight
+          lang="ts"
+          class="source-code mt-16"
+          fxLayout="column"
+          fxLayoutAlign="center"
+        >
+          <textarea #source hidden="hidden">
+                        
+                import { Component } from '@angular/core';
+
+                @Component({
+                  selector: 'ryzen-chips-selection-form',
+                  templateUrl: './chips-selection-form.component.html',
+                  styleUrls: ['./chips-selection-form.component.scss'],
+                })
+                export class ChipsSelectionFormComponent {
+                  
+                  items: any = [
+                  {
+                    colorClass: "exxat-tall-poppy-bg",
+                    colorCode: "#BF342A",
+                    id:"Apple",
+                    name: "Apple"
+                  },
+                  {
+                    colorClass: "exxat-silver-chalice-dark-bg",
+                    colorCode: "#9E9E9E",
+                    id:"Mango",
+                    name: "Mango"
+                  },
+                  {
+                    colorClass: "exxat-orange-peel-bg",
+                    colorCode: "#FF9800",
+                    id:"Grapes",
+                    name: "Grapes"
+                  },
+                  {
+                    colorClass: "exxat-picasso-bg",
+                    colorCode: "#FFF59E",
+                    id:"Banana",
+                    name: "Banana"
+                  },
+                  {
+                    colorClass: "exxat-mandy-bg",
+                    colorCode: "#E85D67",
+                    id:"Kiwi",
+                    name: "Kiwi"
+                  },
+                  {
+                    colorClass: "exxat-san-marino-bg",
+                    colorCode: "#3F51B5",
+                    id:"Strawberry",
+                    name: "Strawberry"
+                  },
+                  ]
+
+                  selectedItems: any = [];
+                  removable = true;
+                  selectable = true;
+
+                remove(item): void {
+                    const index = this.selectedItems.indexOf(item);
+                    this.selectedItems.splice(index, 1);  ;
+                    this.items.push(item)
+                }
+
+                  addItem(item) {
+                    const index = this.items.indexOf(item);
+                    if (index >= 0) {
+                      this.items.splice(index, 1);
+                    }
+                    this.selectedItems.push(item)
+                  }
+
+                }
+
+
+          </textarea>
+        </fuse-highlight>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

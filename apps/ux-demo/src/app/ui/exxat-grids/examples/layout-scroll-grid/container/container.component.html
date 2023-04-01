@@ -1,0 +1,46 @@
+<div class="
+    page-layout
+    simple
+    left-sidebar
+    inner-sidebar inner-scroll
+    page-with-header
+  ">
+  <!-- Main Header -->
+  <ng-container *ngIf="!_fullScreenService.getFullScreenModeEnabled">
+    <div class="mb-16" #mainHeader>
+      <exxat-main-header></exxat-main-header>
+    </div>
+  </ng-container>
+  <!-- / Main Header -->
+
+  <!-- CONTENT -->
+  <div class="content">
+    <!-- SIDEBAR -->
+    <ng-container *ngIf="!_fullScreenService.getFullScreenModeEnabled">
+      <fuse-sidebar class="sidebar overflow-none" name="simple-left-sidebar" position="left" lockedOpen="gt-md"
+        fxFlex.gt-md="25">
+        <!-- SIDEBAR CONTENT -->
+        <exxat-sidebar></exxat-sidebar>
+        <!-- / SIDEBAR CONTENT -->
+      </fuse-sidebar>
+    </ng-container>
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+    <div [ngClass]="{ 'ml-lg-16': !_fullScreenService.getFullScreenModeEnabled }"
+      [fxFlex.gt-md]="_fullScreenService.getFullScreenModeEnabled ? 100 : 75" fxFlex="100">
+      <!-- Content Header -->
+      <ng-container *ngIf="!_fullScreenService.getFullScreenModeEnabled">
+        <div #contentHeader class="mb-16">
+          <exxat-content-header></exxat-content-header>
+        </div>
+      </ng-container>
+      <!-- / Content Header -->
+
+      <div>
+        <exxat-layout-scroll-grid></exxat-layout-scroll-grid>
+      </div>
+    </div>
+  </div>
+  <!-- / CONTENT -->
+</div>

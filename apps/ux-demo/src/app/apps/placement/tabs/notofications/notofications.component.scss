@@ -1,0 +1,39 @@
+@import 'init';
+
+#notification-component {
+  .message-box {
+    max-width: max-content;
+    padding: 4px 8px;
+    font-size: px-to-rem(12) !important;
+  }
+  .content {
+    td {
+      .name {
+        span {
+          @include media-breakpoint('xs') {
+            font-size: px-to-rem(16);
+          }
+        }
+      }
+    }
+
+    .exxat-table {
+      tr {
+        th {
+          @include media-breakpoint('sm') {
+            min-width: 50vw;
+            &:nth-child(1) {
+              min-width: 10vw;
+            }
+          }
+          @include media-breakpoint('lt-sm') {
+            min-width: 70vw;
+            &:nth-child(1) {
+              min-width: 10vw;
+            }
+          }
+        }
+      }
+    }
+  }
+}

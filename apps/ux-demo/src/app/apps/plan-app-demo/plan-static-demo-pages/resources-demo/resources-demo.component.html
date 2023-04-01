@@ -1,0 +1,308 @@
+<div class="center">
+  <div class="content" fxLayout="column">
+    <div fxLayout="row" fxFlex="100">
+      <mat-card class="p-0" fxFlex="100" fxFlex.gt-sm="70">
+        <!--status heading and icon-->
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title py-8 pr-8 pl-16"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2
+              class="primary-heading font-weight-600"
+              tabindex="0"
+              aria-label="Course document"
+            >
+              Course document
+            </h2>
+          </div>
+        </header>
+        <!--table container-->
+        <div class="content overflow-auto">
+          <table
+            tabindex="0"
+            aria-label="add resources table"
+            mat-table
+            [dataSource]="dataSource"
+            class="w-100-p exxat-table resources-table pb-0 mb-16"
+          >
+            <ng-container matColumnDef="document">
+              <th
+                tabindex="0"
+                aria-label="Column is Document name"
+                mat-header-cell
+                *matHeaderCellDef
+                class="px-16"
+              >
+                Document
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="Document name is {{ element.document }}"
+                mat-cell
+                *matCellDef="let element"
+                class="px-16"
+              >
+                <div fxlayout="row" fxLayoutAlign="start center">
+                  <div class="mr-8">
+                    <i
+                      aria-hidden="true"
+                      class="fa-light {{ element.icon }} s-18"
+                    ></i>
+                  </div>
+                  <div>
+                    <span>{{ element.document }} </span>
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+              <th
+                tabindex="0"
+                aria-label="Column is date"
+                mat-header-cell
+                *matHeaderCellDef
+                class="px-16"
+              >
+                Date
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="date is {{ element.date }}"
+                mat-cell
+                *matCellDef="let element"
+                class="px-16"
+              >
+                {{ element.date }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="category">
+              <th
+                tabindex="0"
+                aria-label="Column is Document category"
+                mat-header-cell
+                *matHeaderCellDef
+                class="px-16"
+              >
+                Category
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="Document category is {{ element.category }}"
+                mat-cell
+                *matCellDef="let element"
+                class="px-16"
+              >
+                {{ element.category }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+              <th
+                tabindex="0"
+                aria-label="Column is  action"
+                class="px-16 action-column"
+                mat-header-cell
+                *matHeaderCellDef
+              ></th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="px-16 action-column"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <button
+                    mat-icon-button
+                    class="action-icon mr-8"
+                    aria-label="click here to delete"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-trash-alt icon-fill s-18"
+                    ></i>
+                  </button>
+                  <button
+                    mat-icon-button
+                    class="action-icon"
+                    aria-label="click here to download"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-arrow-down icon-fill s-18"
+                    ></i>
+                  </button>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+      </mat-card>
+    </div>
+    <div fxLayout="row" fxFlex="100" class="mt-16">
+      <mat-card class="p-0" fxFlex="100" fxFlex.gt-sm="70">
+        <!--status heading and icon-->
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title py-8 pr-8 pl-16"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2
+              class="primary-heading font-weight-600"
+              tabindex="0"
+              aria-label="other document"
+            >
+              Other document
+            </h2>
+          </div>
+          <button
+            mat-icon-button
+            class="icon-fill-bg"
+            aria-label="add other document"
+          >
+            <i
+              aria-hidden="true"
+              class="fa-light fa-plus fuse-white-fg s-18"
+            ></i>
+          </button>
+        </header>
+        <!--table container-->
+        <div class="content overflow-auto">
+          <table
+            tabindex="0"
+            aria-label="add resources table"
+            mat-table
+            [dataSource]="dataSource"
+            class="w-100-p exxat-table resources-table mb-16 pb-0"
+          >
+            <ng-container matColumnDef="document">
+              <th
+                tabindex="0"
+                aria-label="Column is  Document name"
+                mat-header-cell
+                *matHeaderCellDef
+                class="px-16"
+              >
+                Document
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="Document name is {{ element.document }}"
+                mat-cell
+                *matCellDef="let element"
+                class="px-16"
+              >
+                <div fxlayout="row" fxLayoutAlign="start center">
+                  <div class="mr-8">
+                    <i
+                      aria-hidden="true"
+                      class="fa-light {{ element.icon }} s-18"
+                    ></i>
+                  </div>
+                  <div>
+                    <span>{{ element.document }} </span>
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+              <th
+                tabindex="0"
+                aria-label="Column is date"
+                mat-header-cell
+                *matHeaderCellDef
+                class="px-16"
+              >
+                Date
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="Uploaded date is {{ element.date }}"
+                mat-cell
+                *matCellDef="let element"
+                class="px-16"
+              >
+                {{ element.date }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="category">
+              <th
+                tabindex="0"
+                aria-label="Column is category"
+                mat-header-cell
+                *matHeaderCellDef
+                class="px-16"
+              >
+                Category
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="Document category is {{ element.category }}"
+                mat-cell
+                *matCellDef="let element"
+                class="px-16"
+              >
+                {{ element.category }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+              <th
+                tabindex="0"
+                aria-label="action icons"
+                class="px-16 action-column"
+                mat-header-cell
+                *matHeaderCellDef
+              ></th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="px-16 action-column"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <button
+                    mat-icon-button
+                    class="action-icon mr-8"
+                    aria-label="click here to delete"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-trash-alt icon-fill s-18"
+                    ></i>
+                  </button>
+                  <button
+                    mat-icon-button
+                    class="action-icon"
+                    aria-label="click here to download"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-arrow-down icon-fill s-18"
+                    ></i>
+                  </button>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

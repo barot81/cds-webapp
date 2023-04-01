@@ -1,0 +1,26 @@
+<div id="left_side_bar_layout_one" class="page-layout carded fullwidth inner-scroll">
+
+    <div class="center pl-0 pr-0">
+
+        <div #left_side_bar_layout_one_header class="gray-header"
+            *ngIf="!(_fullScreenService.fullScreenModeEnabled$ | async)">
+
+            <div fxLayout="row" fxLayoutAlign="start center" class="mb-16">
+                <button mat-icon-button role="img" class="action-icon" routerLink="" aria-hidden="true">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+                <div fxLayout="column" class="ml-8">
+                    <h2 class="font-weight-600">Massachusetts General Hospital</h2>
+                    <span class="font-14">710 S Business 61- Suite 100, Bowling Green, Missouri-63334</span>
+                </div>
+            </div>
+
+            <exxat-layout-one-nav-bar></exxat-layout-one-nav-bar>
+        </div>
+
+        <div class="mt-16">
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+</div>

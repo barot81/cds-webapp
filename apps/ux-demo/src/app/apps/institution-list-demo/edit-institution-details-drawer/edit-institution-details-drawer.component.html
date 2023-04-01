@@ -1,0 +1,128 @@
+<div class="drawer-p" fxLayout="column" fxLayoutAlign="start">
+
+    <mat-card fxLayout="column" class="p-0 mb-16">
+      <header fxLayout="row" fxLayoutAlign="space-between center"
+      class="card-header-title card-header-border-bottom py-8 pr-8 pl-16" tabindex="0">
+      <div fxLayout="row" fxLayoutAlign="start center">
+          <h4 class="primary-heading font-weight-600 text-capitalize">
+            Institution Details
+         </h4>
+      </div>
+      </header>
+      <div fxLayout="column">
+        <div class="pl-16 pt-16" fxLayout="row wrap" fxFlex="100">
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
+              <mat-form-field appearance="fill" fxFlex="100" class="exxat-form-field-outline">
+                <mat-label>Institute Name</mat-label>
+                <input matInput formControlName="instituteName" required>
+                <mat-error>Institute Name is required!</mat-error>
+              </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
+              <mat-form-field appearance="fill" fxFlex="100">
+                <mat-label>Institute Short Name</mat-label>
+                <input matInput formControlName="instituteShortName" required>
+                <mat-error>Institute Short Name is required!</mat-error>
+              </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
+              <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>Tenant ID</mat-label>
+                  <input matInput formControlName="tenantId">
+                  <mat-error>Tenant Id is required!</mat-error>
+                </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
+              <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>Time Zone</mat-label>
+                  <mat-select formControlName="timeZone">
+                    <mat-option *ngFor="let timeZone of timeZoneList" value="{{timeZone.value}}">
+                      {{timeZone.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>Time Zone is required!</mat-error>
+                </mat-form-field>
+          </div>
+        </div>
+
+        <div class="pl-16 pb-16" fxLayout="row wrap" fxFlex="100">
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
+            <div fxLayout="column" class="w-100-p">
+              <span class="font-weight-600 mb-8 font-16 accent-fg" tabindex="0" aria-label="title Institution Logo for Website">Institution Logo for Website</span>
+              <exxat-file-upload  [fileConfiguration]="fileConfiguration"
+              formControlName="fileDescriptions" tabindex="0" aria-label="Browse to upload files"></exxat-file-upload>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16 mt-small-16">
+            <div fxLayout="column" class="w-100-p">
+              <span class="font-weight-600 mb-8 font-16 accent-fg" tabindex="0" aria-label="title Institution Logo for Website">Institution Logo for Email</span>
+              <exxat-file-upload  [fileConfiguration]="fileConfiguration"
+              formControlName="fileDescriptions" tabindex="0" aria-label="Browse to upload files"></exxat-file-upload>
+            </div>
+          </div>
+        </div>
+
+        <div fxLayout="column">
+          <span class="font-weight-600 pl-16 pt-16 font-16 accent-fg" tabindex="0" aria-label="title Institution Address">Institution Address</span>
+          <div class="pl-16 pt-16" fxLayout="row wrap" fxFlex="100">
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
+              <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>Address Lane 1</mat-label>
+                  <input matInput formControlName="address">
+                  <mat-error>address Id is required!</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
+              <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>Address Lane 2</mat-label>
+                  <input matInput formControlName="address">
+                  <mat-error>address Id is required!</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
+              <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>Zip Code</mat-label>
+                  <input matInput formControlName="zipCode">
+                  <mat-error>Zip Code is required!</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
+              <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>City</mat-label>
+                  <mat-select formControlName="city">
+                    <mat-option *ngFor="let city of cityList" value="{{city.value}}">
+                      {{city.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>City is required!</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
+              <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>State</mat-label>
+                  <mat-select formControlName="state">
+                    <mat-option *ngFor="let state of stateList" value="{{state.value}}">
+                      {{state.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>state is required!</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
+              <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>Country</mat-label>
+                  <mat-select formControlName="country">
+                    <mat-option *ngFor="let country of countryList" value="{{country.value}}">
+                      {{country.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>country is required!</mat-error>
+                </mat-form-field>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </mat-card>
+  
+  </div>

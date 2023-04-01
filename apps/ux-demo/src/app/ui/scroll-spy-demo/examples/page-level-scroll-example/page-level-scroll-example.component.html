@@ -1,0 +1,910 @@
+<div
+  id="scroll-spy-demo-page"
+  class="page-layout carded left-sidebar tabbed inner-scroll"
+>
+  <!-- SIDEBAR -->
+  <fuse-sidebar
+    class="sidebar width-sm"
+    name="carded-left-sidebar-tabbed-2"
+    position="left"
+    lockedOpen="gt-md"
+    tabindex="0"
+    aria-label="sidebar"
+  >
+    <!-- SIDEBAR CONTENT -->
+    <div class="content" fusePerfectScrollbar>
+      <div class="scroll_spy_list_container">
+        <ul class="scroll_spy_list p-16" scrollSpyList>
+          <!-- <li class="pl-48">
+            <div (click)="changeNavMenuItem('scroll_spy_list_item_0')" id="scroll_spy_list_item_0"
+              fxLayoutAlign="start center" fxLayout="row" class="scroll_spy_list_item border-bottom px-8 py-16" tabindex="0" aria-label="this is a node without child">
+                <i aria-hidden="true" class="fal fa-circle s-18 mr-8" tabindex="0" aria-label="circle unchecked"></i>
+                <span tabindex="0" aria-label="Basic Information">Basic Information</span>
+            </div>
+          </li> -->
+          <li>
+            <input #group_1 type="checkbox" hidden />
+            <div
+              (click)="changeNavMenuItem('scroll_spy_list_item_1')"
+              id="scroll_spy_list_item_1"
+              fxLayoutAlign="start center"
+              fxLayout="row"
+              class="scroll_spy_list_item border-bottom"
+              tabindex="0"
+              aria-label="parent node"
+            >
+              <button
+                mat-icon-button
+                class="action-icon"
+                aria-label="toggle for parent node"
+                (click)="group_1.click()"
+              >
+                <i
+                  aria-hidden="true"
+                  [ngClass]="
+                    group_1.checked
+                      ? 'fa-light fa-chevron-down s-18'
+                      : 'fa-light fa-chevron-right s-18'
+                  "
+                  class="accent-fg"
+                ></i>
+              </button>
+              <div fxLayoutAlign="start center" fxLayout="row">
+                <i
+                  aria-hidden="true"
+                  class="fal fa-circle s-18 mx-8"
+                  tabindex="0"
+                  aria-label="circle unchecked"
+                ></i>
+                <span tabindex="0" aria-label="I. Fundamental of Practice"
+                  >I. Fundamental of Practice</span
+                >
+              </div>
+            </div>
+            <ul class="group-list pl-76">
+              <li class="">
+                <div
+                  (click)="changeNavMenuItem('scroll_spy_list_item_2')"
+                  fxLayoutAlign="start center"
+                  fxLayout="row"
+                  class="scroll_spy_list_item border-bottom px-8 py-16"
+                  id="scroll_spy_list_item_2"
+                  tabindex="0"
+                  aria-label="child node"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fal fa-circle s-18 mr-8"
+                    tabindex="0"
+                    aria-label="circle unchecked"
+                  ></i>
+                  <span tabindex="0" aria-label="practice I">Practice I</span>
+                </div>
+              </li>
+              <li>
+                <div
+                  (click)="changeNavMenuItem('scroll_spy_list_item_3')"
+                  fxLayoutAlign="start center"
+                  fxLayout="row"
+                  class="scroll_spy_list_item border-bottom px-8 py-16"
+                  id="scroll_spy_list_item_3"
+                  tabindex="0"
+                  aria-label="child node"
+                >
+                  <div fxLayoutAlign="start center" fxLayout="row">
+                    <i
+                      aria-hidden="true"
+                      class="fal fa-circle s-18 mr-8"
+                      tabindex="0"
+                      aria-label="circle unchecked"
+                    ></i>
+                    <span tabindex="0" aria-label="practice II"
+                      >Practice II</span
+                    >
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li class="pl-48">
+            <div
+              (click)="changeNavMenuItem('scroll_spy_list_item_4')"
+              id="scroll_spy_list_item_4"
+              fxLayoutAlign="start center"
+              fxLayout="row"
+              class="scroll_spy_list_item border-bottom px-8 py-16"
+              tabindex="0"
+              aria-label="node without child"
+            >
+              <i
+                aria-hidden="true"
+                class="fal fa-circle s-18 mr-8"
+                tabindex="0"
+                aria-label="circle unchecked"
+              ></i>
+              <span tabindex="0" aria-label="II. Basic Tenets"
+                >II. Basic Tenets</span
+              >
+            </div>
+          </li>
+          <li class="pl-48">
+            <div
+              (click)="changeNavMenuItem('scroll_spy_list_item_5')"
+              id="scroll_spy_list_item_5"
+              fxLayoutAlign="start center"
+              fxLayout="row"
+              class="scroll_spy_list_item border-bottom px-8 py-16"
+              tabindex="0"
+              aria-label=" node without child"
+            >
+              <i
+                aria-hidden="true"
+                class="fal fa-circle s-18 mr-8"
+                tabindex="0"
+                aria-label="circle unchecked"
+              ></i>
+              <span tabindex="0" aria-label="III. Evaluation and Screening"
+                >III. Evaluation and Screening</span
+              >
+            </div>
+          </li>
+          <li>
+            <input #group_2 type="checkbox" hidden />
+            <div
+              (click)="changeNavMenuItem('scroll_spy_list_item_6')"
+              id="scroll_spy_list_item_6"
+              fxLayoutAlign="start center"
+              fxLayout="row"
+              class="scroll_spy_list_item border-bottom"
+              tabindex="0"
+              aria-label="parent node"
+            >
+              <button
+                mat-icon-button
+                class="action-icon"
+                aria-label="toggle for parent node"
+                (click)="group_2.click()"
+              >
+                <i
+                  aria-hidden="true"
+                  [ngClass]="
+                    group_2.checked
+                      ? 'fa-light fa-chevron-down s-18'
+                      : 'fa-light fa-chevron-right s-18'
+                  "
+                  class="accent-fg"
+                ></i>
+              </button>
+              <div fxLayoutAlign="start center" fxLayout="row">
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-check-circle s-18 primary-fg mx-8"
+                  tabindex="0"
+                  aria-label="circle checked"
+                ></i>
+                <span tabindex="0" aria-label="IV. Intervention"
+                  >IV. Intervention</span
+                >
+              </div>
+            </div>
+            <ul class="group-list pl-76">
+              <li>
+                <div
+                  (click)="changeNavMenuItem('scroll_spy_list_item_7')"
+                  fxLayoutAlign="start center"
+                  fxLayout="row"
+                  class="scroll_spy_list_item border-bottom px-8 py-16"
+                  id="scroll_spy_list_item_7"
+                  tabindex="0"
+                  aria-label="child node"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-check-circle s-18 primary-fg mr-8"
+                    tabindex="0"
+                    aria-label="circle checked"
+                  ></i>
+                  <span tabindex="0" aria-label="practice I">Practice I</span>
+                </div>
+              </li>
+              <li>
+                <div
+                  (click)="changeNavMenuItem('scroll_spy_list_item_8')"
+                  fxLayoutAlign="start center"
+                  fxLayout="row"
+                  class="scroll_spy_list_item border-bottom px-8 py-16"
+                  id="scroll_spy_list_item_8"
+                  tabindex="0"
+                  aria-label="child node"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-check-circle s-18 primary-fg mr-8"
+                    tabindex="0"
+                    aria-label="circle-checked"
+                  ></i>
+                  <span tabindex="0" aria-label="practice II">Practice II</span>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li class="pl-48">
+            <div
+              (click)="changeNavMenuItem('scroll_spy_list_item_9')"
+              id="scroll_spy_list_item_9"
+              fxLayoutAlign="start center"
+              fxLayout="row"
+              class="scroll_spy_list_item border-bottom px-8 py-16"
+              tabindex="0"
+              aria-label="node without child"
+            >
+              <i
+                aria-hidden="true"
+                class="fa-light fa-check-circle s-18 primary-fg mr-8"
+                tabindex="0"
+                aria-label="circle checked"
+              ></i>
+              <span
+                tabindex="0"
+                aria-label="V. Management of Occupational Therapy Service"
+                >V. Management of Occupational Therapy Service</span
+              >
+            </div>
+          </li>
+          <li class="pl-48">
+            <div
+              id="scroll_spy_list_item_10"
+              (click)="changeNavMenuItem('scroll_spy_list_item_10')"
+              fxLayoutAlign="start center"
+              fxLayout="row"
+              class="scroll_spy_list_item border-bottom px-8 py-16"
+              tabindex="0"
+              aria-label="node without child"
+            >
+              <i
+                aria-hidden="true"
+                class="fa-light fa-check-circle s-18 primary-fg mr-8"
+                tabindex="0"
+                aria-label="circle checkrd"
+              ></i>
+              <span tabindex="0" aria-label="VI. Communication"
+                >VI. Communication</span
+              >
+            </div>
+          </li>
+          <li>
+            <input #group_3 type="checkbox" hidden />
+            <div
+              (click)="changeNavMenuItem('scroll_spy_list_item_11')"
+              id="scroll_spy_list_item_11"
+              fxLayoutAlign="start center"
+              fxLayout="row"
+              class="scroll_spy_list_item border-bottom"
+              tabindex="0"
+              aria-label="parent node"
+            >
+              <button
+                mat-icon-button
+                class="action-icon"
+                aria-label="toggle for parent node"
+                (click)="group_3.click()"
+              >
+                <i
+                  aria-hidden="true"
+                  [ngClass]="
+                    group_3.checked
+                      ? 'fa-light fa-chevron-down s-18'
+                      : 'fa-light fa-chevron-right s-18'
+                  "
+                  class="accent-fg"
+                ></i>
+              </button>
+              <div fxLayoutAlign="start center" fxLayout="row">
+                <i
+                  aria-hidden="true"
+                  class="fal fa-circle mx-8 s-18"
+                  tabindex="0"
+                  aria-label="circle unchecked"
+                ></i>
+                <span tabindex="0" aria-label="VII. Professional Behaviors"
+                  >VII. Professional Behaviors</span
+                >
+              </div>
+            </div>
+            <ul class="group-list pl-76">
+              <li>
+                <div
+                  (click)="changeNavMenuItem('scroll_spy_list_item_12')"
+                  fxLayoutAlign="start center"
+                  fxLayout="row"
+                  class="scroll_spy_list_item border-bottom px-8 py-16"
+                  id="scroll_spy_list_item_12"
+                  tabindex="0"
+                  aria-label="child node"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fal fa-circle s-18 mr-8"
+                    tabindex="0"
+                    aria-label="circle unchecked"
+                  ></i>
+                  <span tabindex="0" aria-label="practice I">Practice I</span>
+                </div>
+              </li>
+              <li>
+                <div
+                  fxLayoutAlign="start center"
+                  fxLayout="row"
+                  class="scroll_spy_list_item border-bottom px-8 py-16"
+                  id="scroll_spy_list_item_13"
+                  (click)="changeNavMenuItem('scroll_spy_list_item_13')"
+                  tabindex="0"
+                  aria-label="child node"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fal fa-circle s-18 mr-8"
+                    tabindex="0"
+                    aria-label="circle unchecked"
+                  ></i>
+                  <span tabindex="0" aria-label="practice II">Practice II</span>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- / SIDEBAR CONTENT -->
+  </fuse-sidebar>
+  <!-- / SIDEBAR -->
+
+  <!-- CENTER -->
+  <div class="center ml-lg-16">
+    <!-- CONTENT TOOLBAR -->
+    <div class="toolbar px-24 py-8" fxHide.gt-md>
+      <button
+        mat-icon-button
+        class="sidebar-toggle"
+        (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <!-- / CONTENT TOOLBAR -->
+
+    <!-- CONTENT -->
+    <div
+      class="content"
+      fxFlex="100"
+      fusePerfectScrollbar
+      scrollSpyContent
+      offsetTop="16"
+    >
+      <div fxFlex="100" fxFlex.gt-sm="90">
+        <div class="mb-16" fxLayout="row" fxLayoutAlign="end center">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="mr-8">
+              <button
+                mat-stroked-button
+                color="accent"
+                class="accent-border-btn"
+              >
+                Save
+              </button>
+            </div>
+            <div>
+              <button mat-raised-button color="accent">Submit</button>
+            </div>
+          </div>
+        </div>
+
+        <mat-card class="p-0">
+          <div fxLayout="column" fxFlex="100">
+            <div class="p-16" fxLayout="row" fxLayoutAlign="end center">
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                class="py-12 px-16 fuse-white-fg gray-section"
+              >
+                <div>
+                  <span class="font-weight-600">Total score</span>
+                </div>
+                <div class="mx-16">
+                  <span>|</span>
+                </div>
+                <div class="font-weight-600">
+                  <span class="font-size-24">0</span>
+                  <sub class="font-size-16">/170</sub>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="mb-16 p-16 fuse-white-fg blue-800-bg scroll_spy_content_item"
+              id="scroll_spy_list_item_0"
+              fxLayoutAlign="space-between center"
+              fxLayout="row wrap"
+            >
+              <span class="font-18 font-weight-600">Instruction</span>
+              <span class="font-16 font-weight-600">View Instruction</span>
+            </div>
+
+            <div class="p-16 pt-0">
+              <!-- Fundamental of Practice card -->
+              <mat-card class="p-0 mb-16">
+                <mat-accordion
+                  class="w-100-p"
+                  tabindex="0"
+                  aria-label="expansion panel for"
+                >
+                  <mat-expansion-panel class="border-radius-20 exxat-list">
+                    <mat-expansion-panel-header
+                      class="border-bottom border-radius-0 card-header-title"
+                    >
+                      <mat-panel-title>
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="space-between center"
+                          fxFlex="100"
+                          id="scroll_spy_list_item_1"
+                          class="scroll_spy_content_item pr-16"
+                        >
+                          <h2 class="primary-heading font-weight-600">
+                            I. Fundamental of Practice
+                          </h2>
+                          <div class="font-weight-600 mr-8">
+                            <span class="font-size-24">0</span>
+                            <sub class="font-size-16">/20</sub>
+                          </div>
+                        </div>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div fxLayout="column" class="p-16">
+                      <div
+                        class="scroll_spy_content_item"
+                        fxLayout="column"
+                        id="scroll_spy_list_item_2"
+                      >
+                        <span
+                          class="practice-title font-18 font-weight-600 pb-16"
+                          >Practice I</span
+                        >
+                        <!-- first name --->
+                        <div fxLayout="column" fxLayoutAlign="center start">
+                          <label required class="pb-8"
+                            >Hours required per week</label
+                          >
+                          <mat-form-field appearance="fill" class="w-100-p">
+                            <input
+                              matInput
+                              formControlName="hoursRequired"
+                              placeholder="Enter the hours required per week"
+                            />
+                            <mat-error>Hours required per week</mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div
+                        class="scroll_spy_content_item"
+                        fxLayout="column"
+                        id="scroll_spy_list_item_3"
+                      >
+                        <span
+                          class="practice-title font-18 font-weight-600 pb-16"
+                          >Practice II</span
+                        >
+                        <!-- first name --->
+                        <div fxLayout="column" fxLayoutAlign="center start">
+                          <label required class="pb-8"
+                            >Hours required per week</label
+                          >
+                          <mat-form-field appearance="fill" class="w-100-p">
+                            <input
+                              matInput
+                              formControlName="hoursRequired"
+                              placeholder="Enter the hours required per week"
+                            />
+                            <mat-error>Hours required per week</mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </mat-card>
+
+              <!-- II. Basic Tenets -->
+              <mat-card class="p-0 mb-16">
+                <mat-accordion
+                  class="w-100-p"
+                  tabindex="0"
+                  aria-label="expansion panel"
+                >
+                  <mat-expansion-panel class="border-radius-20 exxat-list">
+                    <mat-expansion-panel-header
+                      class="border-bottom border-radius-0 card-header-title"
+                    >
+                      <mat-panel-title>
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="space-between center"
+                          fxFlex="100"
+                          id="scroll_spy_list_item_4"
+                          class="scroll_spy_content_item pr-16"
+                        >
+                          <h2 class="primary-heading font-weight-600">
+                            II. Basic Tenets
+                          </h2>
+                          <div class="font-weight-600 mr-8">
+                            <span class="font-size-24">0</span>
+                            <sub class="font-size-16">/20</sub>
+                          </div>
+                        </div>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div fxLayout="column" class="p-16">
+                      <div class="" fxLayout="column" id="">
+                        <span
+                          class="practice-title font-18 font-weight-600 pb-16"
+                          >Practice I</span
+                        >
+                        <!-- first name --->
+                        <div fxLayout="column" fxLayoutAlign="center start">
+                          <label required class="pb-8"
+                            >Hours required per week</label
+                          >
+                          <mat-form-field appearance="fill" class="w-100-p">
+                            <input
+                              matInput
+                              formControlName="hoursRequired"
+                              placeholder="Enter the hours required per week"
+                            />
+                            <mat-error>Hours required per week</mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </mat-card>
+
+              <!-- III. Evaluation and Screening -->
+              <mat-card class="p-0 mb-16">
+                <mat-accordion
+                  class="w-100-p"
+                  tabindex="0"
+                  aria-label="expansion panel"
+                >
+                  <mat-expansion-panel class="border-radius-20 exxat-list">
+                    <mat-expansion-panel-header
+                      class="border-bottom border-radius-0 card-header-title"
+                    >
+                      <mat-panel-title>
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="space-between center"
+                          fxFlex="100"
+                          id="scroll_spy_list_item_5"
+                          class="scroll_spy_content_item pr-16"
+                        >
+                          <h2 class="primary-heading font-weight-600">
+                            III. Evaluation and Screening
+                          </h2>
+                          <div class="font-weight-600 mr-8">
+                            <span class="font-size-24">0</span>
+                            <sub class="font-size-16">/20</sub>
+                          </div>
+                        </div>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div fxLayout="column" class="p-16">
+                      <div class="" fxLayout="column" id="">
+                        <span
+                          class="practice-title font-18 font-weight-600 pb-16"
+                          >Practice I</span
+                        >
+                        <!-- first name --->
+                        <div fxLayout="column" fxLayoutAlign="center start">
+                          <label required class="pb-8"
+                            >Hours required per week</label
+                          >
+                          <mat-form-field appearance="fill" class="w-100-p">
+                            <input
+                              matInput
+                              formControlName="hoursRequired"
+                              placeholder="Enter the hours required per week"
+                            />
+                            <mat-error>Hours required per week</mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </mat-card>
+
+              <!--  IV. Intervention -->
+              <mat-card class="p-0 mb-16">
+                <mat-accordion
+                  class="w-100-p"
+                  tabindex="0"
+                  aria-label="expansion panel for"
+                >
+                  <mat-expansion-panel class="border-radius-20 exxat-list">
+                    <mat-expansion-panel-header
+                      class="border-bottom border-radius-0 card-header-title"
+                    >
+                      <mat-panel-title>
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="space-between center"
+                          fxFlex="100"
+                          id="scroll_spy_list_item_6"
+                          class="scroll_spy_content_item pr-16"
+                        >
+                          <h2 class="primary-heading font-weight-600">
+                            IV. Intervention
+                          </h2>
+                          <div class="font-weight-600 mr-8">
+                            <span class="font-size-24">0</span>
+                            <sub class="font-size-16">/20</sub>
+                          </div>
+                        </div>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div fxLayout="column" class="p-16">
+                      <div
+                        class="scroll_spy_content_item"
+                        fxLayout="column"
+                        id="scroll_spy_list_item_7"
+                      >
+                        <span
+                          class="practice-title font-18 font-weight-600 pb-16"
+                          >Practice I</span
+                        >
+                        <!-- first name --->
+                        <div fxLayout="column" fxLayoutAlign="center start">
+                          <label required class="pb-8"
+                            >Hours required per week</label
+                          >
+                          <mat-form-field appearance="fill" class="w-100-p">
+                            <input
+                              matInput
+                              formControlName="hoursRequired"
+                              placeholder="Enter the hours required per week"
+                            />
+                            <mat-error>Hours required per week</mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div
+                        class="scroll_spy_content_item"
+                        fxLayout="column"
+                        id="scroll_spy_list_item_8"
+                      >
+                        <span
+                          class="practice-title font-18 font-weight-600 pb-16"
+                          >Practice II</span
+                        >
+                        <!-- first name --->
+                        <div fxLayout="column" fxLayoutAlign="center start">
+                          <label required class="pb-8"
+                            >Hours required per week</label
+                          >
+                          <mat-form-field appearance="fill" class="w-100-p">
+                            <input
+                              matInput
+                              formControlName="hoursRequired"
+                              placeholder="Enter the hours required per week"
+                            />
+                            <mat-error>Hours required per week</mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </mat-card>
+
+              <!-- III. Evaluation and Screening -->
+              <mat-card class="p-0 mb-16">
+                <mat-accordion
+                  class="w-100-p"
+                  tabindex="0"
+                  aria-label="expansion panel"
+                >
+                  <mat-expansion-panel class="border-radius-20 exxat-list">
+                    <mat-expansion-panel-header
+                      class="border-bottom border-radius-0 card-header-title"
+                    >
+                      <mat-panel-title>
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="space-between center"
+                          fxFlex="100"
+                          id="scroll_spy_list_item_9"
+                          class="scroll_spy_content_item pr-16"
+                        >
+                          <h2 class="primary-heading font-weight-600">
+                            V. Management of Occupational Therapy Service
+                          </h2>
+                          <div class="font-weight-600 mr-8">
+                            <span class="font-size-24">0</span>
+                            <sub class="font-size-16">/20</sub>
+                          </div>
+                        </div>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div fxLayout="column" class="p-16">
+                      <div class="" fxLayout="column" id="">
+                        <span
+                          class="practice-title font-18 font-weight-600 pb-16"
+                          >Practice I</span
+                        >
+                        <!-- first name --->
+                        <div fxLayout="column" fxLayoutAlign="center start">
+                          <label required class="pb-8"
+                            >Hours required per week</label
+                          >
+                          <mat-form-field appearance="fill" class="w-100-p">
+                            <input
+                              matInput
+                              formControlName="hoursRequired"
+                              placeholder="Enter the hours required per week"
+                            />
+                            <mat-error>Hours required per week</mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </mat-card>
+
+              <!--   VI. Communication -->
+              <mat-card class="p-0 mb-16">
+                <mat-accordion
+                  class="w-100-p"
+                  tabindex="0"
+                  aria-label="expansion panel"
+                >
+                  <mat-expansion-panel class="border-radius-20 exxat-list">
+                    <mat-expansion-panel-header
+                      class="border-bottom border-radius-0 card-header-title"
+                    >
+                      <mat-panel-title>
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="space-between center"
+                          fxFlex="100"
+                          id="scroll_spy_list_item_10"
+                          class="scroll_spy_content_item pr-16"
+                        >
+                          <h2 class="primary-heading font-weight-600">
+                            VI. Communication
+                          </h2>
+                          <div class="font-weight-600 mr-8">
+                            <span class="font-size-24">0</span>
+                            <sub class="font-size-16">/20</sub>
+                          </div>
+                        </div>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div fxLayout="column" class="p-16">
+                      <div class="" fxLayout="column" id="">
+                        <span
+                          class="practice-title font-18 font-weight-600 pb-16"
+                          >Practice I</span
+                        >
+                        <!-- first name --->
+                        <div fxLayout="column" fxLayoutAlign="center start">
+                          <label required class="pb-8"
+                            >Hours required per week</label
+                          >
+                          <mat-form-field appearance="fill" class="w-100-p">
+                            <input
+                              matInput
+                              formControlName="hoursRequired"
+                              placeholder="Enter the hours required per week"
+                            />
+                            <mat-error>Hours required per week</mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </mat-card>
+
+              <!-- VII. Professional Behaviors -->
+              <mat-card class="p-0 mb-16">
+                <mat-accordion
+                  class="w-100-p"
+                  tabindex="0"
+                  aria-label="expansion panel for"
+                >
+                  <mat-expansion-panel class="border-radius-20 exxat-list">
+                    <mat-expansion-panel-header
+                      class="border-bottom border-radius-0 card-header-title"
+                    >
+                      <mat-panel-title>
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="space-between center"
+                          fxFlex="100"
+                          id="scroll_spy_list_item_11"
+                          class="scroll_spy_content_item pr-16"
+                        >
+                          <h2 class="primary-heading font-weight-600">
+                            VII. Professional Behaviors
+                          </h2>
+                          <div class="font-weight-600 mr-8">
+                            <span class="font-size-24">0</span>
+                            <sub class="font-size-16">/20</sub>
+                          </div>
+                        </div>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div fxLayout="column" class="p-16">
+                      <div
+                        class="scroll_spy_content_item"
+                        fxLayout="column"
+                        id="scroll_spy_list_item_12"
+                      >
+                        <span
+                          class="practice-title font-18 font-weight-600 pb-16"
+                          >Practice I</span
+                        >
+                        <!-- first name --->
+                        <div fxLayout="column" fxLayoutAlign="center start">
+                          <label required class="pb-8"
+                            >Hours required per week</label
+                          >
+                          <mat-form-field appearance="fill" class="w-100-p">
+                            <input
+                              matInput
+                              formControlName="hoursRequired"
+                              placeholder="Enter the hours required per week"
+                            />
+                            <mat-error>Hours required per week</mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div
+                        class="scroll_spy_content_item"
+                        fxLayout="column"
+                        id="scroll_spy_list_item_13"
+                      >
+                        <span
+                          class="practice-title font-18 font-weight-600 pb-16"
+                          >Practice II</span
+                        >
+                        <!-- first name --->
+                        <div fxLayout="column" fxLayoutAlign="center start">
+                          <label required class="pb-8"
+                            >Hours required per week</label
+                          >
+                          <mat-form-field appearance="fill" class="w-100-p">
+                            <input
+                              matInput
+                              formControlName="hoursRequired"
+                              placeholder="Enter the hours required per week"
+                            />
+                            <mat-error>Hours required per week</mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </mat-card>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <!-- / CONTENT -->
+  </div>
+  <!-- / CENTER -->
+</div>

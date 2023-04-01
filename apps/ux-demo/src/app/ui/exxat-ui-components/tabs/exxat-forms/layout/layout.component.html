@@ -1,0 +1,234 @@
+<div class="content pt-16" fxLayout="column">
+
+  <div class="m-8 ml-16" fxLayout="row">
+    <span class="font-16">
+      <ul tabindex="0" aria-label="instruction list">
+        <li tabindex="0" aria-label="one , Material tree example with checkbox and add functionality"> 
+          Layout comprise of 2 configs - Base Layout & Override Layout.
+        </li>
+        <li tabindex="0"
+          aria-label="two ,Service Ts file is just for demo purpose. You can fetch data from backend API. ">
+          Base Layout is the master file holding the sections on the form & fields.
+          Overide Layout overides the base sections and fields for a role and the step in a given workflow.
+        </li>
+      </ul>
+    </span>
+  </div>
+  <div fxLayout="row wrap" fxFlex="100">
+
+    <div class="preview mt-16" fxLayout="column" fxLayoutAlign="start" fxFlex.gt-md="100" fxFlex="100">
+      <mat-tab-group dynamicHeight="true" selectedIndex="0">
+        <mat-tab label="Base Layout">
+          <div class="pt-16">
+            <fuse-highlight lang="json" class="source-code">
+              <textarea #source hidden="hidden">
+                {
+                  "sections": [
+                      {
+                          "sectionId": "Section.PTSE1.ProfessionalBehaviors",
+                          "caption": "Professional Behaviors",
+                          "fields": [
+                              {
+                                  "fieldId": "informationRecieved",
+                                  "description": "Did you receive information from the clinical facility?",
+                                  "fieldType": "Radio",
+                                  "display": "inline-grid",
+                                  "options": [
+                                      {
+                                          "label": "Yes"
+                                      },
+                                      {
+                                          "label": "No"
+                                      }
+                                  ],
+                                  "validations": [
+                                      {
+                                          "name": "required",
+                                          "message": "Please select one of the options",
+                                          "validator": ""
+                                      }
+                                  ]
+                              }
+                          ],
+                          "sections": [
+                              {
+                                  "sectionId": "Section.PTSE1.Safety",
+                                  "caption": "Orientation",
+                                  "fields": [
+                                      {
+                                          "fieldId": "priorInformation",
+                                          "description": "4. Did you receive information from the clinical facility prior to your arrival?",
+                                          "fieldType": "Radio",
+                                          "display": "inline-grid",
+                                          "options": [
+                                              {
+                                                  "label": "Yes"
+                                              },
+                                              {
+                                                  "label": "No"
+                                              }
+                                          ],
+                                          "validations": [
+                                              {
+                                                  "name": "required",
+                                                  "message": "Please select one of the options"
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "fieldId": "orientationInformation",
+                                          "description": "6. What else could have been provided during the orientation?",
+                                          "fieldType": "TextArea",
+                                          "validations": [
+                                              {
+                                                  "name": "required",
+                                                  "message": "Please provide the orientation feedback"
+                                              }
+                                          ],
+                                          "placeHolder": "Enter the orientation feedback"
+                                      }
+                                  ]
+                              }
+                          ]
+                      }
+                  ],
+                  "id": "Evaluation.PTSE1.Layout.Base",
+                  "partitionKey": "Exxat",
+                  "entityName": "Exxat.Forms.Entity.Layouts.Layout"
+              }
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Base Layout UML">
+          <div class="pt-16 img-container">
+            <img src="assets/images/exxat-forms/Base_Layout.png" />
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Override Layout">
+          <div class="pt-16">
+            <fuse-highlight lang="json" class="source-code">
+              <textarea #source hidden="hidden">
+
+                {
+                  "baseLayoutId": "Evaluation.PTSE1.Layout.Base",
+                  "overrideLayoutId": "Evaluation.PTSE1.Layout.Override",
+                  "description": "This is a getting started layout",
+                  "footer": "**©2003 American Physical Therapy Association. All rights reserved. Duplication of this form in its entirety is permitted; however, any revision, addition, or deletion is prohibited.**",
+                  "permissions": [   
+                      {
+                          "permissionId": "Permission.PTSE1.Student"
+                      },
+                      {
+                          "permissionId": "Permission.PTSE1.StudentDisplay",
+                          "sections": [
+                              {
+                                  "sectionId": "Section.PTSE1.ProfessionalBehaviors",
+                                  "disabled": true
+                              }
+                          ],
+                          "actions": [
+                              {
+                                  "actionId": "Action.PTSE1.Save",
+                                  "label": "Save",
+                                  "type": "SAVE",
+                                  "icon": "fa fa-save",
+                                  "color": "yellow-casablanca",
+                                  "events": {
+                                      "preEvents": {
+                                          "dialogBox": {
+                                              "message": "Are you sure you want to submit?",
+                                              "commands": [
+                                                  {
+                                                      "label": "OK",
+                                                      "type": "success",
+                                                      "color": "green"
+                                                  },
+                                                  {
+                                                      "label": "Cancel",
+                                                      "type": "cancel",
+                                                      "color": "yellow-casablanca"
+                                                  }
+                                              ]
+                                          }
+                                      },
+                                      "postEvents": {
+                                          "snackbar": {
+                                              "successMessage": "Form submitted successfully.",
+                                              "failureMessage": "Form submit unsuccessful.",
+                                              "duration": 3000,
+                                              "position": "bottom"
+                                          }
+                                      }
+                                  }
+                              }
+                          ]
+                      },
+                      {
+                          "permissionId": "Permission.PTSE1.Admin",
+                          "type": "Permission.Section",
+                          "sections": [
+                              {
+                                  "sectionId": "Section.PTSE1.Orientation"
+                              }
+                          ],
+                          "actions": [
+                              {
+                                  "actionId": "Action.PTSE1.Review",
+                                  "label": "Review",
+                                  "type": "SUBMIT",
+                                  "icon": "fa fa-review",
+                                  "color": "yellow-casablanca",
+                                  "events": {
+                                      "preEvents": {
+                                          "dialogBox": {
+                                              "message": "Are you sure you want to review?",
+                                              "commands": [
+                                                  {
+                                                      "label": "OK",
+                                                      "type": "success",
+                                                      "color": "green"
+                                                  },
+                                                  {
+                                                      "label": "Cancel",
+                                                      "type": "cancel",
+                                                      "color": "yellow-casablanca"
+                                                  }
+                                              ]
+                                          }
+                                      },
+                                      "postEvents": {
+                                          "snackbar": {
+                                              "successMessage": "Form reviewed successfully.",
+                                              "failureMessage": "Form review unsuccessful.",
+                                              "duration": 3000,
+                                              "position": "bottom"
+                                          }
+                                      }
+                                  }
+                              }
+                          ]
+                      }
+                  ],
+                  "partitionKey": "Exxat",
+                  "entityName": "Exxat.Forms.Entity.Layouts.Layout",
+                  "id": "Evaluation.PTSE1.Layout.Override"
+              }
+
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Override Layout UML">
+          <div class="pt-16 img-container">
+            <img src="assets/images/exxat-forms/Override_Layout.png" />
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

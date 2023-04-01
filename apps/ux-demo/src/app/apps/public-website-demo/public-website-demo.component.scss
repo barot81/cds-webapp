@@ -1,0 +1,43 @@
+@import 'init';
+
+#public-page-cards {
+  //header accent background
+  .card-header-bg {
+    position: absolute;
+    background-color: $FrenchPass;
+    height: 84px; //height provided in figma
+    width: 100%;
+    z-index: 1;
+    border-radius: 8px 8px 0px 0px;
+    @include media-breakpoint('xs') {
+      display: none;
+    }
+  }
+
+  //headings height
+  .card-header {
+    height: 84px;
+    @include media-breakpoint('xs') {
+      height: auto;
+    }
+  }
+
+  .header-bg-xs {
+    @include media-breakpoint('xs') {
+      background-color: $FrenchPass;
+    }
+  }
+
+  //border radius of header in mobile view
+  .header-border-radius {
+    @include media-breakpoint('xs') {
+      border-radius: 20px 20px 0px 0px;
+    }
+  }
+
+  //content below header
+  .public-card-content {
+    position: relative;
+    z-index: 2;
+  }
+}

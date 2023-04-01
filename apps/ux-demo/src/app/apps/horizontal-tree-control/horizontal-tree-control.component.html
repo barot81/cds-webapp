@@ -1,0 +1,179 @@
+<div fxLayout="column" fxFlex="100">
+  <div class="gray-header pb-16">
+    <div class="gray-header mb-16">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div class="mr-16">
+            <button
+              mat-icon-button
+              role="img"
+              class="action-icon"
+              routerLink="/admin/ux/ui/exxat-component-library"
+            >
+              <mat-icon>arrow_back</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="exxat-breadcrumb" fxLayout="row" fxLayoutAlign="start center">
+    <div
+      *ngFor="let crumb of lists; let i = index"
+      fxLayout="row"
+      fxLayoutAlign="start center"
+    >
+      <a
+        (click)="navigateToStep(crumb.listId)"
+        [ngClass]="{ 'secondary-text disabled': i == lists.length - 1 }"
+        class="font-16 font-weight-600"
+        tabindex="0"
+        aria-label="breadcrumb step one"
+        >{{ crumb.name }}</a
+      >
+      <mat-icon
+        *ngIf="!(i == lists.length - 1)"
+        [ngClass]="{ 'secondary-text': i == lists.length - 1 }"
+        class="s-18 mx-8"
+        >chevron_right</mat-icon
+      >
+    </div>
+  </div>
+
+  <div
+    fxLayout="row"
+    fxFlex="100"
+    class="overflow-auto scroll-smooth mt-16"
+    id="tree-cards"
+  >
+    <mat-card
+      class="width-40 p-0 mr-16 border-radius-20 height-fit-content cards-step"
+      *ngFor="let list of lists; let i = index; let last = last"
+      [ngClass]="{ 'highlighted-card': i != 0 && last }"
+    >
+      <div class="p-0" id="{{ list.listId }}" fxLayout="column">
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2
+              class="primary-heading font-weight-600 text-capitalize"
+              tabindex="0"
+              attr.aria-label="header name {{ list.name }}"
+            >
+              {{ list.name }}
+            </h2>
+          </div>
+          <button mat-icon-button class="icon-fill-bg" aria-label="add button">
+            <i
+              aria-hidden="true"
+              class="fa-light fa-plus fuse-white-fg s-18"
+            ></i>
+          </button>
+        </div>
+
+        <div class="search-wrapper search-grid mt-16 w-100-p px-16">
+          <div
+            class="search"
+            fxFlex
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <mat-icon class="s-16 secondary-text">search</mat-icon>
+            <input type="text" placeholder="Search" fxFlex />
+          </div>
+        </div>
+
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="my-16 pl-40"
+          tabindex="0"
+          aria-label="reorder list"
+        >
+          <i aria-hidden="true" class="fa-light fa-bars accent-fg s-18"></i>
+          <span class="font-16 accent-fg pl-8 font-weight-600">Reorder</span>
+        </div>
+
+        <mat-list
+          class="p-0 overflow-auto"
+          fxLayout="column"
+          [style.height.px]="headerService.scrollContentheight"
+        >
+          <button
+            mat-button
+            class="px-0 list-icon-hover mx-16"
+            *ngFor="let item of list.listData; let i = index; let last = last"
+            (click)="getStepInfo(item.id, list.listId)"
+          >
+            <mat-list-item
+              [ngClass]="{ 'active-list-item': list.selectedId == item.id }"
+            >
+              <div
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                fxFlex="100"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  fxFlex="100"
+                  class="px-16 pt-16 pb-28"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxFlex="88"
+                    class="white-space-normal text-left"
+                  >
+                    <div class="text-container">
+                      <input id="ch" type="checkbox" />
+                      <label id="show-more-label" for="ch"></label>
+                      <div class="text">
+                        <span
+                          ><strong>{{ item.title }} : </strong> The physical
+                          therapist professional curriculum includes content and
+                          learning experiences designed to prepare The physical
+                          therapist professional curriculum includes content and
+                          learning experiences designed to prepare The physical
+                          therapist professional curriculum includa</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="end center"
+                    fxFlex="12"
+                    class="icon-hidden"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-trash-alt icon-fill s-16 mr-20"
+                    ></i>
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-pen icon-fill s-16"
+                    ></i>
+                  </div>
+                </div>
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-chevron-right s-18"
+                ></i>
+              </div>
+            </mat-list-item>
+            <!-- <mat-divider *ngIf="!last" class="w-85-p margin-auto"></mat-divider> -->
+            {{ last ? scrollToRight() : '' }}
+          </button>
+        </mat-list>
+      </div>
+    </mat-card>
+  </div>
+</div>

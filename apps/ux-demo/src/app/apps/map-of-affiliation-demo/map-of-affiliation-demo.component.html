@@ -1,0 +1,593 @@
+<div
+  class="page-layout simple left-sidebar inner-sidebar inner-scroll map-of-affiliation"
+>
+  <!-- HEADER -->
+  <div fxLayout="row" fxLayoutAlign="start center" class="mb-16 pt-xs-16">
+    <button
+      mat-icon-button
+      role="img"
+      class="action-icon"
+      routerLink=""
+      aria-hidden="true"
+    >
+      <i aria-hidden="true" class="fal fa-long-arrow-left"></i>
+    </button>
+    <div fxLayout="column" class="ml-8">
+      <h2 class="font-weight-600">Massachusetts General Hospital</h2>
+      <span class="font-14"
+        >710 S Business 61- Suite 100, Bowling Green, Missouri-63334</span
+      >
+    </div>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content height-inherit">
+    <!-- SIDEBAR -->
+    <fuse-sidebar
+      tabindex="0"
+      aria-label="sidebar"
+      class="sidebar sidebar-map-page"
+      name="carded-left-sidebar-tabbed-2"
+      position="left"
+      lockedOpen="gt-md"
+      [folded]="false"
+      [foldedWidth]="32"
+      [foldedAutoTriggerOnHover]="false"
+    >
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        class="py-8 border-bottom"
+      >
+        <span
+          class="font-18 sidebar-heading font-weight-600 hide-content-folded pl-16"
+          tabindex="0"
+          aria-label="Locations (48)"
+          >Locations (48)</span
+        >
+        <button
+          class="toggle-sidebar-folded py-12 pr-16"
+          fxLayoutAlign="center center"
+          (click)="toggleSidebarFolded()"
+          fxHide.lt-lg
+          tabindex="0"
+          aria-label="toggle arrow for sidebar"
+        >
+          <i
+            aria-hidden="true"
+            class="fa-light fa-chevron-left s-16 left-arrow sidebar-blue-icon"
+          ></i>
+          <i
+            aria-hidden="true"
+            class="fa-light fa-chevron-right s-16 right-arrow display-none sidebar-blue-icon pl-4"
+          ></i>
+        </button>
+      </div>
+      <div
+        class="content hide-content-folded pt-16"
+        fusePerfectScrollbar
+        [fusePerfectScrollbarOptions]="{ suppressScrollX: true }"
+        tabindex="0"
+        aria-label="sidebar content"
+      >
+        <mat-list class="pb-52" fxLayout="column">
+          <button
+            mat-button
+            class="p-0 w-100-p white-space-normal active-item-class"
+          >
+            <mat-list-item
+              class="py-12 px-16 w-100-p border-bottom"
+              fxLayoutAlign="start center"
+              tabindex="0"
+              aria-label="list item"
+            >
+              <div
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                class="w-100-p"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between start"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-weight-600 pr-8 text-left"
+                    tabindex="0"
+                    aria-label="University Medical Center"
+                    >University Medical Center</span
+                  >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-map-marker-alt-slash s-16 mr-4"
+                  ></i>
+                </div>
+                <span
+                  class="secondary-gray-color pt-4 text-left"
+                  tabindex="0"
+                  aria-label="2990 Legacy Drive, Frisco, Texas(TX) 75034"
+                  >2990 Legacy Drive, Frisco, Texas(TX) 75034</span
+                >
+              </div>
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p white-space-normal">
+            <mat-list-item
+              class="py-12 px-16 w-100-p border-bottom"
+              fxLayoutAlign="start center"
+              tabindex="0"
+              aria-label="list item"
+            >
+              <div
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                class="w-100-p"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between start"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-weight-600 pr-8 text-left"
+                    tabindex="0"
+                    aria-label="Northwest Medical Center: Laura Lewnes"
+                    >Northwest Medical Center : Laura Lewnes</span
+                  >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-map-marker-alt-slash s-16 mr-4"
+                  ></i>
+                </div>
+                <span
+                  class="secondary-gray-color pt-4 text-left"
+                  tabindex="0"
+                  aria-label="2990 Legacy Drive, Frisco, Texas(TX) 75034"
+                  >2990 Legacy Drive, Frisco, Texas(TX) 75034 Legacy Drive,
+                  Frisco, Texas(TX) 75034</span
+                >
+              </div>
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p white-space-normal">
+            <mat-list-item
+              class="py-12 px-16 w-100-p border-bottom"
+              fxLayoutAlign="start center"
+              tabindex="0"
+              aria-label="list item"
+            >
+              <div
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                class="w-100-p"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between start"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-weight-600 pr-8 text-left"
+                    tabindex="0"
+                    aria-label="Baylor Scott & White Institute for Rehabilitation - Fort Worth"
+                    >Baylor Scott & White Institute for Rehabilitation - Fort
+                    Worth</span
+                  >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-map-marker-alt-slash s-16 mr-4"
+                  ></i>
+                </div>
+                <span
+                  class="secondary-gray-color pt-4 text-left"
+                  tabindex="0"
+                  aria-label="2990 Legacy Drive, Frisco, Texas(TX) 75034"
+                  >2990 Legacy Drive, Frisco, Texas(TX) 75034 Legacy Drive,
+                  Frisco, Texas(TX) 75034</span
+                >
+              </div>
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p white-space-normal">
+            <mat-list-item
+              class="py-12 px-16 w-100-p border-bottom"
+              fxLayoutAlign="start center"
+              tabindex="0"
+              aria-label="list item"
+            >
+              <div
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                class="w-100-p"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between start"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-weight-600 pr-8 text-left"
+                    tabindex="0"
+                    aria-label="Northwest Medical Center: Laura Lewnes"
+                    >Northwest Medical Center : Laura Lewnes</span
+                  >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-map-marker-alt-slash s-16 mr-4"
+                  ></i>
+                </div>
+                <span
+                  class="secondary-gray-color pt-4 text-left"
+                  tabindex="0"
+                  aria-label="2990 Legacy Drive, Frisco, Texas(TX) 75034"
+                  >2990 Legacy Drive, Frisco, Texas(TX) 75034</span
+                >
+              </div>
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p white-space-normal">
+            <mat-list-item
+              class="py-12 px-16 w-100-p border-bottom"
+              fxLayoutAlign="start center"
+              tabindex="0"
+              aria-label="list item"
+            >
+              <div
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                class="w-100-p"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between start"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-weight-600 pr-8 text-left"
+                    tabindex="0"
+                    aria-label="Northwest Medical Center: Laura Lewnes"
+                    >Northwest Medical Center : Laura Lewnes</span
+                  >
+                </div>
+                <span
+                  class="secondary-gray-color pt-4 text-left"
+                  tabindex="0"
+                  aria-label="2990 Legacy Drive, Frisco, Texas(TX) 75034"
+                  >2990 Legacy Drive, Frisco, Texas(TX) 75034</span
+                >
+              </div>
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p white-space-normal">
+            <mat-list-item
+              class="py-12 px-16 w-100-p border-bottom"
+              fxLayoutAlign="start center"
+              tabindex="0"
+              aria-label="list item"
+            >
+              <div
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                class="w-100-p"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between start"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-weight-600 pr-8 text-left"
+                    tabindex="0"
+                    aria-label="Northwest Medical Center: Laura Lewnes"
+                    >Northwest Medical Center : Laura Lewnes</span
+                  >
+                </div>
+                <span
+                  class="secondary-gray-color pt-4 text-left"
+                  tabindex="0"
+                  aria-label="2990 Legacy Drive, Frisco, Texas(TX) 75034"
+                  >2990 Legacy Drive, Frisco, Texas(TX) 75034</span
+                >
+              </div>
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p white-space-normal">
+            <mat-list-item
+              class="py-12 px-16 w-100-p border-bottom"
+              fxLayoutAlign="start center"
+              tabindex="0"
+              aria-label="list item"
+            >
+              <div
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                class="w-100-p"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between start"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-weight-600 pr-8 text-left"
+                    tabindex="0"
+                    aria-label="Northwest Medical Center: Laura Lewnes"
+                    >Northwest Medical Center : Laura Lewnes</span
+                  >
+                </div>
+                <span
+                  class="secondary-gray-color pt-4 text-left"
+                  tabindex="0"
+                  aria-label="2990 Legacy Drive, Frisco, Texas(TX) 75034"
+                  >2990 Legacy Drive, Frisco, Texas(TX) 75034</span
+                >
+              </div>
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p white-space-normal">
+            <mat-list-item
+              class="py-12 px-16 w-100-p border-bottom"
+              fxLayoutAlign="start center"
+              tabindex="0"
+              aria-label="list item"
+            >
+              <div
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                class="w-100-p"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between start"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-weight-600 pr-8 text-left"
+                    tabindex="0"
+                    aria-label="Northwest Medical Center: Laura Lewnes"
+                    >Northwest Medical Center : Laura Lewnes</span
+                  >
+                </div>
+                <span
+                  class="secondary-gray-color pt-4 text-left"
+                  tabindex="0"
+                  aria-label="2990 Legacy Drive, Frisco, Texas(TX) 75034"
+                  >2990 Legacy Drive, Frisco, Texas(TX) 75034</span
+                >
+              </div>
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p white-space-normal">
+            <mat-list-item
+              class="py-12 px-16 w-100-p border-bottom"
+              fxLayoutAlign="start center"
+              tabindex="0"
+              aria-label="list item"
+            >
+              <div
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                class="w-100-p"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between start"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-weight-600 pr-8 text-left"
+                    tabindex="0"
+                    aria-label="Northwest Medical Center: Laura Lewnes"
+                    >Northwest Medical Center : Laura Lewnes</span
+                  >
+                </div>
+                <span
+                  class="secondary-gray-color pt-4 text-left"
+                  tabindex="0"
+                  aria-label="2990 Legacy Drive, Frisco, Texas(TX) 75034"
+                  >2990 Legacy Drive, Frisco, Texas(TX) 75034</span
+                >
+              </div>
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p white-space-normal">
+            <mat-list-item
+              class="py-12 px-16 w-100-p border-bottom"
+              fxLayoutAlign="start center"
+              tabindex="0"
+              aria-label="list item"
+            >
+              <div
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                class="w-100-p"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between start"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-weight-600 pr-8 text-left"
+                    tabindex="0"
+                    aria-label="Northwest Medical Center: Laura Lewnes"
+                    >Northwest Medical Center : Laura Lewnes</span
+                  >
+                </div>
+                <span
+                  class="secondary-gray-color pt-4 text-left"
+                  tabindex="0"
+                  aria-label="2990 Legacy Drive, Frisco, Texas(TX) 75034"
+                  >2990 Legacy Drive, Frisco, Texas(TX) 75034</span
+                >
+              </div>
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p white-space-normal">
+            <mat-list-item
+              class="py-12 px-16 w-100-p border-bottom"
+              fxLayoutAlign="start center"
+              tabindex="0"
+              aria-label="list item"
+            >
+              <div
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                class="w-100-p"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between start"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-weight-600 pr-8 text-left"
+                    tabindex="0"
+                    aria-label="Northwest Medical Center: Laura Lewnes"
+                    >Northwest Medical Center : Laura Lewnes</span
+                  >
+                </div>
+                <span
+                  class="secondary-gray-color pt-4 text-left"
+                  tabindex="0"
+                  aria-label="2990 Legacy Drive, Frisco, Texas(TX) 75034"
+                  >2990 Legacy Drive, Frisco, Texas(TX) 75034</span
+                >
+              </div>
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p white-space-normal">
+            <mat-list-item
+              class="py-12 px-16 w-100-p border-bottom"
+              fxLayoutAlign="start center"
+              tabindex="0"
+              aria-label="list item"
+            >
+              <div
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                class="w-100-p"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between start"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-weight-600 pr-8 text-left"
+                    tabindex="0"
+                    aria-label="Northwest Medical Center: Laura Lewnes"
+                    >Northwest Medical Center : Laura Lewnes</span
+                  >
+                </div>
+                <span
+                  class="secondary-gray-color pt-4 text-left"
+                  tabindex="0"
+                  aria-label="2990 Legacy Drive, Frisco, Texas(TX) 75034"
+                  >2990 Legacy Drive, Frisco, Texas(TX) 75034</span
+                >
+              </div>
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p white-space-normal">
+            <mat-list-item
+              class="py-12 px-16 w-100-p border-bottom"
+              fxLayoutAlign="start center"
+              tabindex="0"
+              aria-label="list item"
+            >
+              <div
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                class="w-100-p"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between start"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-weight-600 pr-8 text-left"
+                    tabindex="0"
+                    aria-label="Northwest Medical Center: Laura Lewnes"
+                    >Northwest Medical Center : Laura Lewnes</span
+                  >
+                </div>
+                <span
+                  class="secondary-gray-color pt-4 text-left"
+                  tabindex="0"
+                  aria-label="2990 Legacy Drive, Frisco, Texas(TX) 75034"
+                  >2990 Legacy Drive, Frisco, Texas(TX) 75034</span
+                >
+              </div>
+            </mat-list-item>
+          </button>
+        </mat-list>
+      </div>
+      <div
+        fxLayout="column"
+        fxLayoutAlign="center start"
+        class="bottom-sticky-content hide-content-folded secondary-gray-color py-4 pr-16 pl-36"
+      >
+        <div fxLayout="row" fxLayoutAlign="center center" class="pb-4">
+          <i
+            aria-hidden="true"
+            class="fa-light fa-map-marker-alt-slash s-16"
+          ></i>
+          <span
+            class="text-italic pl-8"
+            tabindex="0"
+            aria-label="Not available on map"
+            >Not available on map</span
+          >
+        </div>
+        <span
+          class="text-italic"
+          tabindex="0"
+          aria-label="Showing results 1 - 15 of 48"
+          >Showing results 1 - 15 of 48</span
+        >
+      </div>
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+    <div class="center right-side-content ml-lg-16" fxLayout="column">
+      <div class="">
+        <button
+          mat-icon-button
+          class="sidebar-toggle"
+          fxHide.gt-md
+          (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="content" fxFlex="100" fusePerfectScrollbar>
+        <img
+          src="https://www.thestatesman.com/wp-content/uploads/2020/04/googl_ED.jpg"
+          width="100%"
+          alt="Map"
+        />
+      </div>
+      <!-- / CONTENT -->
+    </div>
+    <!-- / CENTER -->
+  </div>
+  <!-- / CONTENT -->
+</div>

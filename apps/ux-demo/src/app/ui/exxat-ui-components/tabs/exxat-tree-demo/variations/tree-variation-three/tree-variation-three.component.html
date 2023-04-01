@@ -1,0 +1,652 @@
+<div class="content pt-16" fxLayout="column">
+  <div class="m-8 ml-16" fxLayout="row">
+    <span class="font-16">
+      <ul>
+        <li>
+          <span
+            >Material tree example with checkbox and add functionality.</span
+          >
+        </li>
+        <li>
+          <span
+            >In this tree example you can set multiple string title as parent
+            tree node.</span
+          >
+        </li>
+        <li>
+          <span
+            >Service Ts file is just for demo purpose. You can fetch data from
+            backend API.</span
+          >
+        </li>
+      </ul>
+    </span>
+  </div>
+  <div fxLayout="row wrap" fxFlex="100">
+    <div
+      class="preview pr-lg-16 mt-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex.gt-md="50"
+      fxFlex="100"
+    >
+      <mat-card>
+        <mat-tree
+          [dataSource]="dataSource"
+          [treeControl]="treeControl"
+          class="tree-examples-style"
+          tabindex="0"
+          aria-label="tree example three"
+        >
+          <!-- node with checkbox -->
+          <mat-tree-node
+            *matTreeNodeDef="let node"
+            matTreeNodeToggle
+            matTreeNodePadding
+            tabindex="0"
+            aria-label="child node"
+          >
+            <button mat-icon-button disabled></button>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxFlex="100"
+              class="tree-node-hover ml-8 pl-xs-16"
+              (click)="activeNode = node"
+              [ngClass]="{ 'tree-node-active': activeNode === node }"
+            >
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                fxFlex="94"
+                fxFlex.xs="87"
+                class="pl-sm-16"
+              >
+                <mat-checkbox
+                  class="checklist-leaf-node"
+                  [checked]="checklistSelection.isSelected(node)"
+                  (change)="todoLeafItemSelectionToggle(node)"
+                  >{{ node.item }}</mat-checkbox
+                >
+              </div>
+              <div class="pr-16 icon-hidden" fxFlex>
+                <div
+                  tabindex="0"
+                  attr.aria-label="menu for node {{ node.item }}"
+                >
+                  <button
+                    mat-icon-button
+                    [matMenuTriggerFor]="menu"
+                    attr.aria-label="menu for {{ node.name }}"
+                  >
+                    <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+                  </button>
+                </div>
+                <mat-menu #menu="matMenu" class="mat-secondary-menu">
+                  <button mat-menu-item>
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                      <div class="mr-8 mt-4">
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-pen icon-pen s-18"
+                        ></i>
+                      </div>
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        <span>Add child</span>
+                      </div>
+                    </div>
+                  </button>
+                  <button mat-menu-item class="warn-fg">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                      <div class="mr-8 mt-4">
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-trash-alt s-18"
+                        ></i>
+                      </div>
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        <span>Delete</span>
+                      </div>
+                    </div>
+                  </button>
+                </mat-menu>
+              </div>
+            </div>
+          </mat-tree-node>
+
+          <!-- to add new node -->
+          <mat-tree-node
+            *matTreeNodeDef="let node; when: hasNoContent"
+            matTreeNodePadding
+          >
+            <button mat-icon-button disabled></button>
+            <div fxLayout="row wrap" fxLayoutAlign="start center">
+              <mat-form-field tabindex="0" aria-label="add text for new item">
+                <mat-label>New item...</mat-label>
+                <input matInput #itemValue placeholder="Ex. Lettuce" />
+              </mat-form-field>
+              <button
+                mat-stroked-button
+                color="primary"
+                class="mr-8 ml-4"
+                aria-label="add new node button"
+                (click)="saveNode(node, itemValue.value)"
+              >
+                Add
+              </button>
+            </div>
+          </mat-tree-node>
+
+          <!-- parent node with plus icon -->
+          <mat-tree-node
+            *matTreeNodeDef="let node; when: hasChild"
+            matTreeNodePadding
+            tabindex="0"
+            aria-label="parent node"
+          >
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxFlex="100"
+              class="tree-node-hover py-8 tree-node-bg"
+              (click)="activeNode = node"
+              [ngClass]="{ 'tree-node-active': activeNode === node }"
+            >
+              <button
+                mat-icon-button
+                class="action-icon ml-4"
+                (click)="addNewItem(node)"
+                attr.aria-label="click to add new node to {{ node.item }}"
+              >
+                <i aria-hidden="true" class="fa-light fa-plus"></i>
+              </button>
+
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                fxFlex="92"
+                fxFlex.xs="70"
+              >
+                <button
+                  mat-icon-button
+                  matTreeNodeToggle
+                  class="action-icon mr-4"
+                  [attr.aria-label]="'Toggle ' + node.item"
+                >
+                  <i
+                    aria-hidden="true"
+                    [ngClass]="
+                      treeControl.isExpanded(node)
+                        ? 'fa-light fa-chevron-down'
+                        : 'fa-light fa-chevron-right'
+                    "
+                  ></i>
+                </button>
+
+                <mat-checkbox
+                  [checked]="descendantsAllSelected(node)"
+                  [indeterminate]="descendantsPartiallySelected(node)"
+                  (change)="todoItemSelectionToggle(node)"
+                  class="pl-8 pr-16"
+                >
+                </mat-checkbox>
+                <div fxLayout="column" fxLayoutAlign="start start">
+                  <span
+                    tabindex="0"
+                    attr.aria-label="parent node {{ node.item }}"
+                    >{{ node.item }}</span
+                  >
+                  <span tabindex="0" aria-label="Other Title">Other Title</span>
+                </div>
+              </div>
+
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start start"
+                fxFlex
+                class="pr-sm-16 icon-hidden"
+              >
+                <div tabindex="0" attr.aria-label="menu for {{ node.name }}">
+                  <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+                  </button>
+                </div>
+                <mat-menu #menu="matMenu" class="mat-secondary-menu">
+                  <button mat-menu-item>
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                      <div class="mr-8 mt-4">
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-pen icon-pen s-18"
+                        ></i>
+                      </div>
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        <span>Add child</span>
+                      </div>
+                    </div>
+                  </button>
+                  <button mat-menu-item class="warn-fg">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                      <div class="mr-8 mt-4">
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-trash-alt s-18"
+                        ></i>
+                      </div>
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        <span>Delete</span>
+                      </div>
+                    </div>
+                  </button>
+                </mat-menu>
+              </div>
+            </div>
+          </mat-tree-node>
+        </mat-tree>
+      </mat-card>
+    </div>
+
+    <div
+      class="preview mt-16 ml-xs-8"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex.gt-md="50"
+      fxFlex="100"
+    >
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <div class="pt-16">
+            <fuse-highlight lang="html" class="source-code">
+              <textarea #source hidden="hidden">
+
+                <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree-examples-style" tabindex="0" aria-label="tree example three">
+                  <!-- node with checkbox -->
+                  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding tabindex="0" aria-label="child node">
+                    <button mat-icon-button disabled></button>
+                    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" class="tree-node-hover ml-8  pl-xs-16"  (click)="activeNode = node" [ngClass]="{ 'tree-node-active': activeNode === node }">
+                      <div  fxLayout="row" fxLayoutAlign="start center" fxFlex="94" fxFlex.xs="87" class="pl-sm-16">
+                        <mat-checkbox class="checklist-leaf-node" [checked]="checklistSelection.isSelected(node)"
+                          (change)="todoLeafItemSelectionToggle(node)">node.item</mat-checkbox>
+                      </div>
+                      <div class="pr-16 icon-hidden" fxFlex>
+                        <div tabindex="0" attr.aria-label="menu for node node.item">
+                          <button mat-icon-button [matMenuTriggerFor]="menu" attr.aria-label="menu for node.name">
+                            <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+                          </button>
+                        </div>
+                        <mat-menu #menu="matMenu" class="mat-secondary-menu">
+                          <button mat-menu-item>
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                              <div class="mr-8 mt-4">
+                                <i aria-hidden="true" class="fa-light fa-pen icon-pen s-18"></i>
+                              </div>
+                              <div fxLayout="row" fxLayoutAlign="start center">
+                                <span>Add child</span>
+                              </div>
+                            </div>
+                          </button>
+                          <button mat-menu-item class="warn-fg">
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                              <div class="mr-8 mt-4">
+                                <i aria-hidden="true" class="fa-light fa-trash-alt s-18"></i>
+                              </div>
+                              <div fxLayout="row" fxLayoutAlign="start center">
+                                <span>Delete</span>
+                              </div>
+                            </div>
+                          </button>
+                        </mat-menu>
+                      </div>
+                    </div>
+                  </mat-tree-node>
+
+                   <!-- to add new node -->
+                   <mat-tree-node *matTreeNodeDef="let node; when: hasNoContent" matTreeNodePadding>
+                    <button mat-icon-button disabled></button>
+                    <div fxLayout="row wrap" fxLayoutAlign="start center">
+                      <mat-form-field tabindex="0" aria-label="add text for new item">
+                        <mat-label>New item...</mat-label>
+                        <input matInput #itemValue placeholder="Ex. Lettuce">
+                      </mat-form-field>
+                      <button mat-stroked-button color="primary" class=" mr-8 ml-4" aria-label="add new node button"
+                        (click)="saveNode(node, itemValue.value)">Add</button>
+                    </div>
+                  </mat-tree-node>
+
+                  <!-- parent node with plus icon -->
+                  <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding tabindex="0" aria-label="parent node">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" class="tree-node-hover tree-node-bg" (click)="activeNode = node" [ngClass]="{ 'tree-node-active': activeNode === node }">
+
+                        <button mat-icon-button class="action-icon ml-4" (click)="addNewItem(node)"  attr.aria-label="click to add new node to node.item">
+                          <i aria-hidden="true" class="fa-light fa-plus"></i>
+                        </button>
+
+                      <div fxLayout="row" fxLayoutAlign="start center"  fxFlex="92" fxFlex.xs="70" >
+                        <button mat-icon-button matTreeNodeToggle class="action-icon mr-4"
+                          [attr.aria-label]="'Toggle ' + node.item">
+                          <i [ngClass]="treeControl.isExpanded(node) ? 'fa-light fa-chevron-down' : 'fa-light fa-chevron-right'"
+                            ></i>
+                        </button>
+
+                        <mat-checkbox [checked]="descendantsAllSelected(node)" [indeterminate]="descendantsPartiallySelected(node)"
+                          (change)="todoItemSelectionToggle(node)" class="pl-8 pr-16">
+                        </mat-checkbox>
+                          <div fxLayout="column"  fxLayoutAlign="start start">
+                            <span tabindex="0" attr.aria-label="parent node node.item">node.item</span>
+                            <span tabindex="0" aria-label="Other Title">Other Title</span>
+                          </div>
+
+                      </div>
+
+                      <div fxLayout="row" fxLayoutAlign="start start" fxFlex class="pr-sm-16 icon-hidden">
+                        <div tabindex="0" attr.aria-label="menu for node.name">
+                          <button mat-icon-button [matMenuTriggerFor]="menu" >
+                            <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+                          </button>
+                        </div>
+                        <mat-menu #menu="matMenu" class="mat-secondary-menu">
+                          <button mat-menu-item>
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                              <div class="mr-8 mt-4">
+                                <i aria-hidden="true" class="fa-light fa-pen icon-pen s-18"></i>
+                              </div>
+                              <div fxLayout="row" fxLayoutAlign="start center">
+                                <span>Add child</span>
+                              </div>
+                            </div>
+                          </button>
+                          <button mat-menu-item class="warn-fg">
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                              <div class="mr-8 mt-4">
+                                <i aria-hidden="true" class="fa-light fa-trash-alt s-18"></i>
+                              </div>
+                              <div fxLayout="row" fxLayoutAlign="start center">
+                                <span>Delete</span>
+                              </div>
+                            </div>
+                          </button>
+                        </mat-menu>
+                      </div>
+                    </div>
+
+                  </mat-tree-node>
+                </mat-tree>
+
+           </textarea
+              >
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Component TS">
+          <div class="pt-16">
+            <fuse-highlight lang="ts" class="source-code">
+              <textarea #source hidden="hidden">
+                    import { SelectionModel } from '@angular/cdk/collections';
+                    import { FlatTreeControl } from '@angular/cdk/tree';
+                    import { Component } from '@angular/core';
+                    import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
+                    import { ChecklistDatabase, TodoItemFlatNode, TodoItemNode } from '../tree-data.service';
+
+                    @Component({
+                      selector: 'ryzen-tree-variation-three',
+                      templateUrl: './tree-variation-three.component.html',
+                      styleUrls: ['./tree-variation-three.component.scss']
+                    })
+                    export class TreeVariationThreeComponent {
+                      activeNode;
+                      flatNodeMap = new Map<TodoItemFlatNode, TodoItemNode>();
+                      nestedNodeMap = new Map<TodoItemNode, TodoItemFlatNode>();
+                      selectedParent: TodoItemFlatNode | null = null;
+                      newItemName = '';
+                      treeControl: FlatTreeControl<TodoItemFlatNode>;
+                      treeFlattener: MatTreeFlattener<TodoItemNode, TodoItemFlatNode>;
+                      dataSource: MatTreeFlatDataSource<TodoItemNode, TodoItemFlatNode>;
+                      checklistSelection = new SelectionModel<TodoItemFlatNode>(true);
+
+                      constructor(private _database: ChecklistDatabase) {
+                        this.treeFlattener = new MatTreeFlattener(this.transformer, this.getLevel,
+                          this.isExpandable, this.getChildren);
+                        this.treeControl = new FlatTreeControl<TodoItemFlatNode>(this.getLevel, this.isExpandable);
+                        this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+
+                        _database.dataChange.subscribe(data => {
+                          this.dataSource.data = data;
+                        });
+                      }
+                      getLevel = (node: TodoItemFlatNode) => node.level;
+
+                      isExpandable = (node: TodoItemFlatNode) => node.expandable;
+
+                      getChildren = (node: TodoItemNode): TodoItemNode[] => node.children;
+
+                      hasChild = (_: number, _nodeData: TodoItemFlatNode) => _nodeData.expandable;
+
+                      hasNoContent = (_: number, _nodeData: TodoItemFlatNode) => _nodeData.item === '';
+
+                      /**
+                      * Transformer to convert nested node to flat node. Record the nodes in maps for later use.
+                      */
+                      transformer = (node: TodoItemNode, level: number) => {
+                        const existingNode = this.nestedNodeMap.get(node);
+                        const flatNode = existingNode && existingNode.item === node.item
+                          ? existingNode
+                          : new TodoItemFlatNode();
+                        flatNode.item = node.item;
+                        flatNode.level = level;
+                        flatNode.expandable = !!node.children?.length;
+                        this.flatNodeMap.set(flatNode, node);
+                        this.nestedNodeMap.set(node, flatNode);
+                        return flatNode;
+                      }
+
+                      /** Whether all the descendants of the node are selected. */
+                      descendantsAllSelected(node: TodoItemFlatNode): boolean {
+                        const descendants = this.treeControl.getDescendants(node);
+                        const descAllSelected = descendants.length > 0 && descendants.every(child => {
+                          return this.checklistSelection.isSelected(child);
+                        });
+                        return descAllSelected;
+                      }
+
+                      /** Whether part of the descendants are selected */
+                      descendantsPartiallySelected(node: TodoItemFlatNode): boolean {
+                        const descendants = this.treeControl.getDescendants(node);
+                        const result = descendants.some(child => this.checklistSelection.isSelected(child));
+                        return result && !this.descendantsAllSelected(node);
+                      }
+
+                      /** Toggle the to-do item selection. Select/deselect all the descendants node */
+                      todoItemSelectionToggle(node: TodoItemFlatNode): void {
+                        this.checklistSelection.toggle(node);
+                        const descendants = this.treeControl.getDescendants(node);
+                        this.checklistSelection.isSelected(node)
+                          ? this.checklistSelection.select(...descendants)
+                          : this.checklistSelection.deselect(...descendants);
+
+                        // Force update for the parent
+                        descendants.forEach(child => this.checklistSelection.isSelected(child));
+                        this.checkAllParentsSelection(node);
+                      }
+
+                      /** Toggle a leaf to-do item selection. Check all the parents to see if they changed */
+                      todoLeafItemSelectionToggle(node: TodoItemFlatNode): void {
+                        this.checklistSelection.toggle(node);
+                        this.checkAllParentsSelection(node);
+                      }
+
+                      /* Checks all the parents when a leaf node is selected/unselected */
+                      checkAllParentsSelection(node: TodoItemFlatNode): void {
+                        let parent: TodoItemFlatNode | null = this.getParentNode(node);
+                        while (parent) {
+                          this.checkRootNodeSelection(parent);
+                          parent = this.getParentNode(parent);
+                        }
+                      }
+
+                      /** Check root node checked state and change it accordingly */
+                      checkRootNodeSelection(node: TodoItemFlatNode): void {
+                        const nodeSelected = this.checklistSelection.isSelected(node);
+                        const descendants = this.treeControl.getDescendants(node);
+                        const descAllSelected = descendants.length > 0 && descendants.every(child => {
+                          return this.checklistSelection.isSelected(child);
+                        });
+                        if (nodeSelected && !descAllSelected) {
+                          this.checklistSelection.deselect(node);
+                        } else if (!nodeSelected && descAllSelected) {
+                          this.checklistSelection.select(node);
+                        }
+                      }
+
+                      /* Get the parent node of a node */
+                      getParentNode(node: TodoItemFlatNode): TodoItemFlatNode | null {
+                        const currentLevel = this.getLevel(node);
+
+                        if (currentLevel < 1) {
+                          return null;
+                        }
+
+                        const startIndex = this.treeControl.dataNodes.indexOf(node) - 1;
+
+                        for (let i = startIndex; i >= 0; i--) {
+                          const currentNode = this.treeControl.dataNodes[i];
+
+                          if (this.getLevel(currentNode) < currentLevel) {
+                            return currentNode;
+                          }
+                        }
+                        return null;
+                      }
+
+                      /** Select the category so we can insert the new item. */
+                      addNewItem(node: TodoItemFlatNode) {
+                        const parentNode = this.flatNodeMap.get(node);
+                        this._database.insertItem(parentNode!, '');
+                        this.treeControl.expand(node);
+                      }
+
+                      /** Save the node to database */
+                      saveNode(node: TodoItemFlatNode, itemValue: string) {
+                        const nestedNode = this.flatNodeMap.get(node);
+                        this._database.updateItem(nestedNode!, itemValue);
+                      }
+                    }
+
+           </textarea
+              >
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Service TS">
+          <div class="pt-16">
+            <fuse-highlight lang="ts" class="source-code">
+              <textarea #source hidden="hidden">
+
+            import { Injectable } from '@angular/core';
+            import { BehaviorSubject } from 'rxjs';
+
+            /**
+            * Node for to-do item
+            */
+            export class TodoItemNode {
+            children: TodoItemNode[];
+            item: string;
+            }
+
+            /** Flat to-do item node with expandable and level information */
+            export class TodoItemFlatNode {
+            item: string;
+            level: number;
+            expandable: boolean;
+            }
+
+            /**
+            * The Json object for to-do list data.
+            */
+            const TREE_DATA = {
+            Groceries: {
+            'Almond Meal flour': null,
+            'Organic eggs': null,
+            'Protein Powder': null,
+            Fruits: {
+            Apple: null,
+            Berries: ['Blueberry', 'Raspberry'],
+            Orange: null
+            }
+            },
+            Reminders: [
+            'Cook dinner',
+            'Read the Material Design spec',
+            'Upgrade Application to Angular'
+            ]
+            };
+
+
+
+
+            @Injectable({providedIn: 'any'})
+            export class ChecklistDatabase {
+            dataChange = new BehaviorSubject<TodoItemNode[]>([]);
+
+            get data(): TodoItemNode[] { return this.dataChange.value; }
+
+            constructor() {
+            this.initialize();
+            }
+
+            initialize() {
+            // Build the tree nodes from Json object. The result is a list of `TodoItemNode` with nested
+            //     file node as children.
+            const data = this.buildFileTree(TREE_DATA, 0);
+
+            // Notify the change.
+            this.dataChange.next(data);
+            }
+
+            /**
+            * Build the file structure tree. The `value` is the Json object, or a sub-tree of a Json object.
+            * The return value is the list of `TodoItemNode`.
+            */
+            buildFileTree(obj: { [key: string]: any }, level: number): TodoItemNode[] {
+            return Object.keys(obj).reduce<TodoItemNode[]>((accumulator, key) => {
+            const value = obj[key];
+            const node = new TodoItemNode();
+            node.item = key;
+
+            if (value != null) {
+            if (typeof value === 'object') {
+                node.children = this.buildFileTree(value, level + 1);
+            } else {
+                node.item = value;
+            }
+            }
+
+            return accumulator.concat(node);
+            }, []);
+            }
+
+            /** Add an item to to-do list */
+            insertItem(parent: TodoItemNode, name: string) {
+            if (parent.children) {
+            parent.children.push({ item: name } as TodoItemNode);
+            this.dataChange.next(this.data);
+            }
+            }
+
+            updateItem(node: TodoItemNode, name: string) {
+            node.item = name;
+            this.dataChange.next(this.data);
+            }
+            }
+
+           </textarea
+              >
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,644 @@
+<div class="page-layout carded fullwidth inner-scroll p-12">
+  <div class="gray-header mb-16">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="mr-16">
+          <button
+            mat-icon-button
+            aria-label="Click to go back"
+            class="action-icon mx-8"
+            routerLink="/admin/ux/ui/exxat-component-library"
+          >
+            <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+          </button>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header :: START -->
+  <div fxLayout="column" #header_content class="px-4">
+    <div class="mb-16" fxLayout="row wrap" fxLayoutAlign="start center">
+      <span class="font-weight-600 warn-fg">Note: </span>
+      <span>
+        import <strong>ExxatCarouselModule </strong> from '@exxat/ux'</span
+      >
+    </div>
+    <div class="mb-16">
+      <span class="font-18 font-weight-600">Carousel With Card Content</span>
+    </div>
+
+    <div>
+      <exxat-carousel
+        [width]="
+          headerItems.length === 1 ? screenWidth - 55 : screenWidth - 120
+        "
+        (OnChange)="onHeaderCarouselEvent($event)"
+        [maxItems]="headerItems.length"
+      >
+        <mat-card
+          *ngFor="
+            let item of headerItems;
+            let i = index;
+            let isFirst = first;
+            let isLast = last
+          "
+          [style.min-width.px]="
+            headerItems.length === 1 ? screenWidth - 55 : screenWidth - 120
+          "
+        >
+          <header *ngIf="currentHeaderStep === i">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <exxat-avatar
+                src="assets/images/avatars/anna-strong.png"
+                firstName="Anna"
+                lastName="Strong"
+                size="sm"
+              >
+              </exxat-avatar>
+
+              <div fxLayout="column" class="ml-4">
+                <div
+                  fxLayout="row wrap"
+                  fxLayoutAlign="start center"
+                  class="mb-4"
+                >
+                  <span class="font-16 font-weight-600">{{ item.title }}</span>
+                  <span
+                    class="ml-12 px-8 border-radius-20 exxat-gorse-bg"
+                    fontColor
+                    >Family Medicine</span
+                  >
+                </div>
+                <div fxLayout="row wrap" fxLayoutAlign="start center">
+                  <div fxLayoutAlign="start center">
+                    <span class="font-14">{{ item.site }}</span>
+                  </div>
+                  <div fxLayoutAlign="start center" class="mx-4">|</div>
+                  <div fxLayoutAlign="start center">
+                    <span class="font-14">{{ item.rotation }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+        </mat-card>
+      </exxat-carousel>
+    </div>
+
+    <div class="my-16">
+      <mat-accordion class="example-headers-align" multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div
+                fxlayoutalign="space-between center"
+                fxLayout="row"
+                fxFlex
+                class="border-right pr-12"
+              >
+                <span fxFlex fxLayout="column" fxLayoutAlign="center start">
+                  Code For Carousel With Card Content
+                </span>
+                <i aria-hidden="true" class="s-18 fa-light fa-code"></i>
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-tab-group>
+            <mat-tab label="HTML">
+              <fuse-highlight
+                lang="html"
+                class="source-code"
+                fxLayout="column"
+                fxLayoutAlign="center"
+              >
+                <textarea #source hidden="hidden">
+ 
+              <exxat-carousel
+              [width]="
+                headerItems.length === 1 ? screenWidth - 55 : screenWidth - 120
+              "
+              (OnChange)="onHeaderCarouselEvent($event)"
+              [maxItems]="headerItems.length"
+            >
+              <mat-card
+                *ngFor="
+                  let item of headerItems;
+                  let i = index;
+                  let isFirst = first;
+                  let isLast = last
+                "
+                [style.min-width.px]="
+                  headerItems.length === 1 ? screenWidth - 55 : screenWidth - 120
+                "
+              >
+                <header *ngIf="currentHeaderStep === i">
+                  <div fxLayout="row" fxLayoutAlign="start center">
+                    <exxat-avatar
+                      src="assets/images/avatars/anna-strong.png"
+                      firstName="Anna"
+                      lastName="Strong"
+                      size="sm"
+                    >
+                    </exxat-avatar>
+      
+                    <div fxLayout="column" class="ml-4">
+                      <div
+                        fxLayout="row wrap"
+                        fxLayoutAlign="start center"
+                        class="mb-4"
+                      >
+                        <span class="font-16 font-weight-600">item.title</span>
+                        <span
+                          class="ml-12 px-8 border-radius-20 exxat-gorse-bg"
+                          fontColor
+                          >Family Medicine</span
+                        >
+                      </div>
+                      <div fxLayout="row wrap" fxLayoutAlign="start center">
+                        <div fxLayoutAlign="start center">
+                          <span class="font-14">item.site</span>
+                        </div>
+                        <div fxLayoutAlign="start center" class="mx-4">|</div>
+                        <div fxLayoutAlign="start center">
+                          <span class="font-14">item.rotation</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </header>
+              </mat-card>
+              </exxat-carousel>
+            </textarea
+                >
+              </fuse-highlight>
+            </mat-tab>
+            <mat-tab label="TS">
+              <fuse-highlight
+                lang="ts"
+                class="source-code"
+                fxLayout="column"
+                fxLayoutAlign="center"
+              >
+                <textarea #source hidden="hidden">
+ 
+              import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
+              import { MatTableDataSource } from "@angular/material/table";
+              import { CarouselEvent, HeaderService } from "@exxat/ux";
+              
+              interface HeaderContentItem {
+                  id: string;
+                  title: string;
+                  site: string;
+                  setting: string;
+                  rotation: string;
+              }
+              
+              interface GridElement {
+                  date: string;
+                  status: string;
+                  preceptor: string;
+                  start_time: string;
+                  end_time: string;
+                  duration: string;
+                  category: string;
+                  student_notes: string;
+                  reviewer_notes: string;
+              }
+              
+              const ELEMENT_DATA: Array<GridElement> = [
+                  {
+                      date: 'Apr 01,2021',
+                      status: 'Approved',
+                      preceptor: 'Thomas, John',
+                      start_time: '12:00 AM',
+                      end_time: '12:00 AM',
+                      duration: '6 Hrs 30 Mins',
+                      category: 'Non-Clinical',
+                      student_notes: 'Test',
+                      reviewer_notes: 'Test'
+                  },
+                  {
+                      date: 'Apr 01,2021',
+                      status: 'In Progress',
+                      preceptor: 'Thomas, John',
+                      start_time: '12:00 AM',
+                      end_time: '12:00 AM',
+                      duration: '6 Hrs 30 Mins',
+                      category: 'Non-Clinical',
+                      student_notes: 'Test',
+                      reviewer_notes: 'Test'
+                  },
+                  {
+                      date: 'Apr 01,2021',
+                      status: 'Not Approved',
+                      preceptor: 'Thomas, John',
+                      start_time: '12:00 AM',
+                      end_time: '12:00 AM',
+                      duration: '6 Hrs 30 Mins',
+                      category: 'Non-Clinical',
+                      student_notes: null,
+                      reviewer_notes: null
+                  },
+                  {
+                      date: 'Apr 01,2021',
+                      status: 'Approved',
+                      preceptor: 'Thomas, John',
+                      start_time: '12:00 AM',
+                      end_time: '12:00 AM',
+                      duration: '6 Hrs 30 Mins',
+                      category: 'Non-Clinical',
+                      student_notes: 'Test',
+                      reviewer_notes: 'Test'
+                  },
+                  {
+                      date: 'Apr 01,2021',
+                      status: 'In Progress',
+                      preceptor: 'Thomas, John',
+                      start_time: '12:00 AM',
+                      end_time: '12:00 AM',
+                      duration: '6 Hrs 30 Mins',
+                      category: 'Non-Clinical',
+                      student_notes: null,
+                      reviewer_notes: null
+                  },
+                  {
+                      date: 'Apr 01,2021',
+                      status: 'Approved',
+                      preceptor: 'Thomas, John',
+                      start_time: '12:00 AM',
+                      end_time: '12:00 AM',
+                      duration: '6 Hrs 30 Mins',
+                      category: 'Non-Clinical',
+                      student_notes: null,
+                      reviewer_notes: 'Test'
+                  },
+                  {
+                      date: 'Apr 01,2021',
+                      status: 'Pending Review',
+                      preceptor: 'Thomas, John',
+                      start_time: '12:00 AM',
+                      end_time: '12:00 AM',
+                      duration: '6 Hrs 30 Mins',
+                      category: 'Non-Clinical',
+                      student_notes: 'Test',
+                      reviewer_notes: 'Test'
+                  },
+                  {
+                      date: 'Apr 01,2021',
+                      status: 'Approved',
+                      preceptor: 'Thomas, John',
+                      start_time: '12:00 AM',
+                      end_time: '12:00 AM',
+                      duration: '6 Hrs 30 Mins',
+                      category: 'Non-Clinical',
+                      student_notes: null,
+                      reviewer_notes: null
+                  },
+                  {
+                      date: 'Apr 01,2021',
+                      status: 'Pending Review',
+                      preceptor: 'Thomas, John',
+                      start_time: '12:00 AM',
+                      end_time: '12:00 AM',
+                      duration: '6 Hrs 30 Mins',
+                      category: 'Non-Clinical',
+                      student_notes: 'Test',
+                      reviewer_notes: 'Test'
+                  },
+                  {
+                      date: 'Apr 01,2021',
+                      status: 'Approved',
+                      preceptor: 'Thomas, John',
+                      start_time: '12:00 AM',
+                      end_time: '12:00 AM',
+                      duration: '6 Hrs 30 Mins',
+                      category: 'Non-Clinical',
+                      student_notes: 'Test',
+                      reviewer_notes: null
+                  },
+                  {
+                      date: 'Apr 01,2021',
+                      status: 'Approved',
+                      preceptor: 'Thomas, John',
+                      start_time: '12:00 AM',
+                      end_time: '12:00 AM',
+                      duration: '6 Hrs 30 Mins',
+                      category: 'Non-Clinical',
+                      student_notes: null,
+                      reviewer_notes: 'Test'
+                  },
+                  {
+                      date: 'Apr 01,2021',
+                      status: 'Pending Review',
+                      preceptor: 'Thomas, John',
+                      start_time: '12:00 AM',
+                      end_time: '12:00 AM',
+                      duration: '6 Hrs 30 Mins',
+                      category: 'Non-Clinical',
+                      student_notes: 'Test',
+                      reviewer_notes: 'Test'
+                  },
+                  {
+                      date: 'Apr 01,2021',
+                      status: 'Approved',
+                      preceptor: 'Thomas, John',
+                      start_time: '12:00 AM',
+                      end_time: '12:00 AM',
+                      duration: '6 Hrs 30 Mins',
+                      category: 'Non-Clinical',
+                      student_notes: null,
+                      reviewer_notes: null
+                  },
+                  {
+                      date: 'Apr 01,2021',
+                      status: 'Pending Review',
+                      preceptor: 'Thomas, John',
+                      start_time: '12:00 AM',
+                      end_time: '12:00 AM',
+                      duration: '6 Hrs 30 Mins',
+                      category: 'Non-Clinical',
+                      student_notes: 'Test',
+                      reviewer_notes: 'Test'
+                  },
+              ];
+              
+              @Component({
+                  selector: 'exxat-carousel-demo',
+                  templateUrl: './exxat-carousel-demo-container.component.html'
+              })
+              export class ExxatCarouselDemoContainerComponent implements AfterViewInit {
+              
+                  @ViewChild('header_content') header_content: ElementRef;
+              
+                  @ViewChild('content_header') content_header: ElementRef;
+              
+                  dataSource = new MatTableDataSource<GridElement>(ELEMENT_DATA);
+              
+                  displayedColumns: string[] = ['date', 'status', 'preceptor', 'start_time', 'end_time', 'duration', 'category', 'student_notes', 'reviewer_notes'];
+              
+                  screenWidth = window.innerWidth;
+              
+                  statuses = ['Get Started', 'Pending', 'Approved', 'In Progress', 'Not Approved'];
+              
+                  currentHeaderStep: number = 0;
+              
+                  currentDatesStep: number = 0;
+              
+                  headerItems: Array<HeaderContentItem> = [
+                      {
+                          id: 'id_01',
+                          title: 'Marshall,Tatum',
+                          setting: 'Family Medicine',
+                          site: 'Newyork Rehabilitation Center',
+                          rotation: 'Rotation 2021-22'
+                      },
+                      {
+                          id: 'id_02',
+                          title: 'James,Spector',
+                          setting: 'HMR',
+                          site: 'Health Rehabilitation Center',
+                          rotation: 'Rotation 2022-23'
+                      },
+                      {
+                          id: 'id_03',
+                          title: 'Mickel,Ross',
+                          setting: 'Health',
+                          site: 'Newyork Rehabilitation Center',
+                          rotation: 'Rotation 2021-22'
+                      },
+                      {
+                          id: 'id_04',
+                          title: 'Marshall,Tatum',
+                          setting: 'MR',
+                          site: 'Health Rehabilitation Center',
+                          rotation: 'Rotation 2021-22'
+                      }
+                  ]
+              
+                  /**
+                   *
+                   */
+                  constructor(public readonly _headerService: HeaderService) {
+                  }
+              
+                  ngAfterViewInit(): void {
+                      setTimeout(() => {
+                          if (this.header_content && this.header_content !== null && this.content_header && this.content_header !== null) {
+                              this._headerService.setCurrentHeaderHeight(this.header_content.nativeElement.offsetHeight + this.content_header.nativeElement.offsetHeight + 24);
+                          }
+                      });
+                  }
+              
+                  getClass(status: string): string {
+                      return status.replace(/\s/g, "").trim().toLowerCase();
+                  }
+              
+                  onHeaderCarouselEvent($event: CarouselEvent) {
+                      this.currentHeaderStep = $event.currentStep;
+                  }
+              }
+            </textarea
+                >
+              </fuse-highlight>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <div class="mt-16">
+      <span class="font-18 font-weight-600"
+        >Start & End Date Time Pickers (Not a carousel)</span
+      >
+    </div>
+
+    <div fxLayout="row" fxFlex="100">
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        fxFlex="100"
+        fxFlex.gt-md="33"
+        fxFlex.gt-xs="50"
+      >
+        <div fxLayoutAlign="start center" class="mr-12">
+          <button mat-icon-button class="action-icon">
+            <i aria-hidden="true" class="fa-light fa-chevron-left s-24"></i>
+          </button>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start" class="mt-16" fxFlex="100">
+          <div fxLayout="column" fxLayoutAlign="start" fxFlex="49">
+            <mat-form-field appearance="fill" fxFlex="100" class="pr-8 pb-none">
+              <mat-label>Start Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker1"
+                (focus)="picker1.open()"
+                (click)="picker1.open()"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker1"
+              ></mat-datepicker-toggle>
+              <mat-datepicker
+                #picker1
+                color="primary"
+                class="action-icon"
+              ></mat-datepicker>
+            </mat-form-field>
+            <div>
+              <a>Reset</a>
+            </div>
+          </div>
+
+          <div fxLayout="column" fxLayoutAlign="start" fxFlex="49">
+            <mat-form-field appearance="fill" fxFlex="100" class="pl-8 pb-none">
+              <mat-label>End Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker2"
+                (focus)="picker2.open()"
+                (click)="picker2.open()"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker2"
+              ></mat-datepicker-toggle>
+              <mat-datepicker
+                #picker2
+                color="primary"
+                class="action-icon"
+              ></mat-datepicker>
+            </mat-form-field>
+            <div class="ml-16">
+              <a>Reset</a>
+            </div>
+          </div>
+        </div>
+        <div fxLayoutAlign="end center" class="ml-12">
+          <button mat-icon-button class="action-icon">
+            <i aria-hidden="true" class="fa-light fa-chevron-right s-24"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="my-16">
+      <mat-accordion class="example-headers-align" multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div
+                fxlayoutalign="space-between center"
+                fxLayout="row"
+                fxFlex
+                class="border-right pr-12"
+              >
+                <span fxFlex fxLayout="column" fxLayoutAlign="center start">
+                  Code For Start & End Date Time Pickers (Not a carousel)
+                </span>
+                <i aria-hidden="true" class="s-18 fa-light fa-code"></i>
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-tab-group>
+            <mat-tab label="HTML">
+              <fuse-highlight
+                lang="html"
+                class="source-code"
+                fxLayout="column"
+                fxLayoutAlign="center"
+              >
+                <textarea #source hidden="hidden">
+              
+              <div fxLayout="row" fxFlex="100">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  fxFlex="100"
+                  fxFlex.gt-md="33"
+                  fxFlex.gt-xs="50"
+                >
+                  <div fxLayoutAlign="start center" class="mr-12">
+                    <button mat-icon-button class="action-icon">
+                      <i aria-hidden="true" class="fa-light fa-chevron-left s-24"></i>
+                    </button>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start" class="mt-16" fxFlex="100">
+                    <div fxLayout="column" fxLayoutAlign="start" fxFlex="49">
+                      <mat-form-field appearance="fill" fxFlex="100" class="pr-8 pb-none">
+                        <mat-label>Start Date</mat-label>
+                        <input
+                          matInput
+                          [matDatepicker]="picker1"
+                          (focus)="picker1.open()"
+                          (click)="picker1.open()"
+                        />
+                        <mat-datepicker-toggle
+                          matSuffix
+                          [for]="picker1"
+                        ></mat-datepicker-toggle>
+                        <mat-datepicker
+                          #picker1
+                          color="primary"
+                          class="action-icon"
+                        ></mat-datepicker>
+                      </mat-form-field>
+                      <div>
+                        <a>Reset</a>
+                      </div>
+                    </div>
+          
+                    <div fxLayout="column" fxLayoutAlign="start" fxFlex="49">
+                      <mat-form-field appearance="fill" fxFlex="100" class="pl-8 pb-none">
+                        <mat-label>End Date</mat-label>
+                        <input
+                          matInput
+                          [matDatepicker]="picker2"
+                          (focus)="picker2.open()"
+                          (click)="picker2.open()"
+                        />
+                        <mat-datepicker-toggle
+                          matSuffix
+                          [for]="picker2"
+                        ></mat-datepicker-toggle>
+                        <mat-datepicker
+                          #picker2
+                          color="primary"
+                          class="action-icon"
+                        ></mat-datepicker>
+                      </mat-form-field>
+                      <div class="ml-16">
+                        <a>Reset</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div fxLayoutAlign="end center" class="ml-12">
+                    <button mat-icon-button class="action-icon">
+                      <i aria-hidden="true" class="fa-light fa-chevron-right s-24"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+ 
+            </textarea
+                >
+              </fuse-highlight>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <div>
+      Note:Whenever user clicks on the Next and Previous Icon, the date inside
+      the control changes as per their interval For eg > User has entered 10
+      March 2022 to 15 March 2022 , when user clicks on Next Icon, date should
+      be 15 March 2022 to 20 March 2022.
+    </div>
+  </div>
+  <!-- Header :: END -->
+</div>

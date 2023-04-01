@@ -1,0 +1,79 @@
+<div class="drawer-p">
+  <form [formGroup]="releaseNotesForm">
+    <mat-card>
+
+      <!-- Sprint --->
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Sprint</mat-label>
+          <input matInput formControlName="sprint" required>
+        </mat-form-field>
+      </div>
+
+      <!-- Version Title --->
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Version Title</mat-label>
+          <input matInput formControlName="versionTitle" required>
+        </mat-form-field>
+      </div>
+
+      <!-- Section 1 --->
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Section 1</mat-label>
+          <input matInput formControlName="section1" required>
+        </mat-form-field>
+      </div>
+
+      <!-- Section 1 Editor --->
+      <div fxLayout="row" fxLayoutAlign="center center" class="pb-24">
+        <ckeditor fxFlex="100" id="section1-release-notes" name="section1-release-notes" [config]="ckEditorConfigData"
+          [editor]="Editor"></ckeditor>
+      </div>
+
+      <!-- Section 2 --->
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Section 2</mat-label>
+          <input matInput formControlName="section2" required>
+        </mat-form-field>
+      </div>
+
+      <!-- Section 2 Editor --->
+      <div fxLayout="row" fxLayoutAlign="center center" class="pb-24">
+        <ckeditor fxFlex="100" id="section1-release-notes" name="section1-release-notes" [config]="ckEditorConfigData"
+          [editor]="Editor"></ckeditor>
+      </div>
+
+      <!-- Section 3 --->
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Section 3</mat-label>
+          <input matInput formControlName="section3" required>
+        </mat-form-field>
+      </div>
+
+      <!-- Section 3 Editor --->
+      <div fxLayout="row" fxLayoutAlign="center center" class="pb-24">
+        <ckeditor fxFlex="100" id="section1-release-notes" name="section1-release-notes" [config]="ckEditorConfigData"
+          [editor]="Editor"></ckeditor>
+      </div>
+
+      <!-- Section 4 --->
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Section 4</mat-label>
+          <input matInput formControlName="section4" required>
+        </mat-form-field>
+      </div>
+
+      <!-- Section 4 Editor --->
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <ckeditor fxFlex="100" id="section1-release-notes" name="section1-release-notes" [config]="ckEditorConfigData"
+          [editor]="Editor"></ckeditor>
+      </div>
+
+    </mat-card>
+  </form>
+</div>

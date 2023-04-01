@@ -1,0 +1,54 @@
+<div fxLayout="column">
+  <div fxLayout="column" fxLayout.gt-md="row" id="chip-setting">
+    <div class="pr-md-16 pr-0" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+      <div class="mat-caption secondary-text mb-16">Setting Chips</div>
+      <mat-card>
+        <mat-chip-list class="setting-chip-style">
+          <mat-chip class="exxat-picasso-bg" fontColor>Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</mat-chip>
+          <mat-chip class="exxat-gorse-bg" fontColor>Two fish</mat-chip>
+          <mat-chip class="exxat-mandy-bg" fontColor>Primary fish</mat-chip>
+          <mat-chip class="exxat-sushi-bg" fontColor>Accent fish</mat-chip>
+        </mat-chip-list>
+      </mat-card>
+
+      <mat-card fxLayout="column" class="mt-16">
+        <span class="mb-16 font-16 font-weight-600">Follow below example for setting inside table</span>
+        <a href="http://devintegration.westindia.cloudapp.azure.com:5200/admin/ux/ui/no-search-grid"
+          class="font-16 font-weight-600 word-break-word">http://devintegration.westindia.cloudapp.azure.com:5200/admin/ux/ui/no-search-grid</a>
+      </mat-card>
+
+      <div class="mt-40 font-weight-600 mb-16">
+        NOTE: import FuseDirectivesModule from '@exxat/ux' and use fontColor
+        Directive to handle forground color of chips for A11Y Support in multi
+        themes.
+      </div>
+      <div class="warn-fg mt-40 font-weight-600 mb-16">
+        NOTE: Setting Colors will be based on product requirements and proper
+        logic needs to be added. We have just added static color for refrence
+        purpose only. In order of any confusion about color, please connect Design
+        Team!!
+      </div>
+    </div>
+
+    <div class="pr-md-16 pr-0" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+      <mat-tab-group class="mt-lg-0 mt-16">
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <fuse-highlight lang="html" class="source-code mt-16" fxLayout="column" fxLayoutAlign="center">
+            <textarea #source hidden="hidden">
+                  <mat-chip-list class="setting-chip-style">
+                    <mat-chip class="exxat-picasso-bg" fontColor>Lorem Ipsum is simply dummy text of the printing and typesetting
+                      industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</mat-chip>
+                    <mat-chip class="exxat-gorse-bg" fontColor>Two fish</mat-chip>
+                    <mat-chip class="exxat-mandy-bg" fontColor>Primary fish</mat-chip>
+                    <mat-chip class="exxat-sushi-bg" fontColor>Accent fish</mat-chip>
+                  </mat-chip-list>
+           </textarea>
+          </fuse-highlight>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+</div>

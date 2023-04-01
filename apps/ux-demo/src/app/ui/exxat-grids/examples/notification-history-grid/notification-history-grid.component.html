@@ -1,0 +1,298 @@
+<div class="page-layout simple full-width inner-scroll">
+  <div class="center">
+    <div class="content-card">
+      <div
+        class="content white-background table-rounded-border"
+        fxLayout="column"
+      >
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="h-48">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="search-wrapper search-grid">
+              <div
+                class="search"
+                fxFlex
+                fxLayout="row"
+                fxLayoutAlign="start center"
+              >
+                <i aria-hidden="true" class="fa-light fa-search s-18"></i>
+                <input type="text" placeholder="Search in 50 student" fxFlex />
+              </div>
+            </div>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <button
+              mat-button
+              class="action-icon mr-4"
+              aria-label="Edit"
+              exxatDrawerAction
+              [size]="'drawer-md'"
+              [caption]="'Status'"
+              role="img"
+              aria-hidden="true"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i>
+              Add action 1
+            </button>
+            <button
+              mat-button
+              class="action-icon"
+              aria-label="Edit"
+              exxatDrawerAction
+              [size]="'drawer-md'"
+              [caption]="'Status'"
+              role="img"
+              aria-hidden="true"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i>
+              Add action 2
+            </button>
+            <div fxLayout="row" class="pl-8">
+              <button mat-icon-button>
+                <i aria-hidden="true" class="fa-light fa-file-export"></i>
+              </button>
+              <button mat-icon-button>
+                <i aria-hidden="true" class="fa-light fa-wrench"></i>
+              </button>
+              <button mat-icon-button>
+                <i aria-hidden="true" class="fa-light fa-expand"></i>
+              </button>
+              <button mat-icon-button class="apply-filters-button">
+                <i aria-hidden="true" class="fa-light fa-filter"></i>
+                <span class="applied-filters-number">2</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="content overflow-auto"
+          [style.height.px]="_headerService.scrollContentheight - 90"
+        >
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            class="w-100-p exxat-table condensed-table pt-0"
+          >
+            <ng-container matColumnDef="Recipient_Name">
+              <th
+                class="pl-16"
+                mat-header-cell
+                *matHeaderCellDef
+                tabindex="0"
+                aria-label="Recipient Name"
+              >
+                Recipient Name
+              </th>
+              <td mat-cell *matCellDef="let element" class="pl-16">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <span
+                    tabindex="0"
+                    [attr.aria-label]="element.recipientName"
+                    >{{
+                      element.recipientName.length > 0
+                        ? element.recipientName
+                        : '-'
+                    }}</span
+                  >
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Recipient_Email">
+              <th
+                class="pl-16"
+                mat-header-cell
+                *matHeaderCellDef
+                tabindex="0"
+                aria-label="Recipient Email"
+              >
+                Recipient Email
+              </th>
+              <td mat-cell *matCellDef="let element" class="pl-16">
+                <div fxLayout="column" fxLayoutAlign="start">
+                  <div fxLayout="row" fxLayoutAlign="start center">
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                      class="mr-4"
+                    >
+                      <span
+                        class="email-dot"
+                        [ngClass]="getClass(element.recipientEmail.type)"
+                      ></span>
+                    </div>
+                    <div
+                      tabindex="0"
+                      [attr.aria-label]="element.recipientEmail.type"
+                    >
+                      {{ element.recipientEmail.type }} :
+                    </div>
+                  </div>
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    tabindex="0"
+                    [attr.aria-label]="element.recipientEmail.email"
+                  >
+                    {{ element.recipientEmail.email }}
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Subject">
+              <th
+                class="pl-16"
+                mat-header-cell
+                *matHeaderCellDef
+                tabindex="0"
+                aria-label="Subjet"
+              >
+                Subject
+              </th>
+              <td mat-cell *matCellDef="let element" class="pl-16">
+                <div
+                  tabindex="0"
+                  [attr.aria-label]="'Subjecct is' + element.subject"
+                >
+                  {{ element.subject }}
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Status">
+              <th
+                class="pl-16"
+                mat-header-cell
+                *matHeaderCellDef
+                tabindex="0"
+                aria-label="Status"
+              >
+                Status
+              </th>
+              <td mat-cell *matCellDef="let element" class="pl-16">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div
+                    fxLayoutAlign="start center"
+                    class="status-badge"
+                    tabindex="0"
+                    [attr.aria-label]="'status is' + element.status"
+                    [ngClass]="getClass(element.status)"
+                  >
+                    {{ element.status }}
+                  </div>
+                  <div fxLayoutAlign="end center">
+                    <button mat-icon-button aria-label="status info">
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-info-circle s-18 icon-fill"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="From">
+              <th
+                class="pl-16"
+                mat-header-cell
+                *matHeaderCellDef
+                tabindex="0"
+                aria-label="From"
+              >
+                From
+              </th>
+              <td mat-cell *matCellDef="let element" class="pl-16">
+                <div tabindex="0" [attr.aria-label]="'from' + element.from">
+                  {{ element.from }}
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Email_Sent_Time">
+              <th
+                class="pl-16"
+                mat-header-cell
+                *matHeaderCellDef
+                tabindex="0"
+                aria-label="Email Sent Time"
+              >
+                Email Sent Time
+              </th>
+              <td mat-cell *matCellDef="let element" class="pl-16">
+                <div
+                  tabindex="0"
+                  [attr.aria-label]="
+                    'Email sent time is' + element.emailSentTime
+                  "
+                >
+                  {{ element.emailSentTime }}
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Schedule_Email">
+              <th
+                class="pl-16"
+                mat-header-cell
+                *matHeaderCellDef
+                tabindex="0"
+                aria-label="Schedule Email"
+              >
+                Schedule Email
+              </th>
+              <td mat-cell *matCellDef="let element" class="pl-16">
+                <div
+                  tabindex="0"
+                  [attr.aria-label]="
+                    'Schedule email is' + element.scheduleEmail
+                  "
+                >
+                  {{ element.scheduleEmail }}
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Action">
+              <th
+                class="pl-16"
+                mat-header-cell
+                *matHeaderCellDef
+                tabindex="0"
+                aria-label="View Email Content"
+              >
+                View Email Content
+              </th>
+              <td mat-cell *matCellDef="let element">
+                <div fxLayoutAlign="start center" fxLayout="row">
+                  <button
+                    mat-button
+                    color="accent"
+                    aria-label="View Email Content"
+                  >
+                    View
+                  </button>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+        <div class="border-light-top">
+          <mat-paginator [pageSize]="30"></mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,296 @@
+<div
+  class="page-layout carded fullwidth inner-scroll exxat-new-grid"
+  fxLayout="column"
+>
+  <div class="center p-0">
+    <div class="content-card border">
+      <div #page_table_header fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
+            <div class="search-wrapper" fxFlex="100">
+              <div
+                class="search table-search"
+                fxFlex
+                fxLayout="row"
+                fxLayoutAlign="start center"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-magnifying-glass s-18"
+                ></i>
+                <input type="text" placeholder="Search in 50 student" fxFlex />
+              </div>
+            </div>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="end center"
+              class="border-right h-48 pr-16"
+              fxHide.lt-md
+            >
+              <button
+                mat-stroked-button
+                color="primary"
+                class="mr-12"
+                aria-label="Add action 1"
+              >
+                <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+                <span class="ml-4">Add action 1</span>
+              </button>
+              <button
+                mat-stroked-button
+                color="primary"
+                aria-label="Add action 2"
+              >
+                <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+                <span class="ml-4">Add action 2</span>
+              </button>
+            </div>
+            <div fxLayout="row" class="mr-16 ml-8">
+              <button
+                tabindex="0"
+                aria-label="Export Table"
+                mat-icon-button
+                class="ml-8"
+                fxHide.lt-md
+              >
+                <i aria-hidden="true" class="fa-light fa-file-export s-18"></i>
+              </button>
+
+              <button
+                tabindex="0"
+                aria-label="Edit Columns"
+                exxatDrawerAction
+                [componentSelector]="gridService.get('ryzen-edit-columns')"
+                [size]="'drawer-sm'"
+                [caption]="'Edit Columns'"
+                mat-icon-button
+                class="ml-4"
+                fxHide.lt-md
+              >
+                <i aria-hidden="true" class="fa-light fa-wrench s-18"></i>
+              </button>
+
+              <button
+                tabindex="0"
+                aria-label="Expand Table"
+                mat-icon-button
+                class="ml-4"
+                fxHide.lt-md
+              >
+                <i aria-hidden="true" class="fa-light fa-expand s-18"></i>
+              </button>
+
+              <button
+                mat-icon-button
+                class="ml-4 filter-icon-button"
+                aria-label="filters"
+                exxatDrawerAction
+                [componentSelector]="
+                  _UXDemoDrawerService.get('ryzen-filter-drawer')
+                "
+                [size]="'drawer-lg'"
+                [caption]="'Filters'"
+                [primaryAction]="'Save'"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
+                  <span> 12 </span>
+                </div>
+              </button>
+
+              <button
+                tabindex="0"
+                aria-label="mat menu"
+                mat-icon-button
+                [matMenuTriggerFor]="menu"
+                class="ml-4"
+                fxHide.gt-sm
+              >
+                <i aria-hidden="true" class="fal fa-ellipsis-h s-18"></i>
+              </button>
+              <mat-menu #menu="matMenu" fxHide.gt-sm>
+                <button mat-menu-item aria-label="Action 1">
+                  <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i
+                  >Action 1
+                </button>
+                <button mat-menu-item aria-label="Action 2">
+                  <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i
+                  >Action 2
+                </button>
+                <button mat-menu-item aria-label="Edit Columns">
+                  <i aria-hidden="true" class="fa-light fa-wrench s-18 mr-8"></i
+                  >Edit columns
+                </button>
+                <button mat-menu-item aria-label="Export file">
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-file-export s-18 mr-8"
+                  ></i
+                  >Export file
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+        </div>
+        <div
+          class="result-found-style w-100-p"
+          tabindex="0"
+          aria-label="2 search results found"
+        >
+          2 Results Found
+        </div>
+      </div>
+
+      <div
+        class="content overflow-auto"
+        [style.height.px]="
+          _headerService.scrollContentheight -
+          ((_planHeaderLayoutService.container_header_height$ | async) +
+            (_planHeaderLayoutService.nav_container_height$ | async) +
+            (page_table_header_height$ | async) +
+            40)
+        "
+        tabindex="0"
+      >
+        <table
+          id="eventSchedule"
+          mat-table
+          [dataSource]="dataSource"
+          class="w-100-p exxat-table"
+          matSort
+        >
+          <!-- action Column -->
+          <ng-container matColumnDef="action">
+            <th class="px-16 action-column" mat-header-cell *matHeaderCellDef>
+              Action
+            </th>
+            <td mat-cell *matCellDef="let element" class="px-16 action-column">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <button
+                  mat-icon-button
+                  class="action-icon mr-8"
+                  aria-label="click here to edit"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-pen icon-fill s-18"
+                  ></i>
+                </button>
+                <button
+                  mat-icon-button
+                  class="action-icon"
+                  aria-label="click here to delete"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-trash-alt icon-fill s-18"
+                  ></i>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- date Column -->
+          <ng-container matColumnDef="date">
+            <th class="px-16" mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let element" class="px-16">
+              {{ element.date }}
+            </td>
+          </ng-container>
+
+          <!-- time Column -->
+          <ng-container matColumnDef="time">
+            <th mat-header-cell *matHeaderCellDef class="px-16">Time</th>
+            <td mat-cell *matCellDef="let element" class="px-16">
+              {{ element.time }}
+            </td>
+          </ng-container>
+
+          <!-- title Column -->
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef class="px-16">Title</th>
+            <td mat-cell *matCellDef="let element" class="px-16">
+              {{ element.title }}
+            </td>
+          </ng-container>
+
+          <!-- faculty Column -->
+          <ng-container matColumnDef="faculty">
+            <th mat-header-cell *matHeaderCellDef class="px-16">Faculty</th>
+            <td mat-cell *matCellDef="let element" class="px-16">
+              {{ element.faculty }}
+            </td>
+          </ng-container>
+
+          <!-- location Column -->
+          <ng-container matColumnDef="location">
+            <th mat-header-cell *matHeaderCellDef class="px-16">Location</th>
+            <td mat-cell *matCellDef="let element" class="px-16">
+              {{ element.location }}
+            </td>
+          </ng-container>
+
+          <!-- reference Column -->
+          <ng-container matColumnDef="reference">
+            <th mat-header-cell *matHeaderCellDef class="px-16">
+              Reference Material
+            </th>
+            <td mat-cell *matCellDef="let element" class="px-16">
+              {{ element.reference }}
+            </td>
+          </ng-container>
+
+          <!-- attribute1 Column -->
+          <ng-container matColumnDef="attribute1">
+            <th class="px-16" mat-header-cell *matHeaderCellDef>Attribute 1</th>
+            <td mat-cell *matCellDef="let element" class="px-16">
+              Lorem ipsum
+            </td>
+          </ng-container>
+
+          <!-- attribute2 Column -->
+          <ng-container matColumnDef="attribute2">
+            <th mat-header-cell *matHeaderCellDef class="px-16">Attribute 2</th>
+            <td mat-cell *matCellDef="let element" class="px-16">
+              Lorem ipsum
+            </td>
+          </ng-container>
+
+          <!-- attribute3 Column -->
+          <ng-container matColumnDef="attribute3">
+            <th mat-header-cell *matHeaderCellDef class="px-16">Attribute 3</th>
+            <td mat-cell *matCellDef="let element" class="px-16">
+              Lorem ipsum
+            </td>
+          </ng-container>
+
+          <!-- attribute4 Column -->
+          <ng-container matColumnDef="attribute4">
+            <th mat-header-cell *matHeaderCellDef class="px-16">Attribute 4</th>
+            <td mat-cell *matCellDef="let element" class="px-16">
+              Lorem ipsum
+            </td>
+          </ng-container>
+
+          <!-- attribute5 Column -->
+          <ng-container matColumnDef="attribute5">
+            <th mat-header-cell *matHeaderCellDef class="px-16">Attribute 5</th>
+            <td mat-cell *matCellDef="let element" class="px-16">
+              Lorem ipsum
+            </td>
+          </ng-container>
+
+          <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+          ></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+    <mat-paginator [pageSize]="30" class="bx bb"></mat-paginator>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="page-layout carded fullwidth">
+
+  <!-- HEADER -->
+ 
+  <mat-card class="header">
+          <header>
+              <div fxLayout="row" fxLayoutAlign="start center">
+                  <exxat-avatar src="assets/images/avatars/anna-strong.png" firstName="Anna"
+                      lastName="Strong" size="lg"></exxat-avatar>
+
+                  <div fxLayout="column">
+                      <h2>Strong Anna</h2>
+                      <span class="font-14">anna.strong@universityname.com</span>
+                      <span class="font-14">(123)-456-7890</span>
+                      <span class="font-14">Class of 2020, Texas</span>
+                  </div>
+              </div>
+          </header>
+  </mat-card>
+
+  <div class="mt-16">
+  <ryzen-compliance-site-demo-nav-bar></ryzen-compliance-site-demo-nav-bar>
+  </div>
+
+  <!-- / HEADER -->
+  <!-- CONTENT -->
+  <div class="content compliance-site-demo-content">
+    <router-outlet></router-outlet>
+  </div>
+  <!-- / CONTENT -->
+
+</div>

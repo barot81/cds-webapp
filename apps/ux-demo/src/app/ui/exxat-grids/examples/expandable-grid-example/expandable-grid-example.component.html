@@ -1,0 +1,479 @@
+<div
+  class="page-layout carded fullwidth inner-scroll full-width-page exxat-new-grid"
+>
+  <div class="center p-0">
+    <div class="content-card border">
+      <div #mainHeader>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
+            <div
+              class="search-wrapper"
+              fxFlex="100"
+              search
+              [formControl]="searchItem"
+            >
+              <div
+                class="search table-search"
+                fxFlex
+                fxLayout="row"
+                fxLayoutAlign="start center"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-magnifying-glass s-18 mr-4"
+                ></i>
+                <input
+                  id="inputBox"
+                  type="text"
+                  placeholder="Search in 50 student"
+                  fxFlex
+                />
+                <button
+                  mat-icon-button
+                  aria-label="clear search"
+                  class="action-icon clear-button"
+                >
+                  <i aria-hidden="true" class="fa-light fa-xmark s-18"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="end center"
+              class="border-right h-48 pr-16"
+              fxHide.lt-md
+            >
+              <button
+                mat-stroked-button
+                color="primary"
+                class="mr-12"
+                aria-label="Add action 1"
+              >
+                <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+                <span class="ml-4">Add action 1</span>
+              </button>
+              <button
+                mat-stroked-button
+                color="primary"
+                aria-label="Add action 2"
+              >
+                <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+                <span class="ml-4">Add action 2</span>
+              </button>
+            </div>
+            <div fxLayout="row" class="mr-16 ml-8">
+              <button
+                matTooltip="Export"
+                aria-label="Export Table"
+                mat-icon-button
+                class="ml-8"
+                fxHide.lt-md
+              >
+                <i aria-hidden="true" class="fa-light fa-file-export s-18"></i>
+              </button>
+
+              <button
+                matTooltip="Edit Columns"
+                aria-label="Edit Columns"
+                exxatDrawerAction
+                [componentSelector]="gridService.get('ryzen-edit-columns')"
+                [size]="'drawer-sm'"
+                [caption]="'Edit Columns'"
+                mat-icon-button
+                class="ml-4"
+                fxHide.lt-md
+              >
+                <i aria-hidden="true" class="fa-light fa-wrench s-18"></i>
+              </button>
+
+              <button
+                matTooltip="Filter"
+                mat-icon-button
+                class="ml-4 filter-icon-button"
+                aria-label="filters"
+                exxatDrawerAction
+                [componentSelector]="
+                  _UXDemoDrawerService.get('ryzen-filter-drawer')
+                "
+                [size]="'drawer-sm'"
+                [caption]="'Filters'"
+                [primaryAction]="'Save'"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
+                  <span> 12 </span>
+                </div>
+              </button>
+
+              <button
+                tabindex="0"
+                aria-label="mat menu"
+                mat-icon-button
+                [matMenuTriggerFor]="menu"
+                class="ml-4"
+                fxHide.gt-sm
+              >
+                <i aria-hidden="true" class="fal fa-ellipsis-h s-18"></i>
+              </button>
+              <mat-menu #menu="matMenu" fxHide.gt-sm>
+                <button mat-menu-item aria-label="Action 1">
+                  <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i
+                  >Action 1
+                </button>
+                <button mat-menu-item aria-label="Action 2">
+                  <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i
+                  >Action 2
+                </button>
+                <button
+                  mat-menu-item
+                  aria-label="Edit Columns"
+                  exxatDrawerAction
+                  [componentSelector]="gridService.get('ryzen-edit-columns')"
+                  [size]="'drawer-sm'"
+                  [caption]="'Edit Columns'"
+                >
+                  <i aria-hidden="true" class="fa-light fa-wrench s-18 mr-8"></i
+                  >Edit columns
+                </button>
+                <button mat-menu-item aria-label="Export file">
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-file-export s-18 mr-8"
+                  ></i
+                  >Export file
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="result-found-style"
+          tabindex="0"
+          aria-label="2 search results found"
+        >
+          2 Results Found
+        </div>
+      </div>
+      <div
+        class="content overflow-auto"
+        [style.height.px]="_scrollService.contentHeight"
+      >
+        <mat-table
+          [dataSource]="dataSource"
+          class="w-100-p expandable-table table-x-border-none pt-0"
+          aria-label="This is a row expandable table"
+          id="expanableTable"
+        >
+          <!-- checkbox Column -->
+          <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef>
+              <mat-checkbox
+                (change)="$event ? masterToggle() : null"
+                [checked]="selection.hasValue() && isAllSelected()"
+                [indeterminate]="selection.hasValue() && !isAllSelected()"
+                [attr.aria-label]="checkboxLabel()"
+              >
+              </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-checkbox
+                (click)="$event.stopPropagation()"
+                (change)="$event ? selection.toggle(element) : null"
+                [checked]="selection.isSelected(element)"
+                [attr.aria-label]="checkboxLabel(element)"
+              >
+              </mat-checkbox>
+            </mat-cell>
+          </ng-container>
+
+          <!-- arrow Column -->
+          <ng-container matColumnDef="arrow">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <div role="button" fxLayout="row" fxLayoutAlign="start center">
+                <button
+                  *ngIf="element.isExpanded"
+                  mat-icon-button
+                  class="action-icon"
+                  aria-label="click to collapse expanded row"
+                >
+                  <mat-icon>keyboard_arrow_down</mat-icon>
+                </button>
+
+                <button
+                  *ngIf="!element.isExpanded"
+                  mat-icon-button
+                  class="action-icon"
+                  aria-label="click to expand row"
+                >
+                  <mat-icon>keyboard_arrow_right</mat-icon>
+                </button>
+              </div>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <span class="list-item-name"
+                >{{ element.lastName }}, {{ element.firstName }}</span
+              >
+            </mat-cell>
+          </ng-container>
+
+          <!-- document Column -->
+          <ng-container matColumnDef="document">
+            <mat-header-cell fxHide.lt-md *matHeaderCellDef>
+              Document
+            </mat-header-cell>
+            <mat-cell fxHide.lt-md *matCellDef="let element">
+              {{ element.document }}
+            </mat-cell>
+          </ng-container>
+
+          <!-- document Status Column -->
+          <ng-container matColumnDef="documentStatus">
+            <mat-header-cell fxHide.lt-md *matHeaderCellDef>
+              Document status
+            </mat-header-cell>
+            <mat-cell fxHide.lt-md *matCellDef="let element">
+              {{ element.documentStatus }}
+            </mat-cell>
+          </ng-container>
+
+          <!-- last Sent Column -->
+          <ng-container matColumnDef="lastSent">
+            <mat-header-cell fxHide.lt-md *matHeaderCellDef>
+              Last sent
+            </mat-header-cell>
+            <mat-cell fxHide.lt-md *matCellDef="let element">
+              {{ element.lastSent }}
+            </mat-cell>
+          </ng-container>
+
+          <!-- comment Column -->
+          <ng-container matColumnDef="comment">
+            <mat-header-cell fxHide.lt-md *matHeaderCellDef>
+              Comment
+            </mat-header-cell>
+            <mat-cell fxHide.lt-md *matCellDef="let element">
+              {{ element.comment }}
+            </mat-cell>
+          </ng-container>
+
+          <!-- Expanded Content Column - The detail row is made up of this one column -->
+          <ng-container matColumnDef="expandedDetail">
+            <mat-cell *matCellDef="let detail">
+              <div fxLayout="column" fxFlex="100" class="pb-16 pl-104">
+                <div fxLayout="row wrap" fxFlex="100">
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="px-8">
+                    <div class="pt-16"></div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="px-8">
+                    <div class="pt-16">
+                      <mat-checkbox class="mr-8"></mat-checkbox>
+                      <span
+                        tabindex="0"
+                        [attr.aria-label]="detail.element.comment"
+                      >
+                        {{ detail.element.comment }}</span
+                      >
+                    </div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="px-8">
+                    <div class="pt-16">
+                      <span tabindex="0" aria-label="Disapproved">
+                        Disapproved</span
+                      >
+                    </div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="px-8">
+                    <div class="pt-16">
+                      <span tabindex="0" aria-label="date is 12 december 2020">
+                        12/12/2020</span
+                      >
+                    </div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="pl-8">
+                    <div class="pt-16">
+                      <span tabindex="0" aria-label="xyz"> xyz</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div fxLayout="row wrap" fxFlex="100">
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="px-8">
+                    <div class="pt-16"></div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="px-8">
+                    <div class="pt-16">
+                      <mat-checkbox class="mr-8"></mat-checkbox>
+                      <span tabindex="0" aria-label="mmr"> MMR</span>
+                    </div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="px-8">
+                    <div class="pt-16">
+                      <span tabindex="0" aria-label="InProgress">
+                        In progress</span
+                      >
+                    </div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="px-8">
+                    <div class="pt-16">
+                      <span tabindex="0" aria-label="date is 12 december 2020">
+                        12/12/2020</span
+                      >
+                    </div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="pl-8">
+                    <div class="pt-16">
+                      <span tabindex="0">
+                        Fluorine is a chemical element with DocumentStatus F and
+                        atomic number 9. It is the lighComment halogen and
+                        exists as a highly toxic pale yellow diatomic gas at
+                        standard conditions
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div fxLayout="row wrap" fxFlex="100">
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="px-8">
+                    <div class="pt-16"></div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="px-8">
+                    <div class="pt-16">
+                      <mat-checkbox class="mr-8"></mat-checkbox>
+                      <span tabindex="0" aria-label="Flu(Influenza)">
+                        Flu(Influenza)</span
+                      >
+                    </div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="px-8">
+                    <div class="pt-16">
+                      <span tabindex="0" aria-label="Disapproved">
+                        Disapproved</span
+                      >
+                    </div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="px-8">
+                    <div class="pt-16">
+                      <span> </span>
+                    </div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="pl-8">
+                    <div class="pt-16">
+                      <span> </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div fxLayout="row wrap" fxFlex="100">
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="px-8">
+                    <div class="pt-16"></div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="px-8">
+                    <div class="pt-16">
+                      <mat-checkbox class="mr-8"></mat-checkbox>
+                      <span tabindex="0" aria-label="Flu"> Flu</span>
+                    </div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="px-8">
+                    <div class="pt-16">
+                      <span tabindex="0" aria-label="In progress">
+                        In progress</span
+                      >
+                    </div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="px-8">
+                    <div class="pt-16">
+                      <span> </span>
+                    </div>
+                  </div>
+
+                  <div fxFlex="100" fxFlex.gt-sm="20" class="pl-8">
+                    <div class="pt-16">
+                      <span> </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+          ></mat-header-row>
+          <mat-row
+            *matRowDef="let row; columns: displayedColumns; let i = index"
+            matRipple
+            class="expandable-element-row"
+            [class.expanded]="expandedElement == row"
+            (click)="
+              expandedElement === row
+                ? (expandedElement = null)
+                : (expandedElement = row)
+            "
+            (click)="expandClick(row)"
+            [ngClass]="[
+              selection.isSelected(row) ? 'row-selected' : '',
+              selection.isSelected(row) ? 'row-highlighted' : ''
+            ]"
+          >
+          </mat-row>
+
+          <mat-row
+            *matRowDef="
+              let row;
+              let i = index;
+              columns: ['expandedDetail'];
+              when: isExpansionDetailRow
+            "
+            [@detailExpand]="
+              row.element == expandedElement ? 'expanded' : 'collapsed'
+            "
+            style="overflow: hidden"
+            [ngClass]="[row.element == expandedElement ? '' : 'display-none']"
+          >
+          </mat-row>
+        </mat-table>
+      </div>
+    </div>
+    <div
+      #pagination
+      fxLayout="row wrap"
+      fxLayoutAlign="space-between center"
+      class="content-card mat_pagination_container bx bb"
+    >
+      <div fxLayout="row wrap" fxLayoutAlign="start center">
+        <span class="pl-16 pt-xs-12"
+          >*The times reflected in this column are representative of the
+          filter(s)</span
+        >
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <mat-paginator [pageSize]="30" class=""></mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

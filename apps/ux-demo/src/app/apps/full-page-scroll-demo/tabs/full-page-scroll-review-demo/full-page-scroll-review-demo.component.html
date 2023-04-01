@@ -1,0 +1,471 @@
+<div id="compliance-review-container" class="page-layout carded left-sidebar inner-scroll">
+
+  <!-- SIDEBAR -->
+  <fuse-sidebar class="sidebar width-x-sm" name="carded-left-sidebar-tabbed-2" position="left" lockedOpen="gt-md">
+
+    <div class="search-wrapper m-16">
+      <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="s-16 secondary-text">search</mat-icon>
+        <input type="text" placeholder="Search Person" fxFlex>
+      </div>
+    </div>
+
+    <!-- / SEARCH -->
+    <div class="content" fusePerfectScrollbar>
+      <!--document List-->
+      <div fxLayout="column">
+
+        <mat-accordion class="full-page-scroll-side-bar-list">
+          <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header class="active-list-item">
+              <mat-panel-title fxLayout="row" fxLayoutAlign="start center" class="py-16 pl-16">
+                <img class="mat-avatar avatar" src="assets/images/avatars/anna-strong.png" />
+                <h2 class="primary-fg">Strong Anna</h2>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="mt-16">
+
+              <div class="pb-12">
+                <h4 class="primary-fg pl-68">
+                  Health & immunization
+                </h4>
+
+                <button mat-button class="basic-button">
+                  <div class="my-8 pl-68" fxLayout="column" fxLayoutAlign="center start">
+                    <h5 class="pb-4">Immunization summary</h5>
+                    <div class="status-badge pending font-12">Pending for review</div>
+                  </div>
+                </button>
+
+                <button mat-button class="basic-button">
+                  <div class="my-8 pl-68" fxLayout="column" fxLayoutAlign="center start">
+                    <h5 class="pb-4">Flu (Influenza)</h5>
+                    <div class="status-badge inprogress font-12">In progress</div>
+                  </div>
+                </button>
+
+                <mat-divider></mat-divider>
+              </div>
+
+              <div>
+                <h4 class="primary-fg pl-68">
+                  Life insurance
+                </h4>
+
+                <button mat-button class="basic-button">
+                  <div class="my-8 pl-68" fxLayout="column" fxLayoutAlign="center start">
+                    <h5 class="pb-4">CPR</h5>
+                    <div class="status-badge expiring font-12">Expering</div>
+                  </div>
+                </button>
+
+                <button mat-button class="basic-button">
+                  <div class="my-8 pl-68" fxLayout="column" fxLayoutAlign="center start">
+                    <h5 class="pb-4">PALS</h5>
+                    <div class="status-badge getstarted font-12">Get started</div>
+                  </div>
+                </button>
+
+                <button mat-button class="basic-button">
+                  <div class="my-8 pl-68" fxLayout="column" fxLayoutAlign="center start">
+                    <h5 class=" pb-4">HIPPA</h5>
+                    <div class="status-badge approved font-12">Approve</div>
+                  </div>
+                </button>
+                <mat-divider></mat-divider>
+              </div>
+
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <mat-accordion class="full-page-scroll-side-bar-list">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title fxLayout="row" fxLayoutAlign="start center" class="py-16 pl-16">
+                <img class="mat-avatar avatar" src="assets/images/avatars/anna-strong.png" />
+                <h2 class="primary-fg">Strong Anna</h2>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="mt-16">
+
+              <div class="pb-12">
+                <h4 class="primary-fg pl-68">
+                  Health & immunization
+                </h4>
+
+                <button mat-button class="basic-button">
+                  <div class="my-8 pl-68" fxLayout="column" fxLayoutAlign="center start">
+                    <h5 class="pb-4">Immunization summary</h5>
+                    <div class="status-badge pending font-12">Pending for review</div>
+                  </div>
+                </button>
+
+                <button mat-button class="basic-button">
+                  <div class="my-8 pl-68" fxLayout="column" fxLayoutAlign="center start">
+                    <h5 class="pb-4">Flu (Influenza)</h5>
+                    <div class="status-badge inprogress font-12">In progress</div>
+                  </div>
+                </button>
+
+                <mat-divider></mat-divider>
+              </div>
+
+              <div>
+                <h4 class="primary-fg pl-68">
+                  Life insurance
+                </h4>
+
+                <button mat-button class="basic-button">
+                  <div class="my-8 pl-68" fxLayout="column" fxLayoutAlign="center start">
+                    <h5 class="pb-4">CPR</h5>
+                    <div class="status-badge expiring font-12">Expering</div>
+                  </div>
+                </button>
+
+                <button mat-button class="basic-button">
+                  <div class="my-8 pl-68" fxLayout="column" fxLayoutAlign="center start">
+                    <h5 class="pb-4">PALS</h5>
+                    <div class="status-badge getstarted font-12">Get started</div>
+                  </div>
+                </button>
+
+                <button mat-button class="basic-button">
+                  <div class="my-8 pl-68" fxLayout="column" fxLayoutAlign="center start">
+                    <h5 class=" pb-4">HIPPA</h5>
+                    <div class="status-badge approved font-12">Approve</div>
+                  </div>
+                </button>
+                <mat-divider></mat-divider>
+              </div>
+
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+
+      </div>
+      <!--sidebar column end-->
+
+    </div>
+    <!--sidebar content end-->
+  </fuse-sidebar>
+  <!-- // SIDEBAR closed -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <div class="mb-0 ">
+      <div fxLayout="row" fxLayoutAlign="start start">
+        <button mat-icon-button class="sidebar-toggle mr-8" fxHide.gt-md
+          (click)="toggleSidebar('carded-left-sidebar-tabbed-2')">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <div fxLayout="row wrap ">
+        <!--document viewer column-->
+
+
+
+
+        <div class="" fxLayout="column" fxFlex="100" fxFlex.gt-sm="70">
+
+
+          <mat-card class="mb-16 p-0 ml-sm-16">
+            <div class="status-badge disapproved w-100-p">
+              <div fxLayout="row" fxlayoutalign="space-between center" fxFlex="100">
+                <div fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                  <div class="font-20">Immunization summary</div>
+                  <div class="font-14">Anna Strong</div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="center end" fxFlex>
+                  <div class="font-20">Disapprove1</div>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+
+
+          <div fxLayout="row wrap">
+            <!--required action-->
+            <div fxLayout="column" class="pl-sm-16" fxFlex="100" fxFlex.gt-sm="100">
+              <!--1st card-->
+              <mat-card class="outer-shadow mb-16">
+                <div fxLayout="column wrap" fxFlex="100">
+                  <h4 class="title primary-fg mb-16">Required action</h4>
+                  <div class="search-wrapper text-center">
+                    <mat-form-field appearance="fill" fxFlex>
+                      <mat-label>Document status</mat-label>
+                      <mat-select formControlName="newStatus">
+                        <mat-select-trigger>
+                          {{status.value ? status.value[0] : ''}}
+                          <span *ngIf="status.value?.length > 1" class="example-additional-selection">
+                            (+{{status.value.length - 1}} {{status.value?.length === 2 ? 'other' : 'others'}})
+                          </span>
+                        </mat-select-trigger>
+                        <mat-option *ngFor="let status of statusList" [value]="status">{{status}}</mat-option>
+
+                      </mat-select>
+
+                    </mat-form-field>
+                  </div>
+                  <div class="text-center">
+                    <mat-form-field appearance="fill" fxFlex="100">
+                      <mat-label>Comment</mat-label>
+                      <textarea matInput></textarea>
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <button mat-raised-button color="accent">Update</button>
+                  </div>
+
+                </div>
+              </mat-card>
+              <!--2nd card-->
+              <mat-card class="outer-shadow mb-16">
+                <div fxLayout="column" fxFlex="100">
+                  <!--card header-->
+                  <div fxlayoutalign="space-between center" fxLayout="row" fxFlex="100">
+                    <div fxFlex fxLayout="column" fxLayoutAlign="center start">
+                      <h4 class=" primary-fg">Vaccination</h4>
+                    </div>
+                    <div fxFlex fxLayout="column" fxLayoutAlign="center end">
+                      <button mat-icon-button aria-label="Edit" exxatDrawerAction class="action-icon"
+                        [componentSelector]="'app-reactive-form'" [size]="'drawer-md'" [caption]="'Status'" role="img">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                  <!--/card header-->
+                  <div class="exxat-info" fxLayout="row wrap" fxFlex="100">
+                    <div fxLayout="column" fxFlex="100" fxFlex.gt-xs="33.33%">
+                      <div class="title">Date of vaccination</div>
+                      <div class="description">
+                        mm/dd/yy
+                      </div>
+                    </div>
+
+                    <div fxLayout="column" fxFlex="100" fxFlex.gt-xs="33.33%">
+                      <div class="title">Expiration date</div>
+                      <div class="description">
+                        mm/dd/yy
+                      </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="100" fxFlex.gt-xs="33.33%">
+                      <a>view Documnet</a>
+                    </div>
+
+                  </div>
+                </div>
+              </mat-card>
+              <!--3rd card-->
+              <mat-card class="outer-shadow mb-16">
+                <div fxLayout="row wrap" fxFlex="100">
+                  <!--card header-->
+                  <div fxlayoutalign="space-between center" fxLayout="row" fxFlex="100">
+                    <div fxFlex fxLayout="column" fxLayoutAlign="center start">
+                      <h4 class=" primary-fg">Titer</h4>
+                    </div>
+                    <div fxFlex fxLayout="column" fxLayoutAlign="center end">
+                      <button mat-icon-button aria-label="Edit" exxatDrawerAction class="action-icon"
+                        [componentSelector]="'app-reactive-form'" [size]="'drawer-md'" [caption]="'Status'" role="img">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                  <!--/card header-->
+                  <div class="exxat-info" fxLayout="row wrap" fxFlex="100">
+                    <div fxLayout="column" fxFlex="100" fxFlex.gt-xs="33.33%">
+                      <div class="title">Date of titer</div>
+                      <div class="description">
+                        mm/dd/yy
+                      </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="100" fxFlex.gt-xs="33.33%">
+                      <div class="title">Expiration titer</div>
+                      <div class="description">
+                        mm/dd/yy
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-card>
+              <!---->
+
+              <mat-card class="outer-shadow mb-16">
+                <div fxLayout="row wrap" fxFlex="100">
+                  <!--card header-->
+                  <div fxlayoutalign="space-between center" fxLayout="row" fxFlex="100">
+                    <div fxFlex fxLayout="column" fxLayoutAlign="center start">
+                      <h4 class=" primary-fg">Titer</h4>
+                    </div>
+                    <div fxFlex fxLayout="column" fxLayoutAlign="center end">
+                      <button mat-icon-button aria-label="Edit" exxatDrawerAction class="action-icon"
+                        [componentSelector]="'app-reactive-form'" [size]="'drawer-md'" [caption]="'Status'" role="img">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                  <!--/card header-->
+                  <div class="exxat-info" fxLayout="row wrap" fxFlex="100">
+                    <div fxLayout="column" fxFlex="100" fxFlex.gt-xs="33.33%">
+                      <div class="title">Date of titer</div>
+                      <div class="description">
+                        mm/dd/yy
+                      </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="100" fxFlex.gt-xs="33.33%">
+                      <div class="title">Expiration titer</div>
+                      <div class="description">
+                        mm/dd/yy
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-card>
+
+              <mat-card class="outer-shadow mb-16">
+                <div fxLayout="row wrap" fxFlex="100">
+                  <!--card header-->
+                  <div fxlayoutalign="space-between center" fxLayout="row" fxFlex="100">
+                    <div fxFlex fxLayout="column" fxLayoutAlign="center start">
+                      <h4 class=" primary-fg">Titer</h4>
+                    </div>
+                    <div fxFlex fxLayout="column" fxLayoutAlign="center end">
+                      <button mat-icon-button aria-label="Edit" exxatDrawerAction class="action-icon"
+                        [componentSelector]="'app-reactive-form'" [size]="'drawer-md'" [caption]="'Status'" role="img">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                  <!--/card header-->
+                  <div class="exxat-info" fxLayout="row wrap" fxFlex="100">
+                    <div fxLayout="column" fxFlex="100" fxFlex.gt-xs="33.33%">
+                      <div class="title">Date of titer</div>
+                      <div class="description">
+                        mm/dd/yy
+                      </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="100" fxFlex.gt-xs="33.33%">
+                      <div class="title">Expiration titer</div>
+                      <div class="description">
+                        mm/dd/yy
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-card>
+
+              <mat-card class="outer-shadow mb-16">
+                <div fxLayout="row wrap" fxFlex="100">
+                  <!--card header-->
+                  <div fxlayoutalign="space-between center" fxLayout="row" fxFlex="100">
+                    <div fxFlex fxLayout="column" fxLayoutAlign="center start">
+                      <h4 class=" primary-fg">Titer</h4>
+                    </div>
+                    <div fxFlex fxLayout="column" fxLayoutAlign="center end">
+                      <button mat-icon-button aria-label="Edit" exxatDrawerAction class="action-icon"
+                        [componentSelector]="'app-reactive-form'" [size]="'drawer-md'" [caption]="'Status'" role="img">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                  <!--/card header-->
+                  <div class="exxat-info" fxLayout="row wrap" fxFlex="100">
+                    <div fxLayout="column" fxFlex="100" fxFlex.gt-xs="33.33%">
+                      <div class="title">Date of titer</div>
+                      <div class="description">
+                        mm/dd/yy
+                      </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="100" fxFlex.gt-xs="33.33%">
+                      <div class="title">Expiration titer</div>
+                      <div class="description">
+                        mm/dd/yy
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-card>
+
+              <mat-card class="outer-shadow mb-16">
+                <div fxLayout="row wrap" fxFlex="100">
+                  <!--card header-->
+                  <div fxlayoutalign="space-between center" fxLayout="row" fxFlex="100">
+                    <div fxFlex fxLayout="column" fxLayoutAlign="center start">
+                      <h4 class=" primary-fg">Titer</h4>
+                    </div>
+                    <div fxFlex fxLayout="column" fxLayoutAlign="center end">
+                      <button mat-icon-button aria-label="Edit" exxatDrawerAction class="action-icon"
+                        [componentSelector]="'app-reactive-form'" [size]="'drawer-md'" [caption]="'Status'" role="img">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                  <!--/card header-->
+                  <div class="exxat-info" fxLayout="row wrap" fxFlex="100">
+                    <div fxLayout="column" fxFlex="100" fxFlex.gt-xs="33.33%">
+                      <div class="title">Date of titer</div>
+                      <div class="description">
+                        mm/dd/yy
+                      </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="100" fxFlex.gt-xs="33.33%">
+                      <div class="title">Expiration titer</div>
+                      <div class="description">
+                        mm/dd/yy
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+            <!--/required action-->
+
+            <!--Guidelines-->
+
+
+
+
+            <!--/Guidelines-->
+
+          </div>
+          <!-- row end-->
+
+          <!--column close-->
+        </div>
+        <!--main content row end-->
+        <div class="pl-sm-16" fxLayout="column" fxFlex="100" fxFlex.gt-sm="30">
+          <h2 class="title primary-fg">Guidelines</h2>
+          <ul>
+            <li class="pb-8">
+              <h5>Student must provide proof</h5>
+            </li>
+            <li class="pb-8">
+              <h5>A titer lab report for all 3 components Titer reports should not be older than </h5>
+            </li>
+            <li>
+              <h5>Proof of 2 childhood or adult vaccinations </h5>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+      <!-- / CONTENT -->
+
+    </div>
+    <!-- / header tab group close -->
+    <!-- / CONTENT CARD -->
+
+
+    <!-- / CENTER -->
+  </div>
+
+</div>

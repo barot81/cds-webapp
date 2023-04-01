@@ -1,0 +1,10 @@
+@import 'init';
+
+.events-schedule-table {
+  @include media-breakpoint('gt-sm') {
+    th,
+    td {
+      min-width: 12vw !important;
+    }
+  }
+}

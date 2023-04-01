@@ -1,0 +1,42 @@
+<div
+  class="
+    page-layout
+    simple
+    left-sidebar
+    inner-sidebar inner-scroll
+    page-with-header
+    scrollable_form_container
+  "
+>
+  <!-- Layout Header -->
+  <div class="mb-16" #layoutHeader>
+    <layout-header></layout-header>
+  </div>
+  <!-- / Layout Header -->
+
+  <!-- CONTENT -->
+  <div class="content">
+    <!-- SIDEBAR -->
+
+    <fuse-sidebar
+      class="sidebar overflow-none"
+      name="simple-left-sidebar"
+      position="left"
+      lockedOpen="gt-md"
+      fxFlex.gt-md="20"
+    >
+      <!-- SIDEBAR CONTENT -->
+      <layout-sidebar></layout-sidebar>
+      <!-- / SIDEBAR CONTENT -->
+    </fuse-sidebar>
+
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+    <div class="center ml-lg-16">
+      <scrollable-form-content></scrollable-form-content>
+    </div>
+    <!-- / CENTER -->
+  </div>
+  <!-- / CONTENT -->
+</div>

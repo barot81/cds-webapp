@@ -1,0 +1,34 @@
+@import 'init';
+
+#role-configuration-student-info {
+  .icon-disabled {
+    color: $alto-light !important;
+  }
+
+  .dataBucket-column {
+    min-width: 8vw;
+    @include media-breakpoint('md') {
+      min-width: 12vw !important;
+    }
+    @include media-breakpoint('sm') {
+      min-width: 19vw !important;
+    }
+    @include media-breakpoint('lt-sm') {
+      min-width: 30vw !important;
+    }
+  }
+  .check-icon-column {
+    min-width: 5vw;
+    @include media-breakpoint('sm') {
+      min-width: 12vw !important;
+    }
+    @include media-breakpoint('lt-sm') {
+      min-width: 24vw !important;
+    }
+  }
+  .feature-column {
+    @include media-breakpoint('lt-md') {
+      min-width: 60vw !important;
+    }
+  }
+}

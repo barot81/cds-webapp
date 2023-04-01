@@ -1,0 +1,595 @@
+<div class="page-layout carded full-width" id="new-grid-guidelines">
+  <div class="center">
+    <div #header *ngIf="!(_fullScreenService.fullScreenModeEnabled$ | async)">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div>
+          <nav mat-tab-nav-bar>
+            <a
+              mat-tab-link
+              *ngFor="let link of navigations"
+              [routerLink]="link.url"
+              routerLinkActive
+              #rla="routerLinkActive"
+              [active]="rla.isActive"
+            >
+              <span>{{ link.title }}</span>
+            </a>
+          </nav>
+        </div>
+        <div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="end center"
+            fxFlex="100"
+            class="px-16 mt-12"
+          >
+            <button
+              mat-icon-button
+              class="icon-fill-bg filter-icon"
+              exxatDrawerAction
+              aria-hidden="false"
+              aria-label="Open Filters"
+              [componentSelector]="
+                _uXDemoDrawerService.get('ryzen-filter-and-edit-drawer')
+              "
+              [size]="'drawer-md'"
+              [caption]="'Filters'"
+              [primaryAction]="'Save'"
+            >
+              <i
+                aria-hidden="true"
+                class="fa-light fa-filter fuse-white-fg"
+              ></i>
+              <span class="filter-badge">5</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="py-16">
+        <div fxLayout="row" fxLayoutAlign="start">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <button mat-button class="action-icon" aria-hidden="false">
+              <mat-icon aria-hidden="true">add</mat-icon>
+              <span aria-label="import student"> Import Student </span>
+            </button>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <button mat-button class="action-icon" aria-hidden="false">
+              <mat-icon aria-hidden="true">add</mat-icon>
+              <span aria-label="Add student"> Add Student </span>
+            </button>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <button mat-button class="action-icon" aria-hidden="false">
+              <mat-icon aria-hidden="true">build</mat-icon>
+              <span aria-label="Edit Columns"> Edit Columns </span>
+            </button>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <button mat-button class="action-icon" aria-hidden="false">
+              <mat-icon aria-hidden="true">grid_on</mat-icon>
+              <span aria-label="Export To Excel Data"> Export to Excel </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="content table-rounded-border px-16 white-background"
+      fxLayout="column"
+    >
+      <div class="spinner-container" *ngIf="goToColumnLoading$ | async">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        fxFlex="100"
+        class="pt-12 pb-0"
+      >
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div fxLayout="column">
+            <exxat-search-bar [listofOptions]=""></exxat-search-bar>
+            <div>
+              <span
+                tabindex="0"
+                aria-label="toal records found is 50"
+                class="font-12 secondary-text text-italic"
+              >
+                Total record 50
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="end">
+          <div>
+            <mat-form-field fxHide.lt-sm="true">
+              <input
+                type="text"
+                placeholder="Go to Column"
+                aria-label="Number"
+                matInput
+                [formControl]="columnControl"
+                [matAutocomplete]="auto"
+              />
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option
+                  *ngFor="let option of filteredOptions | async"
+                  [value]="option"
+                >
+                  {{ option | titlecase }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+          <div class="ml-8">
+            <button
+              mat-icon-button
+              (click)="toggleFullScreenMode()"
+              [attr.aria-label]="
+                (_fullScreenService.fullScreenModeEnabled$ | async)
+                  ? 'Exit Full Screen'
+                  : 'Go To Full Screen'
+              "
+            >
+              <i
+                aria-hidden="true"
+                class="accent-fg"
+                [ngClass]="
+                  (_fullScreenService.fullScreenModeEnabled$ | async)
+                    ? 'fa-light fa-compress'
+                    : 'fa-light fa-expand'
+                "
+              ></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <flex-table>
+        <div id="sticky-column-table">
+          <div
+            #auto_scroll_grid
+            class="content flex_table_content"
+            [style.height.px]="
+              fullScreenMode ? headerService.scrollContentheight : null
+            "
+            [ngClass]="fullScreenMode ? 'scroll-hover' : null"
+          >
+            <div class="exxat-sticky-table">
+              <table
+                tabindex="1"
+                aria-hidden="false"
+                class="exxat-table no-alternate-color"
+                mat-table
+                [dataSource]="dataSource"
+                *ngFor="let table of tables"
+              >
+                <ng-container matColumnDef="student">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="student"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="Student Header"
+                  >
+                    Student (50)
+                  </th>
+                  <td
+                    mat-cell
+                    *matCellDef="let element"
+                    fxLayout="row"
+                    fxLayoutAlign="start start"
+                  >
+                    <img class="avatar" src="{{ element.src }}" fxHide.xs />
+                    <span
+                      tabindex="0"
+                      attr.aria-label="Student is {{ element.student }}"
+                      class="list-item-name"
+                      >{{ element.student }}</span
+                    >
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="is">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="is"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="IS"
+                  >
+                    IS
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div
+                      class="status-badge cursor-pointer getstarted"
+                      tabindex="0"
+                      aria-label="Get Started"
+                    >
+                      Get Started
+                    </div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="mmr">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="mmr"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="MMR Header"
+                  >
+                    MMR
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div
+                      class="status-badge cursor-pointer disapproved"
+                      tabindex="0"
+                      aria-label="Disapproved"
+                    >
+                      Disapproved
+                    </div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="flu">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="flu"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="Flu Header"
+                  >
+                    FLU
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div
+                      class="status-badge cursor-pointer inprogress"
+                      tabindex="0"
+                      aria-label="In Progress"
+                    >
+                      In Progress
+                    </div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tb">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="tb"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="TB Header"
+                  >
+                    TB
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div
+                      class="status-badge cursor-pointer pending"
+                      tabindex="0"
+                      aria-label="Pending for Review"
+                    >
+                      Pending for Review
+                    </div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="hepb">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="hepb"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="Herb Header"
+                  >
+                    HEP B
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div
+                      class="status-badge cursor-pointer approved"
+                      tabindex="0"
+                      aria-label="Approved"
+                    >
+                      Approved
+                    </div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="varicella">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="varicella"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="varicella Header"
+                  >
+                    VARICELLA
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div
+                      class="status-badge cursor-pointer pending"
+                      tabindex="0"
+                      aria-label="Pending"
+                    >
+                      Pending
+                    </div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tdap">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="tdap"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="Tdap Header"
+                  >
+                    TDAP
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div
+                      class="status-badge cursor-pointer expiring"
+                      tabindex="0"
+                      aria-label="Expiring"
+                    >
+                      Expiring
+                    </div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="hi">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="hi"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="HI Header"
+                  >
+                    HI
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div
+                      class="status-badge cursor-pointer expired"
+                      tabindex="0"
+                      aria-label="Expired"
+                    >
+                      Expired
+                    </div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="cpr">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="cpr"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="CPR Header"
+                  >
+                    CPR
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div
+                      class="status-badge cursor-pointer getstarted"
+                      tabindex="0"
+                      aria-label="Get Started"
+                    >
+                      Get Started
+                    </div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="pals">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="pals"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="pals Header"
+                  >
+                    PALS
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div
+                      class="status-badge cursor-pointer expired"
+                      tabindex="0"
+                      aria-label="Expired"
+                    >
+                      Expired
+                    </div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="licensure">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="licensure"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="licensure Header"
+                  >
+                    LICENSURE
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div
+                      class="status-badge cursor-pointer pending"
+                      tabindex="0"
+                      aria-label="Pending"
+                    >
+                      Pending
+                    </div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="hipaa">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="hipaa"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="hipaa Header"
+                  >
+                    HIPAA
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div
+                      class="status-badge cursor-pointer approved"
+                      tabindex="0"
+                      aria-label="Approved"
+                    >
+                      Approved
+                    </div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="sis">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="sis"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="sis Header"
+                  >
+                    SIS
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div
+                      class="status-badge cursor-pointer getstarted"
+                      tabindex="0"
+                      aria-label="Get Started"
+                    >
+                      Get Started
+                    </div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="corf">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="corf"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="corf Header"
+                  >
+                    CORF
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div
+                      class="status-badge cursor-pointer getstarted"
+                      tabindex="0"
+                      aria-label="Get Started"
+                    >
+                      Get Started
+                    </div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="ds">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="ds"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="ds Header"
+                  >
+                    DS
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div
+                      class="status-badge cursor-pointer pending"
+                      tabindex="0"
+                      aria-label="Pending"
+                    >
+                      Pending
+                    </div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="bgc">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="bgc"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="bgc Header"
+                  >
+                    BGC
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div
+                      class="status-badge cursor-pointer getstarted"
+                      tabindex="0"
+                      aria-label="Get Started"
+                    >
+                      Get Started
+                    </div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="fp">
+                  <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    id="fp"
+                    tabindex="0"
+                    aria-hidden="false"
+                    aria-label="fp Header"
+                  >
+                    FP
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div
+                      class="status-badge cursor-pointer approved"
+                      tabindex="0"
+                      aria-label="Approved"
+                    >
+                      Approved
+                    </div>
+                  </td>
+                </ng-container>
+
+                <tr
+                  mat-header-row
+                  *matHeaderRowDef="displayedColumns; sticky: true"
+                ></tr>
+
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: displayedColumns"
+                ></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </flex-table>
+
+      <mat-paginator [pageSize]="30" class="h-50"></mat-paginator>
+    </div>
+  </div>
+</div>

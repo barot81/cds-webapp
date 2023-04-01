@@ -1,0 +1,21 @@
+<div class="drawer-p">
+  <mat-card fxLayout="column" fxLayoutAlign="center">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Type of document</mat-label>
+        <mat-select formControlName="document">
+          <mat-option *ngFor="let document of documentList" value="{{document.value}}">
+            {{document.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error>Gender is required!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column">
+      <span class="font-weight-600 mb-8">Upload files</span>
+      <exxat-file-upload  [fileConfiguration]="fileConfiguration"
+      formControlName="fileDescriptions" tabindex="0" aria-label="Browse to upload files"></exxat-file-upload>
+    </div>
+  </mat-card>
+</div>

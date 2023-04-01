@@ -1,0 +1,20 @@
+
+          <div *ngIf="visible =='onHover' || visible =='' || !visible">
+            <div matTooltip={{text}} matTooltipPosition="below">
+              <ng-content select="[tooltip-onHover]"></ng-content>
+            </div>
+          </div>
+    
+         <div *ngIf="visible =='onClick'">
+          <div matTooltip={{text}} matTooltipPosition="below" [matTooltipShowDelay]="showDelay.value"
+            [matTooltipHideDelay]="hideDelay.value">
+            <ng-content select="[tooltip-onClick]"></ng-content>
+          </div>
+         </div>
+
+         <div *ngIf="visible =='always'">
+          <div class="tooltip">
+            <ng-content select="[tooltip-always]"></ng-content>
+            <span class="tooltiptext">{{text}}</span>
+          </div>
+         </div>

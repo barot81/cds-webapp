@@ -1,0 +1,1 @@
+export * from './demo-side-bar/demo-side-bar.component';

@@ -1,0 +1,182 @@
+<!-- <img class="w-100-p h-100-p" src="assets\images\UX_Process-1.png"> -->
+<div class="page-layout carded ">
+
+
+  <table class="Grid-accessibility exxat-table " cellspacing="0">
+    <h2 class="mb-16">Accessibility Ownership Chart
+    </h2>
+    <tr class="table-head mat-header-row">
+      <th class="control">Controls</th>
+      <th class="team">Who owns</th>
+      <th class="status">Status</th>
+      <th class="notes">Notes</th>
+      
+
+    </tr>
+
+    <tr class="mat-row">
+      <td class="">Tab bar</td>
+      <td fxLayout="column" fxLayoutAlign="center center">
+      <span>UX</span>
+      </td>
+     
+        <td>Done</td>
+       <td> <p >As mat-tab-nav-bar is using the navigation accessibility concepts defined by angular material library only,
+          it will not good to set custom functionality of accessibility on that and it can also cause problems in
+          default accessibility behavior of this component.
+        </p>
+      
+      </td>
+    </tr>
+    <tr class="mat-row">
+
+      <td class="">Show-more less</td>
+      <td fxLayout="column" fxLayoutAlign="center center">
+        <span>UX</span>
+      </td>
+      <td>Done</td>
+      <td>
+        <p>--</p>
+      </td>
+    </tr>
+    <tr class="mat-row">
+
+      <td class="">File upload</td>
+
+     <td fxLayout="column" fxLayoutAlign="center center">
+        <span>Foundation</span></td>
+        <td>Not started yet</td>
+      <td>
+        <p>Not started yet</p>
+      </td>
+    </tr>
+    <tr class="mat-row">
+
+      <td class="">Product Pages</td>
+
+     <td fxLayout="column" fxLayoutAlign="center center">
+      <span>Product</span>
+     </td>
+     
+      <td></td>
+      <td>
+        <p>Product pages are owned by the respective product Team. So taking care of accessibility will also be a prime
+          goal of each Team.</p>
+      </td>
+    </tr>
+    <tr class="mat-row">
+
+      <td class="">File viewer</td>
+
+     <td fxLayout="column" fxLayoutAlign="center center">
+        <span>Product</span></td>
+        <td></td>
+      <td>
+        <p>Product developers will be taking care of accessibility for this component</p>
+      </td>
+    </tr>
+    <tr class="mat-row">
+
+      <td class="">Wizard</td>
+      <td fxLayout="column" fxLayoutAlign="center center">
+        <span>UX</span></td>
+        <td>Done</td>
+      <td>
+        <p >Working Fine</p>
+      </td>
+    </tr>
+    <tr class="mat-row">
+
+      <td class="">resizable-demo</td>
+      <td fxLayout="column" fxLayoutAlign="center center">UX</td>
+      <td>--</td>
+      <td>
+        <p>Not applicable for accessibility</p>
+      </td>
+    </tr>
+    <tr class="mat-row">
+
+      <td class="">exxat-tag-example</td>
+      <td fxLayout="column" fxLayoutAlign="center center">
+        <span>UX</span>
+      </td>
+      <td>Need to redesign, not accessible by FUSE</td>
+      <td>
+        <p>Exxat Tag component is build on mat-manu component and mat-menu accessibility only work on keyboard up, down, left ,right and enter keys and in mat-menu focus can't be shifted dynamically also. so, for accessibility purpose in Tag component we have to develop new component.</p>
+      </td>
+    </tr>
+
+    <tr class="mat-row">
+
+      <td class="">chips-with-custom-input</td>
+      <td fxLayout="column" fxLayoutAlign="center center"> <span>UX</span></td>
+      <td></td>
+      <td>
+        <p>Material chips is assigned role as listbox and each chip is assigned role as a option, so it is working like a dropdown for example. So there is no provision to add other interactive element like button, links etc which will get focus on tab key. thus, to get focus on close button will not take place in tab order. </p>
+      </td>
+    </tr>
+    <tr class="mat-row">
+
+      <td class="">exxat-avatar-list-item-demo</td>
+      <td fxLayout="column" fxLayoutAlign="center center">
+        <span>UX</span>
+      </td>
+      <td>Done</td>
+      <td>
+        <p>Working Fine</p>
+      </td>
+    </tr>
+    <tr class="mat-row">
+
+      <td class="">Drag Drop</td>
+      <td fxLayout="column" fxLayoutAlign="center center">UX</td>
+      <td>We need to think alternate way for drag drop</td>
+      <td>
+        <p>We need to think alternate way for drag drop</p>
+      </td>
+    </tr> 
+  </table>
+
+
+  <div class="Grid-accessibility">
+    <h3 class="my-20">Description with exampe</h3>
+    <img src="/assets/images/tab-screenshot.png">
+    <ul>
+      <li>
+
+        
+    <p class="font-16 pt-12">
+When we tab on <strong>"Academic Info”</strong> Tab,  card will open up below it,  But the focus won't gets shifted (To Status heading) untill the screen reader reads all the tabs. This is a default material behaviour .<br/>
+
+<code>Solution: once the screen reads Status heading text,  we need to add the name of the tab to it, so that user comes to know the data is of Academic info tab
+  eg: status for Academic info </code>
+
+
+
+    </p>
+      </li>
+      <li>
+        <p class="font-16 pt-12">
+      In the left side bar, when user selects any student using keyborad controls, the right side should show respective details of the student selectd and focus should shift on right side.<br/>
+      eg: when we press 'enter' on Adams, Gloriag , the data for this student should come on right, and focus shifts on right and screen reader will read Adams, Gloriag details.</p>
+      </li>
+      <li>
+        <p class="font-16 pt-12">
+        All drawers should open on click of any action from keyboard <br/>
+
+        <code>Note: Accessibility inside drawer is in Progress .Please igonre it for now.</code></p>
+      </li>
+      <li>
+        <p class="font-16 pt-12">
+        In accessibility mode, what screen reader should read for links/ buttons/ titles are owned by respective products.</p>
+      </li>
+      <li>
+        <p class="font-16 pt-12">
+          Screen up and down key will not work for now</p>
+      </li>
+    </ul>
+ 
+  </div>
+
+
+</div>

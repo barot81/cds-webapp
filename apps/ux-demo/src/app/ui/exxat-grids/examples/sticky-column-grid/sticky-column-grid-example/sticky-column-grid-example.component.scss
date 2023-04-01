@@ -1,0 +1,8 @@
+@import 'init';
+
+  .student-column {
+    min-width: 12vw;
+    @include media-breakpoint('lt-md') {
+      min-width: 40vw;
+    }
+}

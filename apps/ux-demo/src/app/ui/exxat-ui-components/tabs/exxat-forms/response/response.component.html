@@ -1,0 +1,110 @@
+<div class="content pt-16" fxLayout="column">
+
+  <div class="m-8 ml-16" fxLayout="row">
+    <span class="font-16">
+      <ul tabindex="0" aria-label="instruction list">
+        <li tabindex="0" aria-label="one , Material tree example with checkbox and add functionality">
+          Response comprise of 2 documents - Data & Log.
+        </li>
+      </ul>
+    </span>
+  </div>
+  <div fxLayout="row wrap" fxFlex="100">
+
+    <div class="preview mt-16" fxLayout="column" fxLayoutAlign="start" fxFlex.gt-md="100" fxFlex="100">
+      <mat-tab-group dynamicHeight="true" selectedIndex="0">
+        <mat-tab label="Data">
+          <div class="pt-16">
+            <fuse-highlight lang="json" class="source-code">
+              <textarea #source hidden="hidden">
+                {
+                  "responseId": "8a77f07d-ce34-46d7-aa02-f48f55e1128d",
+                  "workflowStatusId": "Step.Evaluation.StartFinal",
+                  "sections": [
+                      {
+                          "sectionId": "Section.PTSE1.Orientation",
+                          "values": {
+                              "priorInformation": "Yes",
+                              "onSiteAwareness": "Yes",
+                              "orientationInformation": "I can't think of anything missing from the orientation."
+                          }
+                      },
+                      {
+                          "sectionId": "Section.PTSE1.Orientation",
+                          "values": {
+                              "priorInformation1": "Yes",
+                              "onSiteAwareness2": "Yes",
+                              "orientationInformation3": "I can't think of anything missing from the orientation."
+                          }
+                      }
+                  ],
+                  "securityContext": {
+                      "tenantId": "Exxat",
+                      "owningOrganizationUnit": "P004",
+                      "owningUser": "2469"
+                  },
+                  "contextIds": {
+                      "formId": "Exxat.Student-Evaluation.PTSE1",
+                      "targetId": "5386c924-fb2c-4ab6-9550-ed089abae7b7",
+                      "groupId": "0a8dd377-12d7-4c70-a675-196046c8b2c8"
+                  },
+                  "partitionKey": "UTAH",
+                  "entityName": "Exxat.Forms.Entity.Response.Values",
+                  "id": "bf98473b-efb9-4adf-beb5-f46c0f03528a"
+              }
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Data UML">
+          <div class="pt-16 img-container">
+            <img src="assets/images/exxat-forms/Response_Data.JPG" />
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Log">
+          <div class="pt-16">
+            <fuse-highlight lang="json" class="source-code">
+              <textarea #source hidden="hidden">
+                {
+                  "responseId": "e35f481d-85a0-40ad-94f6-20cdcc1b2868",
+                  "performedActions": [
+                      {
+                          "actionId": "Action.CIET.AdminReview",
+                          "label": "Reviewed",
+                          "type": "SUBMIT",
+                          "updatedBy": "Patrick Owen",
+                          "updatedByUserId": "100",
+                          "updatedOn": "08/24/2021 14:14:22",
+                          "comment": ""
+                      }
+                  ],
+                  "securityContext": {
+                      "tenantId": "UTAH",
+                      "owningOrganizationUnit": "P004",
+                      "owningUser": "2469"
+                  },
+                  "contextIds": {
+                      "formId": "Exxat.Student-Evaluation.PTSE1",
+                      "targetId": "5386c924-fb2c-4ab6-9550-ed089abae7b7",
+                      "groupId": "0a8dd377-12d7-4c70-a675-196046c8b2c8"
+                  },
+                  "partitionKey": "Exxat",
+                  "entityName": "Exxat.Forms.Entity.Response.Logs"
+              }                
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Log UML">
+          <div class="pt-16 img-container">
+            <img src="assets/images/exxat-forms/Log.png" />
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

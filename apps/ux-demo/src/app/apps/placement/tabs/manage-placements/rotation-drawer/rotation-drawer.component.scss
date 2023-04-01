@@ -1,0 +1,44 @@
+@import 'init';
+
+#rotation-drawer {
+  .placement-message-box {
+    max-width: max-content;
+    padding: 4px 8px;
+    font-size: px-to-rem(12) !important;
+  }
+
+  .header-icon {
+    .mat-icon {
+      margin-left: 8px;
+    }
+  }
+
+  .header-filters {
+    margin-right: 16px;
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+
+  .spacing-wraper {
+    div {
+      margin-left: 8px;
+      &:first-child {
+        margin-left: 0px;
+      }
+    }
+  }
+
+  .drawer-table {
+    table {
+      tr {
+        td.mat-cell,
+        th.mat-header-cell {
+          @include media-breakpoint('lt-lg') {
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,866 @@
+<div
+  class="page-layout simple left-sidebar inner-sidebar inner-scroll slot-and-placement-demo-page"
+>
+  <!-- HEADER -->
+  <div
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    class="pt-xs-16 px-xs-16"
+    #header_content
+  >
+    <div fxLayout="column">
+      <exxat-breadcrumb
+        [dataSource]="breadcrumbs"
+        [type]="_breadCrumbType.PARTIAL"
+      >
+      </exxat-breadcrumb>
+      <div
+        fxLayout="row wrap"
+        fxLayoutAlign="start center"
+        class="gray-text-color mt-16"
+      >
+        <span class="pr-8" tabindex="0" aria-label="Class of 2023 - R">
+          Class of 2023 - R</span
+        >| <span class="px-8" tabindex="0" aria-label="Second"> Second</span>|
+        <span class="px-8" tabindex="0" aria-label="Fall">Fall</span>|
+        <span class="px-8" tabindex="0" aria-label="2020 - 2021">
+          2020 - 2021</span
+        >
+      </div>
+    </div>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content height-inherit">
+    <!-- SIDEBAR -->
+
+    <fuse-sidebar
+      tabindex="0"
+      aria-label="sidebar"
+      class="sidebar sidebar-width sidebar-expand-collapse mt-lg-16"
+      name="carded-left-sidebar-tabbed-2"
+      position="left"
+      lockedOpen="gt-md"
+      [folded]="false"
+      [foldedWidth]="60"
+      [foldedAutoTriggerOnHover]="true"
+    >
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="pr-4">
+        <div
+          class="search-wrapper hide-content-folded"
+          fxFlex="80"
+          tabindex="0"
+          aria-label="searchbar"
+        >
+          <div
+            class="search sidenav-search"
+            fxFlex
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <i
+              aria-hidden="true"
+              class="fa-light fa-magnifying-glass s-18"
+              fxFlex="10"
+            ></i>
+            <input
+              type="text"
+              class="font-14"
+              placeholder="Search"
+              fxFlex="90"
+            />
+          </div>
+        </div>
+        <button
+          mat-icon-button
+          class="toggle-sidebar-folded"
+          fxLayoutAlign="center center"
+          class="ml-8"
+          (click)="toggleSidebarFolded()"
+          fxHide.lt-lg
+          tabindex="0"
+          aria-label="toggle arrow for sidebar"
+        >
+          <i
+            aria-hidden="true"
+            class="fa-light fa-chevron-left s-16 left-arrow sidebar-blue-icon mr-4"
+          ></i>
+          <i
+            aria-hidden="true"
+            class="fa-light fa-chevron-right s-16 right-arrow display-none sidebar-blue-icon pl-4"
+          ></i>
+          <i
+            aria-hidden="true"
+            class="fa-light fa-thumbtack s-16 pin-sticky sidebar-blue-icon mr-4"
+          ></i>
+        </button>
+      </div>
+      <mat-divider class="hide-divider"></mat-divider>
+
+      <div
+        class="content position-relative"
+        fusePerfectScrollbar
+        [fusePerfectScrollbarOptions]="{ suppressScrollX: true }"
+        tabindex="0"
+        aria-label="sidebar content"
+      >
+        <mat-list class="p-0" fxLayout="column">
+          <!-- contains submenu -->
+          <div>
+            <button
+              mat-button
+              class="p-0 w-100-p parent"
+              [ngClass]="{ 'expanded-text': showSubmenu }"
+            >
+              <mat-list-item
+                class="py-12 px-16 w-100-p"
+                fxLayoutAlign="start center"
+              >
+                <i aria-hidden="true" class="fa-light fa-books s-18"></i>
+                <span
+                  class="text-left pl-16 w-100-p hide-content-folded"
+                  *ngIf="isExpanded || isShowing"
+                  >Course information</span
+                >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-chevron-down s-16 arrow-expand-collapse hide-content-folded"
+                  [ngClass]="{ rotated: showSubmenu }"
+                  *ngIf="isExpanded || isShowing"
+                ></i>
+              </mat-list-item>
+            </button>
+          </div>
+
+          <button mat-button class="p-0 w-100-p">
+            <mat-list-item
+              class="py-12 px-16 w-100-p"
+              fxLayoutAlign="start center"
+            >
+              <i aria-hidden="true" class="fa-light fa-book-reader s-18"></i>
+              <span class="text-left pl-16 w-100-p hide-content-folded"
+                >Student</span
+              >
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p">
+            <mat-list-item
+              class="py-12 px-16 w-100-p active-item-class"
+              fxLayoutAlign="start center"
+            >
+              <i aria-hidden="true" class="fa-light fa-file-alt s-18"></i>
+              <span class="text-left pl-16 w-100-p hide-content-folded"
+                >Compliance</span
+              >
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p">
+            <mat-list-item
+              class="py-12 px-16 w-100-p"
+              fxLayoutAlign="start center"
+            >
+              <i aria-hidden="true" class="fa-light fa-hospital-user s-18"></i>
+              <span class="text-left pl-16 w-100-p hide-content-folded"
+                >Placement</span
+              >
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p">
+            <mat-list-item
+              class="py-12 px-16 w-100-p"
+              fxLayoutAlign="start center"
+            >
+              <i
+                aria-hidden="true"
+                class="fa-light fa-chalkboard-teacher s-18"
+              ></i>
+              <span class="text-left pl-16 w-100-p hide-content-folded"
+                >Learning activity</span
+              >
+            </mat-list-item>
+          </button>
+        </mat-list>
+      </div>
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+    <div class="center right-side-content ml-lg-16" fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <button
+            mat-icon-button
+            class="sidebar-toggle"
+            fxHide.gt-md
+            (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="table-rounded-border white-background w-100-p mt-16"
+        [style.height.px]="
+          headerService.scrollContentheight - (header_content_height$ | async)
+        "
+        fxLayout="column"
+      >
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
+            <div class="search-wrapper" fxFlex="100">
+              <div
+                class="search table-search"
+                fxFlex
+                fxLayout="row"
+                fxLayoutAlign="start center"
+              >
+                <i aria-hidden="true" class="fa-light fa-search s-18"></i>
+                <input type="text" placeholder="Search in 50 student" fxFlex />
+              </div>
+            </div>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="end center"
+              class="border-right h-48 pr-16"
+              fxHide.lt-md
+            >
+              <button
+                mat-stroked-button
+                color="primary"
+                class="mr-12"
+                aria-label="Add action 1"
+              >
+                <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+                <span class="ml-4">Add action 1</span>
+              </button>
+              <button
+                mat-stroked-button
+                color="primary"
+                aria-label="Add action 2"
+              >
+                <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+                <span class="ml-4">Add action 2</span>
+              </button>
+            </div>
+            <div fxLayout="row" class="mr-16 ml-8">
+              <button
+                tabindex="0"
+                aria-label="Export Table"
+                mat-icon-button
+                class="ml-8"
+                fxHide.lt-md
+              >
+                <i aria-hidden="true" class="fa-light fa-file-export s-18"></i>
+              </button>
+              <button
+                tabindex="0"
+                aria-label="Edit Columns"
+                mat-icon-button
+                class="ml-4"
+                fxHide.lt-md
+              >
+                <i aria-hidden="true" class="fa-light fa-wrench s-18"></i>
+              </button>
+
+              <button
+                tabindex="0"
+                aria-label="Expand Table"
+                mat-icon-button
+                class="ml-4"
+                fxHide.lt-md
+              >
+                <i aria-hidden="true" class="fa-light fa-expand s-18"></i>
+              </button>
+
+              <button
+                mat-icon-button
+                class="ml-4 filter-icon-button"
+                aria-label="filters"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
+                  <span> 12 </span>
+                </div>
+              </button>
+              <button
+                tabindex="0"
+                aria-label="mat menu"
+                mat-icon-button
+                [matMenuTriggerFor]="menu"
+                class="ml-4"
+                fxHide.gt-sm
+              >
+                <i aria-hidden="true" class="fal fa-ellipsis-h s-18"></i>
+              </button>
+              <mat-menu #menu="matMenu" fxHide.gt-sm>
+                <button mat-menu-item aria-label="Action 1">
+                  <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i
+                  >Action 1
+                </button>
+                <button mat-menu-item aria-label="Action 2">
+                  <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i
+                  >Action 2
+                </button>
+                <button mat-menu-item aria-label="Edit Columns">
+                  <i aria-hidden="true" class="fa-light fa-wrench s-18 mr-8"></i
+                  >Edit columns
+                </button>
+                <button mat-menu-item aria-label="Export file">
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-file-export s-18 mr-8"
+                  ></i
+                  >Export file
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content overflow-auto w-100-p"
+          tabindex="0"
+          fusePerfectScrollbar
+        >
+          <table
+            aria-label="This is a slot placement table"
+            mat-table
+            [dataSource]="dataSource"
+            class="w-100-p exxat-table pt-0"
+            id="expand-collapse-grid"
+          >
+            <!-- id Column -->
+            <ng-container matColumnDef="id">
+              <th class="id-column" mat-header-cell *matHeaderCellDef></th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="id-column text-center vertical-align-top"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <button (click)="expandCollapse(element)">
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-angle-up s-18 icon-fill"
+                      *ngIf="element.isExpandedContent"
+                    ></i>
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-angle-down s-18 icon-fill"
+                      *ngIf="!element.isExpandedContent"
+                    ></i>
+                  </button>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- checkbox Column -->
+            <ng-container matColumnDef="checkbox">
+              <th
+                tabindex="0"
+                aria-label="checkbox column"
+                class="checkbox-column text-center"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                <div>
+                  <mat-checkbox></mat-checkbox>
+                </div>
+              </th>
+              <td
+                tabindex="0"
+                aria-label="checkbox column"
+                mat-cell
+                *matCellDef="let element"
+                class="checkbox-column text-center vertical-align-top"
+              >
+                <mat-checkbox></mat-checkbox>
+              </td>
+            </ng-container>
+
+            <!-- location Column -->
+            <ng-container matColumnDef="location">
+              <th mat-header-cell *matHeaderCellDef class="location-column">
+                Location
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="location-column vertical-align-top"
+              >
+                <div fxLayout="column">
+                  <div fxLayout="column">
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                      class="pb-4"
+                    >
+                      <span class="font-weight-600 mr-8 overflow-ellipses"
+                        >Massachusetts General Hospital - Newyork</span
+                      >
+                      <button
+                        [tooltip]="HtmlContent"
+                        [options]="tooltipOptions"
+                        aria-label="tooltip toggle"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-info-circle s-18 py-4"
+                        ></i>
+                      </button>
+                      <!-- Tooltip content -->
+                      <ng-template #HtmlContent>
+                        <div
+                          fxLayout="column"
+                          fxLayoutAlign="start start"
+                          class="p-8"
+                          tabindex="0"
+                          aria-label="this is a tooltip"
+                        >
+                          <div
+                            fxLayout="row"
+                            fxLayoutAlign="space-between start"
+                          >
+                            <div fxFlex="75">
+                              <span
+                                class="accent-fg font-weight-600 font-16"
+                                tabindex="0"
+                                aria-label="Massachusetts General Hospital -  Newyork Newyork "
+                                >Massachusetts General Hospital - Newyork
+                                Newyork
+                              </span>
+                              <span
+                                class="ml-8"
+                                tabindex="0"
+                                aria-label="In area"
+                                >In-Area</span
+                              >
+                            </div>
+                            <div fxFlex="25" class="pt-4">
+                              <a tabindex="0" aria-label="view details link"
+                                >View Details</a
+                              >
+                              <i
+                                aria-hidden="true"
+                                class="fa-light fa-external-link s-16 ml-12 icon-blue-color"
+                              ></i>
+                            </div>
+                          </div>
+                          <span tabindex="0" aria-label="Rochester, NY"
+                            >Rochester, NY</span
+                          >
+                          <div fxLayout="column" class="pt-16">
+                            <span
+                              class="font-weight-600"
+                              tabindex="0"
+                              aria-label="Site"
+                              >Site</span
+                            >
+                            <span
+                              tabindex="0"
+                              aria-label="Autumn Winds Retirement Lodge"
+                              >Autumn Winds Retirement Lodge</span
+                            >
+                          </div>
+
+                          <div fxLayout="row" class="pt-24 w-100-p">
+                            <div fxLayout="column" fxFlex="50">
+                              <span
+                                class="font-weight-600"
+                                tabindex="0"
+                                aria-label="Location status"
+                                >Location status</span
+                              >
+                              <div
+                                class="pt-4"
+                                fxLayout="row"
+                                fxLayoutAlign="start center"
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  class="fa-light fa-exclamation-triangle s-16 warn-fg"
+                                ></i>
+                                <span
+                                  class="warn-fg pl-8"
+                                  tabindex="0"
+                                  aria-label="status is In-Active"
+                                  >In-Active</span
+                                >
+                              </div>
+                            </div>
+                            <div fxLayout="column" fxFlex="50">
+                              <span
+                                class="font-weight-600"
+                                tabindex="0"
+                                aria-label="Contract"
+                                >Contract</span
+                              >
+                              <div
+                                class="pt-4"
+                                fxLayout="row"
+                                fxLayoutAlign="start center"
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  class="fa-light fa-exclamation-triangle s-16 warn-fg"
+                                ></i>
+                                <span
+                                  class="warn-fg pl-8"
+                                  tabindex="0"
+                                  aria-label="Valid upto Jan 20, 2021"
+                                  >Valid upto Jan 20, 2021</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+
+                          <div fxLayout="column" class="pt-24">
+                            <span
+                              class="font-weight-600"
+                              tabindex="0"
+                              aria-label="Rotation date"
+                              >Rotation date</span
+                            >
+                            <span
+                              tabindex="0"
+                              aria-label="Jan 22, 2021 - Feb 22, 2021"
+                              >Jan 22, 2021 - Feb 22, 2021</span
+                            >
+                          </div>
+                        </div>
+                      </ng-template>
+                      <!-- tooltip content end -->
+                    </div>
+                    <div fxLayout="row wrap" fxLayoutAlign="start center">
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        <span class="mr-8">Rochester, NY</span>
+                        <span class="miles-chip mr-8">10 miles</span>
+                      </div>
+                      <div fxLayoutAlign="start" fxLayout="row">
+                        <mat-menu #tagsMenu="matMenu" [overlapTrigger]="false">
+                          <exxat-tag
+                            [tags]="tags"
+                            [options]="tagOptions"
+                            (onTagChanges)="onTagChanges($event)"
+                          >
+                          </exxat-tag>
+                        </mat-menu>
+                        <div
+                          fxLayout="row wrap"
+                          fxLayoutAlign="start center"
+                          class="pt-4"
+                        >
+                          <exxat-tag-showcase
+                            [tags]="tags"
+                          ></exxat-tag-showcase>
+                        </div>
+                      </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                      <span class="pr-8">Class 2023 1st CEE </span>
+                      |
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="px-8"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-hospital-user s-14 mr-12"
+                        ></i>
+                        <span>Michel sheen</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    fxLayout="column"
+                    [ngClass]="
+                      element.isExpandedContent ? '' : 'email-content-hide'
+                    "
+                  >
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start start"
+                      class="mt-24"
+                    >
+                      <span class="font-weight-600">Email Status : </span>
+                      <div fxLayout="column" class="pl-4">
+                        <span class="text-italic"> Student: May 15, 2021</span>
+                        <span class="text-italic"> Site: May 15, 2021</span>
+                      </div>
+                    </div>
+                    <span class="text-italic pt-4"
+                      >Last updated by <strong>S. Michel</strong> on
+                      <strong>May 30, 2021</strong></span
+                    >
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- slots Column -->
+            <ng-container matColumnDef="slots">
+              <th mat-header-cell *matHeaderCellDef class="slots-column">
+                Slots
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="slots-column vertical-align-top"
+              >
+                <div fxLayout="column">
+                  <div fxLayout="row" fxLayoutAlign="start center" class="mb-8">
+                    <a class="mr-8"> 6 slots offered</a>
+                    <span
+                      class="exxat-robin-egg-blue-bg py-4 width-fit-content px-16 border-radius-16 mr-16 mt-4"
+                      >Internal medicine
+                    </span>
+                  </div>
+                  <div
+                    [ngClass]="
+                      element.isExpandedContent
+                        ? 'expanded-content'
+                        : 'collapsed-content'
+                    "
+                  >
+                    <span class="mr-16 mb-8">Aug 29, 2022 - Oct 21, 2022</span>
+                    <div
+                      [ngClass]="
+                        element.isExpandedContent
+                          ? 'expanded-content'
+                          : 'collapsed-content'
+                      "
+                    >
+                      <div fxLayoutAlign="start center" fxLayout="row">
+                        <div
+                          fxLayoutAlign="start center"
+                          fxLayout="row"
+                          class="icon-spacing mr-12"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-check-circle s-18 primary-fg"
+                          ></i>
+                          <span class="hide-content space-no-wrap"
+                            >Confirmed (3)</span
+                          >
+                        </div>
+                        <div
+                          fxLayoutAlign="start center"
+                          fxLayout="row"
+                          class="icon-spacing mr-12"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-exclamation-circle orange-fg s-18"
+                          ></i>
+                          <span class="hide-content space-no-wrap"
+                            >Tentative (2)</span
+                          >
+                        </div>
+                        <div
+                          fxLayoutAlign="start center"
+                          fxLayout="row"
+                          class="icon-spacing mr-12"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="fal fa-times-circle red-fg s-18"
+                          ></i>
+                          <span class="hide-content space-no-wrap"
+                            >Cancelled (1)</span
+                          >
+                        </div>
+                      </div>
+                      <div
+                        fxLayoutAlign="start center"
+                        fxLayout="row"
+                        class="icon-spacing mr-12"
+                      >
+                        <i aria-hidden="true" class="fa-light fa-list s-18"></i>
+                        <span class="hide-content"
+                          >FCFS, Resume required &nbsp; |</span
+                        >
+                        <span class="hide-content"
+                          ><i
+                            aria-hidden="true"
+                            class="fa-light fa-user-friends s-14 mr-12"
+                          ></i
+                          >1 Student:2 CI'S</span
+                        >
+                      </div>
+                      <div
+                        fxLayoutAlign="start center"
+                        fxLayout="row"
+                        class="icon-spacing mr-12"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-globe-asia s-18"
+                        ></i>
+                        <span class="hide-content"
+                          >Published -May 15, 2021</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start center">
+                    <a>7 students interested</a>
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- placements Column -->
+            <ng-container matColumnDef="placements">
+              <th mat-header-cell *matHeaderCellDef class="placements-column">
+                Placements
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="placements-column vertical-align-top"
+              >
+                <div fxLayout="column">
+                  <div>
+                    <button
+                      mat-raised-button
+                      color="accent"
+                      class="button-height-condensed mt-4"
+                      aria-label="Slot is 2 Slots Available"
+                    >
+                      2 Slots Available
+                    </button>
+                  </div>
+                  <div
+                    fxLayout="row wrap"
+                    fxLayoutAlign="start center"
+                    class="mt-8 mb-4"
+                  >
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                      class="mb-4 mr-8"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-user-graduate s-12 icon-blue-color mr-4"
+                      ></i>
+                      <a>Fisher Cody</a>
+                    </div>
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                      class="mb-4 mr-8"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-globe-asia s-12 icon-blue-color mr-4"
+                      ></i>
+                      <a>Darrell Steward</a>
+                      <span class="miles-chip ml-8">PT -756</span>
+                    </div>
+                    <div
+                      fxLayout="row wrap"
+                      [ngClass]="
+                        element.isExpandedContent ? '' : 'email-content-hide'
+                      "
+                    >
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="mb-4 mr-8"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-user-graduate s-12 icon-blue-color mr-4"
+                        ></i>
+                        <a>Fisher Cody</a>
+                      </div>
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="mb-4 mr-8"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-user-graduate s-12 icon-blue-color mr-4"
+                        ></i>
+                        <a>Fisher Cody</a>
+                      </div>
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="mb-4 mr-8"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-user-graduate s-12 icon-blue-color mr-4"
+                        ></i>
+                        <a>Fisher Cody</a>
+                      </div>
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="mb-4 mr-8"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-user-graduate s-12 icon-blue-color mr-4"
+                        ></i>
+                        <a>Fisher Cody</a>
+                      </div>
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="mb-4 mr-8"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-user-graduate s-12 icon-blue-color mr-4"
+                        ></i>
+                        <a>Fisher Cody</a>
+                      </div>
+                    </div>
+                  </div>
+                  <a class="font-weight-600" (click)="expandCollapse(element)">
+                    <span *ngIf="element.isExpandedContent"></span>
+                    <span *ngIf="!element.isExpandedContent"
+                      >+2 Students Placed</span
+                    >
+                  </a>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"
+            ></tr>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: displayedColumns"
+              [ngClass]="row.isExpandedContent ? '' : ''"
+              class="py-8"
+              (click)="clickedRows.add(row)"
+              [class.row-selected]="clickedRows.has(row)"
+              [class.row-highlighted]="highlightedRows.has(row)"
+            ></tr>
+          </table>
+        </div>
+        <div class="border-light-top">
+          <mat-paginator tabindex="0" [pageSize]="30"></mat-paginator>
+        </div>
+      </div>
+      <!-- / CONTENT -->
+    </div>
+    <!-- / CENTER -->
+  </div>
+</div>

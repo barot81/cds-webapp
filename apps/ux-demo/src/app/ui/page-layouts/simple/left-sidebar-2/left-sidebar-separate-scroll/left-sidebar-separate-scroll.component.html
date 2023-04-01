@@ -1,0 +1,51 @@
+<div class="content" >
+
+  <mat-dialog-content>
+  
+    <fuse-highlight lang="html" class="" fxLayout="column" fxLayoutAlign="start" fxFlex="100">
+      <textarea #source >
+                  <!-- /////////////////// Left sidebar with seprate scroll ////////////////// -->
+                    <div class="page-layout simple left-sidebar inner-scroll">
+                        <!-- SIDEBAR -->
+                      <fuse-sidebar class="sidebar" name="simple-left-sidebar-2" position="left" lockedOpen="gt-md">
+                          <!-- SIDEBAR CONTENT -->
+                          <div class="content" fusePerfectScrollbar>
+                            <fuse-demo-sidebar></fuse-demo-sidebar>
+                            You can add your sidebar content here.
+                          </div>
+                          <!-- / SIDEBAR CONTENT -->
+                      </fuse-sidebar>
+                        <!-- / SIDEBAR -->
+
+                        <!-- CENTER -->
+                          <div class="center" fusePerfectScrollbar>
+                              <!-- HEADER -->
+                            <header>Add your header here</header>
+                            <!-- toogle button -->
+                            <button mat-icon-button class="sidebar-toggle" fxHide.gt-md
+                            (click)="toggleSidebar('simple-left-sidebar-1')">
+                            <mat-icon>menu</mat-icon>
+                            </button>
+                            <!-- /toogle button -->
+                              <!-- / HEADER -->
+                            
+                              <!-- CONTENT goes here -->
+                              <div class="content">
+                                place your page content here.
+                              </div>
+                              <!-- / CONTENT -->
+                          </div>
+                                <!-- / CENTER -->
+                    </div>
+          
+        </textarea>
+    
+    </fuse-highlight>
+  
+  
+  </mat-dialog-content>
+  <!--<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+  </mat-dialog-actions>-->
+  </div>

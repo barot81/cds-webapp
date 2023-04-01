@@ -1,0 +1,121 @@
+<div id="exxat-drawers-form-examples" class="p-24">
+  <div class="mat-title">Exxat Drawers Form Examples</div>
+
+  <!-- @ Sample Form Example --->
+  <div fxLayout="column" fxLayout.gt-md="row">
+
+    <div class="preview" fxLayout="column" fxFlex="50">
+      <div class="mat-caption secondary-text">Sample Form Example</div>
+      <mat-card>
+        <button mat-icon-button color="primary" aria-label="Edit" exxatDrawerAction
+          [componentSelector]="exxatDrawerFormService.get('exxat-drawer-reactive-form')" [size]="'drawer-sm'"
+          [caption]="'Sample Form Example'" role="img">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-card>
+    </div>
+
+    <fuse-highlight lang="html" class="source-code" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <textarea #source hidden="hidden">
+        <form class="drawer-p" name="form" [formGroup]="form">
+          <mat-card fxLayout="column" class="mb-16">
+
+            <div fxLayout="row" fxLayoutAlign="space-between end">
+              <mat-form-field appearance="fill" fxFlex="100">
+                <mat-label>First name</mat-label>
+                <input matInput formControlName="firstName" required>
+                <mat-error>First Name is required!</mat-error>
+              </mat-form-field>
+            </div>
+            
+            <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto" class="w-50-p">
+              <section class="mb-16" fxLayout="column">
+                <mat-checkbox *ngFor="let check of checkboxList; let i = index" 
+                [ngClass]="{'mb-16': i < (checkboxList.length - 1) }" formControlName="checkbox">
+                  check.viewValue
+                </mat-checkbox>
+              </section>
+            </div>
+
+            <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto" class="w-50-p">
+              <mat-form-field appearance="fill" fxFlex="100">
+                <mat-label>Last 4 digits of SSN</mat-label>
+                <input matInput formControlName="ssn">
+                <mat-error>Last 4 digits of SSN is required!</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto" class="w-50-p mb-16">
+              <mat-radio-group aria-label="Select an option">
+                <mat-label class="font-16 mr-4"> Color : </mat-label>
+                <mat-radio-button class="mr-8" value="1"><span class="font-14">Option 1</span></mat-radio-button>
+                <mat-radio-button value="2"><span class="font-14">Option 2</span></mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+            <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+              <div class="text-center w-100-p">
+                <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>Comment</mat-label>
+                </mat-form-field>
+                </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="start center" class="w-50-p" fxFlex="1 0 auto">
+                  <mat-form-field appearance="fill" fxFlex="100">
+                    <mat-label>Date of Birth</mat-label>
+                    <input matInput [matDatepicker]="picker2">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2 color="primary" class="action-icon"></mat-datepicker>
+                  </mat-form-field>
+                </div>
+            
+                <div fxLayout="row" fxLayoutAlign="start center" class="w-50-p" fxFlex="1 0 auto">
+                  <mat-slide-toggle class="mb-16">Slide me!</mat-slide-toggle>
+                </div>
+                
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" class="w-50-p">
+                  <mat-form-field appearance="fill" fxFlex="100">
+                    <mat-label>Gender</mat-label>
+                    <mat-select formControlName="gender">
+                      <mat-option *ngFor="let gender of checkboxList" value="gender.value">
+                        gender.viewValue
+                      </mat-option>
+                    </mat-select>
+                    <mat-error>Gender is required!</mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="start center" class="w-50-p" fxFlex="1 0 auto">
+                  <mat-slider class="mb-16"></mat-slider>
+              </div>
+                  
+              </mat-card>
+
+              <mat-card fxLayout="column">
+                <div fxLayout="row" fxLayoutAlign="space-between end" *ngIf="chipsArray.length !==0">
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label>Multi Select Example</mat-label>
+                    <mat-chip-list #chipList>
+                      <mat-chip *ngFor="let item of chipsArray" [selectable]="selectable" [removable]="removable">
+                        item 
+                        <mat-icon matChipRemove *ngIf="removable"> cancel </mat-icon>
+                      </mat-chip>
+                    </mat-chip-list>
+                  </mat-form-field>
+                </div>
+            
+                <div>
+                  <button type="button" mat-raised-button class="mr-8 mb-8" *ngFor="let item of allchips"
+                    [ngStyle]="{ 'background-color' : (item.selected==true)? 'lightgrey' : '#ffff'}">
+                    item.value
+                  </button>
+                </div>
+
+              </mat-card>
+              </form>
+      </textarea>
+    </fuse-highlight>
+  </div>
+
+</div>

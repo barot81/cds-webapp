@@ -1,0 +1,137 @@
+<div
+  class="page-layout carded fullwidth full-width-page inner-scroll exxat-new-grid no-search-grid"
+  id="noSearchGrid"
+>
+  <div class="center p-0">
+    <div class="content-card border" fusePerfectScrollbar>
+      <div class="content" fusePerfectScrollbar tabindex="0">
+        <table
+          aria-label="This is a no search table"
+          mat-table
+          [dataSource]="dataSource"
+          class="w-100-p exxat-table"
+          matSort
+        >
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef class="name-column">
+              Name (50)
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element; let i = index"
+              class="name-column"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <a>{{ element.name }}</a>
+                <exxat-tag-showcase
+                  [tags]="tags"
+                  class="ml-4"
+                  *ngIf="i % 3 == 0"
+                ></exxat-tag-showcase>
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- setting Column -->
+          <ng-container matColumnDef="setting">
+            <th mat-header-cell *matHeaderCellDef class="setting-column">
+              Setting
+            </th>
+            <td mat-cell *matCellDef="let element" class="setting-column">
+              <div>
+                <mat-chip-list class="setting-chip-style">
+                  <mat-chip
+                    [class]="setting.color + '-bg'"
+                    fontColor
+                    tooltip="{{ setting.name }}"
+                    *ngFor="let setting of settingsList"
+                    [options]="tooltipOptionsTop"
+                    [isEnabled]="isTooltipEnable(setting.name)"
+                    class="space-no-wrap"
+                  >
+                    {{ isTextOverflow(setting.name) }}
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- email Column -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef class="email-width">Email</th>
+            <td mat-cell *matCellDef="let element" class="email-width">
+              <a>{{ element.email }}</a>
+            </td>
+          </ng-container>
+
+          <!-- phone Column -->
+          <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef class="column-width">
+              Phone
+            </th>
+            <td mat-cell *matCellDef="let element" class="column-width">
+              {{ element.phone }}
+            </td>
+          </ng-container>
+
+          <!-- cohort Column -->
+          <ng-container matColumnDef="cohort">
+            <th mat-header-cell *matHeaderCellDef class="column-width">
+              Cohort
+            </th>
+            <td mat-cell *matCellDef="let element" class="column-width">
+              {{ element.cohort }}
+            </td>
+          </ng-container>
+
+          <!-- status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef class="column-width">
+              Status
+            </th>
+            <td mat-cell *matCellDef="let element" class="column-width">
+              <div
+                class="status-badge {{ element.statusClass }} w-88 text-center"
+              >
+                {{ element.status }}
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- actions Column -->
+          <ng-container matColumnDef="actions">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              class="column-width border-right"
+            >
+              Actions
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              class="column-width border-right"
+            >
+              <button mat-icon-button aria-label="edit item">
+                <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+          ></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            (click)="addRow(row)"
+            [class.row-selected]="clickedRows.has(row)"
+            [class.row-highlighted]="highlightedRows.has(row)"
+          ></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

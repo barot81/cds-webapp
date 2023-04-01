@@ -1,0 +1,184 @@
+<div id="edit-slot-drawer" class="drawer-p" fxLayout="column">
+  <div class="mb-16 placement-drawer-header">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <span class="font-18 pl-4 pr-12">Ageless medical center - orlando</span>
+            <span class="message-box info">Oncology</span>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="s-20 pr-12">location_on</mat-icon>
+            <span class="accent-fg">3301 fm3009, schertz, tx 78154</span>
+          </div>
+        </div>
+      </div>
+  </div>
+  <!-- TWO COLUMN EXAMPLE -->
+  <div fxLayout="row wrap" fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-md="100">
+    <!-- 1st column -->
+    <div fxLayout="column wrap" fxFlex="100" fxFlex.gt-sm="70" fxFlex.gt-md="70">
+      <mat-card id="" class="mb-16">
+
+        <div fxLayout="row">
+          <div fxFlex="100" fxFlex.gt-sm="20" fxFlex.gt-md="20" fxLayout="column">
+            <span class="font-14">Slot type</span>
+            <span class="font-20 font-weight-600">300 hrs 15 mins</span>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="20" fxFlex.gt-md="20" fxLayout="column">
+            <span class="font-14">Supervision type</span>
+            <span class="font-20 font-weight-600">300 hrs 15 mins</span>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="20" fxFlex.gt-md="20" fxLayout="column">
+            <span class="font-14">Slot avalible</span>
+            <span class="font-20 font-weight-600">300 hrs 15 mins</span>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="20" fxFlex.gt-md="20" fxLayout="column">
+            <span class="font-14">Slot used</span>
+            <span class="font-20 font-weight-600">300 hrs 15 mins</span>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="20" fxFlex.gt-md="20" fxLayout="column">
+            <span class="font-14">Slot status</span>
+            <span class="font-20 font-weight-600">300 hrs 15 mins</span>
+          </div>
+        </div>
+      </mat-card>
+      <form name="form" [formGroup]="performForm">
+        <mat-card fxLayout="column">
+          <h4 class="primary-fg mb-12">Course and placement dates</h4>
+
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+            <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="50">
+              <mat-form-field appearance="fill" fxFlex="100">
+                <mat-label>Course</mat-label>
+                <mat-select formControlName="course">
+                  <mat-option *ngFor="let course of courseList" value="course.value">
+                    {{course.viewName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="50" class="pl-16">
+              <mat-form-field appearance="fill" fxFlex="100">
+                <mat-label>Program requirement</mat-label>
+                <mat-select formControlName="program">
+                  <mat-option *ngFor="let program of programList" value="program.value">
+                    {{program.viewName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+            <div fxFlex="100" fxLayout="column" fxFlex.gt-sm="50" fxFlex.gt-md="50">
+              <mat-form-field appearance="fill" fxFlex="100">
+                <mat-label>Placement dates</mat-label>
+                <input matInput [matDatepicker]="picker2">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2 color="primary" class="action-icon"></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+            <div fxFlex="100" fxLayout="column" fxFlex.gt-sm="50" fxFlex.gt-md="50">
+              <mat-form-field appearance="fill" fxFlex="100">
+                <mat-label>Preceptors</mat-label>
+                <mat-select formControlName="course">
+                  <mat-option *ngFor="let course of courseList" value="course.value">
+                    {{course.viewName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="100" fxLayout="column" fxFlex.gt-sm="50" fxFlex.gt-md="50" class="pl-16">
+              <mat-form-field appearance="fill" fxFlex="100">
+                <mat-label>Faculty</mat-label>
+                <mat-select formControlName="course">
+                  <mat-option *ngFor="let course of courseList" value="course.value">
+                    {{course.viewName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+            <div fxFlex="100" fxLayout="column" fxFlex.gt-sm="50" fxFlex.gt-md="50">
+              <mat-form-field appearance="fill" fxFlex="100">
+                <mat-label>Site contacts</mat-label>
+                <mat-select formControlName="course">
+                  <mat-option *ngFor="let course of courseList" value="course.value">
+                    {{course.viewName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+            <div fxFlex="100" fxLayout="column" fxFlex.gt-sm="50" fxFlex.gt-md="50">
+              <mat-form-field appearance="fill" fxFlex="100">
+                <mat-label>Placement notes</mat-label>
+                <textarea matInput></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxLayout="row" class="mb-12" fxLayoutAlign="start center">
+            <mat-checkbox [checked]="true" [disabled]="true"></mat-checkbox>
+            <span class="ml-8">Shared with student</span>
+          </div>
+
+          <div class="mt-12" fxLayout="row" fxLayoutAlign="start center">
+            <mat-checkbox></mat-checkbox>
+            <span class="ml-8">I confirmed that I have reviewed and accept responsibility</span>
+          </div>
+
+        </mat-card>
+      </form>
+
+    </div>
+    <!-- /1st column -->
+
+    <!-- 2nd column -->
+    <div fxLayout="column wrap" fxFlex="100" fxFlex.gt-sm="30" fxFlex.gt-md="30">
+      <div fxLayout="column" class="mb-16 pl-16">
+        <div class="exxat-info" fxLayout="column" fxFlex="100">
+          <div class="title mb-8">Schedule</div>
+          <p class="description"> Oct 10, 2020 - Oct 20, 2020</p>
+        </div>
+      </div>
+      <div fxLayout="column" class="mb-16 pl-16">
+        <div class="exxat-info" fxLayout="column" fxFlex="100">
+          <div class="title mb-8">Site notes</div>
+          <p class="description">It is a long established fact that a reader will be distracted by the readable content
+            of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+            distribution of letters, as opposed to using 'Content here, content here', making it look like readable
+            English.</p>
+        </div>
+      </div>
+      <div fxLayout="column" class="mb-16 pl-16">
+        <div class="exxat-info" fxLayout="column" fxFlex="100">
+          <div class="title mb-8">Site notes</div>
+          <p class="description">It is a long established fact that a reader will be distracted by the readable content
+            of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+            distribution of letters, as opposed to using 'Content here, content here', making it look like readable
+            English.</p>
+        </div>
+      </div>
+      <div fxLayout="column" class="mb-16 pl-16">
+        <div class="exxat-info" fxLayout="column" fxFlex="100">
+          <div class="title mb-8">Requirements</div>
+          <span class="description">Internal Medicine, Family Medicine, Cardiology, Endocrine, Radiology</span>
+        </div>
+      </div>
+    </div>
+    <!-- / 2nd column -->
+  </div>
+  <!-- / main row -->
+
+</div>

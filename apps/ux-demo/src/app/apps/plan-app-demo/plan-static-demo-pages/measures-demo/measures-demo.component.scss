@@ -1,0 +1,15 @@
+@import 'init';
+.measures-demo-page {
+  .measures-demo-resizable {
+    border-right: 20px solid transparent !important;
+    width: 65vw;
+    @include media-breakpoint('sm') {
+      width: 96vw;
+      border-right: none !important;
+    }
+    @include media-breakpoint('xs') {
+      width: 100vw;
+      border-right: none !important;
+    }
+  }
+}

@@ -1,0 +1,258 @@
+<div class="page-layout carded fullwidth student-grid inner-scroll">
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+
+      <!-- CONTENT TOOLBAR -->
+      <div class="p-16" fxLayout="column" fxLayoutAlign="start">
+        <div fxLayout="row wrap">
+          <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="4" fxFlex.gt-md="8">
+            <span class="font-18">Filter by:</span>
+          </div>
+          <!--Cohort Filter-->
+          <div fxLayout="row wrap">
+
+            <mat-form-field>
+              <mat-select placeholder="Select Cohort" [formControl]="cohort" multiple>
+                <mat-select-trigger>
+                  {{cohort.value ? cohort.value[0] : ''}}
+                  <span *ngIf="cohort.value?.length > 1" class="example-additional-selection">
+                    (+{{cohort.value.length - 1}} {{cohort.value?.length === 2 ? 'other' : 'others'}})
+                  </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let cohort of cohortList" [value]="cohort">{{cohort}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <!--Cohort Filter-->
+
+            <!--Tag Filter-->
+            <mat-form-field class="pl-16">
+              <mat-select placeholder="Select Tag" [formControl]="tag" multiple>
+                <mat-select-trigger>
+                  {{tag.value ? tag.value[0] : ''}}
+                  <span *ngIf="tag.value?.length > 1" class="example-additional-selection">
+                    (+{{tag.value.length - 1}} {{tag.value?.length === 2 ? 'other' : 'others'}})
+                  </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let tag of tagList" [value]="tag">{{tag}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <!--Tag Filter-->
+
+          </div>
+        </div>
+      </div>
+      <!-- / CONTENT TOOLBAR -->
+
+      <mat-divider></mat-divider>
+
+      <mat-accordion class="example-headers-align" fxHide>
+        <mat-expansion-panel class="no-box-shadow" [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Selected Filters
+            </mat-panel-title>
+            <!-- <mat-panel-description>
+              Type your name and age
+              <mat-icon>account_circle</mat-icon>
+            </mat-panel-description> -->
+          </mat-expansion-panel-header>
+          <div fxLayout="column" fxLayoutAlign="start">
+            <div fxLayout="row wrap">
+              <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="4" fxFlex.gt-md="8">
+                <span class="font-14">Cohort</span>
+              </div>
+              <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="96" fxFlex.gt-md="92">
+                <mat-chip-list #chipList aria-label="cohort selection">
+                  <mat-chip *ngFor="let cohort of Cohorts" [color]="cohort.color" [selectable]="selectable"
+                    [removable]="removable">
+                    {{cohort.name}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+              <!--Cohort Filtered Data-->
+            </div>
+            <div fxLayout="row wrap" class="mt-16">
+              <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="4" fxFlex.gt-md="8">
+                <span class="font-14">Tag</span>
+              </div>
+              <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="96" fxFlex.gt-md="92">
+                <mat-chip-list #chipList aria-label="tag selection">
+                  <mat-chip [color]="tag.color" *ngFor="let tag of Tags" [selectable]="selectable"
+                    [removable]="removable">
+                    {{tag.name}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+              <!--Cohort Filtered Data-->
+            </div>
+            <a class="font-14 hide-filter pt-16" (click)="nextStep()">Hide
+              filters</a>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <mat-divider></mat-divider>
+
+      <!-- SEARCH -->
+      <mat-toolbar-row class="pt-16" fxHide.lt-md>
+        <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="55" fxFlex.gt-md="75">
+          <div fxLayout.gt-md="row wrap">
+            <div fxLayoutAlign="end" fxFlex="14">
+              <!-- <mat-form-field class="search-dropdown">
+                          <mat-label>Search By</mat-label>
+                          <mat-select [(ngModel)]="selectedValue" name="search">
+                            <mat-option *ngFor="let search of SearchFields" [value]="search.id">
+                              {{search.value}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field> -->
+              <select #select class="search-dropdown">
+                <option *ngFor="let search of SearchFields" [value]="search.id">{{search.value}}</option>
+              </select>
+            </div>
+            <div fxLayoutAlign="center" fxFlex="70">
+              <div class="search-bar" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                <input [(ngModel)]="searchText" type="text" fxFlex>
+                <mat-icon class="s-16 secondary-text">search</mat-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-toolbar-row>
+      <div class="search-wrapper m-16 mb-0" fxLayout="row" fxLayoutAlign="start center" fxShow.lt-md fxHide.gt-sm>
+        <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="s-16 secondary-text">search</mat-icon>
+          <input [(ngModel)]="searchText" type="text" placeholder="Search Student" fxFlex>
+        </div>
+      </div>
+      <!-- / SEARCH -->
+
+      <mat-toolbar-row class="pr-16 pl-16">
+        <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="5" fxFlex.gt-md="15">
+          <div fxLayout.gt-md="row">
+            <h5 class="font-weight-600 fuse-black-500-fg text-capitalize">About 300 results</h5>
+          </div>
+        </div>
+
+        <div fxHide.xs fxLayout="column" class="m-16" fxFlex="100" fxFlex.gt-sm="75" fxFlex.gt-md="85">
+          <div fxLayout.gt-md="row" fxLayoutAlign="end">
+
+            <mat-icon exxatDrawerAction [componentSelector]="gridService.get('ryzen-edit-columns')" [size]="'drawer-sm'"
+              [caption]="'Edit Columns'" role="img"
+              class="pr-28 mat-icon notranslate teal-500-fg material-icons mat-icon-no-color" aria-hidden="true">build
+            </mat-icon>
+
+
+            <h5 class="font-weight-600 teal-500-fg text-capitalize pl-10">Edit Columns</h5>
+            <mat-icon class="pr-28 pl-28 mat-icon notranslate teal-500-fg material-icons mat-icon-no-color" role="img"
+              aria-hidden="true">insert_drive_file</mat-icon>
+            <h5 class="font-weight-600 teal-500-fg text-capitalize pl-10">Export</h5>
+          </div>
+        </div>
+
+      </mat-toolbar-row>
+
+      <mat-divider></mat-divider>
+
+
+      <!-- CONTENT -->
+      <div class="content">
+        <!-- TABLE -->
+        <table mat-table [dataSource]="dataSource" class=" w-100-p exxat-table pt-0">
+
+          <!-- Checkbox Column -->
+          <ng-container matColumnDef="select" [sticky]="true">
+            <th mat-header-cell *matHeaderCellDef class="pl-16">
+              <mat-checkbox (change)="$event ? masterToggle() : null"
+                [checked]="selection.hasValue() && isAllSelected()"
+                [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row" class="pl-16">
+              <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th class="" mat-header-cell *matHeaderCellDef> Student
+              Name </th>
+            <td mat-cell *matCellDef="let element" class="student-name">
+              <a routerLink="/admin/ux/apps/student/details">
+                <exxat-avatar-list-item class="accent-fg" [src]="element.src" [firstName]="element.firstName"
+                  [lastName]="element.lastName"></exxat-avatar-list-item>
+              </a>
+            </td>
+          </ng-container>
+
+          <!-- Email Column -->
+          <ng-container matColumnDef="email">
+            <th fxHide.xs mat-header-cell *matHeaderCellDef> Email
+            </th>
+            <td mat-cell fxHide.xs *matCellDef="let element"> {{element.email}} </td>
+          </ng-container>
+
+          <!-- Phone Column -->
+          <ng-container matColumnDef="phone">
+            <th fxHide.xs mat-header-cell *matHeaderCellDef> Phone
+            </th>
+            <td mat-cell fxHide.xs *matCellDef="let element"> {{element.phone}} </td>
+          </ng-container>
+
+          <!-- Setting Column -->
+          <ng-container matColumnDef="setting">
+            <th class="" fxHide.xs mat-header-cell *matHeaderCellDef> Practice
+              Setting </th>
+            <td mat-cell fxHide.xs *matCellDef="let element"> {{element.setting}} </td>
+          </ng-container>
+          <!-- Symbol Column -->
+
+          <!-- Time Column -->
+          <ng-container matColumnDef="time">
+            <th class="" fxHide.xs mat-header-cell *matHeaderCellDef>
+              Time </th>
+            <td mat-cell fxHide.xs *matCellDef="let element"> {{element.time}} </td>
+          </ng-container>
+          <!-- Time Column -->
+          <ng-container matColumnDef="action">
+            <th class="" fxHide.xs mat-header-cell *matHeaderCellDef>
+            </th>
+            <td mat-cell fxHide.xs *matCellDef="let element" class="edit-icon">
+              <mat-icon _ngcontent-hal-c357="" role="img" aria-hidden="true" class="mat-icon accent-fg ">edit</mat-icon>
+            </td>
+          </ng-container>
+          <!-- Time Column -->
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+          </tr>
+        </table>
+        <div fxLayout="row" fxLayoutAlign="center center" class="mb-16">
+          <a mat-raised-button color="white" routerLink="/steps/admin/profile/details">
+            Show More
+            <mat-icon>
+              <mat-spinner diameter="20">
+              </mat-spinner>
+            </mat-icon>
+          </a>
+        </div>
+        <!-- / TABLE -->
+
+      </div>
+      <!-- / CONTENT -->
+
+    </div>
+    <!-- / CONTENT CARD -->
+
+  </div>
+  <!-- / CENTER -->
+
+</div>

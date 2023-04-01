@@ -1,0 +1,136 @@
+<div id="typography-message-boxes" class="page-layout simple tabbed">
+  <div class="gray-header mb-16">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="mr-16">
+          <button
+            mat-icon-button
+            aria-label="Click to go back"
+            class="action-icon mx-8"
+            routerLink="/admin/ux/ui/exxat-component-library"
+          >
+            <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+          </button>
+        </div>
+        <div class="mat-title" tabindex="0">Message Boxes</div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+      </div>
+    </div>
+  </div>
+
+  <div class="mat-card mat-elevation-z2 p-24" fxLayout="column">
+    <div fxLayout="column" fxLayout.gt-md="row" class="mb-16">
+      <div
+        class="preview pr-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex.gt-md="50"
+        fxFlex="100"
+      >
+        <div class="message-box error">This is an alert message box!</div>
+      </div>
+
+      <fuse-highlight
+        lang="html"
+        class="source-code"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex.gt-md="50"
+        fxFlex="100"
+      >
+        <textarea #source hidden="hidden">
+                    <div class="message-box error">
+                        This is an alert message box!
+                    </div>
+                </textarea
+        >
+      </fuse-highlight>
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-md="row" class="mb-16">
+      <div
+        class="preview pr-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex.gt-md="50"
+        fxFlex="100"
+      >
+        <div class="message-box warning">This is a warning message box</div>
+      </div>
+
+      <fuse-highlight
+        lang="html"
+        class="source-code"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex.gt-md="50"
+        fxFlex="100"
+      >
+        <textarea #source hidden="hidden">
+                    <div class="message-box warning">
+                        This is a warning message box!
+                    </div>
+                </textarea
+        >
+      </fuse-highlight>
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-md="row" class="mb-16">
+      <div
+        class="preview pr-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex.gt-md="50"
+        fxFlex="100"
+      >
+        <div class="message-box success">This is a success message box</div>
+      </div>
+
+      <fuse-highlight
+        lang="html"
+        class="source-code"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex.gt-md="50"
+        fxFlex="100"
+      >
+        <textarea #source hidden="hidden">
+                    <div class="message-box success">
+                        This is a success message box!
+                    </div>
+                </textarea
+        >
+      </fuse-highlight>
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-md="row" class="mb-16">
+      <div
+        class="preview pr-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex.gt-md="50"
+        fxFlex="100"
+      >
+        <div class="message-box info">This is a info message box</div>
+      </div>
+
+      <fuse-highlight
+        lang="html"
+        class="source-code"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex.gt-md="50"
+        fxFlex="100"
+      >
+        <textarea #source hidden="hidden">
+                    <div class="message-box info">
+                        This is a info message box!
+                    </div>
+                </textarea
+        >
+      </fuse-highlight>
+    </div>
+  </div>
+</div>

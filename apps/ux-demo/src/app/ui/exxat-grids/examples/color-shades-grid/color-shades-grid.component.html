@@ -1,0 +1,112 @@
+<div class="page-layout carded full-width full-width-page">
+  <div class="gray-header mb-16">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="mr-16">
+          <button
+            mat-icon-button
+            aria-label="Click to go back"
+            routerLink="/admin/ux/ui/exxat-component-library"
+          >
+            <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+          </button>
+        </div>
+        <div class="mat-title">Setting Color Examples</div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+      </div>
+    </div>
+  </div>
+
+  <div class="center">
+    <div class="content-card">
+      <h2
+        class="mb-16"
+        tabindex="0"
+        aria-label="Copy the class name where you want a background color"
+      >
+        Copy the class name where you want a background color
+      </h2>
+      <div class="content table-rounded-border white-background">
+        <div class="overflow-auto">
+          <mat-table
+            [dataSource]="dataSource"
+            class="expandable-table w-100-p no-top-border"
+            tabindex="0"
+            aria-label="color shades with classes name table"
+          >
+            <ng-container matColumnDef="count">
+              <mat-header-cell
+                *matHeaderCellDef
+                tabindex="0"
+                aria-label="number"
+                >No.</mat-header-cell
+              >
+              <mat-cell
+                *matCellDef="let item"
+                tabindex="0"
+                attr.aria-label="{{ item.count }}"
+                >{{ item.count }}</mat-cell
+              >
+            </ng-container>
+
+            <ng-container matColumnDef="code">
+              <mat-header-cell
+                *matHeaderCellDef
+                class="pr-16"
+                tabindex="0"
+                aria-label="color code"
+                >Color Code</mat-header-cell
+              >
+              <mat-cell
+                *matCellDef="let item"
+                class="pr-16"
+                tabindex="0"
+                attr.aria-label="{{ item.code }}"
+                >{{ item.code }}</mat-cell
+              >
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+              <mat-header-cell
+                *matHeaderCellDef
+                class="pr-16"
+                tabindex="0"
+                aria-label="class name"
+                >Class Name</mat-header-cell
+              >
+              <mat-cell
+                *matCellDef="let item"
+                class="pr-16"
+                tabindex="0"
+                attr.aria-label="{{ item.name }}"
+                >{{ item.name }}</mat-cell
+              >
+            </ng-container>
+
+            <ng-container matColumnDef="color">
+              <mat-header-cell
+                *matHeaderCellDef
+                tabindex="0"
+                aria-label="color shade"
+                >Color Shade</mat-header-cell
+              >
+              <mat-cell *matCellDef="let item"
+                ><span
+                  [style.background-color]="'#' + item.color"
+                  class="w-100-p p-16"
+                ></span
+              ></mat-cell>
+            </ng-container>
+
+            <mat-header-row
+              *matHeaderRowDef="displayedColumns"
+            ></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          </mat-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="page-layout carded left-sidebar tabbed inner-scroll">
+
+  <!-- SIDEBAR -->
+  <fuse-sidebar class="sidebar width-x-sm" name="carded-left-sidebar-2" position="left" lockedOpen="gt-md" tabindex="0" aria-label="sidebar with list items">
+
+    <!-- SIDEBAR CONTENT -->
+    <div class="content" fusePerfectScrollbar>
+
+      <mat-action-list class="py-16">
+        <div *ngFor="let item of navigations; let i=index">
+          <button mat-list-item class="no-space m-0 p-16" (click)="activateNavigation(item)" [routerLink]="item.url"
+            [ngClass]="{'active-list-item':item.title===activeTab}" attr.aria-label="{{item.title}}">
+            <span class="">{{item.title}}</span>
+          </button>
+          <mat-divider class="w-85-p margin-auto" *ngIf="i != navigations.length - 1">
+          </mat-divider>
+        </div>
+      </mat-action-list>
+
+
+    </div>
+    <!-- / SIDEBAR CONTENT -->
+
+  </fuse-sidebar>
+  <!-- / SIDEBAR -->
+
+  <!-- CENTER -->
+  <div class="center ml-lg-16">
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <button mat-icon-button class="sidebar-toggle" fxHide.gt-md (click)="toggleSidebar('carded-left-sidebar-2')">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <router-outlet></router-outlet>
+
+    </div>
+    <!-- / CONTENT -->
+
+  </div>
+  <!-- / CENTER -->
+
+</div>

@@ -1,0 +1,259 @@
+<div class="h-100-p drawer-p drawer-with-table" fxLayout="column">
+  <mat-card
+    class="m-0 border-radius-8"
+    tabindex="0"
+    aria-label="header card"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    fxLayoutAlign.lt-md="start start"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <exxat-avatar
+        src="assets/images/avatars/anna-strong.png"
+        class="mr-8"
+      ></exxat-avatar>
+    </div>
+    <div
+      fxLayout="row wrap"
+      fxLayoutAlign="start start"
+      fxFlex="96"
+      fxFlex.xs="85"
+    >
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start start"
+        fxFlex.gt-sm="35"
+        fxFlex.sm="50"
+        fxFlex.lt-sm="100"
+      >
+        <div fxLayout="column">
+          <div fxLayout="row" fxLayoutAlign="start center" class="mb-8">
+            <span
+              class="font-weight-600 mr-8"
+              tabindex="0"
+              aria-label="Marshall,Tatum"
+              >Marshall,Tatum</span
+            >
+            <span
+              class="px-8 border-radius-20 exxat-gorse-bg"
+              fontColor
+              tabindex="0"
+              aria-label="setting Family Medicine"
+              >Family Medicine</span
+            >
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="start center">
+            <div class="pr-8">
+              <span
+                class="pr-8"
+                tabindex="0"
+                aria-label="Newyork Rehabilitation Center"
+                >Newyork Rehabilitation Center </span
+              >|
+            </div>
+            <span class="" tabindex="0" aria-label="Rotation 2021-22">
+              Rotation 2021-22</span
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        fxLayout="column"
+        fxLayoutAlign="start start"
+        fxFlex.gt-sm="30"
+        fxFlex.sm="50"
+        fxFlex.lt-sm="100"
+        class="pt-xs-8"
+      >
+        <span tabindex="0" aria-label="Due Date : 22nd August, 2021"
+          >Due Date : 22nd August, 2021</span
+        >
+        <span tabindex="0" aria-label="Schedule Date : 16 August, 2021"
+          >Schedule Date : 16 August, 2021</span
+        >
+      </div>
+      <div
+        fxLayout="column"
+        fxLayoutAlign="start start"
+        fxFlex.gt-sm="20"
+        fxFlex.sm="50"
+        fxFlex.lt-sm="100"
+        class="mt-small-8"
+      >
+        <span tabindex="0" aria-label="CI : John Carter">CI : John Carter</span>
+      </div>
+      <div
+        fxLayout="column"
+        fxLayoutAlign="start end"
+        fxLayoutAlign.lt-md="start start"
+        fxFlex.gt-sm="15"
+        fxFlex.sm="50"
+        fxFlex.lt-sm="100"
+        class="mt-small-8"
+      >
+        <div
+          class="status-badge approved font-12"
+          tabindex="0"
+          aria-label="status Reveiwed"
+        >
+          Reveiwed
+        </div>
+        <span class="text-italic" tabindex="0" aria-label="Avg Score : 5"
+          >Avg Score : 5</span
+        >
+      </div>
+    </div>
+  </mat-card>
+  <h4
+    class="my-16"
+    tabindex="0"
+    aria-label="heading 1-2 Months NSG 606 Daily Form"
+  >
+    Preceptor Evaluation
+  </h4>
+  <mat-card
+    fxLayout="row wrap"
+    fxLayoutAlign="start center"
+    class="m-0 border-radius-16"
+  >
+    <div
+      fxLayout="row"
+      fxFlex="30"
+      fxFlex.lt-md="45"
+      class="pr-16 form-field-zero-spacing"
+    >
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Select options</mat-label>
+        <mat-select formControlName="demo">
+          <mat-option *ngFor="let demo of demoList" value="{{ demo.value }}">
+            {{ demo.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div
+      fxLayout="row"
+      fxFlex.gt-md="55"
+      fxFlex.md="45"
+      fxFlex.lt-md="55"
+      class="pr-m-16 form-field-zero-spacing"
+    >
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Comment</mat-label>
+        <input matInput formControlName="comment" />
+      </mat-form-field>
+    </div>
+    <div
+      fxLayout="row"
+      fxFlex.gt-md="15"
+      fxFlex.md="25"
+      fxFlex.lt-md="100"
+      fxLayoutAlign="end center"
+      fxLayoutAlign.lt-md="start center"
+      class="mt-small-8"
+    >
+      <div class="pr-16">
+        <button mat-button color="accent" class="btn" aria-label="Audit log">
+          Audit log
+        </button>
+      </div>
+      <div>
+        <button
+          mat-flat-button
+          color="accent"
+          class=""
+          aria-label="Update"
+        >
+          Update
+        </button>
+      </div>
+    </div>
+  </mat-card>
+  <div class="mt-16 drawer-scrollable-content" fusePerfectScrollbar>
+    <mat-card class="p-0 mb-16 mx-0">
+      <header
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+      >
+        <h3
+          class="primary-heading font-weight-600 text-capitalize"
+          tabindex="0"
+          aria-label="card header Form section I"
+        >
+          Form section I
+        </h3>
+      </header>
+      <!-- added height for below cards for demo purpose , remove it when you add content to it -->
+      <div fxLayout="row wrap" class="pt-16 pl-16 h-200"></div>
+    </mat-card>
+    <mat-card class="p-0 mb-16 mx-0">
+      <header
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+      >
+        <h3
+          class="primary-heading font-weight-600 text-capitalize"
+          tabindex="0"
+          aria-label="card header Form section II"
+        >
+          Form section II
+        </h3>
+      </header>
+      <!-- added height for below cards for demo purpose , remove it when you add content to it -->
+      <div fxLayout="row wrap" class="pt-16 pl-16 h-200"></div>
+    </mat-card>
+    <mat-card class="p-0 mb-16 mx-0">
+      <header
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+      >
+        <h3
+          class="primary-heading font-weight-600 text-capitalize"
+          tabindex="0"
+          aria-label="card header Form section III"
+        >
+          Form section III
+        </h3>
+      </header>
+      <!-- added height for below cards for demo purpose , remove it when you add content to it -->
+      <div fxLayout="row wrap" class="pt-16 pl-16 h-200"></div>
+    </mat-card>
+    <mat-card class="p-0 mb-16 mx-0">
+      <header
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+      >
+        <h3
+          class="primary-heading font-weight-600 text-capitalize"
+          tabindex="0"
+          aria-label="card header Form section IV"
+        >
+          Form section IV
+        </h3>
+      </header>
+      <!-- added height for below cards for demo purpose , remove it when you add content to it -->
+      <div fxLayout="row wrap" class="pt-16 pl-16 h-200"></div>
+    </mat-card>
+    <mat-card class="p-0 mb-16 mx-0">
+      <header
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+      >
+        <h3
+          class="primary-heading font-weight-600 text-capitalize"
+          tabindex="0"
+          aria-label="card header Form section V"
+        >
+          Form section V
+        </h3>
+      </header>
+      <!-- added height for below cards for demo purpose , remove it when you add content to it -->
+      <div fxLayout="row wrap" class="pt-16 pl-16 h-200"></div>
+    </mat-card>
+  </div>
+</div>

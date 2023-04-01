@@ -1,0 +1,18 @@
+@mixin plan-of-study-theme($theme) {
+  // Currrent Theme Variables --------------------------
+  $is-dark: map-get($theme, is-dark);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  #plan-of-study-container {
+    .content-card {
+      @if ($is-dark) {
+        background: map-get($background, background) !important;
+      } @else {
+        background: whitesmoke !important;
+      }
+    }
+  }
+}

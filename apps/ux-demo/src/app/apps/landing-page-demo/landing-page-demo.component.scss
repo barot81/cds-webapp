@@ -1,0 +1,37 @@
+@import 'init';
+
+.landing-page-layout {
+  .sidebar {
+    @include media-breakpoint('lt-md') {
+      margin: 8px !important;
+      height: auto !important;
+      .overflow-auto {
+        overflow: hidden !important;
+      }
+    }
+  }
+  .date-color {
+    color: $boulder;
+  }
+  .description-text-color {
+    color: $dove-gray-dark;
+  }
+  .right-side-content {
+    @include media-breakpoint('lt-md') {
+      margin: 8px !important;
+      height: auto !important;
+    }
+  }
+
+  .border-left {
+    @include media-breakpoint('lt-md') {
+      border-left: none !important;
+    }
+  }
+
+  .text-with-ellipses {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

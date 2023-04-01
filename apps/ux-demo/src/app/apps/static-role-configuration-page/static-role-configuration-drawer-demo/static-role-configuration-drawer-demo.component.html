@@ -1,0 +1,461 @@
+<div class="drawer-p" id="static-role-config-drawer">
+  <mat-card>
+    <mat-vertical-stepper [linear]="isLinear" #stepper>
+      <mat-step
+        #step_one
+        [hasError]="step_one.interacted && !roleInfoFormGroup.valid"
+        [stepControl]="roleInfoFormGroup"
+      >
+        <form [formGroup]="roleInfoFormGroup" class="w-100-p">
+          <ng-template matStepLabel>Role Info</ng-template>
+
+          <div fxLayout="column" class="w-100-p py-16">
+            <div fxLayout="row" fxLayoutAlign="start">
+              <mat-form-field appearance="fill" fxFlex="100">
+                <mat-label>Role Code / Name</mat-label>
+                <input matInput formControlName="role_code_name" required />
+                <mat-error>Role Code / Name is required!</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div
+              fxLayout="row wrap"
+              fxLayoutAlign="start center"
+              fxFlex="1 0 auto"
+            >
+              <div class="text-center w-100-p">
+                <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>Role Description</mat-label>
+                  <textarea
+                    matInput
+                    formControlName="role_description"
+                  ></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <button
+                mat-stroked-button
+                color="accent"
+                class="accent-border-btn"
+                matStepperNext
+                aria-label="next button"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step #step_two [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Student</ng-template>
+          <div class="py-16 grid_container scroll-hover">
+            <table
+              tabindex="0"
+              aria-hidden="false"
+              aria-label="This is a table"
+              mat-table
+              [dataSource]="dataSource"
+              class="w-100-p exxat-table pt-0"
+            >
+              <ng-container matColumnDef="dataBucket">
+                <th
+                  tabindex="0"
+                  aria-label="data bucket"
+                  class="pl-16 dataBucket-column"
+                  mat-header-cell
+                  *matHeaderCellDef
+                >
+                  Data Bucket
+                </th>
+                <td
+                  tabindex="0"
+                  attr.aria-label="Data Bucket is {{ element.dataBucket }}"
+                  mat-cell
+                  *matCellDef="let element"
+                  class="pl-16 dataBucket-column"
+                >
+                  {{ element.dataBucket }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="feature">
+                <th
+                  tabindex="0"
+                  aria-label="feature"
+                  mat-header-cell
+                  *matHeaderCellDef
+                  class="feature-column"
+                >
+                  Feature
+                </th>
+                <td
+                  tabindex="0"
+                  attr.aria-label="Feature is {{ element.name }}"
+                  mat-cell
+                  *matCellDef="let element"
+                  class="feature-column"
+                >
+                  {{ element.feature }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="create">
+                <th
+                  tabindex="0"
+                  aria-label="create"
+                  mat-header-cell
+                  *matHeaderCellDef
+                  class="check-icon-column"
+                >
+                  <div fxLayoutAlign="center center" fxLayout="column">
+                    <div class="mb-8"><span>Create</span></div>
+                    <div>
+                      <mat-checkbox [color]="color"> </mat-checkbox>
+                    </div>
+                  </div>
+                </th>
+                <td
+                  tabindex="0"
+                  mat-cell
+                  *matCellDef="let element"
+                  class="text-center check-icon-column"
+                >
+                  <mat-checkbox [checked]="element.create" [color]="color">
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="read">
+                <th
+                  tabindex="0"
+                  aria-label="read"
+                  mat-header-cell
+                  *matHeaderCellDef
+                  class="check-icon-column"
+                >
+                  <div fxLayoutAlign="center center" fxLayout="column">
+                    <div class="mb-8"><span>Read</span></div>
+                    <div>
+                      <mat-checkbox [color]="color"> </mat-checkbox>
+                    </div>
+                  </div>
+                </th>
+                <td
+                  tabindex="0"
+                  mat-cell
+                  *matCellDef="let element"
+                  class="text-center check-icon-column"
+                >
+                  <mat-checkbox [checked]="element.read" [color]="color">
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="update">
+                <th
+                  tabindex="0"
+                  aria-label="update"
+                  mat-header-cell
+                  *matHeaderCellDef
+                  class="check-icon-column"
+                >
+                  <div fxLayoutAlign="center center" fxLayout="column">
+                    <div class="mb-8"><span>Update</span></div>
+                    <div>
+                      <mat-checkbox [color]="color"> </mat-checkbox>
+                    </div>
+                  </div>
+                </th>
+                <td
+                  tabindex="0"
+                  mat-cell
+                  *matCellDef="let element"
+                  class="text-center check-icon-column"
+                >
+                  <mat-checkbox [checked]="element.update" [color]="color">
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="delete">
+                <th
+                  tabindex="0"
+                  aria-label="delete"
+                  mat-header-cell
+                  *matHeaderCellDef
+                  class="check-icon-column"
+                >
+                  <div fxLayoutAlign="center center" fxLayout="column">
+                    <div class="mb-8"><span>Delete</span></div>
+                    <div>
+                      <mat-checkbox [color]="color"> </mat-checkbox>
+                    </div>
+                  </div>
+                </th>
+                <td
+                  tabindex="0"
+                  mat-cell
+                  *matCellDef="let element"
+                  class="text-center check-icon-column"
+                >
+                  <mat-checkbox [checked]="element.delete" [color]="color">
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="noaccess">
+                <th
+                  tabindex="0"
+                  aria-label="noaccess"
+                  mat-header-cell
+                  *matHeaderCellDef
+                  class="check-icon-column"
+                >
+                  <div fxLayoutAlign="center center" fxLayout="column">
+                    <div class="mb-8"><span>No Access</span></div>
+                    <div>
+                      <mat-checkbox [color]="color"> </mat-checkbox>
+                    </div>
+                  </div>
+                </th>
+                <td
+                  tabindex="0"
+                  mat-cell
+                  *matCellDef="let element"
+                  class="text-center check-icon-column"
+                >
+                  <mat-checkbox [checked]="element.noaccess" [color]="color">
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+
+              <tr
+                mat-header-row
+                *matHeaderRowDef="displayedColumns; sticky: true"
+              ></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <button
+              mat-stroked-button
+              color="accent"
+              class="accent-border-btn mr-16"
+              matStepperPrevious
+            >
+              Previous
+            </button>
+
+            <button
+              mat-stroked-button
+              color="accent"
+              class="accent-border-btn"
+              matStepperNext
+            >
+              Next
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step #step_three [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Compliance</ng-template>
+          <mat-form-field>
+            <mat-label>Address</mat-label>
+            <input
+              matInput
+              formControlName="secondCtrl"
+              placeholder="Ex. 1 Main St, New York, NY"
+              required
+            />
+          </mat-form-field>
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <button
+              mat-stroked-button
+              color="accent"
+              class="accent-border-btn mr-16"
+              matStepperPrevious
+            >
+              Previous
+            </button>
+
+            <button
+              mat-stroked-button
+              color="accent"
+              class="accent-border-btn"
+              matStepperNext
+            >
+              Next
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step #step_four [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Site</ng-template>
+          <mat-form-field>
+            <mat-label>Address</mat-label>
+            <input
+              matInput
+              formControlName="secondCtrl"
+              placeholder="Ex. 1 Main St, New York, NY"
+              required
+            />
+          </mat-form-field>
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <button
+              mat-stroked-button
+              color="accent"
+              class="accent-border-btn mr-16"
+              matStepperPrevious
+            >
+              Previous
+            </button>
+
+            <button
+              mat-stroked-button
+              color="accent"
+              class="accent-border-btn"
+              matStepperNext
+            >
+              Next
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step #step_five [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Placements</ng-template>
+          <mat-form-field>
+            <mat-label>Address</mat-label>
+            <input
+              matInput
+              formControlName="secondCtrl"
+              placeholder="Ex. 1 Main St, New York, NY"
+              required
+            />
+          </mat-form-field>
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <button
+              mat-stroked-button
+              color="accent"
+              class="accent-border-btn mr-16"
+              matStepperPrevious
+            >
+              Previous
+            </button>
+
+            <button
+              mat-stroked-button
+              color="accent"
+              class="accent-border-btn"
+              matStepperNext
+            >
+              Next
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step #step_six [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Configuration</ng-template>
+          <mat-form-field>
+            <mat-label>Address</mat-label>
+            <input
+              matInput
+              formControlName="secondCtrl"
+              placeholder="Ex. 1 Main St, New York, NY"
+              required
+            />
+          </mat-form-field>
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <button
+              mat-stroked-button
+              color="accent"
+              class="accent-border-btn mr-16"
+              matStepperPrevious
+            >
+              Previous
+            </button>
+
+            <button
+              mat-stroked-button
+              color="accent"
+              class="accent-border-btn"
+              matStepperNext
+            >
+              Next
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step #step_seven [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Learning Activity</ng-template>
+          <mat-form-field>
+            <mat-label>Address</mat-label>
+            <input
+              matInput
+              formControlName="secondCtrl"
+              placeholder="Ex. 1 Main St, New York, NY"
+              required
+            />
+          </mat-form-field>
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <button
+              mat-stroked-button
+              color="accent"
+              class="accent-border-btn mr-16"
+              matStepperPrevious
+            >
+              Previous
+            </button>
+
+            <button
+              mat-stroked-button
+              color="accent"
+              class="accent-border-btn"
+              matStepperNext
+            >
+              Next
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Cohort Setup</ng-template>
+        <p>You are now done.</p>
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <button
+            mat-stroked-button
+            color="accent"
+            class="accent-border-btn mr-16"
+            matStepperPrevious
+          >
+            Previous
+          </button>
+          <button
+            mat-stroked-button
+            color="accent"
+            class="accent-border-btn"
+            (click)="stepper.reset()"
+          >
+            Reset
+          </button>
+        </div>
+      </mat-step>
+
+      <!-- START : Overriding Error State Icon -->
+      <ng-template matStepperIcon="error">
+        <i
+          aria-hidden="true"
+          class="fa-light fa-exclamation-circle warn-fg"
+        ></i>
+      </ng-template>
+      <!-- END : Overriding Error State Icon -->
+    </mat-vertical-stepper>
+  </mat-card>
+</div>

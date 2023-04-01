@@ -1,0 +1,84 @@
+<div id="exxat-drawers-sizes" class="p-24">
+  <div class="mat-title">Drawer With Sticky Buttons Example</div>
+
+  <div fxLayout="column" fxLayout.gt-md="row" class="mb-16">
+    <div
+      class="preview mr-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+    >
+      <div class="mat-caption secondary-text">Drawer With Sticky Buttons</div>
+      <mat-card>
+        <button
+          mat-icon-button
+          class="action-icon"
+          aria-label="Edit"
+          exxatDrawerAction
+          [componentSelector]="
+            exxatDrawerFormService.get('exxat-drawer-with-sticky-buttons')
+          "
+          [size]="'drawer-sm'"
+          [caption]="'Drawer With Sticky Buttons'"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+      </mat-card>
+    </div>
+
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="Parent Container">
+          <fuse-highlight
+            lang="html"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+
+                    <button mat-icon-button  class="action-icon" aria-label="Edit" exxatDrawerAction
+                    [componentSelector]="exxatDrawerFormService.get('exxat-drawer-with-sticky-buttons')"
+                    [size]="'drawer-sm'"
+                    [caption]="'Drawer With Sticky Buttons'">
+                    <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                    </button>
+
+                  </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+
+        <!-- 2nd tab content -->
+        <mat-tab label="Drawer">
+          <fuse-highlight
+            lang="html"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+
+                    <!-- REACTIVE FORM EXAMPLE -->
+
+                    <div fxLayout="row" fxLayoutAlign="end center" class="py-16 pr-16 sticky-element-0 drawer-bg">
+
+                    <button mat-raised-button color="primary" class="mr-8">Primary</button>
+                    <button mat-raised-button color="accent">Accent</button>
+
+                    </div>
+
+                    <div class="drawer-p pt-0">
+                        <!-- Add Form Code Here -->
+                    </div>
+
+                    
+                  </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

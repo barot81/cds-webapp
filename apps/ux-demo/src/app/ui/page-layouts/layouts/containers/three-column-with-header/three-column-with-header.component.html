@@ -1,0 +1,69 @@
+<div
+  class="page-layout simple left-sidebar inner-sidebar inner-scroll page-with-header"
+>
+  <!-- HEADER -->
+  <div class="container-bg p-16" fxLayout="row" fxLayoutAlign="start center">
+    <button
+      mat-icon-button
+      class="sidebar-toggle mr-8"
+      fxHide.gt-md
+      (click)="toggleSidebar('simple-left-sidebar')"
+    >
+      <i aria-hidden="true" class="fa-light fa-bars"></i>
+    </button>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content mt-16">
+    <!-- SIDEBAR -->
+    <fuse-sidebar
+      class="sidebar w-25-p"
+      name="simple-left-sidebar"
+      position="left"
+      lockedOpen="gt-md"
+    >
+      <!-- SIDEBAR CONTENT -->
+      <div class="content" fusePerfectScrollbar>
+        <fuse-demo-one-sidebar></fuse-demo-one-sidebar>
+      </div>
+      <!-- / SIDEBAR CONTENT -->
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+    <div class="center ml-lg-16" fusePerfectScrollbar>
+      <!-- CONTENT -->
+      <div fxLayout="column" fxLayout.gt-md="row" fxFlex="100">
+        <div
+          class="content border-radius-0 container-bg"
+          fusePerfectScrollbar
+          fxFlex.gt-md="65"
+          fxFlex="100"
+        >
+          <content-demo-one></content-demo-one>
+        </div>
+
+        <div
+          class="content border-radius-0 ml-lg-16 mt-lg-0 mt-8 container-bg"
+          fusePerfectScrollbar
+          fxFlex.gt-md="35"
+          fxFlex="100"
+        >
+          <content-demo-one></content-demo-one>
+        </div>
+      </div>
+      <!-- / CONTENT -->
+    </div>
+    <!-- / CENTER -->
+    <button
+      mat-flat-button
+      color="accent"
+      class="float-button"
+      (click)="openDialog()"
+    >
+      Press for code
+    </button>
+  </div>
+  <!-- / CONTENT -->
+</div>

@@ -1,0 +1,18 @@
+@mixin compliance-review-theme($theme) {
+  // Currrent Theme Variables --------------------------
+  $is-dark: map-get($theme, is-dark);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  // Currrent Theme Variables //-------------------------
+}
+
+#compliance-review-container {
+  .document-viewer {
+    height: calc(100vh - 48px);
+  }
+  .compliance_admin_review_content {
+    overflow: auto;
+  }
+}

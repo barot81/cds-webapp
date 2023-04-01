@@ -1,0 +1,67 @@
+<div class="drawer-p" fxLayout="column" fxLayoutAlign="start">
+
+  <mat-card fxLayout="column" class="mb-16">
+    <div fxLayout="column">
+      <div class="" fxLayout="row wrap" fxFlex="100">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
+            <mat-form-field appearance="fill" fxFlex="100" class="exxat-form-field-outline">
+              <mat-label>Department Full Name</mat-label>
+              <input matInput formControlName="departmentFullName" required>
+              <mat-error>Department Full Name is required!</mat-error>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Department Short Name</mat-label>
+              <input matInput formControlName="departmentShortName" required>
+              <mat-error>Department Short Name is required!</mat-error>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
+            <mat-form-field appearance="fill" fxFlex="100">
+                <mat-label>Caption</mat-label>
+                <input matInput formControlName="caption">
+                <mat-error>Caption is required!</mat-error>
+              </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
+          <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>OU Code</mat-label>
+              <input matInput formControlName="ouCode">
+              <mat-error>OU Code is required!</mat-error>
+            </mat-form-field>
+      </div>
+        <div fxLayout="column" fxLayoutAlign="start start" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
+          <mat-checkbox>Is Program Time Zone & Logo are same as Department Time Zone & Logo </mat-checkbox>
+          <mat-form-field appearance="fill" fxFlex="100" class="w-100-p mt-8">
+                <mat-label>Time Zone</mat-label>
+                <mat-select formControlName="timeZone">
+                  <mat-option *ngFor="let timeZone of timeZoneList" value="{{timeZone.value}}">
+                    {{timeZone.viewValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error>Time Zone is required!</mat-error>
+              </mat-form-field>
+        </div>
+      </div>
+
+      <div class="" fxLayout="row wrap" fxFlex="100">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16">
+          <div fxLayout="column" class="w-100-p">
+            <span class="font-weight-600 mb-8 font-16 accent-fg" tabindex="0" aria-label="title Department Logo for Website">Department Logo for Website</span>
+            <exxat-file-upload  [fileConfiguration]="fileConfiguration"
+            formControlName="fileDescriptions" tabindex="0" aria-label="Browse to upload files"></exxat-file-upload>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="50" fxFlex="100" class="pr-16 mt-small-16">
+          <div fxLayout="column" class="w-100-p">
+            <span class="font-weight-600 mb-8 font-16 accent-fg" tabindex="0" aria-label="title Department Logo for Website">Department Logo for Email</span>
+            <exxat-file-upload  [fileConfiguration]="fileConfiguration"
+            formControlName="fileDescriptions" tabindex="0" aria-label="Browse to upload files"></exxat-file-upload>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+
+</div>

@@ -1,0 +1,22 @@
+<mat-dialog-content
+  class="margin-auto image-dialog-box"
+  tabindex="0"
+  aria-label="dialog box is opened"
+  fxLayout="column"
+>
+  <button mat-icon-button mat-dialog-close class="image-popup-cancel">
+    <i aria-hidden="true" class="fa-regular fa-xmark s-20"></i>
+  </button>
+  <img src="assets/images/avatars/anna-strong.png" />
+  <div fxLayout="row" fxLayoutAlign="center center" class="mt-24 mb-16">
+    <button
+      mat-stroked-button
+      color="warn"
+      class="mr-8"
+      aria-label="delete image"
+    >
+      Delete
+    </button>
+    <button mat-flat-button color="primary" class="">Upload</button>
+  </div>
+</mat-dialog-content>

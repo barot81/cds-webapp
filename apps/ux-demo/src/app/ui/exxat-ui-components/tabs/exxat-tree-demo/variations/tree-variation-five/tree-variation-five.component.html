@@ -1,0 +1,433 @@
+<div class="content pt-16" fxLayout="column">
+  <div class="m-8 ml-16" fxLayout="row">
+    <span class="font-16">
+      <ul>
+        <li>
+          <span
+            >Material tree example with edit icon and menu icon on hover</span
+          >
+        </li>
+        <li>
+          <span
+            >Service Ts file is just for demo purpose. You can fetch data from
+            backend API.</span
+          >
+        </li>
+      </ul>
+    </span>
+  </div>
+  <div fxLayout="row wrap" fxFlex="100" class="mb-28">
+    <div
+      class="preview pr-lg-16 mt-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="100"
+      fxFlex.gt-md="50"
+    >
+      <mat-card fxLayout="column">
+        <exxat-app-plan-tree-demo></exxat-app-plan-tree-demo>
+      </mat-card>
+    </div>
+
+    <div
+      class="preview mt-16 ml-xs-8"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="100"
+      fxFlex.gt-md="50"
+    >
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <div class="pt-16">
+            <fuse-highlight lang="html" class="source-code">
+              <textarea #source hidden="hidden">
+                <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree-examples-style" tabindex="0" aria-label="tree control">
+                  <!-- node without child -->
+                  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding tabindex="0" aria-label="this is a child node">
+                        <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100" class="tree-node-hover pl-24"  (click)="activeNode = node" [ngClass]="{ 'tree-node-active': activeNode === node }">
+                          <div fxLayout="row" fxFlex="85" class="node-inner-text mx-8">
+                            <span class="pl-12 node-inner-text" tabindex="0" aria-label="1.1 Possess the theoretical and scientific knowledge to perform original research at the basic, applied or clinical lev leading to scientific">
+                              <span class="list-style-tree">1.1 </span> <span></span>Possess the theoretical and scientific knowledge to perform original research at the basic, applied or clinical lev leading to scientific</span></span>
+                          </div>
+                          <div fxLayout="row" fxLayoutAlign="end center" class="pr-16 icon-hidden">
+                            <button mat-icon-button class="mr-8 action-icon" aria-label="edit node" exxatDrawerAction [componentSelector]="_PlanAppDemoDrawerService.get('exxat-app-measures-drawers-demo')" [size]="'drawer-lg'"
+                            [caption]="'Goals'" [primaryAction]="'Save'">
+                              <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                            </button>
+                            <button mat-icon-button [matMenuTriggerFor]="menu" attr.aria-label="menu for node.name" aria-label="enter for more options">
+                              <i aria-hidden="true" class="fa-light fa-ellipsis-h s-16"></i>
+                            </button>
+                            <mat-menu #menu="matMenu" class="mat-secondary-menu">
+                              <button mat-menu-item>
+                                <div fxLayout="row" fxLayoutAlign="start center">
+                                  <div class="mr-8 mt-4">
+                                    <i aria-hidden="true" class="fa-light fa-pen icon-pen s-18"></i>
+                                  </div>
+                                  <div fxLayout="row" fxLayoutAlign="start center">
+                                    <span>Add child</span>
+                                  </div>
+                                </div>
+                              </button>
+                              <button mat-menu-item class="warn-fg">
+                                <div fxLayout="row" fxLayoutAlign="start center">
+                                  <div class="mr-8 mt-4">
+                                    <i aria-hidden="true" class="fa-light fa-trash-alt s-18"></i>
+                                  </div>
+                                  <div fxLayout="row" fxLayoutAlign="start center">
+                                    <span>Delete</span>
+                                  </div>
+                                </div>
+                              </button>
+                            </mat-menu>
+                          </div>
+                        </div>
+                  </mat-tree-node>
+
+
+                  <!-- parent node -->
+                  <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding tabindex="0" aria-label="parent node">
+                    <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100" class="tree-node-hover tree-node-bg" (click)="activeNode = node" [ngClass]="{ 'tree-node-active': activeNode === node }">
+                      <div fxLayout="row" fxLayoutAlign="start center" fxFlex.gt-sm="85" fxFlex.sm="76" fxFlex.xs="60" class="ml-4">
+                        <button mat-icon-button matTreeNodeToggle class="action-icon"
+                        aria-label="toggle for parent node">
+                        <i [ngClass]="treeControl.isExpanded(node) ? 'fa-light fa-chevron-down' : 'fa-light fa-chevron-right'"
+                          ></i>
+                        </button>
+
+                      <div fxLayout="row" fxLayoutAlign="start center" class="node-inner-text mx-8">
+                         <span class="node-inner-text" tabindex="0" aria-label="1. Possess the theoretical and scientific knowledge to perform original research at the basic, applied or clinical lev leading to scientific">
+                           <span class="list-style-tree">1.</span>  <span>Possess the theoretical and scientific knowledge to perform original research at the basic, applied or clinical lev leading to scientific</span></span>
+
+                      </div>
+                    </div>
+
+                      <div fxLayout="row" fxLayoutAlign="end center" class="pr-16 icon-hidden">
+                        <button mat-icon-button class="mr-8 action-icon" aria-label="edit node" exxatDrawerAction [componentSelector]="_PlanAppDemoDrawerService.get('exxat-app-measures-drawers-demo')" [size]="'drawer-lg'"
+                        [caption]="'Objective'" [primaryAction]="'Save'">
+                          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                        </button>
+                        <button mat-icon-button [matMenuTriggerFor]="menu" attr.aria-label="menu for node node.name" class="action-icon" aria-label="enter for more menu items">
+                          <i aria-hidden="true" class="fa-light fa-ellipsis-h s-16"></i>
+                        </button>
+                        <mat-menu #menu="matMenu" class="mat-secondary-menu">
+                          <button mat-menu-item>
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                              <div class="mr-8 mt-4">
+                                <i aria-hidden="true" class="fa-light fa-pen icon-pen s-18"></i>
+                              </div>
+                              <div fxLayout="row" fxLayoutAlign="start center">
+                                <span>Add child</span>
+                              </div>
+                            </div>
+                          </button>
+                          <button mat-menu-item class="warn-fg">
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                              <div class="mr-8 mt-4">
+                                <i aria-hidden="true" class="fa-light fa-trash-alt s-18"></i>
+                              </div>
+                              <div fxLayout="row" fxLayoutAlign="start center">
+                                <span>Delete</span>
+                              </div>
+                            </div>
+                          </button>
+                        </mat-menu>
+                      </div>
+                    </div>
+
+
+                  </mat-tree-node>
+                </mat-tree>
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="CSS">
+          <div class="pt-16">
+            <fuse-highlight lang="html" class="source-code">
+              <textarea #source hidden="hidden">
+                .node-inner-text{
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  }
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Component TS">
+          <div class="pt-16">
+            <fuse-highlight lang="ts" class="source-code">
+              <textarea #source hidden="hidden">
+
+                  import { SelectionModel } from '@angular/cdk/collections';
+                  import { FlatTreeControl } from '@angular/cdk/tree';
+                  import { Component } from '@angular/core';
+                  import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
+                  import { ChecklistDatabase, TodoItemFlatNode, TodoItemNode } from '../tree-data.service';
+
+                  @Component({
+                    selector: 'ryzen-tree-variation-two',
+                    templateUrl: './tree-variation-two.component.html',
+                    styleUrls: ['./tree-variation-two.component.scss']
+                  })
+                  export class TreeVariationTwoComponent {
+                    activeNode;
+                    flatNodeMap = new Map<TodoItemFlatNode, TodoItemNode>();
+                    nestedNodeMap = new Map<TodoItemNode, TodoItemFlatNode>();
+                    selectedParent: TodoItemFlatNode | null = null;
+                    newItemName = '';
+                    treeControl: FlatTreeControl<TodoItemFlatNode>;
+                    treeFlattener: MatTreeFlattener<TodoItemNode, TodoItemFlatNode>;
+                    dataSource: MatTreeFlatDataSource<TodoItemNode, TodoItemFlatNode>;
+                    checklistSelection = new SelectionModel<TodoItemFlatNode>(true);
+
+                    constructor(private _database: ChecklistDatabase) {
+                      this.treeFlattener = new MatTreeFlattener(this.transformer, this.getLevel,
+                        this.isExpandable, this.getChildren);
+                      this.treeControl = new FlatTreeControl<TodoItemFlatNode>(this.getLevel, this.isExpandable);
+                      this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+
+                      _database.dataChange.subscribe(data => {
+                        this.dataSource.data = data;
+                      });
+                    }
+                    getLevel = (node: TodoItemFlatNode) => node.level;
+
+                    isExpandable = (node: TodoItemFlatNode) => node.expandable;
+
+                    getChildren = (node: TodoItemNode): TodoItemNode[] => node.children;
+
+                    hasChild = (_: number, _nodeData: TodoItemFlatNode) => _nodeData.expandable;
+
+                    hasNoContent = (_: number, _nodeData: TodoItemFlatNode) => _nodeData.item === '';
+
+                    /**
+                    * Transformer to convert nested node to flat node. Record the nodes in maps for later use.
+                    */
+                    transformer = (node: TodoItemNode, level: number) => {
+                      const existingNode = this.nestedNodeMap.get(node);
+                      const flatNode = existingNode && existingNode.item === node.item
+                        ? existingNode
+                        : new TodoItemFlatNode();
+                      flatNode.item = node.item;
+                      flatNode.level = level;
+                      flatNode.expandable = !!node.children?.length;
+                      this.flatNodeMap.set(flatNode, node);
+                      this.nestedNodeMap.set(node, flatNode);
+                      return flatNode;
+                    }
+
+                    /** Whether all the descendants of the node are selected. */
+                    descendantsAllSelected(node: TodoItemFlatNode): boolean {
+                      const descendants = this.treeControl.getDescendants(node);
+                      const descAllSelected = descendants.length > 0 && descendants.every(child => {
+                        return this.checklistSelection.isSelected(child);
+                      });
+                      return descAllSelected;
+                    }
+
+                    /* Get the parent node of a node */
+                    getParentNode(node: TodoItemFlatNode): TodoItemFlatNode | null {
+                      const currentLevel = this.getLevel(node);
+
+                      if (currentLevel < 1) {
+                        return null;
+                      }
+
+                      const startIndex = this.treeControl.dataNodes.indexOf(node) - 1;
+
+                      for (let i = startIndex; i >= 0; i--) {
+                        const currentNode = this.treeControl.dataNodes[i];
+
+                        if (this.getLevel(currentNode) < currentLevel) {
+                          return currentNode;
+                        }
+                      }
+                      return null;
+                    }
+
+                    /** Select the category so we can insert the new item. */
+                    addNewItem(node: TodoItemFlatNode) {
+                      const parentNode = this.flatNodeMap.get(node);
+                      this._database.insertItem(parentNode!, '');
+                      this.treeControl.expand(node);
+                    }
+
+                    /** Save the node to database */
+                    saveNode(node: TodoItemFlatNode, itemValue: string) {
+                      const nestedNode = this.flatNodeMap.get(node);
+                      this._database.updateItem(nestedNode!, itemValue);
+                    }
+                  }
+
+
+           </textarea
+              >
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Service TS">
+          <div class="pt-16">
+            <fuse-highlight lang="ts" class="source-code">
+              <textarea #source hidden="hidden">
+
+            import { Injectable } from '@angular/core';
+            import { BehaviorSubject } from 'rxjs';
+
+            /**
+            * Node for to-do item
+            */
+            export class TodoItemNode {
+            children: TodoItemNode[];
+            item: string;
+            }
+
+            /** Flat to-do item node with expandable and level information */
+            export class TodoItemFlatNode {
+            item: string;
+            level: number;
+            expandable: boolean;
+            }
+
+            /**
+            * The Json object for to-do list data.
+            */
+            const TREE_DATA = {
+            Groceries: {
+            'Almond Meal flour': null,
+            'Organic eggs': null,
+            'Protein Powder': null,
+            Fruits: {
+            Apple: null,
+            Berries: ['Blueberry', 'Raspberry'],
+            Orange: null
+            }
+            },
+            Reminders: [
+            'Cook dinner',
+            'Read the Material Design spec',
+            'Upgrade Application to Angular'
+            ]
+            };
+
+
+
+
+            @Injectable({providedIn: 'any'})
+            export class ChecklistDatabase {
+            dataChange = new BehaviorSubject<TodoItemNode[]>([]);
+
+            get data(): TodoItemNode[] { return this.dataChange.value; }
+
+            constructor() {
+            this.initialize();
+            }
+
+            initialize() {
+            // Build the tree nodes from Json object. The result is a list of `TodoItemNode` with nested
+            //     file node as children.
+            const data = this.buildFileTree(TREE_DATA, 0);
+
+            // Notify the change.
+            this.dataChange.next(data);
+            }
+
+            /**
+            * Build the file structure tree. The `value` is the Json object, or a sub-tree of a Json object.
+            * The return value is the list of `TodoItemNode`.
+            */
+            buildFileTree(obj: { [key: string]: any }, level: number): TodoItemNode[] {
+            return Object.keys(obj).reduce<TodoItemNode[]>((accumulator, key) => {
+            const value = obj[key];
+            const node = new TodoItemNode();
+            node.item = key;
+
+            if (value != null) {
+            if (typeof value === 'object') {
+                node.children = this.buildFileTree(value, level + 1);
+            } else {
+                node.item = value;
+            }
+            }
+
+            return accumulator.concat(node);
+            }, []);
+            }
+
+            /** Add an item to to-do list */
+            insertItem(parent: TodoItemNode, name: string) {
+            if (parent.children) {
+            parent.children.push({ item: name } as TodoItemNode);
+            this.dataChange.next(this.data);
+            }
+            }
+
+            updateItem(node: TodoItemNode, name: string) {
+            node.item = name;
+            this.dataChange.next(this.data);
+            }
+            }
+
+           </textarea
+              >
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+  <div fxLayout="row wrap" fxFlex="100">
+    <div
+      class="preview pr-lg-16 mt-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="100"
+      fxFlex.gt-md="50"
+    >
+      <h2>Add this code to add new node</h2>
+      <mat-card fxLayout="column">
+        <div class="mt-16 gray-background p-16" fxLayout="column">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-form-field appearance="fill" fxFlex="100">
+              <textarea matInput></textarea>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center" class="">
+            <button mat-raised-button class="mr-16">Add</button>
+            <button mat-stroked-button>Cancel</button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code mt-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="100"
+      fxFlex.gt-md="50"
+    >
+      <textarea #source hidden="hidden">
+
+        <div class="mt-16 gray-background p-16" fxLayout="column">
+          <div fxLayout="row" fxLayoutAlign="start center">
+              <mat-form-field appearance="fill" fxFlex="100">
+                  add textarea here
+              </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center" class="">
+            <button mat-raised-button class="mr-16">Add</button>
+            <button mat-stroked-button >Cancel</button>
+          </div>
+        </div>
+
+      </textarea>
+    </fuse-highlight>
+  </div>
+</div>

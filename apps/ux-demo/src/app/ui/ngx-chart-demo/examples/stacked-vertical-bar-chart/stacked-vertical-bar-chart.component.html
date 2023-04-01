@@ -1,0 +1,147 @@
+<div fxLayout="column" fxLayout.gt-md="row">
+
+
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="55">
+        <div class="mat-caption secondary-text mb-16">Ngx Vertical Bar Chart Example</div>
+        <mat-card class="mr-16">
+            <ngx-charts-bar-vertical-stacked [view]="view" [scheme]="colorScheme" [results]="stacked_vertical_bar_multi"
+                [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
+                [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel" [animations]="animations" (select)="onSelect($event)">
+            </ngx-charts-bar-vertical-stacked>
+        </mat-card>
+
+        <mat-card fxFlex="55" class="my-16">
+
+            <div fxLayoutAlign="start center" fxLayout="row">
+                <div fxLayout="column" fxLayoutAlign="start">
+                    <div fxLayoutAlign="start center" fxLayout="row">
+                        <div><span class="mr-16 font-weight-600">For more info visit : </span></div>
+                        <span><a href="https://swimlane.gitbooks.io/ngx-charts/content/" target="_blank">Ngx Chart
+                                Documentation</a></span>
+                    </div>
+
+                    <div class="mt-16 overflow-auto" [style.height.px]="230">
+                        <ngx-chart-helper-table></ngx-chart-helper-table>
+                    </div>
+                </div>
+            </div>
+
+        </mat-card>
+    </div>
+
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="45">
+        <mat-tab-group>
+            <!-- 1st tab content -->
+            <mat-tab label="HTML">
+                <fuse-highlight lang="html" class="source-code mt-16" fxLayout="column" fxLayoutAlign="center">
+                    <textarea #source hidden="hidden">
+                        <ngx-charts-bar-vertical-stacked
+                        [view]="view"
+                        [scheme]="colorScheme"
+                        [results]="multi"
+                        [gradient]="gradient"
+                        [xAxis]="showXAxis"
+                        [yAxis]="showYAxis"
+                        [legend]="showLegend"
+                        [showXAxisLabel]="showXAxisLabel"
+                        [showYAxisLabel]="showYAxisLabel"
+                        [xAxisLabel]="xAxisLabel"
+                        [yAxisLabel]="yAxisLabel"
+                        [animations]="animations"
+                        (select)="onSelect($event)">
+                         </ngx-charts-bar-vertical-stacked>
+       
+           </textarea>
+                </fuse-highlight>
+            </mat-tab>
+
+            <!-- 2nd tab content -->
+            <mat-tab label="TS">
+                <fuse-highlight lang="ts" class="source-code mt-16" fxLayout="column" fxLayoutAlign="center">
+                    <textarea #source hidden="hidden">
+                        import { Component } from '@angular/core';
+
+                        export var stacked_vertical_bar_multi = [
+                        {
+                        "name": "Germany",
+                        "series": [
+                        {
+                        "name": "2010",
+                        "value": 7300000
+                        },
+                        {
+                        "name": "2011",
+                        "value": 8940000
+                        }
+                        ]
+                        },
+
+                        {
+                        "name": "USA",
+                        "series": [
+                        {
+                        "name": "2010",
+                        "value": 7870000
+                        },
+                        {
+                        "name": "2011",
+                        "value": 8270000
+                        }
+                        ]
+                        },
+
+                        {
+                        "name": "France",
+                        "series": [
+                        {
+                        "name": "2010",
+                        "value": 5000002
+                        },
+                        {
+                        "name": "2011",
+                        "value": 5800000
+                        }
+                        ]
+                        }
+                        ];
+
+
+                        @Component({
+                        selector: 'ryzen-stacked-vertical-bar-chart',
+                        templateUrl: './stacked-vertical-bar-chart.component.html',
+                        })
+                        export class StackedVerticalBarComponent {
+                        stacked_vertical_bar_multi: any[];
+                        view: any[] = [700, 400];
+
+                        // options
+                        showXAxis: boolean = true;
+                        showYAxis: boolean = true;
+                        gradient: boolean = false;
+                        showLegend: boolean = true;
+                        showXAxisLabel: boolean = true;
+                        xAxisLabel: string = 'Country';
+                        showYAxisLabel: boolean = true;
+                        yAxisLabel: string = 'Population';
+                        animations: boolean = true;
+
+                        colorScheme = {
+                        domain: ['#5AA454', '#C7B42C', '#AAAAAA']
+                        };
+
+                        constructor() {
+                        Object.assign(this, { stacked_vertical_bar_multi });
+                        }
+
+                        onSelect(event) {
+                        console.log(event);
+                        }
+                        }
+                        
+            </textarea>
+                </fuse-highlight>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+@import 'init';
+
+@mixin catagory1-page-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $action: map-get($theme, action);
+  $is-dark: map-get($theme, is-dark);
+
+  .demo-page-chip input[type='checkbox'] + label {
+    padding: 8px 20px;
+  }
+
+  .demo-page-chip input[type='checkbox']:checked + label {
+    background: #f8bbd0;
+    color: map-get($foreground, text);
+    font-weight: 600;
+  }
+}
+
+.chips-container {
+  @include media-breakpoint('gt-sm') {
+    max-height: 46px;
+    transition: max-height 0.5s ease-out;
+    overflow: hidden;
+    &:hover {
+      max-height: 500px;
+      transition: max-height 1s ease-in;
+      overflow: auto;
+    }
+  }
+  @include media-breakpoint('lt-sm') {
+    box-shadow: none;
+    overflow: auto;
+    margin-top: 16px;
+    &:hover {
+      display: none;
+    }
+  }
+}
+
+.card-height {
+  max-height: 200px;
+  overflow: auto;
+}

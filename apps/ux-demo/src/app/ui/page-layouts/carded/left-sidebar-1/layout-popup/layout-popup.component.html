@@ -1,0 +1,49 @@
+
+<mat-dialog-content>
+  
+  <fuse-highlight lang="html" class="" fxLayout="column" fxLayoutAlign="start start" fxFlex="100">
+    <textarea #source >
+              
+         <div class="page-layout carded left-sidebar">
+                <div fxLayout="column"> 
+                    <div fxLayout="row" fxLayoutAlign="start center" class="mb-16">
+                        <span> Header with Headings</span>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="start center" class="mb-16">
+                        <span class="font-16 font-weight-600 fuse-white-fg"> Navigation</span>
+                    </div>
+                </div>
+                <div fxLayout="row" fxFlex="100">
+                        <fuse-sidebar class="sidebar" name="carded-left-sidebar-2" position="left" lockedOpen="gt-md" fxFlex.gt-md="20">
+                            <div class="content" fusePerfectScrollbar>
+                                <p>Place your sidebar content here</p>
+                            </div>
+                        </fuse-sidebar>
+                        <div class="center ml-lg-16" fxFlex.gt-md="80" fxFlex="100" fxLayout="column">
+                          <div>
+                            <button mat-icon-button class="sidebar-toggle pl-16" fxHide.gt-md
+                            (click)="toggleSidebar('carded-left-sidebar-2')">
+                            <mat-icon>menu</mat-icon>
+                            </button>
+                          </div>
+          
+                            <div class="content">
+                              <p>Place your page content here</p>
+                            </div>
+                        </div>
+                    
+                </div>
+        </div>
+    </textarea>
+  
+  </fuse-highlight>
+
+
+</mat-dialog-content>
+
+
+
+
+
+
+

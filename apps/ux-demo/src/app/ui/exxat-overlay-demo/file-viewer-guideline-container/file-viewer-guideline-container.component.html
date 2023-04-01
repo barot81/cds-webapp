@@ -1,0 +1,78 @@
+<div id="fileViewer_container" fxLayout="column">
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-16">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <button
+        aria-label="Click to Exit"
+        mat-icon-button
+        class="mr-4 back_button fuse-white-fg"
+        (click)="cancel()"
+      >
+        <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+      </button>
+      <h2
+        tabindex="0"
+        aria-label="File Title"
+        class="document_title fuse-white-fg"
+      >
+        File Title
+      </h2>
+    </div>
+  </div>
+  <div
+    class="fileViewer_container_content"
+    fxLayout="row wrap"
+    fxLayoutAlign="start"
+    [style.height.px]="headerService.scrollContentheight + 25"
+  >
+    <div
+      class="fileViewer_container_left_content"
+      fxLayout="column"
+      fxFlex="100"
+      fxFlex.gt-md="70"
+    >
+      <mat-card>
+        <exxat-file-viewer
+          [documentConfiguration]="documentConfiguration"
+        ></exxat-file-viewer>
+      </mat-card>
+    </div>
+    <div
+      class="pl-8 pr-32 guidline_container"
+      fxLayout="column"
+      fxFlex="100"
+      fxFlex.gt-md="30"
+    >
+      <mat-card tabindex="0" aria-label="Guidelines">
+        <header fxLayout="row" fxLayoutAlign="space-between start">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h3 class="secondary_title">Guidelines</h3>
+          </div>
+        </header>
+        <ul class="secondary-text">
+          <li class="pb-8">
+            <h5 tabindex="0" aria-label="Student must provide proof">
+              Student must provide proof
+            </h5>
+          </li>
+          <li class="pb-8">
+            <h5
+              tabindex="0"
+              aria-label="A titer lab report for all 3 components Titer reports should not be older than"
+            >
+              A titer lab report for all 3 components Titer reports should not
+              be older than
+            </h5>
+          </li>
+          <li>
+            <h5
+              tabindex="0"
+              aria-label="Proof of 2 childhood or adult vaccinations"
+            >
+              Proof of 2 childhood or adult vaccinations
+            </h5>
+          </li>
+        </ul>
+      </mat-card>
+    </div>
+  </div>
+</div>

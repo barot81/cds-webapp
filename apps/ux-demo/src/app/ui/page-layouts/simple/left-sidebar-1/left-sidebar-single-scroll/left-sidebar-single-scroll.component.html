@@ -1,0 +1,55 @@
+<div class="content" >
+
+  <mat-dialog-content>
+  
+    <fuse-highlight lang="html" class="" fxLayout="column" fxLayoutAlign="start" fxFlex="100">
+      <textarea #source >
+                <!-- /////////////////// Left sidebar with single scroll ////////////////// -->
+                
+                <div class="page-layout simple left-sidebar">
+
+                  <!-- SIDEBAR -->
+                  <fuse-sidebar class="sidebar" name="simple-left-sidebar-1" position="left" lockedOpen="gt-md">
+                      <div class="content">
+                        <fuse-demo-sidebar></fuse-demo-sidebar>
+                         You can add your sidebar content here.
+                      </div>
+                  </fuse-sidebar>
+                  <!-- / SIDEBAR -->
+
+                  <!-- CENTER -->
+                  <div class="center">
+
+                      <!-- HEADER -->
+                          <!-- toogle button -->
+                          <button mat-icon-button class="sidebar-toggle" fxHide.gt-md
+                          (click)="toggleSidebar('simple-left-sidebar-1')">
+                          <mat-icon>menu</mat-icon>
+                          </button>
+                          <!-- /toogle button -->
+                      <!--/ HEADER -->
+
+                      <!-- CONTENT -->
+                      <div class="content">
+                          place your page content here.
+                      </div>
+                      <!-- / CONTENT -->
+
+                  </div>
+                  <!-- / CENTER -->
+
+                </div>
+
+              
+            
+        </textarea>
+    
+    </fuse-highlight>
+  
+  
+  </mat-dialog-content>
+  <!--<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+  </mat-dialog-actions>-->
+  </div>

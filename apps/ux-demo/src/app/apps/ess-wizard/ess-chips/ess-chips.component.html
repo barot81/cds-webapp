@@ -1,0 +1,25 @@
+<mat-form-field class="w-100-p">
+  <mat-label>BCC</mat-label>
+  <mat-chip-list #chipList aria-label="Select email for">
+    <mat-chip
+      *ngFor="let email of emails"
+      [selectable]="selectable"
+      [removable]="removable"
+      (removed)="remove(email)">
+      {{email}}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input
+      #emailInput
+      [formControl]="emailCtrl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let email of filteredEmails | async" [value]="email">
+      {{email}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

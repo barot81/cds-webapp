@@ -1,0 +1,1 @@
+export * from './ck-editor-demo/ck-editor-demo.component';

@@ -1,0 +1,63 @@
+<mat-sidenav-container class="example-container" hasBackdrop="true">
+  <mat-sidenav #drawer mode="over" position="end" fixedInViewport="fixed">
+    <div class="header mat-elevation-z4 p-8">
+      <button
+        (click)="drawer.toggle()"
+        mat-icon-button
+        fxHide
+        fxShow.gt-md
+        aria-label="Close the drawer"
+      >
+        <i aria-hidden="true" class="fa-light fa-times"></i>
+      </button>
+    </div>
+    <div class="content p-16">
+      <div fxLayout="column" fxLayoutAlign="start">
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Placeholder" />
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="pt-16">
+          <mat-form-field appearance="fill">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Placeholder" />
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="pt-16">
+          <mat-form-field appearance="fill">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Placeholder" />
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="pt-16">
+          <mat-form-field appearance="fill">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Placeholder" />
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="m-16">
+    <div fxLayout="column" fxLayoutAlign="start">
+      <div>
+        <span class="accent-fg font-16 font-weight-600"
+          >Open the Drawer !!</span
+        >
+      </div>
+      <div class="pt-16">
+        <button mat-raised-button (click)="drawer.toggle()">Open Drawer</button>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

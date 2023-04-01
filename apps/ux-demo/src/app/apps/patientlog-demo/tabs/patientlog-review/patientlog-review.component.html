@@ -1,0 +1,250 @@
+<div id="patient-review-container" class="page-layout carded left-sidebar inner-scroll">
+
+  <fuse-sidebar class="sidebar width-x-sm" name="carded-left-sidebar-tabbed-2" position="left" lockedOpen="gt-md">
+
+    <div class="ml-16 mt-16">
+      <span class="font-16">Students</span>
+    </div>
+
+    <div class="search-wrapper m-16">
+      <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="s-16 secondary-text">search</mat-icon>
+        <input type="text" placeholder="Search Person" fxFlex>
+      </div>
+    </div>
+
+    <!-- / SEARCH -->
+    <div>
+      <div fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="font-weight-600 mb-16 mx-16">
+          <div class="" fxLayout="column">
+            <span>Name</span>
+          </div>
+          <div fxLayout="column">
+            <span>
+              Log
+            </span>
+          </div>
+        </div>
+        <div class="content" [style.height.px]="headerService.scrollContentheight">
+          <mat-list class="w-100-p">
+            <button mat-button class="no-space m-0 p-0" *ngFor="let item of studentList;let i =index">
+              <mat-list-item class="p-16"  [ngClass]="{'active-list-item': i == 0}">
+                <div  fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+                  <div fxLayoutAlign="start center" fxLayout="column">
+                    <exxat-avatar-list-item class="" [firstName]="item.firstName" [lastName]="item.lastName"
+                    [src]="item.src">
+                    </exxat-avatar-list-item>
+                  </div>
+                <div fxLayoutAlign="end center" fxLayout="column">
+                  <span>
+                    {{item.plCount}}
+                  </span>
+                </div>
+                </div>
+              </mat-list-item>
+            </button>
+          </mat-list>
+      
+        </div>
+      </div>
+
+    </div>
+  </fuse-sidebar>
+
+  <div class="center ml-lg-16 ">
+
+    <!--toolbar-->
+    <div class="">
+      <div fxLayout="row" fxLayoutAlign="space-between center" fxHide.gt-md>
+        <button mat-icon-button class="sidebar-toggle" fxHide.gt-md
+          (click)="toggleSidebar('carded-left-sidebar-tabbed-2')">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <div>
+          <button mat-icon-button [matMenuTriggerFor]="card20Menu" aria-label="more" fxHide.gt-sm>
+            <mat-icon>more_vert</mat-icon>
+          </button>
+
+          <mat-menu #card20Menu="matMenu">
+            <div>
+              <div class="p-16">
+                <mat-checkbox>Select all</mat-checkbox>
+              </div>
+              <mat-divider></mat-divider>
+              <div class="overflow-auto mt-16" [style.height.px]="headerService.scrollContentheight">
+              
+                    <mat-list class="w-100-p">
+                      <a class="no-space m-0 p-0" *ngFor="let item of plList; let i= index" >
+                        <mat-list-item class="p-16" [ngClass]="{'secondary-active-list-item': i == 0}">
+                          <div fxLayout="column" fxLayoutAlign="center start" fxFlex="100">
+                            <div fxLayout="column" fxLayoutAlign="center start">
+                        
+                              <mat-checkbox><span class="font-weight-600">Date: </span> <span>{{item.date}}</span>
+                              </mat-checkbox>
+                              <div fxLayout="column" class="pt-8 pl-24 text-left">
+                                <span>{{item.content1}}</span>
+                                <span>{{item.content2}}</span>
+                              </div>
+                            </div>
+    
+                            <div fxLayout="row" fxLayoutAlign="start center" class="pt-8 pl-24">
+                              <span class="status-badge {{item.color}}" >
+                                {{item.status}}
+                              </span>
+                            </div>
+    
+                          </div>
+                        </mat-list-item>
+                      </a>
+                    </mat-list>
+              </div>
+          </div>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxFlex="100">
+      <!-- 1st column-->
+    
+  <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="30" fxHide.sm fxHide.xs>
+    <mat-card class="h-100-p">
+      <div>
+          <div class="pb-16">
+            <mat-checkbox>Select all</mat-checkbox>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="overflow-auto pb-64 mt-16" [style.height.px]="headerService.scrollContentheight">
+          
+                <mat-list class="w-100-p p-0">
+                  <a class="no-space m-0 p-0" *ngFor="let item of plList; let i= index" >
+                    <mat-list-item class="p-16" [ngClass]="{'secondary-active-list-item': i == 0}">
+                      <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+                        <div fxLayout="column" fxLayoutAlign="center start">
+                    
+                          <mat-checkbox><span class="font-weight-600">Date: </span> <span>{{item.date}}</span>
+                          </mat-checkbox>
+                          <div fxLayout="column" class="pt-8 pl-24 text-left">
+                            <span>{{item.content1}}</span>
+                            <span>{{item.content2}}</span>
+                          </div>
+                        </div>
+
+                        <div fxLayout="row" fxLayoutAlign="end center">
+                          <span class="status-badge {{item.color}}">
+                            {{item.status}}
+                          </span>
+                        </div>
+
+                      </div>
+                    </mat-list-item>
+                  </a>
+                </mat-list>
+          </div>
+      </div>
+    </mat-card>
+  </div>
+      <!-- / 1st column-->
+
+      <!-- 2nd column-->
+      <div class="overflow-auto pl-md-16" fxLayout="column" fxFlex="100" fxFlex.gt-sm="70"
+        [style.height.px]="headerService.scrollContentheight">
+        
+        <div fxLayout="column" fxLayout.gt-xs="row" fxlayoutalign="space-between center" class=" pb-16 px-xs-16">
+         
+          <div fxLayout="column" fxLayoutAlign="center" fxFlex class="">
+            <h2 class="font-weight-600">2020-INT-0001</h2>
+            <div fxLayout="row" fxFlex="100">
+              <span>March 30, 2020</span>
+              <div>
+                <span class="dot"></span>
+                <span>Infant/Male</span>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="column" fxLayoutAlign="center" class="pt-xs-16">
+            <div fxLayout="row">
+            <button mat-stroked-button class="pr-16 mr-16">Lock</button>
+            <button mat-raised-button color="accent">Need attention</button>
+            </div>
+          </div>
+        </div>
+
+        <mat-card class="p-0 mb-16">
+          <div fxLayout="column">
+
+          <header fxLayout="row" fxLayoutAlign="space-between center"  class="card-header-title card-header-border-bottom py-8 px-16">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="primary-heading font-weight-600 text-capitalize">School feedback</h2>
+            </div>
+            <a>View history</a>
+          </header>
+          <div class="pl-16 pt-16" fxLayout="column">
+              <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto" class="pr-16">
+                <div class="text-center w-100-p">
+                  <mat-form-field appearance="fill" fxFlex="100">
+                    <mat-label>Add your feedback</mat-label>
+                    <textarea matInput></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="space-between center" class="pb-16 pr-16">
+                <span>Please update clinical notes</span>
+                <span>March 30 , 2020</span>
+              </div>
+          </div>
+          </div>
+        </mat-card>
+
+          <mat-card class="p-0 mb-16">
+
+            <header fxLayout="row" fxLayoutAlign="space-between center"  class="card-header-title card-header-border-bottom py-8 px-16">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2 class="primary-heading font-weight-600 text-capitalize">Encounter with the student present</h2>
+              </div>
+            </header>
+
+            <div fxLayout="row wrap" class="pt-16 pl-16">
+              <div class="exxat-info mb-16 pr-16" fxLayout="column" fxFlex="100" fxFlex.gt-sm="33.33">
+                <div class="title">Address</div>
+                <div class="description description-text-wrap">710 S Business 61- Suite 100,
+                  Bowling Green, Missouri-63334</div>
+              </div>
+              <div class="exxat-info mb-16 pr-16" fxLayout="column" fxFlex="100" fxFlex.gt-sm="33.33">
+                <div class="title">Phone</div>
+                <div class="description description-text-wrap">(235)-789-7895, Ext. 1234</div>
+              </div>
+              <div class="exxat-info mb-16 pr-16" fxLayout="column" fxFlex="100" fxFlex.gt-sm="33.33">
+                <div class="title">Fax</div>
+                <div class="description description-text-wrap">323 555 1234</div>
+              </div>
+              <div class="exxat-info mb-16 pr-16" fxLayout="column" fxFlex="100" fxFlex.gt-sm="33.33">
+                <div class="title">Location Lable</div>
+                <div class="description description-text-wrap">MGH - Orlando </div>
+              </div>
+              <div class="exxat-info mb-16 pr-16" fxLayout="column" fxFlex="100" fxFlex.gt-sm="33.33">
+                <div class="title">Website</div>
+                <div class="description description-text-wrap"><a href="">https://www.mghospital.com</a></div>
+              </div>
+              <div class="exxat-info mb-16 pr-16" fxLayout="column" fxFlex="100" fxFlex.gt-sm="33.33">
+                <div class="title">Setting</div>
+                <div class="description description-text-wrap">Internal Medicine, Family
+                  Medicine, Neuro</div>
+              </div>
+              <div class="exxat-info pr-16 mb-16" fxLayout="column" fxFlex="100" fxFlex.gt-sm="33.33">
+                <div class="title">Area</div>
+                <div class="description description-text-wrap">In-area</div>
+              </div>
+
+            </div>
+    
+        </mat-card>
+
+
+      </div>
+      <!-- /2nd column-->
+    </div>
+
+  </div>
+</div>

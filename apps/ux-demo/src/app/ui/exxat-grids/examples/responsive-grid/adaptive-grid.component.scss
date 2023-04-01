@@ -1,0 +1,24 @@
+
+@import 'init';
+
+.adaptive-table{
+
+    .table-width-auto{
+        @include media-breakpoint('gt-md'){
+           overflow: auto;
+        }
+        overflow-y: auto;
+        height: calc(100vh - 207px);
+        @include media-breakpoint('lt-sm'){
+            height: calc(100vh - 192px);
+         }
+    }
+
+    .adaptive-table-outer-height{
+        height: calc(100vh - 80px);
+        @include media-breakpoint('lt-sm'){
+            height: calc(100vh - 64px);
+         }
+    }
+
+}

@@ -1,0 +1,830 @@
+<div class="page-layout carded fullwidth" fxLayout="column" id="ess-wizard">
+  <div class="center px-0" fxFlex="100">
+    <div class="" fxLayout="row" fxFlex="100">
+      <div
+        fxLayout="row wrap"
+        fxLayoutAlign="center start"
+        fxFlex.gt-md="90"
+        fxFlex="100"
+        class="margin-auto"
+      >
+        <div class="pt-4 pr-8" fxFlex.gt-sm="5" fxFlex="100">
+          <button
+            mat-icon-button
+            role="img"
+            class="action-icon"
+            routerLink=""
+            aria-label="arrow back"
+          >
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+        </div>
+        <div id="exxat-wizard-examples" fxFlex.gt-sm="85" fxFlex="100">
+          <div class="stepper-transparent">
+            <mat-horizontal-stepper #stepper>
+              <!-- template recipients step -->
+              <mat-step>
+                <ng-template matStepLabel tabindex="0" aria-label="recipients"
+                  >Recipients</ng-template
+                >
+                <div fxLayout="column" class="">
+                  <div
+                    fxLayout="row wrap"
+                    fxLayoutAlign="space-between center"
+                    fxFlex="100"
+                    class="px-xs-16"
+                  >
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                      class="mt-16"
+                    >
+                      <button
+                        mat-icon-button
+                        role="img"
+                        class="action-icon"
+                        aria-label="Copy all the recipients email address"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-copy accent-fg s-18"
+                        ></i>
+                      </button>
+                      <span class="accent-fg font-weight-600"
+                        >Copy all the recipients email address.</span
+                      >
+                    </div>
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="end center"
+                      class="mt-16"
+                    >
+                      <button
+                        mat-raised-button
+                        color="accent"
+                        class="px-24"
+                        tabindex="1"
+                        aria-label="next button"
+                        matStepperNext
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </div>
+                  <div fxLayout="row wrap" fxFlex="100">
+                    <div
+                      fxLayout="row"
+                      fxFlex.gt-sm="50"
+                      fxFlex="100"
+                      class="pr-md-16 mt-16"
+                    >
+                      <div class="w-100-p px-8">
+                        <mat-card class="p-0 w-100-p m-0">
+                          <div class="">
+                            <div class="p-16 checkbox-header">
+                              <mat-checkbox
+                                class=""
+                                [checked]="allComplete"
+                                [indeterminate]="someComplete()"
+                                (change)="setAll($event.checked)"
+                                attr.aria-label="checkbox for {{ task.name }}"
+                              >
+                                {{ task.name }}
+                              </mat-checkbox>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <div class="mb-16" fxLayout="column">
+                              <div *ngFor="let subtask of task.subtasks">
+                                <div class="p-16">
+                                  <mat-checkbox
+                                    [(ngModel)]="subtask.completed"
+                                    [color]="subtask.color"
+                                    (ngModelChange)="updateAllComplete()"
+                                    attr.aria-label="checkbox for  {{
+                                      subtask.name
+                                    }}"
+                                  >
+                                    {{ subtask.name }}
+                                  </mat-checkbox>
+                                </div>
+                                <mat-divider></mat-divider>
+                              </div>
+                            </div>
+                          </div>
+                        </mat-card>
+                      </div>
+                    </div>
+
+                    <div fxFlex.gt-sm="50" fxFlex="100" class="mt-16">
+                      <div fxLayout="column" class="w-100-p px-xs-16">
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="start start"
+                          fxFlex="100"
+                        >
+                          <mat-form-field appearance="fill" fxFlex="100">
+                            <mat-label>From</mat-label>
+                            <input matInput formControlName="from" required />
+                            <mat-error>Email is required!</mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="start start"
+                          fxFlex="100"
+                        >
+                          <mat-form-field appearance="fill" fxFlex="100">
+                            <mat-label>Reply to</mat-label>
+                            <input matInput formControlName="reply" required />
+                            <mat-error>Email is required!</mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="start start"
+                          fxFlex="100"
+                        >
+                          <mat-form-field class="w-100-p">
+                            <mat-label>CC</mat-label>
+                            <mat-chip-list
+                              #chipList
+                              aria-label="Select email for"
+                            >
+                              <mat-chip
+                                *ngFor="let email of emails"
+                                [selectable]="selectable"
+                                [removable]="removable"
+                                (removed)="remove(email)"
+                              >
+                                {{ email }}
+                                <mat-icon matChipRemove *ngIf="removable"
+                                  >cancel</mat-icon
+                                >
+                              </mat-chip>
+                              <input
+                                #emailInput
+                                [formControl]="emailCtrl"
+                                [matAutocomplete]="auto"
+                                [matChipInputFor]="chipList"
+                                [matChipInputSeparatorKeyCodes]="
+                                  separatorKeysCodes
+                                "
+                                (matChipInputTokenEnd)="add($event)"
+                              />
+                            </mat-chip-list>
+                            <mat-autocomplete
+                              #auto="matAutocomplete"
+                              (optionSelected)="selected($event)"
+                            >
+                              <mat-option
+                                *ngFor="let email of filteredEmails | async"
+                                [value]="email"
+                              >
+                                {{ email }}
+                              </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                        </div>
+
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="start start"
+                          fxFlex="100"
+                          class="mt-16"
+                        >
+                          <ryzen-ess-chips class="w-100-p"></ryzen-ess-chips>
+                        </div>
+
+                        <div fxLayout="column">
+                          <span class="font-weight-600 mb-8">Upload files</span>
+                          <exxat-file-upload
+                            [fileConfiguration]="fileConfiguration"
+                            formControlName="fileDescriptions"
+                            tabindex="0"
+                            aria-label="Browse to upload files"
+                          ></exxat-file-upload>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-step>
+
+              <!-- template disable step -->
+              <mat-step>
+                <ng-template
+                  matStepLabel
+                  tabindex="0"
+                  aria-label="Template Disable"
+                  >Template Disable</ng-template
+                >
+                <div fxLayout="column" class="">
+                  <div
+                    fxLayout="row wrap"
+                    fxLayoutAlign="space-between center"
+                    fxFlex="100"
+                    class="px-xs-16 mb-16"
+                  >
+                    <div
+                      fxLayout="column"
+                      fxLayoutAlign="center start"
+                      class="mt-16 form-field-zero-spacing"
+                    >
+                      <mat-form-field appearance="fill">
+                        <mat-label>Univercity template</mat-label>
+                        <mat-select formControlName="gender">
+                          <mat-option
+                            *ngFor="let gender of genderList"
+                            value="{{ gender.value }}"
+                          >
+                            {{ gender.viewValue }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error>Gender is required!</mat-error>
+                      </mat-form-field>
+                      <a
+                        tabindex="0"
+                        aria-label="Don't find a desire template. Create a new template."
+                        >Don't find a desire template. Create a new template.</a
+                      >
+                    </div>
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="end center"
+                      class="mt-16"
+                    >
+                      <button
+                        mat-stroked-button
+                        color="accent"
+                        tabindex="1"
+                        class="mr-16 px-24 accent-border-btn"
+                        matStepperPrevious
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        mat-raised-button
+                        color="accent"
+                        tabindex="1"
+                        class="px-24"
+                        matStepperNext
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="position-relative" fxLayout="column">
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start start"
+                      fxFlex="100"
+                    >
+                      <div
+                        class="floating-edit-button"
+                        fxLayout="row"
+                        fxLayoutAlign="center center"
+                        fxFlex="100"
+                      >
+                        <button
+                          mat-raised-button
+                          color="accent"
+                          class="px-24"
+                          aria-label="edit to enable template"
+                        >
+                          Edit
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      fxLayout="row wrap"
+                      fxLayoutAlign="start start"
+                      fxFlex="100"
+                      class="template-content-height dashed-border"
+                    >
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        fxFlex.gt-sm="50"
+                        fxFlex="100"
+                        class="pr-md-16 h-100-p"
+                      >
+                        <mat-card class="w-100-p p-0 h-100-p">
+                          <div
+                            fxLayout="column"
+                            fxLayoutAlign="space-between start"
+                            fxFlex="100"
+                          >
+                            <div fxLayout="column" class="w-100-p">
+                              <div
+                                class="email-header"
+                                fxLayout="column"
+                                class="w-100-p"
+                              >
+                                <span class="p-16 font-weight-600"
+                                  >Subject</span
+                                >
+                                <div
+                                  fxLayout="row"
+                                  fxLayoutAlign="center start"
+                                  fxFlex="100"
+                                  class="logo-border p-8"
+                                >
+                                  <img
+                                    src="assets/images/logo/exxat-pink-large.png"
+                                    alt="Exxat Logo"
+                                    class="image-width"
+                                  />
+                                  <!-- add logo according to school -->
+                                </div>
+                              </div>
+                              <div
+                                fxLayout="column"
+                                class="pl-16 pt-16 email-body w-100-p"
+                              >
+                                <span class="pb-32 pr-16">
+                                  Dear "prefix" "firstname" "lastname"</span
+                                >
+                                <span class="pb-32 pr-16">
+                                  This email is to notify you details of
+                                  students placed at "location" "placement
+                                  table"</span
+                                >
+                                <span class="pb-16 pr-16"> Thank you</span>
+                              </div>
+                            </div>
+                            <div
+                              fxLayout="row"
+                              fxLayoutAlign="center start"
+                              class="email-footer logo-border logo-border-radius p-16 w-100-p"
+                            >
+                              <img
+                                src="assets/images/logo/exxat-pink-large.png"
+                                alt="Exxat Logo"
+                                class="image-width"
+                              />
+                            </div>
+                          </div>
+                        </mat-card>
+                      </div>
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start start"
+                        fxFlex.gt-sm="50"
+                        fxFlex="100"
+                        class="pt-xs-16"
+                      >
+                        <div fxLayout="column" class="w-100-p pt-xs-16">
+                          <header
+                            class="secondary-info-header w-100-p"
+                            fxLayout="row"
+                            fxLayoutAlign="space-between center"
+                          >
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                              <h2 class="text-capitalize">
+                                Header and footer layout
+                              </h2>
+                            </div>
+                          </header>
+                          <div class="ml-16" fxLayout="column">
+                            <mat-radio-group
+                              aria-hidden="true"
+                              fxLayout="column"
+                            >
+                              <mat-radio-button
+                                value="1"
+                                class="mb-16"
+                                aria-hidden="true"
+                                ><span class="white-space-normal"
+                                  >Exercitation ex qui ad consequat voluptate
+                                  commodo. Aliqua qui ea eiusmod incididunt
+                                  dolor irure.</span
+                                ></mat-radio-button
+                              >
+                              <mat-radio-button
+                                value="2"
+                                class="mb-16"
+                                aria-hidden="true"
+                                ><span class="white-space-normal"
+                                  >School/University logo at top Exxat logo
+                                  bottom.</span
+                                >
+                              </mat-radio-button>
+                              <mat-radio-button
+                                value="3"
+                                class="mb-16"
+                                aria-hidden="true"
+                                ><span class="white-space-normal"
+                                  >Exercitation ex qui ad consequat voluptate
+                                  commodo. Aliqua qui ea eiusmod incididunt
+                                  dolor irure.</span
+                                ></mat-radio-button
+                              >
+                              <mat-radio-button
+                                value="4"
+                                class="mb-16"
+                                aria-hidden="true"
+                                ><span class="white-space-normal"
+                                  >Exercitation ex qui ad consequat voluptate
+                                  commodo. Aliqua qui ea eiusmod incididunt
+                                  dolor irure.</span
+                                ></mat-radio-button
+                              >
+                            </mat-radio-group>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-step>
+
+              <!-- template enable step -->
+              <mat-step>
+                <ng-template
+                  matStepLabel
+                  tabindex="0"
+                  aria-label="Template Disable"
+                  >Template Enable</ng-template
+                >
+                <div fxLayout="column" class="">
+                  <div
+                    fxLayout="row wrap"
+                    fxLayoutAlign="space-between center"
+                    fxFlex="100"
+                    class="px-xs-16"
+                  >
+                    <div
+                      fxLayout="column"
+                      fxLayoutAlign="center start"
+                      class="mt-16 form-field-zero-spacing"
+                    >
+                      <mat-form-field appearance="fill">
+                        <mat-label>Univercity template</mat-label>
+                        <mat-select formControlName="gender">
+                          <mat-option
+                            *ngFor="let gender of genderList"
+                            value="{{ gender.value }}"
+                          >
+                            {{ gender.viewValue }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error>Gender is required!</mat-error>
+                      </mat-form-field>
+                      <a
+                        tabindex="0"
+                        aria-label="Don't find a desire template. Create a new template."
+                        >Don't find a desire template. Create a new template.</a
+                      >
+                    </div>
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="end center"
+                      class="mt-16"
+                    >
+                      <button
+                        mat-stroked-button
+                        color="accent"
+                        tabindex="1"
+                        class="mr-16 px-24 accent-border-btn"
+                        matStepperPrevious
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        mat-raised-button
+                        color="accent"
+                        tabindex="1"
+                        class="px-24"
+                        matStepperNext
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    fxLayout="row wrap"
+                    fxLayoutAlign="start start"
+                    fxFlex="100"
+                    class="template-content-height"
+                  >
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                      fxFlex.gt-sm="50"
+                      fxFlex="100"
+                      class="pr-md-16 h-100-p pt-16"
+                    >
+                      <mat-card class="w-100-p p-0 h-100-p">
+                        <div
+                          fxLayout="column"
+                          fxLayoutAlign="space-between start"
+                          fxFlex="100"
+                        >
+                          <div fxLayout="column" class="w-100-p">
+                            <div
+                              class="email-header"
+                              fxLayout="column"
+                              class="w-100-p"
+                            >
+                              <span
+                                class="p-16 font-weight-600"
+                                tabindex="0"
+                                aria-label="Subject"
+                                >Subject</span
+                              >
+                              <div
+                                fxLayout="row"
+                                fxLayoutAlign="center start"
+                                fxFlex="100"
+                                class="logo-border p-8"
+                                tabindex="0"
+                                aria-label="header with school logo"
+                              >
+                                <img
+                                  src="assets/images/logo/exxat-pink-large.png"
+                                  alt="Exxat Logo"
+                                  class="image-width"
+                                />
+                                <!-- add logo according to school -->
+                              </div>
+                            </div>
+                            <div
+                              fxLayout="column"
+                              class="pl-16 pt-16 email-body w-100-p"
+                            >
+                              <span
+                                class="pb-32 pr-16"
+                                tabindex="0"
+                                aria-label="Dear name"
+                              >
+                                Dear "prefix" "firstname" "lastname"</span
+                              >
+                              <span
+                                class="pb-32 pr-16"
+                                tabindex="0"
+                                aria-label="This email is to notify you details of students placed at location placement table"
+                              >
+                                This email is to notify you details of students
+                                placed at "location" "placement table"</span
+                              >
+                              <span
+                                class="pb-16 pr-16"
+                                tabindex="0"
+                                aria-label="Thank You"
+                              >
+                                Thank you</span
+                              >
+                            </div>
+                          </div>
+                          <div
+                            fxLayout="row"
+                            fxLayoutAlign="center start"
+                            class="email-footer logo-border logo-border-radius p-16 w-100-p"
+                            tabindex="0"
+                            aria-label="Footer with exxat logo"
+                          >
+                            <img
+                              src="assets/images/logo/exxat-pink-large.png"
+                              alt="Exxat Logo"
+                              class="image-width"
+                            />
+                          </div>
+                        </div>
+                      </mat-card>
+                    </div>
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start start"
+                      fxFlex.gt-sm="50"
+                      fxFlex="100"
+                      class="pt-16"
+                    >
+                      <div fxLayout="column" class="w-100-p">
+                        <header
+                          class="secondary-info-header w-100-p"
+                          fxLayout="row"
+                          fxLayoutAlign="space-between center"
+                        >
+                          <div
+                            fxLayout="row"
+                            fxLayoutAlign="start center"
+                            tabindex="0"
+                            aria-label="Header and footer layout"
+                          >
+                            <h2 class="text-capitalize">
+                              Header and footer layout
+                            </h2>
+                          </div>
+                        </header>
+                        <div class="ml-16">
+                          <mat-radio-group
+                            aria-label="select radio option"
+                            fxLayout="column"
+                          >
+                            <mat-radio-button value="1" class="mb-16"
+                              ><span class="white-space-normal"
+                                >Exercitation ex qui ad consequat voluptate
+                                commodo. Aliqua qui ea eiusmod incididunt dolor
+                                irure.</span
+                              >
+                            </mat-radio-button>
+                            <mat-radio-button value="2" class="mb-16"
+                              ><span class="white-space-normal"
+                                >School/University logo at top Exxat logo
+                                bottom.</span
+                              >
+                            </mat-radio-button>
+                            <mat-radio-button value="3" class="mb-16"
+                              ><span class="white-space-normal"
+                                >Exercitation ex qui ad consequat voluptate
+                                commodo. Aliqua qui ea eiusmod incididunt dolor
+                                irure.</span
+                              >
+                            </mat-radio-button>
+                            <mat-radio-button value="4" class="mb-16"
+                              ><span class="white-space-normal"
+                                >Exercitation ex qui ad consequat voluptate
+                                commodo. Aliqua qui ea eiusmod incididunt dolor
+                                irure.</span
+                              >
+                            </mat-radio-button>
+                          </mat-radio-group>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-step>
+
+              <!-- template preview step -->
+              <mat-step>
+                <ng-template matStepLabel tabindex="0" aria-label="Preview"
+                  >Preview</ng-template
+                >
+                <div fxLayout="column" class="">
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="end center"
+                    class="mt-16 px-xs-16"
+                  >
+                    <button
+                      mat-stroked-button
+                      color="accent"
+                      class="mr-16 px-24 accent-border-btn"
+                      tabindex="1"
+                      matStepperPrevious
+                    >
+                      Previous
+                    </button>
+                  </div>
+                  <div
+                    fxLayout="row wrap"
+                    fxLayoutAlign="start start"
+                    fxFlex="100"
+                    class="template-content-height"
+                  >
+                    <div
+                      fxLayout="row wrap"
+                      fxLayoutAlign="start center"
+                      fxFlex.gt-sm="50"
+                      fxFlex="100"
+                      class="pr-md-16 mt-16 h-100-p"
+                    >
+                      <mat-card class="w-100-p p-0 h-100-p">
+                        <div
+                          fxLayout="column"
+                          fxLayoutAlign="space-between start"
+                          fxFlex="100"
+                        >
+                          <div fxLayout="column" class="w-100-p">
+                            <div
+                              class="email-header"
+                              fxLayout="column"
+                              class="w-100-p"
+                            >
+                              <span
+                                class="p-16 font-weight-600"
+                                tabindex="0"
+                                aria-label="Subject"
+                                >Subject</span
+                              >
+                              <div
+                                fxLayout="row"
+                                fxLayoutAlign="center start"
+                                fxFlex="100"
+                                class="logo-border p-8"
+                                tabindex="0"
+                                aria-label="header with school logo"
+                              >
+                                <img
+                                  src="assets/images/logo/exxat-pink-large.png"
+                                  alt="Exxat Logo"
+                                  class="image-width"
+                                />
+                                <!-- add logo according to school -->
+                              </div>
+                            </div>
+                            <div
+                              fxLayout="column"
+                              class="pl-16 pt-16 email-body w-100-p"
+                            >
+                              <span
+                                class="pb-32 pr-16"
+                                tabindex="0"
+                                aria-label="Dear name"
+                              >
+                                Dear "prefix" "firstname" "lastname"</span
+                              >
+                              <span
+                                class="pb-32 pr-16"
+                                tabindex="0"
+                                aria-label="This email is to notify you details of students placed at location placement table"
+                              >
+                                This email is to notify you details of students
+                                placed at "location" "placement table"</span
+                              >
+                              <span
+                                class="pb-16 pr-16"
+                                tabindex="0"
+                                aria-label="Thank You"
+                              >
+                                Thank you</span
+                              >
+                            </div>
+                          </div>
+                          <div
+                            fxLayout="row"
+                            fxLayoutAlign="center start"
+                            class="email-footer logo-border logo-border-radius p-16 w-100-p"
+                            tabindex="0"
+                            aria-label="Footer with exxat logo"
+                          >
+                            <img
+                              src="assets/images/logo/exxat-pink-large.png"
+                              alt="Exxat Logo"
+                              class="image-width"
+                            />
+                          </div>
+                        </div>
+                      </mat-card>
+                    </div>
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start start"
+                      fxFlex.gt-sm="50"
+                      fxFlex="100"
+                      class="mt-16 px-xs-16"
+                    >
+                      <div fxLayout="column" class="w-100-p">
+                        <mat-radio-group
+                          aria-label="Select an option"
+                          fxLayout="column"
+                        >
+                          <mat-radio-button value="1" class="mb-16"
+                            ><span class="white-space-normal"
+                              >Send email now.</span
+                            ></mat-radio-button
+                          >
+                          <mat-radio-button value="2" class="mb-16"
+                            ><span class="white-space-normal"
+                              >Send email at specific date and time.</span
+                            ></mat-radio-button
+                          >
+                        </mat-radio-group>
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                          <mat-form-field appearance="fill">
+                            <mat-label>Due date</mat-label>
+                            <input matInput [matDatepicker]="picker2" />
+                            <mat-datepicker-toggle
+                              matSuffix
+                              [for]="picker2"
+                            ></mat-datepicker-toggle>
+                            <mat-datepicker
+                              #picker2
+                              color="primary"
+                              class="action-icon"
+                            ></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                        <div>
+                          <button
+                            mat-raised-button
+                            color="accent"
+                            class="px-24"
+                          >
+                            Schedule
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-step>
+            </mat-horizontal-stepper>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

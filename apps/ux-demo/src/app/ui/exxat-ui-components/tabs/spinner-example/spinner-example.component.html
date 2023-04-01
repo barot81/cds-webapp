@@ -1,0 +1,122 @@
+<div id="progress-spinner-example" class="p-12 w-100-p">
+  <div class="gray-header mb-16">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="mr-8">
+          <button
+            mat-icon-button
+            aria-label="Click to go back"
+            routerLink="/admin/ux/ui/exxat-component-library"
+          >
+            <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+          </button>
+        </div>
+        <div class="mat-title">Spinner Examples</div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+      <div class="mb-16 secondary-text">Basic Progress Spinner</div>
+      <mat-card>
+        <mat-spinner
+          color="accent"
+          tabindex="0"
+          aria-label="Basic Progress Spinner"
+        ></mat-spinner>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+
+        <mat-spinner color="accent" tabindex="0" aria-label="Basic Progress Spinner"></mat-spinner>
+  
+      </textarea>
+    </fuse-highlight>
+  </div>
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+      <div class="mb-16 secondary-text">Size Change of Progress Spinner</div>
+      <mat-card>
+        <mat-spinner
+          diameter="30"
+          tabindex="0"
+          color="accent"
+          aria-label="Size Change of Progress Spinner"
+        ></mat-spinner>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+
+        <mat-spinner color="accent" diameter="30" tabindex="0" aria-label="Size Change of Progress Spinner"></mat-spinner>
+  
+      </textarea>
+    </fuse-highlight>
+  </div>
+
+  <!-- <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+      <div class="mat-caption secondary-text">Color Change of Progress Spinner</div>
+      <mat-card>
+        <mat-spinner color="primary" diameter="30" tabindex="0" aria-label="color Change Progress Spinner"></mat-spinner>
+        <br/>
+        <mat-spinner color="accent" diameter="30" tabindex="0" aria-label="color Change Progress Spinner"></mat-spinner>
+        <br/>
+        <mat-spinner color="warn" diameter="30" tabindex="0" aria-label="color Change Progress Spinner" ></mat-spinner>
+      </mat-card>
+    </div>
+
+
+    <fuse-highlight lang="html" class="source-code" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <textarea #source hidden="hidden">
+
+        <mat-spinner color="primary" tabindex="0" aria-label="color Change Progress Spinner"></mat-spinner>
+        <mat-spinner color="accent" tabindex="0" aria-label="color Change Progress Spinner"></mat-spinner>
+        <mat-spinner color="warn" tabindex="0" aria-label="color Change Progress Spinner"></mat-spinner>
+  
+      </textarea>
+    </fuse-highlight>
+
+  </div> -->
+  <div class="mt-16" fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="48">
+      <p class="warn-fg font-16" tabindex="0" aria-label="Note from UI Team">
+        Note from UI Team
+      </p>
+      <p
+        tabindex="0"
+        aria-label="Developers are requested not to make any extra self made Class or
+        write hardcode CSS or add Colors. Since we are following MULTI theme,
+        Theme will break if Material theme structure and guidlines are not
+        followed properly."
+        class="warn-fg font-14"
+      >
+        Developers are requested not to make any extra self made Class or write
+        hardcode CSS or add Colors. Since we are following MULTI theme, Theme
+        will break if Material theme structure and guidlines are not followed
+        properly.
+      </p>
+      <strong>Connect To UI team for any such cases.</strong>
+    </div>
+  </div>
+</div>

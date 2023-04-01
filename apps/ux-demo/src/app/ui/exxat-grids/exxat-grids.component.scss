@@ -1,0 +1,49 @@
+@import 'init';
+
+
+.exxat-new-grid {
+  .name-column {
+    min-width: 10vw;
+    max-width: 10vw;
+    @include media-breakpoint('lt-lg') {
+      min-width: 35vw;
+    }
+    @include media-breakpoint('lt-sm') {
+      min-width: 50vw !important;
+    }
+  }
+
+  .address-column {
+    min-width: 12vw;
+    max-width: 12vw;
+    @include media-breakpoint('lt-lg') {
+      min-width: 30vw;
+    }
+    @include media-breakpoint('sm') {
+      min-width: 36vw !important;
+    }
+    @include media-breakpoint('lt-sm') {
+      min-width: 60vw !important;
+    }
+  }
+
+  .email-width {
+    min-width: 10vw;
+    @include media-breakpoint('md') {
+      min-width: 20vw;
+    }
+    @include media-breakpoint('lt-md') {
+      min-width: 28vw;
+    }
+  }
+
+  .column-width {
+    min-width: 5vw;
+    @include media-breakpoint('lt-lg') {
+      min-width: 20vw;
+    }
+    @include media-breakpoint('xs') {
+      min-width: 25vw;
+    }
+  }
+}

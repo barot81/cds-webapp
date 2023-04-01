@@ -1,0 +1,1 @@
+export * from './ngx-chart-helper-table/ngx-chart-helper-table.component';

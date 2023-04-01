@@ -1,0 +1,83 @@
+<div class="content pt-16" fxLayout="column">
+  <div>
+    <div
+      class="preview m-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="48"
+    >
+      <mat-card>
+        <button
+          mat-stroked-button
+          color="primary"
+          class=""
+          aria-label="Show snackbar"
+          (click)="openSnackBar()"
+        >
+          Show Snackbar
+        </button>
+      </mat-card>
+    </div>
+
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="48">
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <div class="pt-16">
+            <fuse-highlight lang="html" class="source-code">
+              <textarea #source hidden="hidden">
+                <button
+                mat-stroked-button
+                color="primary"
+                class=""
+                aria-label="Show snackbar"
+                (click)="openSnackBar()"
+                >
+                Show Snackbar
+                </button>
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Component TS">
+          <div class="pt-16">
+            <fuse-highlight lang="ts" class="source-code">
+              <textarea #source hidden="hidden">
+                import { Component } from '@angular/core';
+                import { MatSnackBar } from '@angular/material/snack-bar';
+                
+                @Component({
+                  selector: 'ryzen-snackbar-example-one',
+                  templateUrl: './snackbar-example-one.component.html',
+                  styleUrls: ['./snackbar-example-one.component.scss']
+                })
+                export class SnackbarExampleOneComponent {
+                
+                  constructor(private _snackBar: MatSnackBar) { }
+                
+                  openSnackBar() {
+                    let snackBarRef = this._snackBar.open(
+                      'Success Snackbar With Action',
+                      'Action',
+                      {
+                        verticalPosition: this.verticalPosition,
+                        duration: 3000,
+                        panelClass: ['snackbar-success'],
+                      }
+                    );
+                
+                    snackBarRef.onAction().subscribe(() => {
+                      console.log('Action Called !!');
+                    });
+                  }
+                }
+                
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

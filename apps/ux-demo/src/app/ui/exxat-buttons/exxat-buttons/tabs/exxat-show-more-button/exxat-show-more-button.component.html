@@ -1,0 +1,355 @@
+<div id="exxat-show-more-button" class="p-24">
+  <div class="mat-title" tabindex="0" aria-label="Exxat Show More Button Examples ">
+    Exxat Show More Button Examples
+  </div>
+
+  <!-- @ Show More Button Example With Data-->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview m-16" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <div class="mat-caption secondary-text" tabindex="0" aria-label="Show More Button Example With Data ">
+        Show More Button Example With Data
+      </div>
+      <mat-card>
+        <div class="mb-16">
+          <div class="m-16">
+            <input type="checkbox" #post_4 class="read-more-state" id="post-4" />
+
+            <div class="read-more-wrap">
+              <div [ngClass]="{ 'read-more-target': i > 1 }" *ngFor="let item of workexperiences; let i = index">
+                <div [ngClass]="{ 'mb-12': i <= 1 }" fxLayout="row wrap" fxlayoutalign="space-between center">
+                  <div>
+                    <mat-icon class="
+                        secondary-text
+                        mat-icon
+                        notranslate
+                        material-icons
+                        mat-icon-no-color
+                        mr-16
+                      " role="img" aria-hidden="true">school</mat-icon>
+                  </div>
+                  <div>
+                    <h4 class="font-weight-600" tabindex="0" [attr.aria-label]="item.schoolName">
+                      {{ item.schoolName }}
+                    </h4>
+                    <p class="font-12" tabindex="0" [attr.aria-label]="item.city">
+                      {{ item.city }}
+                    </p>
+                    <p class="font-12" tabindex="0" [attr.aria-label]="item.time">
+                      {{ item.time }}
+                    </p>
+                  </div>
+                </div>
+                <div *ngIf="i == 1 || i == workexperiences.length - 1">
+                  <button (click)="post_4.click()" *ngIf="i == 1 && !post_4.checked" class="read-more-trigger link-btn"
+                    id="show-more-label">
+                    Show More Education
+                  </button>
+
+                  <button *ngIf="i == workexperiences.length - 1 && post_4.checked" (click)="post_4.click()"
+                    class="read-less-trigger link-btn mt-8" id="show-more-label">
+                    Show Less Education
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight lang="html" class="source-code m-16" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <textarea #source hidden="hidden">
+
+        <input type="checkbox" class="read-more-state" id="post-4" #post_4 />
+
+        <div class="read-more-wrap">
+              <div [ngClass]="{'read-more-target': i > 1}" *ngFor="let item of workexperiences ; let i = index">
+                <div [ngClass]="{'mb-16': i <= 1}" fxLayout="row wrap" fxlayoutalign="space-between center">
+                  <div>
+                    <mat-icon class="secondary-text mat-icon notranslate material-icons mat-icon-no-color mr-16"
+                      role="img" aria-hidden="true">school</mat-icon>
+                  </div>
+                  <div>
+                    <h4 class="font-weight-600" tabindex="0" [attr.aria-label]="item.schoolName">item.schoolName</h4>
+                    <p class="font-12" tabindex="0" [attr.aria-label]="item.city">item.city</p>
+                    <p class="font-12" tabindex="0" [attr.aria-label]="item.time">item.time</p>
+                  </div>
+                </div>
+                <div *ngIf="i == 1 || i == (workexperiences.length - 1 )">
+
+                  <button (click)="post_4.click()" *ngIf="i == 1 && !post_4.checked"
+                    class="read-more-trigger link-btn"id="show-more-label">Show More Education</button>
+
+                  <button *ngIf="i == (workexperiences.length - 1 ) && post_4.checked"
+                    (click)="post_4.click()" class="read-less-trigger link-btn mt-8"id="show-more-label" >Show Less Education</button>
+
+                </div>
+            </div>
+              </div>
+         
+
+      </textarea>
+    </fuse-highlight>
+  </div>
+
+  <!-- @ Show More Button Example With Text -->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview m-16" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+      <div class="mat-caption secondary-text" tabindex="0" aria-label="Show More Button Example With Text ">
+        Show More Button Example With Text
+      </div>
+      <mat-card class="pb-32">
+        <div class="mb-16">
+          <div class="m-16">
+            <div class="text-container">
+              <input id="ch" #ch type="checkbox" />
+              <button id="show-more-label" class="pl-0 link-btn" *ngIf="isTextOverflow('text_id')" id="show-more-label"
+                (click)="ch.click()" [attr.aria-label]="!ch.checked ? 'Show More' : 'Show Less'"></button>
+              <div class="text" id="text_id" tabindex="0">
+                I am interested in expanding my knowledge base and gaining new
+                experiences while improving my clinical skills in an outpatient
+                neurologic setting. I will be an asset due to my clinical
+                experience among patients with neurologic disorders and my
+                interest in movement analysis. I am creative, driven and value
+                cultural sensitivity as I come from a multicultural background.
+                I am interested in expanding my knowledge base and gaining new
+                experiences while improving my clinical skills in an outpatient
+                neurologic setting. I will be an asset due to my clinical
+                experience among patients with neurologic disorders and my
+                interest in movement analysis. I am creative, driven and value
+                cultural sensitivity as I come from a multicultural background.
+                I am interested in expanding my knowledge base and gaining new
+                experiences while improving my clinical skills in an outpatient
+                neurologic setting. I will be an asset due to my clinical
+                experience among patients with neurologic disorders and my
+                interest in movement analysis. I am creative, driven and value
+                cultural sensitivity as I come from a multicultural background.
+                I am interested in expanding my knowledge base and gaining new
+                experiences while improving my clinical skills in an outpatient
+                neurologic setting. I will be an asset due to my clinical
+                experience among patients with neurologic disorders and my
+                interest in movement analysis. I am creative, driven and value
+                cultural sensitivity as I come from a multicultural background.
+                I am interested in expanding my knowledge base and gaining new
+                experiences while improving my clinical skills in an outpatient
+                neurologic setting. I will be an asset due to my clinical
+                experience among patients with neurologic disorders and my
+                interest in movement analysis. I am creative, driven and value
+                cultural sensitivity as I come from a multicultural background.
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <mat-tab-group>
+        <mat-tab label="HTML">
+          <fuse-highlight lang="html" class="source-code mt-16" fxLayout="column" fxLayoutAlign="center">
+            <textarea #source hidden="hidden">
+                    <div class="text-container">
+                      <input id="ch" #ch type="checkbox">
+                      <button id="show-more-label" *ngIf="isTextOverflow('text_id')" (click)="ch.click()" 
+                      [attr.aria-label]="!ch.checked ? 'Show More': 'Show Less'" class="link-btn"></button>
+                      <div class="text" id="text_id">
+                        I am interested in expanding my knowledge base and gaining new
+                        experiences while improving my clinical skills in an outpatient
+                        neurologic setting. I will be an asset due to my clinical experience
+                        among patients with neurologic disorders and my interest in movement
+                        analysis. I am creative, driven and value cultural sensitivity as I
+                        come from a multicultural background.
+                        I am interested in expanding my knowledge base and gaining new
+                        experiences while improving my clinical skills in an outpatient
+                        neurologic setting. I will be an asset due to my clinical experience
+                        among patients with neurologic disorders and my interest in movement
+                        analysis. I am creative, driven and value cultural sensitivity as I
+                        come from a multicultural background.
+                        I am interested in expanding my knowledge base and gaining new
+                        experiences while improving my clinical skills in an outpatient
+                        neurologic setting. I will be an asset due to my clinical experience
+                        among patients with neurologic disorders and my interest in movement
+                        analysis. I am creative, driven and value cultural sensitivity as I
+                        come from a multicultural background.
+                        I am interested in expanding my knowledge base and gaining new
+                        experiences while improving my clinical skills in an outpatient
+                        neurologic setting. I will be an asset due to my clinical experience
+                        among patients with neurologic disorders and my interest in movement
+                        analysis. I am creative, driven and value cultural sensitivity as I
+                        come from a multicultural background.
+                        I am interested in expanding my knowledge base and gaining new
+                        experiences while improving my clinical skills in an outpatient
+                        neurologic setting. I will be an asset due to my clinical experience
+                        among patients with neurologic disorders and my interest in movement
+                        analysis. I am creative, driven and value cultural sensitivity as I
+                        come from a multicultural background.
+                      </div>
+                    </div>
+            </textarea>
+          </fuse-highlight>
+        </mat-tab>
+
+        <mat-tab label="TS">
+          <fuse-highlight lang="ts" class="source-code mt-16" fxLayout="column" fxLayoutAlign="center">
+            <textarea #source hidden="hidden">
+
+              import { Component, OnInit } from '@angular/core';
+
+
+              @Component({
+              selector: 'ryzen-exxat-show-more-button',
+              templateUrl: './exxat-show-more-button.component.html',
+              styleUrls: ['./exxat-show-more-button.component.scss']
+              })
+              export class ExxatShowMoreButtonComponent {
+
+
+              isTextOverflow(elementId: string): boolean {
+              const elem = document.getElementById(elementId);
+              if (elem) {
+              return (elem.scrollHeight > 40); // 40 is the value of height of the 2 line text
+              }
+              else {
+              return false;
+              }
+              }
+
+              }
+
+
+              </textarea>
+          </fuse-highlight>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+  <span class="pb-16 font-weight-600 font-20" tabindex="0" aria-label="Show more/less example for table ">
+    Show more/less example for table
+  </span>
+  <!-- ---------------------------------------------------------------------------------- -->
+  <div>
+    <h2 class="pb-4" tabindex="0" aria-label="With table header ">
+      With table header
+    </h2>
+    <mat-card class="table-show-more-less">
+      <div class="">
+        <input type="checkbox" class="table-read-more-state" id="post-2" />
+        <div class="table-read-more-wrap pb-12">
+          <table aria-hidden="false" mat-table [dataSource]="dataSource" class="w-100-p exxat-table pt-0 bx">
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th tabindex="0" aria-label="Number" class="pl-16" mat-header-cell *matHeaderCellDef>
+                No.
+              </th>
+              <td tabindex="0" attr.aria-label="Number is {{ element.position }}" mat-cell *matCellDef="let element"
+                class="pl-16">
+                {{ element.position }}
+              </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th tabindex="0" aria-label="name" mat-header-cell *matHeaderCellDef>
+                Name
+              </th>
+              <td tabindex="0" attr.aria-label="Name is {{ element.name }}" mat-cell *matCellDef="let element">
+                {{ element.name }}
+              </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+              <th tabindex="0" aria-label="Weight" mat-header-cell *matHeaderCellDef>
+                Weight
+              </th>
+              <td tabindex="0" mat-cell attr.aria-label="weight is {{ element.weight }}" *matCellDef="let element">
+                {{ element.weight }}
+              </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+              <th tabindex="0" aria-label="Symbol" mat-header-cell *matHeaderCellDef>
+                Symbol
+              </th>
+              <td tabindex="0" attr.aria-label="symbol is {{ element.symbol }}" mat-cell *matCellDef="let element">
+                {{ element.symbol }}
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index"
+              [class.table-read-more-target]="i > 2"></tr>
+          </table>
+        </div>
+        <label for="post-2" class="table-read-more-trigger link-btn cursor-pointer">
+        </label>
+      </div>
+    </mat-card>
+    <span class="font-16" tabindex="0"><strong>Note:</strong> you can set minimum number of rows to be visible
+      according to your requirement.</span>
+  </div>
+
+  <!-- ---------------------------------------------------------------------------------- -->
+  <div>
+    <h2 class="pt-16 pb-4" tabindex="0" aria-label="Without Table rows ">
+      Without Table rows
+    </h2>
+    <mat-card class="table-show-more-less">
+      <div class="pb-16">
+        <input type="checkbox" class="table-read-more-state" id="post-3" />
+        <div class="table-read-more-wrap pb-12">
+          <table aria-hidden="false" mat-table [dataSource]="dataSource" class="w-100-p exxat-table pt-0 bx">
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th tabindex="0" aria-label="Number" class="pl-16" mat-header-cell *matHeaderCellDef>
+                No.
+              </th>
+              <td tabindex="0" attr.aria-label="Number is {{ element.position }}" mat-cell *matCellDef="let element"
+                class="pl-16">
+                {{ element.position }}
+              </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th tabindex="0" aria-label="name" mat-header-cell *matHeaderCellDef>
+                Name
+              </th>
+              <td tabindex="0" attr.aria-label="Name is {{ element.name }}" mat-cell *matCellDef="let element">
+                {{ element.name }}
+              </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+              <th tabindex="0" aria-label="Weight" mat-header-cell *matHeaderCellDef>
+                Weight
+              </th>
+              <td tabindex="0" mat-cell attr.aria-label="weight is {{ element.weight }}" *matCellDef="let element">
+                {{ element.weight }}
+              </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+              <th tabindex="0" aria-label="Symbol" mat-header-cell *matHeaderCellDef>
+                Symbol
+              </th>
+              <td tabindex="0" attr.aria-label="symbol is {{ element.symbol }}" mat-cell *matCellDef="let element">
+                {{ element.symbol }}
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="table-read-more-target"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index"
+              [class.table-read-more-target]="i > -1"></tr>
+          </table>
+        </div>
+        <label for="post-3" class="table-read-more-trigger link-btn cursor-pointer">
+        </label>
+      </div>
+    </mat-card>
+  </div>
+</div>

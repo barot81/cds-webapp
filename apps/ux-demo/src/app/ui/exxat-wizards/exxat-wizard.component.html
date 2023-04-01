@@ -1,0 +1,284 @@
+<div class="page-layout carded fullwidth p-12" id="exxat-wizard-examples">
+  <div class="">
+    <div class="gray-header mb-16">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div class="mr-8">
+            <button
+              mat-icon-button
+              aria-label="Click to go back"
+              routerLink="/admin/ux/ui/exxat-component-library"
+            >
+              <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+            </button>
+          </div>
+          <div class="mat-title">Exxat Wizard Examples</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+        </div>
+      </div>
+    </div>
+    <!--  Accordian Example -->
+    <div id="exxat-wizard-examples">
+      <div fxLayout="column" fxLayout.gt-md="row">
+        <div
+          class="preview"
+          fxLayout="column"
+          fxLayoutAlign="start"
+          fxFlex="70"
+        >
+          <div class="mat-card">
+            <mat-horizontal-stepper #stepper>
+              <mat-step>
+                <ng-template matStepLabel>Fill out your name</ng-template>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="end center"
+                  fxFlex="100"
+                  class="mt-16 mb-8"
+                >
+                  <button
+                    mat-flat-button
+                    color="primary"
+                    matStepperNext
+                    aria-label="Primary"
+                  >
+                    Next
+                  </button>
+                </div>
+                <div>
+                  Put your content here Put your content here Put your content
+                  here Put your content here Put your content here Put your
+                  content here Put your content here Put your content here Put
+                  your content here Put your content here Put your content here
+                  Put your content here Put your content here Put your content
+                  here
+                </div>
+              </mat-step>
+              <mat-step>
+                <ng-template matStepLabel>Fill out your address</ng-template>
+                <div
+                  fxLayout="row wrap"
+                  fxLayoutAlign="space-between center"
+                  class="mb-8 mt-16"
+                >
+                  <div fxLayout="row" fxLayoutAlign="start center">
+                    <div class="info-box info">
+                      <span
+                        >In this step, you can associate any location from
+                        Affiliated sites to the personnel.</span
+                      >
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="end center">
+                    <button
+                      mat-stroked-button
+                      color="primary"
+                      matStepperPrevious
+                      class="mr-8"
+                      aria-label="Primary"
+                    >
+                      Previous
+                    </button>
+                    <button
+                      mat-flat-button
+                      color="primary"
+                      matStepperNext
+                      class=""
+                      aria-label="Primary"
+                    >
+                      Next
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <div>
+                    Put your content here Put your content here Put your content
+                    here Put your content here Put your content here Put your
+                    content here Put your content here Put your content here Put
+                    your content here Put your content here Put your content
+                    here Put your content here Put your content here Put your
+                    content here
+                  </div>
+                </div>
+              </mat-step>
+              <mat-step>
+                <ng-template matStepLabel>Done</ng-template>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="end center"
+                  fxFlex="100"
+                  class="mt-16 mb-8"
+                >
+                  <button
+                    mat-stroked-button
+                    color="primary"
+                    matStepperPrevious
+                    class=""
+                    aria-label="Primary"
+                  >
+                    Previous
+                  </button>
+                </div>
+                <div>
+                  <div>
+                    Put your content here Put your content here Put your content
+                    here Put your content here Put your content here Put your
+                    content here Put your content here Put your content here Put
+                    your content here Put your content here Put your content
+                    here Put your content here Put your content here Put your
+                    content here
+                  </div>
+                </div>
+              </mat-step>
+            </mat-horizontal-stepper>
+          </div>
+        </div>
+
+        <div
+          class="preview"
+          fxLayout="column"
+          fxLayoutAlign="start"
+          fxFlex="30"
+        >
+          <mat-tab-group>
+            <!-- 1st tab content -->
+            <mat-tab label="HTML">
+              <div class="pt-16">
+                <fuse-highlight
+                  lang="html"
+                  class="source-code"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                  fxFlex="100"
+                >
+                  <textarea #source hidden="hidden">
+                      <!-- Html code for wizard  -->
+                      <mat-horizontal-stepper #stepper>
+                          <mat-step>
+                              <ng-template matStepLabel>Fill out your name</ng-template>
+                              <div fxLayout="row" fxLayoutAlign="end center" fxFlex="100" class="mt-16 mb-8">
+                                <button mat-flat-button color="primary" matStepperNext class=""  aria-label="Primary">
+                                  Next
+                                </button>
+                              </div>
+                              <span>Your Name Your Name Your Name Your Name Your Name Your Name Your Name</span>
+                          </mat-step>
+                          <mat-step>
+                              <ng-template matStepLabel>Fill out your address</ng-template>
+                              <div
+                              fxLayout="row wrap"
+                              fxLayoutAlign="space-between center"
+                              class="mb-8 mt-16"
+                            >
+                              <div fxLayout="row" fxLayoutAlign="start center">
+                                <div
+                                  class="info-box info"
+                      
+                                >
+                                  <span>In this step, you can associate any location from
+                                    Affiliated sites to the personnel.</span
+                                  >
+                                </div>
+                              </div>
+                              <div fxLayout="row" fxLayoutAlign="end center">
+                                <button mat-stroked-button color="primary" matStepperPrevious class=" mr-8"  aria-label="Primary">
+                                  Previous
+                                </button>
+                                <button mat-flat-button color="primary" matStepperNext class=""  aria-label="Primary">
+                                  Next
+                                </button>
+                              </div>
+                            </div>
+                              <span>Your Address Your Address Your Address Your Address Your Address Your Address</span>
+                          </mat-step>
+                          <mat-step>
+                            <ng-template matStepLabel>Done</ng-template>
+                            <div fxLayout="row" fxLayoutAlign="end center" fxFlex="100" class="mt-16 mb-8">
+                              <button mat-stroked-button color="primary" matStepperPrevious class=""  aria-label="Primary">
+                                Previous
+                              </button>
+                            </div>
+                            <span>You are now done You are now done You are now done You are now done.</span>
+                          </mat-step>
+                        </mat-horizontal-stepper>
+                  </textarea>
+                </fuse-highlight>
+              </div>
+            </mat-tab>
+            <!-- /1st tab content -->
+
+            <!-- 2nd tab content -->
+            <mat-tab label="TS">
+              <div class="pt-16">
+                <fuse-highlight
+                  lang="html"
+                  class="source-code"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                  fxFlex="100"
+                >
+                  <textarea #source hidden="hidden">
+          <!-- TS code for wizard  -->
+          import { Component, OnInit } from '@angular/core';
+          import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+
+          @Component({
+            selector: 'ryzen-exxat-wizard',
+            templateUrl: './exxat-wizard.component.html',
+            styleUrls: ['./exxat-wizard.component.scss']
+          })
+          export class ExxatWizardComponent implements OnInit {
+
+            isLinear = false;
+            firstFormGroup: FormGroup;
+            secondFormGroup: FormGroup;
+
+            constructor(private _formBuilder: FormBuilder) {}
+
+            ngOnInit() {
+              this.firstFormGroup = this._formBuilder.group({
+                firstCtrl: ['', Validators.required]
+              });
+              this.secondFormGroup = this._formBuilder.group({
+                secondCtrl: ['', Validators.required]
+              });
+            }
+          }
+        </textarea
+                  >
+                </fuse-highlight>
+              </div>
+            </mat-tab>
+            <!-- /2nd tab content -->
+          </mat-tab-group>
+        </div>
+        <!-- preview end-->
+      </div>
+    </div>
+    <div class="mt-16" fxLayout="column" fxLayout.gt-md="row">
+      <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="48">
+        <p class="warn-fg font-16" tabindex="0" aria-label="Note from UI Team">
+          Note from UI Team
+        </p>
+        <p
+          class="warn-fg font-14"
+          tabindex="0"
+          aria-label="Developers are requested not to make any extra self made Class or
+        write hardcode CSS or add Colors. Since we are following MULTI theme,
+        Theme will break if Material theme structure and guidlines are not
+        followed properly."
+          class="warn-fg font-14"
+        >
+          Developers are requested not to make any extra self made Class or
+          write hardcode CSS or add Colors. Since we are following MULTI theme,
+          Theme will break if Material theme structure and guidlines are not
+          followed properly.
+        </p>
+        <strong>Connect To UI team for any such cases.</strong>
+      </div>
+    </div>
+  </div>
+</div>

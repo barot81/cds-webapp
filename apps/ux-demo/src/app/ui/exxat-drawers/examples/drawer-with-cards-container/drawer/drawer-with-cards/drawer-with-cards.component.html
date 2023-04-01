@@ -1,0 +1,83 @@
+<div class="drawer-p" fxLayout="column" fxLayoutAlign="start">
+  <mat-card fxLayout="column" class="p-0 mb-8">
+    <header
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      class="card-header-title card-header-border-bottom"
+    >
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <span class="primary-heading"> Basic Information </span>
+      </div>
+      <button mat-icon-button class="action-icon">
+        <i aria-hidden="true" class="fa-light fa-plus s-18"></i>
+      </button>
+    </header>
+
+    <div class="px-16 pt-16" fxLayout="column">
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxFlex="1 0 auto"
+        class="w-100-p"
+      >
+        <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>First name</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
+
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxFlex="1 0 auto"
+        class="w-100-p"
+      >
+        <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Last name</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card fxLayout="column" class="p-0 mb-8">
+    <header
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      class="card-header-title card-header-border-bottom"
+    >
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <span class="primary-heading"> School Information </span>
+      </div>
+      <button mat-icon-button class="action-icon">
+        <i aria-hidden="true" class="fa-light fa-plus s-18"></i>
+      </button>
+    </header>
+
+    <div class="px-16 pt-16" fxLayout="column">
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxFlex="1 0 auto"
+        class="w-50-p"
+      >
+        <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Title</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
+
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxFlex="1 0 auto"
+        class="w-50-p"
+      >
+        <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Status</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card>
+</div>

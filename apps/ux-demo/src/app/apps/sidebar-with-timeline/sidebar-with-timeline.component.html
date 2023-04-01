@@ -1,0 +1,91 @@
+<div id="sidebar-with-timeline" class="page-layout simple left-sidebar inner-scroll">
+  <div fxLayout="row" fxFlex="100">
+    <!-- SIDEBAR -->
+    <fuse-sidebar class="sidebar " name="sidebar-with-timeline-left-sidebar" position="left" lockedOpen="gt-md"
+      fxFlex.gt-md="25">
+
+      <!-- SIDEBAR CONTENT -->
+      <div class="content overflow-auto" fusePerfectScrollbar>
+
+        <div class="steps">
+
+          <button mat-button class="step w-100-p font-14"
+            *ngFor="let step of steps; let i = index; let last = last; let first = first"
+            (click)="gotoStep(i,step.content)" tabindex="0" [attr.aria-label]="'step'+ (i+1) + 'is' + step.title"
+            [ngClass]="{'current': currentStep === i, 'completed': currentStep > i, 'last': last, 'first': first}">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <div class="index">
+                <span>{{i + 1}}</span>
+              </div>
+              <div class="title">{{step.title}}</div>
+            </div>
+          </button>
+
+        </div>
+
+      </div>
+      <!-- / SIDEBAR CONTENT -->
+
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+    <div class="center ml-lg-16" fxLayout="column" fxFlex="100">
+
+      <div>
+        <button mat-icon-button class="sidebar-toggle" fxHide.gt-md
+          (click)="toggleSidebar('sidebar-with-timeline-left-sidebar')">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <!-- CONTENT -->
+
+      <div id="course-content" class="content" fusePerfectScrollbar>
+
+        <ng-container *ngFor="let step of steps; let i = index;">
+
+          <div tabindex="0" [attr.aria-label]="'step' + (i+1) + 'details' " class="course-step"
+            *ngIf="currentStep === i" [@slideIn]="animationDirection">
+            <div class="mr-16">
+              <mat-card>
+                <div id="course-step-content" class="course-step-content">
+                  <ng-template #timeLineContentContainer></ng-template>
+                </div>
+              </mat-card>
+            </div>
+          </div>
+
+        </ng-container>
+
+      </div>
+      <!-- / CONTENT -->
+
+      <!-- <div class="step-navigation">
+  
+            <button mat-fab class="previous mat-accent fuse-white-fg"
+                    (click)="gotoPreviousStep()"
+                    [disabled]="currentStep === 0"
+                    [fxHide]="currentStep === 0">
+                <mat-icon>chevron_left</mat-icon>
+            </button>
+  
+            <button mat-fab class="next mat-accent fuse-white-fg"
+                    (click)="gotoNextStep()"
+                    [disabled]="currentStep === course.totalSteps - 1"
+                    [fxHide]="currentStep === course.totalSteps - 1">
+                <mat-icon>chevron_right</mat-icon>
+            </button>
+  
+            <button mat-fab class="done green-600"
+                    routerLink="/apps/academy/courses"
+                    [disabled]="currentStep !== course.totalSteps - 1"
+                    [fxShow]="currentStep === course.totalSteps - 1">
+                <mat-icon>check</mat-icon>
+            </button>
+  
+        </div> -->
+
+    </div>
+    <!-- / CENTER -->
+  </div>
+</div>

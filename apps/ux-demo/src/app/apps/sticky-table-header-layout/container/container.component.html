@@ -1,0 +1,173 @@
+<div class="page-layout carded left-sidebar inner-scroll page-without-header">
+  <!-- SIDEBAR -->
+  <fuse-sidebar
+    class="sidebar sidebar-width"
+    name="carded-left-sidebar-tabbed-2"
+    position="left"
+    lockedOpen="gt-md"
+  >
+    <!--   SIDEBAR HEADER -->
+    <div #sidebar_header>
+      <div fxLayout="row" fxLayoutAlign="start center" class="py-8">
+        <button
+          mat-icon-button
+          aria-label="Click to go back"
+          class="action-icon mx-8"
+          routerLink="/dashboard"
+        >
+          <i aria-hidden="true" class="fal fa-long-arrow-left"></i>
+        </button>
+        <span
+          tabindex="0"
+          aria-label="Student List"
+          class="font-14 font-weight-600 mt-4"
+          >Student List</span
+        >
+      </div>
+      <mat-divider></mat-divider>
+
+      <!-- SEARCH -->
+      <div fxLayout="row" fxLayoutAlign="start center" class="w-100-p">
+        <div class="search-wrapper w-100-p" search [formControl]="searchItem">
+          <div
+            class="search sidenav-search"
+            fxFlex
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <i aria-hidden="true" class="fa-light fa-magnifying-glass s-18"></i>
+            <input
+              id="inputBox"
+              type="text"
+              class="font-14"
+              placeholder="Search Student"
+              fxFlex
+            />
+            <button
+              mat-icon-button
+              aria-label="clear search"
+              class="action-icon clear-button"
+            >
+              <i aria-hidden="true" class="fa-light fa-xmark s-18"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+    <!-- / SIDEBAR HEADER -->
+
+    <!--  SIDEBAR CONTENT -->
+    <div
+      class="content overflow-auto"
+      *ngIf="!(loading$ | async); else loading"
+      [style.height.px]="
+        _headerService.scrollContentheight - (sidebar_header_height$ | async)
+      "
+    >
+      <mat-list class="p-0">
+        <button
+          mat-button
+          *ngFor="let student of students; let i = index"
+          attr.aria-label="View {{ student.name }} Details"
+          class="no-space m-0 p-0"
+          (click)="activateNavigation(student.id)"
+        >
+          <mat-list-item
+            class="py-8 px-8"
+            [ngClass]="{ 'active-list-item': student.id === selectedId }"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <exxat-avatar-list-item
+                [firstName]="student.name"
+                [lastName]=""
+                src="assets/images/avatars/anna-strong.png"
+              >
+              </exxat-avatar-list-item>
+              <exxat-tag-showcase
+                [tags]="tags"
+                class="ml-4"
+                *ngIf="i % 2 == 0"
+              ></exxat-tag-showcase>
+            </div>
+          </mat-list-item>
+        </button>
+      </mat-list>
+    </div>
+    <!-- / SIDEBAR CONTENT -->
+  </fuse-sidebar>
+  <!-- // SIDEBAR -->
+  <div class="center">
+    <div
+      class="content mx-lg-16 mx-8 overflow-auto acadamic-student-info-container"
+    >
+      <div #container_header>
+        <div class="my-16">
+          <header *ngIf="!(loading$ | async); else loading">
+            <div fxLayout="row wrap" fxLayoutAlign="start">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <button
+                  mat-icon-button
+                  class="sidebar-toggle mr-8"
+                  fxHide.gt-md
+                  (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+                >
+                  <i aria-hidden="true" class="fa-light fa-bars"></i>
+                </button>
+              </div>
+
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <exxat-avatar
+                  src="assets/images/avatars/anna-strong.png"
+                  firstName="Anna"
+                  lastName="Strong"
+                  size="lg"
+                >
+                </exxat-avatar>
+              </div>
+
+              <div fxLayout="column" class="mr-16">
+                <h2 tabindex="0">{{ students[selectedId].name }}</h2>
+                <a
+                  class="word-break-all font-14"
+                  href="mailto:anna.strong@universityname.com"
+                  >{{
+                    (students[selectedId].name | lowercase) +
+                      '.universityname.com'
+                  }}</a
+                >
+                <exxat-tag-showcase
+                  class="mt-4"
+                  [tags]="tags"
+                  [tagView]="tagView.CHIP"
+                  [isGrid]="false"
+                  [tagsLength]="3"
+                >
+                </exxat-tag-showcase>
+              </div>
+            </div>
+          </header>
+        </div>
+
+        <div class="mb-16">
+          <navbar></navbar>
+        </div>
+      </div>
+
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <mat-card fxLayout="row" fxLayoutAlign="start space-between" class="w-30-p">
+    <div class="circle w-68 h-68 shine"></div>
+    <div fxLayout="column" class="ml-16 pt-8">
+      <div class="line shine w-100 h-12"></div>
+      <div class="line shine w-140 h-12"></div>
+      <div class="line shine w-160 h-12"></div>
+    </div>
+  </mat-card>
+</ng-template>

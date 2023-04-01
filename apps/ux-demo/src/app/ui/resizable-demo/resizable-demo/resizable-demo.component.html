@@ -1,0 +1,90 @@
+<div class="page-layout carded left-sidebar tabbed inner-scroll">
+  <!-- SIDEBAR -->
+  <fuse-sidebar
+    Resizable
+    [resizableMinWidth]="320"
+    class="sidebar sidebar-resizable"
+    name="carded-left-sidebar-2"
+    position="left"
+    lockedOpen="gt-md"
+  >
+    <!-- SIDEBAR HEADER -->
+    <div>
+      <header
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        class="card-header-title card-header-border-bottom pl-16 py-8 pr-8"
+      >
+        <div xLayout="row" fxLayoutAlign="start center">
+          <h2 class="primary-heading font-weight-600">Sidebar Header Title</h2>
+        </div>
+      </header>
+    </div>
+    <!-- / SIDEBAR HEADER -->
+
+    <!-- SIDEBAR CONTENT -->
+    <div class="content p-16" fusePerfectScrollbar>
+      <demo-content></demo-content>
+    </div>
+    <!-- / SIDEBAR CONTENT -->
+  </fuse-sidebar>
+  <!-- / SIDEBAR -->
+
+  <!-- CENTER -->
+  <div class="center ml-lg-16">
+    <div class="gray-header mb-16">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div class="mr-16">
+            <button
+              mat-icon-button
+              role="img"
+              class="action-icon"
+              routerLink="/admin/ux/ui/exxat-component-library"
+            >
+              <mat-icon>arrow_back</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+        </div>
+      </div>
+    </div>
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+      <!-- CONTENT TOOLBAR -->
+      <div class="toolbar px-24 py-8">
+        <button
+          mat-icon-button
+          class="sidebar-toggle"
+          fxHide.gt-md
+          (click)="toggleSidebar('carded-left-sidebar-2')"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title py-8 pr-8"
+        >
+          <div xLayout="row" fxLayoutAlign="start center">
+            <h2 class="primary-heading font-weight-600">
+              Right Side Content Header Title
+            </h2>
+          </div>
+        </header>
+      </div>
+      <!-- / CONTENT TOOLBAR -->
+
+      <!-- CONTENT -->
+      <div class="content p-24" fusePerfectScrollbar>
+        <demo-content></demo-content>
+      </div>
+      <!-- / CONTENT -->
+    </div>
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

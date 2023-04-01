@@ -1,0 +1,135 @@
+<div class="drawer-p">
+  <mat-card fxLayout="column" fxLayoutAlign="center">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      fxFlex="1 0 auto"
+      class="w-100-p"
+    >
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Cohort</mat-label>
+        <mat-select name="cohort">
+          <mat-option *ngFor="let cohort of cohorts" [value]="cohort.id">
+            {{ cohort.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      fxFlex="1 0 auto"
+      class="w-100-p"
+    >
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Professional Year</mat-label>
+        <mat-select name="professionalYear">
+          <mat-option
+            *ngFor="let professionalYear of professionalYears"
+            [value]="professionalYear.id"
+          >
+            {{ professionalYear.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      fxFlex="1 0 auto"
+      class="w-100-p"
+    >
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Acadamic Year</mat-label>
+        <mat-select name="acadamicYear">
+          <mat-option
+            *ngFor="let acadamicYear of acadamicYears"
+            [value]="acadamicYear.id"
+          >
+            {{ acadamicYear.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      fxFlex="1 0 auto"
+      class="w-100-p"
+    >
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Term</mat-label>
+        <mat-select name="term">
+          <mat-option *ngFor="let term of terms" [value]="term.id">
+            {{ term.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div fxLayoutAlign="start" fxLayout="column" fxFlex="100">
+      <div class="mb-8">
+        <span class="font-weight-600">Offered courses</span>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxFlex="1 0 auto"
+        class="w-100-p"
+      >
+        <mat-form-field appearance="fill" fxFlex="100">
+          <input
+            type="text"
+            placeholder="Click here to Add Courses"
+            aria-label="Click here to Add Courses"
+            matInput
+            [formControl]="courseControl"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let course of courses" [value]="course.id">
+              {{ course.value }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div
+        *ngIf="selectedCourses && selectedCourses.length > 0"
+        fxLayoutAlign="start"
+        fxLayout="column"
+        class="overflow-auto h-200"
+      >
+        <div class="mb-16" *ngFor="let item of selectedCourses">
+          <div
+            class="pl-4"
+            fxLayoutAlign="start center"
+            fxLayout="row wrap"
+            fxFlex="100"
+          >
+            <div fxFlex="15">
+              <span class="font-weight-600">{{ item.id }}</span>
+            </div>
+            <div fxFlex="70">
+              <span>{{ item.value }}</span>
+            </div>
+            <div fxFlex="15" fxLayoutAlign="end center">
+              <button
+                mat-icon-button
+                class="action-icon"
+                (click)="removeCourse(item.id)"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-minus-circle icon-fill"
+                ></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

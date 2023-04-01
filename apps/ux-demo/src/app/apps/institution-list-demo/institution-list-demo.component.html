@@ -1,0 +1,462 @@
+<div class="page-layout carded left-sidebar" id="institution-list-demo">
+  <div fxLayout="column" class="w-100-p">
+    <header class="mt-xs-16">
+      <div fxLayout="row" fxLayoutAlign="start center" class="mb-16">
+        <button
+          mat-icon-button
+          role="img"
+          class="action-icon"
+          routerLink=""
+          aria-label="go back arrow"
+        >
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <h2
+          class="font-weight-600 ml-8"
+          tabindex="0"
+          aria-label="heading Institution list"
+        >
+          Institution List
+        </h2>
+      </div>
+    </header>
+    <!-- SIDEBAR -->
+    <div fxLayout="row">
+      <fuse-sidebar
+        class="sidebar location-sidebar-height height-fit-content"
+        name="carded-left-sidebar-tabbed-2"
+        position="left"
+        fxFlex.gt-md="30"
+        lockedOpen="gt-md"
+        tabindex="0"
+        aria-label="sidebar with tree control"
+      >
+        <!-- SEARCH -->
+        <div class="search-wrapper m-16">
+          <div
+            class="search"
+            fxFlex
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <mat-icon class="s-16 secondary-text">search</mat-icon>
+            <input matInput placeholder="Search" fxFlex />
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <!--  SIDEBAR CONTENT -->
+        <div class="content" fusePerfectScrollbar>
+          <mat-tree
+            [dataSource]="dataSource"
+            [treeControl]="treeControl"
+            class="tree-examples-style m-16"
+            tabindex="0"
+            aria-label="tree control"
+          >
+            <!-- node without child -->
+            <mat-tree-node
+              *matTreeNodeDef="let node"
+              matTreeNodeToggle
+              matTreeNodePadding
+              tabindex="0"
+              aria-label="this is a child node"
+              class=""
+            >
+              <div fxLayout="column" class="w-100-p">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  fxFlex="100"
+                  class="tree-node-hover py-8"
+                  (click)="activeNode = node"
+                  [ngClass]="{ 'tree-node-active': activeNode === node }"
+                >
+                  <div fxLayout="row" fxFlex="85" class="node-inner-text mx-8">
+                    <div
+                      class="pl-12 w-100-p"
+                      fxLayout="column"
+                      fxLayoutAlign="start start"
+                    >
+                      <span
+                        class="font-weight-600 node-inner-text"
+                        tabindex="0"
+                        aria-label="Department Name"
+                        >Department Name</span
+                      >
+                      <span
+                        class="node-inner-text"
+                        tabindex="0"
+                        aria-label="Department OU Code"
+                        >Department OU Code</span
+                      >
+                    </div>
+                  </div>
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="end center"
+                    class="pr-16 icon-hidden"
+                  >
+                    <button
+                      mat-icon-button
+                      [matMenuTriggerFor]="menu"
+                      aria-label="enter for menu"
+                    >
+                      <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                      <div
+                        mat-menu-item
+                        tabindex="0"
+                        aria-label="option one is Add child"
+                      >
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-plus icon-fill s-18 mr-4"
+                          ></i>
+                          <span tabindex="0">Add Department</span>
+                        </div>
+                      </div>
+                    </mat-menu>
+                  </div>
+                </div>
+                <mat-divider class="w-90-p margin-auto"></mat-divider>
+              </div>
+            </mat-tree-node>
+
+            <!-- parent node -->
+            <mat-tree-node
+              *matTreeNodeDef="let node; when: hasChild"
+              matTreeNodePadding
+              tabindex="0"
+              aria-label="parent node"
+            >
+              <div fxLayout="column" class="w-100-p">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  fxFlex="100"
+                  class="tree-node-hover tree-node-bg py-8 pl-8"
+                  (click)="activeNode = node"
+                  [ngClass]="{ 'tree-node-active': activeNode === node }"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxFlex.gt-sm="85"
+                    fxFlex.sm="76"
+                    fxFlex.xs="60"
+                    class=""
+                  >
+                    <button
+                      mat-icon-button
+                      matTreeNodeToggle
+                      class="action-icon"
+                      aria-label="toggle for parent node"
+                    >
+                      <i
+                        aria-hidden="true"
+                        [ngClass]="
+                          treeControl.isExpanded(node)
+                            ? 'fa-light fa-chevron-down s-18'
+                            : 'fa-light fa-chevron-right s-18'
+                        "
+                        class="accent-fg"
+                      ></i>
+                    </button>
+
+                    <div
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                      class="node-inner-text mx-8 cursor-pointer"
+                      exxatDrawerAction
+                      [size]="'drawer-lg'"
+                      [caption]="'Add Department Details'"
+                      [primaryAction]="'Save'"
+                      [componentSelector]="
+                        _UXDemoDrawerService.get(
+                          'ryzen-add-department-details-drawer'
+                        )
+                      "
+                      role="img"
+                    >
+                      <div
+                        class="w-100-p"
+                        fxLayout="column"
+                        fxLayoutAlign="start start"
+                      >
+                        <span
+                          class="font-weight-600 node-inner-text"
+                          tabindex="0"
+                          aria-label="University of Southern California"
+                          >University of Southern California</span
+                        >
+                        <span
+                          class="node-inner-text"
+                          tabindex="0"
+                          aria-label="Los Angeles, CA 90007, United States"
+                          >Los Angeles, CA 90007, United States</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="end center"
+                    class="pr-16 icon-hidden"
+                  >
+                    <button
+                      mat-icon-button
+                      [matMenuTriggerFor]="menu"
+                      attr.aria-label="enter for menu"
+                      class="action-icon"
+                      aria-label="enter for more menu items"
+                    >
+                      <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                      <div
+                        mat-menu-item
+                        exxatDrawerAction
+                        [size]="'drawer-lg'"
+                        [caption]="'Add Department Details'"
+                        [primaryAction]="'Save'"
+                        [componentSelector]="
+                          _UXDemoDrawerService.get(
+                            'ryzen-add-department-details-drawer'
+                          )
+                        "
+                        role="img"
+                      >
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-plus icon-fill s-18 mr-4"
+                          ></i>
+                          <span tabindex="0">Add University</span>
+                        </div>
+                      </div>
+                    </mat-menu>
+                  </div>
+                </div>
+                <mat-divider class="w-90-p margin-auto"></mat-divider>
+              </div>
+            </mat-tree-node>
+          </mat-tree>
+        </div>
+        <!-- / SIDEBAR CONTENT -->
+      </fuse-sidebar>
+      <!-- // fuse SIDEBAR -->
+
+      <!-- CENTER -->
+      <div class="center ml-lg-16" fxFlex="100">
+        <!--toolbar-->
+        <div class="">
+          <div fxLayout="row" fxLayoutAlign="space-between center" fxHide.gt-md>
+            <button
+              mat-icon-button
+              class="sidebar-toggle"
+              fxHide.gt-md
+              (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+            >
+              <mat-icon>menu</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="content">
+          <div fxLayout="row wrap">
+            <mat-card class="p-0 mb-16 w-100-p" fxLayout="column">
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+                tabindex="0"
+                aria-label="card header"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2
+                    class="primary-heading font-weight-600 text-capitalize"
+                    tabindex="0"
+                    aria-label="heading  Institution Details"
+                  >
+                    Institution Details
+                  </h2>
+                </div>
+                <button
+                  mat-icon-button
+                  class="icon-fill-bg"
+                  aria-label="Edit Institution Details"
+                  exxatDrawerAction
+                  [size]="'drawer-lg'"
+                  [caption]="'Edit Institution Details'"
+                  [primaryAction]="'Save'"
+                  [componentSelector]="
+                    _UXDemoDrawerService.get(
+                      'ryzen-edit-institution-details-drawer'
+                    )
+                  "
+                  role="img"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-pen fuse-white-fg s-18"
+                  ></i>
+                </button>
+              </header>
+              <div
+                fxLayout="row wrap"
+                class="pt-16 pl-16"
+                tabindex="0"
+                aria-label="card content"
+              >
+                <div
+                  class="exxat-info mb-16 pr-16"
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                >
+                  <div
+                    class="title"
+                    tabindex="0"
+                    aria-label="title institution name"
+                  >
+                    Institute Name
+                  </div>
+                  <div
+                    class="description description-text-wrap mt-4"
+                    tabindex="0"
+                    aria-label="institution name is University of Southern California"
+                  >
+                    University of Southern California
+                  </div>
+                </div>
+                <div
+                  class="exxat-info mb-16 pr-16"
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                >
+                  <div
+                    class="title"
+                    tabindex="0"
+                    aria-label="title Institute Short Name"
+                  >
+                    Institute Short Name
+                  </div>
+                  <div
+                    class="description description-text-wrap mt-4"
+                    tabindex="0"
+                    aria-label="Institute Short Name is USC"
+                  >
+                    USC
+                  </div>
+                </div>
+                <div
+                  class="exxat-info mb-16 pr-16"
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                >
+                  <div class="title" tabindex="0" aria-label="title Tenant ID">
+                    Tenant ID
+                  </div>
+                  <div
+                    class="description description-text-wrap mt-4"
+                    tabindex="0"
+                    aria-label="Tenant ID is USC"
+                  >
+                    USC
+                  </div>
+                </div>
+                <div
+                  class="exxat-info mb-16 pr-16"
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                >
+                  <div class="title" tabindex="0" aria-label="title Time Zone">
+                    Time Zone
+                  </div>
+                  <div
+                    class="description description-text-wrap mt-4"
+                    tabindex="0"
+                    aria-label="Time Zone is Eastern Time "
+                  >
+                    Eastern Time
+                  </div>
+                </div>
+                <div
+                  class="exxat-info mb-16 pr-16"
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                >
+                  <div
+                    class="title"
+                    tabindex="0"
+                    aria-label="title Institution Address"
+                  >
+                    Institution Address
+                  </div>
+                  <div
+                    class="description description-text-wrap mt-4"
+                    tabindex="0"
+                    aria-label="Institution Address is Los Angeles, CA 90007, United States"
+                  >
+                    Los Angeles, CA 90007, United States
+                  </div>
+                </div>
+              </div>
+              <div fxLayout="row wrap" class="pl-16">
+                <div
+                  class="exxat-info mb-16 pr-16"
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                >
+                  <div
+                    class="title"
+                    tabindex="0"
+                    aria-label="title Institution Logo for Website"
+                  >
+                    Institution Logo for Website
+                  </div>
+                  <div
+                    class="description description-text-wrap mt-4"
+                    tabindex="0"
+                    aria-label=" Institution Logo for Website is Logo_Website.svg"
+                  >
+                    <a>Logo_Website.svg</a>
+                  </div>
+                </div>
+                <div
+                  class="exxat-info mb-16 pr-16"
+                  fxLayout="column"
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                >
+                  <div
+                    class="title"
+                    tabindex="0"
+                    aria-label="title Institution Logo for Email"
+                  >
+                    Institution Logo for Email
+                  </div>
+                  <div
+                    class="description description-text-wrap mt-4"
+                    tabindex="0"
+                    aria-label="Institution Logo for Email is Logo_Email.svg "
+                  >
+                    <a>Logo_Email.svg</a>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

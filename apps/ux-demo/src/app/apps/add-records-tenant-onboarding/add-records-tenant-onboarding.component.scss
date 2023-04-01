@@ -1,0 +1,20 @@
+@import 'init';
+
+#add-records-tenant-onboarding {
+  .node-inner-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+  .icon-disabled {
+    color: $silver !important;
+  }
+
+  .checkbox-column {
+    @include media-breakpoint('lt-lg') {
+      min-width: 4vw !important;
+    }
+    min-width: 2vw !important;
+  }
+}

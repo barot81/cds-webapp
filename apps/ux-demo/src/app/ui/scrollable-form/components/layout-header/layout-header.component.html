@@ -1,0 +1,14 @@
+<div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+  <div fxLayoutAlign="start center" fxFLex="10" fxHide.gt-md>
+    <button
+      mat-icon-button
+      class="sidebar-toggle mr-8"
+      (click)="toggleSidebar('simple-left-sidebar')"
+    >
+      <i aria-hidden="true" class="fa-light fa-bars"></i>
+    </button>
+  </div>
+  <div fxFlex="100" fxFlex.lt-lg="90">
+    <layout-navbar></layout-navbar>
+  </div>
+</div>

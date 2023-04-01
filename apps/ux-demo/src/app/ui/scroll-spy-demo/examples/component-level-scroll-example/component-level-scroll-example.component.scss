@@ -1,0 +1,56 @@
+@import 'init';
+
+
+
+.scroll-spy-component-demo-page {
+  .center {
+    .total-score-section {
+      background: $apple;
+      border-radius: 6px;
+    }
+    .content {
+      background: none !important;
+      box-shadow: none !important;
+
+      // for blue background color for instruction section
+      .instruction-box {
+        background-color: $endeavour;
+      }
+
+      //text color for practice title
+      .practice-title {
+        color: $masala;
+      }
+
+      //light gray color for separator
+      .light-gray-color {
+        color: $alto;
+      }
+
+      //background color for comment section
+      .comment-section {
+        background-color: $silver;
+        border-radius: 0px 0px 20px 20px;
+      }
+
+      //text color for form field labels
+      .form-field-title {
+        color: $persian-blue;
+      }
+
+      //text color for checkbox options
+      .checkbox-options {
+        color: $japanese-laurel;
+      }
+
+      // media querry for accordian headings for small screens
+      .title-small-screen {
+        @include media-breakpoint('lt-sm') {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}

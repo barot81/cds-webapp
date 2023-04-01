@@ -1,0 +1,1155 @@
+<div class="page-layout carded full-width">
+  <div class="center" fxLayout="column">
+    <!-- Header -->
+    <div class="header" #gray_header fxLayout="column">
+      <div fxLayout="row" fxFlex="100" fxLayoutAlign="start center">
+        <div
+          fxLayout="row"
+          fxFlex="95"
+          fxFlex.md="90"
+          fxFlex.sm="85"
+          fxFlex.xs="80"
+          fxLayoutAlign="start center"
+        >
+          <nav mat-tab-nav-bar class="w-100-p">
+            <a
+              mat-tab-link
+              *ngFor="let link of navigations"
+              [routerLink]="link.url"
+              routerLinkActive
+              #rla="routerLinkActive"
+              [active]="rla.isActive"
+            >
+              <span>{{ link.title }}</span>
+            </a>
+          </nav>
+        </div>
+
+        <div
+          fxLayout="row"
+          fxFlex="5"
+          fxFlex.md="10"
+          fxFlex.sm="15"
+          fxFlex.xs="20"
+          fxLayoutAlign="end center"
+          class="h-40"
+        >
+          <button
+            mat-button
+            class="pr-8 h-32"
+            aria-label="filters"
+            exxatDrawerAction
+            [componentSelector]="
+              _ExxatDrawerFormService.get('ryzen-drawer-filter-example-one')
+            "
+            [size]="'drawer-md'"
+            [caption]="'Filters'"
+            [primaryAction]="'Save'"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" class="p-0">
+              <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
+              <span> 12 </span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutAlign="center center" class="pt-16">
+        <!-- <div class="header-tab-control pr-16 course-catalog-page filters-with-maxwidth px-xs-16" fxFlex="100" fxFlex.gt-sm="42">
+            <mat-form-field>
+              <mat-select [formControl]="cohortControl" multiple>
+                <mat-select-trigger>
+                  <div fxLayout="row" fxLayoutAlign="start center">
+                    <span class="mr-4">  {{cohortControl.value ? cohortControl.value[0] : ''}}</span>
+                    <span class="status-badge current">Current</span>
+                 </div>
+                  <span *ngIf="cohortControl.value?.length > 1" class="example-additional-selection">
+                    (+{{cohortControl.value.length - 1}}
+                    {{cohortControl.value?.length === 2 ? 'other' : 'others'}})
+                  </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let cohort of cohorts" [value]="cohort.value" fxLayout="row" fxLayoutAlign="start center">
+                  <span class="mr-4">{{cohort.viewValue}}</span>
+                  <span class="status-badge current">Current</span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div> -->
+        <div class="px-xs-16" fxLayout="row" fxLayoutAlign="start center">
+          <button class="button-white-bg accent-button mr-8">Course</button>
+          <i aria-hidden="true" class="fa-light fa-exchange-alt"></i>
+          <button class="button-white-bg ml-8">Standard</button>
+        </div>
+      </div>
+    </div>
+    <!-- Header -->
+    <div
+      class="pb-8 pb-lg-0"
+      fxLayout="row wrap"
+      fxFlex="100"
+      fxLayoutAlign="start start"
+    >
+      <!-- first card -->
+      <div
+        class="pr-lg-16 pt-16"
+        fxLayout="row"
+        fxFlex.gt-md="33.33"
+        fxFlex="100"
+        fxLayoutAlign="start center"
+      >
+        <mat-card class="w-100-p p-0" fxLayout="column">
+          <header
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            class="card-header-title card-header-border-bottom px-16"
+            tabindex="0"
+            aria-label="header"
+          >
+            <h2
+              class="font-weight-600 primary-heading"
+              tabindex="0"
+              aria-label="Class of 2021 | Year 1"
+            >
+              Class of 2021 | Year 1
+            </h2>
+          </header>
+          <div class="p-16 pt-8 border-bottom" fxLayout="column">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="Summer | 9 Credits"
+              >Summer | 9 Credits
+            </span>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="90">
+                <span fxFlex="5" fxFlex.md="3"
+                  ><i
+                    aria-hidden="true"
+                    class="fa-light fa-star s-12 icon-fill"
+                  ></i
+                ></span>
+                <a
+                  class="pl-8"
+                  tabindex="0"
+                  aria-label="PHTH 5360 - Cellular and systems physiology"
+                  >PHTH 5360 - Cellular and systems physiology</a
+                >
+              </div>
+              <span tabindex="0" aria-label="6">6</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="90">
+                <span fxFlex="5" fxFlex.md="3"></span>
+                <a
+                  class="pl-8"
+                  tabindex="0"
+                  aria-label="PHTH 5380 - Introduction to Physical Therapy"
+                  >PHTH 5380 - Introduction to Physical Therapy</a
+                >
+              </div>
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="90">
+                <span fxFlex="5" fxFlex.md="3"></span>
+                <a
+                  class="pl-8"
+                  tabindex="0"
+                  aria-label="PHTH 5330 - Psychosocial Behavioral Issues"
+                  >PHTH 5330 - Psychosocial Behavioral Issues</a
+                >
+              </div>
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+          </div>
+
+          <div class="p-16 pt-8 border-bottom" fxLayout="column">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="Fall | 4 Months | November to February | 15 Credits"
+              >Fall | 4 Months | November - February | 15 Credits
+            </span>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="90">
+                <span fxFlex="5" fxFlex.md="3"
+                  ><i
+                    aria-hidden="true"
+                    class="fa-light fa-star s-12 icon-fill"
+                  ></i
+                ></span>
+                <a
+                  class="pl-8"
+                  tabindex="0"
+                  aria-label="PHTH 5360 - Cellular and systems physiology"
+                  >PHTH 5360 - Cellular and systems physiology</a
+                >
+              </div>
+              <span tabindex="0" aria-label="6">6</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="90">
+                <span fxFlex="5" fxFlex.md="3"></span>
+                <a
+                  class="pl-8"
+                  tabindex="0"
+                  aria-label="PHTH 5380 - Introduction to Physical Therapy"
+                  >PHTH 5380 - Introduction to Physical Therapy</a
+                >
+              </div>
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="90">
+                <span fxFlex="5" fxFlex.md="3"></span>
+                <a
+                  class="pl-8"
+                  tabindex="0"
+                  aria-label="PHTH 5330 - Psychosocial Behavioral Issues"
+                  >PHTH 5330 - Psychosocial Behavioral Issues</a
+                >
+              </div>
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="90">
+                <span fxFlex="5" fxFlex.md="3"></span>
+                <a
+                  class="pl-8"
+                  tabindex="0"
+                  aria-label="PHTH 5380 - Introduction to Physical Therapy"
+                  >PHTH 5380 - Introduction to Physical Therapy</a
+                >
+              </div>
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="90">
+                <span fxFlex="5" fxFlex.md="3"></span>
+                <a
+                  class="pl-8"
+                  tabindex="0"
+                  aria-label="PHTH 5330 - Psychosocial Behavioral Issues"
+                  >PHTH 5330 - Psychosocial Behavioral Issues</a
+                >
+              </div>
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+          </div>
+
+          <div class="p-16 pt-8" fxLayout="column">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="Spring | 4 Months | February to June | 15 Credits "
+            >
+              Spring | 4 Months | February - June | 15 Credits
+            </span>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="90">
+                <span fxFlex="5" fxFlex.md="3"></span>
+                <a
+                  class="pl-8"
+                  tabindex="0"
+                  aria-label="PHTH 5380 - Introduction to Physical Therapy"
+                  >PHTH 5380 - Introduction to Physical Therapy</a
+                >
+              </div>
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="90">
+                <span fxFlex="5" fxFlex.md="3"></span>
+                <a
+                  class="pl-8"
+                  tabindex="0"
+                  aria-label="PHTH 5330 - Psychosocial Behavioral Issues"
+                  >PHTH 5330 - Psychosocial Behavioral Issues</a
+                >
+              </div>
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="90">
+                <span fxFlex="5" fxFlex.md="3"></span>
+                <a
+                  class="pl-8"
+                  tabindex="0"
+                  aria-label="PHTH 5380 - Introduction to Physical Therapy"
+                  >PHTH 5380 - Introduction to Physical Therapy</a
+                >
+              </div>
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="90">
+                <span fxFlex="5" fxFlex.md="3"></span>
+                <a
+                  class="pl-8"
+                  tabindex="0"
+                  aria-label="PHTH 5330 - Psychosocial Behavioral Issues"
+                  >PHTH 5330 - Psychosocial Behavioral Issues</a
+                >
+              </div>
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="90">
+                <span fxFlex="5" fxFlex.md="3"></span>
+                <a
+                  class="pl-8"
+                  tabindex="0"
+                  aria-label="PHTH 5330 - Psychosocial Behavioral Issues"
+                  >PHTH 5330 - Psychosocial Behavioral Issues</a
+                >
+              </div>
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+
+      <!-- second-card -->
+      <div
+        class="pr-lg-16 pt-lg-16 pt-sm-8 pt-xs-8"
+        fxLayout="row"
+        fxFlex.gt-md="33.33"
+        fxFlex="100"
+        fxLayoutAlign="start center"
+      >
+        <mat-card class="w-100-p p-0" fxLayout="column">
+          <header
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            class="card-header-title card-header-border-bottom px-16"
+            tabindex="0"
+            aria-label="header"
+          >
+            <h2
+              class="font-weight-600 primary-heading"
+              tabindex="0"
+              aria-label="Class of 2021 | Year 2"
+            >
+              Class of 2021 | Year 2
+            </h2>
+          </header>
+          <div class="p-16 pt-8 border-bottom" fxLayout="column">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="Summer | 9 Credits"
+              >Summer | 9 Credits
+            </span>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5360 - Cellular and systems physiology"
+                >PHTH 5360 - Cellular and systems physiology</a
+              >
+              <span tabindex="0" aria-label="6">6</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                tabindex="0"
+                aria-label="PHTH 5380 - Introduction to Physical Therapy"
+                >PHTH 5380 - Introduction to Physical Therapy</a
+              >
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                tabindex="0"
+                aria-label="PHTH 5330 - Psychosocial Behavioral Issues"
+                >PHTH 5330 - Psychosocial Behavioral Issues</a
+              >
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+          </div>
+
+          <div class="p-16 pt-8 border-bottom" fxLayout="column">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="Fall | 4 Months | November to February | 15 Credits"
+              >Fall | 4 Months | November - February | 15 Credits
+            </span>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5421 - Tests and Measurements"
+                >PHTH 5421 - Tests and Measurements</a
+              >
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5470 - Applied Physiology"
+                >PHTH 5470 - Applied Physiology</a
+              >
+              <span tabindex="0" aria-label="3">3</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5480 - Biomechanics and Movement Science"
+                >PHTH 5480 - Biomechanics and Movement Science</a
+              >
+              <span tabindex="0" aria-label="6">6</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5440 - Human Development Across the Life Span"
+                >PHTH 5440 - Human Development Across the Life Span</a
+              >
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5450 - Patient Care Principles"
+                >PHTH 5450 - Patient Care Principles</a
+              >
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a class="pr-16" tabindex="0" aria-label="PHTH 5590 - Research I"
+                >PHTH 5590 - Research I</a
+              >
+              <span tabindex="0" aria-label="5">5</span>
+            </div>
+          </div>
+
+          <div class="p-16 pt-8" fxLayout="column">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="Spring | 4 Months | February to June | 15 Credits "
+            >
+              Spring | 4 Months | February - June | 15 Credits
+            </span>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5421 - Tests and Measurements"
+                >PHTH 5421 - Tests and Measurements</a
+              >
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start start" class="pr-16">
+                <a
+                  tabindex="0"
+                  aria-label="PHTH 5440 - Human Development Across the Life Span"
+                  >PHTH 5440 - Human Development Across the Life Span</a
+                >
+                <span
+                  class="brown-background fuse-white-fg px-4 ml-4"
+                  tabindex="0"
+                  aria-label="clinical course"
+                  >C</span
+                >
+              </div>
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start start" class="pr-16">
+                <a
+                  tabindex="0"
+                  aria-label="PHTH 5440 - Human Development Across the Life Span"
+                  >PHTH 5440 - Human Development Across the Life Span</a
+                >
+                <span
+                  class="brown-background fuse-white-fg px-4 ml-4"
+                  tabindex="0"
+                  aria-label="clinical course"
+                  >C</span
+                >
+              </div>
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5440 - Human Development Across the Life Span"
+                >PHTH 5440 - Human Development Across the Life Span</a
+              >
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5450 - Patient Care Principles"
+                >PHTH 5450 - Patient Care Principles</a
+              >
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+
+      <!-- third card -->
+      <div
+        class="pt-lg-16 pt-xs-8 pt-sm-8"
+        fxLayout="row"
+        fxFlex.gt-md="33.33"
+        fxFlex="100"
+        fxLayoutAlign="start center"
+      >
+        <mat-card class="w-100-p p-0" fxLayout="column">
+          <header
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            class="card-header-title card-header-border-bottom px-16"
+            tabindex="0"
+            aria-label="header"
+          >
+            <h2
+              class="font-weight-600 primary-heading"
+              tabindex="0"
+              aria-label="Class of 2021 | Year 3"
+            >
+              Class of 2021 | Year 3
+            </h2>
+          </header>
+          <div class="p-16 pt-8 border-bottom" fxLayout="column">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="Summer | 9 Credits"
+              >Summer | 9 Credits
+            </span>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5360 - Cellular and systems physiology"
+                >PHTH 5360 - Cellular and systems physiology</a
+              >
+              <span tabindex="0" aria-label="6">6</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                tabindex="0"
+                aria-label="PHTH 5380 - Introduction to Physical Therapy"
+                >PHTH 5380 - Introduction to Physical Therapy</a
+              >
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                tabindex="0"
+                aria-label="PHTH 5330 - Psychosocial Behavioral Issues"
+                >PHTH 5330 - Psychosocial Behavioral Issues</a
+              >
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+          </div>
+
+          <div class="p-16 pt-8 border-bottom" fxLayout="column">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="Fall | 4 Months | November to February | 15 Credits"
+              >Fall | 4 Months | November - February | 15 Credits
+            </span>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5421 - Tests and Measurements"
+                >PHTH 5421 - Tests and Measurements</a
+              >
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5470 - Applied Physiology"
+                >PHTH 5470 - Applied Physiology</a
+              >
+              <span tabindex="0" aria-label="3">3</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5480 - Biomechanics and Movement Science"
+                >PHTH 5480 - Biomechanics and Movement Science</a
+              >
+              <span tabindex="0" aria-label="6">6</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5440 - Human Development Across the Life Span"
+                >PHTH 5440 - Human Development Across the Life Span</a
+              >
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5450 - Patient Care Principles"
+                >PHTH 5450 - Patient Care Principles</a
+              >
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a class="pr-16" tabindex="0" aria-label="PHTH 5590 - Research I"
+                >PHTH 5590 - Research I</a
+              >
+              <span tabindex="0" aria-label="5">5</span>
+            </div>
+          </div>
+
+          <div class="p-16 pt-8" fxLayout="column">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="Spring | 4 Months | February to June | 15 Credits "
+            >
+              Spring | 4 Months | February - June | 15 Credits
+            </span>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5421 - Tests and Measurements"
+                >PHTH 5421 - Tests and Measurements</a
+              >
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start start" class="pr-16">
+                <a
+                  tabindex="0"
+                  aria-label="PHTH 5440 - Human Development Across the Life Span"
+                  >PHTH 5440 - Human Development Across the Life Span</a
+                >
+                <span
+                  class="brown-background fuse-white-fg px-4 ml-4"
+                  tabindex="0"
+                  aria-label="clinical course"
+                  >C</span
+                >
+              </div>
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start start" class="pr-16">
+                <a
+                  tabindex="0"
+                  aria-label="PHTH 5440 - Human Development Across the Life Span"
+                  >PHTH 5440 - Human Development Across the Life Span</a
+                >
+                <span
+                  class="brown-background fuse-white-fg px-4 ml-4"
+                  tabindex="0"
+                  aria-label="clinical course"
+                  >C</span
+                >
+              </div>
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5440 - Human Development Across the Life Span"
+                >PHTH 5440 - Human Development Across the Life Span</a
+              >
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5450 - Patient Care Principles"
+                >PHTH 5450 - Patient Care Principles</a
+              >
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+
+      <!-- fourth card -->
+      <div
+        class="pr-lg-16 pt-lg-8 pt-xs-8 pt-sm-8"
+        fxLayout="row"
+        fxFlex.gt-md="33.33"
+        fxFlex="100"
+        fxLayoutAlign="start center"
+      >
+        <mat-card class="w-100-p p-0" fxLayout="column">
+          <header
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            class="card-header-title card-header-border-bottom px-16"
+            tabindex="0"
+            aria-label="header"
+          >
+            <h2
+              class="font-weight-600 primary-heading"
+              tabindex="0"
+              aria-label="Class of 2021 | Year 4"
+            >
+              Class of 2021 | Year 4
+            </h2>
+          </header>
+          <div class="p-16 pt-8 border-bottom" fxLayout="column">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="Summer | 9 Credits"
+              >Summer | 9 Credits
+            </span>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5360 - Cellular and systems physiology"
+                >PHTH 5360 - Cellular and systems physiology</a
+              >
+              <span tabindex="0" aria-label="6">6</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                tabindex="0"
+                aria-label="PHTH 5380 - Introduction to Physical Therapy"
+                >PHTH 5380 - Introduction to Physical Therapy</a
+              >
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                tabindex="0"
+                aria-label="PHTH 5330 - Psychosocial Behavioral Issues"
+                >PHTH 5330 - Psychosocial Behavioral Issues</a
+              >
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+          </div>
+
+          <div class="p-16 pt-8 border-bottom" fxLayout="column">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="Fall | 4 Months | November to February | 15 Credits"
+              >Fall | 4 Months | November - February | 15 Credits
+            </span>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5421 - Tests and Measurements"
+                >PHTH 5421 - Tests and Measurements</a
+              >
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5470 - Applied Physiology"
+                >PHTH 5470 - Applied Physiology</a
+              >
+              <span tabindex="0" aria-label="3">3</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5480 - Biomechanics and Movement Science"
+                >PHTH 5480 - Biomechanics and Movement Science</a
+              >
+              <span tabindex="0" aria-label="6">6</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5440 - Human Development Across the Life Span"
+                >PHTH 5440 - Human Development Across the Life Span</a
+              >
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5450 - Patient Care Principles"
+                >PHTH 5450 - Patient Care Principles</a
+              >
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a class="pr-16" tabindex="0" aria-label="PHTH 5590 - Research I"
+                >PHTH 5590 - Research I</a
+              >
+              <span tabindex="0" aria-label="5">5</span>
+            </div>
+          </div>
+
+          <div class="p-16 pt-8" fxLayout="column">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="Spring | 4 Months | February to June | 15 Credits "
+            >
+              Spring | 4 Months | February - June | 15 Credits
+            </span>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5421 - Tests and Measurements"
+                >PHTH 5421 - Tests and Measurements</a
+              >
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start start" class="pr-16">
+                <a
+                  tabindex="0"
+                  aria-label="PHTH 5440 - Human Development Across the Life Span"
+                  >PHTH 5440 - Human Development Across the Life Span</a
+                >
+                <span
+                  class="brown-background fuse-white-fg px-4 ml-4"
+                  tabindex="0"
+                  aria-label="clinical course"
+                  >C</span
+                >
+              </div>
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <div fxLayout="row" fxLayoutAlign="start start" class="pr-16">
+                <a
+                  tabindex="0"
+                  aria-label="PHTH 5440 - Human Development Across the Life Span"
+                  >PHTH 5440 - Human Development Across the Life Span</a
+                >
+                <span
+                  class="brown-background fuse-white-fg px-4 ml-4"
+                  tabindex="0"
+                  aria-label="clinical course"
+                  >C</span
+                >
+              </div>
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5440 - Human Development Across the Life Span"
+                >PHTH 5440 - Human Development Across the Life Span</a
+              >
+              <span tabindex="0" aria-label="1">1</span>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              fxFlex="100"
+              class="pt-8"
+            >
+              <a
+                class="pr-16"
+                tabindex="0"
+                aria-label="PHTH 5450 - Patient Care Principles"
+                >PHTH 5450 - Patient Care Principles</a
+              >
+              <span tabindex="0" aria-label="2">2</span>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

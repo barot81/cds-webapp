@@ -1,0 +1,203 @@
+<div id="exxat-typography-cards">
+  <div class="mat-title">Exxat MediaQuerry Examples</div>
+  <div class="mat-card mat-elevation-z2 p-16" fxLayout="column">
+    <div fxLayout="column" fxLayout.gt-md="row">
+      <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+        <div class="font-22">large screen : 22 px</div>
+        <div class="font-12">extra-small screen : 12 px</div>
+        <br />
+        <p>
+          To write the screen specific css you have to include the breakpoints.
+        </p>
+        <p>Ex. <strong>@include media-breakpoint('xs')</strong></p>
+        <p>
+          Here the font size is 22 px for large screens. and 12 px for
+          extra-small screens
+        </p>
+        <p>You have to change the screen sizes in the brackets.</p>
+        <p><strong>Note : Please refer the css on right hand side.</strong></p>
+      </div>
+
+      <fuse-highlight
+        lang="html"
+        class="source-code"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <textarea #source hidden="hidden">
+          // HTML //
+          <div class="font-22">large screen : 22 px</div>
+
+          // Required css//
+          .font-22{
+            font-size: 22px;
+
+              @include media-breakpoint('xs') {
+                  font-size: 12px;
+              }
+          }
+        </textarea>
+      </fuse-highlight>
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-md="row">
+      <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+        <div class="font-14">large screen : 14 px</div>
+        <div class="font-20">small screen : 20 px</div>
+        <br />
+        <p>
+          To write the screen specific css you have to include the breakpoints.
+        </p>
+        <p>Ex. <strong>@include media-breakpoint('sm')</strong></p>
+        <p>
+          Here the font size is 14 px for large screens. and 20 px for small
+          screens
+        </p>
+        <p>You have to change the screen sizes in the brackets.</p>
+        <p><strong>Note : Please refer the css on right hand side.</strong></p>
+      </div>
+
+      <fuse-highlight
+        lang="html"
+        class="source-code"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <textarea #source hidden="hidden">
+          // HTML //
+          <div class="font-14">large screen : 14 px</div>
+
+
+          // Required css//
+          .font-14{
+                   font-size: 14px;
+
+                    @include media-breakpoint('sm') {
+                        font-size: 20px;
+                    }
+                }
+
+        </textarea>
+      </fuse-highlight>
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-md="row">
+      <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+        <div class="example-box"></div>
+        <br />
+        <p>
+          If you want same style for 1 or 2 screens then you can use the
+          following example.
+        </p>
+        <p>Ex. <strong> @include media-breakpoint('lt-md')</strong></p>
+        <p>Here lt-md means <strong>"less than medium screens"</strong></p>
+        <p>
+          In this example the box color is pink for all the screens less than
+          medium screen.and green for medium and the next screens.
+        </p>
+        <p><strong>Note : Please refer the css on right hand side.</strong></p>
+      </div>
+
+      <fuse-highlight
+        lang="html"
+        class="source-code"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <textarea #source hidden="hidden">
+          // HTML //
+          <div class="example-box"></div>
+
+
+          // Required css//
+          .example-box{
+            height:100px;
+            width:100%;
+            background-color: green;
+
+                @include media-breakpoint('lt-md'){
+                    background-color: pink;
+                }
+           }
+        </textarea>
+      </fuse-highlight>
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-md="row">
+      <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+        <div class="example-box2"></div>
+        <br />
+        <p>
+          If you want same style for 1 or 2 screens then you can use the
+          following example.
+        </p>
+        <p>Ex. <strong>@include media-breakpoint('gt-sm')</strong></p>
+        <p>Here gt-sm means <strong>"greater than small screens"</strong></p>
+        <p>
+          In this example the box color is yellow for all the screens greater
+          than small screen.and red for small and the bellow screens.
+        </p>
+        <p><strong>Note : Please refer the css on right hand side.</strong></p>
+      </div>
+
+      <fuse-highlight
+        lang="html"
+        class="source-code"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <textarea #source hidden="hidden">
+          // HTML //
+          <div class="example-box2"></div>
+
+
+          // Required css//
+          .example-box2{
+            height:100px;
+            width:100%;
+            background-color: red;
+
+              @include media-breakpoint('gt-sm'){
+                  background-color: yellow;
+              }
+           }
+        </textarea>
+      </fuse-highlight>
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-md="row">
+      <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+        <p>There are different breakpoint mixins are made in this theme</p>
+        <p>Ex. <strong>@include media-breakpoint('gt-sm')</strong></p>
+        <p>
+          In above example you cant replace "gt-sm" with the following values
+          according to your screen.
+        </p>
+        <h3>
+          xs , sm , md , lg , xl , lt-sm , lt-md , lt-lg , lt-xl , gt-xs , gt-sm
+          , gt-md , gt-lg
+        </h3>
+        <p><strong>Note : Please refer the css on right hand side.</strong></p>
+      </div>
+
+      <fuse-highlight
+        lang="html"
+        class="source-code"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <textarea #source hidden="hidden">
+          
+          @include media-breakpoint('gt-sm'){
+            background-color: yellow;
+          }
+        </textarea>
+      </fuse-highlight>
+    </div>
+  </div>
+</div>

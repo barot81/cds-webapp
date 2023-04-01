@@ -1,0 +1,34 @@
+
+.width-40{
+    width:40%!important;
+    min-width: 40%!important;
+    max-width: 40%!important;
+}
+
+.highlighted-card{
+    animation-name: animation;
+    animation-duration: 5s;
+}
+.cards-step{
+    border: 6px solid #fff;
+}
+@keyframes animation {
+    from {border: 6px solid #fffdd8;}
+    to {border: 6px solid #fff;}
+}
+
+.list-icon-hover{
+    .icon-hidden{
+        i{
+            visibility: hidden!important;
+        }
+    }
+ 
+    &:hover {
+        .icon-hidden{
+            i{
+                visibility: visible!important;
+            }
+        }
+    }
+}

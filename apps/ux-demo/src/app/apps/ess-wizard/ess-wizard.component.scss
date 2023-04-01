@@ -1,0 +1,40 @@
+@import 'init';
+
+#ess-wizard {
+  .checkbox-header {
+    background-color: $onahau;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .logo-border {
+    border: 1px dashed $gray-dark;
+
+    &.logo-border-radius {
+      border-radius: 0 0 20px 20px;
+    }
+
+    .image-width {
+      width: 120px;
+      height: auto;
+    }
+  }
+
+  .template-content-height {
+    @include media-breakpoint('gt-sm') {
+      height: calc(
+        100vh - 270px
+      ) !important; //edit height according to your page
+    }
+  }
+
+  .floating-edit-button {
+    position: absolute;
+    z-index: 9;
+    height: 100%;
+    width: 100%;
+  }
+  .dashed-border {
+    border: 2px dashed $gray-dark;
+    @extend %border-radius-20;
+  }
+}

@@ -1,0 +1,80 @@
+<div class="page-layout simple left-sidebar inner-scroll page-without-header">
+  <fuse-sidebar
+    class="sidebar"
+    name="simple-left-sidebar"
+    position="left"
+    lockedOpen="gt-md"
+    fxFlex.gt-md="20"
+    fxFlex="100"
+    tabindex="0"
+    aria-label="sidebar with secondary text"
+  >
+    <div #sidebarHeader>
+      <div class="font-14 font-weight-600 px-16 py-8">
+        We would like you to offer slots for the following schedules
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+
+    <div
+      class="content overflow-auto"
+      [style.height.px]="_scrollService.sidebarContentHeight"
+    >
+      <div fxLayout="column">
+        <mat-list>
+          <button
+            mat-button
+            *ngFor="let student of students; let i = index"
+            (click)="activateNavigation(student.id)"
+          >
+            <mat-list-item
+              [ngClass]="{ 'active-list-item': student.id === selectedId }"
+            >
+              <div
+                class="word-break-all space-pre-wrap text-left"
+                fxLayout="column"
+              >
+                <span class="font-weight-600"
+                  >Jan 1st , 2020 - Jan 15th , 2020</span
+                >
+                <span class="secondary-text">Clinical Experience I</span>
+              </div>
+            </mat-list-item>
+          </button>
+        </mat-list>
+      </div>
+    </div>
+  </fuse-sidebar>
+
+  <!-- CENTER -->
+  <div class="center main-right-side-content" role="main">
+    <!-- HEADER -->
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <button
+        mat-icon-button
+        class="sidebar-toggle mr-8 ml-8"
+        fxHide.gt-md
+        (click)="toggleSidebar('simple-left-sidebar')"
+      >
+        <i aria-hidden="true" class="fa-light fa-bars"></i>
+      </button>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content ml-lg-16 ml-8">
+      <!-- Keep Content Here -->
+    </div>
+    <!-- / CONTENT -->
+
+    <button
+      mat-flat-button
+      color="accent"
+      class="float-button"
+      (click)="openDialog()"
+    >
+      Press for code
+    </button>
+  </div>
+  <!-- / CENTER -->
+</div>

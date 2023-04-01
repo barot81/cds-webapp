@@ -1,0 +1,31 @@
+@import 'init';
+
+.map-of-affiliation {
+  .right-side-content {
+    .content {
+      background: transparent !important;
+      box-shadow: none !important;
+      border-radius: 16px !important;
+    }
+  }
+  .bottom-sticky-content {
+    position: fixed;
+    z-index: 9;
+    bottom: 0;
+    width: 100%;
+    height: 54px;
+    background: $white;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+  }
+  .secondary-gray-color {
+    color: $scorpion;
+  }
+  .sidebar {
+    @include media-breakpoint('gt-md') {
+      max-width: 20vw;
+    }
+    @include media-breakpoint('lt-lg') {
+      max-width: 40vw;
+    }
+  }
+}

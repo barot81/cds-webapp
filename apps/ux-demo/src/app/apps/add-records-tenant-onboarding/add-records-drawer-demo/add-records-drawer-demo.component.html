@@ -1,0 +1,141 @@
+<div class="drawer-p" fxLayout="column" fxLayoutAlign="start">
+  <mat-card fxLayout="column" class="mb-16">
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Full Name</mat-label>
+          <input matInput formControlName="fullName">
+          <mat-error>Full Name is required!</mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+          <mat-error>Last Name is required!</mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Roles</mat-label>
+          <mat-select formControlName="role">
+            <mat-option *ngFor="let role of roleList" value="{{role.value}}">
+              {{role.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Roles required!</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="mb-16">
+      <mat-checkbox>Is mock</mat-checkbox>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <mat-form-field appearance="fill" fxFlex="100" >
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required>
+        <mat-error>Email is required!</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Email Template</mat-label>
+          <mat-select formControlName="emailTemplate">
+            <mat-option *ngFor="let emailTemplate of emailTemplateList" value="{{emailTemplate.value}}">
+              {{emailTemplate.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Email Template is required!</mat-error>
+        </mat-form-field>
+    </div>
+  </mat-card>
+  
+    <!-- drawer of add student details -->
+  <mat-card fxLayout="column" class="mb-16">
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <mat-form-field appearance="fill" fxFlex="100" >
+        <mat-label>Full Name</mat-label>
+        <input matInput formControlName="fullName" required>
+        <mat-error>Full name is required!</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <mat-form-field appearance="fill" fxFlex="100" >
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" required>
+        <mat-error>Last name is required!</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <mat-form-field appearance="fill" fxFlex="100" >
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required>
+        <mat-error>Email is required!</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="phoneNumber">
+          <mat-error>Phone number is required!</mat-error>
+        </mat-form-field>
+    </div>
+    <h3 class="brown-heading mb-16" tabindex="0" aria-label="heading Cohort Details">Cohort Details</h3>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label >Cohort</mat-label>
+          <mat-select formControlName="cohort" required>
+            <mat-option *ngFor="let cohort of cohortList" value="{{cohort.value}}" >
+              {{cohort.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Cohort is required!</mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Enrollment</mat-label>
+          <mat-select formControlName="enrollment">
+            <mat-option *ngFor="let enrollment of enrollmentList" value="{{enrollment.value}}">
+              {{enrollment.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Enrollment is required!</mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Graduation</mat-label>
+          <mat-select formControlName="graduation">
+            <mat-option *ngFor="let graduation of graduationList" value="{{graduation.value}}">
+              {{graduation.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Graduation is required!</mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Academic Standing</mat-label>
+          <mat-select formControlName="academicStanding">
+            <mat-option *ngFor="let academicStanding of academicStandingList" value="{{academicStanding.value}}">
+              {{academicStanding.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Academic Standing is required!</mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Group Name</mat-label>
+          <mat-select formControlName="groupName">
+            <mat-option *ngFor="let groupName of groupNameList" value="{{groupName.value}}">
+              {{groupName.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Group Name is required!</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="">
+      <mat-checkbox>Is mock</mat-checkbox>
+    </div>
+  </mat-card>
+</div>

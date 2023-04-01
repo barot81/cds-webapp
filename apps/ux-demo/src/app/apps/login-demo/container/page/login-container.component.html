@@ -1,0 +1,21 @@
+<div id="login_container" fxLayout="row" fxLayoutAlign="center center" class="margin-auto w-100-p"
+    [ngStyle]="{'background' : 'url(assets/images/bg/1.jpg)', 'background-size': 'cover'}">
+    <mat-card class="login_screens_container">
+        <div fxLayout="column">
+            <div fxLayout="column" fxLayoutAlign="start center" fxFlex="100">
+                <div class="my-16" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+                    <img src="assets/images/logo/exxat-pink-large.png" alt="Exxat Logo" width="150px" height="80px">
+                </div>
+                <div class="w-100-p px-8">
+                    <router-outlet></router-outlet>
+                    <div class="mt-64" fxLayout="row" fxLayoutAlign="start center">
+                        <iframe
+                            src="https://www.tinfoilsecurity.com/badge_iframe/9bb9eab8fd2e214d85a8c39b9538154983259ffd?type=a&size=2"
+                            sandbox="allow-popups" scrolling="no" frameborder="0" allowTransparency="true"
+                            style="border:none; overflow:hidden; width:115px; height:44px;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>

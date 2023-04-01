@@ -1,0 +1,222 @@
+<div class="drawer-p" [formGroup]="form">
+  <mat-card class="mb-16" fxLayout="column">
+    <div fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-12">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <mat-checkbox></mat-checkbox>
+          <span
+            class="ml-12"
+            tabindex="0"
+            aria-label="Part-Time Outpatient Professional Behaviours and Patient Management"
+            >Part-Time Outpatient Professional Behaviours and Patient
+            Management</span
+          >
+        </div>
+        <button
+          mat-icon-button
+          role="img"
+          class="action-icon"
+          aria-label="eye icon"
+        >
+          <i aria-hidden="true" class="fa-light fa-eye icon-fill s-18"></i>
+        </button>
+      </div>
+      <div class="form-field-spacing ml-24">
+        <mat-form-field class="w-50-p" appearance="fill" fxFlex="100">
+          <mat-label> Select Setting </mat-label>
+          <mat-select>
+            <mat-option>
+              <ngx-mat-select-search
+                formControlName="dropdownSearch"
+                placeholderLabel="Search"
+                noEntriesFoundLabel="No entry matches"
+              >
+              </ngx-mat-select-search>
+            </mat-option>
+            <mat-option
+              *ngFor="let item of filteredDropdownSearchData | async"
+              [value]="item.id"
+            >
+              {{ item.title }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-12">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <mat-checkbox></mat-checkbox>
+          <span
+            class="ml-12"
+            tabindex="0"
+            aria-label="Part-Time Inpatient Professional Behaviours and Patient Management"
+            >Part-Time Inpatient Professional Behaviours and Patient
+            Management</span
+          >
+        </div>
+        <button
+          mat-icon-button
+          role="img"
+          class="action-icon"
+          aria-label="eye icon"
+        >
+          <i aria-hidden="true" class="fa-light fa-eye icon-fill s-18"></i>
+        </button>
+      </div>
+      <div class="form-field-spacing ml-24">
+        <mat-form-field class="w-50-p" appearance="fill" fxFlex="100">
+          <mat-label> Select Setting </mat-label>
+          <mat-select>
+            <mat-option>
+              <ngx-mat-select-search
+                formControlName="dropdownSearch"
+                placeholderLabel="Search"
+                noEntriesFoundLabel="No entry matches"
+              >
+              </ngx-mat-select-search>
+            </mat-option>
+            <mat-option
+              *ngFor="let item of filteredDropdownSearchData | async"
+              [value]="item.id"
+            >
+              {{ item.title }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-12">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <mat-checkbox></mat-checkbox>
+          <span
+            class="ml-12"
+            tabindex="0"
+            aria-label="Women Health Professional Behaviours and Patient Management"
+            >Women Health Professional Behaviours and Patient Management</span
+          >
+        </div>
+        <button
+          mat-icon-button
+          role="img"
+          class="action-icon"
+          aria-label="eye icon"
+        >
+          <i aria-hidden="true" class="fa-light fa-eye icon-fill s-18"></i>
+        </button>
+      </div>
+      <div class="form-field-spacing ml-24">
+        <mat-form-field class="w-50-p" appearance="fill" fxFlex="100">
+          <mat-label> Select Setting </mat-label>
+          <mat-select>
+            <mat-option>
+              <ngx-mat-select-search
+                formControlName="dropdownSearch"
+                placeholderLabel="Search"
+                noEntriesFoundLabel="No entry matches"
+              >
+              </ngx-mat-select-search>
+            </mat-option>
+            <mat-option
+              *ngFor="let item of filteredDropdownSearchData | async"
+              [value]="item.id"
+            >
+              {{ item.title }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-12">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <mat-checkbox></mat-checkbox>
+          <span
+            class="ml-12"
+            tabindex="0"
+            aria-label="Pediatric-Inpatient Acute Care Professional Behaviours and Patient Management"
+            >Pediatric-Inpatient Acute Care Professional Behaviours and Patient
+            Management</span
+          >
+        </div>
+        <button
+          mat-icon-button
+          role="img"
+          class="action-icon"
+          aria-label="eye icon"
+        >
+          <i aria-hidden="true" class="fa-light fa-eye icon-fill s-18"></i>
+        </button>
+      </div>
+      <div class="form-field-spacing ml-24">
+        <mat-form-field class="w-50-p" appearance="fill" fxFlex="100">
+          <mat-label> Select Setting </mat-label>
+          <mat-select>
+            <mat-option>
+              <ngx-mat-select-search
+                formControlName="dropdownSearch"
+                placeholderLabel="Search"
+                noEntriesFoundLabel="No entry matches"
+              >
+              </ngx-mat-select-search>
+            </mat-option>
+            <mat-option
+              *ngFor="let item of filteredDropdownSearchData | async"
+              [value]="item.id"
+            >
+              {{ item.title }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-12">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <mat-checkbox></mat-checkbox>
+          <span
+            class="ml-12"
+            tabindex="0"
+            aria-label="Pediatric-Onpatient Acute Care Professional Behaviours and Patient Management"
+            >Pediatric-Onpatient Acute Care Professional Behaviours and Patient
+            Management</span
+          >
+        </div>
+        <button
+          mat-icon-button
+          role="img"
+          class="action-icon"
+          aria-label="eye icon"
+        >
+          <i aria-hidden="true" class="fa-light fa-eye icon-fill s-18"></i>
+        </button>
+      </div>
+      <div class="form-field-spacing ml-24">
+        <mat-form-field class="w-50-p" appearance="fill" fxFlex="100">
+          <mat-label> Select Setting </mat-label>
+          <mat-select>
+            <mat-option>
+              <ngx-mat-select-search
+                formControlName="dropdownSearch"
+                placeholderLabel="Search"
+                noEntriesFoundLabel="No entry matches"
+              >
+              </ngx-mat-select-search>
+            </mat-option>
+            <mat-option
+              *ngFor="let item of filteredDropdownSearchData | async"
+              [value]="item.id"
+            >
+              {{ item.title }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card>
+</div>

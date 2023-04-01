@@ -1,0 +1,255 @@
+<div class="container-main">
+  <!-- <main role="main"> -->
+
+  <div class="layout-content">
+    <div class="region region-content">
+      <span class="page-title font-weight-600 font-20 pb-12"
+        ><span
+          class="field field--name-title field--type-string field--label-hidden"
+          >A QA Perspective to Accessibility Testing</span
+        ></span
+      >
+
+      <div>
+        <div>
+          <h3 class="pb-12">What is web accessibility?</h3>
+          <p class="pb-12">
+            When sites are designed, developed and edited correctly, all users
+            would have equal access to information and functionality. However,
+            currently many sites and tools are developed with accessibility
+            barriers that make them difficult or impossible for some people to
+            use. The web is fundamentally designed to work for all people, no
+            matter what their hardware, software, language, culture, location of
+            physical or ability.
+          </p>
+
+          <h3 class="pb-12">Why test for accessibility?</h3>
+          <p class="pb-12">
+            It is essential to test all applications for accessibility to
+            improve the customer experience. Developers and organizations are
+            increasingly making sure to create high-quality websites and web
+            tools, and not exclude people from using their products and
+            services.
+          </p>
+          <h3>Importance of accessibility:</h3>
+          <ul class="pb-12">
+            <li>Improves maintainability and efficiency</li>
+            <li>Increase market share and audience reach</li>
+            <li>Aids usability</li>
+            <li>
+              Easy and efficient access to users with impairment and challenges
+            </li>
+            <li>Assists in access for low-bandwidth users</li>
+            <li>Better and more maintainable code</li>
+            <li>Good SEO (Search Engine Optimization)</li>
+            <li>Maintains customer loyalty and brand value</li>
+          </ul>
+          <h3 class="pb-12">QA checklist for Accessibility testing</h3>
+
+          <h4 class="pb-12">1) Testing using keyboard navigation</h4>
+          <p class="pb-12">
+            The first step in manual testing is to throw away your mouse. Verify
+            that the user is able to navigate the website page, including the
+            header, footer, all menus and interactive elements using only the
+            keyboard.
+          </p>
+          <p>
+            <video
+              controls="controls"
+              height="451"
+              src="https://www.axelerant.com/hubfs/Axelerant_Facelift_2017/Blog%20Post%202019/Team%20Blog/Blog%2062/Axelerant-QA-Accessibility-Keyboard-Navigation-1.mp4"
+              style="width: 800px; height: 451px; margin: 0px 0px 10px"
+              width="800"
+            ></video>
+            <em>Testing using keyboard navigation</em>
+          </p>
+          <p>
+            Validating keyboard accessibility: It is an important step to
+            evaluate accessible interactions by using a keyboard.
+          </p>
+          <p class="pb-12">
+            Below is the complete checklist which one can follow on a variety of
+            desktop/mobile devices while using external keyboards.
+          </p>
+          <p><strong>Keyboard focus:</strong></p>
+          <ul>
+            <li>
+              Ensure that the focus order on the site follows the visual order
+              of the web page.
+            </li>
+            <li>
+              Ensure that all functionality is easy to use and available using
+              only the keyboard.
+            </li>
+            <li>
+              Ensure that whenever a user changes focus on the web page, there
+              is no change of context.
+            </li>
+            <li>
+              Ensure that keyboard focus is always visible and easy to
+              recognize.
+            </li>
+          </ul>
+          <p><strong>Tab order:</strong></p>
+          <ul>
+            <li>TAB through the page to see if the order is logical.</li>
+            <li>
+              See if you can activate all interactive elements with Enter and
+              Space keys.
+              <ul>
+                <li>
+                  Tab order should be logical. It should be left to right and
+                  top to bottom.
+                </li>
+                <li>
+                  All elements on the page can be reached by keyboard. This
+                  includes drop downs, menu items, buttons and other interactive
+                  elements.
+                </li>
+                <li>
+                  Users can select the menu items or drop down items with the
+                  keyboard.
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <p><strong>Forms:</strong></p>
+          <ul>
+            <li>Tab order of forms should be logical.</li>
+            <li>
+              If there is a drop down menu, users should be able to navigate and
+              select items using keyboard alone.
+            </li>
+          </ul>
+          <p><strong>Dialog box and pop-ups:</strong></p>
+          <ul>
+            <li>
+              As soon as the dialog opens up, keyboard focus should be set on
+              the dialog.
+            </li>
+            <li>Dialog can be dismissed using keyboard.</li>
+            <li>
+              When the dialog is closed, focus should be set on the element
+              which activated the dialog on the parent page.
+            </li>
+          </ul>
+
+          <h4 class="pb-12">2) Testing using a screen reader</h4>
+
+          <p>Here’s the QA checklist for testing using a screen reader:</p>
+          <ul>
+            <li>
+              Ensure that the page has a relevant page title. so that screen
+              reader users know what page they are on.
+            </li>
+            <li>
+              Ensure that images which are not decorative are read by the screen
+              reader, and that they have relevant alt text.
+            </li>
+            <li>Ensure decorative images are not read by the screen reader.</li>
+            <li>
+              Ensure all the interactive elements (buttons, checkbox, links,
+              radio button, edit box) are rendering the role. Example: button or
+              link.
+            </li>
+            <li>
+              Ensure that all interactive elements (buttons, checkboxes, links,
+              radio buttons, edit boxes) have labels. Example: "Submit" for a
+              Submit button/link.
+            </li>
+            <li>Ensure error fields have relevant error message.</li>
+            <li>
+              Ensure error messages are announced by the screen reader as soon
+              as they appear on the page.
+            </li>
+          </ul>
+          <p>
+            <video
+              controls="controls"
+              height="451"
+              src="https://www.axelerant.com/hubfs/Axelerant-QA-Accessibility-ScreenReader-%20VoiceOver.mp4"
+              style="
+                width: 800px;
+                height: 451px;
+                float: none;
+                margin: 0px 0px 10px;
+              "
+              width="800"
+            ></video>
+          </p>
+          <p class="pb-12">
+            <em>Testing using a Voice Over (screen reader) on Chrome</em>
+          </p>
+          <p class="pb-12"><strong>Links:</strong></p>
+          <ul>
+            <li>
+              Ensure ‘Links’ are descriptive without generic text such as "Click
+              Here".
+            </li>
+            <li>
+              Ensure that the role assigned to the "Link" on the site is
+              announced by the screen reader.
+            </li>
+          </ul>
+          <p><strong>Images:</strong></p>
+          <ul>
+            <li>Purely decorative images should have ALT="".</li>
+            <li>All meaningful images should have descriptive alt text.</li>
+            <li>
+              All navigation image buttons should have descriptive alt text.
+            </li>
+          </ul>
+          <p><strong>Forms:</strong></p>
+          <ul>
+            <li>Form fields should have descriptive labels.</li>
+            <li>
+              Appropriate descriptive labels should be present and read by the
+              screen reader.
+            </li>
+            <li>
+              Users should be able to fill out the form and submit it
+              successfully.
+            </li>
+            <li>
+              Buttons should be labeled and read correctly by the screen reader.
+            </li>
+            <li>
+              Required/optional fields should be announced by the screen reader.
+            </li>
+            <li>
+              Errors on the form field should be announced by the screen reader
+              as soon as they appear.
+            </li>
+          </ul>
+          <p class="pb-12"><strong>Data Tables:</strong></p>
+          <p>Data tables should have designated header and/or column rows.</p>
+          <ul>
+            <li>Tables should have captions.</li>
+            <li>Tables should not be nested.</li>
+            <li>
+              Row and column headers should be associated with the appropriate
+              scope attribute.
+            </li>
+          </ul>
+          <p>
+            <video
+              controls="controls"
+              height="501"
+              src="https://www.axelerant.com/hubfs/Axelerant_Facelift_2017/Blog%20Post%202019/Team%20Blog/Blog%2062/Axelerant-QA-Accessibility-WAVE-tool.mp4"
+              style="
+                width: 800px;
+                height: 501px;
+                float: none;
+                margin: 0px 0px 10px;
+              "
+              width="800"
+            ></video>
+          </p>
+          <p><em>Testing using Wave tool</em></p>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+  <!-- </main> -->
+</div>

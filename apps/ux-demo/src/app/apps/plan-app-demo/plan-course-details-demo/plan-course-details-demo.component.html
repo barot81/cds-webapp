@@ -1,0 +1,967 @@
+<div class="page-layout simple">
+  <header fxLayout="row wrap">
+    <div
+      class="pr-md-16 mb-16 px-xs-16 pt-xs-16"
+      fxFlex.gt-sm="50"
+      fxFlex="100"
+    >
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div
+          class="header-circle mr-16"
+          fxLayout="row"
+          fxLayoutAlign="center center"
+        >
+          <span class="fuse-white-fg font-weight-600">PT509</span>
+        </div>
+
+        <div fxLayout="column">
+          <h2 tabindex="0" aria-label="Introduction to Neurology">
+            Introduction to Neurology
+          </h2>
+
+          <div fxLayoutAlign="start" fxLayout="row wrap">
+            <div tabindex="0" aria-label="tags component">
+              <button
+                mat-icon-button
+                [matMenuTriggerFor]="tagsMenu"
+                (menuOpened)="openTagswithoutButtons()"
+                tabindex="0"
+                aria-label="select tag from different tags"
+              >
+                <mat-icon>label</mat-icon>
+              </button>
+              <mat-menu #tagsMenu="matMenu" [overlapTrigger]="false">
+                <exxat-tag
+                  [tags]="tags"
+                  (onTagChanges)="tagsChanged($event)"
+                  [options]="tagOptions"
+                ></exxat-tag>
+              </mat-menu>
+            </div>
+
+            <div fxLayout="row wrap" fxLayoutAlign="start center" class="pt-4">
+              <div *ngFor="let tag of tags">
+                <mat-icon
+                  matTooltip="{{ tag.name }}"
+                  matTooltipPosition="above"
+                  class="{{ tag.color }}-fg"
+                >
+                  label_important</mat-icon
+                >
+              </div>
+            </div>
+          </div>
+
+          <span
+            class="font-16 secondary-text pb-8"
+            tabindex="0"
+            aria-label="Class of 2020"
+            >Class of 2020</span
+          >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <span tabindex="0" aria-label="year 1">year 1</span>
+            <span class="dot"></span>
+            <span tabindex="0" aria-label="Fall">Fall</span>
+            <span class="dot"></span>
+            <span tabindex="0" aria-label="2018-2019">2018-2019</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-16 pt-xs-16 px-xs-16" fxFlex.gt-sm="50" fxFlex="100">
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between start"
+        fxFlex="100"
+        tabindex="0"
+        aria-label="more information of course"
+      >
+        <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="100">
+          <div
+            fxLayout="column"
+            class="exxat-info pb-16"
+            fxFlex.gt-xs="33.33"
+            fxFlex="100"
+          >
+            <span class="title" tabindex="0" aria-label="Credits">Credits</span>
+            <span class="description" tabindex="0" aria-label="12">12</span>
+          </div>
+          <div
+            fxLayout="column"
+            class="exxat-info pb-16"
+            fxFlex.gt-xs="33.33"
+            fxFlex="100"
+          >
+            <span class="title" tabindex="0" aria-label="Cours Hours"
+              >Cours Hours</span
+            >
+            <span class="description" tabindex="0" aria-label="243">243</span>
+          </div>
+          <div
+            fxLayout="column"
+            class="exxat-info pb-16"
+            fxFlex.gt-xs="33.33"
+            fxFlex="100"
+          >
+            <span class="title" tabindex="0" aria-label="Course Duration"
+              >Course Duration</span
+            >
+            <span class="description" tabindex="0" aria-label="3 months"
+              >3 months</span
+            >
+          </div>
+        </div>
+        <button
+          mat-icon-button
+          class="action-icon"
+          aria-label="edit more information of course"
+          exxatDrawerAction
+          [size]="'drawer-sm'"
+          [caption]="'Status'"
+          [primaryAction]="'Save'"
+          role="img"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen icon-fill s-18"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mb-16" fxLayout="row" fxLayoutAlign="start center">
+    <nav mat-tab-nav-bar fxFlex="100">
+      <a
+        mat-tab-link
+        *ngFor="let link of navigations"
+        [routerLink]="link.url"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [active]="rla.isActive"
+      >
+        <span>{{ link.title }}</span>
+      </a>
+    </nav>
+  </div>
+
+  <div class="center" fxLayout="row wrap" fxFlex="100">
+    <div fxLayout="column" fxFlex.gt-sm="70" fxFlex="100">
+      <mat-card class="p-0 mb-16" tabindex="0" aria-label="course details card">
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+          tabindex="0"
+          aria-label="header"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2
+              class="primary-heading font-weight-600 text-capitalize"
+              tabindex="0"
+              aria-label="heading Course Details"
+            >
+              Course Details
+            </h2>
+          </div>
+          <button
+            mat-icon-button
+            class="icon-fill-bg"
+            exxatDrawerAction
+            [componentSelector]="
+              _PlanAppDemoDrawerService.get('ryzen-add-course-details')
+            "
+            [size]="'drawer-sm'"
+            [caption]="'Course Details'"
+            [primaryAction]="'Save'"
+            aria-label="edit Course Details"
+          >
+            <i
+              aria-hidden="true"
+              class="fa-light fa-pen fuse-white-fg s-18"
+            ></i>
+          </button>
+        </header>
+
+        <div class="p-16">
+          <div class="text-container">
+            <input id="ch" type="checkbox" />
+            <label id="show-more-label" for="ch"></label>
+            <div class="text" tabindex="0">
+              This tutorial-based course covers the structure and function of
+              the normal and impaired neurological system. Anatomy of the
+              central, peripheral, and autonomic nervous systems are examined in
+              the context of patient cases with common neurological pathology to
+              understand the interactive effects of normal, pathological,
+              developmental, or age-related and environmental influences This
+              tutorial-based course covers the structure and function of the
+              normal and impaired neurological system. Anatomy of the central,
+              peripheral, and autonomic nervous systems are examined in the
+              context of patient cases with common neurological pathology to
+              understand the interactive effects of normal, pathological,
+              developmental, or age-related and environmental influences
+            </div>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap" class="pt-16 pl-16">
+          <div
+            class="exxat-info mb-16 pr-16"
+            fxLayout="column"
+            fxFlex="100"
+            fxFlex.gt-sm="33.33"
+          >
+            <div class="title" tabindex="0" aria-label="Course type">
+              Course type
+            </div>
+            <div
+              class="description pr-16"
+              tabindex="0"
+              aria-label="Course type is  Basic Sciences"
+            >
+              Basic Sciences
+            </div>
+          </div>
+          <div
+            class="exxat-info mb-16 pr-16"
+            fxLayout="column"
+            fxFlex="100"
+            fxFlex.gt-sm="33.33"
+          >
+            <div class="title" tabindex="0" aria-label="Nature of course">
+              Nature of course
+            </div>
+            <div
+              class="description pr-16"
+              tabindex="0"
+              aria-label="Nature of course is core"
+            >
+              Core
+            </div>
+          </div>
+          <div
+            class="exxat-info mb-16 pr-16"
+            fxLayout="column"
+            fxFlex="100"
+            fxFlex.gt-sm="33.33"
+          >
+            <div
+              class="title"
+              tabindex="0"
+              aria-label="Departments offering the courses "
+            >
+              Departments offering the courses
+            </div>
+            <div
+              class="description pr-16"
+              tabindex="0"
+              aria-label="Departments offering the courses is Department of Physical Therapy"
+            >
+              Department of Physical Therapy
+            </div>
+          </div>
+          <div
+            class="exxat-info mb-16 pr-16"
+            fxLayout="column"
+            fxFlex="100"
+            fxFlex.gt-sm="33.33"
+          >
+            <div class="title" tabindex="0" aria-label="Fields of study">
+              Fields of study
+            </div>
+            <div
+              class="description pr-16"
+              tabindex="0"
+              aria-label="Fields of study is Physical Therapy"
+            >
+              Physical Therapy
+            </div>
+          </div>
+          <div
+            class="exxat-info mb-16 pr-16"
+            fxLayout="column"
+            fxFlex="100"
+            fxFlex.gt-sm="33.33"
+          >
+            <div class="title" tabindex="0" aria-label="Clock hours">
+              Clock hours
+            </div>
+            <div
+              class="description pr-16"
+              tabindex="0"
+              aria-label="Clock hours are 8 am to 9:15 am, in S11 , Monday, Wednesday, Friday"
+            >
+              8:00 am - 9:15 am, in S11 , Monday, Wednesday, Friday
+            </div>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card
+        class="p-0 mb-16"
+        fxLayout="column"
+        tabindex="0"
+        aria-label="Course requirements card"
+      >
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+          tabindex="0"
+          aria-label="header"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2
+              class="primary-heading font-weight-600 text-capitalize"
+              tabindex="0"
+              aria-label="heading Course requirements"
+            >
+              Course requirements
+            </h2>
+          </div>
+          <button
+            mat-icon-button
+            class="icon-fill-bg"
+            aria-label="Edit Course requirements"
+            exxatDrawerAction
+            [size]="'drawer-sm'"
+            [caption]="'Status'"
+            [primaryAction]="'Save'"
+            role="img"
+          >
+            <i
+              aria-hidden="true"
+              class="fa-light fa-pen fuse-white-fg s-18"
+            ></i>
+          </button>
+        </header>
+
+        <div FXlayout="column" class="pt-16 px-16">
+          <div fxLayout="row" fxLayoutAlign="space-between start">
+            <div fxLayout="column" class="exxat-info pb-16 pr-16">
+              <span class="title" tabindex="0" aria-label="title Prerequistites"
+                >Prerequistites</span
+              >
+              <span
+                class="description py-8"
+                tabindex="0"
+                aria-label="Lecture, Lab, ICE, Priming Activity Lecture, Lab, ICE, Priming Activity"
+                >Lecture, Lab, ICE, Priming Activity Lecture, Lab, ICE, Priming
+                Activity</span
+              >
+              <span
+                class="description"
+                tabindex="0"
+                aria-label="sing Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infan"
+                >sing Lorem Ipsum is that it has a more-or-less normal
+                distribution of letters, as opposed to using 'Content here,
+                content here', making it look like readable English. Many
+                desktop publishing packages and web page editors now use Lorem
+                Ipsum as their default model text, and a search for 'lorem
+                ipsum' will uncover many web sites still in their infan</span
+              >
+            </div>
+            <button
+              mat-icon-button
+              class="action-icon"
+              aria-label="edit Prerequistites"
+            >
+              <i aria-hidden="true" class="fa-light fa-pen icon-fill s-18"></i>
+            </button>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="space-between start">
+            <div fxLayout="column" class="exxat-info pb-16 pr-16">
+              <span class="title" tabindex="0" aria-label="title Corequistites"
+                >Corequistites</span
+              >
+              <span
+                class="description py-8"
+                tabindex="0"
+                aria-label="Lecture, Lab, ICE, Priming Activity Lecture, Lab, ICE, Priming Activity"
+                >Lecture, Lab, ICE, Priming Activity Lecture, Lab, ICE, Priming
+                Activity</span
+              >
+              <span
+                class="description"
+                tabindex="0"
+                aria-label="sing Lorem Ipsum is that it has a more-or-less"
+                >sing Lorem Ipsum is that it has a more-or-less
+              </span>
+            </div>
+            <button
+              mat-icon-button
+              class="action-icon"
+              aria-label="edit Corequistites"
+            >
+              <i aria-hidden="true" class="fa-light fa-pen icon-fill s-18"></i>
+            </button>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card
+        class="p-0 mb-16"
+        fxLayout="column"
+        tabindex="0"
+        aria-label="Textbooks and other learning resources card"
+      >
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+          tabindex="0"
+          aria-label="header"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2
+              class="primary-heading font-weight-600 text-capitalize"
+              tabindex="0"
+              aria-label="heading Textbooks and other learning resources"
+            >
+              Textbooks and other learning resources
+            </h2>
+          </div>
+        </header>
+
+        <div fxLayout="column" fxLayoutAlign="start start" class="px-16 pt-16">
+          <div fxLayout="column" class="exxat-info pb-16">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+              class="pb-8"
+            >
+              <div fxLayout="column">
+                <span
+                  class="secondary-text font-weight-600 pt-8"
+                  tabindex="0"
+                  aria-label="Required resources"
+                  >Required</span
+                >
+                <div class="description pr-16 pt-8" fxLayout="column">
+                  <span
+                    tabindex="0"
+                    aria-label="first , Lecture, Lab, ICE, Priming Activity Lecture, Lab, ICE, Priming Activity sing Lorem Ipsum is that it has a more-or-less Lecture, Lab, ICE, Priming Activity Lecture, Lab, ICE, Priming Activity sing Lorem Ipsum is that it has a more-or-less"
+                    >1. Lecture, Lab, ICE, Priming Activity Lecture, Lab, ICE,
+                    Priming Activity sing Lorem Ipsum is that it has a
+                    more-or-less Lecture, Lab, ICE, Priming Activity Lecture,
+                    Lab, ICE, Priming Activity sing Lorem Ipsum is that it has a
+                    more-or-less</span
+                  >
+                  <span
+                    tabindex="0"
+                    aria-label="second, sing Lorem Ipsum is that it has a more-or-less"
+                    >2.sing Lorem Ipsum is that it has a more-or-less
+                  </span>
+                  <span
+                    tabindex="0"
+                    aria-label="third , Lecture, Lab, ICE, Priming Activity Lecture, Lab, ICE, Priming Activity sing Lorem Ipsum is that it has a more-or-less"
+                    >3.Lecture, Lab, ICE, Priming Activity Lecture, Lab, ICE,
+                    Priming Activity sing Lorem Ipsum is that it has a
+                    more-or-less</span
+                  >
+                  <span
+                    tabindex="0"
+                    aria-label="Also required : Course packet on dashboard"
+                    >Also required : Course packet on dashboard</span
+                  >
+                </div>
+              </div>
+              <button
+                mat-icon-button
+                class="action-icon"
+                aria-label="edit Required resources"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-pen icon-fill s-18"
+                ></i>
+              </button>
+            </div>
+            <a
+              (click)="open(fileViewerComponentRef)"
+              tabindex="0"
+              aria-label="view documents link"
+            >
+              View document
+            </a>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="space-between start" class="pb-16">
+            <div fxLayout="column" class="pr-16">
+              <span
+                class="secondary-text font-weight-600 pt-8"
+                tabindex="0"
+                aria-label="Recommended resources"
+                >Recommended</span
+              >
+              <div class="description pt-8" fxLayout="column">
+                <span
+                  tabindex="0"
+                  aria-label="Lecture, Lab, ICE, Priming Activity Lecture, Lab, ICE, Priming Activity sing Lorem Ipsum is that it has a more-or-less Lecture, Lab, ICE, Priming Activity Lecture, Lab, ICE, Priming Activity sing Lorem Ipsum is that it has a more-or-less"
+                  >Lecture, Lab, ICE, Priming Activity Lecture, Lab, ICE,
+                  Priming Activity sing Lorem Ipsum is that it has a
+                  more-or-less Lecture, Lab, ICE, Priming Activity Lecture, Lab,
+                  ICE, Priming Activity sing Lorem Ipsum is that it has a
+                  more-or-less</span
+                >
+              </div>
+            </div>
+            <button
+              mat-icon-button
+              class="action-icon"
+              tabindex="0"
+              aria-label="edit Recommended resources"
+            >
+              <i aria-hidden="true" class="fa-light fa-pen icon-fill s-18"></i>
+            </button>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card
+        class="p-0 mb-16"
+        fxLayout="column"
+        tabindex="0"
+        aria-label="Assesment weightages and Grading card"
+      >
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+          tabindex="0"
+          aria-label="header"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2
+              class="primary-heading font-weight-600 text-capitalize"
+              tabindex="0"
+              aria-label="heading Assesment weightages and Grading"
+            >
+              Assesment weightages and Grading
+            </h2>
+          </div>
+        </header>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="px-16 pt-16"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="Assesment weightages"
+              >Assesment weightages</span
+            >
+          </div>
+          <button
+            mat-icon-button
+            class="action-icon"
+            aria-label="edit Assesment weightages"
+            exxatDrawerAction
+            [size]="'drawer-sm'"
+            [caption]="'Status'"
+            [primaryAction]="'Save'"
+            role="img"
+          >
+            <i aria-hidden="true" class="fa-light fa-pen icon-fill s-18"></i>
+          </button>
+        </div>
+        <!-- assessment grid -->
+        <div
+          class="overflow-auto p-16"
+          tabindex="0"
+          aria-label="assessment grid"
+        >
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            class="w-100-p exxat-table slot-demo-table table-border border-left-right"
+          >
+            <!-- Assessment name  -->
+            <ng-container matColumnDef="assessment">
+              <th
+                class="px-16"
+                mat-header-cell
+                *matHeaderCellDef
+                tabindex="0"
+                aria-label="table head Assessment name"
+              >
+                Assessment name
+              </th>
+              <td mat-cell *matCellDef="let element" class="px-16">
+                <span
+                  class="font-weight-600"
+                  tabindex="0"
+                  aria-label="Final class average"
+                  >Final class average</span
+                >
+              </td>
+            </ng-container>
+
+            <!-- weightage -->
+            <ng-container matColumnDef="weightage">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="px-16"
+                tabindex="0"
+                aria-label="table head Weightage"
+              >
+                Weightage
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="px-16"
+                tabindex="0"
+                aria-label="82"
+              >
+                82
+              </td>
+            </ng-container>
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="px-16">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <span class="font-weight-600" tabindex="0" aria-label="Grading"
+              >Grading</span
+            >
+          </div>
+          <button
+            mat-icon-button
+            class="action-icon"
+            aria-label="edit Grading"
+            exxatDrawerAction
+            [size]="'drawer-sm'"
+            [caption]="'Status'"
+            [primaryAction]="'Save'"
+            role="img"
+          >
+            <i aria-hidden="true" class="fa-light fa-pen icon-fill s-18"></i>
+          </button>
+        </div>
+        <!-- grading grid -->
+        <div class="overflow-auto p-16" tabindex="0" aria-label="grading grid">
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            class="w-100-p exxat-table slot-demo-table table-border border-left-right"
+          >
+            <!-- grade Column -->
+            <ng-container matColumnDef="grade">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="px-16"
+                tabindex="0"
+                aria-label="table head grade"
+              >
+                Grade
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="px-16"
+                tabindex="0"
+                aria-label="A"
+              >
+                A
+              </td>
+            </ng-container>
+
+            <!-- scale Column -->
+            <ng-container matColumnDef="scale">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="px-16"
+                tabindex="0"
+                aria-label="table head scale"
+              >
+                Scale
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="px-16"
+                tabindex="0"
+                aria-label="90"
+              >
+                90
+              </td>
+            </ng-container>
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumnsGrade; sticky: true"
+            ></tr>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: displayedColumnsGrade"
+            ></tr>
+          </table>
+        </div>
+      </mat-card>
+
+      <mat-card
+        class="p-0 mb-16"
+        fxLayout="column"
+        tabindex="0"
+        aria-label="Course Policies card"
+      >
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          tabindex="0"
+          aria-label="header"
+          class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2
+              class="primary-heading font-weight-600 text-capitalize"
+              tabindex="0"
+              aria-label="Course Policies"
+            >
+              Course Policies
+            </h2>
+          </div>
+          <button
+            mat-icon-button
+            class="icon-fill-bg"
+            aria-label="add to Course Policies"
+            exxatDrawerAction
+            [size]="'drawer-sm'"
+            [caption]="'Status'"
+            [primaryAction]="'Save'"
+            role="img"
+          >
+            <i
+              aria-hidden="true"
+              class="fa-light fa-plus fuse-white-fg s-18"
+            ></i>
+          </button>
+        </header>
+
+        <div fxLayout="column" class="pt-16 pl-16 exxat-info">
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="pr-16"
+          >
+            <span class="title" tabindex="0" aria-label="title Attendance"
+              >Attendance</span
+            >
+            <button
+              mat-icon-button
+              class="action-icon"
+              aria-label="edit title Attendance"
+            >
+              <i aria-hidden="true" class="fa-light fa-pen icon-fill s-18"></i>
+            </button>
+          </div>
+          <span
+            class="pr-16 pb-16 description"
+            tabindex="0"
+            aria-label="This policy"
+            >This policy</span
+          >
+        </div>
+      </mat-card>
+    </div>
+
+    <!-- right sidebar -->
+    <div
+      fxLayout="column"
+      fxFlex.gt-sm="30"
+      fxFlex="100"
+      class="pl-md-16"
+      tabindex="0"
+      aria-label="right sidebar"
+    >
+      <div class="mb-16" fxLayout="column">
+        <header
+          class="secondary-info-header"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          tabindex="0"
+          aria-label="header"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2
+              class="text-capitalize"
+              tabindex="0"
+              aria-label="heading Attributes"
+            >
+              Attributes
+            </h2>
+          </div>
+          <button
+            mat-icon-button
+            aria-label="add to Attributes"
+            exxatDrawerAction
+            class="icon-fill-bg"
+            [primaryAction]="'Save'"
+            [secondaryAction]="'Delete'"
+            [size]="'drawer-sm'"
+            role="img"
+            [entityKey]="0"
+          >
+            <i
+              aria-hidden="true"
+              class="fa-light fa-plus fuse-white-fg s-18"
+            ></i>
+          </button>
+        </header>
+
+        <div FXlayout="column" class="pl-28">
+          <div fxLayout="column" class="exxat-info pb-16">
+            <span class="title" tabindex="0" aria-label="Learning experiences"
+              >Learning experiences</span
+            >
+            <span
+              class="description"
+              tabindex="0"
+              aria-label="Lecture, Lab, ICE, Priming Activity"
+              >Lecture, Lab, ICE, Priming Activity</span
+            >
+          </div>
+
+          <mat-divider class="w-100-p margin-auto"></mat-divider>
+
+          <div fxLayout="column" class="exxat-info py-16">
+            <span class="title" tabindex="0" aria-label="Assessment methods"
+              >Assessment methods</span
+            >
+            <span
+              class="description"
+              tabindex="0"
+              aria-label="Laboratory practical, Standardized patient examination, Skills check-off list, Reflection paper"
+              >Laboratory practical, Standardized patient examination, Skills
+              check-off list, Reflection paper</span
+            >
+          </div>
+
+          <mat-divider class="w-100-p margin-auto"></mat-divider>
+
+          <div fxLayout="column" class="exxat-info py-16">
+            <span
+              class="title"
+              tabindex="0"
+              aria-label="Assessments outcomes measures"
+            >
+              Assessments outcomes measures</span
+            >
+            <span
+              class="description"
+              tabindex="0"
+              aria-label="Clinical Education Evaluation Tool data, Student exit survey, Graduate exit survey"
+              >Clinical Education Evaluation Tool data, Student exit survey,
+              Graduate exit survey</span
+            >
+          </div>
+
+          <mat-divider class="w-100-p margin-auto"></mat-divider>
+
+          <div fxLayout="column" class="exxat-info pt-16">
+            <span class="title" tabindex="0" aria-label="Theme"> Theme</span>
+            <span class="description" tabindex="0" aria-label="Pain, Cardiology"
+              >Pain, Cardiology</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="column">
+        <header
+          class="secondary-info-header"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          tabindex="0"
+          aria-label="header"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2
+              class="text-capitalize"
+              tabindex="0"
+              aria-label="heading Faculty"
+            >
+              Faculty
+            </h2>
+          </div>
+          <button
+            mat-icon-button
+            aria-label="add to Faculty"
+            exxatDrawerAction
+            class="icon-fill-bg"
+            [primaryAction]="'Save'"
+            [secondaryAction]="'Delete'"
+            [size]="'drawer-sm'"
+            role="img"
+            [entityKey]="0"
+          >
+            <i
+              aria-hidden="true"
+              class="fa-light fa-plus fuse-white-fg s-18"
+            ></i>
+          </button>
+        </header>
+        <div class="pl-28">
+          <div
+            class="pb-16"
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <exxat-avatar
+                firstName="Devon"
+                lastName="Robertson"
+              ></exxat-avatar>
+              <div fxLayout="column" fxLayoutAlign="start start">
+                <span
+                  class="font-14"
+                  tabindex="0"
+                  aria-label="name is Devon Robertson"
+                  >Devon Robertson</span
+                >
+                <span class="font-14" tabindex="0" aria-label="Advisor"
+                  >Advisor</span
+                >
+              </div>
+            </div>
+          </div>
+          <mat-divider class="w-85-p margin-auto"></mat-divider>
+          <div
+            class="py-16"
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <exxat-avatar
+                firstName="Gregory"
+                lastName="Hawkins"
+              ></exxat-avatar>
+              <div fxLayout="column" fxLayoutAlign="start start">
+                <span
+                  class="font-14"
+                  tabindex="0"
+                  aria-label="name is Gregory Hawkins"
+                  >Gregory Hawkins</span
+                >
+                <span class="font-14" tabindex="0" aria-label="Advisor"
+                  >Advisor</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

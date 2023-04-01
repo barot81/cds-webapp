@@ -1,0 +1,209 @@
+<div fxLayout="column" fxLayout.gt-md="row" id="chip-custom-input">
+  <div
+    class="pr-md-16 pr-0"
+    fxLayout="column"
+    fxLayoutAlign="start"
+    fxFlex="50"
+  >
+    <div
+      class="mat-caption secondary-text mb-16"
+      tabindex="0"
+      aria-label="Auto-complete chips with custom inputs"
+    >
+      Auto-complete chips with custom inputs
+    </div>
+    <mat-card>
+      <mat-form-field class="w-100-p" appearance="fill">
+        <mat-chip-list #chipList>
+          <mat-chip
+            *ngFor="let fruit of fruits"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="remove(fruit)"
+          >
+            {{ fruit }}
+            <button matChipRemove aria-label="remove item" *ngIf="removable">
+              <i aria-hidden="true" class="fa-light fa-circle-xmark s-16"></i>
+            </button>
+          </mat-chip>
+          <input
+            placeholder="Select Fruit"
+            #fruitInput
+            [formControl]="fruitCtrl"
+            [matAutocomplete]="auto"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)"
+          />
+        </mat-chip-list>
+        <mat-autocomplete
+          #auto="matAutocomplete"
+          (optionSelected)="selected($event)"
+        >
+          <mat-option
+            *ngFor="let fruit of filteredFruits | async"
+            [value]="fruit"
+          >
+            {{ fruit }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </mat-card>
+  </div>
+
+  <div
+    class="pr-md-16 pr-0"
+    fxLayout="column"
+    fxLayoutAlign="start"
+    fxFlex="50"
+  >
+    <mat-tab-group class="mt-lg-0 mt-16">
+      <!-- 1st tab content -->
+      <mat-tab label="HTML">
+        <fuse-highlight
+          lang="html"
+          class="source-code mt-16"
+          fxLayout="column"
+          fxLayoutAlign="center"
+        >
+          <textarea #source hidden="hidden">
+
+            <mat-form-field class="w-100-p" appearance="fill">
+              <mat-chip-list #chipList>
+                <mat-chip
+                  *ngFor="let fruit of fruits"
+                  [selectable]="selectable"
+                  [removable]="removable"
+                  (removed)="remove(fruit)"
+                >
+                   fruit 
+                  <button matChipRemove aria-label="remove item" *ngIf="removable">
+                    <i aria-hidden="true" class="fa-light fa-circle-xmark s-16"></i>
+                  </button>
+                </mat-chip>
+                <input
+                  placeholder="Select Fruit"
+                  #fruitInput
+                  [formControl]="fruitCtrl"
+                  [matAutocomplete]="auto"
+                  [matChipInputFor]="chipList"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  (matChipInputTokenEnd)="add($event)"
+                />
+              </mat-chip-list>
+              <mat-autocomplete
+                #auto="matAutocomplete"
+                (optionSelected)="selected($event)"
+              >
+                <mat-option
+                  *ngFor="let fruit of filteredFruits | async"
+                  [value]="fruit"
+                >
+                   fruit 
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+     
+         </textarea
+          >
+        </fuse-highlight>
+      </mat-tab>
+
+      <!-- 2nd tab content -->
+      <mat-tab label="TS">
+        <fuse-highlight
+          lang="ts"
+          class="source-code mt-16"
+          fxLayout="column"
+          fxLayoutAlign="center"
+        >
+          <textarea #source hidden="hidden">
+            import { ENTER } from '@angular/cdk/keycodes';
+            import { Component, ElementRef, ViewChild } from '@angular/core';
+            import { FormControl } from '@angular/forms';
+            import { MatAutocompleteSelectedEvent, MatAutocomplete }
+            from '@angular/material/autocomplete';
+            import { MatChipInputEvent } from '@angular/material/chips';
+            import { Observable } from 'rxjs';
+            import { map, startWith } from 'rxjs/operators';
+
+            @Component({
+              selector: 'ryzen-chips-without-custom-input',
+              templateUrl: './chips-without-custom-input.component.html',
+              styleUrls: ['./chips-without-custom-input.component.scss']
+            })
+            export class ChipsWithoutCustomInputComponent{
+
+              visible = true;
+              selectable = true;
+              removable = true;
+              separatorKeysCodes: number[] = [ENTER];
+              fruitCtrl = new FormControl();
+              filteredFruits: Observable<string[]>;
+              fruits: string[] = ['Lemon'];
+              allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+
+              @ViewChild('fruitInput', { read: MatAutocompleteTrigger })
+               fruitInputautocomplete: MatAutocompleteTrigger;
+              @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
+              @ViewChild('auto') matAutocomplete: MatAutocomplete;
+
+              constructor() {
+                this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
+                  startWith(null),
+                  map((fruit: string | null) =>
+                  fruit ? this._filter(fruit) : this.allFruits.slice()));
+              }
+
+              add(event: MatChipInputEvent): void {
+                alert(event);
+                const input = event.input;
+                const value = event.value;
+
+                // Add our fruit
+                if ((value || '').trim()) {
+                  this.fruits.push(value.trim());
+                }
+
+                // Reset the input value
+                if (input) {
+                  input.value = '';
+                }
+
+                this.fruitCtrl.setValue(null);
+                setTimeout(() => {
+                  this.fruitInputautocomplete.openPanel();
+                });
+              }
+
+              remove(fruit: string): void {
+                const index = this.fruits.indexOf(fruit);
+
+                if (index >= 0) {
+                  this.fruits.splice(index, 1);
+                }
+              }
+
+              selected(event: MatAutocompleteSelectedEvent): void {
+                this.fruits.push(event.option.viewValue);
+                this.fruitInput.nativeElement.value = '';
+                this.fruitCtrl.setValue(null);
+                setTimeout(() => {
+                  this.fruitInputautocomplete.openPanel();
+                });
+              }
+
+              private _filter(value: string): string[] {
+                const filterValue = value.toLowerCase();
+
+                return this.allFruits.filter(fruit =>
+                fruit.toLowerCase().indexOf(filterValue) > -1);
+              }
+            }
+
+          </textarea>
+        </fuse-highlight>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

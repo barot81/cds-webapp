@@ -1,0 +1,104 @@
+<div id="drawer-with-cards-container" class="p-24">
+  <div class="mat-title">Drawer With Cards Example</div>
+
+  <div fxLayout="column" fxLayout.gt-md="row" class="mb-16">
+    <div
+      class="preview mr-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="30"
+    >
+      <div class="mat-caption secondary-text">Drawer with cards</div>
+
+      <mat-card>
+        <button
+          mat-icon-button
+          exxatDrawerAction
+          [componentSelector]="
+            _exxatDrawerFormService.get('ryzen-drawer-with-cards')
+          "
+          [size]="'drawer-sm'"
+          [caption]="'Drawer With Cards'"
+          [primaryAction]="'Save'"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="70"
+    >
+      <textarea #source hidden="hidden">
+
+        <!-- Drawer with cards -->
+        <div class="drawer-p" fxLayout="column" fxLayoutAlign="start">
+          <mat-card fxLayout="column" class="p-0 mb-8">
+            <header fxLayout="row" fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <span class="primary-heading">
+                  Basic Information
+                </span>
+              </div>
+              <button mat-icon-button class="icon-fill-bg">
+                <i aria-hidden="true" class="fa-light fa-plus fuse-white-fg s-18"></i>
+              </button>
+            </header>
+        
+            <div class="px-16 pt-16" fxLayout="column">
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" class="w-100-p">
+                <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>First Name</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+        
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" class="w-100-p">
+                <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card>
+        
+          <mat-card fxLayout="column" class="p-0 mb-8">
+            <header fxLayout="row" fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <span class="primary-heading">
+                  School Information
+                </span>
+              </div>
+              <button mat-icon-button class="icon-fill-bg">
+                <i aria-hidden="true" class="fa-light fa-plus fuse-white-fg s-18"></i>
+              </button>
+            </header>
+        
+            <div class="px-16 pt-16" fxLayout="column">
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" class="w-50-p">
+                <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>Title</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+        
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" class="w-50-p">
+                <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>Status</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+
+      </textarea>
+    </fuse-highlight>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+@import 'init';
+
+.complete-demo-page {
+  .table-column {
+    @include media-breakpoint('sm') {
+      min-width: 20vw;
+    }
+    @include media-breakpoint('lt-sm') {
+      min-width: 40vw;
+    }
+  }
+  .address-column {
+    @include media-breakpoint('sm') {
+      min-width: 25vw;
+    }
+    @include media-breakpoint('lt-sm') {
+      min-width: 45vw;
+    }
+  }
+  .name-column {
+    @include media-breakpoint('sm') {
+      min-width: 25vw;
+    }
+    @include media-breakpoint('lt-sm') {
+      min-width: 45vw;
+    }
+  }
+}

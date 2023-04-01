@@ -1,0 +1,1122 @@
+<div
+  id="placement-manage-placements"
+  class="page-layout full-width inner-scroll"
+>
+  <div class="content table-rounded-border white-background" fxLayout="column">
+    <div class="spinner-container" *ngIf="goToColumnLoading$ | async">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
+          <div class="search-wrapper" fxFlex="100">
+            <div
+              class="search table-search"
+              fxFlex
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <i
+                aria-hidden="true"
+                class="fa-light fa-magnifying-glass s-18"
+              ></i>
+              <input type="text" placeholder="Search in 50 student" fxFlex />
+            </div>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <div
+            fxLayout="row"
+            fxLayoutAlign="end center"
+            class="border-right h-48 pr-16"
+            fxHide.lt-md
+          >
+            <button
+              mat-stroked-button
+              color="primary"
+              class="mr-12"
+              aria-label="Add action 1"
+            >
+              <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+              <span class="ml-4">Add action 1</span>
+            </button>
+            <button
+              mat-stroked-button
+              color="primary"
+              aria-label="Add action 2"
+            >
+              <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+              <span class="ml-4">Add action 2</span>
+            </button>
+          </div>
+          <div fxLayout="row" class="mr-16 ml-8">
+            <button
+              tabindex="0"
+              aria-label="Export Table"
+              mat-icon-button
+              class="ml-8"
+              fxHide.lt-md
+            >
+              <i aria-hidden="true" class="fa-light fa-file-export s-18"></i>
+            </button>
+
+            <button
+              tabindex="0"
+              aria-label="Edit Columns"
+              exxatDrawerAction
+              [componentSelector]="gridService.get('ryzen-edit-columns')"
+              [size]="'drawer-sm'"
+              [caption]="'Edit Columns'"
+              mat-icon-button
+              class="ml-4"
+              fxHide.lt-md
+            >
+              <i aria-hidden="true" class="fa-light fa-wrench s-18"></i>
+            </button>
+
+            <button
+              tabindex="0"
+              aria-label="Expand Table"
+              mat-icon-button
+              class="ml-4"
+              fxHide.lt-md
+            >
+              <i aria-hidden="true" class="fa-light fa-expand s-18"></i>
+            </button>
+
+            <button
+              mat-icon-button
+              class="ml-4 filter-icon-button"
+              aria-label="filters"
+              exxatDrawerAction
+              [componentSelector]="
+                _UXDemoDrawerService.get('ryzen-filter-drawer')
+              "
+              [size]="'drawer-lg'"
+              [caption]="'Filters'"
+              [primaryAction]="'Save'"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
+                <span> 12 </span>
+              </div>
+            </button>
+
+            <button
+              tabindex="0"
+              aria-label="mat menu"
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              class="ml-4"
+              fxHide.gt-sm
+            >
+              <i aria-hidden="true" class="fal fa-ellipsis-h s-18"></i>
+            </button>
+            <mat-menu #menu="matMenu" fxHide.gt-sm>
+              <button mat-menu-item aria-label="Action 1">
+                <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i
+                >Action 1
+              </button>
+              <button mat-menu-item aria-label="Action 2">
+                <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i
+                >Action 2
+              </button>
+              <button mat-menu-item aria-label="Edit Columns">
+                <i aria-hidden="true" class="fa-light fa-wrench s-18 mr-8"></i
+                >Edit columns
+              </button>
+              <button mat-menu-item aria-label="Export file">
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-file-export s-18 mr-8"
+                ></i
+                >Export file
+              </button>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="result-found-style w-100-p"
+        tabindex="0"
+        aria-label="2 search results found"
+      >
+        2 Results Found
+      </div>
+    </div>
+
+    <div
+      #auto_scroll_grid
+      class="content overflow-auto"
+      tabindex="0"
+      [style.height.px]="
+        fullScreenMode
+          ? headerService.scrollContentheight
+          : headerService.scrollContentheight - 146
+      "
+      [ngClass]="fullScreenMode ? 'scroll-hover' : null"
+    >
+      <table
+        aria-label="manage placement table"
+        class="exxat-table w-100-p"
+        mat-table
+        [dataSource]="dataSource"
+        *ngFor="let table of tables"
+        matSort
+      >
+        <ng-container matColumnDef="student">
+          <th
+            mat-sort-header
+            class="student-name-column"
+            mat-header-cell
+            *matHeaderCellDef
+            id="student"
+          >
+            Name
+          </th>
+          <td class="student-name-column" mat-cell *matCellDef="let element">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <exxat-avatar firstName="Strong" lastName="Anna"></exxat-avatar>
+              <span class="list-item-name mr-16">Strong Anna</span>
+              <button
+                mat-icon-button
+                class="action-icon"
+                aria-label="click here to add"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-plus s-18 icon-fill"
+                ></i>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="one">
+          <th
+            class="column-width"
+            mat-header-cell
+            *matHeaderCellDef
+            id="is"
+            aria-hidden="false"
+          >
+            <div fxLayout="column" fxLayoutAlign="center start">
+              <span
+                class="overflow-ellipses w-100-p"
+                tooltip="Rotation 20 June 2010 Rotation 20 June 2010"
+                [options]="tooltipOptions"
+                >Rotation 20 June 2010 Rotation 20 June 2010</span
+              >
+              <span
+                class="font-weight-300 mt-4 overflow-ellipses w-100-p"
+                tooltip="Jan 1, 1975 - Jan 8,
+                1980 Rotation 20 June
+                2010"
+                [options]="tooltipOptions"
+                >Jan 1, 1975 - Jan 8, 1980 Rotation 20 June 2010</span
+              >
+            </div>
+          </th>
+          <td class="column-width" mat-cell *matCellDef="let element">
+            <div>
+              <div
+                fontColor
+                class="setting-chip exxat-pomegranate-bg overflow-ellipses"
+                tooltip="St.Joseph AA - PSt. Joseph AA - PSt. Joseph AA - P"
+                [options]="tooltipOptions"
+                fxFlex="100"
+              >
+                <span
+                  tabindex="0"
+                  aria-label="chip content is St. Joseph AA - PSt. Joseph AA - PSt. Joseph AA - P"
+                  >St. Joseph AA - PSt. Joseph AA - PSt. Joseph AA - P</span
+                >
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="two">
+          <th
+            class="column-width"
+            mat-header-cell
+            *matHeaderCellDef
+            id="mmr"
+            aria-hidden="false"
+          >
+            <div fxLayout="column" fxLayoutAlign="center start">
+              <span
+                class="overflow-ellipses w-100-p"
+                tooltip="Rotation 20 June 2010 Rotation 20 June 2010"
+                [options]="tooltipOptions"
+                >Rotation 20 June 2010 Rotation 20 June 2010</span
+              >
+              <span
+                class="font-weight-300 mt-4 overflow-ellipses w-100-p"
+                tooltip="Jan 1, 1975 - Jan 8,
+              1980 Rotation 20 June
+              2010"
+                [options]="tooltipOptions"
+                >Jan 1, 1975 - Jan 8, 1980 Rotation 20 June 2010</span
+              >
+            </div>
+          </th>
+          <td class="column-width" mat-cell *matCellDef="let element">
+            <div>
+              <div
+                fontColor
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="setting-chip exxat-fruit-salad-bg tooltip-trigger cursor-pointer"
+                fxFlex="100"
+                [tooltip]="HtmlContent"
+                [options]="tooltipOptions"
+              >
+                <div class="overflow-ellipses">
+                  <span
+                    >St. Joseph AA - PSt. Joseph AA - PSt. Joseph AA - P</span
+                  >
+                </div>
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-info-circle s-18 warn-bg border-radius-100"
+                ></i>
+              </div>
+              <!-- Tooltip HTML Content : START -->
+
+              <ng-template #HtmlContent>
+                <div
+                  fxLayout="column"
+                  fxLayoutAlign="start"
+                  class="p-8"
+                  tabindex="0"
+                  aria-label="tooltip opened"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="space-between center"
+                    class="mb-8"
+                  >
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-info-circle s-18 warn-fg"
+                        tabindex="0"
+                        aria-label="info icon"
+                      ></i>
+                      <span
+                        class="ml-8"
+                        tabindex="0"
+                        aria-label="Placed outside rotation dates"
+                        >Placed outside rotation dates</span
+                      >
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="end center">
+                      <button mat-icon-button class="action-icon">
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-times s-20"
+                        ></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div fxLayoutAlign="space-between center" fxLayout="row">
+                    <span
+                      class="font-14"
+                      tabindex="0"
+                      aria-label="Rotation 20 Jan 2020 (Jan 1, 2020 - Jan 28, 2020)"
+                      >Rotation 20 Jan 2020 (Jan 1, 2020 - Jan 28, 2020)</span
+                    >
+                    <button
+                      mat-icon-button
+                      class="action-icon"
+                      aria-label="click here to edit"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-pen icon-fill s-18"
+                      ></i>
+                    </button>
+                  </div>
+
+                  <div fxLayoutAlign="start center" fxLayout="row wrap">
+                    <span
+                      class="accent-fg font-weight-600 font-18"
+                      tabindex="0"
+                      aria-label="title Abric mouse homeopathy hospital Test audit
+                        retest"
+                      >Abric mouse homeopathy hospital Test audit retest</span
+                    >
+                  </div>
+
+                  <div
+                    class="mt-4"
+                    fxLayoutAlign="start center"
+                    fxLayout="row wrap"
+                  >
+                    <mat-chip-list>
+                      <mat-chip
+                        class="amber-bg"
+                        fontColor
+                        tabindex="0"
+                        aria-label="tag is family medicine"
+                      >
+                        Family medicine
+                      </mat-chip>
+                    </mat-chip-list>
+                  </div>
+
+                  <div fxLayoutAlign="start" fxLayout="column">
+                    <div class="mt-16" fxLayout="column">
+                      <span
+                        class="font-weight-600 font-14"
+                        tabindex="0"
+                        aria-label="title placement date"
+                        >Placement Date</span
+                      >
+                      <span
+                        class="font-14"
+                        tabindex="0"
+                        aria-label="placement date is (Jan 1,2020 - Jan 8,2020)"
+                        >(Jan 1,2020 - Jan 8,2020)</span
+                      >
+                    </div>
+
+                    <div class="mt-16" fxLayout="column">
+                      <span
+                        class="font-weight-600 font-14"
+                        tabindex="0"
+                        aria-label="title address"
+                        >Address</span
+                      >
+                      <span
+                        class="font-14"
+                        tabindex="0"
+                        aria-label="address is 180 Fort Washington Ave, New York, NY 10032, United States"
+                        >180 Fort Washington Ave, New York, NY 10032, United
+                        States</span
+                      >
+                    </div>
+
+                    <div class="mt-16" fxLayout="column">
+                      <span
+                        class="font-weight-600 font-14"
+                        tabindex="0"
+                        aria-label="title Program requirement"
+                        >Program requirement</span
+                      >
+
+                      <div fxLayout="column">
+                        <span
+                          class="font-14"
+                          tabindex="0"
+                          aria-label="Requirement 1"
+                          >Requirement 1</span
+                        >
+                        <span
+                          class="font-14"
+                          tabindex="0"
+                          aria-label="Requirement 2"
+                          >Requirement 2</span
+                        >
+                        <span
+                          class="font-14"
+                          tabindex="0"
+                          aria-label="Requirement 3"
+                          >Requirement 3</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+
+              <!-- Tooltip HTML Content : END -->
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="three">
+          <th
+            class="column-width"
+            mat-header-cell
+            *matHeaderCellDef
+            id="flu"
+            aria-hidden="false"
+          >
+            <div fxLayout="column" fxLayoutAlign="center start">
+              <span
+                class="overflow-ellipses w-100-p"
+                tooltip="Rotation 20 June 2010 Rotation 20 June 2010"
+                [options]="tooltipOptions"
+                >Rotation 20 June 2010 Rotation 20 June 2010</span
+              >
+              <span
+                class="font-weight-300 mt-4 overflow-ellipses w-100-p"
+                tooltip="Jan 1, 1975 - Jan 8,
+                1980 Rotation 20 June
+                2010"
+                [options]="tooltipOptions"
+                >Jan 1, 1975 - Jan 8, 1980 Rotation 20 June 2010</span
+              >
+            </div>
+          </th>
+          <td class="column-width" mat-cell *matCellDef="let element">
+            <div>
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+                <div
+                  fontColor
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  fxFlex="29"
+                  class="mr-8 my-4 setting-chip exxat-persian-green-bg"
+                >
+                  <div class="overflow-with-info-icon mr-4">
+                    <span>Abhsjdh sbk mshfk</span>
+                  </div>
+                  <i
+                    aria-hidden="true"
+                    tooltip="Abhsjdh sbk mshfk"
+                    [options]="tooltipOptions"
+                    class="fa-light fa-info-circle s-18 fuse-white-fg warn-bg border-radius-100"
+                  ></i>
+                </div>
+                <div
+                  fontColor
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  fxFlex="29"
+                  class="mr-8 my-4 setting-chip exxat-robin-egg-blue-bg"
+                >
+                  <div
+                    class="overflow-with-info-icon mr-4"
+                    tabindex="0"
+                    aria-label="ToolTip Info"
+                  >
+                    <span>Abhsjdh sbk mshfk</span>
+                  </div>
+                  <i
+                    aria-hidden="true"
+                    tooltip="Abhsjdh sbk mshfk"
+                    [options]="tooltipOptions"
+                    class="fa-light fa-info-circle s-18 fuse-white-fg warn-bg border-radius-100"
+                  ></i>
+                </div>
+                <div
+                  fontColor
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  fxFlex="29"
+                  class="setting-chip my-4 mr-8 exxat-orange-bg"
+                  tabindex="0"
+                  aria-label="colored chip"
+                >
+                  <div
+                    class="overflow-ellipses"
+                    tooltip="Abhsjdh sbk mshfk"
+                    [options]="tooltipOptions"
+                  >
+                    <span>Abhsjdh sbk mshfk</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="four">
+          <th
+            class="column-width"
+            mat-header-cell
+            *matHeaderCellDef
+            id="tb"
+            aria-hidden="false"
+          >
+            <div fxLayout="column" fxLayoutAlign="center start">
+              <span
+                class="overflow-ellipses w-100-p"
+                tooltip="Rotation 20 June 2010 Rotation 20 June 2010"
+                [options]="tooltipOptions"
+                >Rotation 20 June 2010 Rotation 20 June 2010</span
+              >
+              <span
+                class="font-weight-300 mt-4 overflow-ellipses w-100-p"
+                tooltip="Jan 1, 1975 - Jan 8,
+              1980 Rotation 20 June
+              2010"
+                [options]="tooltipOptions"
+                >Jan 1, 1975 - Jan 8, 1980 Rotation 20 June 2010</span
+              >
+            </div>
+          </th>
+          <td class="column-width" mat-cell *matCellDef="let element">
+            <div>
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+                <div
+                  fontColor
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  fxFlex="50"
+                  class="mr-8 setting-chip exxat-persian-green-bg"
+                >
+                  <div
+                    class="overflow-ellipses"
+                    tooltip="Abhsjdh sbk mshfk"
+                    [options]="tooltipOptions"
+                  >
+                    <span>Abhsjdh sbk mshfk</span>
+                  </div>
+                </div>
+                <div
+                  fontColor
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  fxFlex="50"
+                  class="mr-8 setting-chip exxat-robin-egg-blue-bg"
+                >
+                  <div
+                    class="overflow-ellipses"
+                    tooltip="Cdhsjdh sbk mshfk"
+                    [options]="tooltipOptions"
+                  >
+                    <span>Cdhsjdh sbk mshfk</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="five">
+          <th
+            class="column-width"
+            mat-header-cell
+            *matHeaderCellDef
+            id="hepb"
+            aria-hidden="false"
+          >
+            <div fxLayout="column" fxLayoutAlign="center start">
+              <span
+                class="overflow-ellipses w-100-p"
+                tooltip="Rotation 20 June 2010 Rotation 20 June 2010"
+                [options]="tooltipOptions"
+                >Rotation 20 June 2010 Rotation 20 June 2010</span
+              >
+              <span
+                class="font-weight-300 mt-4 overflow-ellipses w-100-p"
+                tooltip="Jan 1, 1975 - Jan 8,
+              1980 Rotation 20 June
+              2010"
+                [options]="tooltipOptions"
+                >Jan 1, 1975 - Jan 8, 1980 Rotation 20 June 2010</span
+              >
+            </div>
+          </th>
+          <td class="column-width" mat-cell *matCellDef="let element">
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <button
+                mat-icon-button
+                class="action-icon"
+                aria-label="click here to add"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-plus s-18 icon-fill"
+                ></i>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="six">
+          <th
+            class="column-width"
+            mat-header-cell
+            *matHeaderCellDef
+            id="varicella"
+            aria-hidden="false"
+          >
+            <div fxLayout="column" fxLayoutAlign="center start">
+              <span
+                class="overflow-ellipses w-100-p"
+                tooltip="Rotation 20 June 2010 Rotation 20 June 2010"
+                [options]="tooltipOptions"
+                >Rotation 20 June 2010 Rotation 20 June 2010</span
+              >
+              <span
+                class="font-weight-300 mt-4 overflow-ellipses w-100-p"
+                tooltip="Jan 1, 1975 - Jan 8,
+              1980 Rotation 20 June
+              2010"
+                [options]="tooltipOptions"
+                >Jan 1, 1975 - Jan 8, 1980 Rotation 20 June 2010</span
+              >
+            </div>
+          </th>
+          <td class="column-width" mat-cell *matCellDef="let element">
+            <div>
+              <div
+                fontColor
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="setting-chip chip-disable"
+                fxFlex="100"
+              >
+                <div
+                  class="overflow-ellipses"
+                  fxFlex="90"
+                  [tooltip]="HtmlContent"
+                  [options]="tooltipOptions"
+                >
+                  <span>St. Joseph AA - PSt.</span>
+                </div>
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-info-circle s-18 fuse-white-fg warn-bg border-radius-100"
+                ></i>
+              </div>
+              <ng-template #HtmlContent>
+                <div
+                  fxLayout="column"
+                  fxLayoutAlign="start"
+                  class="p-8"
+                  tabindex="0"
+                  aria-label="tooltip opened"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="space-between center"
+                    class="mb-8"
+                  >
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-info-circle s-18 warn-fg"
+                        tabindex="0"
+                        aria-label="info icon"
+                      ></i>
+                      <span
+                        class="ml-8"
+                        tabindex="0"
+                        aria-label="Placed outside rotation dates"
+                        >Placed outside rotation dates</span
+                      >
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="end center">
+                      <button mat-icon-button class="action-icon">
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-times s-20"
+                        ></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div fxLayoutAlign="space-between center" fxLayout="row">
+                    <span
+                      class="font-14"
+                      tabindex="0"
+                      aria-label="Rotation 20 Jan 2020 (Jan 1, 2020 - Jan 28, 2020)"
+                      >Rotation 20 Jan 2020 (Jan 1, 2020 - Jan 28, 2020)</span
+                    >
+                    <button
+                      mat-icon-button
+                      class="action-icon"
+                      aria-label="click here to edit"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-pen icon-fill s-18"
+                      ></i>
+                    </button>
+                  </div>
+
+                  <div fxLayoutAlign="start center" fxLayout="row wrap">
+                    <span
+                      class="accent-fg font-weight-600 font-18"
+                      tabindex="0"
+                      aria-label="title Abric mouse homeopathy hospital Test audit
+                        retest"
+                      >Abric mouse homeopathy hospital Test audit retest</span
+                    >
+                  </div>
+
+                  <div
+                    class="mt-4"
+                    fxLayoutAlign="start center"
+                    fxLayout="row wrap"
+                  >
+                    <mat-chip-list>
+                      <mat-chip
+                        class="amber-bg"
+                        fontColor
+                        tabindex="0"
+                        aria-label="tag is family medicine"
+                      >
+                        Family medicine
+                      </mat-chip>
+                    </mat-chip-list>
+                  </div>
+
+                  <div fxLayoutAlign="start" fxLayout="column">
+                    <div class="mt-16" fxLayout="column">
+                      <span
+                        class="font-weight-600 font-14"
+                        tabindex="0"
+                        aria-label="title placement date"
+                        >Placement Date</span
+                      >
+                      <span
+                        class="font-14"
+                        tabindex="0"
+                        aria-label="placement date is (Jan 1,2020 - Jan 8,2020)"
+                        >(Jan 1,2020 - Jan 8,2020)</span
+                      >
+                    </div>
+
+                    <div class="mt-16" fxLayout="column">
+                      <span
+                        class="font-weight-600 font-14"
+                        tabindex="0"
+                        aria-label="title address"
+                        >Address</span
+                      >
+                      <span
+                        class="font-14"
+                        tabindex="0"
+                        aria-label="address is 180 Fort Washington Ave, New York, NY 10032, United States"
+                        >180 Fort Washington Ave, New York, NY 10032, United
+                        States</span
+                      >
+                    </div>
+
+                    <div class="mt-16" fxLayout="column">
+                      <span
+                        class="font-weight-600 font-14"
+                        tabindex="0"
+                        aria-label="title Program requirement"
+                        >Program requirement</span
+                      >
+
+                      <div fxLayout="column">
+                        <span
+                          class="font-14"
+                          tabindex="0"
+                          aria-label="Requirement 1"
+                          >Requirement 1</span
+                        >
+                        <span
+                          class="font-14"
+                          tabindex="0"
+                          aria-label="Requirement 2"
+                          >Requirement 2</span
+                        >
+                        <span
+                          class="font-14"
+                          tabindex="0"
+                          aria-label="Requirement 3"
+                          >Requirement 3</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="seven">
+          <th
+            class="column-width"
+            mat-header-cell
+            *matHeaderCellDef
+            id="tdap"
+            aria-hidden="false"
+          >
+            <div fxLayout="column" fxLayoutAlign="center start">
+              <span
+                class="overflow-ellipses w-100-p"
+                tooltip="Rotation 20 June 2010 Rotation 20 June 2010"
+                [options]="tooltipOptions"
+                >Rotation 20 June 2010 Rotation 20 June 2010</span
+              >
+              <span
+                class="font-weight-300 mt-4 overflow-ellipses w-100-p"
+                tooltip="Jan 1, 1975 - Jan 8,
+                1980 Rotation 20 June
+                2010"
+                [options]="tooltipOptions"
+                >Jan 1, 1975 - Jan 8, 1980 Rotation 20 June 2010</span
+              >
+            </div>
+          </th>
+          <td class="column-width" mat-cell *matCellDef="let element">
+            <div>
+              <div
+                fontColor
+                class="setting-chip exxat-pomegranate-bg overflow-ellipses"
+                tooltip="St.
+              Joseph AA - PSt. Joseph AA - PSt. Joseph AA - P"
+                [options]="tooltipOptions"
+                fxFlex="100"
+              >
+                <span>St. Joseph AA - PSt. Joseph AA - PSt. Joseph AA - P</span>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="eight">
+          <th
+            class="column-width"
+            mat-header-cell
+            *matHeaderCellDef
+            id="hi"
+            aria-hidden="false"
+          >
+            <div fxLayout="column" fxLayoutAlign="center start">
+              <span
+                class="overflow-ellipses w-100-p"
+                tooltip="Rotation 20 June 2010 Rotation 20 June 2010"
+                [options]="tooltipOptions"
+                >Rotation 20 June 2010 Rotation 20 June 2010</span
+              >
+              <span
+                class="font-weight-300 mt-4 overflow-ellipses w-100-p"
+                tooltip="Jan 1, 1975 - Jan 8,
+                1980 Rotation 20 June
+                2010"
+                [options]="tooltipOptions"
+                >Jan 1, 1975 - Jan 8, 1980 Rotation 20 June 2010</span
+              >
+            </div>
+          </th>
+          <td class="column-width" mat-cell *matCellDef="let element">
+            <div>
+              <div
+                fontColor
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="setting-chip exxat-fruit-salad-bg"
+                fxFlex="100"
+              >
+                <div
+                  class="overflow-ellipses"
+                  [tooltip]="HtmlContent"
+                  [options]="tooltipOptions"
+                  fxFlex="90"
+                >
+                  <span
+                    >St. Joseph AA - PSt. Joseph AA - PSt. Joseph AA - P</span
+                  >
+                </div>
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-info-circle s-18 fuse-white-fg warn-bg border-radius-100"
+                ></i>
+              </div>
+            </div>
+            <ng-template #HtmlContent>
+              <div
+                fxLayout="column"
+                fxLayoutAlign="start"
+                class="p-8"
+                tabindex="0"
+                aria-label="tooltip opened"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="mb-8"
+                >
+                  <div fxLayout="row" fxLayoutAlign="start center">
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-info-circle s-18 warn-fg"
+                      tabindex="0"
+                      aria-label="info icon"
+                    ></i>
+                    <span
+                      class="ml-8"
+                      tabindex="0"
+                      aria-label="Placed outside rotation dates"
+                      >Placed outside rotation dates</span
+                    >
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="end center">
+                    <button mat-icon-button class="action-icon">
+                      <i aria-hidden="true" class="fa-light fa-times s-20"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div fxLayoutAlign="space-between center" fxLayout="row">
+                  <span
+                    class="font-14"
+                    tabindex="0"
+                    aria-label="Rotation 20 Jan 2020 (Jan 1, 2020 - Jan 28, 2020)"
+                    >Rotation 20 Jan 2020 (Jan 1, 2020 - Jan 28, 2020)</span
+                  >
+                  <button
+                    mat-icon-button
+                    class="action-icon"
+                    aria-label="click here to edit"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-pen icon-fill s-18"
+                    ></i>
+                  </button>
+                </div>
+
+                <div fxLayoutAlign="start center" fxLayout="row wrap">
+                  <span
+                    class="accent-fg font-weight-600 font-18"
+                    tabindex="0"
+                    aria-label="title Abric mouse homeopathy hospital Test audit
+                      retest"
+                    >Abric mouse homeopathy hospital Test audit retest</span
+                  >
+                </div>
+
+                <div
+                  class="mt-4"
+                  fxLayoutAlign="start center"
+                  fxLayout="row wrap"
+                >
+                  <mat-chip-list>
+                    <mat-chip
+                      class="amber-bg"
+                      fontColor
+                      tabindex="0"
+                      aria-label="tag is family medicine"
+                    >
+                      Family medicine
+                    </mat-chip>
+                  </mat-chip-list>
+                </div>
+
+                <div fxLayoutAlign="start" fxLayout="column">
+                  <div class="mt-16" fxLayout="column">
+                    <span
+                      class="font-weight-600 font-14"
+                      tabindex="0"
+                      aria-label="title placement date"
+                      >Placement Date</span
+                    >
+                    <span
+                      class="font-14"
+                      tabindex="0"
+                      aria-label="placement date is (Jan 1,2020 - Jan 8,2020)"
+                      >(Jan 1,2020 - Jan 8,2020)</span
+                    >
+                  </div>
+
+                  <div class="mt-16" fxLayout="column">
+                    <span
+                      class="font-weight-600 font-14"
+                      tabindex="0"
+                      aria-label="title address"
+                      >Address</span
+                    >
+                    <span
+                      class="font-14"
+                      tabindex="0"
+                      aria-label="address is 180 Fort Washington Ave, New York, NY 10032, United States"
+                      >180 Fort Washington Ave, New York, NY 10032, United
+                      States</span
+                    >
+                  </div>
+
+                  <div class="mt-16" fxLayout="column">
+                    <span
+                      class="font-weight-600 font-14"
+                      tabindex="0"
+                      aria-label="title Program requirement"
+                      >Program requirement</span
+                    >
+
+                    <div fxLayout="column">
+                      <span
+                        class="font-14"
+                        tabindex="0"
+                        aria-label="Requirement 1"
+                        >Requirement 1</span
+                      >
+                      <span
+                        class="font-14"
+                        tabindex="0"
+                        aria-label="Requirement 2"
+                        >Requirement 2</span
+                      >
+                      <span
+                        class="font-14"
+                        tabindex="0"
+                        aria-label="Requirement 3"
+                        >Requirement 3</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nine">
+          <th
+            class="column-width"
+            mat-header-cell
+            *matHeaderCellDef
+            id="cpr"
+            aria-hidden="false"
+          >
+            <div fxLayout="column" fxLayoutAlign="center start">
+              <span
+                class="overflow-ellipses w-100-p"
+                tooltip="Rotation 20 June 2010 Rotation 20 June 2010"
+                [options]="tooltipOptions"
+                >Rotation 20 June 2010 Rotation 20 June 2010</span
+              >
+              <span
+                class="font-weight-300 mt-4 overflow-ellipses w-100-p"
+                tooltip="Jan 1, 1975 - Jan 8,
+              1980 Rotation 20 June
+              2010"
+                [options]="tooltipOptions"
+                >Jan 1, 1975 - Jan 8, 1980 Rotation 20 June 2010</span
+              >
+            </div>
+          </th>
+          <td class="column-width" mat-cell *matCellDef="let element">
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <button
+                mat-icon-button
+                class="action-icon"
+                aria-label="click here to add"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-plus s-18 icon-fill"
+                ></i>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns; sticky: true"
+        ></tr>
+
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+
+    <mat-paginator [pageSize]="30" class="h-50 bt"></mat-paginator>
+  </div>
+</div>

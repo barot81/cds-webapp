@@ -1,0 +1,10 @@
+.grid_container {
+  overflow: auto;
+  table {
+    tr {
+      th {
+        min-width: 15vw;
+      }
+    }
+  }
+}

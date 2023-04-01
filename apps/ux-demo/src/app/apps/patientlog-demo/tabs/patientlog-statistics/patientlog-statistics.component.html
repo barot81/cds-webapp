@@ -1,0 +1,164 @@
+<div id="patient-statistics-container" class="page-layout carded left-sidebar inner-scroll">
+
+  <fuse-sidebar class="sidebar width-x-sm" name="carded-left-sidebar-tabbed-2" position="left" lockedOpen="gt-md">
+
+    <div class="ml-16 mt-16">
+      <span class="font-16">Students</span>
+    </div>
+
+    <div class="search-wrapper m-16">
+      <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="s-16 secondary-text">search</mat-icon>
+        <input type="text" placeholder="Search Person" fxFlex>
+      </div>
+    </div>
+
+    <!-- / SEARCH -->
+    <div>
+      <div fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="font-weight-600 mb-16 mx-16">
+          <div class="" fxLayout="column">
+            <span>Name</span>
+          </div>
+          <div fxLayout="column">
+            <span>
+              Log
+            </span>
+          </div>
+        </div>
+        <div class="content" [style.height.px]="headerService.scrollContentheight">
+          
+            <mat-list class="w-100-p">
+              <button mat-button class="no-space m-0 p-0" *ngFor="let item of studentList;let i =index">
+                <mat-list-item class="p-16"  [ngClass]="{'active-list-item': i == 0}">
+                  <div  fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+                    <div fxLayoutAlign="start center" fxLayout="column">
+                      <exxat-avatar-list-item class="" [firstName]="item.firstName" [lastName]="item.lastName"
+                      [src]="item.src">
+                      </exxat-avatar-list-item>
+                    </div>
+                  <div fxLayoutAlign="end center" fxLayout="column">
+                    <span>
+                      {{item.plCount}}
+                    </span>
+                  </div>
+                  </div>
+                </mat-list-item>
+              </button>
+            </mat-list>
+      
+        </div>
+      </div>
+
+    </div>
+  </fuse-sidebar>
+
+  <div class="center ml-lg-16">
+
+    <div fxLayout="column">
+
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="px-xs-16">
+
+        <div>
+          <exxat-avatar-list-item class="ml-12 font-20 font-weight-600" firstName="Strong" lastName="Anna">
+          </exxat-avatar-list-item>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="pt-24">
+
+          <div class="pr-16">
+
+            <mat-button-toggle-group #group="matButtonToggleGroup">
+              <mat-button-toggle [value]="item.value" [attr.aria-label]="item.label" *ngFor="let item of buttonList">
+                <span>{{item.label}}</span>
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+
+          </div>
+
+          <div>
+            <button mat-button class="action-icon" aria-hidden="true">
+              <mat-icon>grid_on</mat-icon>
+              Export LOg Details
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <mat-card class="p-0 my-16" fxLayout="column">
+
+        <header fxLayout="row" fxLayoutAlign="space-between center"
+          class="card-header-title card-header-border-bottom py-8 pr-8 pl-16">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2 class="primary-heading font-weight-600 ">Rotations</h2>
+          </div>
+        </header>
+
+
+          <div fxLayout="row wrap" fxFlex="100" class="pl-16 pt-16">
+
+            <div class="pb-16 pr-16 word-break-all" fxLayout="row" fxFlex="100" fxFlex.gt-sm="33.33">
+              <div fxLayout="column">
+                <div class="font-weight-600">Rotation 1</div>
+                <div><span>Huntington Hospital</span></div>
+                <div><span>Family Medicine</span></div>
+              </div>
+            </div>
+            <div class="pb-16 pr-16 word-break-all" fxLayout="row" fxFlex="100" fxFlex.gt-sm="33.33">
+              <div fxLayout="column">
+                <div class="font-weight-600">Rotation 2</div>
+                <div><span>Quality Medical Care</span></div>
+                <div><span>Surgery</span></div>
+              </div>
+            </div>
+
+          </div>
+
+          <div>
+            <mat-divider></mat-divider>
+          </div>
+
+      
+        <div fxLayout="row wrap" class="px-16 mt-16">
+
+          <div class="mb-16 word-break-all pr-16" fxLayout="row" fxFlex="100" fxFlex.gt-sm="25">
+            <div class=" font-weight-600 pr-8"> Total logs</div>
+            <div class=" primary-fg font-weight-600">709</div>
+          </div>
+          <div class="mb-16 word-break-all pr-16" fxLayout="row" fxFlex="100" fxFlex.gt-sm="25">
+            <div class=" font-weight-600 pr-8">Average logs per day</div>
+            <div class=" primary-fg font-weight-600">709</div>
+          </div>
+          <div class="mb-16 word-break-all pr-16" fxLayout="row" fxFlex="100" fxFlex.gt-sm="25">
+            <div class="font-weight-600  pr-8">Encounter Days</div>
+            <div class=" primary-fg font-weight-600">709</div>
+          </div>
+          <div class="mb-16 word-break-all pr-16" fxLayout="row" fxFlex="100" fxFlex.gt-sm="25">
+            <div class="font-weight-600 pr-8">Logs with procedures</div>
+            <div class=" primary-fg font-weight-600">709</div>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card class="p-0">
+
+        <header fxLayout="row" fxLayoutAlign="space-between center"
+          class="card-header-title card-header-border-bottom py-8 pr-8 pl-16">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2 class="primary-heading font-weight-600 ">Race</h2>
+          </div>
+        </header>
+
+        <div fxLayout="row wrap" class="p-16">
+          Put ur graph here
+        </div>
+
+      </mat-card>
+
+    </div>
+
+  </div>
+
+</div>

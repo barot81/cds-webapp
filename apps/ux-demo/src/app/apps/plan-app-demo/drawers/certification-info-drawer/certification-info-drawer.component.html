@@ -1,0 +1,53 @@
+<div class="drawer-p">
+  <mat-card fxLayout="column" fxLayoutAlign="center">
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required>
+        <mat-error>Name is required!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Certifying body</mat-label>
+        <input matInput formControlName="bodyName" required>
+        <mat-error>Certifying body is required!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Issue date</mat-label>
+        <input matInput [matDatepicker]="picker2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2 color="primary" class="action-icon"></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Expiration date</mat-label>
+        <input matInput [matDatepicker]="picker2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2 color="primary" class="action-icon"></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Note</mat-label>
+        <input matInput formControlName="noteType">
+      </mat-form-field>
+    </div>
+
+
+    <div fxLayout="column">
+      <span class="font-weight-600 mb-8">Upload files</span>
+      <exxat-file-upload  [fileConfiguration]="fileConfiguration"
+      formControlName="fileDescriptions" tabindex="0" aria-label="Browse to upload files"></exxat-file-upload>
+    </div>
+    
+  </mat-card>
+</div>

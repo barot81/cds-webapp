@@ -1,0 +1,75 @@
+
+<mat-dialog-content>
+  
+  <fuse-highlight lang="html" class="" fxLayout="column" fxLayoutAlign="start start" fxFlex="100">
+    <textarea #source >
+
+        <div class="page-layout carded left-sidebar">
+          <div fxLayout="column" class="w-100-p">
+
+            <!-- Header -->
+              <div fxLayout="column">
+                  <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" class="mb-16">
+                      <span> Header with headings </span>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" class="mb-16">
+                      <span class="font-16 font-weight-600 fuse-white-fg"> Header with tabs </span>
+                  </div>
+              </div>
+
+            <div fxLayout="row" fxFlex="100">
+              <!-- sidebar -->
+              <fuse-sidebar class="sidebar" name="carded-left-sidebar-tabbed-2"
+                position="left" lockedOpen="gt-md" fxFlex.gt-md="20">
+                <div class="content" fusePerfectScrollbar>
+                  <p>Sidebar content</p>
+                </div>
+              </fuse-sidebar>
+
+              <!-- Page content -->
+              <div class="center ml-lg-16" fxFlex.gt-md="80" fxFlex="100" fxLayout="column">
+                
+                <!-- toolbar -->
+                  <div fxLayout="row" fxLayoutAlign="space-between center" fxHide.gt-md>
+                      <button mat-icon-button class="sidebar-toggle" fxHide.gt-md
+                      (click)="toggleSidebar('carded-left-sidebar-tabbed-2')">
+                      <mat-icon>menu</mat-icon>
+                      </button>
+                      <div fxHide.gt-sm>
+                          <button mat-icon-button [matMenuTriggerFor]="card20Menu" aria-label="more" >
+                              <mat-icon>more_vert</mat-icon>
+                          </button>
+
+                          <mat-menu #card20Menu="matMenu">
+                            <p>Secondary list in small screen</p>
+                          </mat-menu>
+                      </div>
+                  </div>
+
+                <div class="content">
+                  <div fxLayout="row wrap" fxFlex="100">
+                      <div class="pr-md-4" fxFlex.gt-sm="20"  fxFlex="100"  fxHide.sm fxHide.xs>
+                        <p>secomary list</p>
+                      </div>
+                      <div fxFlex.gt-sm="80" fxLayout="row wrap"  fxFlex="100">
+                          <div class="pr-md-16 pb-16" fxFlex.gt-sm="70"  fxFlex="100">
+                              <p>Page content</p>
+                          </div>
+                          <div fxFlex="100" fxFlex.gt-sm="30" class="pb-16">
+                            <p>Right sidebar content</p>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+    </textarea>
+  </fuse-highlight>
+           
+</mat-dialog-content>
+
+

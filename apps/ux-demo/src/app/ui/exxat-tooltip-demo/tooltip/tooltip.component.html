@@ -1,0 +1,91 @@
+
+<div id="exxat-show-more-button" class="p-24 w-100-p">
+  <div class="mat-title">Exxat Generic Buttons Examples</div>
+
+  <!-- on hover tooltip-->
+  <div fxLayout="column" fxLayout.gt-md="row">
+
+    <div class="preview m-16" fxLayout="column" fxLayoutAlign="center" fxFlex.gt-sm="50" fxFlex="100">
+      <mat-card>
+         <div class="m-16">
+          <button mat-raised-button
+          matTooltip="Info about the action"
+          aria-label="Button that displays a tooltip when focused or hovered over">
+          On Hover
+        </button>
+          </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight lang="html" class="source-code p-16" fxLayout="column" fxLayoutAlign="center" fxFlex.gt-sm="50" fxFlex="100">
+      <textarea #source hidden="hidden">
+        <ryzen-exxat-tooltip visible="onHover" text="Tooltip Text">
+          <div tooltip-onHover>
+            <button mat-raised-button>
+              On Hover
+            </button>
+          </div>
+        </ryzen-exxat-tooltip>
+      </textarea>
+    </fuse-highlight>
+  </div>
+
+  <!-- on click tooltip-->
+  <div fxLayout="column" fxLayout.gt-md="row" class="mt-16">
+
+    <div class="preview m-16" fxLayout="column" fxLayoutAlign="center" fxFlex.gt-sm="50" fxFlex="100">
+      <mat-card>
+         <div class="m-16">
+          <button mat-raised-button matTooltip="Info about the action"
+          [matTooltipShowDelay]="showDelay.value"
+          [matTooltipHideDelay]="hideDelay.value"
+          aria-label="Button that displays a tooltip with a customized delay in showing and hiding">
+        On Click
+        </button>
+          </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight lang="html" class="source-code p-16" fxLayout="column" fxLayoutAlign="center" fxFlex.gt-sm="50" fxFlex="100">
+      <textarea #source hidden="hidden">
+        <ryzen-exxat-tooltip visible="onClick" text="Tooltip Text">
+          <div tooltip-onClick>
+            <button mat-raised-button>
+              On Click
+            </button>
+          </div>
+        </ryzen-exxat-tooltip>
+      </textarea>
+    </fuse-highlight>
+  </div>
+
+   <!-- custom tooltip-->
+   <div fxLayout="column" fxLayout.gt-md="row" class="mt-16">
+
+    <div class="preview m-16" fxLayout="column" fxLayoutAlign="center" fxFlex.gt-sm="50" fxFlex="100">
+      <mat-card class="pb-32">
+        <div fxLayout="row" fxLayoutAlign="start center" class="custom-tooltip">
+          <div class="tooltip"> 
+            <button mat-raised-button>
+              Always visible
+            </button>
+          </div>
+          <span class="tooltiptext">Tooltip text Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip text Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip text Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip text Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip</span> 
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight lang="html" class="source-code p-16" fxLayout="column" fxLayoutAlign="center" fxFlex.gt-sm="50" fxFlex="100">
+      <textarea #source hidden="hidden">
+          <div class="custom-tooltip">
+            <div class="tooltip"> 
+               Your content goes here
+            </div>
+            <span class="tooltiptext">Tooltip text Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip text Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip text Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip text Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip</span> 
+          </div>
+      </textarea>
+    </fuse-highlight>
+  </div>
+
+
+  </div>

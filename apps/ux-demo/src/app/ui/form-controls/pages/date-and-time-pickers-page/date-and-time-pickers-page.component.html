@@ -1,0 +1,373 @@
+<div fxLayout="column" fxLayout.gt-md="row" class="mt-16">
+  <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+    <mat-card class="mr-16 mb-16">
+      <form name="form" [formGroup]="form" fxLayout="column">
+        <!-- Date picker --->
+        <div fxLayout="column" fxLayoutAlign="start" class="w-100-p">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Date of birth</mat-label>
+            <input matInput [matDatepicker]="picker2" />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker2"
+            ></mat-datepicker-toggle>
+            <mat-datepicker
+              #picker2
+              color="primary"
+              openOnFocus="true"
+              class="action-icon"
+            ></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <!-- Multiple Date Selection -->
+        <div fxLayout="column" fxLayoutAlign="start" class="w-100-p">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Multiple Date Selection</mat-label>
+            <exxat-calendar
+              class="overflow-ellipses"
+              [matDatepicker]="datePicker"
+              formControlName="multipleDate"
+              [min]="minDate"
+              [max]="maxDate"
+              [matDatepickerFilter]="dateFilter"
+              required
+            >
+            </exxat-calendar>
+            <mat-error></mat-error>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="datePicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #datePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <!-- Date And Time Picker -->
+        <div fxLayout="column" fxLayoutAlign="start" class="w-100-p">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Date & time picker</mat-label>
+            <input
+              matInput
+              formControlName="scheduleDate"
+              [matDatetimepicker]="datetimePicker"
+              autocomplete="false"
+            />
+            <mat-datetimepicker-toggle
+              [for]="datetimePicker"
+              matSuffix
+            ></mat-datetimepicker-toggle>
+            <mat-datetimepicker
+              #datetimePicker
+              type="datetime"
+              openOnFocus="false"
+              timeInterval="5"
+              mode="portrait"
+              twelvehour="true"
+            >
+            </mat-datetimepicker>
+          </mat-form-field>
+        </div>
+
+        <!-- Time Picker -->
+        <!-- <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" class="w-50-p">
+        <exxat-time-picker class="w-100-p" color="primary" label="Time Picker" appearance="fill">
+        </exxat-time-picker>
+        </div> -->
+
+        <!-- NG Time Picker-->
+        <div fxLayout="column" fxLayoutAlign="start" class="w-100-p">
+          <mat-form-field appearance="fill" class="w-100-p">
+            <mat-label>Time picker</mat-label>
+            <ngx-material-timepicker-toggle
+              aria-label="Open Time Picker"
+              role="button"
+              matSuffix
+              [for]="datetimePickerIn"
+            ></ngx-material-timepicker-toggle>
+            <input
+              matInput
+              formControlName="timeIn"
+              [ngxTimepicker]="datetimePickerIn"
+            />
+            <ngx-material-timepicker
+              #datetimePickerIn
+              [enableKeyboardInput]="true"
+            >
+            </ngx-material-timepicker>
+          </mat-form-field>
+        </div>
+
+        <div
+          fxLayout="column"
+          fxLayoutAlign="start"
+          class="w-100-p ngx-time-picker-container"
+          [ngClass]="{
+            'mat-invalid': getControlError('timeField')
+          }"
+        >
+          <span class="pb-4">
+            <mat-label>Ngx time picker</mat-label>
+            <span class="font-weight-600"> *</span>
+          </span>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="row" fxLayoutAlign="start center" class="w-100-p">
+              <ngx-timepicker-field
+                formControlName="timeField"
+                [defaultTime]="'11:50 AM'"
+              ></ngx-timepicker-field>
+            </div>
+            <div class="ml-8">
+              <button
+                mat-icon-button
+                aria-label="reset time picker"
+                (click)="resetTimePicker()"
+              >
+                <i aria-hidden="true" class="fa-light fa-undo s-18"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+  <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+    <mat-tab-group>
+      <!-- 1st tab content -->
+      <mat-tab label="HTML">
+        <fuse-highlight
+          lang="html"
+          class="source-code mt-16"
+          fxLayout="column"
+          fxLayoutAlign="center"
+        >
+          <textarea #source hidden="hidden">
+            <!-- datepicker --->
+            <div
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            class="w-50-p"
+            fxFlex="1 0 auto"
+            >
+            <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Date of birth</mat-label>
+            <input
+            matInput
+            [matDatepicker]="picker2"
+            />
+            <mat-datepicker-toggle
+            matSuffix
+            [for]="picker2"
+            ></mat-datepicker-toggle>
+            <mat-datepicker
+            #picker2
+            color="primary"
+            openOnFocus="true"
+            class="action-icon"
+            ></mat-datepicker>
+            </mat-form-field>
+            </div>
+
+               <!-- Multiple Date Selection -->
+              <div fxLayout="column" fxLayoutAlign="start" class="w-100-p">
+                <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>Multiple Date Selection</mat-label>
+                  <exxat-calendar
+                    class="overflow-ellipses"
+                    [matDatepicker]="datePicker"
+                    formControlName="multipleDate"
+                    [min]="minDate"
+                    [max]="maxDate"
+                    [matDatepickerFilter]="dateFilter"
+                    required
+                  >
+                  </exxat-calendar>
+                  <mat-error></mat-error>
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="datePicker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #datePicker></mat-datepicker>
+                </mat-form-field>
+              </div>
+
+            <!-- Date Time Picker -->
+            <div fxLayout="row" fxLayoutAlign="start center" class="w-50-p">
+            <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Date time picker</mat-label>
+            <mat-datetimepicker-toggle
+            [for]="datetimePicker"
+            matSuffix
+            ></mat-datetimepicker-toggle>
+            <mat-datetimepicker
+            #datetimePicker
+            type="datetime"
+            openOnFocus="true"
+            timeInterval="5"
+            mode="portrait"
+            twelvehour="true"
+            >
+            </mat-datetimepicker>
+            <input
+            matInput
+            formControlName="scheduleDate"
+            [matDatetimepicker]="datetimePicker"
+            autocomplete="false"
+            />
+            </mat-form-field>
+            </div>
+
+            <!-- Time Picker -->
+            <!-- <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" class="w-50-p">
+            <exxat-time-picker class="w-100-p" color="primary" label="Time Picker" appearance="fill">
+            </exxat-time-picker>
+            </div> -->
+
+            <!-- Time Picker-->
+            <div fxLayout="row" fxLayoutAlign="start">
+            <mat-form-field appearance="fill" class="w-50-p">
+            <mat-label>Time picker</mat-label>
+            <ngx-material-timepicker-toggle
+            matSuffix
+            [for]="datetimePickerIn"
+            ></ngx-material-timepicker-toggle>
+            <input
+            matInput
+            formControlName="timeIn"
+            [ngxTimepicker]="datetimePickerIn"
+            />
+            <ngx-material-timepicker
+            #datetimePickerIn
+            [enableKeyboardInput]="true"
+            >
+            </ngx-material-timepicker>
+            </mat-form-field>
+            </div>
+
+            <div
+            fxLayout="column"
+            fxLayoutAlign="start"
+            class="w-100-p ngx-time-picker-container"
+            [ngClass]="{
+              'mat-invalid': getControlError('timeField')
+            }"
+          >
+          <span class="pb-4">
+            <mat-label>Ngx time picker</mat-label>
+            <span class="font-weight-600"> *</span>
+          </span>
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <div fxLayout="row" fxLayoutAlign="start center" class="w-100-p">
+                <ngx-timepicker-field
+                  formControlName="timeField"
+                  [defaultTime]="'11:50 AM'"
+                ></ngx-timepicker-field>
+              </div>
+              <div class="ml-8">
+                <button
+                  mat-icon-button
+                  aria-label="reset time picker"
+                  (click)="resetTimePicker()"
+                >
+                  <i aria-hidden="true" class="fa-light fa-undo s-18"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          </textarea>
+        </fuse-highlight>
+      </mat-tab>
+
+      <!-- 2nd tab content -->
+      <mat-tab label="TS">
+        <fuse-highlight
+          lang="ts"
+          class="source-code mt-16"
+          fxLayout="column"
+          fxLayoutAlign="center"
+        >
+          <textarea #source hidden="hidden">
+
+            import { Component, OnInit } from '@angular/core';
+            import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+            import * as _moment from 'moment';
+
+            @Component({
+              selector: 'date-and-time-pickers-page',
+              templateUrl: './date-and-time-pickers-page.component.html',
+              styleUrls: ['date-and-time-pickers-page.component.scss'],
+            })
+            export class DateAndTimePickersPageComponent implements OnInit {
+              form: FormGroup;
+
+              //pass min/max date for selection 
+              //@param year — The full year designation is required for cross-century date accuracy. If year is between 0 and 99 is used, then year is assumed to be 1900 + year.
+              //@param monthIndex — The month as a number between 0 and 11 (January to December).
+              //@param date — The date as a number between 1 and 31.
+              minDate = new Date(2022, 2, 1);
+              maxDate = new Date(2024, 3, 12);
+
+              public modelRequired: Date[] = [];
+
+              public modelPredefined = [
+                _moment([2023, 1, 1]),
+                _moment([2023, 1, 2]),
+                _moment([2023, 1, 3]),
+                _moment([2023, 1, 4]),
+                _moment([2023, 1, 5]),
+              ];
+
+              constructor(private _fb: FormBuilder) {
+                this.form = this._fb.group({
+                  scheduleDate: ['', Validators.required],
+                  timeIn: ['', Validators.required],
+                  timeField: ['', Validators.required],
+                  multipleDate: [[]]
+                });
+              }
+
+              //demo example for filter can change or remove filter logic according to requirement 
+              dateFilter(date: Date | null):boolean {
+                const day = new Date(date).getDay()
+                return day !== 0 && day !== 6;
+              } 
+
+              ngOnInit(): void { 
+                //demo example for patching values based on dateFilter if required 
+                //can be modified/removed according to requirement
+                let filteredDate = this.modelPredefined.map((dates) => {
+                  return dates.toDate()
+                }).filter((date)=> {
+                  const day = new Date(date).getDay()
+                  if(day !== 0 && day !== 6){
+                    return date
+                  } 
+                }).map((date) => {
+                  return _moment(date)
+                })
+                
+                this.form.patchValue({multipleDate: filteredDate});
+              }
+
+              getControlError(control: any) {
+                if (this.form.touched) {
+                  const value =
+                    this.form.get(control).touched && this.form.get(control).invalid;
+                  return value;
+                }
+              }
+
+              public resetTimePicker() {
+                this.form.get('timeField').markAsUntouched();
+                this.form.get('timeField').reset();
+              }
+            }
+
+
+
+          </textarea>
+        </fuse-highlight>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

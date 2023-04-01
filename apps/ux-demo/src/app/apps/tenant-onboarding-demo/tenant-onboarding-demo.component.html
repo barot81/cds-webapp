@@ -1,0 +1,257 @@
+<div class="page-layout carded full-width" id="tenant-onboarding-page">
+  <div class="center">
+    <!-- Header -->
+    <div class="header">
+      <div
+        fxLayout="row wrap"
+        fxLayoutAlign="space-between center"
+        class="pt-xs-16"
+      >
+        <button
+          mat-button
+          class="action-icon mb-16"
+          aria-label="Add Institution"
+          exxatDrawerAction
+          [size]="'drawer-lg'"
+          [componentSelector]="
+            _UXDemoDrawerService.get('ryzen-add-institution-drawer')
+          "
+          [caption]="'Add Institution Details'"
+          [primaryAction]="'Save'"
+        >
+          <mat-icon aria-hidden="true">add</mat-icon>
+          Add an Institution
+        </button>
+        <div fxLayout="row">
+          <button
+            mat-button
+            class="action-icon mr-16 mb-16"
+            aria-label="Edit columns"
+            exxatDrawerAction
+            [size]="'drawer-xs'"
+            [componentSelector]="
+              _UXDemoDrawerService.get('ryzen-tenant-onboarding-edit-columns')
+            "
+            [caption]="'Edit Columns'"
+            role="img"
+            aria-hidden="false"
+            [primaryAction]="'Save'"
+          >
+            <mat-icon aria-hidden="true">build</mat-icon>
+            Edit columns
+          </button>
+          <button
+            aria-label="Click here to Export"
+            mat-button
+            class="action-icon mb-16"
+          >
+            <mat-icon aria-hidden="true">grid_on</mat-icon>
+            Export to excel
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Header -->
+
+    <div class="content-card">
+      <div
+        class="content table-rounded-border white-background p-16 overflow-auto"
+      >
+        <div fxLayout="row" fxLayoutAlign="start center" class="pb-16">
+          <exxat-search-bar [listofOptions]="SearchFields"></exxat-search-bar>
+        </div>
+        <div class="">
+          <table
+            matSort
+            tabindex="0"
+            aria-hidden="false"
+            aria-label="This is a Tenent onboarding table"
+            mat-table
+            [dataSource]="dataSource"
+            class="w-100-p exxat-table pt-0"
+          >
+            <!-- Institute Name Column -->
+            <ng-container matColumnDef="name">
+              <th
+                mat-sort-header
+                tabindex="0"
+                aria-label="Institute Name"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                Institute Name
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="Institute Name is {{ element.name }}"
+                mat-cell
+                *matCellDef="let element"
+              >
+                <a>{{ element.name }}</a>
+              </td>
+            </ng-container>
+
+            <!-- Institute Short Name Column -->
+            <ng-container matColumnDef="shortName">
+              <th
+                tabindex="0"
+                aria-label="Institute Short Name"
+                class="pl-16"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                Institute Short Name
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="Institute Short Name is {{
+                  element.shortName
+                }}"
+                mat-cell
+                *matCellDef="let element"
+                class="pl-16"
+              >
+                {{ element.shortName }}
+              </td>
+            </ng-container>
+
+            <!-- tenant Id Column -->
+            <ng-container matColumnDef="tenantId">
+              <th
+                tabindex="0"
+                aria-label="tenant Id"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                Tenant Id
+              </th>
+              <td
+                tabindex="0"
+                mat-cell
+                attr.aria-label="tenant Id is {{ element.tenantId }}"
+                *matCellDef="let element"
+              >
+                {{ element.tenantId }}
+              </td>
+            </ng-container>
+
+            <!-- Time Zone Column -->
+            <ng-container matColumnDef="timeZone">
+              <th
+                tabindex="0"
+                aria-label="Time Zone"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                Time Zone
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="timeZone is {{ element.timeZone }}"
+                mat-cell
+                *matCellDef="let element"
+              >
+                {{ element.timeZone }}
+              </td>
+            </ng-container>
+
+            <!-- progress Column -->
+            <ng-container matColumnDef="progress">
+              <th
+                tabindex="0"
+                aria-label="progress"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                Progress
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="progress is {{ element.progress }}"
+                mat-cell
+                *matCellDef="let element"
+              >
+                {{ element.progress }}
+              </td>
+            </ng-container>
+
+            <!-- status Column -->
+            <ng-container matColumnDef="status">
+              <th
+                tabindex="0"
+                aria-label="status"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                Status
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="status is {{ element.status }}"
+                mat-cell
+                *matCellDef="let element"
+              >
+                {{ element.status }}
+              </td>
+            </ng-container>
+
+            <!-- institution Address Column -->
+            <ng-container matColumnDef="institutionAddress">
+              <th
+                tabindex="0"
+                aria-label="institution Address"
+                mat-header-cell
+                *matHeaderCellDef
+                class="institute-address-column"
+              >
+                Institution Address
+              </th>
+              <td
+                tabindex="0"
+                attr.aria-label="institution Address is {{
+                  element.institutionAddress
+                }}"
+                mat-cell
+                *matCellDef="let element"
+                class="institute-address-column"
+              >
+                {{ element.institutionAddress }}
+              </td>
+            </ng-container>
+
+            <!-- action Column -->
+            <ng-container matColumnDef="action">
+              <th
+                tabindex="0"
+                aria-label="action"
+                mat-header-cell
+                *matHeaderCellDef
+              >
+                Action
+              </th>
+              <td
+                tabindex="0"
+                aria-label="action"
+                mat-cell
+                *matCellDef="let element"
+              >
+                <button mat-icon-button class="action-icon" aria-label="edit">
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-pen icon-fill s-18"
+                  ></i>
+                </button>
+              </td>
+            </ng-container>
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

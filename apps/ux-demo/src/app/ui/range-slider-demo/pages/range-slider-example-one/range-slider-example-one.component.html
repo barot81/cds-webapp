@@ -1,0 +1,237 @@
+<div
+  id="range-slider-demo"
+  class="page-layout carded fullwidth inner-scroll p-12"
+>
+  <div class="center pl-0 pr-0">
+    <div class="gray-header mb-16">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div class="mr-8">
+            <button
+              mat-icon-button
+              aria-label="Click to go back"
+              routerLink="/admin/ux/ui/exxat-component-library"
+            >
+              <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+            </button>
+          </div>
+          <div class="mat-title">Slider Examples</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16">
+      <div fxLayout="column">
+        <div class="preview" fxLayout="column" fxLayoutAlign="start">
+          <div class="mat-caption secondary-text mb-16">
+            Range Slider Example One
+          </div>
+          <mat-card fxLayoutAlign="start center" fxLayout="row">
+            <div fxFlex="100" fxLayout="column" fxLayoutAlign="start">
+              <range-slider
+                [min]="0"
+                [max]="10"
+                [selected]="selectedValue"
+                [tracks]="sliderTracks"
+                (onChange)="onSliderChange($event)"
+              >
+              </range-slider>
+            </div>
+          </mat-card>
+
+          <mat-card class="mt-16">
+            <div>
+              <span
+                >Selected Value :- <strong> {{ selectedValue }} </strong></span
+              >
+            </div>
+          </mat-card>
+
+          <div class="mt-16">
+            <mat-card class="p-0">
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title border-bottom py-8 pr-8 pl-16"
+              >
+                <div xLayout="row" fxLayoutAlign="start center">
+                  <h2 class="primary-heading font-weight-600">Helper Info</h2>
+                </div>
+              </header>
+              <div class="p-16" fxLayout="column" fxLayoutAlign="start">
+                <div fxLayoutAlign="start center" fxLayout="row" class="mb-16">
+                  <div><span class="font-weight-600">min :</span></div>
+                  <div class="ml-16">
+                    <span></span>Minimum value of the slider.
+                  </div>
+                </div>
+
+                <div fxLayoutAlign="start center" fxLayout="row" class="mb-16">
+                  <div><span class="font-weight-600">max :</span></div>
+                  <div class="ml-16">
+                    <span></span>Maximum value of the slider.
+                  </div>
+                </div>
+
+                <div fxLayoutAlign="start center" fxLayout="row" class="mb-16">
+                  <div><span class="font-weight-600">selected :</span></div>
+                  <div class="ml-16">
+                    <span></span>Default selected value of the slider.
+                  </div>
+                </div>
+
+                <div fxLayoutAlign="start" fxLayout="row" class="mb-16">
+                  <div><span class="font-weight-600">step:</span></div>
+                  <div class="ml-16">
+                    <div>Step difference of the slider.</div>
+                    <div fxLayout="column">
+                      <span
+                        >Ex: 1) step="0.5" -- For 0.5 difference (Decimal
+                        Values)
+                      </span>
+                      <span>Ex: 2) step="2" -- for 2 step difference</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div fxLayoutAlign="start center" fxLayout="row" class="mb-16">
+                  <div><span class="font-weight-600">disabled :</span></div>
+                  <div class="ml-16">
+                    <span></span>Set disability of the slider. ( Ex:
+                    disabled=true)
+                  </div>
+                </div>
+
+                <div fxLayoutAlign="start center" fxLayout="row" class="mb-16">
+                  <div>
+                    <span class="font-weight-600">indicatorColor :</span>
+                  </div>
+                  <div class="ml-16">
+                    <span></span>Set color of the indicator. ( Ex:
+                    indicatorColor="#2F80ED")
+                  </div>
+                </div>
+
+                <div fxLayoutAlign="start center" fxLayout="row" class="mb-16">
+                  <div><span class="font-weight-600">hideValues :</span></div>
+                  <div class="ml-16">
+                    <span></span>Set visibility of the numbers. ( Ex:
+                    hideValues=true)
+                  </div>
+                </div>
+
+                <div fxLayoutAlign="start center" fxLayout="row" class="mb-16">
+                  <div>
+                    <span class="font-weight-600">hideDecimalValues :</span>
+                  </div>
+                  <div class="ml-16">
+                    <span></span>Set visibility of decimal numbers (If
+                    step="0.5"). ( Ex: hideDecimalValues=true)
+                  </div>
+                </div>
+
+                <div fxLayoutAlign="start center" fxLayout="row" class="mb-16">
+                  <div><span class="font-weight-600">hideInputBox :</span></div>
+                  <div class="ml-16">
+                    <span></span>Set visibility of the input box. ( Ex:
+                    hideInputBox=true)
+                  </div>
+                </div>
+
+                <div fxLayoutAlign="start center" fxLayout="row" class="mb-16">
+                  <div>
+                    <span class="font-weight-600">hideDescription :</span>
+                  </div>
+                  <div class="ml-16">
+                    <span></span>Set visibility of the track's description. (
+                    Ex: hideDescription=true)
+                  </div>
+                </div>
+
+                <div fxLayoutAlign="start center" fxLayout="row" class="mb-16">
+                  <div><span class="font-weight-600">tracks :</span></div>
+                  <div class="ml-16">
+                    <span></span>Array of the track with info like color, end
+                    step and description of the track.
+                  </div>
+                </div>
+                <div fxLayoutAlign="start center" fxLayout="row">
+                  <div>
+                    <strong class="warn-fg">Note For Accessibility : </strong
+                    >the disc(circle) will not slide left to right from keyboard
+                    keys, but we can switch focus on input field placed next to
+                    RATING text and on entering manual value there, the Disc
+                    will automatically slide to that value.
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+
+        <div
+          class="preview mt-40 ml-16"
+          fxLayout="column"
+          fxLayoutAlign="start"
+        >
+          <mat-tab-group>
+            <!-- 1st tab content -->
+            <mat-tab label="HTML">
+              <fuse-highlight
+                lang="html"
+                class="source-code mt-16"
+                fxLayout="column"
+                fxLayoutAlign="center"
+              >
+                <textarea #source hidden="hidden">
+                  <range-slider [min]="0" [max]="10" [selected]="selectedValue"  
+                  [tracks]="sliderTracks" (onChange)="onSliderChange($event)"></range-slider>
+               </textarea
+                >
+              </fuse-highlight>
+            </mat-tab>
+
+            <!-- 2nd tab content -->
+            <mat-tab label="TS">
+              <fuse-highlight
+                lang="ts"
+                class="source-code mt-16"
+                fxLayout="column"
+                fxLayoutAlign="center"
+              >
+                <textarea #source hidden="hidden">
+                  import { Component } from '@angular/core';
+                  import { SliderTrack } from '@exxat/ux';
+                  
+                  @Component({
+                    selector: 'ryzen-range-slider-example-one',
+                    templateUrl: './range-slider-example-one.component.html'
+                  })
+                  export class RangeSliderExampleOneComponent {
+                  
+                    selectedValue: number = 6;
+                  
+                    sliderTracks: Array<SliderTrack> = [
+                      { endStep: 0, bgColor: '#2F80ED', description: 'Well Below a Competent Clinician' },
+                      { endStep: 6, bgColor: '#E85D67', description: 'At that level for familiar patients' },
+                      { endStep: 8, bgColor: '#FFC008', description: 'At that level for all patients' },
+                      { endStep: 10, bgColor: '#009688', description: 'Well above the level of a competent clinician' }
+                    ]
+                  
+                    onSliderChange($event: any) {
+                      this.selectedValue = $event;
+                    }
+                  
+                  }
+                </textarea>
+              </fuse-highlight>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

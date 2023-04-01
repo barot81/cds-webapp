@@ -1,0 +1,36 @@
+#slot-by-site-page {
+  .page-content {
+    height: inherit;
+
+    .accordian-left-bar {
+      border-left: 6px solid #00cc99;
+    }
+
+    .slot-by-site-sidebar {
+      max-height: 560px;
+    }
+    .slot-by-site-page-content {
+      .content {
+        border-radius: 0px !important;
+        background: transparent !important;
+        box-shadow: none;
+
+        table.slot-by-site-table {
+          tr,
+          mat-header-row {
+            th.mat-header-cell {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+    .mat-list-base {
+      padding-top: 0px !important;
+    }
+
+    .width-fit-content {
+      width: fit-content;
+    }
+  }
+}

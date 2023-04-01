@@ -1,0 +1,14 @@
+.secondary-sidebar-height {
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+.secondary-sidebar-content-scroll {
+  height: calc(100vh - 100px);
+  overflow: auto;
+}
+
+.three-column-layout-conent {
+  height: calc(100vh - 104px);
+  overflow: auto;
+}

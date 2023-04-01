@@ -1,0 +1,137 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
+    <div class="search-wrapper" fxFlex="100" search [formControl]="searchItem">
+      <div
+        class="search table-search"
+        fxFlex
+        fxLayout="row"
+        fxLayoutAlign="start center"
+      >
+        <i
+          aria-hidden="true"
+          class="fa-light fa-magnifying-glass s-18 mr-4"
+        ></i>
+        <input
+          id="inputBox"
+          type="text"
+          placeholder="Search in 50 student"
+          fxFlex
+        />
+        <button
+          mat-icon-button
+          aria-label="clear search"
+          class="action-icon clear-button"
+        >
+          <i aria-hidden="true" class="fa-light fa-xmark s-18"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="end center">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="end center"
+      class="border-right h-48 pr-16"
+      fxHide.lt-md
+    >
+      <button
+        mat-stroked-button
+        color="primary"
+        class="mr-12"
+        aria-label="Add action 1"
+      >
+        <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+        <span class="ml-4">Add action 1</span>
+      </button>
+      <button mat-stroked-button color="primary" aria-label="Add action 2">
+        <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+        <span class="ml-4">Add action 2</span>
+      </button>
+    </div>
+    <div fxLayout="row" class="mr-16 ml-8">
+      <button
+        matTooltip="Export"
+        aria-label="Export Table"
+        mat-icon-button
+        class="ml-8"
+        fxHide.lt-md
+      >
+        <i aria-hidden="true" class="fa-light fa-file-export s-18"></i>
+      </button>
+
+      <button
+        matTooltip="Edit Columns"
+        aria-label="Edit Columns"
+        exxatDrawerAction
+        [componentSelector]="gridService.get('ryzen-edit-columns')"
+        [size]="'drawer-sm'"
+        [caption]="'Edit Columns'"
+        mat-icon-button
+        class="ml-4"
+        fxHide.lt-md
+      >
+        <i aria-hidden="true" class="fa-light fa-wrench s-18"></i>
+      </button>
+
+      <button
+        matTooltip="Filter"
+        mat-icon-button
+        class="ml-4 filter-icon-button"
+        aria-label="filters"
+        exxatDrawerAction
+        [componentSelector]="_UXDemoDrawerService.get('ryzen-filter-drawer')"
+        [size]="'drawer-sm'"
+        [caption]="'Filters'"
+        [primaryAction]="'Save'"
+      >
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
+          <span> 12 </span>
+        </div>
+      </button>
+
+      <button
+        tabindex="0"
+        aria-label="mat menu"
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        class="ml-4"
+        fxHide.gt-sm
+      >
+        <i aria-hidden="true" class="fal fa-ellipsis-h s-18"></i>
+      </button>
+      <mat-menu #menu="matMenu" fxHide.gt-sm>
+        <button mat-menu-item aria-label="Action 1">
+          <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i>Action 1
+        </button>
+        <button mat-menu-item aria-label="Action 2">
+          <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i>Action 2
+        </button>
+        <button
+          mat-menu-item
+          aria-label="Edit Columns"
+          exxatDrawerAction
+          [componentSelector]="gridService.get('ryzen-edit-columns')"
+          [size]="'drawer-sm'"
+          [caption]="'Edit Columns'"
+        >
+          <i aria-hidden="true" class="fa-light fa-wrench s-18 mr-8"></i>Edit
+          columns
+        </button>
+        <button mat-menu-item aria-label="Export file">
+          <i aria-hidden="true" class="fa-light fa-file-export s-18 mr-8"></i
+          >Export file
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</div>
+
+<div
+  class="result-found-style"
+  tabindex="0"
+  aria-label="2 search results found"
+>
+  2 Results Found
+</div>

@@ -1,0 +1,51 @@
+<div fxLayout="column" class="form_step_panel accordian-group-style">
+  <mat-accordion *ngFor="let item of steps">
+    <mat-expansion-panel [hideToggle]="!item.children">
+      <mat-expansion-panel-header
+        [attr.step_id]="item.id"
+        class="scrollable_list_menu_item"
+        (click)="changeMenuItem(item.id)"
+      >
+        <mat-panel-title>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="row" fxLayoutAlign="start center" class="mr-8">
+              <i
+                aria-hidden="true"
+                *ngIf="item.status === FormStepStatusEnum['COMPLETED']"
+                class="fa-solid fa-circle-check s-18 primary-fg"
+              ></i>
+              <i
+                aria-hidden="true"
+                *ngIf="item.status === FormStepStatusEnum['NEEDATTENTION']"
+                class="fa-solid fa-triangle-exclamation s-18 warn-fg"
+              ></i>
+              <i
+                aria-hidden="true"
+                *ngIf="item.status === FormStepStatusEnum['PENDING']"
+                class="fa-light fa-circle s-18"
+              ></i>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <span
+                class="text-overflow-1"
+                [options]="tooltipOptions"
+                [attr.id]="item.id + '_' + item.title"
+                [tooltip]="item.title"
+                [display]="isTextOverflow(item.id + '_' + item.title)"
+              >
+                {{ item.title }}
+              </span>
+            </div>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-container
+        *ngIf="
+          item.children && item.children !== null && item.children.length > 0
+        "
+      >
+        <form-step [steps]="item.children" class="form_step_child"></form-step>
+      </ng-container>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

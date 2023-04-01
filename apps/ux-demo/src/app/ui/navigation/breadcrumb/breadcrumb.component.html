@@ -1,0 +1,113 @@
+<div class="page-layout simple tabbed" fxLayout="column">
+  <!-- CONTENT -->
+  <div class="content">
+    <div id="breadcrumb-example" fxLayout="column">
+      <div fxLayout="column" fxLayout.gt-md="row">
+        <div
+          class="pr-md-16"
+          fxLayout="column"
+          fxLayoutAlign="start"
+          fxFlex="50"
+        >
+          <mat-card class="mt-lg-32 mt-16">
+            <div class="header" fxLayout="column" fxLayoutAlign="center start">
+              <exxat-breadcrumb
+                [dataSource]="breadcrumbs"
+                (onLinkClick)="onLickClick($event)"
+              ></exxat-breadcrumb>
+            </div>
+          </mat-card>
+        </div>
+
+        <fuse-highlight
+          lang="html"
+          class="source-code mt-16"
+          fxLayout="column"
+          fxLayoutAlign="center"
+          fxFlex="50"
+        >
+          <textarea #source hidden="hidden">
+
+            <exxat-breadcrumb
+            [dataSource]="breadcrumbs"
+            (onLinkClick)="onLickClick($event)">
+            </exxat-breadcrumb>
+
+          </textarea>
+        </fuse-highlight>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-md="row">
+        <div
+          class="pr-md-16"
+          fxLayout="column"
+          fxLayoutAlign="start"
+          fxFlex="50"
+        >
+          <mat-card class="mt-lg-32 mt-16">
+            <div class="header" fxLayout="column" fxLayoutAlign="center start">
+              <exxat-breadcrumb
+                [dataSource]="breadcrumbs"
+                [type]="_breadCrumbType.PARTIAL"
+                (onLinkClick)="onLickClick($event)"
+              >
+              </exxat-breadcrumb>
+            </div>
+          </mat-card>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+          <mat-tab-group dynamicHeight="true" class="mt-md-0 mt-16">
+            <mat-tab label="HTML">
+              <fuse-highlight lang="html" class="source-code mt-16">
+                <textarea #source hidden="hidden">
+
+                    <exxat-breadcrumb [dataSource]="breadcrumbs" [type]="_breadCrumbType.PARTIAL" 
+                    (onLinkClick)="onLickClick($event)">
+                    </exxat-breadcrumb>
+      
+      
+                  </textarea
+                >
+              </fuse-highlight>
+            </mat-tab>
+            <mat-tab label="TS">
+              <fuse-highlight lang="ts" class="source-code">
+                <textarea #source hidden="hidden">
+
+                  import { Component, } from '@angular/core';
+                  import { BreadCrumbType } from '@exxat/ux';
+                  
+                  @Component({
+                    selector: 'ryzen-breadcrumb',
+                    templateUrl: './breadcrumb.component.html',
+                    styleUrls: ['./breadcrumb.component.scss']
+                  })
+                  export class BreadcrumbComponent {
+                  
+                    _breadCrumbType = BreadCrumbType;
+                  
+                    breadcrumbs = [
+                      { title: 'Students', route: '/admin/profile/search', order: 0 },
+                      { title: 'Student Details', route: '/admin/profile/details/40324c3e-f36b-1410-8d59-00ffffffffff/academics', order: 1 },
+                      { title: 'Student Info', route: '/admin/profile/details/40324c3e-f36b-1410-8d59-00ffffffffff/info', order: 2 }
+                    ]
+
+                    onLickClick($event : any)
+                    {
+                      console.log($event);
+                    }
+                  
+                  }
+                        
+      
+                  </textarea
+                >
+              </fuse-highlight>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

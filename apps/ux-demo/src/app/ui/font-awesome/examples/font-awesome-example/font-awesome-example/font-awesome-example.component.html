@@ -1,0 +1,70 @@
+<div id="program_dashboard" class="page-layout full-width w-100-p">
+  <div class="center">
+    <div class="content width-lg margin-auto">
+      <div fxLayout="column">
+        <div fxLayout="row wrap" fxLayoutAlign="start center">
+          <div
+            class="p-16 program_list"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            *ngFor="let item of programList"
+            fxFlex="100%"
+            fxFlex.gt-sm="33.3%"
+          >
+            <a>
+              <div fxLayout="row">
+                <i
+                  aria-hidden="true"
+                  class="{{ item.icon }} s-24 accent-fg mr-32"
+                ></i>
+                <div fxlayout="column">
+                  <h2 class="primary-fg">{{ item.title }}</h2>
+                  <span class="font-14 secondary-text">{{
+                    item.description
+                  }}</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <fuse-highlight
+          class="pt-16"
+          lang="html"
+          class="source-code"
+          fxLayout="column"
+          fxLayoutAlign="center"
+          fxFlex="50"
+        >
+          <textarea #source hidden="hidden">
+            <div fxLayout="row wrap" fxLayoutAlign="start center">
+              <div class="p-16 program_list" fxLayout="row" fxLayoutAlign="start center" *ngFor="let item of programList"
+                fxFlex="100%" fxFlex.gt-sm="33.3%">
+                <a>
+                  <div fxLayout="row">
+                    <i aria-hidden="true" class="fab fa-accusoft s-24 accent-fg mr-32"></i>
+                    <div fxlayout="column">
+                      <h2 class="primary-fg">item.title</h2>
+                      <span class="font-14 secondary-text">item.description</span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+        </textarea
+          >
+        </fuse-highlight>
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <a
+            mat-stroked-button
+            target="_blank"
+            class="accent-fg"
+            href="https://fontawesome.com/icons"
+            >Visit FontAwesome library for more icons</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

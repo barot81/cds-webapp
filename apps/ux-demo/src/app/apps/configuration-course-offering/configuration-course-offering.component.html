@@ -1,0 +1,731 @@
+<div
+  class="page-layout simple left-sidebar inner-sidebar inner-scroll configuration-page"
+>
+  <!-- HEADER -->
+  <div fxLayout="column">
+    <div class="mb-16 pt-xs-16 pl-xs-16">
+      <exxat-breadcrumb
+        [dataSource]="breadcrumbs"
+        [type]="_breadCrumbType.PARTIAL"
+      >
+      </exxat-breadcrumb>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="start center" class="px-xs-16">
+      <span class="mr-8" tabindex="0" aria-label="PT509 - Clinical Medicine I"
+        >PT509 - Clinical Medicine I
+      </span>
+      <span class="mr-8">|</span>
+      <span class="mr-8" tabindex="0" aria-label="Spring">Spring</span>
+      <span class="mr-8">|</span>
+      <span class="mr-8" tabindex="0" aria-label="February - June"
+        >February - June
+      </span>
+      <span class="mr-8">|</span>
+      <span class="mr-8" tabindex="0" aria-label="2020 - 2021">
+        2020 - 2021
+      </span>
+      <span class="mr-8">|</span>
+      <span tabindex="0" aria-label="Year 1"> Year 1</span>
+      <span class="mr-8">|</span>
+      <span tabindex="0" aria-label="22 Jan 2021 - 25 Apr 2021"
+        >22 Jan 2021 - 25 Apr 2021</span
+      >
+    </div>
+    <div fxLayout="row" class="pt-8">
+      <button
+        mat-icon-button
+        class="sidebar-toggle"
+        fxHide.gt-md
+        (click)="toggleSidebar('configuration-page-sidebar')"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content mt-16 height-inherit">
+    <!-- SIDEBAR -->
+
+    <fuse-sidebar
+      tabindex="0"
+      aria-label="sidebar"
+      class="sidebar configuration-sidebar-width sidebar-expand-collapse"
+      name="configuration-page-sidebar"
+      position="left"
+      lockedOpen="gt-md"
+      [folded]="false"
+      [foldedWidth]="60"
+      [foldedAutoTriggerOnHover]="true"
+    >
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="pr-4">
+        <div
+          class="search-wrapper hide-content-folded"
+          fxFlex="85"
+          tabindex="0"
+          aria-label="searchbar"
+        >
+          <div
+            class="search sidenav-search"
+            fxFlex
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <i
+              aria-hidden="true"
+              class="fa-light fa-magnifying-glass s-18"
+              fxFlex="10"
+            ></i>
+            <input
+              type="text"
+              class="font-14"
+              placeholder="Search"
+              fxFlex="90"
+            />
+          </div>
+        </div>
+        <button
+          mat-icon-button
+          class="toggle-sidebar-folded"
+          fxLayoutAlign="center center"
+          class="ml-8"
+          (click)="toggleSidebarFolded()"
+          fxHide.lt-lg
+          tabindex="0"
+          aria-label="toggle arrow for sidebar"
+        >
+          <i
+            aria-hidden="true"
+            class="fa-light fa-chevron-left s-16 left-arrow sidebar-blue-icon mr-4"
+          ></i>
+          <i
+            aria-hidden="true"
+            class="fa-light fa-chevron-right s-16 right-arrow display-none sidebar-blue-icon pl-4"
+          ></i>
+          <i
+            aria-hidden="true"
+            class="fa-light fa-thumbtack s-16 pin-sticky sidebar-blue-icon mr-4"
+          ></i>
+        </button>
+      </div>
+      <mat-divider class="hide-divider"></mat-divider>
+
+      <div
+        class="content position-relative"
+        fusePerfectScrollbar
+        [fusePerfectScrollbarOptions]="{ suppressScrollX: true }"
+        tabindex="0"
+        aria-label="sidebar content"
+      >
+        <mat-list class="p-0" fxLayout="column">
+          <!-- contains submenu -->
+
+          <button mat-button class="p-0 w-100-p">
+            <mat-list-item
+              class="py-12 px-16 w-100-p"
+              fxLayoutAlign="start center"
+            >
+              <i aria-hidden="true" class="fa-light fa-address-card s-18"></i>
+              <span class="text-left pl-16 w-100-p hide-content-folded"
+                >Course Information</span
+              >
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p">
+            <mat-list-item
+              class="py-12 px-16 w-100-p active-item-class"
+              fxLayoutAlign="start center"
+            >
+              <i aria-hidden="true" class="fa-light fa-cubes s-18"></i>
+              <span class="text-left pl-16 w-100-p hide-content-folded"
+                >Resources</span
+              >
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p">
+            <mat-list-item
+              class="py-12 px-16 w-100-p"
+              fxLayoutAlign="start center"
+            >
+              <i aria-hidden="true" class="fa-light fa-bullhorn s-18"></i>
+              <span class="text-left pl-16 w-100-p hide-content-folded"
+                >Announcements</span
+              >
+            </mat-list-item>
+          </button>
+
+          <div>
+            <button
+              mat-button
+              class="p-0 w-100-p parent"
+              [ngClass]="{ 'expanded-text': showSubmenu }"
+              (click)="showSubmenu = !showSubmenu"
+            >
+              <mat-list-item
+                class="py-12 px-16 w-100-p"
+                fxLayoutAlign="start center"
+              >
+                <i aria-hidden="true" class="fa-light fa-books s-18"></i>
+                <span
+                  class="text-left pl-16 w-100-p hide-content-folded"
+                  *ngIf="isExpanded || isShowing"
+                  >Course information</span
+                >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-chevron-down s-16 arrow-expand-collapse hide-content-folded"
+                  [ngClass]="{ rotated: showSubmenu }"
+                  *ngIf="isExpanded || isShowing"
+                ></i>
+              </mat-list-item>
+            </button>
+            <div
+              class="submenu"
+              tabindex="0"
+              aria-label="this is a submenu"
+              [ngClass]="{ expanded: showSubmenu }"
+              *ngIf="isShowing || isExpanded"
+            >
+              <div fxLayout="column" class="w-100-p">
+                <!-- contains sub sub menu -->
+                <div>
+                  <button
+                    mat-button
+                    class="p-0 w-100-p parent"
+                    [ngClass]="{ 'submenu-expanded-text': showSubSubMenu }"
+                    (click)="showSubSubMenu = !showSubSubMenu"
+                  >
+                    <mat-list-item
+                      class="py-12 px-16 w-100-p"
+                      fxLayoutAlign="start center"
+                    >
+                      <span
+                        class="text-left pl-16 w-100-p"
+                        *ngIf="isExpanded || isShowing"
+                        >Set Up</span
+                      >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-chevron-down s-16 arrow-expand-collapse hide-content-folded"
+                        [ngClass]="{ rotated: showSubSubMenu }"
+                        *ngIf="isExpanded || isShowing"
+                      ></i>
+                    </mat-list-item>
+                  </button>
+                  <div
+                    class="submenu sub_sub_menu"
+                    tabindex="0"
+                    aria-label="this is a submenu"
+                    [ngClass]="{ expanded: showSubSubMenu }"
+                    *ngIf="isShowing || isExpanded"
+                  >
+                    <div fxLayout="column" class="w-100-p">
+                      <button
+                        mat-button
+                        class="p-0 w-100-p"
+                        tooltip="Summary Summary Summary Summary Summary"
+                        [options]="tooltipOptions"
+                      >
+                        <mat-list-item
+                          class="py-12 px-16 w-100-p"
+                          fxLayoutAlign="start center"
+                        >
+                          <span class="text-left overflow-ellipses w-100-p"
+                            >Summary Summary Summary Summary Summary</span
+                          >
+                        </mat-list-item>
+                      </button>
+                      <button mat-button class="p-0 w-100-p">
+                        <mat-list-item
+                          class="py-12 px-16 w-100-p"
+                          fxLayoutAlign="start center"
+                        >
+                          <span>Distribution</span>
+                        </mat-list-item>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <button mat-button class="p-0 w-100-p">
+                  <mat-list-item
+                    class="py-12 px-16 w-100-p"
+                    fxLayoutAlign="start center"
+                  >
+                    <span class="text-left pl-16 w-100-p hide-content-folded"
+                      >Evaluation</span
+                    >
+                  </mat-list-item>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button mat-button class="p-0 w-100-p">
+            <mat-list-item
+              class="py-12 px-16 w-100-p"
+              fxLayoutAlign="start center"
+            >
+              <i aria-hidden="true" class="fa-light fa-graduation-cap s-18"></i>
+              <span class="text-left pl-16 w-100-p hide-content-folded"
+                >Student Registration</span
+              >
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p">
+            <mat-list-item
+              class="py-12 px-16 w-100-p"
+              fxLayoutAlign="start center"
+            >
+              <i
+                aria-hidden="true"
+                class="fa-light fa-clipboard-check s-18"
+              ></i>
+              <span class="text-left pl-16 w-100-p hide-content-folded"
+                >Compliance</span
+              >
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="p-0 w-100-p">
+            <mat-list-item
+              class="py-12 px-16 w-100-p"
+              fxLayoutAlign="start center"
+            >
+              <i
+                aria-hidden="true"
+                class="fa-light fa-chalkboard-teacher s-18"
+              ></i>
+              <span class="text-left pl-16 w-100-p hide-content-folded"
+                >Learning activity</span
+              >
+            </mat-list-item>
+          </button>
+        </mat-list>
+      </div>
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+    <!-- CONTENT -->
+    <div class="center page-content ml-lg-16 w-100-p" fxLayout="column">
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        class="mb-16 px-xs-16"
+      >
+        <span class="font-18" tabindex="0" aria-label="Activity Setup"
+          >Activity Setup</span
+        >
+        <span
+          class="indigo-bg fuse-white-fg px-16 py-8 border-radius-8"
+          tabindex="0"
+          aria-label="Total Weightage : 100 %"
+          >Total Weightage : 100 %</span
+        >
+      </div>
+      <div class="content page-content h-100-p" fusePerfectScrollbar>
+        <mat-card class="p-0 mb-16">
+          <header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+          >
+            <div
+              fxLayout="row"
+              fxLayout.xs="column"
+              fxLayoutAlign="start center"
+              fxLayoutAlign.xs=" start start"
+            >
+              <h2
+                class="primary-heading font-weight-600 text-capitalize border-right pr-8 mr-8"
+                tabindex="0"
+                aria-label="Evaluation"
+              >
+                Evaluation
+              </h2>
+              <span
+                class="font-18 pt-xs-8"
+                tabindex="0"
+                aria-label="40% Weightage"
+                ><strong>40%</strong> Weightage</span
+              >
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                class="mr-sm-64 mr-32"
+              >
+                <span tabindex="0" aria-label="Status">Status:</span>
+                <span
+                  class="font-weight-600 primary-fg pl-4"
+                  tabindex="0"
+                  aria-label="Activated"
+                  >Activated</span
+                >
+              </div>
+              <button
+                mat-icon-button
+                class="icon-fill-bg"
+                aria-label="add form"
+                exxatDrawerAction
+                [size]="'drawer-lg'"
+                [componentSelector]="
+                  _UXDemoDrawerService.get('add-form-drawer')
+                "
+                [caption]="'Add Form'"
+              >
+                <i aria-hidden="true" class="fa-light fa-plus s-20"></i>
+              </button>
+            </div>
+          </header>
+          <div class="p-16" tabindex="0">
+            <div class="overflow-auto" tabindex="0">
+              <table
+                aria-label="This is a table"
+                mat-table
+                [dataSource]="dataSourceRight"
+                class="w-100-p exxat-table condensed-table"
+              >
+                <!-- form Column -->
+                <ng-container matColumnDef="form">
+                  <th
+                    class="pl-16 form-column"
+                    mat-header-cell
+                    *matHeaderCellDef
+                  >
+                    Form (1)
+                  </th>
+                  <td
+                    mat-cell
+                    *matCellDef="let element"
+                    class="pl-16 form-column"
+                  >
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-eye s-18 icon-fill mr-8"
+                      ></i>
+                      <a>CI Details</a>
+                    </div>
+                  </td>
+                </ng-container>
+
+                <!-- weightage Column -->
+                <ng-container matColumnDef="weightage">
+                  <th mat-header-cell *matHeaderCellDef>Weightage %</th>
+                  <td mat-cell *matCellDef="let element">10%</td>
+                </ng-container>
+
+                <!-- publishDate Column -->
+                <ng-container matColumnDef="publishDate">
+                  <th class="pl-16" mat-header-cell *matHeaderCellDef>
+                    Publish Date
+                  </th>
+                  <td mat-cell *matCellDef="let element" class="pl-16">
+                    13 Days(Before PlacementEnd Date)
+                  </td>
+                </ng-container>
+
+                <!--  midtermDue Column -->
+                <ng-container matColumnDef="midtermDue">
+                  <th mat-header-cell *matHeaderCellDef>Midterm Due</th>
+                  <td mat-cell *matCellDef="let element">N/A</td>
+                </ng-container>
+
+                <!--  finalDueDate Column -->
+                <ng-container matColumnDef="finalDueDate">
+                  <th mat-header-cell *matHeaderCellDef>Final Due Date</th>
+                  <td mat-cell *matCellDef="let element">
+                    (Before the Placement End Date)
+                  </td>
+                </ng-container>
+
+                <!-- Status Column -->
+                <ng-container matColumnDef="status">
+                  <th mat-header-cell *matHeaderCellDef>Status</th>
+                  <td mat-cell *matCellDef="let element">
+                    <span class="primary-fg">Active</span>
+                  </td>
+                </ng-container>
+
+                <!-- Actions Column -->
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef>Actions</th>
+                  <td mat-cell *matCellDef="let element">
+                    <button
+                      mat-icon-button
+                      class="action-icon"
+                      aria-label="edit button"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-pen icon-fill s-18"
+                      ></i>
+                    </button>
+                  </td>
+                </ng-container>
+
+                <tr
+                  mat-header-row
+                  *matHeaderRowDef="displayedColumns; sticky: true"
+                ></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: displayedColumns"
+                ></tr>
+              </table>
+            </div>
+          </div>
+          <div
+            class="px-16 pb-16"
+            fxLayoutAlign="start center"
+            tabindex="0"
+            aria-label="Hide Details"
+          >
+            <i aria-hidden="true" class="fa-light fa-angle-up s-18"></i>
+            <a class="font-16">Hide Details</a>
+          </div>
+        </mat-card>
+
+        <mat-card class="p-0 mb-16">
+          <header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+          >
+            <div
+              fxLayout="row"
+              fxLayout.xs="column"
+              fxLayoutAlign="start center"
+              fxLayoutAlign.xs=" start start"
+            >
+              <h2
+                class="primary-heading font-weight-600 text-capitalize border-right pr-8 mr-8"
+                tabindex="0"
+                aria-label="Patient Log"
+              >
+                Patient Log
+              </h2>
+              <span
+                class="pr-8 mr-8 font-18 border-right pt-xs-8"
+                tabindex="0"
+                aria-label="20% Weightage"
+                ><strong>20%</strong> Weightage</span
+              >
+              <span
+                class="font-18 font-weight-600 pt-xs-8"
+                tabindex="0"
+                aria-label="FNP log"
+                >FNP log</span
+              >
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                class="mr-sm-64 mr-32"
+              >
+                <span tabindex="0" aria-label="Status">Status:</span>
+                <span
+                  class="font-weight-600 primary-fg pl-4"
+                  tabindex="0"
+                  aria-label="Activated"
+                  >Activated</span
+                >
+              </div>
+              <button mat-icon-button class="icon-fill-bg" aria-label="add">
+                <i aria-hidden="true" class="fa-light fa-plus s-20"></i>
+              </button>
+            </div>
+          </header>
+        </mat-card>
+
+        <mat-card class="p-0 mb-16">
+          <header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+          >
+            <div
+              fxLayout="row"
+              fxLayout.xs="column"
+              fxLayoutAlign="start center"
+              fxLayoutAlign.xs=" start start"
+            >
+              <h2
+                class="primary-heading font-weight-600 text-capitalize border-right pr-8 mr-8"
+                tabindex="0"
+                aria-label="Timesheet"
+              >
+                Timesheet
+              </h2>
+              <span
+                class="font-18 pt-xs-8"
+                tabindex="0"
+                aria-label="20% Weightage"
+                ><strong>20%</strong> Weightage</span
+              >
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                class="mr-sm-64 mr-32"
+              >
+                <span tabindex="0" aria-label="Status">Status:</span>
+                <span
+                  class="font-weight-600 primary-fg pl-4"
+                  tabindex="0"
+                  aria-label="Activated"
+                  >Activated</span
+                >
+              </div>
+              <button
+                mat-icon-button
+                class="icon-fill-bg"
+                aria-label="arrow right"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-long-arrow-right s-20"
+                ></i>
+              </button>
+            </div>
+          </header>
+        </mat-card>
+
+        <mat-card class="p-0 mb-16">
+          <header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+          >
+            <div
+              fxLayout="row"
+              fxLayout.xs="column"
+              fxLayoutAlign="start center"
+              fxLayoutAlign.xs=" start start"
+            >
+              <h2
+                class="primary-heading font-weight-600 text-capitalize border-right pr-8 mr-8"
+                tabindex="0"
+                aria-label="Time Off"
+              >
+                Time Off
+              </h2>
+              <span class="pt-xs-8 font-18" tabindex="0" aria-label="N/A"
+                ><strong>N/A</strong></span
+              >
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                class="mr-sm-64 mr-32"
+              >
+                <span tabindex="0" aria-label="Status">Status:</span>
+                <span
+                  class="font-weight-600 warn-fg pl-4"
+                  tabindex="0"
+                  aria-label=" Not Activated"
+                  >Not Activated</span
+                >
+              </div>
+              <button
+                mat-icon-button
+                class="icon-fill-bg"
+                aria-label="arrow right"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-long-arrow-right s-20"
+                ></i>
+              </button>
+            </div>
+          </header>
+        </mat-card>
+
+        <mat-card class="p-0 mb-16">
+          <header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+          >
+            <div
+              fxLayout="row"
+              fxLayout.xs="column"
+              fxLayoutAlign="start center"
+              fxLayoutAlign.xs=" start start"
+            >
+              <h2
+                class="primary-heading font-weight-600 text-capitalize border-right pr-8 mr-8"
+                tabindex="0"
+                aria-label="Assignment"
+              >
+                Assignment
+              </h2>
+              <span
+                class="pt-xs-8 font-18"
+                tabindex="0"
+                aria-label="40% Weightage"
+                ><strong>10%</strong> Weightage</span
+              >
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <button mat-icon-button class="icon-fill-bg" aria-label="add">
+                <i aria-hidden="true" class="fa-light fa-plus s-20"></i>
+              </button>
+            </div>
+          </header>
+        </mat-card>
+
+        <mat-card class="p-0 mb-16">
+          <header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+          >
+            <div
+              fxLayout="row"
+              fxLayout.xs="column"
+              fxLayoutAlign="start center"
+              fxLayoutAlign.xs=" start start"
+            >
+              <h2
+                class="primary-heading font-weight-600 text-capitalize border-right pr-8 mr-8"
+                tabindex="0"
+                aria-label="Simple Score Capture"
+              >
+                Simple Score Capture
+              </h2>
+              <span
+                class="pt-xs-8 font-18"
+                tabindex="0"
+                aria-label="40% Weightage"
+                ><strong>10%</strong> Weightage</span
+              >
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <button mat-icon-button class="icon-fill-bg" aria-label="add">
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-long-arrow-right s-20"
+                ></i>
+              </button>
+            </div>
+          </header>
+        </mat-card>
+      </div>
+    </div>
+    <!-- / CONTENT -->
+    <!-- / CENTER -->
+    <!-- / CONTENT -->
+  </div>
+</div>

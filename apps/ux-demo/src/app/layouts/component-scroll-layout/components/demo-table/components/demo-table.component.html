@@ -1,0 +1,71 @@
+<table mat-table [dataSource]="dataSource" class="w-100-p exxat-table">
+
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select" [sticky]="true">
+        <th mat-header-cell *matHeaderCellDef class="pl-16">
+            <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+                [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+            </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row" class="pl-16">
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+            </mat-checkbox>
+        </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <th class="" mat-header-cell *matHeaderCellDef> Student
+            Name </th>
+        <td mat-cell *matCellDef="let element" class="student-name">
+            <a routerLink="/admin/ux/apps/student/details">
+                <exxat-avatar-list-item class="accent-fg" [src]="element.src" [firstName]="element.firstName"
+                    [lastName]="element.lastName"></exxat-avatar-list-item>
+            </a>
+        </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+        <th fxHide.xs mat-header-cell *matHeaderCellDef> Email
+        </th>
+        <td mat-cell fxHide.xs *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <!-- Phone Column -->
+    <ng-container matColumnDef="phone">
+        <th fxHide.xs mat-header-cell *matHeaderCellDef> Phone
+        </th>
+        <td mat-cell fxHide.xs *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
+
+    <!-- Setting Column -->
+    <ng-container matColumnDef="setting">
+        <th class="" fxHide.xs mat-header-cell *matHeaderCellDef> Practice
+            Setting </th>
+        <td mat-cell fxHide.xs *matCellDef="let element"> {{element.setting}} </td>
+    </ng-container>
+    <!-- Symbol Column -->
+
+    <!-- Time Column -->
+    <ng-container matColumnDef="time">
+        <th class="" fxHide.xs mat-header-cell *matHeaderCellDef>
+            Time </th>
+        <td mat-cell fxHide.xs *matCellDef="let element"> {{element.time}} </td>
+    </ng-container>
+    <!-- Time Column -->
+    <ng-container matColumnDef="action">
+        <th class="" fxHide.xs mat-header-cell *matHeaderCellDef>
+        </th>
+        <td mat-cell fxHide.xs *matCellDef="let element" class="edit-icon">
+            <mat-icon _ngcontent-hal-c357="" role="img" aria-hidden="true" class="mat-icon accent-fg ">edit</mat-icon>
+        </td>
+    </ng-container>
+    <!-- Time Column -->
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+    </tr>
+</table>

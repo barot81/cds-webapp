@@ -1,0 +1,181 @@
+<div class="drawer-p" fxLayout="column">
+  <div class="filter-container" fxLayout="row" fxLayoutAlign="start center">
+
+  
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <div class="header-filters custom-dropdown mr-16" >
+        <mat-form-field>
+          <mat-select placeholder="Location">
+            <mat-option *ngFor="let location of locations" [value]="location.value">{{location.viewValue}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="header-filters custom-dropdown">
+        <mat-form-field >
+          <mat-select placeholder="Setting">
+            <mat-option *ngFor="let setting of settings" [value]="setting.value">{{setting.viewValue}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </div>
+  <div class="mt-16">
+    <div class="content drawer-table  " >
+      <table mat-table [dataSource]="dataSource" class=" w-100-p exxat-table pt-0 table-container">
+  
+        <!--icon cloumn-->
+        <ng-container matColumnDef="icon" >
+          <th class="pl-16 pr-16" mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell *matCellDef="let element" class="pr-16 pl-8">
+            <div fxLayout="row">
+              <button mat-icon-button aria-label="Edit" role="img"
+                [entityKey]="0" aria-hidden="true" class="action-icon">
+                <mat-icon>add</mat-icon>
+              </button>
+
+              <button mat-icon-button aria-label="Edit" role="img"
+               [entityKey]="0" aria-hidden="true" class="action-icon">
+               <mat-icon>remove</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+  
+         <!--rotation cloumn-->
+        <ng-container matColumnDef="rotationDetails">
+          <th class="pr-16 table-heading" mat-header-cell *matHeaderCellDef> Rotation
+          </th>
+          <td class="pr-16" mat-cell  *matCellDef="let element">
+            <div fxLayout="column" fxLayoutAlign="center start">
+              <h3> {{element.rotation}}</h3>
+            </div>
+          </td>
+        </ng-container>
+  
+        <!--cohort column-->
+        <ng-container matColumnDef="cohort">
+          <th class="pr-16 table-heading"  mat-header-cell *matHeaderCellDef>
+            Cohort
+          </th>
+          <td class="pr-16" mat-cell  *matCellDef="let element"> <span class="font-16">{{element.cohort}} </span></td>
+        </ng-container>
+  
+         <!--schedule column-->
+        <ng-container matColumnDef="schedule">
+          <th class="pr-16 table-heading"  mat-header-cell *matHeaderCellDef>
+            Schedule </th>
+            <td class="pr-16" mat-cell  *matCellDef="let element">
+     
+              <mat-form-field appearance="fill">
+                  <mat-label>Comment</mat-label>
+                  <textarea matInput></textarea>
+              </mat-form-field>
+           
+            </td>
+        </ng-container>
+
+        <!--setting column-->
+        <ng-container matColumnDef="setting">
+          <th class="pr-16 table-heading"  mat-header-cell *matHeaderCellDef>
+            Setting </th>
+          <td class="pr-16" mat-cell  *matCellDef="let element">
+           
+              <mat-form-field appearance="fill">
+                <mat-label>Comment</mat-label>
+                <textarea matInput></textarea>
+            </mat-form-field>
+         
+          </td>
+        </ng-container>
+  
+          <!--no. of student column-->
+        <ng-container matColumnDef="numberOfStudent">
+          <th class="pr-16 table-heading"  mat-header-cell *matHeaderCellDef>
+            No. of student </th>
+          <td class="pr-16" mat-cell  *matCellDef="let element">
+            <mat-form-field appearance="fill">
+                <mat-label>From</mat-label>
+                <input matInput formControlName="from" required />
+                <mat-error>This field is required!</mat-error>
+              </mat-form-field>
+          </td>
+        </ng-container>
+  
+  
+         <!--supervision type column-->
+        <ng-container matColumnDef="supervisionType">
+          <th class="pr-16 table-heading"  mat-header-cell *matHeaderCellDef>
+            Supervision type</th>
+          <td class="pr-16" mat-cell  *matCellDef="let element">
+            <div class="header-filters custom-dropdown">
+              <mat-form-field >
+                <mat-select placeholder="Slot Type" [formControl]="slotcontrol" multiple>
+                  <mat-select-trigger>
+                    {{slotcontrol.value ? slotcontrol.value[0] : ''}}
+                    <span *ngIf="slotcontrol.value?.length > 1" class="example-additional-selection">
+                      (+{{slotcontrol.value.length - 1}}
+                      {{slotcontrol.value?.length === 2 ? 'other' : 'others'}})
+                    </span>
+                  </mat-select-trigger>
+                  <mat-option *ngFor="let slot of slots" [value]="slot.value">{{slot.viewValue}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+           </td>
+        </ng-container>
+  
+        <!--slot type column-->
+        <ng-container matColumnDef="slotType">
+          <th class="pr-16 table-heading"  mat-header-cell *matHeaderCellDef>
+            Slot type </th>
+          <td class="pr-16" mat-cell  *matCellDef="let element">
+           
+          </td>
+        </ng-container>
+  
+        <!--note for student column-->
+        <ng-container matColumnDef="noteForStudent">
+          <th class="pr-16 table-heading"  mat-header-cell *matHeaderCellDef>
+           Note for student </th>
+          <td class="pr-16" mat-cell  *matCellDef="let element"> 
+            
+              <mat-form-field appearance="fill" class="w-100-p">
+                <mat-label>Document Status</mat-label>
+                <mat-select formControlName="newStatus">
+                  <mat-select-trigger>
+                    {{status.value ? status.value[0] : ''}}
+                    <span *ngIf="status.value?.length > 1" class="example-additional-selection">
+                      (+{{status.value.length - 1}} {{status.value?.length === 2 ? 'other' : 'others'}})
+                    </span>
+                  </mat-select-trigger>
+                  <mat-option *ngFor="let status of statusList" [value]="status">{{status}}</mat-option>
+             
+                </mat-select>
+             
+            </mat-form-field>
+            
+          </td>
+        </ng-container>
+
+        <!--note for school column-->
+        <ng-container matColumnDef="noteForSchool">
+          <th class="pr-16 table-heading"  mat-header-cell *matHeaderCellDef>
+           Note for school </th>
+          <td class="pr-16" mat-cell  *matCellDef="let element"> 
+            
+          </td>
+        </ng-container>
+  
+       
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+      </table>
+  
+    </div>
+  </div>
+</div>

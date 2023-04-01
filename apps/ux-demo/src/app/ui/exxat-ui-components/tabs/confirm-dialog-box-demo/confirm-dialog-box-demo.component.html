@@ -1,0 +1,764 @@
+<div
+  id="confirm-dialog-box-example"
+  class="page-layout simple tabbed full-width-page"
+>
+  <div class="gray-header mb-16">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="mr-8">
+          <button
+            mat-icon-button
+            aria-label="Click to go back"
+            routerLink="/admin/ux/ui/exxat-component-library"
+          >
+            <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+          </button>
+        </div>
+        <div class="mat-title">Confirm Dialog Box Examples</div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+      </div>
+    </div>
+  </div>
+
+  <!-- first example -->
+  <div fxLayout="row wrap">
+    <div
+      class="preview pr-md-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+      fxFlex.lt-md="100"
+    >
+      <div class="mat-caption secondary-text">
+        Open Dialog Without Input Check
+      </div>
+      <mat-card>
+        <button
+          mat-icon-button
+          aria-label="Open Dialog Box"
+          (click)="openDialogWithoutInputCheck()"
+          class="action-icon"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+      </mat-card>
+    </div>
+
+    <div
+      class="preview mt-small-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+      fxFlex.lt-md="100"
+    >
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <fuse-highlight
+            lang="html"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+                <button mat-icon-button aria-label="Open Dialog Box" 
+                  (click)="openDialogWithoutInputCheck()" class="action-icon">
+                  <i  class="fa-light fa-pen s-18" aria-hidden="true"></i>
+                </button>
+            </textarea>
+          </fuse-highlight>
+        </mat-tab>
+
+        <!-- 2nd tab content -->
+        <mat-tab label="TS">
+          <fuse-highlight
+            lang="ts"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+
+                import { Component } from '@angular/core';
+                import { ConfirmDialogService } from '@exxat/ux';
+
+                @Component({
+                selector: 'ryzen-confirm-dialog-box-demo',
+                templateUrl: './confirm-dialog-box-demo.component.html',
+                styleUrls: ['./confirm-dialog-box-demo.component.scss']
+                })
+                export class ConfirmDialogBoxDemoComponent {
+
+                public message: string;
+
+                constructor(private _ConfirmDialogService: ConfirmDialogService) {
+                this.message = 'Are you sure you want to delete this entity ?';
+                }
+
+                openDialogWithoutInputCheck() {
+                this._ConfirmDialogService.open(this.message, { ok: 'Delete', cancel: 'Cancel' });
+                this._ConfirmDialogService.confirmDialogAction().subscribe(confirmed => {
+                  if (confirmed) {
+                  // Perform any action on success closer of dialog
+                  }
+                });
+                }
+                }
+
+              </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+  <!-- second example -->
+  <div fxLayout="row wrap">
+    <div
+      class="preview pr-md-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+      fxFlex.lt-md="100"
+    >
+      <div class="mat-caption secondary-text">Open Dialog WithInput Check</div>
+      <mat-card>
+        <button
+          mat-icon-button
+          aria-label="Open Dialog Box"
+          (click)="openDialogWithInputCheck()"
+          class="action-icon"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+      </mat-card>
+    </div>
+
+    <div
+      class="preview mt-small-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+      fxFlex.lt-md="100"
+    >
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <fuse-highlight
+            lang="html"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+                <button mat-icon-button aria-label="Open Dialog Box" (click)="openDialogWithInputCheck()" 
+                class="action-icon">
+                  <i  class="fa-light fa-pen s-18" aria-hidden="true"></i>
+                </button>
+              </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+
+        <!-- 2nd tab content -->
+        <mat-tab label="TS">
+          <fuse-highlight
+            lang="ts"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+
+                import { Component } from '@angular/core';
+                import { ConfirmDialogService } from '@exxat/ux';
+
+                @Component({
+                selector: 'ryzen-confirm-dialog-box-demo',
+                templateUrl: './confirm-dialog-box-demo.component.html',
+                styleUrls: ['./confirm-dialog-box-demo.component.scss']
+                })
+                export class ConfirmDialogBoxDemoComponent {
+
+                public message: string;
+
+                constructor(private _ConfirmDialogService: ConfirmDialogService) {
+                this.message = 'Are you sure you want to delete this entity ?';
+                }
+                
+                openDialogWithInputCheck() {
+                  this._ConfirmDialogService.open(this.message, 
+                  { ok: 'Delete', cancel: 'Cancel', inputCheck: true });
+                  this._ConfirmDialogService.confirmDialogAction().subscribe(confirmed => {
+                    if (confirmed) {
+                    // Perform any action on success closer of dialog
+                    }
+                  });
+                }
+
+        </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+  <!-- third example -->
+  <div fxLayout="row wrap">
+    <div
+      class="preview pr-md-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+      fxFlex.lt-md="100"
+    >
+      <div class="mat-caption secondary-text">Dialog box with custom HTML</div>
+      <mat-card>
+        <button
+          mat-icon-button
+          aria-label="Open Dialog Box"
+          (click)="openDialog()"
+          class="action-icon"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+      </mat-card>
+    </div>
+
+    <div
+      class="preview mt-small-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+      fxFlex.lt-md="100"
+    >
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <fuse-highlight
+            lang="html"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+                <button mat-icon-button aria-label="Open Dialog Box" (click)="openDialog()" class="action-icon">
+                  <i  class="fa-light fa-pen s-18" aria-hidden="true"></i>
+                </button>
+              </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+
+        <!-- 2nd tab content -->
+        <mat-tab label="TS">
+          <fuse-highlight
+            lang="ts"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+
+                import { Component, OnInit } from '@angular/core';
+                import { MatDialog } from '@angular/material/dialog';
+                import { PopupExampleDemoComponent } from './popup-example-demo/popup-example-demo.component';
+                
+                @Component({
+                  selector: 'ryzen-confirm-dialog-box-demo',
+                  templateUrl: './confirm-dialog-box-demo.component.html',
+                  styleUrls: ['./confirm-dialog-box-demo.component.scss']
+                })
+                export class ConfirmDialogBoxDemoComponent implements OnInit {
+                
+                  constructor(public dialog: MatDialog) {
+                  }
+                
+                  ngOnInit() {
+                  }
+             
+                  openDialog() {
+                    const dialogRef = this.dialog.open(PopupExampleDemoComponent);
+                    dialogRef.afterClosed().subscribe(result => {
+                      console.log(`Dialog result: ${result}`);
+                    });
+                  }
+                
+                
+                }
+                
+              </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+
+        <!-- 3rd tab content -->
+        <mat-tab label="Popup HTML">
+          <fuse-highlight
+            lang="ts"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+                    <mat-dialog-content class="margin-auto dialog-box-spacing">
+                      <div fxLayout="column">
+                        <span class="mb-24">Are you sure you want to delete this entity ?</span>
+                        <div fxLayout="row" fxLayoutAlign="end center">
+                          <button
+                            mat-stroked-button mat-dialog-close
+                            color="primary"
+                            class=" mr-8"
+                            aria-label="Cancel"
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            mat-flat-button
+                            color="primary"
+                            class=""
+                            aria-label="Delete"
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                    </mat-dialog-content>
+            </textarea>
+          </fuse-highlight>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+  <!-- fourth example -->
+  <div fxLayout="row wrap">
+    <div
+      class="preview pr-md-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+      fxFlex.lt-md="100"
+    >
+      <div class="mat-caption secondary-text">Dialog box with checkbox</div>
+      <mat-card>
+        <button
+          mat-icon-button
+          aria-label="Open Dialog Box"
+          (click)="openDialogWithCheckbox()"
+          class="action-icon"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+      </mat-card>
+    </div>
+
+    <div
+      class="preview mt-small-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+      fxFlex.lt-md="100"
+    >
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <fuse-highlight
+            lang="html"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+                  <button mat-icon-button aria-label="Open Dialog Box" (click)="openDialog()" class="action-icon">
+                    <i  class="fa-light fa-pen s-18" aria-hidden="true"></i>
+                  </button>
+                </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+
+        <!-- 2nd tab content -->
+        <mat-tab label="TS">
+          <fuse-highlight
+            lang="ts"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+
+                  import { Component, OnInit } from '@angular/core';
+                  import { MatDialog } from '@angular/material/dialog';
+                  import { PopupExampleDemoComponent } from './popup-example-demo/popup-example-demo.component';
+                  
+                  @Component({
+                    selector: 'ryzen-confirm-dialog-box-demo',
+                    templateUrl: './confirm-dialog-box-demo.component.html',
+                    styleUrls: ['./confirm-dialog-box-demo.component.scss']
+                  })
+                  export class ConfirmDialogBoxDemoComponent implements OnInit {
+                  
+                    constructor(public dialog: MatDialog) {
+                    }
+                  
+                    ngOnInit() {
+                    }
+               
+                    openDialogWithCheckbox() {
+                      const dialogRef = this.dialog.open(checkboxPopupExampleDemoComponent);
+                      dialogRef.afterClosed().subscribe(result => {
+                        console.log(`Dialog result: ${result}`);
+                      });
+                    }
+                  
+                  }
+                  
+                </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+
+        <!-- 3rd tab content -->
+        <mat-tab label="Popup HTML">
+          <fuse-highlight
+            lang="ts"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+
+                        <mat-dialog-content class="margin-auto dialog-box-spacing">
+                          <div fxLayout="column">
+                            <div fxLayout="column" class="mb-24">
+                              <span class="mb-12 font-14 font-weight-600">Heading</span>
+                              <div fxLayout="column">
+                                <mat-checkbox class="mb-8">Class of 2017</mat-checkbox>
+                                <mat-checkbox class="mb-8">Class of 2018</mat-checkbox>
+                                <mat-checkbox class="mb-8">Class of 2019</mat-checkbox>
+                                <mat-checkbox class="mb-8">Class of 2020</mat-checkbox>
+                                <mat-checkbox class="mb-8">Pediatric special</mat-checkbox>
+                              </div>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="end center">
+                              <button
+                                mat-stroked-button mat-dialog-close
+                                color="primary"
+                                class=" mr-8"
+                                aria-label="Cancel"
+                              >
+                                Cancel
+                              </button>
+                              <button
+                                mat-flat-button
+                                color="primary"
+                                class=""
+                                aria-label="Delete"
+                              >
+                                Done
+                              </button>
+                            </div>
+                          </div>
+                        </mat-dialog-content>
+                  
+                      
+                    </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+  <!-- fifth example -->
+  <div fxLayout="row wrap">
+    <div
+      class="preview pr-md-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+      fxFlex.lt-md="100"
+    >
+      <div class="mat-caption secondary-text">Dialog box with Heading</div>
+      <mat-card>
+        <button
+          mat-icon-button
+          aria-label="Open Dialog Box"
+          (click)="openDialogWithHeading()"
+          class="action-icon"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+      </mat-card>
+    </div>
+
+    <div
+      class="preview mt-small-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+      fxFlex.lt-md="100"
+    >
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <fuse-highlight
+            lang="html"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+                  <button mat-icon-button aria-label="Open Dialog Box" (click)="openDialog()" class="action-icon">
+                    <i  class="fa-light fa-pen s-18" aria-hidden="true"></i>
+                  </button>
+            </textarea>
+          </fuse-highlight>
+        </mat-tab>
+
+        <!-- 2nd tab content -->
+        <mat-tab label="TS">
+          <fuse-highlight
+            lang="ts"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+
+                      import { Component, OnInit } from '@angular/core';
+                      import { MatDialog } from '@angular/material/dialog';
+                      import { PopupExampleDemoComponent } from './popup-example-demo/popup-example-demo.component';
+                      
+                      @Component({
+                        selector: 'ryzen-confirm-dialog-box-demo',
+                        templateUrl: './confirm-dialog-box-demo.component.html',
+                        styleUrls: ['./confirm-dialog-box-demo.component.scss']
+                      })
+                      export class ConfirmDialogBoxDemoComponent implements OnInit {
+                      
+                        constructor(public dialog: MatDialog) {
+                        }
+                      
+                        ngOnInit() {
+                        }
+                  
+                        openDialogWithHeading() {
+                          const dialogRef = this.dialog.open(dialogBoxWithHeadingDemoComponent);
+                          dialogRef.afterClosed().subscribe(result => {
+                            console.log(`Dialog result: ${result}`);
+                          });
+                        }
+                      
+                      }
+                  
+                </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+
+        <!-- 3rd tab content -->
+        <mat-tab label="Popup HTML">
+          <fuse-highlight
+            lang="ts"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+                        <mat-dialog-content class="margin-auto dialog-box-spacing">
+                          <div fxLayout="column">
+                            <div fxLayout="column" class="mb-24">
+                              <span class="mb-12 font-14 font-weight-600">Heading</span>
+                              <p>
+                                In publishing and graphic design, Lorem ipsum is a placeholder text
+                                commonly used to demonstrate the visual form of a document or a typeface
+                                without relying on meaningful content. Lorem ipsum may be used as a
+                                placeholder before the final copy is
+                              </p>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="end center">
+                              <button
+                                mat-stroked-button mat-dialog-close
+                                color="primary"
+                                class=" mr-8"
+                                aria-label="Cancel"
+                              >
+                                Cancel
+                              </button>
+                              <button
+                                mat-flat-button
+                                color="primary"
+                                class=""
+                                aria-label="Yes"
+                              >
+                                Yes
+                              </button>
+                            </div>
+                          </div>
+                        </mat-dialog-content>
+                </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+  <!-- sixth example -->
+  <div fxLayout="row wrap">
+    <div
+      class="preview pr-md-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+      fxFlex.lt-md="100"
+    >
+      <div class="mat-caption secondary-text">Dialog box with image</div>
+      <mat-card>
+        <exxat-avatar
+          class=""
+          aria-label="Edit avatar"
+          size="lg"
+          editable="true"
+          tabindex="0"
+          (click)="openDialogWithImage()"
+          src="assets/images/avatars/anna-strong.png"
+        ></exxat-avatar>
+      </mat-card>
+    </div>
+
+    <div
+      class="preview mt-small-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+      fxFlex.lt-md="100"
+    >
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <fuse-highlight
+            lang="html"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+                  <exxat-avatar
+                  aria-label="Edit avatar"
+                  size="lg"
+                  tabindex="0"
+                  (click)="openDialogWithImage()"
+                  src="assets/images/avatars/anna-strong.png"
+                  ></exxat-avatar>
+            </textarea>
+          </fuse-highlight>
+        </mat-tab>
+
+        <!-- 2nd tab content -->
+        <mat-tab label="TS">
+          <fuse-highlight
+            lang="ts"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+
+                      import { Component, OnInit } from '@angular/core';
+                      import { MatDialog } from '@angular/material/dialog';
+                      import { PopupExampleDemoComponent } from './popup-example-demo/popup-example-demo.component';
+                      
+                      @Component({
+                        selector: 'ryzen-confirm-dialog-box-demo',
+                        templateUrl: './confirm-dialog-box-demo.component.html',
+                        styleUrls: ['./confirm-dialog-box-demo.component.scss']
+                      })
+                      export class ConfirmDialogBoxDemoComponent implements OnInit {
+                      
+                        constructor(public dialog: MatDialog) {
+                        }
+                      
+                        ngOnInit() {
+                        }
+                  
+                        openDialogWithImage() {
+                          const dialogRef = this.dialog.open(DialogBoxWithImageDemoComponent)
+                          dialogRef.afterClosed().subscribe(result => {
+                            console.log(`Dialog result: ${result}`);
+                          });
+                        }
+                      
+                      }
+                  
+                </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+
+        <!-- 3rd tab content -->
+        <mat-tab label="Popup HTML">
+          <fuse-highlight
+            lang="ts"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+                      <mat-dialog-content
+                      class="margin-auto image-dialog-box"
+                      tabindex="0"
+                      aria-label="dialog box is opened"
+                      fxLayout="column"
+                    >
+                        <button mat-icon-button mat-dialog-close class="image-popup-cancel">
+                            <i aria-hidden="true" class="fa-regular fa-xmark s-20"></i>
+                        </button>
+                        <img src="assets/images/avatars/anna-strong.png">
+                        <div fxLayout="row" fxLayoutAlign="center center" class="mt-24 mb-16">
+                            <button mat-stroked-button color="warn" class=" mr-8"  aria-label="delete image">
+                                Delete
+                              </button>
+                          <button
+                            mat-flat-button
+                            color="primary"
+                            class=""
+                          >
+                            Upload
+                          </button>
+                        </div>
+                      </mat-dialog-content>
+            </textarea>
+          </fuse-highlight>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+  <div class="mt-16" fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="48">
+      <p class="warn-fg font-16" tabindex="0" aria-label="Note from UI Team">
+        Note from UI Team
+      </p>
+      <p
+        tabindex="0"
+        aria-label="Developers are requested not to make any extra self made Class or
+        write hardcode CSS or add Colors. Since we are following MULTI theme,
+        Theme will break if Material theme structure and guidlines are not
+        followed properly."
+        class="warn-fg font-14"
+      >
+        Developers are requested not to make any extra self made Class or write
+        hardcode CSS or add Colors. Since we are following MULTI theme, Theme
+        will break if Material theme structure and guidlines are not followed
+        properly.
+      </p>
+      <strong>Connect To UI team for any such cases.</strong>
+    </div>
+  </div>
+</div>

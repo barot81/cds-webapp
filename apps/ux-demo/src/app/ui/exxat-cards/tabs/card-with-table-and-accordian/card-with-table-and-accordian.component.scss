@@ -1,0 +1,41 @@
+@import 'init';
+
+
+
+#card-with-table-and-accordian {
+  .document-column {
+    min-width: 10vw;
+    @include media-breakpoint('lt-sm') {
+      min-width: 40vw;
+    }
+    @include media-breakpoint('sm') {
+      min-width: 21vw;
+    }
+  }
+  .date-column {
+    min-width: 7vw;
+    @include media-breakpoint('lt-sm') {
+      min-width: 30vw;
+    }
+    @include media-breakpoint('sm') {
+      min-width: 16vw;
+    }
+  }
+  .sharedStudent-width {
+    min-width: 5vw;
+  }
+  .notes-column {
+    @include media-breakpoint('lt-sm') {
+      min-width: 55vw;
+    }
+  }
+
+  .table-column {
+    @include media-breakpoint('sm') {
+      min-width: 16vw;
+    }
+    @include media-breakpoint('lt-sm') {
+      min-width: 30vw;
+    }
+  }
+}

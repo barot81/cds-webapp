@@ -1,0 +1,35 @@
+@import 'init';
+
+
+
+#grid-with-two-header-row {
+  table.exxat-table tr th {
+    padding: 0px !important;
+  }
+
+  .patient-details-column {
+    min-width: 18vw;
+    max-width: 18vw;
+    @include media-breakpoint('sm') {
+      min-width: 35vw !important;
+    }
+    @include media-breakpoint('lt-sm') {
+      min-width: 50vw !important;
+    }
+  }
+
+  .column-width {
+    min-width: 10vw;
+    max-width: 10vw;
+    @include media-breakpoint('sm') {
+      min-width: 25vw !important;
+    }
+    @include media-breakpoint('lt-sm') {
+      min-width: 40vw !important;
+    }
+  }
+
+  .second-header-row {
+    background-color: $light-blue;
+  }
+}

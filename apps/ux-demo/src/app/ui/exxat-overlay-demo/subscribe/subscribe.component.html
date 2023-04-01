@@ -1,0 +1,64 @@
+<div id="subscribe_container" fxLayout="column">
+  <div
+    class="overlay_header mb-16"
+    fxLayout="row wrap"
+    fxLayoutAlign="start center"
+  ></div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-16">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <button
+        aria-label="Click to exit"
+        mat-icon-button
+        class="mr-4 back_button fuse-white-fg"
+        (click)="cancel()"
+      >
+        <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+      </button>
+      <h2
+        tabindex="0"
+        aria-label="Overlay title"
+        class="document_title fuse-white-fg"
+      >
+        Overlay Title
+      </h2>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="w-100-p">
+      <div>
+        <form [formGroup]="frmSubscribe">
+          <header fxLayout="row" fxLayoutAlign="space-between start">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <h3
+                tabindex="0"
+                aria-label="Example Form of passing component in overlay"
+              >
+                Example Form of passing component in overlay
+              </h3>
+            </div>
+          </header>
+          <div fxLayout="column" class="pt-16">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <mat-form-field appearance="fill" fxFlex="100">
+                <mat-label>First name</mat-label>
+                <input matInput formControlName="name" required />
+                <mat-error tabindex="0" aria-label="First Name is required"
+                  >First Name is required!</mat-error
+                >
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <mat-form-field appearance="fill" fxFlex="100">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" required />
+                <mat-error tabindex="0" aria-label="Email is Required"
+                  >Email is required!</mat-error
+                >
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+      </div>
+    </mat-card>
+  </div>
+</div>

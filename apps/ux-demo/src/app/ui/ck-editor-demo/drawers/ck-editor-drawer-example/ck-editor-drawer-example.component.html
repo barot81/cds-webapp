@@ -1,0 +1,9 @@
+<div class="drawer-p" fxLayout="column">
+    <mat-card>
+        <form [formGroup]="fusionFormGroup" fxLayout="column">
+            <ckeditor fxFlex="100" [config]="ckEditorConfigData" [editor]="Editor" [maxLength]="50"
+                formControlName="dataControl_" (onValidate)="onValidate($event)">
+            </ckeditor>
+        </form>
+    </mat-card>
+</div>

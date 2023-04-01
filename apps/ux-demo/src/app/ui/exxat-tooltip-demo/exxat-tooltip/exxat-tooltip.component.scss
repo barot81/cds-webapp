@@ -1,0 +1,30 @@
+// .tooltip {
+//   position: relative;
+//   display: inline-block;
+// }
+
+// .tooltip .tooltiptext {
+//   width: auto;
+//   font-size: 10px;
+//   background-color: #4d4d4d;
+//   color: #fff;
+//   text-align: center;
+//   border-radius: 4px;
+//   padding: 5px 12px;
+//   position: absolute;
+//   z-index: 1;
+//   top: 150%;
+//   left: 50%;
+//   margin-left: -35px;
+// }
+
+// .tooltip .tooltiptext::after {
+//   content: "";
+//   position: absolute;
+//   bottom: 100%;
+//   left: 50%;
+//   margin-left: -5px;
+//   border-width: 5px;
+//   border-style: solid;
+//   border-color: transparent transparent #4d4d4d transparent;
+// }

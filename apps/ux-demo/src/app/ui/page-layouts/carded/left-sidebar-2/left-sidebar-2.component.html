@@ -1,0 +1,52 @@
+<div class="page-layout carded left-sidebar inner-scroll">
+    <div fxLayout="column" class="w-100-p">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="p-16">
+            <h2 class="primary-fg">Two Column Layout with header and content Divide</h2>
+            <button mat-button class="primary" (click)="openDialog()">Click for HTML</button>
+        </div>
+
+        <div fxLayout="row" fxFlex="100">
+        
+                <fuse-sidebar class="sidebar" name="carded-left-sidebar-2" position="left" lockedOpen="gt-md" fxFlex.gt-md="20">
+                    <div class="content p-16 pink-bg h-100-p" fusePerfectScrollbar>
+                        <div fxLayout="row" fxLayoutAlign="center start" class="pt-32">
+                            <span class="font-16 font-weight-600 fuse-white-fg">Sidebar with 20 % width</span>
+                        </div>
+                    </div>
+                </fuse-sidebar>
+                
+                <div class="center ml-lg-16" fxFlex.gt-md="80" fxFlex="100" fxLayout="column">
+
+                    <button mat-icon-button class="sidebar-toggle pl-16" fxHide.gt-md
+                    (click)="toggleSidebar('carded-left-sidebar-2')">
+                    <mat-icon>menu</mat-icon>
+                    </button>
+
+                    <div class="content h-100-p " fxFlex="100" fusePerfectScrollbar>
+                        <div fxLayout="column">
+                            <div class="blue-800-bg h-100" fxFlex="100">
+                                <div fxLayout="row" fxLayoutAlign="center start" class="pt-32">
+                                    <span class="font-16 font-weight-600 fuse-white-fg"> Header with tabs</span>
+                                </div>
+                            </div>
+                            <div fxLayout="row wrap" fxFlex="100">
+                                <div class="mt-16 pr-md-16" fxFlex.gt-sm="80"  fxFlex="100">
+                                    <div fxLayout="row" fxLayoutAlign="center start" class="pt-32 px-16 purple-bg element-height">
+                                        <span class="font-16 font-weight-600 fuse-white-fg">Page content with 80% width of right side content</span>
+                                    </div>
+                                </div>
+                                <div class="mt-16" fxFlex="100" fxFlex.gt-sm="20">
+                                    <div fxLayout="row" fxLayoutAlign="center start" class="pt-32 px-16 purple-bg element-height">
+                                        <span class="font-16 font-weight-600 fuse-white-fg"> Right side content with 20% width of right side content</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+   </div>
+</div>

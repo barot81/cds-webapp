@@ -1,0 +1,817 @@
+<div id="location" class="page-layout carded left-sidebar">
+  <div fxLayout="column" class="w-100-p">
+    <mat-card class="mb-16">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <div fxLayout="row wrap" fxLayoutAlign="start center">
+          <div class="font-weight-600 font-20">
+            <span>Abilene Christian Schools</span>
+          </div>
+          <div fxLayoutAlign="start center" fxLayout="row wrap">
+            <div>
+              <button
+                mat-icon-button
+                [matMenuTriggerFor]="tagsMenu"
+                (menuOpened)="openTagswithoutButtons()"
+              >
+                <mat-icon>label</mat-icon>
+              </button>
+              <mat-menu #tagsMenu="matMenu" [overlapTrigger]="false">
+                <exxat-tag
+                  [tags]="tags"
+                  [options]="tagOptions"
+                  (onTagChanges)="onTagChanges($event)"
+                >
+                </exxat-tag>
+              </mat-menu>
+            </div>
+            <div
+              fxLayout="row wrap"
+              fxLayoutAlign="start center"
+              class="pt-4 mr-4"
+            >
+              <exxat-tag-showcase [tags]="tags"></exxat-tag-showcase>
+            </div>
+          </div>
+          <div fxLayoutAlign="start center" fxLayout="row wrap">
+            <div class="mr-8">
+              <span>6250 Hwy 83/84, Abilene, Texas(TX)</span>
+            </div>
+            <div class="mr-8"><span>|</span></div>
+            <div class="mr-8">
+              <a href="www.locationname.com"> www.locationname.com</a>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center" class="mt-small-16">
+          <button mat-stroked-button color="warn">Delete Site</button>
+        </div>
+      </div>
+    </mat-card>
+
+    <mat-card class="mb-16">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <div fxLayout="row wrap" fxLayoutAlign="start center">
+          <div class="font-weight-600 font-20">
+            <span>Dr. Aguilar Alice</span>
+          </div>
+          <div fxLayoutAlign="start center" fxLayout="row wrap">
+            <div>
+              <button
+                mat-icon-button
+                [matMenuTriggerFor]="tagsMenu"
+                (menuOpened)="openTagswithoutButtons()"
+              >
+                <mat-icon>label</mat-icon>
+              </button>
+              <mat-menu #tagsMenu="matMenu" [overlapTrigger]="false">
+                <exxat-tag
+                  [tags]="tags"
+                  [options]="tagOptions"
+                  (onTagChanges)="onTagChanges($event)"
+                >
+                </exxat-tag>
+              </mat-menu>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start center" class="pt-4">
+              <exxat-tag-showcase [tags]="tags"></exxat-tag-showcase>
+            </div>
+          </div>
+          <div class="status-badge approved mr-8">Marked as CI</div>
+          <div fxLayoutAlign="start center" fxLayout="row wrap">
+            <div class="mr-8">
+              <span>Contract Coordinator, Requirements</span>
+            </div>
+            <div class="mr-8"><span>|</span></div>
+            <div class="mr-8"><span>Title</span></div>
+            <div class="mr-8"><span>|</span></div>
+            <div class="mr-8">
+              <a href="mailto:forrestbarrett@example.com"
+                >forrestbarrett@example.com</a
+              >
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center" class="mt-small-16">
+          <button mat-stroked-button color="warn">Delete Personnel</button>
+        </div>
+      </div>
+    </mat-card>
+
+    <!-- SIDEBAR -->
+    <div fxLayout="row">
+      <fuse-sidebar
+        class="sidebar location-sidebar-height"
+        name="carded-left-sidebar-tabbed-2"
+        position="left"
+        fxFlex.gt-md="25"
+        lockedOpen="gt-md"
+      >
+        <div fxLayout="row" fxLayoutAlign="start center" class="mt-16 mx-16">
+          <button
+            mat-button
+            class="action-icon"
+            aria-label="Edit"
+            exxatDrawerAction
+            [size]="'drawer-md'"
+            [caption]="'Status'"
+            role="img"
+            aria-hidden="true"
+          >
+            <mat-icon>add</mat-icon>
+            Add location
+          </button>
+        </div>
+        <!-- SEARCH -->
+        <div class="search-wrapper m-16">
+          <div
+            class="search"
+            fxFlex
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <mat-icon class="s-16 secondary-text">search</mat-icon>
+            <input matInput placeholder="Search" fxFlex />
+          </div>
+        </div>
+        <!--  SIDEBAR CONTENT -->
+        <div class="content" fusePerfectScrollbar>
+          <mat-action-list>
+            <div *ngFor="let location of locationList; let isLast = last">
+              <button
+                mat-list-item
+                class="no-space m-0 p-16"
+                [ngClass]="{
+                  'active-list-item': location === selectedLoacation
+                }"
+                (click)="selectLocation(location)"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="w-100-p"
+                >
+                  <div>
+                    <span
+                      class="word-break-all space-pre-wrap text-left"
+                      [attr.aria-label]="location"
+                      >{{ location }}</span
+                    >
+                  </div>
+                  <div fxLayoutAlign="end center">
+                    <button
+                      mat-icon-button
+                      [matMenuTriggerFor]="menu"
+                      aria-label="open menu for delete location"
+                      *ngIf="location === selectedLoacation"
+                    >
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu
+                      #menu="matMenu"
+                      xPosition="after"
+                      class="mat-secondary-menu"
+                    >
+                      <!-- <button mat-menu-item>
+                                                <div fxLayout="row" fxLayoutAlign="start center">
+                                                    <div class="mr-8 mt-4">
+                                                        <i aria-hidden="true" class="fa-light fa-pen s-18 icon-fill"  ></i>
+                                                    </div>
+                                                    <div fxLayout="row" fxLayoutAlign="start center">
+                                                        <span aria-label="delete location">Edit</span>
+                                                    </div>
+                                                </div>
+
+                                            </button> -->
+                      <button mat-menu-item>
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                          <div class="mr-8 mt-4">
+                            <i
+                              aria-hidden="true"
+                              class="fa-light fa-trash-alt icon-fill s-18"
+                            ></i>
+                          </div>
+                          <div fxLayout="row" fxLayoutAlign="start center">
+                            <span aria-label="delete location">Delete</span>
+                          </div>
+                        </div>
+                      </button>
+                    </mat-menu>
+                  </div>
+                </div>
+              </button>
+
+              <mat-divider
+                *ngIf="!isLast"
+                class="w-85-p margin-auto"
+              ></mat-divider>
+            </div>
+          </mat-action-list>
+        </div>
+        <!-- / SIDEBAR CONTENT -->
+      </fuse-sidebar>
+      <!-- // fuse SIDEBAR -->
+
+      <!-- CENTER -->
+      <div class="center ml-lg-16" fxFlex="100">
+        <!--toolbar-->
+        <div class="">
+          <div fxLayout="row" fxLayoutAlign="space-between center" fxHide.gt-md>
+            <button
+              mat-icon-button
+              class="sidebar-toggle"
+              fxHide.gt-md
+              (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+            >
+              <mat-icon>menu</mat-icon>
+            </button>
+            <div>
+              <button
+                mat-icon-button
+                [matMenuTriggerFor]="card20Menu"
+                aria-label="more"
+                fxHide.gt-sm
+              >
+                <mat-icon>more_vert</mat-icon>
+              </button>
+
+              <mat-menu #card20Menu="matMenu">
+                <button
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  mat-menu-item
+                >
+                  <span>About</span>
+                </button>
+                <button
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  mat-menu-item
+                >
+                  <span>Clinical Personal</span>
+                </button>
+                <button
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  mat-menu-item
+                >
+                  <span>Communications</span>
+                </button>
+                <button
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  mat-menu-item
+                >
+                  <span>Placements</span>
+                </button>
+                <button
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  mat-menu-item
+                >
+                  <span>Notifications</span>
+                </button>
+                <button
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  mat-menu-item
+                >
+                  <span>Assesment</span>
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+        </div>
+
+        <div class="content">
+          <div fxLayout="row wrap">
+            <div fxLayout="column" fxFlex="100">
+              <div class="gray-header mb-16" fxHide.sm fxHide.xs>
+                <ryzen-site-secondary-side-nav></ryzen-site-secondary-side-nav>
+              </div>
+
+              <div fxLayout="row wrap">
+                <div fxLayout="column" fxFlex="100">
+                  <mat-card class="p-0 mb-16">
+                    <header
+                      fxLayout="row"
+                      fxLayoutAlign="space-between center"
+                      class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+                    >
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        <h2
+                          class="primary-heading font-weight-600 text-capitalize"
+                        >
+                          Basic Information
+                        </h2>
+                      </div>
+                      <button
+                        mat-icon-button
+                        class="icon-fill-bg"
+                        aria-label="Edit"
+                        exxatDrawerAction
+                        [size]="'drawer-sm'"
+                        [caption]="'Status'"
+                        [primaryAction]="'Save'"
+                        role="img"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-pen fuse-white-fg s-18"
+                        ></i>
+                      </button>
+                    </header>
+                    <div fxLayout="row wrap" class="pt-16 pl-16">
+                      <div
+                        class="exxat-info mb-16 pr-16"
+                        fxLayout="column"
+                        fxFlex="100"
+                        fxFlex.gt-sm="33.33"
+                      >
+                        <div class="title">Address</div>
+                        <div class="description description-text-wrap">
+                          710 S Business 61- Suite 100, Bowling Green,
+                          Missouri-63334
+                        </div>
+                      </div>
+                      <div
+                        class="exxat-info mb-16 pr-16"
+                        fxLayout="column"
+                        fxFlex="100"
+                        fxFlex.gt-sm="33.33"
+                      >
+                        <div class="title">Phone</div>
+                        <div class="description description-text-wrap">
+                          (235)-789-7895, Ext. 1234
+                        </div>
+                      </div>
+                      <div
+                        class="exxat-info mb-16 pr-16"
+                        fxLayout="column"
+                        fxFlex="100"
+                        fxFlex.gt-sm="33.33"
+                      >
+                        <div class="title">Fax</div>
+                        <div class="description description-text-wrap">
+                          323 555 1234
+                        </div>
+                      </div>
+                      <div
+                        class="exxat-info mb-16 pr-16"
+                        fxLayout="column"
+                        fxFlex="100"
+                        fxFlex.gt-sm="33.33"
+                      >
+                        <div class="title">Location Lable</div>
+                        <div class="description description-text-wrap">
+                          MGH - Orlando
+                        </div>
+                      </div>
+                      <div
+                        class="exxat-info mb-16 pr-16"
+                        fxLayout="column"
+                        fxFlex="100"
+                        fxFlex.gt-sm="33.33"
+                      >
+                        <div class="title">Website</div>
+                        <div class="description description-text-wrap">
+                          <a href="">https://www.mghospital.com</a>
+                        </div>
+                      </div>
+                      <div
+                        class="exxat-info mb-16 pr-16"
+                        fxLayout="column"
+                        fxFlex="100"
+                        fxFlex.gt-sm="33.33"
+                      >
+                        <div class="title">Setting</div>
+                        <div class="description description-text-wrap">
+                          Internal Medicine, Family Medicine, Neuro
+                        </div>
+                      </div>
+                      <div
+                        class="exxat-info mb-16 pr-16"
+                        fxLayout="column"
+                        fxFlex="100"
+                        fxFlex.gt-sm="33.33"
+                      >
+                        <div class="title">Area</div>
+                        <div class="description description-text-wrap">
+                          In-area
+                        </div>
+                      </div>
+                    </div>
+                  </mat-card>
+
+                  <mat-card class="p-0 mb-16">
+                    <header
+                      fxLayout="row"
+                      fxLayoutAlign="space-between center"
+                      class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+                    >
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        <h2
+                          class="primary-heading font-weight-600 text-capitalize"
+                        >
+                          Notes
+                        </h2>
+                      </div>
+                    </header>
+                    <!-- Note for school only section-->
+                    <div class="pt-16 pl-16">
+                      <div class="mb-16 pr-16">
+                        <div class="exxat-info" fxLayout="column" fxFlex="100">
+                          <div class="title">Note for school only</div>
+                          <div class="description description-text-wrap">
+                            Aliquip ea amet commodo ex sint Lorem.
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Note for student section-->
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="mb-16 pr-16"
+                      >
+                        <div class="exxat-info" fxLayout="column" fxFlex="100">
+                          <div class="title">Note for student</div>
+                          <div class="description description-text-wrap">
+                            Aute et ipsum nisi ad mollit enim dolore sunt ipsum
+                            irure aute consectetur veniam aliquip.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-card>
+
+                  <mat-card class="p-0 mb-16">
+                    <!-- location requirements-->
+                    <header
+                      fxLayout="row"
+                      fxLayoutAlign="space-between center"
+                      class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+                    >
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        <h2
+                          class="primary-heading font-weight-600 text-capitalize"
+                        >
+                          Location Requirement
+                        </h2>
+                      </div>
+                    </header>
+
+                    <div class="pt-16 pl-16">
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="pb-16 pr-16"
+                      >
+                        <h5>
+                          Facility Orientation, Fingerprinting, Flu, Malpractice
+                          Insurance,First Aid, Tuberculosis
+                        </h5>
+                      </div>
+
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="pb-16 pr-16"
+                      >
+                        <div class="exxat-info" fxLayout="column" fxFlex="100">
+                          <div class="title">Requirement Notes</div>
+                          <div class="description description-text-wrap">
+                            Tempor culpa tempor ut reprehenderit. Cupidatat
+                            aliquip minim sunt sint magna id amet aliqua. Sint
+                            occaecat dolor do anim consectetur. Enim do aute
+                            mollit occaecat minim. Est enim officia ea minim est
+                            ad non duis veniam.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- location requirements-->
+                  </mat-card>
+
+                  <mat-card class="p-0 mb-16">
+                    <!-- document section-->
+                    <header
+                      fxLayout="row"
+                      fxLayoutAlign="space-between center"
+                      class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+                    >
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        <h2
+                          class="primary-heading font-weight-600 text-capitalize"
+                        >
+                          Document
+                        </h2>
+                      </div>
+                      <button
+                        mat-icon-button
+                        class="icon-fill-bg"
+                        aria-label="Edit"
+                        exxatDrawerAction
+                        [size]="'drawer-sm'"
+                        [caption]="'Status'"
+                        [primaryAction]="'Save'"
+                        role="img"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-plus fuse-white-fg s-18"
+                        ></i>
+                      </button>
+                    </header>
+                    <!-- document 1-->
+                    <div class="pl-16 pt-16">
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="mb-16 pr-16"
+                      >
+                        <div class="exxat-info" fxLayout="column" fxFlex="100">
+                          <div class="title accent-fg">Document 1</div>
+                          <div class="description description-text-wrap">
+                            Tempor culpa tempor ut reprehenderit. Cupidatat
+                            aliquip minim sunt sint magna id amet aliqua. Sint
+                            occaecat dolor do anim consectetur. Enim do aute
+                            mollit occaecat minim. Est enim officia ea minim est
+                            ad non duis veniam.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="mb-16 pr-16"
+                      >
+                        <div class="exxat-info" fxLayout="column" fxFlex="100">
+                          <div class="title accent-fg">Document 2</div>
+                          <div class="description description-text-wrap">
+                            Tempor culpa tempor ut reprehenderit. Cupidatat
+                            aliquip minim sunt sint magna id amet aliqua. Sint
+                            occaecat dolor do anim consectetur. Enim do aute
+                            mollit occaecat minim. Est enim officia ea minim est
+                            ad non duis veniam.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-card>
+
+                  <mat-card class="p-0 mb-16">
+                    <!-- facilities section-->
+
+                    <header
+                      fxLayout="row"
+                      fxLayoutAlign="space-between center"
+                      class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+                    >
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        <h2
+                          class="primary-heading font-weight-600 text-capitalize"
+                        >
+                          Facilities
+                        </h2>
+                      </div>
+                      <button
+                        mat-icon-button
+                        class="icon-fill-bg"
+                        aria-label="Edit"
+                        exxatDrawerAction
+                        [size]="'drawer-sm'"
+                        [caption]="'Status'"
+                        [primaryAction]="'Save'"
+                        role="img"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-pen fuse-white-fg s-18"
+                        ></i>
+                      </button>
+                    </header>
+                    <div class="pl-16 pt-16">
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="mb-16 pr-16"
+                      >
+                        <div class="exxat-info" fxLayout="column" fxFlex="100">
+                          <div class="title">Housing Provided</div>
+                          <div class="description description-text-wrap">
+                            Aliquip ea amet commodo ex sint Lorem.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="mb-16 pr-16"
+                      >
+                        <div class="exxat-info" fxLayout="column" fxFlex="100">
+                          <div class="title">Parking Provided</div>
+                          <div class="description description-text-wrap">
+                            Aute et ipsum nisi ad mollit enim dolore sunt ipsum
+                            irure aute consectetur veniam aliquip.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-card>
+
+                  <mat-card class="p-0" fxLayout="column">
+                    <header
+                      fxLayout="row"
+                      fxLayoutAlign="space-between center"
+                      class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+                    >
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        <h2
+                          class="primary-heading font-weight-600 text-capitalize"
+                        >
+                          Administrative personnel
+                        </h2>
+                      </div>
+                      <button
+                        mat-icon-button
+                        class="icon-fill-bg"
+                        aria-label="Edit"
+                        exxatDrawerAction
+                        [size]="'drawer-sm'"
+                        [caption]="'Status'"
+                        [primaryAction]="'Save'"
+                        role="img"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-plus fuse-white-fg s-18"
+                        ></i>
+                      </button>
+                    </header>
+
+                    <div
+                      class="pt-16 pl-16"
+                      fxLayout="row wrap"
+                      fxFlex="100"
+                      fxLayoutAlign="start center"
+                    >
+                      <div
+                        class="pb-16 pr-16"
+                        fxLayout="row"
+                        fxLayoutAlign="space-between center"
+                        fxFlex.gt-sm="33.33"
+                        fxFlex="100"
+                      >
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                          <exxat-avatar
+                            firstName="David"
+                            lastName="Johnson"
+                          ></exxat-avatar>
+                          <div fxLayout="column" fxLayoutAlign="start start">
+                            <span class="font-14">Dr.David Johnson</span>
+                            <span class="font-14">Lead PT</span>
+                            <span class="font-14"
+                              ><a>davidjohnson@gmail.com</a></span
+                            >
+                            <span class="font-14">521-985-6634 </span>
+                          </div>
+                        </div>
+                        <button
+                          mat-icon-button
+                          class="action-icon"
+                          aria-label="Edit"
+                          exxatDrawerAction
+                          [size]="'drawer-sm'"
+                          [caption]="'Status'"
+                          [primaryAction]="'Save'"
+                          role="img"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-pen icon-fill s-18"
+                          ></i>
+                        </button>
+                      </div>
+                      <div
+                        class="pb-16 pr-16"
+                        fxLayout="row"
+                        fxLayoutAlign="space-between center"
+                        fxFlex.gt-sm="33.33"
+                        fxFlex="100"
+                      >
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                          <exxat-avatar
+                            firstName="David"
+                            lastName="Johnson"
+                          ></exxat-avatar>
+                          <div fxLayout="column" fxLayoutAlign="start start">
+                            <span class="font-14">Dr.David Johnson</span>
+                            <span class="font-14">Lead PT</span>
+                            <span class="font-14"
+                              ><a>davidjohnson@gmail.com</a></span
+                            >
+                            <span class="font-14">521-985-6634 </span>
+                          </div>
+                        </div>
+                        <button
+                          mat-icon-button
+                          class="action-icon"
+                          aria-label="Edit"
+                          exxatDrawerAction
+                          [size]="'drawer-sm'"
+                          [caption]="'Status'"
+                          [primaryAction]="'Save'"
+                          role="img"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-pen icon-fill s-18"
+                          ></i>
+                        </button>
+                      </div>
+                      <div
+                        class="pb-16 pr-16"
+                        fxLayout="row"
+                        fxLayoutAlign="space-between center"
+                        fxFlex.gt-sm="33.33"
+                        fxFlex="100"
+                      >
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                          <exxat-avatar
+                            firstName="David"
+                            lastName="Johnson"
+                          ></exxat-avatar>
+                          <div fxLayout="column" fxLayoutAlign="start start">
+                            <span class="font-14">Dr.David Johnson</span>
+                            <span class="font-14">Lead PT</span>
+                            <span class="font-14"
+                              ><a>davidjohnson@gmail.com</a></span
+                            >
+                            <span class="font-14">521-985-6634 </span>
+                          </div>
+                        </div>
+                        <button
+                          mat-icon-button
+                          class="action-icon"
+                          aria-label="Edit"
+                          exxatDrawerAction
+                          [size]="'drawer-sm'"
+                          [caption]="'Status'"
+                          [primaryAction]="'Save'"
+                          role="img"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-pen icon-fill s-18"
+                          ></i>
+                        </button>
+                      </div>
+                      <div
+                        class="pb-16 pr-16"
+                        fxLayout="row"
+                        fxLayoutAlign="space-between center"
+                        fxFlex.gt-sm="33.33"
+                        fxFlex="100"
+                      >
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                          <exxat-avatar
+                            firstName="David"
+                            lastName="Johnson"
+                          ></exxat-avatar>
+                          <div fxLayout="column" fxLayoutAlign="start start">
+                            <span class="font-14">Dr.David Johnson</span>
+                            <span class="font-14">Lead PT</span>
+                            <span class="font-14"
+                              ><a>davidjohnson@gmail.com</a></span
+                            >
+                            <span class="font-14">521-985-6634 </span>
+                          </div>
+                        </div>
+                        <button
+                          mat-icon-button
+                          class="action-icon"
+                          aria-label="Edit"
+                          exxatDrawerAction
+                          [size]="'drawer-sm'"
+                          [caption]="'Status'"
+                          [primaryAction]="'Save'"
+                          role="img"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-pen icon-fill s-18"
+                          ></i>
+                        </button>
+                      </div>
+                    </div>
+                  </mat-card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

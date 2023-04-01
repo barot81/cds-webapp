@@ -1,0 +1,34 @@
+<div id="site-demo" class="page-layout simple full-width">
+  <div class="center pl-0 pr-0">
+    <div id="site_header" #site_header>
+      <header class="mt-xs-16">
+        <div fxLayout="row" fxLayoutAlign="start center" class="mb-16">
+          <button
+            mat-icon-button
+            aria-label="Click to go back"
+            class="action-icon mx-8"
+            routerLink="/admin/ux/ui/exxat-apps-repo"
+          >
+            <i aria-hidden="true" class="fal fa-long-arrow-left"></i>
+          </button>
+          <div fxLayout="column" class="ml-8">
+            <h2 class="font-weight-600">Massachusetts General Hospital</h2>
+            <span class="font-14"
+              >710 S Business 61- Suite 100, Bowling Green, Missouri-63334</span
+            >
+          </div>
+        </div>
+      </header>
+      <!-- Nav Bar Header -->
+      <div class="gray-header">
+        <ryzen-site-navbar></ryzen-site-navbar>
+      </div>
+    </div>
+    <!-- // Nav Bar Header -->
+    <div class="content mt-16">
+      <div class="router-container">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

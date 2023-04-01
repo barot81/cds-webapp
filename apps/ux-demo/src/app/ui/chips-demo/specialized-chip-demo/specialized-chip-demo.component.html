@@ -1,0 +1,50 @@
+<div fxLayout="column">
+  <div fxLayout="column" fxLayout.gt-md="row" id="chip-setting">
+    <div
+      class="pr-md-16 pr-0"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+    >
+      <div class="mat-caption secondary-text mb-16">Specialized Chips</div>
+      <div class="mb-16">
+        <span><strong class="accent-fg">Note: </strong> </span>
+        <span>import SpecializedChipsModule from '@exxat/ux';</span>
+      </div>
+      <mat-card fxLayout="row">
+        <specialized-chip
+          class="mx-4"
+          name="Added by student"
+        ></specialized-chip>
+        <specialized-chip
+          class="mx-4"
+          name="Added by student Added by student"
+        ></specialized-chip>
+      </mat-card>
+    </div>
+    <div
+      class="pr-md-16 pr-0"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+    >
+      <mat-tab-group class="mt-lg-0 mt-16">
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <fuse-highlight
+            lang="html"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+                      <specialized-chip name="Added by student"></specialized-chip>
+                      <specialized-chip name="Added by student Added by student"></specialized-chip>
+             </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

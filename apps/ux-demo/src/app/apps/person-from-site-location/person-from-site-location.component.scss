@@ -1,0 +1,76 @@
+@import 'init';
+#person-from-site-location {
+  .staus-initial {
+    background-color: $alto-light;
+  }
+
+  .status-available {
+    background-color: $De-York-light !important;
+  }
+
+  .status-contact-later {
+    background-color: $Manhattan-light !important;
+  }
+
+  .status-no-slots {
+    background-color: $cosmos-light !important;
+  }
+
+  .status-location-not-decided {
+    background-color: $Marzipan-light !important;
+  }
+
+  .big-icon-color {
+    color: $endeavour-light;
+  }
+
+  .action-column {
+    @include media-breakpoint('lg') {
+      min-width: 12vw !important;
+    }
+
+    @include media-breakpoint('md') {
+      min-width: 17vw !important;
+    }
+  }
+
+  .dates-column {
+    @include media-breakpoint('md') {
+      min-width: 20vw !important;
+    }
+
+    @include media-breakpoint('lg') {
+      min-width: 14vw !important;
+    }
+  }
+
+  .preceptor-column {
+    @include media-breakpoint('md') {
+      min-width: 20vw !important;
+    }
+
+    @include media-breakpoint('lg') {
+      min-width: 10vw !important;
+    }
+  }
+
+  .setting-column {
+    @include media-breakpoint('md') {
+      min-width: 20vw !important;
+    }
+
+    @include media-breakpoint('lg') {
+      min-width: 10vw !important;
+    }
+  }
+
+  .notes-column {
+    @include media-breakpoint('md') {
+      min-width: 20vw !important;
+    }
+
+    @include media-breakpoint('lg') {
+      min-width: 10vw !important;
+    }
+  }
+}

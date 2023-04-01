@@ -1,0 +1,14 @@
+
+  .condensed-table{
+    tr.mat-header-row {
+        height: 38px;
+    }
+    tr.mat-row {
+        height: 30px;
+
+        td.mat-cell {
+            padding: 8px 0;
+        }
+    }
+
+  }

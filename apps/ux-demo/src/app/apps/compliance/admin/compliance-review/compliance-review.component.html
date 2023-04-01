@@ -1,0 +1,536 @@
+<div id="compliance-review-container" fxLayout="row" fxFlex="100">
+  <!-- SIDEBAR -->
+  <fuse-sidebar
+    class="sidebar height-fit-content"
+    name="carded-left-sidebar-tabbed-2"
+    position="left"
+    lockedOpen="gt-md"
+    tabindex="0"
+    aria-label="sidebar with tree control"
+  >
+    <!-- SEARCH -->
+    <div fxLayout="column" #sidebar_header>
+      <!-- SEARCH -->
+      <div class="search-wrapper" fxFlex.xs="100">
+        <div
+          class="search sidenav-search"
+          fxFlex
+          fxLayout="row"
+          fxLayoutAlign="start center"
+        >
+          <i aria-hidden="true" class="fal fa-search s-18"></i>
+          <input
+            type="text"
+            class="font-14"
+            placeholder="Search Student"
+            fxFlex
+          />
+        </div>
+      </div>
+      <div class="bb"></div>
+    </div>
+
+    <!--  SIDEBAR CONTENT -->
+    <div
+      class="content overflow-auto"
+      [style.height.px]="
+        _headerService.scrollContentheight -
+        ((sidebar_header_height$ | async) +
+          (_complaiceHeaderLayoutService.container_header_height$ | async) +
+          16)
+      "
+    >
+      <mat-accordion class="compliance-student-side-bar-list">
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              class="py-16 pl-16 active-list-item"
+            >
+              <img
+                class="mat-avatar avatar"
+                src="assets/images/avatars/anna-strong.png"
+              />
+              <span>Strong Anna</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div class="card-content">
+            <mat-list class="p-0">
+              <button mat-button class="no-space m-0 p-0">
+                <mat-list-item class="active-list-item p-16">
+                  <div class="" fxLayout="column" fxLayoutAlign="center start">
+                    <span class="pb-4">Immunization summary</span>
+                    <div class="status-badge pending">Pending</div>
+                  </div>
+                </mat-list-item>
+              </button>
+
+              <button mat-button class="no-space m-0 p-0">
+                <mat-list-item class="p-16">
+                  <div class="" fxLayout="column" fxLayoutAlign="center start">
+                    <span class="pb-4">Flu (Influenza)</span>
+                    <div class="status-badge inprogress">In progress</div>
+                  </div>
+                </mat-list-item>
+              </button>
+
+              <button mat-button class="no-space m-0 p-0">
+                <mat-list-item class="p-16">
+                  <div class="" fxLayout="column" fxLayoutAlign="center start">
+                    <span class="pb-4">CPR</span>
+                    <div class="status-badge expiring">Expering</div>
+                  </div>
+                </mat-list-item>
+              </button>
+
+              <button mat-button class="no-space m-0 p-0">
+                <mat-list-item class="p-16">
+                  <div class="" fxLayout="column" fxLayoutAlign="center start">
+                    <span class="pb-4">PALS</span>
+                    <div class="status-badge getstarted">Get started</div>
+                  </div>
+                </mat-list-item>
+              </button>
+
+              <button mat-button class="no-space m-0 p-0">
+                <mat-list-item class="p-16">
+                  <div class="" fxLayout="column" fxLayoutAlign="center start">
+                    <span class="pb-4">HIPPA</span>
+                    <div class="status-badge approved font-12">Approve</div>
+                  </div>
+                </mat-list-item>
+              </button>
+            </mat-list>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <mat-accordion class="compliance-student-side-bar-list">
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              class="py-16 pl-16 active-list-item"
+            >
+              <img
+                class="mat-avatar avatar"
+                src="assets/images/avatars/anna-strong.png"
+              />
+              <span>Strong Anna</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div class="card-content">
+            <mat-list class="p-0">
+              <button mat-button class="no-space m-0 p-0">
+                <mat-list-item class="p-16">
+                  <div class="" fxLayout="column" fxLayoutAlign="center start">
+                    <span class="pb-4">Immunization summary</span>
+                    <div class="status-badge pending">Pending</div>
+                  </div>
+                </mat-list-item>
+              </button>
+
+              <button mat-button class="no-space m-0 p-0">
+                <mat-list-item class="p-16">
+                  <div class="" fxLayout="column" fxLayoutAlign="center start">
+                    <span class="pb-4">Flu (Influenza)</span>
+                    <div class="status-badge inprogress">In progress</div>
+                  </div>
+                </mat-list-item>
+              </button>
+
+              <button mat-button class="no-space m-0 p-0">
+                <mat-list-item class="p-16">
+                  <div class="" fxLayout="column" fxLayoutAlign="center start">
+                    <span class="pb-4">CPR</span>
+                    <div class="status-badge expiring">Expering</div>
+                  </div>
+                </mat-list-item>
+              </button>
+
+              <button mat-button class="no-space m-0 p-0">
+                <mat-list-item class="p-16">
+                  <div class="" fxLayout="column" fxLayoutAlign="center start">
+                    <span class="pb-4">PALS</span>
+                    <div class="status-badge getstarted">Get started</div>
+                  </div>
+                </mat-list-item>
+              </button>
+
+              <button mat-button class="no-space m-0 p-0">
+                <mat-list-item class="p-16">
+                  <div class="" fxLayout="column" fxLayoutAlign="center start">
+                    <span class="pb-4">HIPPA</span>
+                    <div class="status-badge approved font-12">Approve</div>
+                  </div>
+                </mat-list-item>
+              </button>
+            </mat-list>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <!-- / SIDEBAR CONTENT -->
+  </fuse-sidebar>
+  <!-- // SIDEBAR closed -->
+
+  <!-- CENTER -->
+  <div class="center" fxFlex.gt-md="75" fxFlex="100">
+    <div class="mb-0">
+      <div fxLayout="row" fxLayoutAlign="start start">
+        <button
+          mat-icon-button
+          class="sidebar-toggle mr-8"
+          fxHide.gt-md
+          (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div
+      class="content overflow-auto"
+      [style.height.px]="
+        _headerService.scrollContentheight -
+        (_complaiceHeaderLayoutService.container_header_height$ | async)
+      "
+    >
+      <div fxLayout=" row wrap " fxFlex=" 100">
+        <!--document viewer column-->
+        <div
+          class="pl-md-16 mb-16"
+          fxLayout="column"
+          fxFlex="100"
+          fxFlex.gt-sm="50"
+        >
+          <img src="assets/images/document.PNG" width="100%" height="auto" />
+        </div>
+
+        <div class="pl-md-16" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50">
+          <div class="status-badge disapproved w-100-p p-8 mb-16">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              fxFlex="100"
+            >
+              <div fxLayout="column" fxLayoutAlign="center start">
+                <div
+                  tabindex="0"
+                  aria-label="Immunization summary"
+                  class="font-20"
+                >
+                  Immunization summary
+                </div>
+                <div tabindex="0" aria-label="Anna Strong" class="font-14">
+                  Anna Strong
+                </div>
+              </div>
+              <div fxLayout="column" fxLayoutAlign="center end">
+                <div tabindex="0" aria-label="Disapprove" class="font-20">
+                  Disapprove1
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div fxLayout="row wrap" fxFlex="100">
+            <!--required action-->
+            <div
+              fxLayout="column"
+              class="pl-md-16"
+              fxFlex="100"
+              fxFlex.gt-sm="50"
+            >
+              <!--1st card-->
+              <mat-card class="mb-16 p-0" fxLayout="column">
+                <header
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+                >
+                  <div
+                    tabindex="0"
+                    aria-label="Required Action"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                  >
+                    <h2 class="primary-heading font-weight-600 text-capitalize">
+                      Required action
+                    </h2>
+                  </div>
+                </header>
+
+                <div class="pt-16 pl-16">
+                  <div class="pr-16">
+                    <mat-form-field appearance="fill" fxFlex>
+                      <mat-label>Document status</mat-label>
+                      <mat-select formControlName="newStatus">
+                        <mat-select-trigger>
+                          {{ status.value ? status.value[0] : '' }}
+                          <span
+                            *ngIf="status.value?.length > 1"
+                            class="example-additional-selection"
+                          >
+                            (+{{ status.value.length - 1 }}
+                            {{
+                              status.value?.length === 2 ? 'other' : 'others'
+                            }})
+                          </span>
+                        </mat-select-trigger>
+                        <mat-option
+                          *ngFor="let status of statusList"
+                          [value]="status"
+                          >{{ status }}</mat-option
+                        >
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="pr-16">
+                    <mat-form-field appearance="fill" fxFlex="100">
+                      <mat-label>Comment</mat-label>
+                      <textarea matInput></textarea>
+                    </mat-form-field>
+                  </div>
+                  <div class="pr-16 pb-16">
+                    <button mat-raised-button color="accent">Update</button>
+                  </div>
+                </div>
+              </mat-card>
+              <!--2nd card-->
+              <mat-card class="p-0 mb-16">
+                <div fxLayout="column" fxFlex="100">
+                  <!--card header-->
+                  <header
+                    fxLayout="row"
+                    fxLayoutAlign="space-between center"
+                    class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+                  >
+                    <div
+                      tabindex="0"
+                      aria-label="Vaccination"
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                    >
+                      <h2
+                        class="primary-heading font-weight-600 text-capitalize"
+                      >
+                        Vaccination
+                      </h2>
+                    </div>
+                    <button
+                      mat-icon-button
+                      class="icon-fill-bg"
+                      aria-label="Edit"
+                      exxatDrawerAction
+                      [size]="'drawer-sm'"
+                      [caption]="'Status'"
+                      [primaryAction]="'Save'"
+                      role="img"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-pen fuse-white-fg s-18"
+                      ></i>
+                    </button>
+                  </header>
+                  <!--/card header-->
+                  <div class="pl-16 pt-16" fxLayout="column">
+                    <div
+                      id=""
+                      class="exxat-info pr-16 pb-16"
+                      fxLayout="column"
+                      fxFlex="100"
+                    >
+                      <div
+                        tabindex="0"
+                        aria-label="Date of Vaccination"
+                        class="title"
+                      >
+                        Date of vaccination
+                      </div>
+                      <div
+                        tabindex="0"
+                        aria-label="Date of Vaccination is  mm/dd/yy"
+                        class="description"
+                      >
+                        mm/dd/yy
+                      </div>
+                    </div>
+                    <div
+                      id=""
+                      class="exxat-info pr-16 pb-16"
+                      fxLayout="column"
+                      fxFlex="100"
+                    >
+                      <div
+                        tabindex="0"
+                        aria-label="Expiration Date"
+                        class="title"
+                      >
+                        Expiration date
+                      </div>
+                      <div
+                        tabindex="0"
+                        aria-label="Expiration Date is mm/dd/yy"
+                        class="description"
+                      >
+                        mm/dd/yy
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-card>
+              <!--3rd card-->
+              <mat-card class="p-0 mb-16">
+                <div fxLayout="column" fxFlex="100">
+                  <!--card header-->
+                  <header
+                    fxLayout="row"
+                    fxLayoutAlign="space-between center"
+                    class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+                  >
+                    <div
+                      tabindex="0"
+                      aria-label="Titer"
+                      fxLayout="row"
+                      fxLayoutAlign="start center"
+                    >
+                      <h2
+                        class="primary-heading font-weight-600 text-capitalize"
+                      >
+                        Titer
+                      </h2>
+                    </div>
+                    <button
+                      mat-icon-button
+                      class="icon-fill-bg"
+                      aria-label="Edit"
+                      exxatDrawerAction
+                      [size]="'drawer-sm'"
+                      [caption]="'Status'"
+                      [primaryAction]="'Save'"
+                      role="img"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-pen fuse-white-fg s-18"
+                      ></i>
+                    </button>
+                  </header>
+                  <!--/card header-->
+                  <div class="pl-16 pt-16" fxLayout="column">
+                    <div
+                      id=""
+                      class="exxat-info pr-16 pb-16"
+                      fxLayout="column"
+                      fxFlex="100"
+                    >
+                      <div
+                        tabindex="0"
+                        aria-label="Date of Vaccination"
+                        class="title"
+                      >
+                        Date of vaccination
+                      </div>
+                      <div
+                        tabindex="0"
+                        aria-label="Date of vaccination is mm/dd/yy"
+                        class="description"
+                      >
+                        mm/dd/yy
+                      </div>
+                    </div>
+                    <div
+                      id=""
+                      class="exxat-info pr-16 pb-16"
+                      fxLayout="column"
+                      fxFlex="100"
+                    >
+                      <div tabindex="0" aria-label="Expiration" class="title">
+                        Expiration date
+                      </div>
+                      <div
+                        tabindex="0"
+                        aria-label="Expiration is mm/dd/yy"
+                        class="description"
+                      >
+                        mm/dd/yy
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+            <!--/required action-->
+
+            <!--Guidelines-->
+
+            <div
+              class="about-sidebar pl-md-16"
+              fxLayout="column"
+              fxFlex="100"
+              fxFlex.gt-sm="50"
+            >
+              <header
+                class="secondary-info-header mb-0"
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+              >
+                <div
+                  tabindex="0"
+                  aria-label="Guidelines"
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                >
+                  <h2 class="text-capitalize">Guidelines</h2>
+                </div>
+              </header>
+              <ul>
+                <li class="pb-8">
+                  <h5 tabindex="0" aria-label="Student must provide proof">
+                    Student must provide proof
+                  </h5>
+                </li>
+                <li class="pb-8">
+                  <h5
+                    tabindex="0"
+                    aria-label="A titer lab report for all 3 components Titer
+                  reports should not be older than"
+                  >
+                    A titer lab report for all 3 components Titer reports should
+                    not be older than
+                  </h5>
+                </li>
+                <li>
+                  <h5
+                    tabindex="0"
+                    aria-label="Proof of 2 childhood or adult vaccinations"
+                  >
+                    Proof of 2 childhood or adult vaccinations
+                  </h5>
+                </li>
+              </ul>
+            </div>
+
+            <!--/Guidelines-->
+          </div>
+          <!-- row end-->
+
+          <!--column close-->
+        </div>
+        <!--main content row end-->
+      </div>
+      <!-- / CONTENT -->
+    </div>
+    <!-- / header tab group close -->
+    <!-- / CONTENT CARD -->
+
+    <!-- / CENTER -->
+  </div>
+</div>

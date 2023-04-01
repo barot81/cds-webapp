@@ -1,0 +1,52 @@
+<div id="exxat_grid_guideline" class="page-layout full-width w-100-p">
+  <div class="center">
+    <div class="content width-lg margin-auto">
+      <div class="p-16">
+        <span class="font-20 font-weight-600"> Exxat Grid Guidelines</span>
+      </div>
+
+      <div class="search-wrapper search-grid p-16">
+        <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="s-16 secondary-text">search</mat-icon>
+          <input
+            type="text"
+            placeholder="Search"
+            fxFlex
+            [formControl]="searchItem"
+          />
+        </div>
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutAlign="start start">
+        <mat-card
+          class="p-16 m-16 item_list"
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          *ngFor="let item of filtered_exxat_grid_guideline_list$ | async"
+          fxFlex="100%"
+          fxFlex.gt-sm="30%"
+        >
+          <a routerLink="{{ item.page }}">
+            <div fxLayout="row">
+              <i
+                aria-hidden="true"
+                class="{{ item.icon }} s-32 accent-fg mr-12"
+              ></i>
+              <div fxlayout="column">
+                <h2 class="primary-fg">{{ item.title | titlecase }}</h2>
+                <div fxLayout="column">
+                  <li
+                    *ngFor="let description of item.description"
+                    class="font-14 secondary-text"
+                  >
+                    {{ description | titlecase }}
+                  </li>
+                </div>
+              </div>
+            </div>
+          </a>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

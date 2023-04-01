@@ -1,0 +1,9 @@
+@import 'init';
+
+
+mat-table.color-shades-table {
+  width: 100%;
+  @include media-breakpoint('lt-md') {
+    width: fit-content !important;
+  }
+}

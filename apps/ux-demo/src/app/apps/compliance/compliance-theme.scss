@@ -1,0 +1,30 @@
+//@import './admin/compliance-admin/compliance-admin.component.scss';
+@use '@angular/material' as mat;
+@import './admin/compliance-review/compliance-review.component.scss';
+@import './admin/compliance-notification/compliance-notification.component.scss';
+
+@mixin compliance-theme($theme) {
+  // Currrent Theme Variables --------------------------
+  $is-dark: map-get($theme, is-dark);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  // Currrent Theme Variables //-------------------------
+
+  // @include compliance-Admin-theme($theme);
+  @include compliance-review-theme($theme);
+  @include compliance-notification-theme($theme);
+
+  #compliance-review-container {
+    .active-list-item {
+      h2 {
+        @if ($is-dark) {
+          color: #424242 !important;
+        } @else {
+          color: mat.get-color-from-palette($foreground, text) !important;
+        }
+      }
+    }
+  }
+}

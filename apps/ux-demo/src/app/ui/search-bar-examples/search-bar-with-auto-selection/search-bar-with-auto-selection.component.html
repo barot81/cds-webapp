@@ -1,0 +1,146 @@
+<div id="exxat-search-autoselect" class="page-layout carded">
+  <div class="center">
+    <div>
+      <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="100">
+        <div
+          class="preview pr-md-16"
+          fxLayout="column"
+          fxLayoutAlign="center start"
+          fxFlex.gt-sm="50"
+          fxFlex="100"
+        >
+          <h5
+            class="mat-caption mb-16 secondary-text"
+            aria-label="Search bar with Autocomplete"
+          >
+            Search bar with Autocomplete
+          </h5>
+          <mat-card class="w-100-p">
+            <div class="search-wrapper" search [formControl]="searchItem">
+              <div
+                class="search"
+                fxFlex
+                fxLayout="row"
+                fxLayoutAlign="start center"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-magnifying-glass s-18 mr-4"
+                ></i>
+                <input
+                  id="inputBox"
+                  matInput
+                  placeholder="Search location"
+                  fxFlex
+                  [formControl]="searchItem"
+                  [matAutocomplete]="auto"
+                />
+
+                <button
+                  mat-icon-button
+                  aria-label="clear search"
+                  class="action-icon clear-button"
+                >
+                  <i aria-hidden="true" class="fa-light fa-xmark s-18"></i>
+                </button>
+
+                <mat-autocomplete
+                  #auto="matAutocomplete"
+                  class="mat-option-height"
+                >
+                  <mat-option>
+                    <div fxLayout="column" fxLayoutAlign="center start">
+                      <span class="font-weight-600">
+                        Test site test test testy check 1</span
+                      >
+                      <span class="font-14"> Location 2</span>
+                      <span class="font-12">
+                        3039 SHRINE PL, #4Bcds, , LOS ANGELES, CA, 90007</span
+                      >
+                    </div>
+                  </mat-option>
+
+                  <mat-option>
+                    <div fxLayout="column" fxLayoutAlign="center start">
+                      <span class="font-weight-600">
+                        Test site test test testy check 2</span
+                      >
+                      <span class="font-14"> Location 2</span>
+                      <span class="font-12">
+                        3039 SHRINE PL, #4Bcds, , LOS ANGELES, CA, 90007</span
+                      >
+                    </div>
+                  </mat-option>
+                </mat-autocomplete>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+
+        <fuse-highlight
+          lang="html"
+          class="source-code mt-small-16"
+          fxFlex.gt-sm="50"
+        >
+          <textarea #source hidden="hidden">
+            <div class="search-wrapper" search formControlName="search">
+              <div
+                class="search"
+                fxFlex
+                fxLayout="row"
+                fxLayoutAlign="start center"
+              >
+                <i aria-hidden="true" class="fa-light fa-magnifying-glass s-18 mr-4"></i>
+                <input
+                  id="inputBox"
+                  matInput
+                  placeholder="Search location"
+                  fxFlex
+                  formControlName="search"
+                  [matAutocomplete]="auto"
+                />
+
+                <button
+                  mat-icon-button
+                  aria-label="clear search"
+                  class="action-icon clear-button"
+                >
+                  <i aria-hidden="true" class="fa-light fa-xmark s-18"></i>
+                </button>
+
+                <mat-autocomplete
+                  #auto="matAutocomplete"
+                  class="mat-option-height"
+                >
+                  <mat-option>
+                    <div fxLayout="column" fxLayoutAlign="center start">
+                      <span class="font-weight-600">
+                        Test site test test testy check 1</span
+                      >
+                      <span class="font-14"> Location 2</span>
+                      <span class="font-12">
+                        3039 SHRINE PL, #4Bcds, , LOS ANGELES, CA, 90007</span
+                      >
+                    </div>
+                  </mat-option>
+
+                  <mat-option>
+                    <div fxLayout="column" fxLayoutAlign="center start">
+                      <span class="font-weight-600">
+                        Test site test test testy check 2</span
+                      >
+                      <span class="font-14"> Location 2</span>
+                      <span class="font-12">
+                        3039 SHRINE PL, #4Bcds, , LOS ANGELES, CA, 90007</span
+                      >
+                    </div>
+                  </mat-option>
+                </mat-autocomplete>
+              </div>
+            </div>
+          </textarea>
+        </fuse-highlight>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<mat-dialog-content>
+  
+  <fuse-highlight lang="html" class="" fxLayout="column" fxLayoutAlign="start start" fxFlex="100">
+    <textarea #source >
+
+
+      <div class="page-layout carded left-sidebar">
+        <div fxLayout="column" class="w-100-p">
+            <div fxLayout="column">
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-16">
+                    <span> Header with headings </span>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-16">
+                    <span> Header with tabs </span>
+                </div>
+            </div>
+
+          <div fxLayout="row">
+            <fuse-sidebar class="sidebar" name="carded-left-sidebar-tabbed-2"
+              position="left" lockedOpen="gt-md" fxFlex.gt-md="20">
+              <div class="content" fusePerfectScrollbar>
+                <p>Sidebar content</p>
+              </div>
+              <!-- / SIDEBAR CONTENT -->
+            </fuse-sidebar>
+            <!-- // fuse SIDEBAR -->
+
+            <!-- CENTER -->
+            <div class="center ml-lg-16" fxFlex.gt-md="80" fxFlex="100" fxLayout="column">
+              
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxHide.gt-md>
+                    <button mat-icon-button class="sidebar-toggle" fxHide.gt-md
+                    (click)="toggleSidebar('carded-left-sidebar-tabbed-2')">
+                    <mat-icon>menu</mat-icon>
+                    </button>
+                    <div fxHide.gt-sm>
+                        <button mat-icon-button [matMenuTriggerFor]="card20Menu" aria-label="more" >
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+
+                        <mat-menu #card20Menu="matMenu">
+                            <div fxLayout="column" fxLayoutAlign="center start">
+                                <span> secondary list</span>
+                            </div>
+                        </mat-menu>
+                    </div>
+                </div>
+
+              <div class="content" class="w-100-p">
+                <div fxLayout="row wrap" fxFlex="100">
+                    <div class="mr-md-16 pb-16" fxFlex.gt-sm="20"  fxFlex="100"  fxHide.sm fxHide.xs>
+                        <p>Secondary list</p>
+                    </div>
+                    <div fxFlex.gt-sm="80" fxLayout="row"  fxFlex="100">
+                      <p>Page content</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </textarea>
+  </fuse-highlight>
+           
+</mat-dialog-content>
+
+

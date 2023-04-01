@@ -1,0 +1,298 @@
+<div
+  fxLayout="row "
+  fxLayout.lt-md="column"
+  fxFlex="100"
+  class="measures-demo-page"
+>
+  <div
+    Resizable
+    [resizableMinWidth]="700"
+    fxLayout="column"
+    fxLayoutAlign="start start"
+    class="px-xs-8 measures-demo-resizable"
+  >
+    <mat-card
+      class="card-header-title py-8 pr-8 mx-0 pl-16 w-100-p mb-16"
+      tabindex="0"
+      aria-label="Objective card"
+    >
+      <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+        <h2
+          class="text-capitalize brown-heading font-weight-600"
+          tabindex="0"
+          aria-label="heading Objective"
+        >
+          Objective
+        </h2>
+        <button
+          mat-icon-button
+          class="icon-fill-bg"
+          exxatDrawerAction
+          [componentSelector]="
+            _PlanAppDemoDrawerService.get('exxat-app-objective-drawer-demo')
+          "
+          [size]="'drawer-md'"
+          [caption]="'Objective'"
+          [primaryAction]="'Save'"
+          aria-label="Add Objective"
+        >
+          <i aria-hidden="true" class="fa-light fa-plus fuse-white-fg s-18"></i>
+        </button>
+      </div>
+    </mat-card>
+    <mat-card class="w-100-p p-0 mx-0 mb-16">
+      <mat-accordion
+        class="w-100-p"
+        tabindex="0"
+        aria-label="expansion panel for Objective"
+      >
+        <mat-expansion-panel class="border-radius-20">
+          <mat-expansion-panel-header
+            class="border-bottom border-radius-0 card-header-title"
+          >
+            <mat-panel-title>
+              <h2
+                class="text-capitalize brown-heading font-weight-600"
+                tabindex="0"
+                aria-label="heading objective"
+              >
+                Objective
+              </h2>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div fxLayout="row" fxLayoutAlign="start center" class="my-16">
+            <button
+              mat-button
+              class="action-icon mr-16"
+              aria-label="Add objective button"
+            >
+              <i
+                aria-hidden="true"
+                class="fa-light fa-plus s-18 accent-fg mr-4"
+              ></i>
+              Add objective
+            </button>
+            <button
+              mat-button
+              class="action-icon mr-16"
+              aria-label="reorder button"
+              exxatDrawerAction
+              [componentSelector]="
+                _PlanAppDemoDrawerService.get('exxat-app-reorder-tree-drawer')
+              "
+              [size]="'drawer-md'"
+              [caption]="'Reorder'"
+              [primaryAction]="'Save'"
+            >
+              <i
+                aria-hidden="true"
+                class="fa-light fa-bars s-18 accent-fg mr-4"
+              ></i>
+              Reorder
+            </button>
+          </div>
+          <exxat-app-plan-tree-demo></exxat-app-plan-tree-demo>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
+    <mat-card
+      class="card-header-title py-8 pr-8 mx-0 pl-16 w-100-p mb-16"
+      tabindex="0"
+      aria-label="Goals card"
+    >
+      <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+        <h2
+          class="text-capitalize brown-heading font-weight-600"
+          tabindex="0"
+          aria-label="heading Goals"
+        >
+          Goals
+        </h2>
+        <button mat-icon-button class="icon-fill-bg" aria-label="add goals">
+          <i aria-hidden="true" class="fa-light fa-plus fuse-white-fg s-18"></i>
+        </button>
+      </div>
+    </mat-card>
+    <mat-card
+      class="card-header-title py-8 pr-8 mx-0 pl-16 w-100-p"
+      tabindex="0"
+      aria-label="outcomes card"
+    >
+      <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+        <h2
+          class="text-capitalize brown-heading font-weight-600"
+          tabindex="0"
+          aria-label="heading outcomes"
+        >
+          Outcomes
+        </h2>
+        <button mat-icon-button class="icon-fill-bg" aria-label="add outcomes">
+          <i aria-hidden="true" class="fa-light fa-plus fuse-white-fg s-18"></i>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- right side content -->
+  <div
+    fxLayout="column"
+    fxLayoutAlign="start start"
+    class="px-xs-16 mt-small-16"
+    tabindex="0"
+    aria-label="right side content"
+  >
+    <mat-accordion
+      class="mat-accordion-no-bg w-100-p"
+      tabindex="0"
+      aria-label="Details expansion panel"
+    >
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div fxlayoutalign="space-between center" fxLayout="row" fxFlex>
+              <h4
+                class="text-capitalize accent-fg"
+                fxFlex
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                tabindex="0"
+                aria-label="heading details"
+              >
+                Details
+              </h4>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="column">
+          <div fxLayout="column" class="mb-16">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="title description"
+              >Description</span
+            >
+            <span
+              tabindex="0"
+              aria-label="description is 1. Possess the theoretical and scientific knowledge to perform original research at the basic, applied or clinical lev leading to scientific prese."
+              >1. Possess the theoretical and scientific knowledge to perform
+              original research at the basic, applied or clinical lev leading to
+              scientific prese.</span
+            >
+          </div>
+          <div fxLayout="column" class="mb-16">
+            <span class="font-weight-600" tabindex="0" aria-label="title themes"
+              >Themes</span
+            >
+            <span
+              tabindex="0"
+              aria-label="themes are  Evidence-based practice, Cultural competence, Ethical and legal practice "
+            >
+              Evidence-based practice, Cultural competence, Ethical and legal
+              practice
+            </span>
+          </div>
+          <div fxLayout="column" class="mb-16">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="title Outcome assessment measures"
+              >Outcome assessment measures</span
+            >
+            <span
+              tabindex="0"
+              aria-label="Outcome assessment measures are CPI date, Student exit survey"
+              >CPI date, Student exit survey
+            </span>
+          </div>
+          <div fxLayout="column" class="mb-16">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="title Mapping level attributes for cross"
+              >Mapping level attributes for cross</span
+            >
+            <span tabindex="0" aria-label="Mapping">Mapping </span>
+          </div>
+          <div fxLayout="column" class="mb-16">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="title PB curriculum attribute"
+              >PB curriculum attribute</span
+            >
+            <span tabindex="0" aria-label="PB Curriculum">PB Curriculum </span>
+          </div>
+          <div fxLayout="column" class="mb-16">
+            <span class="font-weight-600 mb-8" tabindex="0" aria-label="tags"
+              >Tags</span
+            >
+            <mat-chip-list>
+              <mat-chip
+                class="orange-bg"
+                fontColor
+                tabindex="0"
+                aria-label="tag is Tagging"
+                >Tagging</mat-chip
+              >
+              <mat-chip
+                class="purple-bg"
+                fontColor
+                tabindex="0"
+                aria-label="tag is Tagging"
+                >Tagging</mat-chip
+              >
+            </mat-chip-list>
+          </div>
+          <div fxLayout="column" class="mb-16">
+            <span
+              class="font-weight-600"
+              tabindex="0"
+              aria-label="title Attachment"
+              >Attachment</span
+            >
+            <a tabindex="0" aria-label="View document">View document</a>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-divider class="w-95-p margin-auto"></mat-divider>
+    <mat-accordion
+      class="mat-accordion-no-bg w-100-p"
+      tabindex="0"
+      aria-label="expansion panel for linked"
+    >
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div fxlayoutalign="space-between center" fxLayout="row" fxFlex>
+              <h4
+                class="text-capitalize accent-fg"
+                fxFlex
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                tabindex="0"
+                aria-label="heading linked (3)"
+              >
+                Linked (3)
+              </h4>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="column">
+          <div fxLayout="column" class="mb-16">
+            <span class="font-weight-600" tabindex="0" aria-label="title goal"
+              >Goal</span
+            >
+            <span
+              tabindex="0"
+              aria-label="goal is 2. Report to appropriate authorities suspected cases of fraud and abuse related to the utilization of and payment for physical therapy and other health care services."
+              >2. Report to appropriate authorities suspected cases of fraud and
+              abuse related to the utilization of and payment for physical
+              therapy and other health care services.</span
+            >
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

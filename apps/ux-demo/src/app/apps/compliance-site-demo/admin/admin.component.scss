@@ -1,0 +1,18 @@
+
+@mixin compliance-site-demo-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $action: map-get($theme, action);
+  $is-dark: map-get($theme, is-dark);
+
+
+.search-background{
+  @if ($is-dark) {
+    background-color: $black-secondory;
+  } @else {
+    background-color: $white;
+  }
+}
+}

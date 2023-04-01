@@ -1,0 +1,24 @@
+@import 'init';
+
+
+#placement-manage-placements {
+  .placement-message-box {
+    max-width: max-content;
+    padding: 4px 8px;
+    font-size: px-to-rem(12) !important;
+  }
+  .content {
+    overflow: auto;
+    padding-bottom: 40px;
+
+    td {
+      .student-name {
+        span {
+          @include media-breakpoint('xs') {
+            font-size: px-to-rem(16);
+          }
+        }
+      }
+    }
+  }
+}

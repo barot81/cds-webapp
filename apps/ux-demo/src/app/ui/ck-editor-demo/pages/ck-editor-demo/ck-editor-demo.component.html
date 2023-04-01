@@ -1,0 +1,480 @@
+<div id="ck-editor" class="p-12 w-100-p page-layout simple tabbed">
+  <div class="center pl-0 pr-0">
+    <div class="content" fusePerfectScrollbar>
+      <div class="gray-header mb-16">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="mr-8">
+              <button
+                mat-icon-button
+                aria-label="Click to go back"
+                routerLink="/admin/ux/ui/exxat-component-library"
+              >
+                <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+              </button>
+            </div>
+            <div class="mat-title">CK-Editor Examples</div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16">
+        <div fxLayout="column" fxLayout.gt-md="row">
+          <div
+            class="preview"
+            fxLayout="column"
+            fxLayoutAlign="start"
+            fxFlex="50"
+          >
+            <div class="mat-caption secondary-text mb-16">
+              CK-Editor Example One (With maxLength Validation) :
+            </div>
+            <mat-card fxLayout="column">
+              <form [formGroup]="form" fxLayout="column">
+                <ckeditor
+                  fxFlex="100"
+                  [config]="ckEditorConfigData"
+                  [editor]="Editor"
+                  [maxLength]="50"
+                  formControlName="dataControl_"
+                  (onValidate)="onValidate($event)"
+                >
+                </ckeditor>
+              </form>
+            </mat-card>
+          </div>
+
+          <div
+            class="preview"
+            fxLayout="column"
+            fxLayoutAlign="start"
+            fxFlex="50"
+          >
+            <mat-tab-group>
+              <!-- 1st tab content -->
+              <mat-tab label="HTML">
+                <fuse-highlight
+                  lang="html"
+                  class="source-code mt-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+
+                    <form [formGroup]="form" fxLayout="column">
+                      <ckeditor fxFlex="100" [config]="ckEditorConfigData" [editor]="Editor" [maxLength]="50"
+                        formControlName="dataControl_" (onValidate)="onValidate($event)">
+                      </ckeditor>
+                    </form>
+
+                  </textarea>
+                </fuse-highlight>
+              </mat-tab>
+
+              <!-- 2nd tab content -->
+              <mat-tab label="TS">
+                <fuse-highlight
+                  lang="ts"
+                  class="source-code mt-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                    import { Component, OnInit } from '@angular/core';
+                    import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+                    import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
+
+                    @Component({
+                    selector: 'ryzen-ck-editor-demo',
+                    templateUrl: './ck-editor-demo.component.html'
+                    })
+                    export class CkEditorDemoComponent implements OnInit {
+
+                    form: FormGroup;
+
+                    //#region [CK Edtitor Variables]
+
+                    public ckEditorConfigData: any;
+                    public Editor = ClassicEditor;
+
+                    //#endregion
+
+                    ngOnInit() {
+                    this.setEditorConfiguration();
+                    }
+
+                    constructor(private readonly _fb: FormBuilder) {
+                    this.form = this._fb.group({
+                    dataControl: ['', Validators.compose([Validators.required])],
+                    dataControl_: ['', Validators.compose([Validators.required, Validators.maxLength(50)])]
+                    })
+                    }
+
+                    public onValidate($event: boolean) {
+                    // $event will be based on the maxLength validation
+                    }
+
+                    //================ CK-Editor Initialize Object=======================//
+                    private setEditorConfiguration() {
+                    this.ckEditorConfigData = {
+                    toolbar: {
+                    items: [
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'underline',
+                    'link',
+                    '|',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'fontColor',
+                    'fontSize',
+                    '|',
+                    'uploadImage',
+                    '|',
+                    'outdent',
+                    'indent',
+                    '|',
+                    'blockQuote',
+                    'undo',
+                    'redo'
+                    ]
+                    },
+                    language: 'en',
+                    licenseKey: ''
+                    };
+                    }
+                    //====================END ==========================================//
+                    }
+
+                    
+                  </textarea>
+                </fuse-highlight>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16">
+        <div fxLayout="column" fxLayout.gt-md="row">
+          <div
+            class="preview"
+            fxLayout="column"
+            fxLayoutAlign="start"
+            fxFlex="50"
+          >
+            <div class="mat-caption secondary-text mb-16">
+              Ck Editor Example Two:
+            </div>
+            <mat-card fxLayout="column">
+              <form [formGroup]="form" fxLayout="column">
+                <ckeditor
+                  fxFlex="100"
+                  [config]="ckEditorConfigData"
+                  [editor]="Editor"
+                >
+                </ckeditor>
+              </form>
+            </mat-card>
+          </div>
+
+          <div
+            class="preview"
+            fxLayout="column"
+            fxLayoutAlign="start"
+            fxFlex="50"
+          >
+            <mat-tab-group>
+              <!-- 1st tab content -->
+              <mat-tab label="HTML">
+                <fuse-highlight
+                  lang="html"
+                  class="source-code mt-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+
+                    <form [formGroup]="form" fxLayout="column">
+                      <ckeditor fxFlex="100"[config]="ckEditorConfigData" [editor]="Editor">
+                      </ckeditor>
+                    </form>
+
+                  </textarea>
+                </fuse-highlight>
+              </mat-tab>
+
+              <!-- 2nd tab content -->
+              <mat-tab label="TS">
+                <fuse-highlight
+                  lang="ts"
+                  class="source-code mt-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                    import { Component, OnInit } from '@angular/core';
+                    import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+                    import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
+
+                    @Component({
+                    selector: 'ryzen-ck-editor-demo',
+                    templateUrl: './ck-editor-demo.component.html'
+                    })
+                    export class CkEditorDemoComponent implements OnInit {
+
+                    form: FormGroup;
+
+                    //#region [CK Edtitor Variables]
+
+                    public ckEditorConfigData: any;
+                    public Editor = ClassicEditor;
+
+                    //#endregion
+
+                    ngOnInit() {
+                    this.setEditorConfiguration();
+                    }
+
+                    constructor(private readonly _fb: FormBuilder) {
+                    this.form = this._fb.group({
+                    dataControl: ['', Validators.compose([Validators.required])],
+                    dataControl_: ['', Validators.compose([Validators.required, Validators.maxLength(50)])]
+                    })
+                    }
+
+                    public onValidate($event: boolean) {
+                    // $event will be based on the maxLength validation
+                    }
+
+                    //================ CK-Editor Initialize Object=======================//
+                    private setEditorConfiguration() {
+                    this.ckEditorConfigData = {
+                    toolbar: {
+                    items: [
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'underline',
+                    'link',
+                    '|',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'fontColor',
+                    'fontSize',
+                    '|',
+                    'uploadImage',
+                    '|',
+                    'outdent',
+                    'indent',
+                    '|',
+                    'blockQuote',
+                    'undo',
+                    'redo'
+                    ]
+                    },
+                    language: 'en',
+                    licenseKey: ''
+                    };
+                    }
+                    //====================END ==========================================//
+                    }
+
+                    
+                  </textarea>
+                </fuse-highlight>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16">
+        <div fxLayout="column" fxLayout.gt-md="row">
+          <div
+            class="preview"
+            fxLayout="column"
+            fxLayoutAlign="start"
+            fxFlex="50"
+          >
+            <div class="mat-caption secondary-text mb-16">
+              CK-Editor Example Three (In Drawer) :
+            </div>
+            <mat-card fxLayout="column">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <button
+                  mat-stroked-button
+                  color="accent"
+                  class="action-icon"
+                  exxatDrawerAction
+                  [componentSelector]="
+                    _drawerService.get('exxat-ck-editor-drawer-example')
+                  "
+                  [size]="'drawer-md'"
+                  [caption]="'CK Editor'"
+                >
+                  Open Drawer
+                </button>
+              </div>
+            </mat-card>
+          </div>
+
+          <div
+            class="preview"
+            fxLayout="column"
+            fxLayoutAlign="start"
+            fxFlex="50"
+          >
+            <mat-tab-group>
+              <!-- 1st tab content -->
+              <mat-tab label="HTML">
+                <fuse-highlight
+                  lang="html"
+                  class="source-code mt-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+
+                    <div class="drawer-p" fxLayout="column">
+                      <mat-card>
+                          <form [formGroup]="fusionFormGroup" fxLayout="column">
+                              <ckeditor fxFlex="100" [config]="ckEditorConfigData" [editor]="Editor" [maxLength]="50"
+                                  formControlName="dataControl_" (onValidate)="onValidate($event)">
+                              </ckeditor>
+                          </form>
+                      </mat-card>
+                    </div>
+
+                  </textarea>
+                </fuse-highlight>
+              </mat-tab>
+
+              <!-- 2nd tab content -->
+              <mat-tab label="TS">
+                <fuse-highlight
+                  lang="ts"
+                  class="source-code mt-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                    import { Component } from '@angular/core';
+                    import { FormBuilder, Validators } from '@angular/forms';
+                    import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
+                    import { FusionFormComponent } from "@exxat/fusion/core/components";
+
+                    @Component({
+                    selector: 'exxat-ck-editor-drawer-example',
+                    templateUrl: './ck-editor-drawer-example.component.html'
+                    })
+                    export class CkEditorDrawerExampleComponent extends FusionFormComponent {
+
+                    //#region [CK Edtitor Variables]
+
+                    public ckEditorConfigData: any;
+                    public Editor = ClassicEditor;
+
+                    //#endregion
+
+                    ngOnInit() {
+                    this.setEditorConfiguration();
+                    }
+
+                    constructor(private readonly _fb: FormBuilder) {
+                    super();
+                    this.fusionFormGroup = this._fb.group({
+                    dataControl_: ['', Validators.compose([Validators.required, Validators.maxLength(50)])]
+                    })
+                    }
+
+                    public onValidate($event: boolean) {
+                    // $event will be based on the maxLength validation
+                    }
+
+                    //================ CK-Editor Initialize Object=======================//
+                    private setEditorConfiguration() {
+                    this.ckEditorConfigData = {
+                    toolbar: {
+                    items: [
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'underline',
+                    'link',
+                    '|',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'fontColor',
+                    'fontSize',
+                    '|',
+                    'uploadImage',
+                    '|',
+                    'outdent',
+                    'indent',
+                    '|',
+                    'blockQuote',
+                    'undo',
+                    'redo'
+                    ]
+                    },
+                    language: 'en',
+                    licenseKey: ''
+                    };
+                    }
+                    //====================END ==========================================//
+
+                    }
+
+                    
+                  </textarea>
+                </fuse-highlight>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </div>
+      <div class="mt-16" fxLayout="column" fxLayout.gt-md="row">
+        <div
+          class="preview"
+          fxLayout="column"
+          fxLayoutAlign="start"
+          fxFlex="48"
+        >
+          <p
+            class="warn-fg font-16"
+            tabindex="0"
+            aria-label="Note from UI Team"
+          >
+            Note from UI Team
+          </p>
+          <p
+            class="warn-fg font-14"
+            tabindex="0"
+            aria-label="Developers are requested not to make any extra self made Class or
+          write hardcode CSS or add Colors. Since we are following MULTI theme,
+          Theme will break if Material theme structure and guidlines are not
+          followed properly."
+            class="warn-fg font-14"
+          >
+            Developers are requested not to make any extra self made Class or
+            write hardcode CSS or add Colors. Since we are following MULTI
+            theme, Theme will break if Material theme structure and guidlines
+            are not followed properly.
+          </p>
+          <strong>Connect To UI team for any such cases.</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

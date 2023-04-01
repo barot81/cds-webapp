@@ -1,0 +1,181 @@
+<div class="h-100-p drawer-p drawer-with-table" fxLayout="column">
+  <mat-card class="m-0 border-radius-8" tabindex="0" aria-label="header card">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <exxat-avatar
+        src="assets/images/avatars/anna-strong.png"
+        class="mr-8"
+      ></exxat-avatar>
+      <div fxLayout="row wrap" fxLayoutAlign="space-between start" fxFlex="100">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div fxLayout="column">
+            <div fxLayout="row" fxLayoutAlign="start center" class="mb-8">
+              <span
+                class="font-weight-600 mr-8"
+                tabindex="0"
+                aria-label="Marshall,Tatum"
+                >Marshall,Tatum</span
+              >
+              <span
+                class="px-8 border-radius-20 exxat-gorse-bg"
+                tabindex="0"
+                aria-label="setting Family Medicine"
+                >Family Medicine</span
+              >
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start center">
+              <span
+                class="pr-8"
+                tabindex="0"
+                aria-label="Newyork Rehabilitation Center"
+                >Newyork Rehabilitation Center </span
+              >|
+              <span class="pl-8" tabindex="0" aria-label="Rotation 2021-22">
+                Rotation 2021-22</span
+              >
+            </div>
+          </div>
+        </div>
+        <span class="text-italic" tabindex="0" aria-label="Avg Score : 5"
+          >Avg Score : 5</span
+        >
+      </div>
+    </div>
+  </mat-card>
+  <h4
+    class="my-16"
+    tabindex="0"
+    aria-label="heading 1-2 Months NSG 606 Daily Form"
+  >
+    1-2 Months NSG 606 Daily Form
+  </h4>
+  <div fxFlex="100" class="h-85-p">
+    <mat-card fxFlex="100" class="h-100-p m-0 border-radius-16">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <div class="search-wrapper search-grid mb-16">
+          <div
+            class="search"
+            fxFlex
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <mat-icon class="s-16 secondary-text">search</mat-icon>
+            <input type="text" placeholder="Search" fxFlex />
+          </div>
+        </div>
+        <div fxLayout="row" class="mb-16">
+          <button mat-stroked-button disabled class="mr-16">Bulk Review</button>
+          <button mat-icon-button>
+            <i aria-hidden="true" class="fa-light fa-expand"></i>
+          </button>
+        </div>
+      </div>
+      <div class="overflow-auto h-90-p">
+        <table
+          tabindex="0"
+          aria-hidden="false"
+          aria-label="this is table"
+          mat-table
+          [dataSource]="dataSource"
+          class="w-100-p exxat-table condensed-table"
+        >
+          <!-- instances Column -->
+          <ng-container matColumnDef="instances">
+            <th
+              tabindex="0"
+              aria-label="instances"
+              class="px-16"
+              mat-header-cell
+              *matHeaderCellDef
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-checkbox></mat-checkbox>
+                <span class="ml-8"> Instances (8)</span>
+              </div>
+            </th>
+            <td
+              tabindex="0"
+              attr.aria-label="instances Title is {{ element.instances }}"
+              mat-cell
+              *matCellDef="let element"
+              class="px-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-checkbox></mat-checkbox>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  fxFlex="100"
+                >
+                  <span
+                    class="ml-8"
+                    tabindex="0"
+                    attr.aria-label="{{ element.instances }}"
+                  >
+                    {{ element.instances }}
+                  </span>
+                  <span
+                    class="text-italic"
+                    tabindex="0"
+                    attr.aria-label="Score: {{ element.score }}"
+                  >
+                    Score: {{ element.score }}
+                  </span>
+                </div>
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- status Column -->
+          <ng-container matColumnDef="status">
+            <th
+              tabindex="0"
+              aria-label="status"
+              mat-header-cell
+              *matHeaderCellDef
+              class="px-16"
+            >
+              Status
+            </th>
+            <td mat-cell *matCellDef="let element" class="px-16">
+              <div
+                class="status-badge approved font-12"
+                tabindex="0"
+                aria-label="status Reveiwed"
+              >
+                Reveiwed
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- submissionDate Column -->
+          <ng-container matColumnDef="submissionDate">
+            <th
+              tabindex="0"
+              aria-label="submission Date"
+              mat-header-cell
+              *matHeaderCellDef
+              class="px-16"
+            >
+              Submission Date
+            </th>
+            <td
+              tabindex="0"
+              attr.aria-label="submissionDate is {{ element.submissionDate }}"
+              mat-cell
+              *matCellDef="let element"
+              class="px-16"
+            >
+              {{ element.submissionDate }}
+            </td>
+          </ng-container>
+
+          <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+          ></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </mat-card>
+  </div>
+</div>

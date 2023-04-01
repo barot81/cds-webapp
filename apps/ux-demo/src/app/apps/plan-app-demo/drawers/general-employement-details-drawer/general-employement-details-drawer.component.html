@@ -1,0 +1,95 @@
+<div class="drawer-p">
+  <mat-card class="mb-16">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field appearance="fill" fxFlex="90">
+        <mat-label>Institution</mat-label>
+        <input matInput formControlName="institution" required>
+        <mat-error>Institution Name is required!</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field appearance="fill" fxFlex="90">
+        <mat-label>Campus</mat-label>
+        <input matInput formControlName="campus">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field appearance="fill" fxFlex="90">
+        <mat-label>Department</mat-label>
+        <input matInput formControlName="department">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field appearance="fill" fxFlex="90">
+        <mat-label>Appointment type</mat-label>
+        <input matInput formControlName="appointmentType">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field appearance="fill" fxFlex="90">
+        <mat-label>Rank</mat-label>
+        <input matInput formControlName="rank">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field appearance="fill" fxFlex="90">
+        <mat-label>Faculty type</mat-label>
+        <input matInput formControlName="facultyType" required>
+        <mat-error> Faculty type is required!</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field appearance="fill" fxFlex="90">
+        <mat-label>Position</mat-label>
+        <input matInput formControlName="position">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field appearance="fill" fxFlex="90">
+        <mat-label>Appointment status</mat-label>
+        <input matInput formControlName="appointmentStatus">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field appearance="fill" fxFlex="90">
+        <mat-label>Start date</mat-label>
+        <input matInput [matDatepicker]="picker2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2 color="primary" class="action-icon"></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start start">
+      <mat-form-field appearance="fill" fxFlex="90" class="mr-16">
+        <mat-label>End date</mat-label>
+        <input matInput [matDatepicker]="picker2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2 color="primary" class="action-icon"></mat-datepicker>
+      </mat-form-field>
+      <mat-radio-button class="mt-16">NA</mat-radio-button>
+    </div>
+    
+    
+  </mat-card>
+  <mat-card fxLayout="column">
+    <span class="font-weight-600 mb-16">Workload distribution</span>
+    <div fxLayout="row" fxFlex="100">
+      <span fxFlex="100" fxFlex.gt-sm="30" class="pr-16">Teaching</span>
+      <mat-form-field appearance="fill" fxFlex="30">
+        <input matInput formControlName="teaching">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxFlex="100">
+      <span fxFlex="100" fxFlex.gt-sm="30" class="pr-16">Services</span>
+      <mat-form-field appearance="fill" fxFlex="30">
+        <input matInput formControlName="services">
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxFlex="100">
+      <span fxFlex="100" fxFlex.gt-sm="30" class="pr-16">Others</span>
+      <mat-form-field appearance="fill" fxFlex="30">
+        <input matInput formControlName="others">
+      </mat-form-field>
+    </div>
+
+  </mat-card>
+</div>

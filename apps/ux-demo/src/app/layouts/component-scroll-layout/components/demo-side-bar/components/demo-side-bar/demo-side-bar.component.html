@@ -1,0 +1,36 @@
+<!-- SIDEBAR -->
+<!-- <fuse-sidebar class="sidebar drawer-x-sm" name="carded-left-sidebar-tabbed-2" position="left" lockedOpen="gt-md"> -->
+
+<div #demo_side_bar_header>
+    <!--   SIDEBAR HEADER -->
+    <!-- SEARCH -->
+    <div class="search-wrapper m-16">
+        <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="s-16 secondary-text">search</mat-icon>
+            <input matInput placeholder="Search" fxFlex>
+        </div>
+    </div>
+    <!-- / SEARCH -->
+    <!-- / SIDEBAR HEADER -->
+
+</div>
+
+<!--  SIDEBAR CONTENT -->
+<div class="content overflow-auto scroll-hover pb-64"
+    [style.height.px]="_headerService.scrollContentheight - demo_side_bar_header_height">
+    <mat-list>
+        <div *ngFor="let item of studentList;let i=index">
+            <button mat-button class="no-space m-0 p-0" (click)="selectItem(i)">
+                <mat-list-item class="p-8" [ngClass]="{'active-list-item' : selectedIndex === i}">
+                    <img *ngIf="!isAvatarVisible" src="assets/images/avatars/anna-strong.png"
+                        class="mat-avatar avatar" />
+                    <span class="font-14 font-weight-600">{{item}}</span>
+                </mat-list-item>
+            </button>
+            <mat-divider class="w-90-p margin-auto"></mat-divider>
+        </div>
+    </mat-list>
+</div>
+<!-- / SIDEBAR CONTENT -->
+<!-- </fuse-sidebar> -->
+<!-- // SIDEBAR -->

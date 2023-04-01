@@ -1,0 +1,38 @@
+@import 'init';
+.frequency-based-eval-form {
+  .setting-color {
+    background-color: $tapestry;
+    border-radius: 24px;
+    color: $white;
+  }
+
+  .center {
+    .total-score-section {
+      background: $apple;
+      border-radius: 6px;
+    }
+    .form-field-title {
+      color: $persian-blue;
+    }
+  }
+
+  .status-card {
+    border: 1px solid $concrete;
+    box-shadow: 0px 1px 4px rgba(137, 137, 137, 0.25) !important;
+    border-radius: 12px;
+    .text-status-color {
+      &.save-status {
+        color: $dove-light-gray;
+      }
+      &.submitted-status {
+        color: $pomegranate;
+      }
+      &.pending-review-status {
+        color: $orange;
+      }
+      &.reviewed-status {
+        color: $fruit-salad;
+      }
+    }
+  }
+}

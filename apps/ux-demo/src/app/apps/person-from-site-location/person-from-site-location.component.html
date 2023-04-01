@@ -1,0 +1,624 @@
+<div
+  class="page-layout carded fullwidth"
+  fxLayout="column"
+  id="person-from-site-location"
+>
+  <div class="center pl-0 pr-0">
+    <div class="">
+      <div id="exxat-wizard-examples" fxFlex="100">
+        <div class="stepper-transparent">
+          <mat-horizontal-stepper #stepper>
+            <mat-step>
+              <ng-template matStepLabel>Instruction</ng-template>
+              <div fxLayout="column">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="end center"
+                  class="mt-16 px-xs-16"
+                >
+                  <button
+                    mat-stroked-button
+                    color="accent"
+                    class="mr-16 px-24 accent-border-btn"
+                    matStepperPrevious
+                  >
+                    Previous
+                  </button>
+                  <button
+                    mat-raised-button
+                    color="accent"
+                    class="px-24"
+                    matStepperNext
+                  >
+                    Next
+                  </button>
+                </div>
+
+                <div fxLayout="row" fxFlex="100" class="mt-16">
+                  <fuse-sidebar
+                    class="sidebar"
+                    name="carded-left-sidebar-tabbed-2"
+                    position="left"
+                    lockedOpen="gt-md"
+                    fxFlex.gt-md="25"
+                    fxFlex="100"
+                  >
+                    <h4 class="accent-fg font-weight-600 p-16">
+                      We would like you to offer slots for the following
+                      schedules
+                    </h4>
+
+                    <div class="content" fusePerfectScrollbar>
+                      <div fxLayout="column">
+                        <div
+                          class="word-break-all p-16 space-pre-wrap text-left"
+                          fxLayout="column"
+                        >
+                          <span class="font-weight-600"
+                            >Jan 1st , 2020 - Jan 15th , 2020</span
+                          >
+                          <span>Clinical Experiance I</span>
+                        </div>
+
+                        <mat-divider class="w-90-p margin-auto"></mat-divider>
+                        <div
+                          class="word-break-all p-16 space-pre-wrap text-left"
+                          fxLayout="column"
+                        >
+                          <span class="font-weight-600"
+                            >Jan 1st , 2020 - Jan 15th , 2020</span
+                          >
+                          <span>Clinical Experiance I</span>
+                        </div>
+
+                        <mat-divider class="w-90-p margin-auto"></mat-divider>
+                        <div
+                          class="word-break-all p-16 space-pre-wrap text-left"
+                          fxLayout="column"
+                        >
+                          <span class="font-weight-600"
+                            >Jan 1st , 2020 - Jan 15th , 2020</span
+                          >
+                          <span>Clinical Experiance I</span>
+                        </div>
+
+                        <mat-divider class="w-90-p margin-auto"></mat-divider>
+                        <div
+                          class="word-break-all p-16 space-pre-wrap text-left"
+                          fxLayout="column"
+                        >
+                          <span class="font-weight-600"
+                            >Jan 1st , 2020 - Jan 15th , 2020</span
+                          >
+                          <span>Clinical Experiance I</span>
+                        </div>
+
+                        <mat-divider class="w-90-p margin-auto"></mat-divider>
+                        <div
+                          class="word-break-all p-16 space-pre-wrap text-left"
+                          fxLayout="column"
+                        >
+                          <span class="font-weight-600"
+                            >Jan 1st , 2020 - Jan 15th , 2020</span
+                          >
+                          <span>Clinical Experiance I</span>
+                        </div>
+
+                        <mat-divider class="w-90-p margin-auto"></mat-divider>
+                        <div
+                          class="word-break-all p-16 space-pre-wrap text-left"
+                          fxLayout="column"
+                        >
+                          <span class="font-weight-600"
+                            >Jan 1st , 2020 - Jan 15th , 2020</span
+                          >
+                          <span>Clinical Experiance I</span>
+                        </div>
+
+                        <mat-divider class="w-90-p margin-auto"></mat-divider>
+                        <div
+                          class="word-break-all p-16 space-pre-wrap text-left"
+                          fxLayout="column"
+                        >
+                          <span class="font-weight-600"
+                            >Jan 1st , 2020 - Jan 15th , 2020</span
+                          >
+                          <span>Clinical Experiance I</span>
+                        </div>
+                      </div>
+                    </div>
+                  </fuse-sidebar>
+
+                  <div
+                    fxLayout="column"
+                    fxFlex.gt-md="75"
+                    fxFlex="100"
+                    class="pl-lg-16"
+                  >
+                    <button
+                      mat-icon-button
+                      class="sidebar-toggle mb-16"
+                      fxHide.gt-md
+                      (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+                    >
+                      <mat-icon>menu</mat-icon>
+                    </button>
+
+                    <div
+                      fxLayout="row wrap"
+                      fxLayoutAlign="space-between center"
+                      class="mb-16 px-xs-16"
+                    >
+                      <div class="search-wrapper search-grid">
+                        <div
+                          class="search white-background"
+                          fxFlex
+                          fxLayout="row"
+                          fxLayoutAlign="start center"
+                        >
+                          <mat-icon class="s-16 secondary-text"
+                            >search</mat-icon
+                          >
+                          <input type="text" placeholder="Search" fxFlex />
+                        </div>
+                      </div>
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="pt-xs-16"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-question-circle accent-fg"
+                        ></i>
+                        <span class="ml-8 accent-fg font-weight-600">Help</span>
+                      </div>
+                    </div>
+
+                    <div fxLayout="column">
+                      <mat-card class="p-0 mb-16" fxLayout="column">
+                        <header
+                          fxLayout="row"
+                          fxLayoutAlign="space-between center"
+                          class="card-header-title staus-initial card-header-border-bottom py-8 pr-8 pl-16"
+                        >
+                          <div fxLayout="row" fxLayoutAlign="start center">
+                            <h3 class="font-weight-600 text-capitalize">
+                              ageles medical center - dallas
+                            </h3>
+                          </div>
+                        </header>
+                        <div
+                          class="pl-16 pt-16"
+                          fxLayout="row wrap"
+                          fxLayoutAlign="space-between start"
+                          fxFlex="100"
+                        >
+                          <button
+                            mat-raised-button
+                            color="accent"
+                            class="px-24 mb-16 mr-16"
+                          >
+                            Add availability
+                          </button>
+                          <div class="pr-16 pb-16" fxFlex.xs="100">
+                            <mat-radio-group
+                              aria-label="Select an option"
+                              fxLayout="column"
+                              fxFlex.xs="100"
+                            >
+                              <mat-radio-button value="1" class="mb-12"
+                                ><span class="white-space-normal"
+                                  >I don't have any availability right now, can
+                                  you contact me later</span
+                                ></mat-radio-button
+                              >
+                              <mat-radio-button value="2">
+                                <span class="white-space-normal"
+                                  >No availability for this year</span
+                                ></mat-radio-button
+                              >
+                            </mat-radio-group>
+                          </div>
+                        </div>
+                      </mat-card>
+
+                      <mat-card class="p-0 mb-16" fxLayout="column">
+                        <header
+                          fxLayout="row"
+                          fxLayoutAlign="space-between center"
+                          class="card-header-title status-available card-header-border-bottom py-8 pr-8 pl-16"
+                        >
+                          <div fxLayout="row" fxLayoutAlign="start center">
+                            <i
+                              aria-hidden="true"
+                              class="fa-light fa-check s-18 fuse-black-fg mr-8"
+                            ></i>
+                            <h3 class="font-weight-600 text-capitalize">
+                              ageles medical center - orlando
+                            </h3>
+                          </div>
+                        </header>
+                        <div
+                          class="pl-16 pt-16"
+                          fxLayout="column"
+                          fxLayoutAlign="start start"
+                          fxFlex="100"
+                        >
+                          <button
+                            mat-raised-button
+                            color="accent"
+                            class="px-24 mb-16 mr-16"
+                          >
+                            Add availability
+                          </button>
+                          <div class="pr-16 pb-16 w-100-p overflow-auto">
+                            <table
+                              mat-table
+                              [dataSource]="dataSource"
+                              class="w-100-p exxat-table slot-demo-table table-border border-left-right"
+                            >
+                              <!-- action column -->
+                              <ng-container matColumnDef="actions">
+                                <th
+                                  mat-header-cell
+                                  *matHeaderCellDef
+                                  class="px-16 action-column"
+                                >
+                                  Actions
+                                </th>
+                                <td
+                                  mat-cell
+                                  *matCellDef="let element"
+                                  class="px-16 action-column"
+                                >
+                                  <button
+                                    mat-icon-button
+                                    role="img"
+                                    class="action-icon"
+                                  >
+                                    <i
+                                      aria-hidden="true"
+                                      class="fa-light fa-pen icon-fill s-18"
+                                    ></i>
+                                  </button>
+                                  <button
+                                    mat-icon-button
+                                    role="img"
+                                    class="action-icon"
+                                  >
+                                    <i
+                                      aria-hidden="true"
+                                      class="fa-light fa-trash-alt icon-fill s-18"
+                                    ></i>
+                                  </button>
+                                  <button
+                                    mat-icon-button
+                                    role="img"
+                                    class="action-icon"
+                                  >
+                                    <i
+                                      aria-hidden="true"
+                                      class="fa-light fa-copy icon-fill s-18"
+                                    ></i>
+                                  </button>
+                                </td>
+                              </ng-container>
+
+                              <!-- availability Date Column -->
+                              <ng-container matColumnDef="availabilityDate">
+                                <th
+                                  class="px-16 dates-column"
+                                  mat-header-cell
+                                  *matHeaderCellDef
+                                >
+                                  Date of availability
+                                </th>
+                                <td
+                                  mat-cell
+                                  *matCellDef="let element"
+                                  class="px-16 dates-column"
+                                >
+                                  <div fxLayout="column">
+                                    <span class="font-weight-600"
+                                      >June 1st - June 7th, 2021
+                                    </span>
+                                    <span>clinical experience II</span>
+                                  </div>
+                                </td>
+                              </ng-container>
+
+                              <!-- no Of Student Column -->
+                              <ng-container matColumnDef="noOfStudent">
+                                <th
+                                  mat-header-cell
+                                  *matHeaderCellDef
+                                  class="px-16"
+                                >
+                                  No.of students
+                                </th>
+                                <td
+                                  mat-cell
+                                  *matCellDef="let element"
+                                  class="px-16 text-center"
+                                >
+                                  <span class="font-18 font-weight-600">7</span>
+                                </td>
+                              </ng-container>
+
+                              <!-- precepter Column -->
+                              <ng-container matColumnDef="precepter">
+                                <th
+                                  mat-header-cell
+                                  *matHeaderCellDef
+                                  class="px-16 preceptor-column"
+                                >
+                                  Precepter
+                                </th>
+                                <td
+                                  mat-cell
+                                  *matCellDef="let element"
+                                  class="px-16 preceptor-column"
+                                >
+                                  Allen,james
+                                </td>
+                              </ng-container>
+
+                              <!-- setting Column -->
+                              <ng-container matColumnDef="setting">
+                                <th
+                                  mat-header-cell
+                                  *matHeaderCellDef
+                                  class="px-16 setting-column"
+                                >
+                                  Setting
+                                </th>
+                                <td
+                                  mat-cell
+                                  *matCellDef="let element"
+                                  class="px-16 setting-column"
+                                >
+                                  Internal Medicine
+                                </td>
+                              </ng-container>
+
+                              <!-- slot type Column -->
+                              <ng-container matColumnDef="slotType">
+                                <th
+                                  mat-header-cell
+                                  *matHeaderCellDef
+                                  class="px-16"
+                                >
+                                  Slot type
+                                </th>
+                                <td
+                                  mat-cell
+                                  *matCellDef="let element"
+                                  class="px-16"
+                                >
+                                  <div class="status-badge getstarted">
+                                    Interview Required
+                                  </div>
+                                </td>
+                              </ng-container>
+
+                              <!-- supervision Column -->
+                              <ng-container matColumnDef="supervision">
+                                <th
+                                  mat-header-cell
+                                  *matHeaderCellDef
+                                  class="px-16"
+                                >
+                                  Supervision type
+                                </th>
+                                <td
+                                  mat-cell
+                                  *matCellDef="let element"
+                                  class="px-16"
+                                >
+                                  <div class="status-badge getstarted">
+                                    2 students : 2 CI
+                                  </div>
+                                </td>
+                              </ng-container>
+
+                              <!-- notes Column -->
+                              <ng-container matColumnDef="notes">
+                                <th
+                                  mat-header-cell
+                                  *matHeaderCellDef
+                                  class="px-16 notes-column"
+                                >
+                                  Notes
+                                </th>
+                                <td
+                                  mat-cell
+                                  *matCellDef="let element"
+                                  class="px-16 notes-column"
+                                >
+                                  <a>View notes</a>
+                                </td>
+                              </ng-container>
+
+                              <tr
+                                mat-header-row
+                                *matHeaderRowDef="
+                                  displayedColumns;
+                                  sticky: true
+                                "
+                              ></tr>
+                              <tr
+                                mat-row
+                                *matRowDef="let row; columns: displayedColumns"
+                              ></tr>
+                            </table>
+                          </div>
+                        </div>
+                      </mat-card>
+
+                      <mat-card class="p-0 mb-16" fxLayout="column">
+                        <header
+                          fxLayout="row"
+                          fxLayoutAlign="space-between center"
+                          class="card-header-title status-contact-later card-header-border-bottom py-8 pr-8 pl-16"
+                        >
+                          <div fxLayout="row" fxLayoutAlign="start center">
+                            <i
+                              aria-hidden="true"
+                              class="fa-light fa-clock s-18 fuse-black-fg mr-8"
+                            ></i>
+                            <h3 class="font-weight-600 text-capitalize">
+                              ageles medical center - newark
+                            </h3>
+                          </div>
+                        </header>
+                        <div
+                          class="p-16"
+                          fxLayout="row"
+                          fxLayoutAlign="start center"
+                          fxFlex="100"
+                        >
+                          Contact us on <a class="pl-4"> Jul 29 , 2020.</a>
+                        </div>
+                      </mat-card>
+
+                      <mat-card class="p-0 mb-16" fxLayout="column">
+                        <header
+                          fxLayout="row"
+                          fxLayoutAlign="space-between center"
+                          class="card-header-title status-no-slots card-header-border-bottom py-8 pr-8 pl-16"
+                        >
+                          <div fxLayout="row" fxLayoutAlign="start center">
+                            <i
+                              aria-hidden="true"
+                              class="fa-light fa-exclamation-triangle s-18 fuse-black-fg mr-8"
+                            ></i>
+                            <h3 class="font-weight-600 text-capitalize">
+                              ageles medical center - washington D.C.
+                            </h3>
+                          </div>
+                        </header>
+                        <div
+                          class="p-16"
+                          fxLayout="row"
+                          fxLayoutAlign="start center"
+                          fxFlex="100"
+                        >
+                          <span class="warn-fg pr-4">
+                            No slots to offer this year .
+                          </span>
+                          <a> Change the response</a>
+                        </div>
+                      </mat-card>
+
+                      <mat-card class="p-0 mb-16" fxLayout="column">
+                        <header
+                          fxLayout="row"
+                          fxLayoutAlign="space-between center"
+                          class="card-header-title status-location-not-decided card-header-border-bottom py-8 pr-8 pl-16"
+                        >
+                          <div fxLayout="row" fxLayoutAlign="start center">
+                            <i
+                              aria-hidden="true"
+                              class="fa-light fa-question-circle s-18 fuse-black-fg mr-8"
+                            ></i>
+                            <h3 class="font-weight-600 text-capitalize">
+                              Location not decided yet
+                            </h3>
+                          </div>
+                        </header>
+                        <div
+                          class="p-16"
+                          fxLayout="row"
+                          fxLayoutAlign="start center"
+                          fxFlex="100"
+                        >
+                          <button
+                            mat-raised-button
+                            color="accent"
+                            class="px-24"
+                          >
+                            Add availability
+                          </button>
+                        </div>
+                      </mat-card>
+
+                      <div fxLayout="row wrap" fxFlex="100">
+                        <mat-card
+                          fxFlex.gt-sm="40"
+                          fxFlex="100"
+                          fxLayout="column"
+                          fxLayoutAlign="center center"
+                          class="mr-md-16 mb-16"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-box-open s-80 mb-16 big-icon-color"
+                          ></i>
+                          <span class="font-weight-600 font-18"
+                            >No slots to offer this year for any
+                            site/locations?</span
+                          >
+                          <a class="font-18 font-weight-600"
+                            >Yes, I don't have any slots to offer</a
+                          >
+                        </mat-card>
+                        <mat-card
+                          fxFlex.gt-sm="40"
+                          fxFlex="100"
+                          fxLayout="column"
+                          fxLayoutAlign="center center"
+                          class="mb-16"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-user-md-chat s-80 mb-16 big-icon-color"
+                          ></i>
+                          <span class="font-weight-600 font-18"
+                            >As of now I don't have availability for site /
+                            locations?</span
+                          >
+                          <a class="font-18 font-weight-600"
+                            >can you contact me later?</a
+                          >
+                        </mat-card>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-step>
+
+            <mat-step>
+              <ng-template matStepLabel>Offer Availability</ng-template>
+              <div>
+                <div>
+                  Put your content here Put your content here Put your content
+                  here Put your content here Put your content here Put your
+                  content here Put your content here Put your content here Put
+                  your content here Put your content here Put your content here
+                  Put your content here Put your content here Put your content
+                  here
+                </div>
+              </div>
+            </mat-step>
+
+            <mat-step>
+              <ng-template matStepLabel>Summary</ng-template>
+              <div>
+                <div>
+                  Put your content here Put your content here Put your content
+                  here Put your content here Put your content here Put your
+                  content here Put your content here Put your content here Put
+                  your content here Put your content here Put your content here
+                  Put your content here Put your content here Put your content
+                  here
+                </div>
+              </div>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

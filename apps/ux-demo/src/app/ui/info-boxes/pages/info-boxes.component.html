@@ -1,0 +1,329 @@
+<div id="typography-info-boxes" class="p-12 w-100-p">
+  <div class="gray-header mb-16">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="mr-8">
+          <button
+            mat-icon-button
+            aria-label="Click to go back"
+            routerLink="/admin/ux/ui/exxat-component-library"
+          >
+            <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+          </button>
+        </div>
+        <div class="mat-title">Info box Examples</div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <div
+        tabindex="0"
+        aria-label="Simple Info Box"
+        class="mat-caption secondary-text mb-16"
+      >
+        Simple Info Box
+      </div>
+      <mat-card>
+        <div class="info-box error">
+          <span>This is a error info box</span>
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+        <div class="info-box error">
+          <span>This is a error info box</span>
+        </div>
+            </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <mat-card>
+        <div class="info-box warning">
+          <span fxLayout="row" fxLayoutAlign="start center"
+            ><i
+              aria-hidden="true"
+              class="fa-light fa-info-circle mr-8 s-18"
+            ></i>
+            This is a warning info box</span
+          >
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+      <div class="info-box warning">
+        <span fxLayout="row" fxLayoutAlign="start center">
+          <i aria-hidden="true" class="fa-light fa-info-circle mr-8 s-18"  ></i>
+          This is a warning info box</span>
+      </div>
+    </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <mat-card>
+        <div class="info-box success">
+          <span>This is a success info box</span>
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+      <div
+      class="info-box success">
+      <span >This is a success info box</span>
+      </div>
+    </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <mat-card>
+        <div class="info-box info">
+          <span>This is a information box</span>
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+      <div class="info-box info" >
+        <span >This is a information box</span>
+      </div>
+    </textarea
+      >
+    </fuse-highlight>
+  </div>
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <div
+        tabindex="0"
+        aria-label="Info Boxes with action on right side
+        "
+        class="mat-caption secondary-text mb-16"
+      >
+        Info Boxes with action on right side
+      </div>
+      <mat-card>
+        <div
+          class="info-box error"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+        >
+          <span>This is a error info box</span>
+          <button
+            mat-icon-button
+            aria-label="cancel button"
+            class="action-icon"
+          >
+            <i aria-hidden="true" class="fa-light fa-times s-18"></i>
+          </button>
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+      <div class="info-box error" fxLayout="row" fxLayoutAlign="space-between center">
+        <span >This is a error info box</span>
+        <button
+        mat-icon-button
+        aria-label="cancel button"
+        class="action-icon"
+      >
+        <i aria-hidden="true" class="fa-light fa-times s-18 "></i>
+      </button>
+      </div>
+</textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <mat-card>
+        <div
+          class="info-box warning"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+        >
+          <span>This is a warning info box</span>
+          <a aria-label="cancel link">Close</a>
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+      <div class="info-box warning" fxLayout="row" fxLayoutAlign="space-between center">
+        <span>This is a warning info box</span>
+        <a aria-label="cancel link">Close</a>
+      </div>
+</textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <mat-card>
+        <div
+          class="info-box success"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+        >
+          <span>This is a success info box</span>
+          <button
+            mat-icon-button
+            aria-label="cancel button"
+            class="action-icon"
+          >
+            <i aria-hidden="true" class="fa-light fa-times s-18"></i>
+          </button>
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+      <div class="info-box success" fxLayout="row" fxLayoutAlign="space-between center">
+        <span>This is a success info box</span>
+        <button
+        mat-icon-button
+        aria-label="cancel button"
+        class="action-icon"
+      >
+        <i aria-hidden="true" class="fa-light fa-times s-18 "></i>
+      </button>
+      </div>
+</textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <mat-card>
+        <div
+          class="info-box info"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+        >
+          <span>This is a information box</span>
+          <a aria-label="cancel link">Close</a>
+        </div>
+      </mat-card>
+      <p class="warn-fg font-16" tabindex="0" aria-label="Note from UI Team">
+        Note from UI Team
+      </p>
+      <p
+        tabindex="0"
+        aria-label="Developers are requested not to make any extra self made Class or
+        write hardcode CSS or add Colors. Since we are following MULTI theme,
+        Theme will break if Material theme structure and guidlines are not
+        followed properly."
+        class="warn-fg font-14"
+      >
+        Developers are requested not to make any extra self made Class or write
+        hardcode CSS or add Colors. Since we are following MULTI theme, Theme
+        will break if Material theme structure and guidlines are not followed
+        properly.
+      </p>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+      <div class="info-box info" fxLayout="row" fxLayoutAlign="space-between center">
+        <span>This is a information box</span>
+        <a aria-label="cancel link">Close</a>
+      </div>
+</textarea
+      >
+    </fuse-highlight>
+  </div>
+  <div class="mt-16" fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="48">
+      <p class="warn-fg font-16" tabindex="0" aria-label="Note from UI Team">
+        Note from UI Team
+      </p>
+      <p
+        tabindex="0"
+        aria-label="Developers are requested not to make any extra self made Class or
+        write hardcode CSS or add Colors. Since we are following MULTI theme,
+        Theme will break if Material theme structure and guidlines are not
+        followed properly."
+        class="warn-fg font-14"
+      >
+        Developers are requested not to make any extra self made Class or write
+        hardcode CSS or add Colors. Since we are following MULTI theme, Theme
+        will break if Material theme structure and guidlines are not followed
+        properly.
+      </p>
+      <strong>Connect To UI team for any such cases.</strong>
+    </div>
+  </div>
+</div>

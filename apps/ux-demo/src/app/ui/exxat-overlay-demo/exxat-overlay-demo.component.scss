@@ -1,0 +1,16 @@
+@import 'init';
+
+:host {
+  #fileviewer-guidline {
+    mat-icon {
+      cursor: pointer;
+    }
+
+    .mat-title {
+      margin-bottom: 0 !important;
+      @include media-breakpoint('lt-sm') {
+        margin-bottom: 8px !important;
+      }
+    }
+  }
+}

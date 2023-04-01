@@ -1,0 +1,534 @@
+<div class="page-layout simple tabbed" id="placement-by-rotation">
+  <!--header-->
+  <div fxLayout="column">
+    <div class="mb-16" fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <nav mat-tab-nav-bar fxFlex="100">
+        <a
+          mat-tab-link
+          *ngFor="let link of navigations"
+          [routerLink]="link.url"
+          routerLinkActive
+          #rla="routerLinkActive"
+          [active]="rla.isActive"
+        >
+          <span>{{ link.title }}</span>
+        </a>
+      </nav>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxFlex="100">
+      <div class="mb-16">
+        <button mat-button class="action-icon">Placement assist</button>
+      </div>
+      <div class="mb-16 px-xs-16">
+        <mat-button-toggle-group #group="matButtonToggleGroup">
+          <mat-button-toggle
+            [value]="item.value"
+            [attr.aria-label]="item.label"
+            *ngFor="let item of buttonList"
+          >
+            <i aria-hidden="true" class="{{ item.icon }} mr-8 s-16"></i>
+            <span>{{ item.label }}</span>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+        <div class="pt-8">Selected value: {{ group.value }}</div>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+
+  <!-- div below toggle buttons which will change on toggle button click -->
+  <div fxLayout="column">
+    <!-- header -->
+    <div fxLayout="column">
+      <!-- filters -->
+      <div
+        class="px-xs-16"
+        fxLayout="row wrap"
+        fxLayoutAlign="space-between center"
+        fxFlex="100"
+      >
+        <div class="header-tab-control mr-16 my-8">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Date</mat-label>
+            <mat-select formControlName="date">
+              <mat-option
+                *ngFor="let date of dateList"
+                value="{{ date.value }}"
+              >
+                {{ date.viewValue }}
+              </mat-option>
+            </mat-select>
+            <mat-error>Date is required!</mat-error>
+          </mat-form-field>
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="scrollable-filters my-8"
+        >
+          <span class="pt-12 pr-8 font-weight-600 space-no-wrap"
+            >Filter by :
+          </span>
+          <div class="header-tab-control mr-16 pr-16 border-right">
+            <mat-form-field>
+              <mat-select
+                placeholder="Cohort"
+                [formControl]="cohortControl"
+                multiple
+              >
+                <mat-select-trigger>
+                  {{ cohortControl.value ? cohortControl.value[0] : '' }}
+                  <span
+                    *ngIf="cohortControl.value?.length > 1"
+                    class="example-additional-selection"
+                  >
+                    (+{{ cohortControl.value.length - 1 }}
+                    {{
+                      cohortControl.value?.length === 2 ? 'other' : 'others'
+                    }})
+                  </span>
+                </mat-select-trigger>
+                <mat-option
+                  *ngFor="let cohort of cohorts"
+                  [value]="cohort.value"
+                  >{{ cohort.viewValue }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="header-tab-control mr-16 pr-16 border-right">
+            <mat-form-field>
+              <mat-select
+                placeholder="Setting"
+                [formControl]="cohortControl"
+                multiple
+              >
+                <mat-select-trigger>
+                  {{ cohortControl.value ? cohortControl.value[0] : '' }}
+                  <span
+                    *ngIf="cohortControl.value?.length > 1"
+                    class="example-additional-selection"
+                  >
+                    (+{{ cohortControl.value.length - 1 }}
+                    {{
+                      cohortControl.value?.length === 2 ? 'other' : 'others'
+                    }})
+                  </span>
+                </mat-select-trigger>
+                <mat-option
+                  *ngFor="let cohort of cohorts"
+                  [value]="cohort.value"
+                  >{{ cohort.viewValue }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="header-tab-control">
+            <mat-form-field>
+              <mat-select
+                placeholder="In area"
+                [formControl]="cohortControl"
+                multiple
+              >
+                <mat-select-trigger>
+                  {{ cohortControl.value ? cohortControl.value[0] : '' }}
+                  <span
+                    *ngIf="cohortControl.value?.length > 1"
+                    class="example-additional-selection"
+                  >
+                    (+{{ cohortControl.value.length - 1 }}
+                    {{
+                      cohortControl.value?.length === 2 ? 'other' : 'others'
+                    }})
+                  </span>
+                </mat-select-trigger>
+                <mat-option
+                  *ngFor="let cohort of cohorts"
+                  [value]="cohort.value"
+                  >{{ cohort.viewValue }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+
+      <!-- statistics -->
+      <div
+        fxLayout="row wrap"
+        fxLayoutAlign="space-between center"
+        fxFlex="100"
+        class="px-xs-16"
+      >
+        <h3 class="my-16">Statistics</h3>
+        <div
+          fxLayout="row"
+          class="my-md-16 pb-xs-16 scrollable-filters"
+          fxLayoutAlign="start center"
+        >
+          <div
+            fxLayout="row"
+            class="px-8 border-right"
+            fxLayoutAlign="end center"
+          >
+            <span class="mr-8 font-weight-600 font-16">30</span>
+            <span class="space-no-wrap">Student placed</span>
+          </div>
+          <div
+            fxLayout="row"
+            class="px-8 border-right"
+            fxLayoutAlign="end center"
+          >
+            <span class="mr-8 font-weight-600 font-16">10</span>
+            <span class="space-no-wrap">Yet to placed</span>
+          </div>
+          <div
+            fxLayout="row"
+            class="px-8 border-right"
+            fxLayoutAlign="end center"
+          >
+            <span class="small-circle-background circle-green">23</span>
+            <span class="space-no-wrap">slots consumed</span>
+          </div>
+          <div fxLayout="row" class="pl-8" fxLayoutAlign="end center">
+            <span class="small-circle-background circle-red">23</span>
+            <span class="space-no-wrap">slots available</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- search bar -->
+      <div class="px-xs-8">
+        <div
+          class="mb-16 p-16 white-header"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          fxFlex="100"
+        >
+          <div class="search-wrapper search-grid">
+            <div
+              class="search"
+              fxFlex
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <mat-icon class="s-16 secondary-text">search</mat-icon>
+              <input matInput placeholder="Search" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--page content-->
+    <div class="content" fxLayout="column">
+      <div fxFlex="100">
+        <!-- 1st mat-card -->
+        <mat-card class="card-border-green p-0">
+          <div fxLayout="row wrap" fxFlex="100">
+            <!-- hide in greater than small screens -->
+            <div fxHide.gt-sm fxFlex="100" fxLayoutAlign="start center">
+              <div
+                fxLayout="row"
+                class="py-4 px-8 mx-16 mt-16 warn-50-bg border-radius-4"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fad fa-exclamation-triangle warn-fg s-16"
+                ></i>
+                <span class="ml-8">This is a tentative slot</span>
+              </div>
+            </div>
+            <div
+              fxLayout="row wrap"
+              fxLayoutAlign="space-between start"
+              fxFlex.gt-sm="40"
+              fxFlex="100"
+              class="pb-small-0 vertical-divider p-16"
+            >
+              <div fxLayout="column">
+                <h3>Massachussets General Hospital- New York</h3>
+                <span>1992 Water Street Anaheim California (CA)</span>
+                <div fxLayout="row wrap" class="" fxLayoutAlign="start start">
+                  <div fxLayout="row" class="pr-16 py-8">
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-calendar-week accent-fg s-16 mr-4"
+                    ></i>
+                    <span>July 2nd,2020 - August 3rd,2020</span>
+                  </div>
+                  <div fxLayout="row" class="pr-16 py-8">
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-walking accent-fg s-16 mr-4"
+                    ></i>
+                    <span>FCFS</span>
+                  </div>
+                  <div fxLayout="row" class="py-8">
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-user-friends accent-fg s-16 mr-8"
+                    ></i>
+                    <span>2 Cl : 1 student</span>
+                  </div>
+                </div>
+              </div>
+              <span class="font-weight-600">In area</span>
+            </div>
+            <div fxLayout="row" fxFlex.gt-sm="30" fxFlex="100">
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start start"
+                class="p-16 pb-small-0 vertical-divider"
+                fxFlex="50"
+              >
+                <div
+                  class="status-badge getstarted font-weight-600"
+                  fxFlex.gt-sm="100"
+                >
+                  Pediatrics
+                </div>
+              </div>
+              <div
+                fxLayout="column"
+                fxLayoutAlign="start start"
+                class="p-16 pb-small-0 vertical-divider"
+                fxFlex="50"
+              >
+                <span>Student preferences</span>
+                <span class="font-weight-600">10</span>
+              </div>
+            </div>
+
+            <div
+              fxLayout="column"
+              fxLayout.lt-md="column-reverse"
+              class="px-16 py-8"
+              fxFlex.gt-sm="30"
+              fxFlex="100"
+            >
+              <div
+                fxLayout="row wrap"
+                fxLayoutAlign="space-between start"
+                class="py-8"
+              >
+                <div class="">
+                  <button mat-raised-button color="accent">
+                    2 slots remaining
+                  </button>
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  fxHide.lt-md
+                  class="py-4 px-8 mt-8 warn-50-bg border-radius-4"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fad fa-exclamation-triangle warn-fg s-16"
+                  ></i>
+                  <span class="ml-8">This is a tentative slot</span>
+                </div>
+              </div>
+              <div
+                fxLayout="row wrap"
+                fxLayoutAlign="start center"
+                class="py-8"
+              >
+                <div
+                  fxLayout="row"
+                  class="mr-16 py-4"
+                  fxLayoutAlign="start center"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-bookmark accent-fg s-16 mr-4 cursor-pointer"
+                  ></i>
+                  <span>Cooper,Ann</span>
+                </div>
+                <div
+                  fxLayout="row"
+                  class="mr-16 py-4"
+                  fxLayoutAlign="start center"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-bookmark accent-fg s-16 mr-4 cursor-pointer"
+                  ></i>
+                  <span>Nguyen,Jane</span>
+                </div>
+                <div
+                  fxLayout="row"
+                  class="mr-16 py-4"
+                  fxLayoutAlign="start center"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-bookmark accent-fg s-16 mr-4 cursor-pointer"
+                  ></i>
+                  <span>Fox,Bessie</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+
+        <!-- 2nd mat-card -->
+        <mat-card class="card-border-red p-0 mt-16">
+          <div fxLayout="row wrap" fxFlex="100">
+            <div
+              fxLayout="row wrap"
+              fxLayoutAlign="space-between start"
+              fxFlex.gt-sm="40"
+              fxFlex="100"
+              class="pb-small-0 vertical-divider p-16"
+            >
+              <div fxLayout="column">
+                <h3>Massachussets General Hospital- New York</h3>
+                <span>1992 Water Street Anaheim California (CA)</span>
+                <div fxLayout="row wrap" class="" fxLayoutAlign="start start">
+                  <div fxLayout="row" class="pr-16 py-8">
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-calendar-week accent-fg s-16 mr-4"
+                    ></i>
+                    <span>July 2nd,2020 - August 3rd,2020</span>
+                  </div>
+                  <div fxLayout="row" class="pr-16 py-8">
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-walking accent-fg s-16 mr-4"
+                    ></i>
+                    <span>FCFS</span>
+                  </div>
+                  <div fxLayout="row" class="py-8">
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-user-friends accent-fg s-16 mr-8"
+                    ></i>
+                    <span>2 Cl : 1 student</span>
+                  </div>
+                </div>
+              </div>
+              <span class="font-weight-600">In area</span>
+            </div>
+            <div fxLayout="row" fxFlex.gt-sm="30" fxFlex="100">
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start start"
+                class="p-16 pb-small-0 vertical-divider"
+                fxFlex="50"
+              >
+                <div
+                  class="status-badge getstarted font-weight-600"
+                  fxFlex.gt-sm="100"
+                >
+                  Critical/Intensive care
+                </div>
+              </div>
+              <div
+                fxLayout="column"
+                fxLayoutAlign="start start"
+                class="p-16 pb-small-0 vertical-divider"
+                fxFlex="50"
+              >
+                <span>Student preferences</span>
+                <span class="font-weight-600">10</span>
+              </div>
+            </div>
+            <div
+              fxLayout="column"
+              fxLayout.lt-md="column-reverse"
+              class="px-16 py-8"
+              fxFlex.gt-sm="30"
+              fxFlex="100"
+            >
+              <div
+                fxLayout="row"
+                fxLayoutAlign="space-between start"
+                class="py-8"
+              >
+                <button mat-stroked-button color="accent">
+                  No slots available
+                </button>
+              </div>
+              <div
+                fxLayout="row wrap"
+                fxLayoutAlign="start center"
+                class="py-8"
+              >
+                <div
+                  fxLayout="row"
+                  class="mr-16 py-4"
+                  fxLayoutAlign="start center"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-bookmark accent-fg s-16 mr-4 cursor-pointer"
+                  ></i>
+                  <span>Cooper,Ann</span>
+                </div>
+                <div
+                  fxLayout="row"
+                  class="mr-16 py-4"
+                  fxLayoutAlign="start center"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-bookmark accent-fg s-16 mr-4 cursor-pointer"
+                  ></i>
+                  <span>Nguyen,Jane</span>
+                </div>
+                <div
+                  fxLayout="row"
+                  class="mr-16 py-4"
+                  fxLayoutAlign="start center"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-bookmark accent-fg s-16 mr-4 cursor-pointer"
+                  ></i>
+                  <span>Fox,Bessie</span>
+                </div>
+                <div
+                  fxLayout="row"
+                  class="mr-16 py-4"
+                  fxLayoutAlign="start center"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-bookmark accent-fg s-16 mr-4 cursor-pointer"
+                  ></i>
+                  <span>Cooper,Jane</span>
+                </div>
+                <div
+                  fxLayout="row"
+                  class="mr-16 py-4"
+                  fxLayoutAlign="start center"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-bookmark accent-fg s-16 mr-4 cursor-pointer"
+                  ></i>
+                  <span>Howard,Bernard</span>
+                </div>
+                <div
+                  fxLayout="row"
+                  class="py-4 mr-16"
+                  fxLayoutAlign="start center"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-bookmark accent-fg s-16 mr-4 cursor-pointer"
+                  ></i>
+                  <span>Nguyen,Jane</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

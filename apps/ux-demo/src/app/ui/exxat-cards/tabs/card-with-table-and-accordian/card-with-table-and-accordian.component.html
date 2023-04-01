@@ -1,0 +1,840 @@
+<div
+  id="card-with-table-and-accordian"
+  class="page-layout p-md-12 w-100-p"
+  fxLayout="column"
+>
+  <div fxLayout="column" fxLayout.gt-md="row" class="mb-24">
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+      <mat-card
+        class="p-0 mb-16 mr-md-16"
+        aria-label="this is accordian group example"
+      >
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title card-header-border-bottom"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <span class="primary-heading">Documents</span>
+          </div>
+          <button mat-icon-button class="action-icon" aria-label="Edit Card">
+            <i aria-hidden="true" class="fa-light fa-plus s-18"></i>
+          </button>
+        </header>
+        <div fxLayout="column" class="accordian-group-style">
+          <mat-accordion class="" aria-label="this is accordian">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div fxLayout="row" fxFlex>
+                    <span
+                      class="secondary_title"
+                      fxFlex
+                      fxLayout="column"
+                      fxLayoutAlign="center start"
+                    >
+                      General Documents
+                    </span>
+                  </div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="overflow-auto">
+                <table
+                  aria-label="This is a no search table"
+                  mat-table
+                  [dataSource]="dataSource"
+                  class="w-100-p exxat-table bx mb-16"
+                  matSort
+                >
+                  <!-- Date Uploaded Column -->
+                  <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef class="date-column">
+                      Date Uploaded
+                    </th>
+                    <td
+                      mat-cell
+                      *matCellDef="let element; let i = index"
+                      class="date-column"
+                    >
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        {{ element.date }}
+                      </div>
+                    </td>
+                  </ng-container>
+
+                  <!-- document Column -->
+                  <ng-container matColumnDef="document">
+                    <th
+                      mat-header-cell
+                      *matHeaderCellDef
+                      class="document-column"
+                    >
+                      Document
+                    </th>
+                    <td
+                      mat-cell
+                      *matCellDef="let element"
+                      class="document-column"
+                    >
+                      <div fxLayout="column" fxLayoutAlign="center start">
+                        <span>{{ element.document }}</span>
+                        <a>{{ element.link }}</a>
+                      </div>
+                    </td>
+                  </ng-container>
+
+                  <!-- sharedStudent Column -->
+                  <ng-container matColumnDef="sharedStudent">
+                    <th
+                      mat-header-cell
+                      *matHeaderCellDef
+                      class="sharedStudent-width"
+                    >
+                      Shared with student
+                    </th>
+                    <td
+                      mat-cell
+                      *matCellDef="let element"
+                      class="sharedStudent-width"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light {{ element.class }} s-20"
+                      ></i>
+                    </td>
+                  </ng-container>
+
+                  <!-- notes Column -->
+                  <ng-container matColumnDef="notes">
+                    <th mat-header-cell *matHeaderCellDef class="notes-column">
+                      Notes
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="notes-column">
+                      <div class="text-container">
+                        <input id="ch" #ch type="checkbox" />
+                        <button
+                          id="show-more-label"
+                          class="pl-0 link-btn"
+                          *ngIf="isTextOverflow('text_id')"
+                          id="show-more-label"
+                          (click)="ch.click()"
+                          [attr.aria-label]="
+                            !ch.checked ? 'Show More' : 'Show Less'
+                          "
+                        ></button>
+                        <div class="text mb-16" id="text_id" tabindex="0">
+                          {{ element.notes }}
+                        </div>
+                      </div>
+                    </td>
+                  </ng-container>
+
+                  <!-- actions Column -->
+                  <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef class="column-width">
+                      Actions
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="column-width">
+                      <div fxLayout="row">
+                        <button
+                          mat-icon-button
+                          aria-label="edit item"
+                          class="mr-12"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-pen s-18"
+                          ></i>
+                        </button>
+                        <button
+                          mat-icon-button
+                          color="warn"
+                          class="delete-icon"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-trash-alt warn-fg"
+                          ></i>
+                        </button>
+                      </div>
+                    </td>
+                  </ng-container>
+
+                  <tr
+                    mat-header-row
+                    *matHeaderRowDef="displayedColumns; sticky: true"
+                  ></tr>
+                  <tr
+                    mat-row
+                    *matRowDef="let row; columns: displayedColumns"
+                  ></tr>
+                </table>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <mat-divider class="position-inherit margin-auto"></mat-divider>
+          <mat-accordion class="" aria-label="this is accordian">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div fxLayout="row" fxFlex>
+                    <span
+                      class="secondary_title"
+                      fxFlex
+                      fxLayout="column"
+                      fxLayoutAlign="center start"
+                    >
+                      Archived Documents
+                    </span>
+                  </div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="overflow-auto">
+                <table
+                  aria-label="This is a no search table"
+                  mat-table
+                  [dataSource]="dataSource"
+                  class="w-100-p exxat-table bx mb-16"
+                  matSort
+                >
+                  <!-- Date Uploaded Column -->
+                  <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef class="date-column">
+                      Date Uploaded
+                    </th>
+                    <td
+                      mat-cell
+                      *matCellDef="let element; let i = index"
+                      class="date-column"
+                    >
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        {{ element.date }}
+                      </div>
+                    </td>
+                  </ng-container>
+
+                  <!-- document Column -->
+                  <ng-container matColumnDef="document">
+                    <th
+                      mat-header-cell
+                      *matHeaderCellDef
+                      class="document-column"
+                    >
+                      Document
+                    </th>
+                    <td
+                      mat-cell
+                      *matCellDef="let element"
+                      class="document-column"
+                    >
+                      <div fxLayout="column" fxLayoutAlign="center start">
+                        <span>{{ element.document }}</span>
+                        <a>{{ element.link }}</a>
+                      </div>
+                    </td>
+                  </ng-container>
+
+                  <!-- sharedStudent Column -->
+                  <ng-container matColumnDef="sharedStudent">
+                    <th
+                      mat-header-cell
+                      *matHeaderCellDef
+                      class="sharedStudent-width"
+                    >
+                      Shared with student
+                    </th>
+                    <td
+                      mat-cell
+                      *matCellDef="let element"
+                      class="sharedStudent-width"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light {{ element.class }} s-20"
+                      ></i>
+                    </td>
+                  </ng-container>
+
+                  <!-- notes Column -->
+                  <ng-container matColumnDef="notes">
+                    <th mat-header-cell *matHeaderCellDef class="notes-column">
+                      Notes
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="notes-column">
+                      <div class="text-container">
+                        <input id="ch" #ch type="checkbox" />
+                        <button
+                          id="show-more-label"
+                          class="pl-0 link-btn"
+                          *ngIf="isTextOverflow('text_id')"
+                          id="show-more-label"
+                          (click)="ch.click()"
+                          [attr.aria-label]="
+                            !ch.checked ? 'Show More' : 'Show Less'
+                          "
+                        ></button>
+                        <div class="text mb-16" id="text_id" tabindex="0">
+                          {{ element.notes }}
+                        </div>
+                      </div>
+                    </td>
+                  </ng-container>
+
+                  <!-- actions Column -->
+                  <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef class="column-width">
+                      Actions
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="column-width">
+                      <div fxLayout="row">
+                        <button
+                          mat-icon-button
+                          aria-label="edit item"
+                          class="mr-12"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-pen s-18"
+                          ></i>
+                        </button>
+                        <button
+                          mat-icon-button
+                          color="warn"
+                          class="delete-icon"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class="fa-light fa-trash-alt warn-fg"
+                          ></i>
+                        </button>
+                      </div>
+                    </td>
+                  </ng-container>
+
+                  <tr
+                    mat-header-row
+                    *matHeaderRowDef="displayedColumns; sticky: true"
+                  ></tr>
+                  <tr
+                    mat-row
+                    *matRowDef="let row; columns: displayedColumns"
+                  ></tr>
+                </table>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </mat-card>
+    </div>
+    <div fxLayout="column" fxFlex="50">
+      <fuse-highlight lang="html" class="source-code">
+        <textarea #source hidden="hidden">
+                <mat-card
+                class="p-0 mb-16 mr-md-16"
+                aria-label="this is accordian group example"
+                >
+                <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom"
+                >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                <span class="primary-heading">Documents</span>
+                </div>
+                <button mat-icon-button class="action-icon" aria-label="Edit Card">
+                <i aria-hidden="true" class="fa-light fa-plus s-18"></i>
+                </button>
+                </header>
+                <div fxLayout="column" class="accordian-group-style">
+                    <mat-accordion class="" aria-label="this is accordian">
+                        <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                            <div fxLayout="row" fxFlex>
+                                <span
+                                class="secondary_title"
+                                fxFlex
+                                fxLayout="column"
+                                fxLayoutAlign="center start"
+                                >
+                                General Documents
+                                </span>
+                            </div>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="overflow-auto">
+                            <table
+                            aria-label="This is a no search table"
+                            mat-table
+                            [dataSource]="dataSource"
+                            class="w-100-p exxat-table bx mb-16"
+                            matSort
+                        >
+                            <!-- Date Uploaded Column -->
+                            <ng-container matColumnDef="date">
+                            <th mat-header-cell *matHeaderCellDef class="date-column">
+                                Date Uploaded
+                            </th>
+                            <td
+                                mat-cell
+                                *matCellDef="let element; let i = index"
+                                class="date-column"
+                            >
+                                <div fxLayout="row" fxLayoutAlign="start center">
+                                element.date 
+                                </div>
+                            </td>
+                            </ng-container>
+                
+                            <!-- document Column -->
+                            <ng-container matColumnDef="document">
+                            <th mat-header-cell *matHeaderCellDef class="document-column">
+                                Document
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="document-column">
+                                <div fxLayout="column" fxLayoutAlign="center start">
+                                <span> element.document </span>
+                                <a>element.link </a>
+                                </div>
+                            </td>
+                            </ng-container>
+                
+                            <!-- sharedStudent Column -->
+                            <ng-container matColumnDef="sharedStudent">
+                            <th mat-header-cell *matHeaderCellDef class="sharedStudent-width">Shared with student</th>
+                            <td mat-cell *matCellDef="let element" class="sharedStudent-width">
+                                <i aria-hidden="true" class="fa-light element.class s-20"></i>
+                            </td>
+                            </ng-container>
+                
+                            <!-- notes Column -->
+                            <ng-container matColumnDef="notes">
+                            <th mat-header-cell *matHeaderCellDef class="notes-column">
+                                Notes
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="notes-column">
+                                <div class="text-container">
+                                    <input id="ch" #ch type="checkbox" />
+                                    <button
+                                    id="show-more-label"
+                                    class="pl-0 link-btn"
+                                    *ngIf="isTextOverflow('text_id')"
+                                    id="show-more-label"
+                                    (click)="ch.click()"
+                                    [attr.aria-label]="!ch.checked ? 'Show More' : 'Show Less'"
+                                    ></button>
+                                    <div class="text mb-16" id="text_id" tabindex="0">
+                                        element.notes 
+                                    </div>
+                                </div>
+                            </td>
+                            </ng-container>
+                
+                            <!-- actions Column -->
+                            <ng-container matColumnDef="actions">
+                            <th
+                                mat-header-cell
+                                *matHeaderCellDef
+                                class="column-width"
+                            >
+                                Actions
+                            </th>
+                            <td
+                                mat-cell
+                                *matCellDef="let element"
+                                class="column-width"
+                            >
+                            <div fxLayout="row">
+                                <button mat-icon-button aria-label="edit item" class="mr-12">
+                                <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                                </button>
+                                <button
+                                mat-icon-button
+                                color="warn"
+                                class="delete-icon">
+                                <i aria-hidden="true" class="fa-light fa-trash-alt warn-fg"></i>
+                                </button>
+                                </div>
+                            </td>
+                            </ng-container>
+                
+                            <tr
+                            mat-header-row
+                            *matHeaderRowDef="displayedColumns; sticky: true"
+                            ></tr>
+                            <tr
+                            mat-row
+                            *matRowDef="let row; columns: displayedColumns"
+                            ></tr>
+                            </table>
+                        </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                    <mat-divider class="position-inherit margin-auto"></mat-divider>
+                    <mat-accordion class="" aria-label="this is accordian">
+                        <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                            <div fxLayout="row" fxFlex>
+                                <span
+                                class="secondary_title"
+                                fxFlex
+                                fxLayout="column"
+                                fxLayoutAlign="center start"
+                                >
+                                Archived Documents
+                                </span>
+                            </div>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="overflow-auto">
+                            <table
+                            aria-label="This is a no search table"
+                            mat-table
+                            [dataSource]="dataSource"
+                            class="w-100-p exxat-table bx mb-16"
+                            matSort
+                        >
+                            <!-- Date Uploaded Column -->
+                            <ng-container matColumnDef="date">
+                            <th mat-header-cell *matHeaderCellDef class="date-column">
+                                Date Uploaded
+                            </th>
+                            <td
+                                mat-cell
+                                *matCellDef="let element; let i = index"
+                                class="date-column"
+                            >
+                                <div fxLayout="row" fxLayoutAlign="start center">
+                                element.date 
+                                </div>
+                            </td>
+                            </ng-container>
+                
+                            <!-- document Column -->
+                            <ng-container matColumnDef="document">
+                            <th mat-header-cell *matHeaderCellDef class="document-column">
+                                Document
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="document-column">
+                                <div fxLayout="column" fxLayoutAlign="center start">
+                                <span>element.document </span>
+                                <a>element.link </a>
+                                </div>
+                            </td>
+                            </ng-container>
+                
+                            <!-- sharedStudent Column -->
+                            <ng-container matColumnDef="sharedStudent">
+                            <th mat-header-cell *matHeaderCellDef class="sharedStudent-width">Shared with student</th>
+                            <td mat-cell *matCellDef="let element" class="sharedStudent-width">
+                                <i aria-hidden="true" class="fa-light element.class s-20"></i>
+                            </td>
+                            </ng-container>
+                
+                            <!-- notes Column -->
+                            <ng-container matColumnDef="notes">
+                            <th mat-header-cell *matHeaderCellDef class="notes-column">
+                                Notes
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="notes-column">
+                                <div class="text-container">
+                                    <input id="ch" #ch type="checkbox" />
+                                    <button
+                                    id="show-more-label"
+                                    class="pl-0 link-btn"
+                                    *ngIf="isTextOverflow('text_id')"
+                                    id="show-more-label"
+                                    (click)="ch.click()"
+                                    [attr.aria-label]="!ch.checked ? 'Show More' : 'Show Less'"
+                                    ></button>
+                                    <div class="text mb-16" id="text_id" tabindex="0">
+                                         element.notes 
+                                    </div>
+                                </div>
+                            </td>
+                            </ng-container>
+                
+                            <!-- actions Column -->
+                            <ng-container matColumnDef="actions">
+                            <th
+                                mat-header-cell
+                                *matHeaderCellDef
+                                class="column-width"
+                            >
+                                Actions
+                            </th>
+                            <td
+                                mat-cell
+                                *matCellDef="let element"
+                                class="column-width"
+                            >
+                            <div fxLayout="row">
+                                <button mat-icon-button aria-label="edit item" class="mr-12">
+                                <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                                </button>
+                                <button
+                                mat-icon-button
+                                color="warn"
+                                class="delete-icon">
+                                <i aria-hidden="true" class="fa-light fa-trash-alt warn-fg"></i>
+                                </button>
+                                </div>
+                            </td>
+                            </ng-container>
+                
+                            <tr
+                            mat-header-row
+                            *matHeaderRowDef="displayedColumns; sticky: true"
+                            ></tr>
+                            <tr
+                            mat-row
+                            *matRowDef="let row; columns: displayedColumns"
+                            ></tr>
+                            </table>
+                        </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+                </mat-card>
+              </textarea
+        >
+      </fuse-highlight>
+    </div>
+  </div>
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+      <mat-card
+        class="p-0 mb-16 mr-md-16"
+        aria-label="this is accordian group example"
+      >
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title card-header-border-bottom"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <span class="primary-heading">Clinical Instructors</span>
+          </div>
+        </header>
+        <div class="overflow-auto my-16">
+          <table
+            aria-label="This is a no search table"
+            mat-table
+            [dataSource]="tableDataSource"
+            class="w-100-p exxat-table"
+            matSort
+          >
+            <!-- name Uploaded Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef class="table-column">
+                Name
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element; let i = index"
+                class="table-column"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  {{ element.name }}
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- designation Column -->
+            <ng-container matColumnDef="designation">
+              <th mat-header-cell *matHeaderCellDef class="table-column">
+                designation
+              </th>
+              <td mat-cell *matCellDef="let element" class="table-column">
+                <div fxLayout="column" fxLayoutAlign="center start">
+                  <span>{{ element.designation }}</span>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- status Column -->
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef class="table-column">
+                Status
+              </th>
+              <td mat-cell *matCellDef="let element" class="table-column">
+                <div class="setting-chip-style">
+                  <mat-chip-list>
+                    <mat-chip class="exxat-gorse-bg" fontColor>{{
+                      element.status
+                    }}</mat-chip>
+                  </mat-chip-list>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- email Column -->
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef class="email-column">
+                email
+              </th>
+              <td mat-cell *matCellDef="let element" class="email-column">
+                {{ element.email }}
+              </td>
+            </ng-container>
+
+            <!-- phone number Column -->
+            <ng-container matColumnDef="phone">
+              <th mat-header-cell *matHeaderCellDef class="table-column">
+                phone number
+              </th>
+              <td mat-cell *matCellDef="let element" class="table-column">
+                {{ element.phone }}
+              </td>
+            </ng-container>
+
+            <!-- supervision number Column -->
+            <ng-container matColumnDef="supervision">
+              <th mat-header-cell *matHeaderCellDef class="column-width">
+                supervision%
+              </th>
+              <td mat-cell *matCellDef="let element" class="column-width">
+                {{ element.supervision }}
+              </td>
+            </ng-container>
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="tableDisplayedColumns; sticky: true"
+            ></tr>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: tableDisplayedColumns"
+            ></tr>
+          </table>
+        </div>
+      </mat-card>
+    </div>
+    <div fxLayout="column" fxFlex="50">
+      <fuse-highlight lang="html" class="source-code">
+        <textarea #source hidden="hidden">
+                <mat-card
+                class="p-0 mb-16 mr-md-16"
+                aria-label="this is accordian group example"
+                >
+                <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom"
+                >
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                    <span class="primary-heading">Documents</span>
+                    </div>
+                    <button mat-icon-button class="action-icon" aria-label="Edit Card">
+                    <i aria-hidden="true" class="fa-light fa-plus s-18"></i>
+                    </button>
+                </header>
+                <div class="overflow-auto  my-16">
+                    <table
+                    aria-label="This is a no search table"
+                    mat-table
+                    [dataSource]="tableDataSource"
+                    class="w-100-p exxat-table"
+                    matSort
+                    >
+                    <!-- name Uploaded Column -->
+                    <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef class="name-column">
+                        Name
+                    </th>
+                    <td
+                    mat-cell
+                    *matCellDef="let element; let i = index"
+                    class="name-column"
+                    >
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                         element.name 
+                        </div>
+                    </td>
+                    </ng-container>
+            
+                    <!-- designation Column -->
+                    <ng-container matColumnDef="designation">
+                    <th mat-header-cell *matHeaderCellDef class="designation-column">
+                        designation
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="designation-column">
+                        <div fxLayout="column" fxLayoutAlign="center start">
+                        <span> element.designation </span>
+                        </div>
+                    </td>
+                    </ng-container>
+            
+                    <!-- status Column -->
+                    <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef class="status-width">Status</th>
+                    <td mat-cell *matCellDef="let element" class="status-width setting-chip-style">
+                        <mat-chip class="exxat-gorse-bg" fontColor> element.status </mat-chip>
+                    </td>
+                    </ng-container>
+    
+                    <!-- email Column -->
+                    <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef class="email-column">
+                        email
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="email-column">
+                        element.email 
+                    </td>
+                    </ng-container>
+    
+                    <!-- phone number Column -->
+                    <ng-container matColumnDef="phone">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                        class="column-width"
+                    >
+                    phone number
+                    </th>
+                    <td
+                    mat-cell
+                    *matCellDef="let element"
+                    class="column-width"
+                    >
+                    element.phone 
+                    </td>
+                    </ng-container>
+        
+                    <!-- supervision number Column -->
+                    <ng-container matColumnDef="supervision">
+                        <th
+                            mat-header-cell
+                            *matHeaderCellDef
+                            class="column-width"
+                        >
+                        supervision%
+                        </th>
+                        <td
+                        mat-cell
+                        *matCellDef="let element"
+                        class="column-width"
+                        >
+                         element.supervision 
+                        </td>
+                        </ng-container>
+            
+                        <tr
+                        mat-header-row
+                        *matHeaderRowDef="tableDisplayedColumns; sticky: true"
+                        ></tr>
+                        <tr
+                        mat-row
+                        *matRowDef="let row; columns: tableDisplayedColumns"
+                        ></tr>
+                        </table>
+                </div>
+                </mat-card>
+              </textarea
+        >
+      </fuse-highlight>
+    </div>
+  </div>
+</div>

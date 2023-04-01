@@ -1,0 +1,9 @@
+@import 'init';
+
+.compliance-site-demo-content {
+  padding-top: 16px;
+  @include media-breakpoint('xs') {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

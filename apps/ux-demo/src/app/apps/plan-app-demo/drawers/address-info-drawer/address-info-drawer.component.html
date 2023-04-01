@@ -1,0 +1,65 @@
+<div class="drawer-p">
+  <mat-card fxLayout="column" fxLayoutAlign="center">
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Address type</mat-label>
+        <mat-select formControlName="address">
+          <mat-option *ngFor="let address of addressList" value="{{address.value}}">
+            {{address.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error>address is required!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Address line 1</mat-label>
+        <input matInput formControlName="address1Name">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Address line 2</mat-label>
+        <input matInput formControlName="address2Name">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>City</mat-label>
+        <input matInput formControlName="cityName">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>State/Territory</mat-label>
+        <mat-select formControlName="state">
+          <mat-option *ngFor="let state of stateList" value="{{state.value}}">
+            {{state.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error>state is required!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Zip</mat-label>
+        <input matInput formControlName="zipName">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Country</mat-label>
+        <input matInput formControlName="countryName">
+      </mat-form-field>
+    </div>
+
+
+  </mat-card>
+</div>

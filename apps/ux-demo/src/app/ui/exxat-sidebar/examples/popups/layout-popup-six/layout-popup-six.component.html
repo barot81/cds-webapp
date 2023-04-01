@@ -1,0 +1,168 @@
+<mat-dialog-content>
+  <mat-tab-group>
+    <!-- 1st tab content -->
+    <mat-tab label="HTML">
+      <fuse-highlight
+        lang="html"
+        class="source-code mt-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+      >
+        <textarea #source hidden="hidden">
+
+              <fuse-sidebar class="sidebar" name="carded-left-sidebar-tabbed-2" position="left"
+              fxFlex.gt-md="20" lockedOpen="gt-md" tabindex="0" aria-label="sidebar with action item">
+              <div fxLayout="column" #sidebarHeader>
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex.xs="100" class="py-8">
+                  <button mat-stroked-button color="primary" class=" mx-16" aria-label="Add action">
+                    <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+                    <span class="ml-4">Add action </span>
+                  </button>
+                </div>
+                <mat-divider></mat-divider>
+          
+                <!-- SEARCH -->
+                <div class="search-wrapper" fxFlex.xs="100">
+                  <div class="search sidenav-search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <i aria-hidden="true" class="fa-light fa-magnifying-glass s-18"></i>
+                    <input type="text" class="font-14" placeholder="Search Student" fxFlex />
+                  </div>
+                </div>
+                <mat-divider></mat-divider>
+              </div>
+          
+          
+              <!--  SIDEBAR CONTENT -->
+              <div class="content overflow-auto"  [style.height.px]="_scrollService.sidebarContentHeight">
+                <mat-list>
+                  <button mat-button *ngFor="let item of items" (click)="activateNavigation(item.id)">
+                    <mat-list-item [ngClass]="{'active-list-item': item.id === selectedId}">
+                      <div fxLayout="row" fxLayoutAlign="space-between center" class="w-100-p">
+                        <div>
+                          <span class="word-break-all space-pre-wrap text-left" [attr.aria-label]="location">'Item' + (item.id +
+                            1) </span>
+                        </div>
+                        <div fxLayoutAlign="end center">
+                          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="open menu for delete location">
+                            <i aria-hidden="true" class="fa-light fa-ellipsis-v"></i>
+                          </button>
+                          <mat-menu #menu="matMenu" xPosition="after" class="mat-secondary-menu">
+                            <button mat-menu-item class="warn-fg">
+                              <div fxLayout="row" fxLayoutAlign="start center">
+                                <div class="mr-8 mt-4">
+                                  <i aria-hidden="true" class="fa-light fa-trash-alt s-18"></i>
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="start center">
+                                  <span>Delete</span>
+                                </div>
+                              </div>
+                            </button>
+                          </mat-menu>
+                        </div>
+                      </div>
+                    </mat-list-item>
+                  </button>
+                </mat-list>
+              </div>
+              <!-- / SIDEBAR CONTENT -->
+              </fuse-sidebar>
+          
+        </textarea>
+      </fuse-highlight>
+    </mat-tab>
+
+    <!-- 2nd tab content -->
+    <mat-tab label="TS">
+      <fuse-highlight
+        lang="ts"
+        class="source-code mt-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+      >
+        <textarea #source hidden="hidden">
+
+          import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+          import { MatDialog } from '@angular/material/dialog';
+          import { NavigationEnd, Router } from '@angular/router';
+          import { FuseSidebarService, ScrollService } from '@exxat/ux';
+          import { filter } from 'rxjs/operators';
+          import { SidebarFocusHelper } from '../../exxat-sidebar.service';
+          
+          
+          @Component({
+            selector: 'ryzen-sidebar-six',
+            templateUrl: './sidebar-six.component.html',
+            styleUrls: ['./sidebar-six.component.scss']
+          })
+          export class SidebarSixComponent implements OnInit {
+          
+            @ViewChild('sidebarHeader') sidebarHeader: ElementRef;
+            private currentURL =
+            'admin/ux/ui/exxat-sidebar/sidebar-six';
+            selectedId = 1;
+            items = [
+              {id:0},
+              {id:1},
+              {id:2},
+              {id:3},
+              {id:4},
+              {id:5},
+              {id:6},
+              {id:7},
+              {id:8},
+              {id:9},
+              {id:10} 
+            ]
+            constructor(
+              public _fuseSidebarService: FuseSidebarService,
+              public dialog: MatDialog,
+              public _focus : SidebarFocusHelper,
+              public readonly _scrollService: ScrollService,
+              private _router: Router
+            )  {
+              this._router.events
+                .pipe(filter((event) => event instanceof NavigationEnd))
+                .subscribe(async (event$) => {
+                  if (this.currentURL === event$['url']) {
+                    await this.setSidebarHeaderHeight();
+                  }
+                });
+            }
+          
+            private async setSidebarHeaderHeight() {
+              setTimeout(async () => {
+                if (this.sidebarHeader && this.sidebarHeader !== null) {
+                  // Reset Main Header Height
+                  await this._scrollService.resetSidebarHeaderHeight();
+                  // Set New Height to The Main Header
+                  await this._scrollService.setSidebarHeaderHeight(
+                    this.sidebarHeader.nativeElement.offsetHeight
+                  );
+                }
+              });
+            }
+          
+            // toogle sidebar in small screens
+            toggleSidebar(name): void {
+                this._fuseSidebarService.getSidebar(name).toggleOpen();
+            }
+        
+          
+            ngOnInit() {
+            }
+          
+            activateNavigation(item:number) {
+              this.selectedId = item;
+              this._focus.shiftFocus();
+            }
+          
+          }
+          
+          
+          
+
+        </textarea>
+      </fuse-highlight>
+    </mat-tab>
+  </mat-tab-group>
+</mat-dialog-content>

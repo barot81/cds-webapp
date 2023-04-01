@@ -1,0 +1,40 @@
+<div class="page-layout carded fullwidth student-grid inner-scroll">
+
+    <div class="center">
+        <div class="content">
+            <div class="p-16">
+                <mat-card>
+                    <div fxLayout="column">
+                        <div>
+                            <mat-form-field>
+                                <mat-select placeholder="Select Cohort" [formControl]="cohort" multiple>
+                                    <mat-select-trigger>
+                                        {{cohort.value ? cohort.value[0] : ''}}
+                                        <span *ngIf="cohort.value?.length > 1">
+                                            (+{{cohort.value.length - 1}}
+                                            {{cohort.value?.length === 2 ? 'other' : 'others'}})
+                                        </span>
+                                    </mat-select-trigger>
+                                    <mat-option *ngFor="let cohort of cohortList" [value]="cohort">{{cohort}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="expanded-filter-list">
+                            <mat-chip-list #chipList>
+                                <mat-chip *ngFor="let item of cohort.value" (removed)="remove(item)">
+                                    {{item}}
+                                    <mat-icon matChipRemove>cancel</mat-icon>
+                                </mat-chip>
+                            </mat-chip-list>
+                        </div>
+                        <div class="mt-16">
+                            <button mat-button color="accent" (click)="clearFilter()"
+                                *ngIf=" cohort.value && cohort.value.length > 0">Clear</button>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

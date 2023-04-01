@@ -1,0 +1,112 @@
+<div id="edit-slot-drawer" class="drawer-p">
+  <div class="edit-slots-container" fxLayout="column">
+
+<div fxLayout="row" fxLayoutAlign="end center" class="mb-16">
+  <button mat-button color="accent">Expand all</button>
+</div>
+<mat-accordion *ngFor="let slot of slotList" class="mb-16" [attr.expanded]=" slot.title ==='Slot 1' ? true: false">
+  <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div fxlayoutalign="space-between center" fxLayout="row" fxFlex>
+              <h4 class="accent-fg" fxFlex fxLayout="column" fxLayoutAlign="center start">
+                {{slot.title}}</h4>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="dropdown-container" fxLayout="row wrap">
+          <div fxLayout="row" class="px-16" fxLayoutAlign="start center" fxFlex="1 0 auto">
+            <mat-form-field class="custom-dropdown" appearance="" fxFlex="100">
+              <mat-label>Location</mat-label>
+              <mat-select formControlName="location">
+                <mat-option *ngFor="let location of locationList" value="location.value">
+                  {{location.viewName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" class="px-16" fxLayoutAlign="start center" fxFlex="1 0 auto">
+            <mat-form-field class="custom-dropdown" appearance="" fxFlex="100">
+              <mat-label>Setting</mat-label>
+              <mat-select formControlName="setting">
+                <mat-option *ngFor="let setting of settingList" value="setting.value">
+                  {{setting.viewName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" class="px-16" fxLayoutAlign="start center" fxFlex="1 0 auto">
+            <mat-form-field class="custom-dropdown" appearance="" fxFlex="100">
+              <mat-label>Rotation</mat-label>
+              <mat-select formControlName="rotation">
+                <mat-option *ngFor="let rotation of rotationList" value="rotation.value">
+                  {{rotation.viewName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" class="px-16" fxLayoutAlign="start center" fxFlex="1 0 auto">
+            <mat-form-field class="custom-dropdown" appearance="" fxFlex="100">
+              <mat-label>Slot Type</mat-label>
+              <mat-select formControlName="slotType">
+                <mat-option *ngFor="let slotType of slotTypeList" value="slotType.value">
+                  {{slotType.viewName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" class="px-16" fxLayoutAlign="start center" fxFlex="1 0 auto">
+            <mat-form-field class="custom-dropdown" appearance="" fxFlex="100">
+              <mat-label>Supervision Type</mat-label>
+              <mat-select formControlName="superVisionType">
+                <mat-option *ngFor="let superVisionType of superVisionTypeList" value="superVisionType.value">
+                  {{superVisionType.viewName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="notes-container pt-16" fxLayout="row wrap">
+          <div class="px-16" fxLayout="column">
+
+            <span class="font-weight-600">Note For Student</span>
+
+            <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+              <div class="text-center w-100-p">
+                <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>Comment</mat-label>
+                  <textarea matInput></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+
+          </div>
+          <div class="px-16" fxLayout="column">
+
+            <span class="font-weight-600">Note For School</span>
+
+            <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+              <div class="text-center w-100-p">
+                <mat-form-field appearance="fill" fxFlex="100">
+                  <mat-label>Comment</mat-label>
+                  <textarea matInput></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+
+          </div>
+          <div class="px-16" fxLayout="column">
+
+            <span class="font-weight-600">Attachment</span>
+
+               <p>Place your file upload here.</p>
+
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </div>
+</div>

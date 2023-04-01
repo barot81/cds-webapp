@@ -1,0 +1,270 @@
+<div
+  class="page-layout carded full-width inner-scroll frequency-based-eval-form"
+>
+  <div class="center">
+    <!-- Header -->
+    <div class="header" #gray_header>
+      <div
+        fxLayout="row wrap"
+        fxLayoutAlign="space-between center"
+        #scrollSpyHeader
+      >
+        <div fxLayout="row">
+          <div class="pt-xs-16">
+            <button
+              mat-icon-button
+              routerLink="/admin/ux/ui/exxat-component-library"
+              class="action-icon"
+              aria-label="back arrow"
+            >
+              <mat-icon>arrow_back</mat-icon>
+            </button>
+          </div>
+          <div fxLayout="column" class="mb-sm-16 mb-8 px-xs-8 pt-xs-8 ml-sm-8">
+            <h2
+              tabindex="0"
+              class="font-weight-600 word-break-all pl-8"
+              aria-label="heading 1-2 Months NSG 606 Daily Clinical Evaluation Form(New) "
+            >
+              1-2 Months NSG 606 Daily Clinical Evaluation Form(New)
+            </h2>
+            <div
+              fxLayout="row wrap"
+              fxLayoutAlign="start center"
+              class="font-16"
+            >
+              <span
+                tabindex="0"
+                aria-label="NSG-606-10-20SU-1"
+                class="px-8 word-break-all mb-xs-8"
+                >NSG-606-10-20SU-1</span
+              >
+              |
+              <span
+                tabindex="0"
+                aria-label="Ability Rehabilitation  "
+                class="word-break-all px-8"
+                >Ability Rehabilitation
+              </span>
+              |
+              <span
+                class="setting-color mx-8 px-8 py-4"
+                aria-label="OP Orthopedics setting"
+                >OP Orthopedics
+              </span>
+              <span
+                tabindex="0"
+                aria-label="Jan 1,2021- Jan 30,2020 "
+                class="ml-8 word-break-all"
+                >Jan 1,2021- Jan 30,2020
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        class="mb-16 mt-12 ml-md-44"
+      >
+        <button
+          tabindex="0"
+          mat-button
+          class="action-icon"
+          aria-label="Add form"
+          exxatDrawerAction
+          [size]="'drawer-md'"
+          [caption]="'Status'"
+        >
+          <mat-icon aria-hidden="true">add</mat-icon>
+          Add form
+        </button>
+        <button
+          mat-icon-button
+          class="icon-fill-bg filter-icon mr-12"
+          exxatDrawerAction
+          [size]="'drawer-lg'"
+          [caption]="'Filters'"
+          [primaryAction]="'Save'"
+          aria-label="filter button"
+        >
+          <i aria-hidden="true" class="fa-light fa-filter fuse-white-fg"></i>
+          <span class="filter-badge">5</span>
+        </button>
+      </div>
+    </div>
+    <!-- Header -->
+
+    <div class="content-card ml-md-44">
+      <div class="content table-rounded-border white-background p-16">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <div
+            #search_bar_filter_container
+            id="search-bar-filter-container"
+            class="mb-16"
+          >
+            <div fxLayout="row" fxLayoutAlign="start space-between">
+              <div class="search-wrapper search-grid">
+                <div
+                  class="search"
+                  fxFlex
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                >
+                  <mat-icon class="s-16 secondary-text" aria-hidden="true"
+                    >search</mat-icon
+                  >
+                  <input type="text" placeholder="Search Student" fxFlex />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="overflow-auto status-card py-4 px-16 mb-16"
+            fxLayout="row"
+            tabindex="0"
+            aria-label="status card "
+          >
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              class="border-right pr-16"
+            >
+              <span
+                class="font-weight-600 space-no-wrap"
+                tabindex="0"
+                aria-label=" Total Count is"
+                >Total Count :
+              </span>
+              <span class="font-size-24 ml-md-4" tabindex="0" aria-label=" 9">
+                9</span
+              >
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              class="border-right px-16"
+            >
+              <span
+                class="text-status-color save-status font-weight-600 space-no-wrap"
+                tabindex="0"
+                aria-label=" saved are"
+                >Save :</span
+              >
+              <span class="font-size-24 ml-4" tabindex="0" aria-label="2 ">
+                2</span
+              >
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              class="border-right px-16"
+            >
+              <span
+                class="text-status-color submitted-status font-weight-600 space-no-wrap"
+                tabindex="0"
+                aria-label=" submitted are"
+                >Submitted :</span
+              >
+              <span class="font-size-24 ml-4" tabindex="0" aria-label=" 8">
+                8</span
+              >
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              class="border-right px-16"
+            >
+              <span
+                class="text-status-color pending-review-status font-weight-600 space-no-wrap"
+                tabindex="0"
+                aria-label="pendng review "
+                >Pending Review :</span
+              >
+              <span class="font-size-24 ml-4" tabindex="0" aria-label=" 12">
+                12</span
+              >
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" class="pl-16">
+              <span
+                class="text-status-color reviewed-status font-weight-600 space-no-wrap"
+                tabindex="0"
+                aria-label=" reviewed are"
+                >Reviewed :</span
+              >
+              <span class="font-size-24 ml-4" tabindex="0" aria-label="6 ">
+                6</span
+              >
+            </div>
+          </div>
+        </div>
+        <div
+          class="overflow-auto scroll-hover"
+          [style.height.px]="headerService.scrollContentheight - 45"
+          tabindex="0"
+        >
+          <table
+            aria-label="This is a table"
+            mat-table
+            [dataSource]="dataSource"
+            class="w-100-p exxat-table pt-0"
+          >
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th class="pl-16" mat-header-cell *matHeaderCellDef>Date</th>
+              <td mat-cell *matCellDef="let element" class="pl-16">
+                <a
+                  exxatDrawerAction
+                  [size]="'drawer-lg'"
+                  [caption]="
+                    '1-2 Months NSG 606 Daily Clinical Evaluation Form(New) '
+                  "
+                  [primaryAction]="'Save'"
+                  [componentSelector]="
+                    _UXDemoDrawerService.get(
+                      'ryzen-frequency-based-eval-form-drawer'
+                    )
+                  "
+                  >Jan 20, 2021</a
+                >
+              </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let element">
+                <div class="status-badge {{ element.statusClass }}">
+                  {{ element.name }}
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+              <th mat-header-cell *matHeaderCellDef>CI (Class Instructor)</th>
+              <td mat-cell *matCellDef="let element">Cherie Burke</td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+              <th mat-header-cell *matHeaderCellDef>Score</th>
+              <td mat-cell *matCellDef="let element">
+                <div fxLayout="row" fxLayoutAlign="start end">
+                  <span class="font-22 font-weight-600 mr-4">90</span>
+                  <span>out of 120</span>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+@import 'init';
+
+
+:host {
+  #exxat-typography-cards {
+    .source-code {
+      position: relative;
+      margin-bottom: 16px;
+      min-height: 100px;
+
+      code {
+        background: none !important;
+      }
+    }
+  }
+}
+
+.header {
+  max-width: 70%;
+}
+
+.intervention-card {
+  .carousal-height {
+    height: 80px;
+    // background-color: $concrete !important;
+  }
+
+  .text-container {
+    .text {
+      max-height: 40px;
+      overflow: hidden;
+    }
+
+    #show-more-label:after {
+      content: 'Show More';
+    }
+
+    input:checked + #show-more-label:after {
+      content: 'Show Less';
+    }
+  }
+}
+
+.secondary-card-header-title {
+  max-width: 75%;
+
+  @include media-breakpoint('xs') {
+    max-width: 95%;
+  }
+}

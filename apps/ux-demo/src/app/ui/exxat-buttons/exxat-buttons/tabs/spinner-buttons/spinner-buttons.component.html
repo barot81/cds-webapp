@@ -1,0 +1,94 @@
+<div class="p-24">
+  <div
+    class="mat-title"
+    tabindex="0"
+    aria-label="Exxat Buttons With Spinner Examples "
+  >
+    Exxat Buttons With Spinner Examples
+  </div>
+
+  <!-- button with spinner -->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div
+      class="preview m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <mat-card>
+        <button
+          mat-flat-button
+          color="primary"
+          aria-label="Primary"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayoutAlign="start center">
+              <span>Loading</span>
+            </div>
+            <div fxLayoutAlign="start center" class="pl-8">
+              <mat-spinner diameter="20" color="accent"></mat-spinner>
+            </div>
+          </div>
+        </button>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+
+        <button mat-raised-button>
+          <span>Show More</span>
+          <mat-icon>
+            <mat-spinner diameter="20"></mat-spinner>
+          </mat-icon>
+        </button>
+
+      </textarea>
+    </fuse-highlight>
+  </div>
+
+  <!-- button with spinner with background color -->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div
+      class="preview m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <mat-card>
+        <button mat-raised-button color="warn">
+          <mat-icon>
+            <mat-spinner color="accent" diameter="20"></mat-spinner>
+          </mat-icon>
+          <span>Warn</span>
+        </button>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code m-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+
+      <button mat-raised-button color="warn">
+        <mat-icon>
+          <mat-spinner color="accent" diameter="20"></mat-spinner>
+        </mat-icon>
+        <span>Warn</span>
+      </button>
+
+    </textarea
+      >
+    </fuse-highlight>
+  </div>
+</div>

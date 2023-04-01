@@ -1,0 +1,169 @@
+<div id="exxat-drag-drop-examples" class="p-gt.sm-24">
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+      <div class="">
+        <mat-card class="mb-16">
+          <div fxLayout="column">
+            <span class="font-16 m-16"
+              >Add or remove columns. To change the column order, drag and drop
+              a field.
+            </span>
+
+            <div fxFlex="100">
+              <div
+                cdkDropList
+                class="exxat-drag-drop-list"
+                (cdkDropListDropped)="drop($event)"
+              >
+                <div
+                  class="exxat-drag-drop"
+                  *ngFor="let column of columnsList"
+                  cdkDrag
+                >
+                  <div class="icon-drag mr-8">
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-grip-vertical s-20"
+                    ></i>
+                  </div>
+                  <div class="content">{{ column }}</div>
+                  <button
+                    mat-icon-button
+                    color="warn"
+                    aria-label="Example icon-button with a delete icon"
+                    class="ml-8 delete-icon"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-trash-alt warn-fg"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="w-500">
+              <button
+                mat-stroked-button
+                color="primary"
+                class="width-fit-content"
+                aria-label="Add a Column"
+              >
+                <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+                <span class="ml-4">Add a Column</span>
+              </button>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <div class="pt-16">
+            <fuse-highlight
+              lang="html"
+              class="source-code"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="100"
+            >
+              <textarea #source hidden="hidden">
+            
+                <mat-card>
+                  <div fxLayout="column">
+                  <div id="editColumnContainer">
+                      <div cdkDropList class="exxat-drag-drop-list" (cdkDropListDropped)="drop($event)">
+                        <div class="exxat-drag-drop" *ngFor="let column of columnsList" cdkDrag>
+                          <div class="icon-drag"><mat-icon class="primary-fg font-22">drag_indicator</mat-icon></div>
+                          <div class="content">column</div>
+                        </div>
+                      </div>
+                    </div>
+              
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                      <mat-icon class="mr-8 accent-fg">add</mat-icon>
+                      <span class="accent-fg">Add a Column</span>
+                    </div>
+              
+                  </div>
+                </mat-card>
+              
+            </textarea
+              >
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+        <!-- /1st tab content -->
+
+        <!-- 2nd tab content -->
+        <mat-tab label="TS">
+          <div class="pt-16">
+            <fuse-highlight
+              lang="html"
+              class="source-code"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="100"
+            >
+              <textarea #source hidden="hidden">
+            <!-- TS code for drag and drop  -->
+              import { Component, OnInit } from '@angular/core';
+              import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+              import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+              import { DrawerAdapter } from '@exxat/ux';
+
+              @Component({
+                selector: 'ryzen-exxat-drawer-with-drag-drop',
+                templateUrl: './exxat-drawer-with-drag-drop.component.html',
+                styleUrls: ['./exxat-drawer-with-drag-drop.component.scss']
+              })
+              export class ExxatDrawerWithDragDropComponent implements OnInit, DrawerAdapter {
+                columnsList = [
+                  'Student Name',
+                  'Email',
+                  'Phone',
+                  'Practice Setting',
+                  'Time'
+                ];
+
+                editColumnsForm: FormGroup;
+                data: any;
+                key: string;
+                primaryAction() {
+                  throw new Error("Method not implemented.");
+                }
+                secondaryAction() {
+                  throw new Error("Method not implemented.");
+                }
+
+                constructor(private _formBuilder: FormBuilder) {
+
+                  this.editColumnsForm = this._formBuilder.group({
+                    columnControl: [this.columnsList[0]],
+                  });
+                }
+
+
+
+                drop(event: CdkDragDrop<string[]>) {
+                  moveItemInArray(this.columnsList, event.previousIndex, event.currentIndex);
+                }
+
+
+                ngOnInit() {
+                }
+
+              }
+          </textarea
+              >
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+        <!-- /2nd tab content -->
+      </mat-tab-group>
+    </div>
+    <!-- preview end-->
+  </div>
+</div>

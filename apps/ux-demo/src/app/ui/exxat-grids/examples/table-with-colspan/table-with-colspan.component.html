@@ -1,0 +1,525 @@
+<div
+  class="page-layout carded fullwidth inner-scroll full-width-page exxat-new-grid"
+>
+  <div class="center p-0">
+    <div class="content-card border" fusePerfectScrollbar>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
+          <div
+            class="search-wrapper"
+            fxFlex="100"
+            search
+            [formControl]="searchItem"
+          >
+            <div
+              class="search table-search"
+              fxFlex
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <i
+                aria-hidden="true"
+                class="fa-light fa-magnifying-glass s-18"
+              ></i>
+              <input
+                id="inputBox"
+                type="text"
+                placeholder="Search in 50 student"
+                fxFlex
+                [formControl]="searchItem"
+              />
+              <button
+                mat-icon-button
+                aria-label="clear search"
+                class="action-icon clear-button"
+              >
+                <i aria-hidden="true" class="fa-light fa-xmark s-18"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <div
+            fxLayout="row"
+            fxLayoutAlign="end center"
+            class="border-right h-48 pr-16"
+            fxHide.lt-md
+          >
+            <button
+              mat-stroked-button
+              color="primary"
+              class="mr-12"
+              aria-label="Add action 1"
+            >
+              <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+              <span class="ml-4">Add action 1</span>
+            </button>
+            <button
+              mat-stroked-button
+              color="primary"
+              class=""
+              aria-label="Add action 2"
+            >
+              <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+              <span class="ml-4">Add action 2</span>
+            </button>
+          </div>
+          <div fxLayout="row" class="mr-16 ml-8">
+            <button
+              matTooltip="Export"
+              aria-label="Export Table"
+              mat-icon-button
+              class="ml-8"
+              fxHide.lt-md
+            >
+              <i aria-hidden="true" class="fa-light fa-file-export s-18"></i>
+            </button>
+
+            <button
+              matTooltip="Edit Columns"
+              aria-label="Edit Columns"
+              exxatDrawerAction
+              [componentSelector]="gridService.get('ryzen-edit-columns')"
+              [size]="'drawer-sm'"
+              [caption]="'Edit Columns'"
+              mat-icon-button
+              class="ml-4"
+              fxHide.lt-md
+            >
+              <i aria-hidden="true" class="fa-light fa-wrench s-18"></i>
+            </button>
+
+            <button
+              matTooltip="Filter"
+              mat-icon-button
+              class="ml-4 filter-icon-button"
+              aria-label="filters"
+              exxatDrawerAction
+              [componentSelector]="
+                _UXDemoDrawerService.get('ryzen-filter-drawer')
+              "
+              [size]="'drawer-sm'"
+              [caption]="'Filters'"
+              [primaryAction]="'Save'"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
+                <span> 12 </span>
+              </div>
+            </button>
+
+            <button
+              tabindex="0"
+              aria-label="mat menu"
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              class="ml-4"
+              fxHide.gt-sm
+            >
+              <i aria-hidden="true" class="fal fa-ellipsis-h s-18"></i>
+            </button>
+            <mat-menu #menu="matMenu" fxHide.gt-sm>
+              <button mat-menu-item aria-label="Action 1">
+                <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i
+                >Action 1
+              </button>
+              <button mat-menu-item aria-label="Action 2">
+                <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i
+                >Action 2
+              </button>
+              <button
+                mat-menu-item
+                aria-label="Edit Columns"
+                exxatDrawerAction
+                [componentSelector]="gridService.get('ryzen-edit-columns')"
+                [size]="'drawer-sm'"
+                [caption]="'Edit Columns'"
+              >
+                <i aria-hidden="true" class="fa-light fa-wrench s-18 mr-8"></i
+                >Edit columns
+              </button>
+              <button mat-menu-item aria-label="Export file">
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-file-export s-18 mr-8"
+                ></i
+                >Export file
+              </button>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-found-style warn-fg">No data found</div>
+
+      <div class="content" tabindex="0">
+        <div>
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            class="w-100-p exxat-table table-x-border-none"
+            id="grid-with-colspan"
+            aria-label="This is a grid with colspan"
+          >
+            <!-- Position Column header has display none-->
+            <ng-container matColumnDef="position">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                [ngStyle]="{ display: 'none' }"
+              >
+                No.
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="word-break-all course-name-column"
+              >
+                {{ element.position }}
+              </td>
+            </ng-container>
+
+            <!-- no. column which will have values of position column -->
+            <ng-container matColumnDef="No">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                [attr.rowspan]="2"
+                class="word-break-all course-name-column first-header-row"
+              >
+                Course Name
+              </th>
+            </ng-container>
+
+            <!-- one Column -->
+            <ng-container matColumnDef="one">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="header-font-weight word-break-all column-width second-header-row"
+              >
+                Beginner
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="word-break-all text-center column-width"
+              >
+                {{ element.one }}
+              </td>
+            </ng-container>
+
+            <!-- two Column -->
+            <ng-container matColumnDef="two">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="header-font-weight word-break-all column-width second-header-row space-no-wrap"
+              >
+                Intermediate
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="word-break-all text-center column-width"
+              >
+                {{ element.two }}
+              </td>
+            </ng-container>
+
+            <!-- three Column -->
+            <ng-container matColumnDef="three">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="header-font-weight word-break-all column-width second-header-row"
+              >
+                Advance
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="word-break-all text-center column-width"
+              >
+                {{ element.three }}
+              </td>
+            </ng-container>
+
+            <!-- four Column -->
+            <ng-container matColumnDef="four">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="header-font-weight word-break-all column-width second-header-row"
+              >
+                Beginner
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="word-break-all text-center column-width"
+              >
+                Example
+              </td>
+            </ng-container>
+
+            <!-- five Column -->
+            <ng-container matColumnDef="five">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="header-font-weight word-break-all column-width second-header-row space-no-wrap"
+              >
+                Intermediate
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="word-break-all text-center column-width"
+              >
+                Example
+              </td>
+            </ng-container>
+
+            <!-- six Column -->
+            <ng-container matColumnDef="six">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="header-font-weight word-break-all column-width second-header-row"
+              >
+                Advance
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="word-break-all text-center column-width"
+              >
+                Example
+              </td>
+            </ng-container>
+
+            <!-- seven Column -->
+            <ng-container matColumnDef="seven">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="header-font-weight word-break-all column-width second-header-row"
+              >
+                Beginner
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="word-break-all text-center column-width"
+              >
+                Example
+              </td>
+            </ng-container>
+
+            <!-- eight Column -->
+            <ng-container matColumnDef="eight">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="header-font-weight word-break-all column-width second-header-row space-no-wrap"
+              >
+                Intermediate
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="word-break-all text-center column-width"
+              >
+                Example
+              </td>
+            </ng-container>
+
+            <!-- nine Column -->
+            <ng-container matColumnDef="nine">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="header-font-weight word-break-all column-width second-header-row"
+              >
+                Advance
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="word-break-all text-center column-width"
+              >
+                Example
+              </td>
+            </ng-container>
+
+            <!-- ten Column -->
+            <ng-container matColumnDef="ten">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="header-font-weight word-break-all column-width second-header-row"
+              >
+                Beginner
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="word-break-all text-center column-width"
+              >
+                Example
+              </td>
+            </ng-container>
+
+            <!-- eleven Column -->
+            <ng-container matColumnDef="eleven">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="header-font-weight word-break-all column-width second-header-row space-no-wrap"
+              >
+                Intermediate
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="word-break-all text-center column-width"
+              >
+                Example
+              </td>
+            </ng-container>
+
+            <!-- tweleve Column -->
+            <ng-container matColumnDef="tweleve">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="header-font-weight word-break-all column-width second-header-row"
+              >
+                Advance
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="word-break-all text-center column-width"
+              >
+                Example
+              </td>
+            </ng-container>
+
+            <!-- 1st hedaer row -->
+            <!-- knowledge column -->
+            <ng-container matColumnDef="Knowledge">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                [attr.colspan]="3"
+                class="word-break-all first-header-row"
+              >
+                Knowledge
+              </th>
+            </ng-container>
+
+            <!-- skills column -->
+            <ng-container matColumnDef="Skills">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                [attr.colspan]="3"
+                class="word-break-all first-header-row"
+              >
+                Skills
+              </th>
+            </ng-container>
+
+            <!-- attitude column -->
+            <ng-container matColumnDef="attitude">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                [attr.colspan]="3"
+                class="word-break-all first-header-row"
+              >
+                Attitude
+              </th>
+            </ng-container>
+
+            <!-- attributes column -->
+            <ng-container matColumnDef="attributes">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                [attr.colspan]="3"
+                class="word-break-all first-header-row"
+              >
+                Attributes child 1
+              </th>
+            </ng-container>
+
+            <!-- 1st header row -->
+            <tr
+              mat-header-row
+              *matHeaderRowDef="
+                ['No', 'Knowledge', 'Skills', 'attitude', 'attributes'];
+                sticky: true
+              "
+            ></tr>
+
+            <!-- second header row -->
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"
+            ></tr>
+
+            <!-- normal mat row -->
+            <tr
+              mat-row
+              *matRowDef="let row; columns: displayedColumns"
+              (click)="addRow(row)"
+              [class.row-selected]="clickedRows.has(row)"
+              [class.row-highlighted]="highlightedRows.has(row)"
+            ></tr>
+
+            <!-- row with colspan with blue background -->
+            <!-- Group header -->
+
+            <ng-container matColumnDef="blueHeader">
+              <td
+                colspan="999"
+                mat-cell
+                *matCellDef="let blueColorBy"
+                class="blue-background word-break-all"
+              >
+                <strong>PT501 - Cellular and systems physiology</strong>
+              </td>
+            </ng-container>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: ['blueHeader']; when: isBlueColor"
+            ></tr>
+
+            <!-- row with colspan with accent background -->
+            <!-- Group header -->
+            <ng-container matColumnDef="groupHeader">
+              <td
+                colspan="999"
+                mat-cell
+                *matCellDef="let groupBy"
+                class="accent-shade-background word-break-all"
+              >
+                <strong class="mr-8">Objective </strong>PT501 - Cellular and
+                systems physiology
+              </td>
+            </ng-container>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: ['groupHeader']; when: isGroup"
+            ></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <mat-paginator [pageSize]="30" class="bx bb"></mat-paginator>
+  </div>
+</div>

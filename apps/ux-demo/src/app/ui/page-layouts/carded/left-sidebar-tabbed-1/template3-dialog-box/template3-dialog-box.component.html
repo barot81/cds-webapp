@@ -1,0 +1,53 @@
+
+  <mat-dialog-content>
+  
+    <fuse-highlight lang="html" class="" fxLayout="column" fxLayoutAlign="start start" fxFlex="100">
+      <textarea #source >
+
+              <div class="page-layout carded left-sidebar">
+                <div fxLayout="column" class="w-100-p">
+                  <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-16">
+                      <span> Header with headings </span>
+                  </div>
+                  <div fxLayout="row">
+                    <fuse-sidebar class="sidebar" name="carded-left-sidebar-tabbed-2"
+                      position="left" lockedOpen="gt-md" fxFlex.gt-md="20">
+                      <div class="content" fusePerfectScrollbar>
+                        <p>add your sidebar content here</p>
+                      </div>
+                      <!-- / SIDEBAR CONTENT -->
+                    </fuse-sidebar>
+                    <!-- // fuse SIDEBAR -->
+
+                    <!-- CENTER -->
+                    <div class="center ml-lg-16" fxFlex.gt-md="80" fxFlex="100" fxLayout="column">
+                      
+                        <button mat-icon-button class="sidebar-toggle" fxHide.gt-md
+                          (click)="toggleSidebar('carded-left-sidebar-tabbed-2')">
+                          <mat-icon>menu</mat-icon>
+                        </button>
+
+                      <div class="content">
+                        <div fxLayout="row wrap" fxFlex="100">
+                            <div class="pr-md-16" fxFlex.gt-sm="80"  fxFlex="100">
+                              <p>add content here</p>
+                            </div>
+                            <div fxFlex="100" fxFlex.gt-sm="20">
+                              <p>add right sidebar content here</p>
+                            </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+      </textarea>
+    
+    </fuse-highlight>
+        
+        
+  </mat-dialog-content>
+
+

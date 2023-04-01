@@ -1,0 +1,35 @@
+<table mat-table [dataSource]="dataSource" class="w-100-p exxat-table">
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="property">
+        <th fxHide.xs mat-header-cell *matHeaderCellDef> Property
+        </th>
+        <td mat-cell fxHide.xs *matCellDef="let element"> {{element.propertyTitle}} </td>
+    </ng-container>
+
+    <!-- Phone Column -->
+    <ng-container matColumnDef="type">
+        <th fxHide.xs mat-header-cell *matHeaderCellDef> Type
+        </th>
+        <td mat-cell fxHide.xs *matCellDef="let element"> {{element.propertyType}} </td>
+    </ng-container>
+
+    <!-- Setting Column -->
+    <ng-container matColumnDef="default_value">
+        <th class="" fxHide.xs mat-header-cell *matHeaderCellDef> Default Value
+            Setting </th>
+        <td mat-cell fxHide.xs *matCellDef="let element"> {{element.defaultValue}} </td>
+    </ng-container>
+    <!-- Symbol Column -->
+
+    <!-- Time Column -->
+    <ng-container matColumnDef="description">
+        <th class="" fxHide.xs mat-header-cell *matHeaderCellDef>
+            Description </th>
+        <td mat-cell fxHide.xs *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+</table>

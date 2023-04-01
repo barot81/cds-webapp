@@ -1,0 +1,23 @@
+@import 'init';
+
+.faculty-page {
+  .page-content {
+    background: none !important;
+    box-shadow: none !important;
+    border-radius: 0% !important;
+  }
+
+  .faculty-sidebar-width {
+    max-width: 340px;
+  }
+
+  .faculty-page-header {
+    height: 88px;
+    @include media-breakpoint('lt-md') {
+      height: auto;
+    }
+    @include media-breakpoint('lt-sm') {
+      margin: 0 8px 0 8px;
+    }
+  }
+}

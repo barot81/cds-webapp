@@ -1,0 +1,22 @@
+@import 'init';
+
+#placement-by-rotation {
+  .card-border-green {
+    border-left: 6px solid #00cc99;
+  }
+
+  .card-border-red {
+    border-left: 6px solid #ff8080;
+  }
+
+  .vertical-divider {
+    @include media-breakpoint('gt-sm') {
+      display: block;
+      margin: 0;
+      border-top: 0 !important;
+      border-right-width: 1px !important;
+      border-right-style: solid !important;
+      border-right-color: rgba(0, 0, 0, 0.12) !important;
+    }
+  }
+}

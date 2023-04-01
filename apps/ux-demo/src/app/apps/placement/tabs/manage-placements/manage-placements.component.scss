@@ -1,0 +1,59 @@
+@import 'init';
+
+#placement-manage-placements {
+  .setting-color {
+    color: $blue-dianne;
+  }
+
+  .setting-notification-icon {
+    position: relative;
+    .icon-position {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+    }
+  }
+  .exxat-table {
+    .student-name-column {
+      min-width: 14vw !important;
+      @include media-breakpoint('md') {
+        min-width: 24vw !important;
+      }
+      @include media-breakpoint('sm') {
+        min-width: 30vw !important;
+      }
+      @include media-breakpoint('xs') {
+        min-width: 60vw !important;
+      }
+    }
+    .column-width {
+      min-width: 12vw !important;
+      max-width: 12vw !important;
+      @include media-breakpoint('md') {
+        min-width: 24vw !important;
+        max-width: 24vw !important;
+      }
+      @include media-breakpoint('sm') {
+        min-width: 30vw !important;
+        max-width: 30vw !important;
+      }
+      @include media-breakpoint('xs') {
+        min-width: 60vw !important;
+        max-width: 60vw !important;
+      }
+
+      .overflow-with-info-icon {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+      }
+
+      .chip-disable {
+        background-color: $alto-light !important;
+      }
+
+      .fa-info-circle {
+        color: $white !important;
+      }
+    }
+  }
+}

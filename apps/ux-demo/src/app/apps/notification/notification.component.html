@@ -1,0 +1,92 @@
+
+<!-- /////////////////// Full width Page ////////////////// -->
+<div class="page-layout simple fullwidth inner-scroll">
+  <div class="center">
+  <!-- CONTENT -->
+<div class="content">
+    <div fxLayout="column" fxLayout.gt-md="row">
+
+      <div fxLayout="column" fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="50">
+        <div class="mat-caption secondary-text">See Notification Ui Demo Here</div>
+
+        <mat-card>
+          <button mat-icon-button color="primary" class="action-icon" aria-label="Edit" exxatManifoldPanelAction
+            [componentSelector]="notificationservice.get('notificationstepper')" [size]="'drawer-lg'"
+            [caption]="'Create Notification'" role="img">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-card>
+
+      </div>
+
+      <div fxLayout="column" fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="50"></div>
+
+
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-md="row">
+
+      <div fxLayout="column" fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="50">
+        <div class="mat-caption secondary-text">See Notification Log Demo Here</div>
+
+        <mat-card>
+          <button mat-icon-button color="primary" class="action-icon" aria-label="Edit" exxatDrawerAction
+            [componentSelector]="notificationservice.get('notificationlog')" [size]="'drawer-lg'"
+            [caption]="'Notification Log'" role="img">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-card>
+
+      </div>
+
+      <div fxLayout="column" fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="50"></div>
+
+
+    </div>
+
+  </div>
+
+  <div class="pt-16">
+    <exxat-file-viewer [documentConfiguration]=""></exxat-file-viewer>
+  </div>
+
+
+<!--
+  <div *ngIf="showData">
+    <p>Cc: {{showData.cc}}</p>
+    <p><br></p>
+    <p>Bcc: {{showData.bcc}}</p>
+    <p><br></p>
+    <p>Description: {{showData.description}}</p>
+    <p><br></p>
+    <p>Email Type: {{showData.emailType}}</p>
+    <p><br></p>
+    <p>From: {{showData.from}}</p>
+    <p><br></p>
+    <p>Reply To: {{showData.replyto}}</p>
+    <p><br></p>
+    <p>Schedule Date: {{showData.scheduleDate}}</p>
+    <p><br></p>
+    <p>Schedule Type: {{showData.scheduleType}}</p>
+    <p><br></p>
+    <p>Subject: {{showData.subject}}</p>
+    <p><br></p>
+    <p>TemplateId: {{showData.templateId}}</p>
+    <p><br></p>
+    <p>notificationID: {{showData.entity.notificationId}}</p>
+    <p><br></p>
+    <p>categoryId: {{showData.entity.categoryId}}</p>
+    <p><br></p>
+    <p>Student Data Send By Product Team: {{showData.entity.data}}</p>
+  </div>
+ -->
+</div>
+
+<!-- <div class="content" fusePerfectScrollbar >
+
+      <notification-wizard [categoryId]="'ESSNotification'"  [notificationId]="'Immediate'"  (triggerStep)='checkStep($event)'></notification-wizard>
+</div> -->
+
+  <!-- / CONTENT -->
+
+</div>

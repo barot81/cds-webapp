@@ -1,0 +1,1120 @@
+<div fxLayout="row" class="pt-12 student-wishlist-demo-page" fxFlex="100">
+  <fuse-sidebar
+    class="sidebar py-16"
+    name="carded-left-sidebar-tabbed-2"
+    position="left"
+    lockedOpen="gt-md"
+    fxFlex.gt-md="20"
+    fxFlex="100"
+    tabindex="0"
+    aria-label="this is a filter sidebar "
+    [style.height.px]="headerService.scrollContentheight - 33"
+  >
+    <div
+      class="content px-16"
+      fusePerfectScrollbar
+      fxLayout="column"
+      fxLayoutAlign="start center"
+    >
+      <mat-form-field appearance="fill" fxFlex="100" class="w-100-p">
+        <mat-label> State </mat-label>
+        <mat-select>
+          <mat-option>
+            <ngx-mat-select-search
+              formControlName="dropdownSearch"
+              placeholderLabel="Search"
+              noEntriesFoundLabel="No entry matches"
+            >
+            </ngx-mat-select-search>
+          </mat-option>
+          <mat-option
+            *ngFor="let item of filteredDropdownSearchData | async"
+            [value]="item.id"
+          >
+            {{ item.title }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" fxFlex="100" class="w-100-p">
+        <mat-label>city</mat-label>
+        <input matInput formControlName="city" />
+        <mat-error>city is required!</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" fxFlex="100" class="w-100-p">
+        <mat-label>Zipcode</mat-label>
+        <input matInput formControlName="Zipcode" />
+        <mat-error>Zipcode is required!</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" fxFlex="100" class="w-100-p">
+        <mat-label> Setting </mat-label>
+        <mat-select>
+          <mat-option>
+            <ngx-mat-select-search
+              formControlName="dropdownSearch"
+              placeholderLabel="Search"
+              noEntriesFoundLabel="No entry matches"
+            >
+            </ngx-mat-select-search>
+          </mat-option>
+          <mat-option
+            *ngFor="let item of filteredDropdownSearchData | async"
+            [value]="item.id"
+          >
+            {{ item.title }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" fxFlex="100" class="w-100-p">
+        <mat-label> Slot type </mat-label>
+        <mat-select>
+          <mat-option>
+            <ngx-mat-select-search
+              formControlName="dropdownSearch"
+              placeholderLabel="Search"
+              noEntriesFoundLabel="No entry matches"
+            >
+            </ngx-mat-select-search>
+          </mat-option>
+          <mat-option
+            *ngFor="let item of filteredDropdownSearchData | async"
+            [value]="item.id"
+          >
+            {{ item.title }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="accent"
+        class="px-24"
+        aria-label="apply filters button "
+      >
+        Apply
+      </button>
+    </div>
+  </fuse-sidebar>
+
+  <div
+    class="center ml-lg-16 w-100-p"
+    fxFlex.gt-md="80"
+    fxFlex="100"
+    tabindex="0"
+    aria-label="right side content "
+  >
+    <div fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-lg-8">
+        <div fxLayout="row wrap" fxLayoutAlign="start center">
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex.xs="100">
+            <button
+              mat-icon-button
+              class="sidebar-toggle mr-4 action-icon"
+              fxHide.gt-md
+              (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+              aria-label="toggle sidebar button "
+            >
+              <i aria-hidden="true" class="fal fa-filter icon-fill s-18"></i>
+            </button>
+            <div class="search-wrapper search-grid pr-16">
+              <div
+                class="search white-background"
+                fxFlex
+                fxLayout="row"
+                fxLayoutAlign="start center"
+              >
+                <mat-icon class="s-16 secondary-text">search</mat-icon>
+                <input type="text" placeholder="Search" fxFlex />
+              </div>
+            </div>
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            class="py-xs-8 py-8 px-16 header-info"
+            tabindex="0"
+            aria-label="other infomation "
+          >
+            <span
+              class="icon-blue-color font-18 font-weight-600 pr-8"
+              tabindex="0"
+              aria-label=" 2"
+              >2</span
+            >
+            <span
+              class="font-weight-600 pr-8"
+              tabindex="0"
+              aria-label="slots added "
+              >Slots added</span
+            >-
+            <span
+              class="numbers-color-primary font-weight-600 px-8"
+              tabindex="0"
+              aria-label="4 "
+              >4</span
+            >
+            <span class="pr-8" tabindex="0" aria-label=" minimum required"
+              >Min. required</span
+            >
+            <span
+              class="numbers-color-primary font-weight-600 px-8"
+              tabindex="0"
+              aria-label="10 "
+              >10</span
+            >
+            <span tabindex="0" aria-label="maximum allotted "
+              >Max. allotted</span
+            >
+          </div>
+        </div>
+        <div>
+          <button
+            mat-flat-button
+            color="primary"
+            fxHide.lt-sm
+            aria-label="go to map view button "
+          >
+            Go to map view
+          </button>
+        </div>
+      </div>
+      <div
+        fxLayout="column"
+        class="content overflow-auto pb-xs-16 explore-sites-content"
+        [style.height.px]="headerService.scrollContentheight - 88"
+        fusePerfectScrollbar
+      >
+        <mat-card
+          fxLayout="column"
+          class="mb-8 py-8"
+          tabindex="0"
+          aria-label="this is card "
+        >
+          <div fxLayout="row" fxLayoutAlign="start center" class="pb-8">
+            <a
+              class="font-16 font-weight-600 text-ellipses explore-page-headings"
+              tabindex="0"
+              aria-label="heading Rusk Rehabilitation at NYU Langone Health Acute Care Residency"
+            >
+              Rusk Rehabilitation at NYU Langone Health Acute Care Residency
+            </a>
+            <span class="pl-16" tabindex="0" aria-label="Dallas, TX "
+              >Dallas, TX</span
+            >
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            fxLayout.lt-md="column"
+            fxLayoutAlign.lt-md="center space-between"
+          >
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayout.lt-md="column"
+              fxLayoutAlign.lt-md="center start"
+            >
+              <span
+                class="exxat-sushi-bg py-4 width-fit-content px-16 border-radius-24 mr-16"
+                tabindex="0"
+                aria-label=" setting IP Acute Critical Care"
+              >
+                IP Acute Critical Care
+              </span>
+              <div fxLayout="row wrap" fxLayoutAlign="start center">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-calendar-day s-16"
+                  ></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label="Jan 2, 2021 - Jan 20, 2021 "
+                    >Jan 2, 2021 - Jan 20, 2021</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-user-alt s-16"></i>
+                  <span class="pl-8" tabindex="0" aria-label="Marvin McKinney "
+                    >Marvin McKinney</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-list-ul s-16"></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label=" FCFS  ,  Resume required"
+                  >
+                    FCFS , Resume required</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center" class="mt-small-8">
+              <button
+                mat-raised-button
+                color="accent"
+                class="button-height-condensed w-80"
+                aria-label="add button "
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </mat-card>
+
+        <mat-card
+          fxLayout="column"
+          class="mb-8 py-8"
+          tabindex="0"
+          aria-label=" this is a card"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center" class="pb-8">
+            <a
+              class="font-16 font-weight-600 text-ellipses explore-page-headings"
+              tooltip="  Brigham and Women's Hospital Department of Rehabilitation Services Cardiovascular and Pulmonary Residency
+              Brigham and Women's Hospital Department of Rehabilitation Services Cardiovascular and Pulmonary Residency"
+              [options]="tooltipOptions"
+              tabindex="0"
+              aria-label=" Brigham and Women's Hospital Department of Rehabilitation Services Cardiovascular and Pulmonary Residency"
+            >
+              Brigham and Women's Hospital Department of Rehabilitation Services
+              Cardiovascular and Pulmonary Residency
+            </a>
+            <span class="pl-16" tabindex="0" aria-label="Dallas, TX "
+              >Dallas, TX</span
+            >
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            fxLayout.lt-md="column"
+            fxLayoutAlign.lt-md="center space-between"
+          >
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayout.lt-md="column"
+              fxLayoutAlign.lt-md="center start"
+            >
+              <span
+                class="exxat-gorse-bg py-4 width-fit-content px-16 border-radius-24 mr-16"
+                tabindex="0"
+                aria-label=" setting Home Health Peds"
+              >
+                Home Health Peds
+              </span>
+              <div fxLayout="row wrap" fxLayoutAlign="start center">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-calendar-day s-16"
+                  ></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label="Jan 2, 2021 - Jan 20, 2021 "
+                    >Jan 2, 2021 - Jan 20, 2021</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-user-alt s-16"></i>
+                  <span class="pl-8" tabindex="0" aria-label="Marvin McKinney "
+                    >Marvin McKinney</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-list-ul s-16"></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label=" FCFS  ,  Resume required"
+                  >
+                    FCFS , Resume required</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center" class="mt-small-8">
+              <button
+                mat-raised-button
+                color="accent"
+                class="button-height-condensed w-80"
+                aria-label="add button "
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </mat-card>
+
+        <mat-card
+          fxLayout="column"
+          class="mb-8 py-8"
+          tabindex="0"
+          aria-label=" this is a card"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center" class="pb-8">
+            <a
+              class="font-16 font-weight-600 text-ellipses explore-page-headings"
+              tabindex="0"
+              aria-label=" Rusk Rehabilitation at NYU Langone Health Acute Care Residency "
+            >
+              Rusk Rehabilitation at NYU Langone Health Acute Care Residency
+            </a>
+            <span class="pl-16" tabindex="0" aria-label="Dallas, TX "
+              >Dallas, TX</span
+            >
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            fxLayout.lt-md="column"
+            fxLayoutAlign.lt-md="center space-between"
+            class="mb-12"
+          >
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayout.lt-md="column"
+              fxLayoutAlign.lt-md="center start"
+            >
+              <span
+                class="exxat-robin-egg-blue-bg py-4 width-fit-content px-16 border-radius-24 mr-16"
+                tabindex="0"
+                aria-label="setting OP Vestibular "
+              >
+                OP Vestibular
+              </span>
+              <div fxLayout="row wrap" fxLayoutAlign="start center">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-calendar-day s-16"
+                  ></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label="Jan 2, 2021 - Jan 20, 2021 "
+                    >Jan 2, 2021 - Jan 20, 2021</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-user-alt s-16"></i>
+                  <span class="pl-8" tabindex="0" aria-label="Marvin McKinney "
+                    >Marvin McKinney</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-list-ul s-16"></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label=" FCFS  ,  Resume required"
+                  >
+                    FCFS , Resume required</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center" class="mt-small-8">
+              <button
+                mat-stroked-button
+                color="warn"
+                class="button-height-condensed w-80"
+                aria-label="remove button "
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+          <div class="w-100-p" fxHide.gt-sm>
+            <mat-divider></mat-divider>
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            fxLayout.lt-md="column"
+            fxLayoutAlign.lt-md="center space-between"
+            class="mt-small-16"
+          >
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayout.lt-md="column"
+              fxLayoutAlign.lt-md="center start"
+            >
+              <span
+                class="exxat-tall-poppy-bg py-4 width-fit-content px-16 border-radius-24 fuse-white-fg mr-16"
+                tabindex="0"
+                aria-label="setting  IP Neuro Rehab"
+              >
+                IP Neuro Rehab
+              </span>
+              <div fxLayout="row wrap" fxLayoutAlign="start center">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-calendar-day s-16"
+                  ></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label="Jan 2, 2021 - Jan 20, 2021 "
+                    >Jan 2, 2021 - Jan 20, 2021</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-user-alt s-16"></i>
+                  <span class="pl-8" tabindex="0" aria-label="Marvin McKinney "
+                    >Marvin McKinney</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-list-ul s-16"></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label=" FCFS  ,  Resume required"
+                  >
+                    FCFS , Resume required</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center" class="mt-small-8">
+              <button
+                mat-raised-button
+                color="accent"
+                class="button-height-condensed w-80"
+                aria-label="Add button "
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </mat-card>
+
+        <mat-card
+          fxLayout="column"
+          class="mb-8 py-8"
+          tabindex="0"
+          aria-label=" this is a card"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center" class="pb-8">
+            <a
+              class="font-16 font-weight-600 text-ellipses explore-page-headings"
+              tabindex="0"
+              aria-label="Rusk Rehabilitation at NYU Langone Health Acute Care Residency "
+            >
+              Rusk Rehabilitation at NYU Langone Health Acute Care Residency
+            </a>
+            <span class="pl-16" tabindex="0" aria-label="Dallas, TX "
+              >Dallas, TX</span
+            >
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            fxLayout.lt-md="column"
+            fxLayoutAlign.lt-md="center space-between"
+          >
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayout.lt-md="column"
+              fxLayoutAlign.lt-md="center start"
+            >
+              <span
+                class="exxat-dodger-blue-dark-bg py-4 width-fit-content px-16 border-radius-24 mr-16"
+                tabindex="0"
+                aria-label=" IP Acute Critical Care "
+              >
+                IP Acute Critical Care
+              </span>
+              <div fxLayout="row wrap" fxLayoutAlign="start center">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-calendar-day s-16"
+                  ></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label="Jan 2, 2021 - Jan 20, 2021 "
+                    >Jan 2, 2021 - Jan 20, 2021</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-user-alt s-16"></i>
+                  <span class="pl-8" tabindex="0" aria-label="Marvin McKinney "
+                    >Marvin McKinney</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-list-ul s-16"></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label=" FCFS  ,  Resume required"
+                  >
+                    FCFS , Resume required</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center" class="mt-small-8">
+              <button
+                mat-raised-button
+                color="accent"
+                class="button-height-condensed w-80"
+                aria-label="Add button "
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </mat-card>
+
+        <mat-card
+          fxLayout="column"
+          class="mb-8 py-8"
+          tabindex="0"
+          aria-label=" this is a card"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center" class="pb-8">
+            <a
+              class="font-16 font-weight-600 text-ellipses explore-page-headings"
+              tabindex="0"
+              aria-label="Rusk Rehabilitation at NYU Langone Health Acute Care Residency "
+            >
+              Rusk Rehabilitation at NYU Langone Health Acute Care Residency
+            </a>
+            <span class="pl-16" tabindex="0" aria-label="Dallas, TX "
+              >Dallas, TX</span
+            >
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            fxLayout.lt-md="column"
+            fxLayoutAlign.lt-md="center space-between"
+          >
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayout.lt-md="column"
+              fxLayoutAlign.lt-md="center start"
+            >
+              <span
+                class="exxat-dodger-blue-dark-bg py-4 width-fit-content px-16 border-radius-24 mr-16"
+                tabindex="0"
+                aria-label=" IP Acute Critical Care "
+              >
+                IP Acute Critical Care
+              </span>
+              <div fxLayout="row wrap" fxLayoutAlign="start center">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-calendar-day s-16"
+                  ></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label="Jan 2, 2021 - Jan 20, 2021 "
+                    >Jan 2, 2021 - Jan 20, 2021</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-user-alt s-16"></i>
+                  <span class="pl-8" tabindex="0" aria-label="Marvin McKinney "
+                    >Marvin McKinney</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-list-ul s-16"></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label=" FCFS  ,  Resume required"
+                  >
+                    FCFS , Resume required</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center" class="mt-small-8">
+              <button
+                mat-raised-button
+                color="accent"
+                class="button-height-condensed w-80"
+                aria-label="Add button "
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </mat-card>
+
+        <mat-card
+          fxLayout="column"
+          class="mb-8 py-8"
+          tabindex="0"
+          aria-label=" this is a card"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center" class="pb-8">
+            <a
+              class="font-16 font-weight-600 text-ellipses explore-page-headings"
+              tabindex="0"
+              aria-label="Rusk Rehabilitation at NYU Langone Health Acute Care Residency "
+            >
+              Rusk Rehabilitation at NYU Langone Health Acute Care Residency
+            </a>
+            <span class="pl-16" tabindex="0" aria-label="Dallas, TX "
+              >Dallas, TX</span
+            >
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            fxLayout.lt-md="column"
+            fxLayoutAlign.lt-md="center space-between"
+          >
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayout.lt-md="column"
+              fxLayoutAlign.lt-md="center start"
+            >
+              <span
+                class="exxat-dodger-blue-dark-bg py-4 width-fit-content px-16 border-radius-24 mr-16"
+                tabindex="0"
+                aria-label=" IP Acute Critical Care "
+              >
+                IP Acute Critical Care
+              </span>
+              <div fxLayout="row wrap" fxLayoutAlign="start center">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-calendar-day s-16"
+                  ></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label="Jan 2, 2021 - Jan 20, 2021 "
+                    >Jan 2, 2021 - Jan 20, 2021</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-user-alt s-16"></i>
+                  <span class="pl-8" tabindex="0" aria-label="Marvin McKinney "
+                    >Marvin McKinney</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-list-ul s-16"></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label=" FCFS  ,  Resume required"
+                  >
+                    FCFS , Resume required</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center" class="mt-small-8">
+              <button
+                mat-raised-button
+                color="accent"
+                class="button-height-condensed w-80"
+                aria-label="Add button "
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </mat-card>
+
+        <mat-card
+          fxLayout="column"
+          class="mb-8 py-8"
+          tabindex="0"
+          aria-label=" this is a card"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center" class="pb-8">
+            <a
+              class="font-16 font-weight-600 text-ellipses explore-page-headings"
+              tabindex="0"
+              aria-label="Rusk Rehabilitation at NYU Langone Health Acute Care Residency "
+            >
+              Rusk Rehabilitation at NYU Langone Health Acute Care Residency
+            </a>
+            <span class="pl-16" tabindex="0" aria-label="Dallas, TX "
+              >Dallas, TX</span
+            >
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            fxLayout.lt-md="column"
+            fxLayoutAlign.lt-md="center space-between"
+          >
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayout.lt-md="column"
+              fxLayoutAlign.lt-md="center start"
+            >
+              <span
+                class="exxat-dodger-blue-dark-bg py-4 width-fit-content px-16 border-radius-24 mr-16"
+                tabindex="0"
+                aria-label=" IP Acute Critical Care "
+              >
+                IP Acute Critical Care
+              </span>
+              <div fxLayout="row wrap" fxLayoutAlign="start center">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-calendar-day s-16"
+                  ></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label="Jan 2, 2021 - Jan 20, 2021 "
+                    >Jan 2, 2021 - Jan 20, 2021</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-user-alt s-16"></i>
+                  <span class="pl-8" tabindex="0" aria-label="Marvin McKinney "
+                    >Marvin McKinney</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-list-ul s-16"></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label=" FCFS  ,  Resume required"
+                  >
+                    FCFS , Resume required</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center" class="mt-small-8">
+              <button
+                mat-raised-button
+                color="accent"
+                class="button-height-condensed w-80"
+                aria-label="Add button "
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </mat-card>
+
+        <mat-card
+          fxLayout="column"
+          class="mb-8 py-8"
+          tabindex="0"
+          aria-label=" this is a card"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center" class="pb-8">
+            <a
+              class="font-16 font-weight-600 text-ellipses explore-page-headings"
+              tabindex="0"
+              aria-label="Rusk Rehabilitation at NYU Langone Health Acute Care Residency "
+            >
+              Rusk Rehabilitation at NYU Langone Health Acute Care Residency
+            </a>
+            <span class="pl-16" tabindex="0" aria-label="Dallas, TX "
+              >Dallas, TX</span
+            >
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            fxLayout.lt-md="column"
+            fxLayoutAlign.lt-md="center space-between"
+          >
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayout.lt-md="column"
+              fxLayoutAlign.lt-md="center start"
+            >
+              <span
+                class="exxat-dodger-blue-dark-bg py-4 width-fit-content px-16 border-radius-24 mr-16"
+                tabindex="0"
+                aria-label=" IP Acute Critical Care "
+              >
+                IP Acute Critical Care
+              </span>
+              <div fxLayout="row wrap" fxLayoutAlign="start center">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-calendar-day s-16"
+                  ></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label="Jan 2, 2021 - Jan 20, 2021 "
+                    >Jan 2, 2021 - Jan 20, 2021</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-user-alt s-16"></i>
+                  <span class="pl-8" tabindex="0" aria-label="Marvin McKinney "
+                    >Marvin McKinney</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-list-ul s-16"></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label=" FCFS  ,  Resume required"
+                  >
+                    FCFS , Resume required</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center" class="mt-small-8">
+              <button
+                mat-raised-button
+                color="accent"
+                class="button-height-condensed w-80"
+                aria-label="Add button "
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </mat-card>
+
+        <mat-card
+          fxLayout="column"
+          class="mb-8 py-8"
+          tabindex="0"
+          aria-label=" this is a card"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center" class="pb-8">
+            <a
+              class="font-16 font-weight-600 text-ellipses explore-page-headings"
+              tabindex="0"
+              aria-label="Rusk Rehabilitation at NYU Langone Health Acute Care Residency "
+            >
+              Rusk Rehabilitation at NYU Langone Health Acute Care Residency
+            </a>
+            <span class="pl-16" tabindex="0" aria-label="Dallas, TX "
+              >Dallas, TX</span
+            >
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            fxLayout.lt-md="column"
+            fxLayoutAlign.lt-md="center space-between"
+          >
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayout.lt-md="column"
+              fxLayoutAlign.lt-md="center start"
+            >
+              <span
+                class="exxat-dodger-blue-dark-bg py-4 width-fit-content px-16 border-radius-24 mr-16"
+                tabindex="0"
+                aria-label=" IP Acute Critical Care "
+              >
+                IP Acute Critical Care
+              </span>
+              <div fxLayout="row wrap" fxLayoutAlign="start center">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-calendar-day s-16"
+                  ></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label="Jan 2, 2021 - Jan 20, 2021 "
+                    >Jan 2, 2021 - Jan 20, 2021</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="border-right pr-16 mr-16 mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-user-alt s-16"></i>
+                  <span class="pl-8" tabindex="0" aria-label="Marvin McKinney "
+                    >Marvin McKinney</span
+                  >
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  class="mt-small-8"
+                >
+                  <i aria-hidden="true" class="fa-light fa-list-ul s-16"></i>
+                  <span
+                    class="pl-8"
+                    tabindex="0"
+                    aria-label=" FCFS  ,  Resume required"
+                  >
+                    FCFS , Resume required</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center" class="mt-small-8">
+              <button
+                mat-raised-button
+                color="accent"
+                class="button-height-condensed w-80"
+                aria-label="Add button "
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+    <div
+      fxHide.gt-xs
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      class="bottom-sticky-buttons"
+    >
+      <button mat-stroked-button color="accent" class="">Save as Draft</button>
+    </div>
+  </div>
+</div>

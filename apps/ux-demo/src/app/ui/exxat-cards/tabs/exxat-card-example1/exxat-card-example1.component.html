@@ -1,0 +1,2824 @@
+<div id="exxat-typography-cards">
+  <div class="mat-title px-xs-16">Exxat Cards Examples</div>
+  <div class="mat-card mat-elevation-z2" fxLayout="column">
+    <!-- @ Card With Header Title -->
+    <div fxLayout="column" fxLayout.gt-sm="row">
+      <div
+        class="preview pr-sm-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <div class="mat-caption secondary-text">Card With header</div>
+        <mat-card
+          class="p-0"
+          tabindex="0"
+          aria-label="this is a Card contains header"
+        >
+          <header
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            class="card-header-title"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <span class="primary-heading">Header Title</span>
+            </div>
+          </header>
+        </mat-card>
+      </div>
+      <fuse-highlight
+        lang="html"
+        class="source-code mt-small-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <textarea #source hidden="hidden">
+          <mat-card class="p-0" tabindex="0" aria-label="this is a Card contains header">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              class="card-header-title"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <span class="primary-heading">Header Title</span>
+              </div>
+            </header>
+          </mat-card>
+         </textarea
+        >
+      </fuse-highlight>
+    </div>
+    <!-- @ Card With Header Title And Header Icon -->
+    <div fxLayout="column" fxLayout.gt-sm="row">
+      <div
+        class="preview pr-sm-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <div class="mat-caption secondary-text">
+          Card With Header Title And Header Icon
+        </div>
+        <mat-card
+          class="p-0"
+          tabindex="0"
+          aria-label="this is a Card contains header with action"
+        >
+          <header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="card-header-title"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <span class="primary-heading">Header Title</span>
+            </div>
+            <button mat-icon-button class="action-icon" aria-label="Edit Card">
+              <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+            </button>
+          </header>
+        </mat-card>
+      </div>
+      <fuse-highlight
+        lang="html"
+        class="source-code mt-small-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <textarea #source hidden="hidden">
+            <mat-card
+            class="p-0"
+            tabindex="0"
+            aria-label="this is a Card contains header with action"
+          >
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <span class="primary-heading">Header Title</span>
+              </div>
+              <button mat-icon-button class="action-icon" aria-label="Edit Card">
+                <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+              </button>
+            </header>
+          </mat-card>
+       </textarea
+        >
+      </fuse-highlight>
+    </div>
+    <!-- @ Card With Header And Content -->
+    <div fxLayout="column" fxLayout.gt-sm="row">
+      <div
+        class="preview pr-sm-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <div class="mat-caption secondary-text">
+          Card With Header And Content
+        </div>
+        <mat-card
+          class="p-0"
+          tabindex="0"
+          aria-label="this is a Card contains header with action and some data"
+        >
+          <header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="card-header-title card-header-border-bottom"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <span class="primary-heading">Header Title</span>
+            </div>
+            <button mat-icon-button aria-label="Edit Card" class="action-icon">
+              <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+            </button>
+          </header>
+          <!--status container/table-->
+          <div fxLayout="column" class="exxat-info-container">
+            <!--1st row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">First name</div>
+                <div class="description">Lindsey</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Last name</div>
+                <div class="description">Smothermon</div>
+              </div>
+            </div>
+            <!--2nd row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Maiden name</div>
+                <div class="description">William</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Date of birth</div>
+                <div class="description">June 20,1990</div>
+              </div>
+            </div>
+            <!--3rd row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Gender</div>
+                <div class="description">Female</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Race</div>
+                <div class="description">Black or African American</div>
+              </div>
+            </div>
+            <!--4th row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Cell phone</div>
+                <div class="description">309-566-4688</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Personal email address</div>
+                <div class="description">lindsey.lyon.081@example.com</div>
+              </div>
+            </div>
+            <!--5th row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info pb-0"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Alternate email address</div>
+                <div class="description">lindsey.Smothermon@example.com</div>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+      <fuse-highlight
+        lang="html"
+        class="source-code mt-small-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <textarea #source hidden="hidden">
+          <mat-card
+            class="p-0"
+            tabindex="0"
+            aria-label="this is a Card contains header with action and some data"
+          >
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <span class="primary-heading">Header Title</span>
+              </div>
+              <button mat-icon-button aria-label="Edit Card" class="action-icon">
+                <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+              </button>
+            </header>
+            <!--status container/table-->
+            <div fxLayout="column" class="exxat-info-container">
+            <!--1st row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">First name</div>
+                <div class="description">Lindsey</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Last name</div>
+                <div class="description">Smothermon</div>
+              </div>
+            </div>
+            <!--2nd row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Maiden name</div>
+                <div class="description">William</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Date of birth</div>
+                <div class="description">June 20,1990</div>
+              </div>
+            </div>
+            <!--3rd row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Gender</div>
+                <div class="description">Female</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Race</div>
+                <div class="description">Black or African American</div>
+              </div>
+            </div>
+            <!--4th row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Cell phone</div>
+                <div class="description">309-566-4688</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Personal email address</div>
+                <div class="description">lindsey.lyon.081@example.com</div>
+              </div>
+            </div>
+            <!--5th row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info pb-0"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Alternate email address</div>
+                <div class="description">lindsey.Smothermon@example.com</div>
+              </div>
+            </div>
+            </div>
+          </mat-card>
+         </textarea
+        >
+      </fuse-highlight>
+    </div>
+
+    <!-- @ Card With three column -->
+    <div fxLayout="column" fxLayout.gt-sm="row">
+      <div
+        class="preview pr-sm-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <div class="mat-caption secondary-text">
+          Card With Header And Content
+        </div>
+        <mat-card
+          class="p-0"
+          tabindex="0"
+          aria-label="this is a Card contains header with action and some data"
+        >
+          <header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="card-header-title card-header-border-bottom"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <span class="primary-heading">Header Title</span>
+            </div>
+            <button mat-icon-button aria-label="Edit Card" class="action-icon">
+              <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+            </button>
+          </header>
+          <!--status container/table-->
+          <div fxLayout="column" class="exxat-info-container">
+            <!--1st row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="33.33"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="33.33"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="33.33"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+            </div>
+            <!--2nd row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="33.33"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="33.33"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="33.33"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+            </div>
+            <!--3rd row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="33.33"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="33.33"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="33.33"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+            </div>
+            <!--4th row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="33.33"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="33.33"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="33.33"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+            </div>
+            <!--5th row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="33.33"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="33.33"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="33.33"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+      <fuse-highlight
+        lang="html"
+        class="source-code mt-small-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <textarea #source hidden="hidden">
+            <mat-card
+            class="p-0"
+            tabindex="0"
+            aria-label="this is a Card contains header with action and some data"
+          >
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <span class="primary-heading">Header Title</span>
+              </div>
+              <button mat-icon-button aria-label="Edit Card" class="action-icon">
+                <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+              </button>
+            </header>
+            <!--status container/table-->
+            <div fxLayout="column" class="exxat-info-container">
+              <!--1st row-->
+              <div fxLayout="column" fxLayout.gt-xs="row">
+                <div
+                  class="exxat-info pr-md-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="33.33"
+                  fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                </div>
+                <div
+                  class="exxat-info pr-md-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="33.33"
+                  fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                </div>
+                <div
+                  class="exxat-info"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="33.33"
+                  fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                </div>
+              </div>
+              <!--2nd row-->
+              <div fxLayout="column" fxLayout.gt-xs="row">
+                <div
+                  class="exxat-info pr-md-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="33.33"
+                  fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                </div>
+                <div
+                  class="exxat-info pr-md-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="33.33"
+                  fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                </div>
+                <div
+                  class="exxat-info"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="33.33"
+                  fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                </div>
+              </div>
+              <!--3rd row-->
+              <div fxLayout="column" fxLayout.gt-xs="row">
+                <div
+                  class="exxat-info pr-md-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="33.33"
+                  fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                </div>
+                <div
+                  class="exxat-info pr-md-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="33.33"
+                  fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                </div>
+                <div
+                  class="exxat-info"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="33.33"
+                  fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                </div>
+              </div>
+              <!--4th row-->
+              <div fxLayout="column" fxLayout.gt-xs="row">
+                <div
+                  class="exxat-info pr-md-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="33.33"
+                  fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                </div>
+                <div
+                  class="exxat-info pr-md-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="33.33"
+                  fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                </div>
+                <div
+                  class="exxat-info"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="33.33"
+                  fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                </div>
+              </div>
+              <!--5th row-->
+              <div fxLayout="column" fxLayout.gt-xs="row">
+                <div
+                  class="exxat-info pr-md-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="33.33"
+                  fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                </div>
+                <div
+                  class="exxat-info pr-md-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="33.33"
+                  fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                </div>
+                <div
+                  class="exxat-info"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="33.33"
+                  fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                </div>
+              </div>
+            </div>
+            </mat-card>
+         </textarea
+        >
+      </fuse-highlight>
+    </div>
+
+    <!-- @ Card With four column -->
+    <div fxLayout="column" fxLayout.gt-sm="row">
+      <div
+        class="preview pr-sm-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <div class="mat-caption secondary-text">
+          Card With Header And Content
+        </div>
+        <mat-card
+          class="p-0"
+          tabindex="0"
+          aria-label="this is a Card contains header with action and some data"
+        >
+          <header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="card-header-title card-header-border-bottom"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <span class="primary-heading">Header Title</span>
+            </div>
+            <button mat-icon-button aria-label="Edit Card" class="action-icon">
+              <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+            </button>
+          </header>
+          <!--status container/table-->
+          <div fxLayout="column" class="exxat-info-container">
+            <div fxLayout="row warp">
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+            </div>
+            <!--2nd row-->
+            <div fxLayout="row warp">
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+            </div>
+            <!--3rd row-->
+            <div fxLayout="row warp">
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+            </div>
+            <!--4th row-->
+            <div fxLayout="row warp">
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+            </div>
+            <!--5th row-->
+            <div fxLayout="row warp">
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25"
+                fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+              </div>
+            </div>
+            <!--5th row-->
+          </div>
+        </mat-card>
+      </div>
+      <fuse-highlight
+        lang="html"
+        class="source-code mt-small-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <textarea #source hidden="hidden">
+              <mat-card
+              class="p-0"
+              tabindex="0"
+              aria-label="this is a Card contains header with action and some data"
+            >
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <span class="primary-heading">Header Title</span>
+                </div>
+                <button mat-icon-button aria-label="Edit Card" class="action-icon">
+                  <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                </button>
+              </header>
+              <!--status container/table-->
+              <div fxLayout="column" class="exxat-info-container">
+                <div fxLayout="row warp">
+                    <div
+                      class="exxat-info pr-md-16"
+                      fxLayout="column"
+                      fxLayoutAlign="center start"
+                      fxFlex.gt-sm="25" fxFlex="100"
+                    >
+                      <div class="title">Lorem ipsum</div>
+                      <div class="description">Lorem ipsum ipsum</div>
+                    </div>
+                    <div
+                    class="exxat-info pr-md-16"
+                    fxLayout="column"
+                    fxLayoutAlign="center start"
+                    fxFlex.gt-sm="25" fxFlex="100"
+                  >
+                    <div class="title">Lorem ipsum</div>
+                    <div class="description">Lorem ipsum ipsum</div>
+                    </div>
+                    <div
+                  class="exxat-info pr-md-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="25" fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                    </div>
+                    <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25" fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+                    </div>
+                </div>
+                <!--2nd row-->
+                <div fxLayout="row warp">
+                  <div
+                    class="exxat-info pr-md-16"
+                    fxLayout="column"
+                    fxLayoutAlign="center start"
+                    fxFlex.gt-sm="25" fxFlex="100"
+                  >
+                    <div class="title">Lorem ipsum</div>
+                    <div class="description">Lorem ipsum ipsum</div>
+                  </div>
+                  <div
+                  class="exxat-info pr-md-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="25" fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                  </div>
+                  <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25" fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+                  </div>
+                  <div
+              class="exxat-info"
+              fxLayout="column"
+              fxLayoutAlign="center start"
+              fxFlex.gt-sm="25" fxFlex="100"
+            >
+              <div class="title">Lorem ipsum</div>
+              <div class="description">Lorem ipsum ipsum</div>
+                  </div>
+                </div>
+                <!--3rd row-->
+                <div fxLayout="row warp">
+                  <div
+                    class="exxat-info pr-md-16"
+                    fxLayout="column"
+                    fxLayoutAlign="center start"
+                    fxFlex.gt-sm="25" fxFlex="100"
+                  >
+                    <div class="title">Lorem ipsum</div>
+                    <div class="description">Lorem ipsum ipsum</div>
+                  </div>
+                  <div
+                  class="exxat-info pr-md-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="25" fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                  </div>
+                  <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25" fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+                  </div>
+                  <div
+              class="exxat-info"
+              fxLayout="column"
+              fxLayoutAlign="center start"
+              fxFlex.gt-sm="25" fxFlex="100"
+            >
+              <div class="title">Lorem ipsum</div>
+              <div class="description">Lorem ipsum ipsum</div>
+                  </div>
+                </div>
+                <!--4th row-->
+                <div fxLayout="row warp">
+                  <div
+                    class="exxat-info pr-md-16"
+                    fxLayout="column"
+                    fxLayoutAlign="center start"
+                    fxFlex.gt-sm="25" fxFlex="100"
+                  >
+                    <div class="title">Lorem ipsum</div>
+                    <div class="description">Lorem ipsum ipsum</div>
+                  </div>
+                  <div
+                  class="exxat-info pr-md-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="25" fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                  </div>
+                  <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25" fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+                  </div>
+                  <div
+              class="exxat-info"
+              fxLayout="column"
+              fxLayoutAlign="center start"
+              fxFlex.gt-sm="25" fxFlex="100"
+            >
+              <div class="title">Lorem ipsum</div>
+              <div class="description">Lorem ipsum ipsum</div>
+                  </div>
+                </div>
+                <!--5th row-->
+                <div fxLayout="row warp">
+                  <div
+                    class="exxat-info pr-md-16"
+                    fxLayout="column"
+                    fxLayoutAlign="center start"
+                    fxFlex.gt-sm="25" fxFlex="100"
+                  >
+                    <div class="title">Lorem ipsum</div>
+                    <div class="description">Lorem ipsum ipsum</div>
+                  </div>
+                  <div
+                  class="exxat-info pr-md-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center start"
+                  fxFlex.gt-sm="25" fxFlex="100"
+                >
+                  <div class="title">Lorem ipsum</div>
+                  <div class="description">Lorem ipsum ipsum</div>
+                  </div>
+                  <div
+                class="exxat-info pr-md-16"
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                fxFlex.gt-sm="25" fxFlex="100"
+              >
+                <div class="title">Lorem ipsum</div>
+                <div class="description">Lorem ipsum ipsum</div>
+                  </div>
+                  <div
+              class="exxat-info"
+              fxLayout="column"
+              fxLayoutAlign="center start"
+              fxFlex.gt-sm="25" fxFlex="100"
+            >
+              <div class="title">Lorem ipsum</div>
+              <div class="description">Lorem ipsum ipsum</div>
+                  </div>
+                </div>
+                <!--5th row-->
+              </div>
+              </mat-card>
+          </textarea
+        >
+      </fuse-highlight>
+    </div>
+
+    <!-- @ Card With Secondary Header -->
+    <div fxLayout="column" fxLayout.gt-sm="row">
+      <div
+        class="preview pr-sm-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <div class="mat-caption secondary-text">Card With Secondary Header</div>
+        <mat-card
+          class="p-0"
+          tabindex="0"
+          aria-label="this is a card with secondary header"
+        >
+          <header class="card-header-title card-header-border-bottom">
+            <div
+              fxFlex="100"
+              fxLayout="row"
+              fxLayoutAlign="space-between start"
+            >
+              <div fxLayout="column" fxFlex="90">
+                <div
+                  fxLayout.gt-md="row"
+                  fxLayout="column"
+                  fxLayoutAlign.gt-md="start center"
+                  fxLayoutAlign="start start"
+                  fxFlex="100"
+                >
+                  <div class="secondary-card-header-title">
+                    <span class="primary-heading">Header Title</span>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-chip-list class="ml-lg-8 ml-0 mr-8 mt-lg-0 mt-4">
+                      <mat-chip>Get Started</mat-chip>
+                    </mat-chip-list>
+                    <exxat-tag-showcase [tags]="tags"></exxat-tag-showcase>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <span class="secondary-text space-pre-wrap"
+                    >March 9, 2022 - March 26, 2022 | Facility</span
+                  >
+                </div>
+              </div>
+              <button
+                mat-icon-button
+                aria-label="Edit Card"
+                class="action-icon"
+              >
+                <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+              </button>
+            </div>
+          </header>
+          <!--status container/table-->
+          <div fxLayout="column" class="exxat-info-container">
+            <!--1st row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">First name</div>
+                <div class="description">Lindsey</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Last name</div>
+                <div class="description">Smothermon</div>
+              </div>
+            </div>
+            <!--2nd row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Maiden name</div>
+                <div class="description">William</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Date of birth</div>
+                <div class="description">June 20,1990</div>
+              </div>
+            </div>
+            <!--3rd row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Gender</div>
+                <div class="description">Female</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Race</div>
+                <div class="description">Black or African American</div>
+              </div>
+            </div>
+            <!--4th row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Cell phone</div>
+                <div class="description">309-566-4688</div>
+              </div>
+              <div
+                class="exxat-info"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Personal email address</div>
+                <div class="description">lindsey.lyon.081@example.com</div>
+              </div>
+            </div>
+            <!--5th row-->
+            <div fxLayout="column" fxLayout.gt-xs="row">
+              <div
+                class="exxat-info pb-0"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="50"
+              >
+                <div class="title">Alternate email address</div>
+                <div class="description">lindsey.Smothermon@example.com</div>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+      <fuse-highlight
+        lang="html"
+        class="source-code mt-small-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <textarea #source hidden="hidden">
+                    <mat-card
+                      class="p-0"
+                      tabindex="0"
+                      aria-label="this is a card with secondary header"
+                    >
+                    <header class="card-header-title card-header-border-bottom">
+                      <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
+                        <div fxLayout="column" fxFlex="90">
+                          <div fxLayout.gt-md="row" fxLayout="column" fxLayoutAlign.gt-md="start center"
+                            fxLayoutAlign="start start" fxFlex="100">
+                            <div class="secondary-card-header-title overflow-ellipses">
+                              <span class="primary-heading" tooltip="Header
+                              Title" [options]="tooltipOptions">Header
+                                Title</span>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                              <mat-chip-list class="ml-lg-8 ml-0 mr-8 mt-lg-0 mt-4">
+                                <mat-chip>Get Started</mat-chip>
+                              </mat-chip-list>
+                              <exxat-tag-showcase [tags]="tags"></exxat-tag-showcase>
+                            </div>
+                          </div>
+                          <div fxLayout="row" fxLayoutAlign="start center">
+                            <span class="secondary-text space-pre-wrap">March 9, 2022 - March 26, 2022 | Facility</span>
+                          </div>
+                        </div>
+                        <button mat-icon-button aria-label="Edit Card" class="action-icon">
+                          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                        </button>
+                      </div>
+                    </header>
+                      <!--status container/table-->
+                      <div fxLayout="column" class="exxat-info-container">
+                      <!--1st row-->
+                      <div fxLayout="column" fxLayout.gt-xs="row">
+                        <div
+                          class="exxat-info"
+                          fxLayout="column"
+                          fxLayoutAlign="center"
+                          fxFlex="50"
+                        >
+                          <div class="title">First name</div>
+                          <div class="description">Lindsey</div>
+                        </div>
+                        <div
+                          class="exxat-info"
+                          fxLayout="column"
+                          fxLayoutAlign="center"
+                          fxFlex="50"
+                        >
+                          <div class="title">Last name</div>
+                          <div class="description">Smothermon</div>
+                        </div>
+                      </div>
+                      <!--2nd row-->
+                      <div fxLayout="column" fxLayout.gt-xs="row">
+                        <div
+                          class="exxat-info"
+                          fxLayout="column"
+                          fxLayoutAlign="center"
+                          fxFlex="50"
+                        >
+                          <div class="title">Maiden name</div>
+                          <div class="description">William</div>
+                        </div>
+                        <div
+                          class="exxat-info"
+                          fxLayout="column"
+                          fxLayoutAlign="center"
+                          fxFlex="50"
+                        >
+                          <div class="title">Date of birth</div>
+                          <div class="description">June 20,1990</div>
+                        </div>
+                      </div>
+                      <!--3rd row-->
+                      <div fxLayout="column" fxLayout.gt-xs="row">
+                        <div
+                          class="exxat-info"
+                          fxLayout="column"
+                          fxLayoutAlign="center"
+                          fxFlex="50"
+                        >
+                          <div class="title">Gender</div>
+                          <div class="description">Female</div>
+                        </div>
+                        <div
+                          class="exxat-info"
+                          fxLayout="column"
+                          fxLayoutAlign="center"
+                          fxFlex="50"
+                        >
+                          <div class="title">Race</div>
+                          <div class="description">Black or African American</div>
+                        </div>
+                      </div>
+                      <!--4th row-->
+                      <div fxLayout="column" fxLayout.gt-xs="row">
+                        <div
+                          class="exxat-info"
+                          fxLayout="column"
+                          fxLayoutAlign="center"
+                          fxFlex="50"
+                        >
+                          <div class="title">Cell phone</div>
+                          <div class="description">309-566-4688</div>
+                        </div>
+                        <div
+                          class="exxat-info"
+                          fxLayout="column"
+                          fxLayoutAlign="center"
+                          fxFlex="50"
+                        >
+                          <div class="title">Personal email address</div>
+                          <div class="description">lindsey.lyon.081@example.com</div>
+                        </div>
+                      </div>
+                      <!--5th row-->
+                      <div fxLayout="column" fxLayout.gt-xs="row">
+                        <div
+                          class="exxat-info pb-0"
+                          fxLayout="column"
+                          fxLayoutAlign="center"
+                          fxFlex="50"
+                        >
+                          <div class="title">Alternate email address</div>
+                          <div class="description">lindsey.Smothermon@example.com</div>
+                        </div>
+                      </div>
+                      </div>
+                    </mat-card>
+                   </textarea
+        >
+      </fuse-highlight>
+    </div>
+
+    <!-- @ Card With Content -->
+    <div fxLayout="column" fxLayout.gt-sm="row">
+      <div
+        class="preview pr-sm-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <div class="mat-caption secondary-text">
+          Card With Header And Content
+        </div>
+
+        <mat-card
+          class="p-0"
+          aria-label="This is a card with header and content"
+        >
+          <header
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            class="card-header-title card-header-border-bottom"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <span class="primary-heading">Title</span>
+            </div>
+          </header>
+          <div
+            fxLayout="column"
+            tabindex="0"
+            aria-label="card content"
+            class="p-16"
+          >
+            <div fxLayout="column" class="border-bottom">
+              <span class="secondary_title pb-12">Shared with student</span>
+              <p class="pb-4">
+                Exercitation ex qui ad consequat voluptate commodo. Aliqua qui
+                ea eiusmod incididunt dolor irure. Excepteur culpa laborum id
+                cillum tempor pariatur ea officia esse qui. Exercitation ex qui
+                ad consequat voluptate commodo. Aliqua qui ea eiusmod incididunt
+                dolor irure. Excepteur culpa laborum id cillum tempor pariatur
+                ea officia esse qui.
+              </p>
+              <a>View document</a>
+              <span class="text-italic pt-4 pb-12"
+                >Last updated by <strong>Jhon Alex</strong> on
+                <strong>December 10, 2020</strong></span
+              >
+            </div>
+            <div fxLayout="column" class="pt-12">
+              <span class="secondary_title pb-12">Internal use only</span>
+              <p class="pb-4">
+                Exercitation ex qui ad consequat voluptate commodo. Aliqua qui
+                ea eiusmod incididunt dolor irure. Excepteur culpa laborum id
+                cillum tempor pariatur ea officia esse qui. Exercitation ex qui
+                ad consequat voluptate commodo. Aliqua qui ea eiusmod incididunt
+                dolor irure. Excepteur culpa laborum id cillum tempor pariatur
+                ea officia esse qui.
+              </p>
+              <a>View document</a>
+              <span class="text-italic pt-4"
+                >Last updated by <strong>Jhon Alex</strong> on
+                <strong>December 10, 2020</strong></span
+              >
+            </div>
+          </div>
+        </mat-card>
+      </div>
+      <fuse-highlight
+        lang="html"
+        class="source-code mt-small-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <textarea #source hidden="hidden">
+ 
+          <mat-card class="p-0" aria-label="This is a card with content">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              class="card-header-title card-header-border-bottom"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <span class="primary-heading">Title</span>
+              </div>
+            </header>
+            <div
+              fxLayout="column"
+              tabindex="0"
+              aria-label="card content"
+              class="p-16"
+            >
+              <div fxLayout="column" class="border-bottom">
+                <span class="secondary_title pb-12">Shared with student</span>
+                <p class="pb-4">
+                  Exercitation ex qui ad consequat voluptate commodo. Aliqua qui
+                  ea eiusmod incididunt dolor irure. Excepteur culpa laborum id
+                  cillum tempor pariatur ea officia esse qui. Exercitation ex qui
+                  ad consequat voluptate commodo. Aliqua qui ea eiusmod incididunt
+                  dolor irure. Excepteur culpa laborum id cillum tempor pariatur
+                  ea officia esse qui.
+                </p>
+                <a>View document</a>
+                <span class="text-italic pt-4 pb-12"
+                  >Last updated by <strong>Jhon Alex</strong> on
+                  <strong>December 10, 2020</strong></span
+                >
+              </div>
+              <div fxLayout="column" class="pt-12">
+                <span class="secondary_title pb-12">Internal use only</span>
+                <p class="pb-4">
+                  Exercitation ex qui ad consequat voluptate commodo. Aliqua qui
+                  ea eiusmod incididunt dolor irure. Excepteur culpa laborum id
+                  cillum tempor pariatur ea officia esse qui. Exercitation ex qui
+                  ad consequat voluptate commodo. Aliqua qui ea eiusmod incididunt
+                  dolor irure. Excepteur culpa laborum id cillum tempor pariatur
+                  ea officia esse qui.
+                </p>
+                <a>View document</a>
+                <span class="text-italic pt-4"
+                  >Last updated by <strong>Jhon Alex</strong> on
+                  <strong>December 10, 2020</strong></span
+                >
+              </div>
+            </div>
+          </mat-card>
+        </textarea>
+      </fuse-highlight>
+    </div>
+
+    <!-- @ Card With tertiary heading -->
+    <div fxLayout="column" fxLayout.gt-sm="row">
+      <div
+        class="preview pr-sm-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <div class="mat-caption secondary-text">Card With Tertiary Heading</div>
+        <mat-card
+          class="p-0"
+          tabindex="0"
+          aria-label="this is a Card contains Tertiary Heading"
+        >
+          <header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="card-header-title card-header-border-bottom"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <span class="primary-heading">Notes</span>
+            </div>
+            <button mat-icon-button aria-label="Edit Card" class="action-icon">
+              <i aria-hidden="true" class="fa-light fa-plus s-18"></i>
+            </button>
+          </header>
+          <div fxLayout="column" tabindex="0" aria-label="card content">
+            <div fxLayout="column" class="border-bottom p-16">
+              <span class="pb-8 secondary_title"
+                >Notes for school use only</span
+              >
+              <span class="pb-12 tertiary_title">Inherited from site</span>
+              <div
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="pb-12 border-bottom"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center" class="pr-12">
+                  <span
+                    >Internal use only text. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Sem mauris consectetur.</span
+                  >
+                </div>
+                <div fxLayout="row" fxLayoutAlign="end center">
+                  <button
+                    mat-icon-button
+                    disabled
+                    aria-label="Settings"
+                    class="mr-8"
+                  >
+                    <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                  </button>
+                  <button
+                    mat-icon-button
+                    disabled
+                    color="warn"
+                    aria-label="delete icon"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-trash-alt warn-fg s-18"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+              <div
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="py-12 border-bottom"
+              >
+                <div class="text-container mb-12 pr-12">
+                  <input id="ch" #ch type="checkbox" />
+                  <button
+                    id="show-more-label"
+                    *ngIf="isTextOverflow('text_id')"
+                    (click)="ch.click()"
+                    [attr.aria-label]="!ch.checked ? 'Show More' : 'Show Less'"
+                    class="link-btn"
+                  ></button>
+                  <div class="text" id="text_id">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem
+                    ma uris consectetur. Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit. Sem mauris.Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Sem mauris consectetur. Lorem
+                    ipsum dolor sit amet, consectetur adipiscing elit. Sem
+                    mauris. Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit. Sem mauris consectetur. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Sem mauris consectetur. Lorem
+                    ipsum dolor sit amet, consectetur adipiscing elit. Sem
+                    mauris. Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit. Sem mauris consectetur. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Sem mauris. Lorem ipsum dolor
+                    sit amet, consectetur adipiscing elit. Sem mauris
+                    consectetur. Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit. Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit. Sem mauris consectetur. Lorem ipsum dolor
+                    sit amet, consectetur adipiscing elit.
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="end center">
+                  <button
+                    mat-icon-button
+                    disabled
+                    aria-label="Settings"
+                    class="mr-8"
+                  >
+                    <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                  </button>
+                  <button
+                    mat-icon-button
+                    disabled
+                    color="warn"
+                    aria-label="delete icon"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-trash-alt warn-fg s-18"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+              <div fxLayout="column" class="pt-12">
+                <span class="tertiary_title pb-12">Location notes</span>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="pb-12 border-bottom"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    class="pr-12"
+                  >
+                    <span
+                      >Internal use only text. Lorem ipsum dolor sit amet,
+                      consectetur adipiscing elit. Sem mauris consectetur.</span
+                    >
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="end center">
+                    <button
+                      mat-icon-button
+                      aria-label="Settings"
+                      class="action-icon mr-8"
+                    >
+                      <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                    </button>
+                    <button
+                      mat-icon-button
+                      color="warn"
+                      aria-label="delete icon"
+                      class="delete-icon"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-trash-alt warn-fg s-18"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="pt-12"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    class="pr-12"
+                  >
+                    <span
+                      >Internal use only text. Lorem ipsum dolor sit amet,
+                      consectetur adipiscing elit. Sem mauris consectetur.
+                      Internal use only text. Lorem ipsum dolor sit amet,
+                      consectetur adipiscing elit. Sem mauris consectetur.</span
+                    >
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="end center">
+                    <button
+                      mat-icon-button
+                      aria-label="Settings"
+                      class="action-icon mr-8"
+                    >
+                      <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                    </button>
+                    <button
+                      mat-icon-button
+                      color="warn"
+                      aria-label="delete icon"
+                      class="delete-icon"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-trash-alt warn-fg s-18"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div fxLayout="column" class="p-16">
+              <span class="pb-8 secondary_title"
+                >Notes shared with students</span
+              >
+              <span class="pb-12 tertiary_title">Inherited from site</span>
+              <div
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="pb-12 border-bottom"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center" class="pr-12">
+                  <span
+                    >Internal use only text. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Sem mauris consectetur.</span
+                  >
+                </div>
+                <div fxLayout="row" fxLayoutAlign="end center">
+                  <button
+                    mat-icon-button
+                    disabled
+                    aria-label="Settings"
+                    class="mr-8"
+                  >
+                    <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                  </button>
+                  <button
+                    mat-icon-button
+                    disabled
+                    color="warn"
+                    aria-label="delete icon"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-trash-alt warn-fg s-18"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+
+              <div
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="py-12 border-bottom"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center" class="pr-12">
+                  <span
+                    >Internal use only text. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Sem mauris consectetur.
+                    Internal use only text. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Sem mauris consectetur</span
+                  >
+                </div>
+                <div fxLayout="row" fxLayoutAlign="end center">
+                  <button
+                    mat-icon-button
+                    disabled
+                    aria-label="Settings"
+                    class="mr-8"
+                  >
+                    <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                  </button>
+                  <button
+                    mat-icon-button
+                    disabled
+                    color="warn"
+                    aria-label="delete icon"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-trash-alt warn-fg s-18"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+
+              <div fxLayout="column" class="border-bottom py-16">
+                <span
+                  >Notes is coming from CK Editor control. Lorem ipsum dolor sit
+                  amet, consectetur adipiscing elit. Sem mauris consectetur.
+                  Lorem ipsum dolor sit amet,
+                  <a>consectetur adipiscing elit</a>. Lorem ipsum dolor sit
+                  amet, consectetur adipiscing elit.</span
+                >
+                <ul>
+                  <li>Lorem ipsum dolor sit amet</li>
+                  <li>Lorem ipsum</li>
+                  <li>Lorem ipsum dolor</li>
+                </ul>
+                <span
+                  >Sem mauris <a>consectetur</a>. Lorem ipsum dolor sit amet.
+                  <em
+                    >Lorem ipsum dolor sit amet, consectetur adipiscing elit</em
+                  >. Sem mauris consectetur. Lorem ipsum dolor sit.</span
+                >
+                <div class="text-container my-12">
+                  <input id="ch" #ch type="checkbox" />
+                  <button
+                    id="show-more-label"
+                    *ngIf="isTextOverflow('text_id')"
+                    (click)="ch.click()"
+                    [attr.aria-label]="!ch.checked ? 'Show More' : 'Show Less'"
+                    class="link-btn"
+                  ></button>
+                  <div class="text" id="text_id">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem
+                    mauris consectetur. Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit. Sem mauris.Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Sem mauris consectetur. Lorem
+                    ipsum dolor sit amet, consectetur adipiscing elit. Sem
+                    mauris. Lorem ipsum dolor sit amet , consectetur adipiscing
+                    elit. Sem mauris consectetur. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit . Sem mauris consectetur. Lorem
+                    ipsum dolor sit amet, consectetur adipiscing elit. Sem
+                    mauris.Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit. Sem mauris consectetur. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Sem mauris. Lorem ipsum dolor
+                    sit amet, consectetur adipiscing elit. Sem mauris
+                    consectetur. Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit. Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit. Sem mauris consectetur. Lorem ipsum dolor
+                    sit amet, consectetur adipiscing elit.
+                  </div>
+                </div>
+              </div>
+
+              <div
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="py-12 border-bottom"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center" class="pr-12">
+                  <span
+                    >Notes is coming from CK Editor control. Lorem ipsum dolor
+                    sit amet.</span
+                  >
+                </div>
+                <div fxLayout="row" fxLayoutAlign="end center">
+                  <button
+                    mat-icon-button
+                    disabled
+                    aria-label="Settings"
+                    class="mr-8"
+                  >
+                    <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                  </button>
+                  <button
+                    mat-icon-button
+                    disabled
+                    color="warn"
+                    aria-label="delete icon"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-trash-alt warn-fg s-18"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+
+              <div fxLayout="column">
+                <span class="pt-12 tertiary_title">Location notes</span>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="py-12 border-bottom"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    class="pr-12"
+                  >
+                    <span
+                      >Notes is coming from CK Editor control. Lorem ipsum dolor
+                      sit amet.</span
+                    >
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="end center">
+                    <button
+                      mat-icon-button
+                      disabled
+                      aria-label="Settings"
+                      class="mr-8"
+                    >
+                      <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                    </button>
+                    <button
+                      mat-icon-button
+                      disabled
+                      color="warn"
+                      aria-label="delete icon"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-trash-alt warn-fg s-18"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="pt-12"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    class="pr-12"
+                  >
+                    <span
+                      >Notes is coming from CK Editor control. Lorem ipsum dolor
+                      sit amet, consectetur adipiscing elit. Sem mauris
+                      consectetur. Lorem ipsum dolor sit amet, consectetur
+                      adipiscing elit. Sem mauris consectetur.
+                    </span>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="end center">
+                    <button
+                      mat-icon-button
+                      aria-label="Settings"
+                      class="mr-8 action-icon"
+                    >
+                      <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                    </button>
+                    <button
+                      mat-icon-button
+                      color="warn"
+                      aria-label="delete icon"
+                      class="delete-icon"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-trash-alt warn-fg s-18"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+      <div fxLayout="column" fxFlex="50" fxLayoutAlign="start start">
+        <fuse-highlight lang="html" class="source-code mt-small-16">
+          <textarea #source hidden="hidden">
+            <mat-card
+              class="p-0"
+              tabindex="0"
+              aria-label="this is a Card contains Tertiary Heading"
+            >
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <span class="primary-heading">Notes</span>
+                </div>
+                <button mat-icon-button aria-label="Edit Card" class="action-icon">
+                  <i aria-hidden="true" class="fa-light fa-plus s-18"></i>
+                </button>
+              </header>
+              <div
+                fxLayout="column"
+                tabindex="0"
+                aria-label="card content"
+                >
+                <div fxLayout="column" class="border-bottom p-16">
+                  <span class="pb-8 secondary_title">Notes for school use only</span>
+                  <span class="pb-12 tertiary_title">Inherited from site</span>
+                  <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center" class="pb-12 border-bottom"
+                >
+                  <div fxLayout="row" fxLayoutAlign="start center" class="pr-12">
+                    <span>Internal use only text. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                       Sem mauris consectetur.</span>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="end center">
+                    <button mat-icon-button disabled aria-label="Settings" class="mr-8">
+                      <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                    </button>
+                    <button
+                        mat-icon-button disabled
+                        color="warn"
+                        aria-label="delete icon">
+                        <i aria-hidden="true" class="fa-light fa-trash-alt warn-fg s-18"></i>
+                    </button>
+                  </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="space-between center" class="py-12 border-bottom">
+                    <div class="text-container mb-12 pr-12">
+                      <input id="ch" #ch type="checkbox">
+                      <button id="show-more-label" *ngIf="isTextOverflow('text_id')" (click)="ch.click()" 
+                      [attr.aria-label]="!ch.checked ? 'Show More': 'Show Less'" class="link-btn"></button>
+                      <div class="text" id="text_id">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ma
+                        uris consectetur. Lorem ipsum dolor sit amet, consectetur 
+                        adipiscing elit. Sem mauris.Lorem ipsum dolor sit amet, 
+                        consectetur adipiscing elit. Sem mauris consectetur. 
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                        Sem mauris. Lorem ipsum dolor sit amet, consectetur 
+                        adipiscing elit. Sem mauris consectetur. Lorem ipsum 
+                        dolor sit amet, consectetur adipiscing elit. Lorem ipsum 
+                        dolor sit amet, consectetur adipiscing elit. Sem mauris consectetur. 
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem mauris.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem mauris 
+                        consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                        Sem mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sem mauris consectetur. Lorem ipsum dolor sit amet, consectetur 
+                        adipiscing elit. Lorem ipsum dolor sit amet, consectetur 
+                        adipiscing elit. Sem mauris consectetur. Lorem ipsum 
+                        dolor sit amet, consectetur adipiscing elit.
+                      </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="end center">
+                      <button mat-icon-button disabled aria-label="Settings" class="mr-8">
+                        <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                      </button>
+                      <button
+                          mat-icon-button disabled
+                          color="warn"
+                          aria-label="delete icon">
+                          <i aria-hidden="true" class="fa-light fa-trash-alt warn-fg s-18"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div fxLayout="column" class="pt-12">
+                    <span class="tertiary_title pb-12">Location notes</span>
+                    <div
+                    fxLayout="row"
+                    fxLayoutAlign="space-between center" class="pb-12 border-bottom"
+                  >
+                    <div fxLayout="row" fxLayoutAlign="start center" class="pr-12">
+                      <span>Internal use only text. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                         Sem mauris consectetur.</span>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="end center">
+                      <button mat-icon-button aria-label="Settings" class="action-icon mr-8">
+                        <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                      </button>
+                      <button
+                          mat-icon-button
+                          color="warn"
+                          aria-label="delete icon" class="delete-icon">
+                          <i aria-hidden="true" class="fa-light fa-trash-alt warn-fg s-18"></i>
+                      </button>
+                    </div>
+                    </div>
+                    <div
+                    fxLayout="row"
+                    fxLayoutAlign="space-between center" class="pt-12"
+                  >
+                    <div fxLayout="row" fxLayoutAlign="start center" class="pr-12">
+                      <span>Internal use only text. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                         Sem mauris consectetur. Internal use only text. Lorem ipsum dolor sit amet, consectetur
+                          adipiscing elit. Sem mauris consectetur.</span>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="end center">
+                      <button mat-icon-button aria-label="Settings" class="action-icon mr-8">
+                        <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                      </button>
+                      <button
+                          mat-icon-button
+                          color="warn"
+                          aria-label="delete icon" class="delete-icon">
+                          <i aria-hidden="true" class="fa-light fa-trash-alt warn-fg s-18"></i>
+                      </button>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div fxLayout="column" class="p-16">
+                  <span class="pb-8 secondary_title">Notes shared with students</span>
+                  <span class="pb-12 tertiary_title">Inherited from site</span>
+                  <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center" class="pb-12 border-bottom"
+                  >
+                  <div fxLayout="row" fxLayoutAlign="start center" class="pr-12">
+                    <span>Internal use only text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                      Sem mauris consectetur.</span>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="end center">
+                    <button mat-icon-button disabled aria-label="Settings" class="mr-8">
+                      <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                    </button>
+                    <button
+                        mat-icon-button disabled
+                        color="warn"
+                        aria-label="delete icon">
+                        <i aria-hidden="true" class="fa-light fa-trash-alt warn-fg s-18"></i>
+                    </button>
+                  </div>
+                  </div>
+
+                  <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center" class="py-12 border-bottom"
+                  >
+                  <div fxLayout="row" fxLayoutAlign="start center" class="pr-12">
+                    <span>Internal use only text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                      Sem mauris consectetur. Internal use only text. Lorem ipsum dolor sit amet, consectetur 
+                      adipiscing elit. Sem mauris consectetur</span>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="end center">
+                    <button mat-icon-button disabled aria-label="Settings" class="mr-8">
+                      <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                    </button>
+                    <button
+                        mat-icon-button disabled
+                        color="warn"
+                        aria-label="delete icon">
+                        <i aria-hidden="true" class="fa-light fa-trash-alt warn-fg s-18"></i>
+                    </button>
+                  </div>
+                  </div>
+
+                  <div fxLayout="column" class="border-bottom py-16">
+                    <span>Notes is coming from CK Editor control. Lorem ipsum dolor sit amet, consectetur 
+                      adipiscing elit. Sem mauris consectetur. Lorem ipsum dolor sit amet, <a>consectetur 
+                        adipiscing elit</a>. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                        <ul>
+                          <li>Lorem ipsum dolor sit amet</li>
+                          <li>Lorem ipsum</li>
+                          <li>Lorem ipsum dolor</li>
+                        </ul>
+                    <span>Sem mauris <a>consectetur</a>. Lorem ipsum dolor sit amet. <em>Lorem ipsum dolor 
+                      sit amet, consectetur adipiscing elit</em>. Sem mauris consectetur. Lorem ipsum dolor 
+                      sit.</span>
+                      <div class="text-container my-12">
+                        <input id="ch" #ch type="checkbox">
+                        <button id="show-more-label" *ngIf="isTextOverflow('text_id')" (click)="ch.click()" 
+                        [attr.aria-label]="!ch.checked ? 'Show More': 'Show Less'" class="link-btn"></button>
+                        <div class="text" id="text_id">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem mauris consectetur.
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem mauris.Lorem ipsum
+                            dolor sit amet, consectetur adipiscing elit. Sem mauris consectetur. Lorem ipsum 
+                            dolor sit amet, consectetur adipiscing elit. Sem mauris. Lorem ipsum dolor sit amet
+                            , consectetur adipiscing elit. Sem mauris consectetur. Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                            . Sem mauris consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Sem mauris.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem mauris 
+                            consectetur. 
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem mauris. Lorem ipsum dolor
+                              sit amet, consectetur adipiscing elit. Sem mauris consectetur. Lorem ipsum dolor sit 
+                              amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing 
+                              elit. Sem mauris consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                    fxLayout="row"
+                    fxLayoutAlign="space-between center" class="py-12 border-bottom"
+                  >
+                    <div fxLayout="row" fxLayoutAlign="start center" class="pr-12">
+                      <span>Notes is coming from CK Editor control. Lorem ipsum dolor sit amet.</span>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="end center">
+                      <button mat-icon-button disabled aria-label="Settings" class="mr-8">
+                        <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                      </button>
+                      <button
+                          mat-icon-button disabled
+                          color="warn"
+                          aria-label="delete icon">
+                          <i aria-hidden="true" class="fa-light fa-trash-alt warn-fg s-18"></i>
+                      </button>
+                    </div>
+                    </div>
+
+                    <div fxLayout="column">
+                      <span class="pt-12 tertiary_title">Location notes</span>
+                    <div
+                    fxLayout="row"
+                    fxLayoutAlign="space-between center" class="py-12 border-bottom"
+                  >
+                    <div fxLayout="row" fxLayoutAlign="start center" class="pr-12">
+                      <span>Notes is coming from CK Editor control. Lorem ipsum dolor sit amet.</span>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="end center">
+                      <button mat-icon-button disabled aria-label="Settings" class="mr-8">
+                        <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                      </button>
+                      <button
+                          mat-icon-button disabled
+                          color="warn"
+                          aria-label="delete icon">
+                          <i aria-hidden="true" class="fa-light fa-trash-alt warn-fg s-18"></i>
+                      </button>
+                    </div>
+                    </div>
+                    <div
+                    fxLayout="row"
+                    fxLayoutAlign="space-between center" class="pt-12"
+                  >
+                    <div fxLayout="row" fxLayoutAlign="start center" class="pr-12">
+                      <span>Notes is coming from CK Editor control. Lorem ipsum dolor sit amet, 
+                        consectetur adipiscing elit. Sem mauris consectetur. Lorem ipsum dolor sit amet, 
+                        consectetur adipiscing elit. Sem mauris consectetur. </span>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="end center">
+                      <button mat-icon-button aria-label="Settings" class="mr-8 action-icon">
+                        <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                      </button>
+                      <button
+                          mat-icon-button
+                          color="warn"
+                          aria-label="delete icon" class="delete-icon">
+                          <i aria-hidden="true" class="fa-light fa-trash-alt warn-fg s-18"></i>
+                      </button>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+            </mat-card>
+      </textarea
+          >
+        </fuse-highlight>
+      </div>
+    </div>
+  </div>
+  <div class="mt-16" fxLayout="column">
+    <h3 class="px-xs-16">Card Example With Carousel</h3>
+    <div class="preview" fxLayout="row" fxFlex="100" class="p-0 mt-16">
+      <mat-card
+        class="mb-16"
+        fxLayout="column"
+        tabindex="0"
+        aria-label="This is a card contains header with edit and delete action and some information with carousel"
+      >
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-12">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <i aria-hidden="true" class="fa-light fa-phone-alt s-18 mr-12"></i>
+            <span class="secondary_title">Subject of the intervention</span>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <button
+              mat-icon-button
+              class="action-icon mr-8"
+              aria-label="edit card"
+            >
+              <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+            </button>
+            <button
+              mat-icon-button
+              class="action-icon delete-icon"
+              aria-label="Delete Card"
+            >
+              <i
+                aria-hidden="true"
+                class="fa-light fa-trash-alt s-18 warn-fg"
+              ></i>
+            </button>
+          </div>
+        </div>
+        <div fxLayout="row wrap" fxLayoutAlign="start start">
+          <div
+            fxLayout="column"
+            fxFlex.gt-lg="80"
+            fxFlex.lg="76"
+            fxFlex.md="64"
+            fxFlex.sm="50"
+            fxFlex="100"
+            fxLayoutAlign="start start"
+            class="pr-16"
+          >
+            <div class="pb-4">
+              <p>
+                <strong>Description:</strong> about the intervention. Lorem
+                ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nos Description: about the
+                intervention. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nos Description: about the
+                intervention. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nos about the
+                intervention. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nos Description: about the
+                intervention. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nos Description: about the
+                intervention. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nos
+              </p>
+            </div>
+            <div fxLayout="row" class="mb-4">
+              <a class="mr-16" aria-label="link for View documents"
+                >View documents (#)</a
+              >|
+              <span class="ml-16 font-weight-600">Rotation to test 123456</span>
+            </div>
+          </div>
+          <div
+            fxLayout="row"
+            fxFlex.gt-lg="20"
+            fxFlex.lg="24"
+            fxFlex.md="36"
+            fxFlex.sm="50"
+            fxFlex="100"
+            fxLayoutAlign="end center"
+            fxLayoutAlign.xs="start center"
+          >
+            <exxat-carousel
+              (OnChange)="onHeaderCarouselEvent($event)"
+              [width]="220"
+              aria-label="this is a carousel with left and right arrow"
+              [maxItems]="headerItems.length"
+            >
+              <div
+                fxLayout="row"
+                fxLayoutAlign="center center"
+                class="border-radius-4 p-16 carousal-height carousel-card"
+                *ngFor="
+                  let item of headerItems;
+                  let i = index;
+                  let isFirst = first;
+                  let isLast = last
+                "
+                [style.min-width.px]="220"
+              >
+                <div fxLayout="column" fxLayoutAlign="center center">
+                  <span>Follow up 2 of 4 scheduled on</span>
+                  <span class="font-22 font-18">{{ item.name }}</span>
+                </div>
+              </div>
+            </exxat-carousel>
+          </div>
+        </div>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <div fxLayout="row" fxLayoutAlign="start center" class="pt-xs-16">
+            <span class="text-italic"
+              >Last updated by <strong>Jhon Alex</strong> on
+              <strong>December 10, 2020</strong></span
+            >
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start center" class="pt-xs-16">
+            <span class="text-italic"
+              >Last updated by <strong>Jhon Alex</strong> on
+              <strong>December 10, 2020</strong></span
+            >
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="100"
+    >
+      <textarea #source hidden="hidden">
+
+                <mat-card
+                fxLayout="column"
+                tabindex="0"
+                aria-label="This is a card contains header with edit and delete action and some information with carousel"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="mb-12"
+                >
+                  <div fxLayout="row" fxLayoutAlign="start center">
+                    <i aria-hidden="true" class="fa-light fa-phone-alt s-18 mr-12"></i>
+                    <span
+                      class="secondary_title"
+                      >Subject of the intervention</span
+                    >
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="end center">
+                    <button
+                      mat-icon-button
+                      class="action-icon mr-8"
+                      aria-label="edit card"
+                    >
+                      <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                    </button>
+                    <button
+                      mat-icon-button
+                      class="action-icon delete-icon"
+                      aria-label="Delete Card"
+                    >
+                      <i aria-hidden="true" class="fa-light fa-trash-alt s-18 warn-fg"></i>
+                    </button>
+                  </div>
+                </div>
+                <div fxLayout="row wrap" fxLayoutAlign="start start">
+                  <div
+                    fxLayout="column"
+                    fxFlex.gt-lg="80"
+                    fxFlex.lg="76"
+                    fxFlex.md="64"
+                    fxFlex.sm="50"
+                    fxFlex="100"
+                    fxLayoutAlign="start start"
+                    class="pr-16"
+                  >
+                    <div class="pb-4">
+                      <p>
+                        <strong>Description:</strong> about the intervention. Lorem
+                        ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                        enim ad minim veniam, quis nos Description: about the
+                        intervention. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nos
+                        Description: about the intervention. Lorem ipsum dolor sit
+                        amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                        veniam, quis nos
+                      </p>
+                    </div>
+                    <div fxLayout="row" class="mb-4">
+                      <a class="mr-16" aria-label="link for View documents"
+                        >View documents (#)</a
+                      >|
+                      <span
+                        class="ml-16 font-weight-600"
+                        >Rotation to test 123456</span
+                      >
+                    </div>
+                  </div>
+                  <div
+                    fxLayout="row"
+                    fxFlex.gt-lg="20"
+                    fxFlex.lg="24"
+                    fxFlex.md="36"
+                    fxFlex.sm="50"
+                    fxFlex="100"
+                    fxLayoutAlign="end center"
+                    fxLayoutAlign.xs="start center"
+                  >
+                    <exxat-carousel
+                      (OnChange)="onHeaderCarouselEvent($event)"
+                      [width]="220"
+                      aria-label="this is a carousel with left and right arrow"
+                      [maxItems]="headerItems.length"
+                    >
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="center center"
+                        class="border-radius-4 p-16 carousal-height border"
+                        *ngFor="
+                          let item of headerItems;
+                          let i = index;
+                          let isFirst = first;
+                          let isLast = last
+                        "
+                        [style.min-width.px]="220"
+                      >
+                        <div fxLayout="column" fxLayoutAlign="center center">
+                          <span
+                            >Follow up 2 of 4 scheduled on</span
+                          >
+                          <span
+                            class="font-22 font-weight-600"
+                            > item.name </span
+                          >
+                        </div>
+                      </div>
+                    </exxat-carousel>
+                  </div>
+                </div>
+                <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    class="pt-xs-16"
+                  >
+                  <span class="text-italic">Last updated by <strong>Jhon Alex</strong> on <strong>December 10, 2020</strong></span>
+                  </div>
+
+                
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    class="pt-xs-16"
+                  >
+                  <span class="text-italic">Last updated by <strong>Jhon Alex</strong> on <strong>December 10, 2020</strong></span>
+                  </div>
+                </div>
+                </mat-card>
+
+        </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <div class="mt-16" fxLayout="column">
+    <h3 class="px-xs-16">Card Example With Avatar And Buttons</h3>
+    <div class="preview" fxLayout="row" fxFlex="100" class="p-0 mt-16">
+      <mat-card
+        fxLayout="row wrap"
+        fxLayoutAlign="space-between center"
+        class="w-100-p"
+      >
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-sm="100">
+          <exxat-avatar
+            firstName="Anna"
+            lastName="Strong"
+            size="lg"
+          ></exxat-avatar>
+
+          <div fxLayoutAlign="start" fxLayout="row wrap">
+            <div>
+              <button
+                mat-icon-button
+                [matMenuTriggerFor]="tagsMenu"
+                (menuOpened)="openTagswithButtons()"
+              >
+                <mat-icon>label</mat-icon>
+              </button>
+              <mat-menu #tagsMenu="matMenu" [overlapTrigger]="false">
+                <exxat-tag
+                  [tags]="tags"
+                  (onTagChanges)="tagsChanged($event)"
+                  [options]="tagOptions"
+                ></exxat-tag>
+              </mat-menu>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start center">
+              <exxat-tag-showcase [tags]="tagsCopy"></exxat-tag-showcase>
+            </div>
+          </div>
+        </div>
+        <div
+          fxLayout="column"
+          fxLayoutAlign="center end"
+          fxLayoutAlign.xs="center start"
+          fxFlex.lt-sm="100"
+          class="pt-xs-16"
+        >
+          <div fxLayout="row" fxLayoutAlign="end start" class="mb-16">
+            <button
+              mat-stroked-button
+              color="primary"
+              class="mr-8"
+              aria-label="Primary"
+            >
+              Button one
+            </button>
+            <button
+              mat-stroked-button
+              color="primary"
+              class="mr-8"
+              aria-label="Primary"
+            >
+              Button two
+            </button>
+            <button
+              mat-stroked-button
+              disabled
+              class="mr-8"
+              aria-label="Disabled"
+            >
+              Button three
+            </button>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="end end">
+            <a>This is a link</a>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code mt-16"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="100"
+    >
+      <textarea #source hidden="hidden">
+        <mat-card fxLayout="row wrap" fxLayoutAlign="space-between center" class="w-100-p">
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-sm="100">
+             <exxat-avatar
+             firstName="Anna"
+             lastName="Strong"
+             size="lg"
+             
+             ></exxat-avatar>
+ 
+             <div fxLayoutAlign="start" fxLayout="row wrap">
+               <div>
+                 <button
+                   mat-icon-button
+                   [matMenuTriggerFor]="tagsMenu"
+                   (menuOpened)="openTagswithButtons()"
+                 >
+                   <mat-icon>label</mat-icon>
+                 </button>
+                 <mat-menu #tagsMenu="matMenu" [overlapTrigger]="false">
+                   <exxat-tag
+                     [tags]="tags"
+                     (onTagChanges)="tagsChanged($event)"
+                     [options]="tagOptions"
+                   ></exxat-tag>
+                 </mat-menu>
+               </div>
+               <div fxLayout="row wrap" fxLayoutAlign="start center">
+                 <exxat-tag-showcase [tags]="tagsCopy"></exxat-tag-showcase>
+               </div>
+             </div>
+          </div>
+          <div fxLayout="column" fxLayoutAlign="center end" fxLayoutAlign.xs="center start" fxFlex.lt-sm="100" class="pt-xs-16">
+             <div fxLayout="row" fxLayoutAlign="end start" class="mb-16">
+             <button
+             mat-stroked-button
+             color="primary"
+             class=" mr-8"
+             aria-label="Primary"
+             >
+             Button one
+             </button>
+             <button
+             mat-stroked-button
+             color="primary"
+             class=" mr-8"
+             aria-label="Primary"
+             >
+             Button two 
+             </button>
+             <button
+             mat-stroked-button
+             disabled
+             class=" mr-8"
+             aria-label="Disabled"
+             >
+             Button three 
+           </button>
+             </div>
+             <div fxLayout="row" fxLayoutAlign="end end" >
+               <a>This is a link</a>
+             </div>
+          </div>
+        </mat-card>
+
+      </textarea>
+    </fuse-highlight>
+  </div>
+</div>

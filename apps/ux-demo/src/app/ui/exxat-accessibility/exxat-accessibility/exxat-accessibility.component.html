@@ -1,0 +1,187 @@
+<div fxLayout="column">
+  <ul class="accessibility-guidlines px-32 py-20 fuse-white-bg">
+    <li>
+      <h2>aria-hidden="true"</h2>
+      <p>If you want to display something but hide it from being read, you can apply <strong>aria-hidden="true"</strong>
+        attribute.
+        Use mosty when we donot want Screen reader to read it.</p>
+      <p><code>&lt;aria-hidden="true"&gt;</code></p>
+      <p>Eg icons for decorative purpose</p>
+      <img src="assets\images\screen1_accessibility.png">
+      <p>but in case we want Screen reader to read it, use <code>&lt;aria-hidden="false"&gt;</code></p>
+    </li>
+    <li>
+      <h2>alt</h2>
+      <p>The <strong>alt</strong> attribute is an alternative text that is not only displayed when - for example - your image is
+        corrupted or the path to this image has changed and can no longer be found. It’s also important because it holds
+        information for screen readers as well as for bots</p>
+      <p>Let’s have a look at Before and After image implementation:</p>
+      <h4>Before</h4>
+      <p><code>&lt;img src="pics/zid23kj3-300x250.jpg" &gt;</code></p>
+      <h4>After</h4>
+      <p><code>&lt;img src="pics/zid23kj3-300x250.jpg" alt="a sitting dog with its lead in its mouth"&gt;</code></p>
+      <p>The <code>alt</code> attribute should provide information about an image. It will not only help assistive
+        technology, but crawling bots as well.</p>
+    </li>
+    <li>
+      <h2>Labels</h2>
+      <p><strong>Labels</strong> are important. They can create a logic connection between an element and its description. In the
+        case of the <code>&lt;input&gt;</code> element we’ll use the <code>&lt;label&gt;</code> element to describe what
+        the <code>&lt;input&gt;</code> is about. There are cases where you don’t have an extra element that can function
+        as a label. In this case we could use the aria-label attribute.</p>
+      <p>Let’s assume you’re using a hamburger menu without a Labels in buttons. </p>
+      <h4>Before</h4>
+      <p><code>&lt;button class="menu-burger"&gt;&lt;/button&gt;</code></p>
+      <h4>After</h4>
+      <p><code>&lt;button class="menu-burger aria-label="menu"&gt;&lt;/button&gt;</code></p>
+      <p>Example of Labels in link. </p>
+      <h4>Before</h4>
+      <p>
+        <code>For more information about us, &lt;a href="/about"&gt;click here&lt;/a&gt;</code>
+      </p>
+      <h4>After</h4>
+      <p>
+        <code>For more information about us, &lt;a href="/about" aria-label="about us"&gt;click here&lt;/a&gt;</code>
+      </p>
+    </li>
+    <li>
+      <h2>Aria-disabled</h2>
+      <p><strong>Aria-disabled</strong> We all know the <code>&lt;disabled&gt;</code> attribute. In most cases it’s used on a
+        button. You could have a form with a button at the bottom. This button should be disabled as long as all forms
+        haven’t been filled out. It will look like this:</p>
+      <h4>Before</h4>
+      <p><code>&lt;button type="submit" disabled&gt;Submit&lt;/button&gt;</code></p>
+    </li>
+    <li>
+      <h2>Input fields</h2>
+      <p>There is no decent form without at least one input field. You probably already guessed that you need to use a
+        label to make the input accessible. In the following example we’ll start from scratch and enhance our input step
+        by step. Let’s try a search for films.</p>
+      <h4>Before</h4>
+      <p><code>&lt;input type="text"&gt;
+        &lt;button&gt;Search&lt;/button&gt;</code>
+      </p>
+      <h4>After</h4>
+      <p>
+        <code>&lt;label for="thesearch"&gt;Search movies&lt;/label&gt;</code>
+      <p></p>
+      <p>
+        <code>&lt;input type="text" placeholder="enter search term" id="thesearch"&gt;</code>
+      <p>
+      <p><code>
+        &lt;button&gt;Search&lt;/button&gt;</code>
+      </p>
+    </li>
+    <li>
+      <h2>aria-labelledby</h2>
+      <p>There is no decent form without at least one input field. You probably already guessed that you need to use a
+        label to make the input accessible. In the following example we’ll start from scratch and enhance our input step
+        by step. Let’s try a search for films.</p>
+      <h4>Example 1: Multiple Labels</h4>
+      <pre>
+        <code ><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>myBillingId<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Billing<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>myNameId<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">aria-labelledby</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>myBillingId myNameId<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>myAddressId<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Address<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">aria-labelledby</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>myBillingId myAddressId<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code>
+     </pre>
+      <h4 id="Example_2_Associating_Headings_With_Regions">Example 2: Associating Headings With Regions</h4>
+      <p>In the example below, header elements are associated with the content they head. Note that the region being
+        referenced is the region that <em>contains</em> the header.</p>
+      <pre><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>main<span class="token punctuation">"</span></span> <span class="token attr-name">aria-labelledby</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>foo<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>foo<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Wild fires spread across the San Diego Hills<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+        Strong winds expand fires ignited by high temperatures ...
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code>
+     </pre>
+      <h4 id="Example_3_Radio_Groups">Example 3: Radio Groups</h4>
+      <p>In the example below, the container of a <a
+          href="/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_radio_role"
+          title="Using the radio role">radiogroup</a> is associated with its label using the
+        <code>aria-labelledby</code>
+        attribute:</p>
+      <pre>
+        <code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio_label<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>My radio label<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radiogroup<span class="token punctuation">"</span></span> <span class="token attr-name">aria-labelledby</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio_label<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Item #1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Item #2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Item #3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+        <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code>
+     </pre>
+      <h4 id="Example_4_Menus">Example 4: Menus</h4>
+      <p>In the example below, a popup menu is associated with its label using the <code>aria-labelledby</code>
+        attribute:
+      </p>
+      <pre>
+        <code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>menubar<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>menuitem<span class="token punctuation">"</span></span> <span class="token attr-name">aria-haspopup</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>fileMenu<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>File<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>menu<span class="token punctuation">"</span></span> <span class="token attr-name">aria-labelledby</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>fileMenu<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>menuitem<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Open<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>menuitem<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Save<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>menuitem<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Save as ...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        ...
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        ...
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code>
+     </pre>
+      <h4 id="Example_5_Definition_Lists">Example 5: Definition Lists</h4>
+      <p>In the example below, the definitions in a formal definition list are associated with the terms they define
+        using
+        the <code>aria-labelledby</code> attribute:</p>
+      <pre>
+        <code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dl</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Fruits<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Fruits<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>definition<span class="token punctuation">"</span></span> <span class="token attr-name">aria-labelledby</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Fruits<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Apple<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>definition<span class="token punctuation">"</span></span> <span class="token attr-name">aria-labelledby</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Fruits<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Banana<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Colors<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Colors<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>definition<span class="token punctuation">"</span></span> <span class="token attr-name">aria-labelledby</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Colors<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Red<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>definition<span class="token punctuation">"</span></span> <span class="token attr-name">aria-labelledby</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Colors<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Blue<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dl</span><span class="token punctuation">&gt;</span></span>
+        <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code>
+     </pre>
+    </li>
+    <li>
+      <h2>Tabindex</h2>
+      <p>The <code>tabindex</code> attribute has three distinct uses:</p>
+      <ul class="tabindex">
+        <li><code>tabindex="1"</code> (or any number greater than 1) defines an explicit tab order. This is almost always a bad idea.</li>
+        <li><code>tabindex="0"</code> allows elements besides links and form elements to receive keyboard focus. It does not change the tab order, but places the element in the logical navigation flow, as if it were a link on the page.</li>
+        <li><code>tabindex="-1"</code> allows things besides links and form elements to receive "programmatic" focus, meaning focus can be set to the element through scripting, links, etc.</li>
+      </ul>
+      <div class="notices yellow">
+        <p>Note: For more detailed understanding of tabindex , please visit <a href="https://webaim.org/techniques/keyboard/tabindex">Link</a></p>
+      </div>
+    </li>
+    <li>
+      <h2>Aria-labelledby</h2>
+      <p>If you can’t use a <code>&lt;label&gt;</code> (the <code>&lt;label&gt;</code> is connected to an
+        <code>&lt;input&gt;</code> and nothing else), but want to make it clear that something is the label of something
+        else - use <code>aria-labelledby</code>.</p>
+      <p>Let’s say you have two <code>&lt;aside&gt;</code> elements on your page. One is for the latest blog posts,
+        while
+        the other is for your rock band’s upcoming tour schedule.</p>
+      <pre><code>&lt;aside aria-labelledby="aside-posts"&gt;
+         &lt;h4 id="aside-posts"&gt;Latest posts&lt;/h4&gt;
+         &lt;ul&gt;
+          ...
+         &lt;/ul&gt;
+        &lt;/aside&gt;
+        &lt;aside aria-labelledby="aside-gigs"&gt;
+         &lt;h4 id="aside-gigs"&gt;Upcoming gigs&lt;/h4&gt;
+         &lt;ul&gt;
+          ...
+         &lt;/ul&gt;
+        &lt;/aside&gt;</code></pre>
+    </li>
+  </ul>
+  <div class="notices yellow">
+    <p>Note: For more detailed understanding of accessibility, please visit <a href="https://a11y-101.com/">Link</a></p>
+  </div>
+</div>

@@ -1,0 +1,271 @@
+<div id="exxat-avatar-examples" class="p-12 w-100-p">
+  <div class="gray-header mb-16">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="mr-8">
+          <button
+            mat-icon-button
+            aria-label="Click to go back"
+            routerLink="/admin/ux/ui/exxat-component-library"
+          >
+            <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+          </button>
+        </div>
+        <div class="mat-title">Avatar & Avatar List Examples</div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+      </div>
+    </div>
+  </div>
+
+  <!-- @ Regular Sized Avatar With src-->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <div
+        tabindex="0"
+        aria-label="Regular Sized Avatar With src"
+        class="mat-caption secondary-text mb-16"
+      >
+        Regular Sized Avatar With src
+      </div>
+      <mat-card>
+        <exxat-avatar
+          src="assets/images/avatars/anna-strong.png"
+        ></exxat-avatar>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+        <exxat-avatar src="assets/images/avatars/anna-strong.png"></exxat-avatar>
+            </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <!-- @ Regular Sized Avatar Without src-->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <div
+        tabindex="0"
+        aria-label="Regular Sized Avatar Without src"
+        class="mat-caption secondary-text mb-16"
+      >
+        Regular Sized Avatar Without src
+      </div>
+      <mat-card>
+        <exxat-avatar firstName="Anna" lastName="Strong"></exxat-avatar>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+          <exxat-avatar firstName="Anna" lastName="Strong"></exxat-avatar>
+              </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <!-- @ large Sized Avatar-->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <div
+        tabindex="0"
+        aria-label="large Sized Avatar"
+        class="mat-caption secondary-text mb-16"
+      >
+        large Sized Avatar
+      </div>
+      <mat-card>
+        <exxat-avatar src="assets/images/avatars/anna-strong.png" size="lg">
+        </exxat-avatar>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+        <exxat-avatar  src="assets/images/avatars/anna-strong.png" size="lg"
+         >
+        </exxat-avatar>
+                </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <!-- @ Large Sized Avatar Without src-->
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <div
+        tabindex="0"
+        aria-label="Large Sized Avatar Without src"
+        class="mat-caption secondary-text mb-16"
+      >
+        Large Sized Avatar Without src
+      </div>
+      <mat-card>
+        <exxat-avatar
+          firstName="Anna"
+          lastName="Strong"
+          size="lg"
+        ></exxat-avatar>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+            <exxat-avatar firstName="Anna" lastName="Strong" size="lg"></exxat-avatar>
+      </textarea>
+    </fuse-highlight>
+  </div>
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <div
+        class="mat-caption secondary-text mb-16"
+        tabindex="0"
+        aria-label="Exxat Avatar List Item With src "
+      >
+        Exxat Avatar List Item With src
+      </div>
+      <mat-card>
+        <exxat-avatar-list-item
+          firstName="Anna"
+          lastName="Strong"
+          src="assets/images/avatars/anna-strong.png"
+        >
+        </exxat-avatar-list-item>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+          <exxat-avatar-list-item firstName="Anna" lastName="Strong" src="assets/images/avatars/anna-strong.png">
+          </exxat-avatar-list-item>
+                </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <div
+        class="mat-caption secondary-text mb-16"
+        tabindex="0"
+        aria-label="Exxat Avatar List Item Without src "
+      >
+        Exxat Avatar List Item Without src
+      </div>
+      <mat-card>
+        <exxat-avatar-list-item firstName="Anna" lastName="Strong">
+        </exxat-avatar-list-item>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+          <exxat-avatar-list-item firstName="Anna" lastName="Strong">
+          </exxat-avatar-list-item>
+                </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <div
+        class="mat-caption secondary-text mb-16"
+        tabindex="0"
+        aria-label="Exxat Avatar List Item Without src "
+      >
+        Exxat Editable Avatar with dialog box
+      </div>
+      <mat-card>
+        <exxat-avatar
+          aria-label="Edit avatar"
+          size="lg"
+          editable="true"
+          tabindex="0"
+          (click)="openDialogWithImage()"
+          src="assets/images/avatars/anna-strong.png"
+        ></exxat-avatar>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+        <exxat-avatar
+        aria-label="Edit avatar"
+        size="lg" editable="true"
+        tabindex="0"
+        (click)="openDialogWithImage()"
+        src="assets/images/avatars/anna-strong.png">
+        </exxat-avatar>
+      </textarea>
+    </fuse-highlight>
+  </div>
+
+  <div class="mt-16" fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="48">
+      <p class="warn-fg font-16" tabindex="0" aria-label="Note from UI Team">
+        Note from UI Team
+      </p>
+      <p
+        tabindex="0"
+        aria-label="Developers are requested not to make any extra self made Class or
+        write hardcode CSS or add Colors. Since we are following MULTI theme,
+        Theme will break if Material theme structure and guidlines are not
+        followed properly."
+        class="warn-fg font-14"
+      >
+        Developers are requested not to make any extra self made Class or write
+        hardcode CSS or add Colors. Since we are following MULTI theme, Theme
+        will break if Material theme structure and guidlines are not followed
+        properly.
+      </p>
+      <strong>Connect To UI team for any such cases.</strong>
+    </div>
+  </div>
+</div>

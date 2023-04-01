@@ -1,0 +1,205 @@
+<div id="exxat-overlay-component-container-examples">
+  <div class="center">
+    <div class="content">
+      <div fxLayout="column" fxLayout.gt-md="row">
+        <div
+          class="preview"
+          fxLayout="column"
+          fxLayoutAlign="center"
+          fxFlex="50"
+        >
+          <div
+            tabindex="0"
+            aria-label="File Viewer Component With Guideline In Overlay"
+            class="mat-caption secondary-text mb-16"
+          >
+            File Viewer Component With Guideline In Overlay
+          </div>
+          <mat-card>
+            <button
+              aria-label="Click to open"
+              class="link-btn"
+              color="primary"
+              (click)="open(fileViewerComponentRef)"
+            >
+              Show File
+            </button>
+          </mat-card>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+          <mat-tab-group dynamicHeight="true">
+            <mat-tab label="Parent Component HTML">
+              <fuse-highlight
+                lang="html"
+                class="source-code mt-16"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="100"
+              >
+                <textarea #source hidden="hidden">
+              <div fxLayout="row wrap" fxLayoutAlign="start center">
+                <div>
+                  <button class="link-btn" (click)="open(fileViewerComponentRef)">
+                    Show File
+                  </button>
+
+                  
+                </div>
+              </div>
+        </textarea
+                >
+              </fuse-highlight>
+            </mat-tab>
+
+            <mat-tab label="Parent Component TS">
+              <fuse-highlight
+                class="pt-16"
+                lang="ts"
+                class="source-code"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="100"
+              >
+                <textarea #source hidden="hidden">
+                  import { Component, ComponentFactoryResolver, TemplateRef } from '@angular/core';
+                  import { OverlayService } from '@exxat/ux';
+                  import { ComponentType } from '@angular/cdk/portal';
+                  import { DocumentViewerConfiguration } from '@exxat/plugin/file-upload';
+                  import { FileEndpoint } from '@exxat/plugin/file-upload';
+                  import { FileViewerGuidelineContainerComponent } from '../../file-viewer-guideline-container/file-viewer-guideline-container.component';
+                  
+                  @Component({
+                    selector: 'ryzen-exxat-file-viewer-guideline-overlay-demo',
+                    templateUrl: './exxat-file-viewer-guideline-overlay-demo.component.html',
+                    styleUrls: ['./exxat-file-viewer-guideline-overlay-demo.component.scss']
+                  })
+                  export class ExxatFileViewerGuidelineOverlayDemoComponent {
+                  
+                    
+                    fileViewerComponentRef: any;
+                    documentConfiguration: DocumentViewerConfiguration;
+                  
+                    constructor(private overlayService: OverlayService, private r: ComponentFactoryResolver) {
+                      this.documentConfiguration = new DocumentViewerConfiguration();
+                      this.documentConfiguration.fileEndpoint = new FileEndpoint('student.profile', 'student');
+                      this.documentConfiguration.fileCollectionKey = '3f817ef6-74a5-463b-bc64-64d44a966089';
+                      this.fileViewerComponentRef = this.r.resolveComponentFactory(FileViewerGuidelineContainerComponent).componentType;
+                    }
+                  
+                    open(content: TemplateRef<any> | ComponentType<any> | string) {
+                      const ref = this.overlayService.open(content, this.documentConfiguration);
+                    }
+                  
+                  }
+                  
+              
+            
+        </textarea
+                >
+              </fuse-highlight>
+            </mat-tab>
+
+            <mat-tab label="Child Component HTML">
+              <fuse-highlight
+                class="pt-16"
+                lang="html"
+                class="source-code"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="100"
+              >
+                <textarea #source hidden="hidden">
+                  <div id="fileViewer_container" fxLayout="column">
+                    <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-16">
+                      <div fxLayout="row" fxLayoutAlign="center center">
+                        <button mat-icon-button class="mr-4 back_button fuse-white-fg" (click)="cancel()">
+                          <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="fileViewer_container_content" fxLayout="row wrap" fxLayoutAlign="start"  [style.height.px]="headerService.scrollContentheight + 25">
+                      <div  class="fileViewer_container_left_content" fxLayout="column" fxFlex="100" fxFlex.gt-md="70">
+                        <mat-card>
+                          <exxat-file-viewer [documentConfiguration]="documentConfiguration"></exxat-file-viewer>
+                        </mat-card>
+                      </div>
+                      <div class="px-16 guidline_container" fxLayout="column" fxFlex="100" fxFlex.gt-md="30">
+                        <mat-card>
+                          <header fxLayout="row" fxLayoutAlign="space-between start">
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                              <h3 >Guidelines
+                              </h3>
+                            </div>
+                          </header>
+                            <ul>
+                              <li class="pb-8">
+                                <h5>Student must provide proof</h5>
+                              </li>
+                              <li class="pb-8">
+                                <h5>A titer lab report for all 3 components Titer reports should not be older than </h5>
+                              </li>
+                              <li>
+                                <h5>Proof of 2 childhood or adult vaccinations </h5>
+                              </li>
+                            </ul>
+                  
+                        </mat-card>
+                      </div>
+                    </div>
+                  </div>
+              </textarea
+                >
+              </fuse-highlight>
+            </mat-tab>
+
+            <mat-tab label="Child Component TS">
+              <fuse-highlight
+                class="pt-16"
+                lang="ts"
+                class="source-code"
+                fxLayout="column"
+                fxLayoutAlign="center"
+                fxFlex="100"
+              >
+                <textarea #source hidden="hidden">
+                  import { Component, ChangeDetectionStrategy } from '@angular/core';
+                  import { ExxatOverlayRef, HeaderService } from '@exxat/ux';
+                  import { DocumentViewerConfiguration } from '@exxat/plugin/file-upload';
+                  
+                  @Component({
+                    selector: 'ryzen-file-viewer-guideline-container',
+                    templateUrl: './file-viewer-guideline-container.component.html',
+                    styleUrls: ['./file-viewer-guideline-container.component.scss'],
+                    changeDetection: ChangeDetectionStrategy.OnPush
+                  })
+                  export class FileViewerGuidelineContainerComponent {
+                  
+                    documentConfiguration: DocumentViewerConfiguration;
+                    
+                    constructor(private overlayRef: ExxatOverlayRef, public headerService: HeaderService) {
+                      this.documentConfiguration = this.overlayRef.data;
+                    }
+                    
+                    ngAfterViewInit() {
+                      this.headerService.setCurrentHeaderHeight(0);
+                    }
+                  
+                    cancel() {
+                      this.overlayRef.close(null);
+                    }
+                  
+                  }
+                  
+                  
+              
+            </textarea
+                >
+              </fuse-highlight>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<div id="exxat-avatar-list-item-examples" class="p-12 w-100-p">
+  <div class="gray-header mb-16">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="mr-8">
+          <button
+            mat-icon-button
+            aria-label="Click to go back"
+            routerLink="/admin/ux/ui/exxat-component-library"
+          >
+            <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+          </button>
+        </div>
+        <div class="mat-title">Avatar List Examples</div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <div
+        class="mat-caption secondary-text mb-16"
+        tabindex="0"
+        aria-label="Exxat Avatar List Item With src "
+      >
+        Exxat Avatar List Item With src
+      </div>
+      <mat-card>
+        <exxat-avatar-list-item
+          firstName="Anna"
+          lastName="Strong"
+          src="assets/images/avatars/anna-strong.png"
+        >
+        </exxat-avatar-list-item>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+          <exxat-avatar-list-item firstName="Anna" lastName="Strong" src="assets/images/avatars/anna-strong.png">
+          </exxat-avatar-list-item>
+                </textarea
+      >
+    </fuse-highlight>
+  </div>
+
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+      <div
+        class="mat-caption secondary-text mb-16"
+        tabindex="0"
+        aria-label="Exxat Avatar List Item Without src "
+      >
+        Exxat Avatar List Item Without src
+      </div>
+      <mat-card>
+        <exxat-avatar-list-item firstName="Anna" lastName="Strong">
+        </exxat-avatar-list-item>
+      </mat-card>
+    </div>
+
+    <fuse-highlight
+      lang="html"
+      class="source-code"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="50"
+    >
+      <textarea #source hidden="hidden">
+          <exxat-avatar-list-item firstName="Anna" lastName="Strong">
+          </exxat-avatar-list-item>
+                </textarea
+      >
+    </fuse-highlight>
+  </div>
+</div>

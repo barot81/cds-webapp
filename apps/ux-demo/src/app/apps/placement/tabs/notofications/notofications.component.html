@@ -1,0 +1,252 @@
+<div id="notification-component" class="page-layout full-width inner-scroll">
+  <div class="gray-header">
+    <mat-card class="no-box-shadow pr-16 pb-16">
+      <div
+        fxLayout="row wrap"
+        fxLayoutAlign="space-between center"
+        fxFlex="100"
+      >
+        <div fxLayoutAlign="start center" class="pt-8">
+          <button
+            mat-button
+            class="action-icon"
+            aria-label="Add"
+            exxatDrawerAction
+            [size]="'drawer-sm'"
+            [caption]="'Add Site'"
+            [primaryAction]="'Save'"
+            role="img"
+            [entityKey]="0"
+            aria-hidden="true"
+          >
+            <mat-icon>add</mat-icon>
+            Send emails
+          </button>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center" fxHide.xs>
+          <div class="header-tab-control filter-with-auto-width">
+            <mat-form-field>
+              <mat-select placeholder="View by">
+                <mat-option
+                  *ngFor="let location of locations"
+                  [value]="location.value"
+                  >{{ location.viewValue }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+
+  <div class="white-background table-rounded-border p-16">
+    <div id="search-bar-filter-container" class="pb-16">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <!--search bar-->
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div class="search-wrapper search-grid">
+            <div
+              class="search"
+              fxFlex
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <mat-icon class="s-16 secondary-text">search</mat-icon>
+              <input type="text" placeholder="Search" fxFlex />
+            </div>
+          </div>
+        </div>
+        <!--filters-->
+        <div fxLayout="row" fxLayoutAlign="end center" fxHide.lt-sm>
+          <span class="pt-12 pr-8 font-weight-600">Filter by : </span>
+          <div class="header-tab-control filter-with-auto-width mr-16">
+            <mat-form-field>
+              <mat-select
+                placeholder="Cohort"
+                [formControl]="locationcontrol"
+                multiple
+              >
+                <mat-select-trigger>
+                  {{ locationcontrol.value ? locationcontrol.value[0] : '' }}
+                  <span
+                    *ngIf="locationcontrol.value?.length > 1"
+                    class="example-additional-selection"
+                  >
+                    (+{{ locationcontrol.value.length - 1 }}
+                    {{
+                      locationcontrol.value?.length === 2 ? 'other' : 'others'
+                    }})
+                  </span>
+                </mat-select-trigger>
+                <mat-option
+                  *ngFor="let location of locations"
+                  [value]="location.value"
+                  >{{ location.viewValue }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="header-tab-control filter-with-auto-width mr-16">
+            <mat-form-field>
+              <mat-select
+                placeholder="Slot type"
+                [formControl]="locationcontrol"
+                multiple
+              >
+                <mat-select-trigger>
+                  {{ locationcontrol.value ? locationcontrol.value[0] : '' }}
+                  <span
+                    *ngIf="locationcontrol.value?.length > 1"
+                    class="example-additional-selection"
+                  >
+                    (+{{ locationcontrol.value.length - 1 }}
+                    {{
+                      locationcontrol.value?.length === 2 ? 'other' : 'others'
+                    }})
+                  </span>
+                </mat-select-trigger>
+                <mat-option
+                  *ngFor="let location of locations"
+                  [value]="location.value"
+                  >{{ location.viewValue }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="header-tab-control filter-with-auto-width">
+            <mat-form-field>
+              <mat-select
+                placeholder="Setting"
+                [formControl]="locationcontrol"
+                multiple
+              >
+                <mat-select-trigger>
+                  {{ locationcontrol.value ? locationcontrol.value[0] : '' }}
+                  <span
+                    *ngIf="locationcontrol.value?.length > 1"
+                    class="example-additional-selection"
+                  >
+                    (+{{ locationcontrol.value.length - 1 }}
+                    {{
+                      locationcontrol.value?.length === 2 ? 'other' : 'others'
+                    }})
+                  </span>
+                </mat-select-trigger>
+                <mat-option
+                  *ngFor="let location of locations"
+                  [value]="location.value"
+                  >{{ location.viewValue }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="content overflow-auto"
+      [style.height.px]="headerService.scrollContentheight - 160"
+      tabindex="0"
+    >
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        class="w-100-p exxat-table pt-0"
+      >
+        <!--checkbox column-->
+        <ng-container matColumnDef="select">
+          <th class="pl-16" mat-header-cell *matHeaderCellDef>
+            <mat-checkbox tabindex="0"> </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let element" class="pl-16">
+            <div fxLayout="column" fxLayoutAlign="start start">
+              <mat-checkbox tabindex="0"> </mat-checkbox>
+            </div>
+          </td>
+        </ng-container>
+
+        <!--name column-->
+        <ng-container matColumnDef="name">
+          <th class="pl-16" mat-header-cell *matHeaderCellDef>Location Name</th>
+          <td mat-cell *matCellDef="let element" class="pl-16">
+            <div fxLayout="column" fxLayoutAlign="center start" class="name">
+              <div fxLayout="column">
+                <span class="font-weight-600">{{ element.name }}</span>
+                <span>2516 James ST,</span>
+                <span>West palm beach,Atlanta,Georgia 310321.</span>
+                <span class="warn-fg">(Location not assigned)</span>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <!--Placement Details column-->
+        <ng-container matColumnDef="placementDetail">
+          <th class="pl-16" mat-header-cell *matHeaderCellDef>
+            Placement Details
+          </th>
+          <td mat-cell *matCellDef="let element" class="pl-16">
+            <div fxLayout="row" fxLayoutAlign="start center" class="name">
+              <exxat-avatar
+                src="assets/images/avatars/anna-strong.png"
+              ></exxat-avatar>
+              <div fxLayout="column">
+                <span class="font-weight-600">Anna Strong</span>
+                <span>Jan 1st, 2020-Jan 15th, 2020</span>
+                <span class="message-box {{ element.statusClass }}  mt-4">
+                  {{ element.placementDetail }}
+                </span>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <!--rotation  column-->
+        <ng-container matColumnDef="rotation">
+          <th mat-header-cell *matHeaderCellDef class="pl-16">Rotation</th>
+          <td class="mat-icon-hover pl-16" mat-cell *matCellDef="let element">
+            <span>Rotation 1</span>
+          </td>
+        </ng-container>
+
+        <!--Staff column-->
+        <ng-container matColumnDef="staff">
+          <th class="pl-16" mat-header-cell *matHeaderCellDef>Staff</th>
+          <td mat-cell *matCellDef="let element" class="pl-16">
+            <div fxLayout="column" fxLayoutAlign="center start">
+              <div
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="accent-100-bg p-4 border-radius-4"
+              >
+                <span class="font-weight-600">Jane Smith(SCCE)</span>
+                <mat-icon>close</mat-icon>
+              </div>
+              <span class="pt-4"><a>Add staff</a></span>
+            </div>
+          </td>
+        </ng-container>
+
+        <!--Status column-->
+        <ng-container matColumnDef="status">
+          <th class="pl-16" mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element" class="pl-16">
+            <div fxLayout="column">
+              <span class="warn-fg">Email not delivered</span>
+              <span><a>Resend email</a></span>
+              <span><em>Last email send on Jan 1st, 2020.</em></span>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns; sticky: true"
+        ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+</div>

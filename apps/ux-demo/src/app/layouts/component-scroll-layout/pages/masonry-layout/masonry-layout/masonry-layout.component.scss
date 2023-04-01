@@ -1,0 +1,18 @@
+@import 'init';
+
+
+.masonry {
+  .brick {
+    &.fixed_height_brick {
+      height: 200px;
+      overflow: hidden !important;
+      &:hover {
+        overflow: auto !important;
+      }
+
+      @include media-breakpoint('lt-lg') {
+        overflow: auto !important;
+      }
+    }
+  }
+}

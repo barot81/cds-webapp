@@ -1,0 +1,16 @@
+.header-hover-grid {
+  th {
+    word-break: break-all;
+    .header-icon {
+      display: none;
+    }
+    &:hover{
+      .header-icon {
+        display: block;
+      }
+    }
+   
+  }
+}
+
+

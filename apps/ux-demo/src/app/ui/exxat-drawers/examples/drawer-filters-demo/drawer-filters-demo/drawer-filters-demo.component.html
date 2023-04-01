@@ -1,0 +1,219 @@
+<div id="drawer-filters-demo" class="p-12">
+  <div class="mat-title">Drawer With Filters Example</div>
+
+  <div fxLayout="column" fxLayout.gt-md="row" class="mb-16">
+    <div
+      class="preview mr-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="30"
+    >
+      <div class="mat-caption secondary-text">Drawer with filters</div>
+      <mat-card>
+        <button
+          mat-icon-button
+          class="ml-4 filter-icon-button"
+          aria-label="filters"
+          exxatDrawerAction
+          [componentSelector]="
+            _exxatDrawerFormService.get('ryzen-drawer-filter-example-one')
+          "
+          [size]="'drawer-md'"
+          [caption]="'Filters'"
+          [primaryAction]="'Apply'"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
+            <span class="warn-fg"> 12 </span>
+          </div>
+        </button>
+      </mat-card>
+    </div>
+
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="70">
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <div class="pt-16">
+            <fuse-highlight
+              lang="html"
+              class="source-code"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="100"
+            >
+              <textarea #source hidden="hidden">
+
+
+                <div class="h-100-p" fxLayout="column">
+                  <div fxHide.gt-md class="pb-16">
+                    <div>
+                      <nav mat-tab-nav-bar>
+                        <a mat-tab-link *ngFor="let item of filterList" [active]="item.id === selectedId"
+                          (click)="navigateToFilterListItem(item.id)">
+                          <span>item.title <span *ngIf="item.count > 0">(item.count)</span></span>
+                        </a>
+                      </nav>
+                    </div>
+                  </div>
+                
+                
+                  <div fxLayout="row" fxFlex="100" class="h-100-p">
+                    <div fxHide.lt-lg class="white-background pt-16 overflow-auto box-shadow-right" fxFlex.gt-md="30">
+                      <div class="mb-16 pl-16"><button class="link-btn pl-0 py-0" aria-label="Reset all">
+                          Reset all
+                        </button></div>
+                      <mat-list>
+                        <button mat-button *ngFor="let item of filterList; let i=index" (click)=navigateToFilterListItem(item.id)>
+                          <mat-list-item [ngClass]="{'active-list-item':selectedId === item.id}">
+                            <div fxLayout="row" fxLayoutAlign="space-between center" class="w-100-p">
+                              <div class="text-left white-space-normal" fxLayout="row" fxLayoutAlign="start center">
+                                <span>item.title <span *ngIf="item.count > 0">(item.count)</span></span>
+                              </div>
+                              <div fxLayout="row" fxLayoutAlign="end center"><i aria-hidden="true" class="fa-solid fa-circle warn-fg s-8"></i></div>
+                            </div>
+                          </mat-list-item>
+                        </button>
+                      </mat-list>
+                    </div>
+                    <div fxFlex.gt-md="70" fxFlex="100" class="pl-16 overflow-auto" role="main">
+                      <div *ngIf="selectedId === filterList[0].id">
+                        <div fxFlex="100" fxLayout="column" class="word-break-word pt-16">
+                          <div class="mb-12" fxLayout="row" fxLayoutAlign="space-between center">
+                            <button class="link-btn pl-0 py-0" aria-label="Select all">
+                              Select all
+                            </button>
+                          </div>
+                          <div fxLayout="column">
+                            <div class="mb-16">
+                              <mat-checkbox>
+                                <div class="status-badge pending">Pending for review</div>
+                              </mat-checkbox>
+                            </div>
+                            <div class="mb-16">
+                              <mat-checkbox [checked]="true">
+                                <div class="status-badge inprogress">In progress</div>
+                              </mat-checkbox>
+                            </div>
+                            <div class="mb-16">
+                              <mat-checkbox [checked]="true">
+                                <div class="status-badge expiring">Expering</div>
+                              </mat-checkbox>
+                            </div>
+                            <div class="mb-16">
+                              <mat-checkbox [checked]="true">
+                                <div class="status-badge getstarted">Get Started</div>
+                              </mat-checkbox>
+                            </div>
+                            <div class="mb-16">
+                              <mat-checkbox>
+                                <div class="status-badge approved">Approve</div>
+                              </mat-checkbox>
+                            </div>
+                            <div class="mb-16">
+                              <mat-checkbox>
+                                <div class="status-badge expired">Expired</div>
+                              </mat-checkbox>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div *ngIf="selectedId === filterList[1].id">
+                        <div fxFlex="100" fxLayout="column" class="word-break-word pr-md-16 pt-16">
+                          <mat-radio-group fxLayout="column">
+                            <mat-radio-button value="Cohort 2020" checked class="mb-16">Cohort 2020</mat-radio-button>
+                            <mat-radio-button value="Cohort 2022" class="mb-16">Cohort 2022 </mat-radio-button>
+                            <mat-radio-button value="Cohort 2021" class="">Cohort 2021</mat-radio-button>
+                          </mat-radio-group>
+                        </div>
+                      </div>
+                      <div *ngIf="selectedId === filterList[2].id">
+                        <div fxFlex="100" fxLayout="column" class="word-break-word pr-md-16 pt-16">
+                          <div class="search-wrapper search-grid">
+                            <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                              <mat-icon class="s-16 secondary-text">search</mat-icon>
+                              <input type="text" placeholder="Search" fxFlex>
+                            </div>
+                          </div>
+                          <div class="my-16 pl-16" fxLayout="row" fxLayoutAlign="space-between center">
+                            <a>Clear all</a>
+                          </div>
+                          <div fxLayout="column" class="pl-16">
+                            <mat-checkbox [checked]="true" class="mb-8">
+                              Immunization Summary
+                            </mat-checkbox>
+                            <mat-checkbox [checked]="true" class="mb-8">
+                              Flu
+                            </mat-checkbox>
+                            <mat-checkbox [checked]="true" class="mb-8">
+                              Physical Exam
+                            </mat-checkbox>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+        <!-- /1st tab content -->
+
+        <!-- 2nd tab content -->
+        <mat-tab label="TS">
+          <div class="pt-16">
+            <fuse-highlight
+              lang="html"
+              class="source-code"
+              fxLayout="column"
+              fxLayoutAlign="center"
+              fxFlex="100"
+            >
+              <textarea #source hidden="hidden">
+              <!-- TS code for filter drawer  -->
+              import { Component } from '@angular/core';
+              import { SidebarFocusHelper } from 'libs/ux-demo/src/lib/ui/exxat-sidebar/exxat-sidebar.service';
+
+              export interface filterListItem {
+                id: string;
+                title: string;
+                count: number;
+              }
+
+              @Component({
+                selector: 'ryzen-drawer-filter-example-one',
+                templateUrl: './drawer-filter-example-one.component.html',
+                styleUrls: ['./drawer-filter-example-one.component.scss'],
+              })
+              export class DrawerFilterExampleOneComponent {
+                selectedId: string;
+
+                filterList: filterListItem[] = [
+                  { id: 'status-filter', title: 'Status', count: 4 },
+                  { id: 'cohort-filter', title: 'Cohort', count: 3 },
+                  { id: 'document-type-filter', title: 'Document Type', count: 0 },
+                ];
+
+                constructor(public _focus: SidebarFocusHelper) {
+                  this.selectedId = this.filterList[0].id;
+                }
+
+                navigateToFilterListItem(id: string) {
+                  this._focus.shiftFocus();
+                  this.selectedId = id;
+                }
+              }
+
+              
+            </textarea
+              >
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+        <!-- /2nd tab content -->
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

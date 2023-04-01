@@ -1,0 +1,28 @@
+<div class="content pt-16" fxLayout="column">
+  <div fxLayout="row wrap" fxFlex="100">
+    <div class="preview mt-16" fxLayout="column" fxLayoutAlign="start" fxFlex.gt-md="100" fxFlex="100">
+      <mat-tab-group>
+        <mat-tab label="Form Request Interface">
+          <div class="pt-16">
+            <fuse-highlight lang="ts" class="source-code">
+              <textarea #source hidden="hidden">
+                export type FormRequest = {
+                  workflowId: string;
+                  layoutId: string;
+                  responseId?: string;
+                }
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Form Request UML">
+          <div class="pt-16 img-container">
+            <img src="assets/images/exxat-forms/FormRequest.JPG" />
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

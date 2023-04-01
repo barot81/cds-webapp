@@ -1,0 +1,45 @@
+@import 'init';
+
+#home-screen-container {
+  .nav-image {
+    width: 82.32px;
+  }
+
+  @include media-breakpoint('gt-sm') {
+    .pl-gt-sm-8 {
+      padding-left: 8px;
+    }
+    .pr-gt-sm-8 {
+      padding-right: 8px;
+    }
+  }
+
+  @include media-breakpoint('lt-sm') {
+    .mt-xs-16 {
+      margin-top: 16px;
+    }
+    .card_content {
+      height: auto !important;
+      overflow: hidden !important;
+    }
+  }
+
+  @include media-breakpoint('lt-md') {
+    .mb-lt-md-16 {
+      margin-bottom: 16px;
+    }
+  }
+
+  @include media-breakpoint('sm') {
+    .pl-sm-8 {
+      padding-left: 8px;
+    }
+    .pr-sm-8 {
+      padding-right: 8px;
+    }
+    .card_content {
+      height: auto !important;
+      overflow: hidden !important;
+    }
+  }
+}

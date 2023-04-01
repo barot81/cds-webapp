@@ -1,0 +1,160 @@
+<div class="page-layout carded left-sidebar inner-scroll">
+  <!-- SIDEBAR -->
+  <fuse-sidebar
+    class="sidebar width-x-sm"
+    name="carded-left-sidebar-tabbed-2"
+    position="left"
+    lockedOpen="gt-md"
+  >
+    <!--   SIDEBAR HEADER -->
+    <div fxLayout="column" #sidebar_header>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxFlex.xs="100"
+        class="py-8"
+      >
+        <button
+          mat-icon-button
+          aria-label="Click to go back"
+          class="action-icon mx-8"
+        >
+          <i aria-hidden="true" class="fal fa-long-arrow-left"></i>
+        </button>
+        <span
+          tabindex="0"
+          aria-label="Student List"
+          class="font-14 font-weight-600 mt-4"
+          >Student List</span
+        >
+      </div>
+      <mat-divider></mat-divider>
+
+      <!-- SEARCH -->
+      <div class="search-wrapper" fxFlex.xs="100">
+        <div
+          class="search sidenav-search"
+          fxFlex
+          fxLayout="row"
+          fxLayoutAlign="start center"
+        >
+          <i aria-hidden="true" class="fa-light fa-magnifying-glass s-18"></i>
+          <input
+            type="text"
+            class="font-14"
+            placeholder="Search Student"
+            fxFlex
+          />
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+
+    <!--  SIDEBAR CONTENT -->
+    <div
+      class="overflow-auto"
+      [style.height.px]="
+        _headerService.scrollContentheight - (sidebar_header_height$ | async)
+      "
+      *ngIf="!(loading$ | async); else loading"
+    >
+      <mat-list class="p-0">
+        <button
+          mat-button
+          *ngFor="let student of students; let i = index"
+          attr.aria-label="View {{ student.firstName }} Details"
+          class="no-space m-0 p-0"
+          (click)="activateNavigation(student.id)"
+        >
+          <mat-list-item
+            class="py-8 px-8"
+            [ngClass]="{ 'active-list-item': student.id === selectedId }"
+          >
+            <exxat-avatar-list-item
+              [firstName]="student.firstName"
+              [lastName]="student.lastName"
+              src="assets/images/avatars/anna-strong.png"
+              role="img"
+              aria-hidden="true"
+            >
+            </exxat-avatar-list-item>
+          </mat-list-item>
+        </button>
+      </mat-list>
+    </div>
+    <!-- / SIDEBAR CONTENT -->
+  </fuse-sidebar>
+  <!-- // SIDEBAR -->
+
+  <!-- CENTER -->
+  <div class="center ml-lg-16">
+    <div class="content" fusePerfectScrollbar>
+      <mat-card>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <button
+            mat-icon-button
+            class="sidebar-toggle mr-8"
+            fxHide.gt-md
+            (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+
+          <header *ngIf="!(loading$ | async); else loading">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <exxat-avatar
+                src="assets/images/avatars/anna-strong.png"
+                firstName="Anna"
+                lastName="Strong"
+                size="lg"
+              >
+              </exxat-avatar>
+
+              <div fxLayout="column">
+                <h2 tabindex="0">{{ students[selectedId].name }}</h2>
+                <a
+                  class="word-break-all font-14"
+                  href="mailto:anna.strong@universityname.com"
+                  >{{
+                    (students[selectedId].firstName | lowercase) +
+                      '.universityname.com'
+                  }}</a
+                >
+                <span fxLayout="row" fxLayoutAlign="start center"
+                  ><i
+                    aria-hidden="true"
+                    class="fa fa-check s-18 accent-fg mr-8"
+                    aria-hidden="true"
+                  ></i
+                  >Public Website</span
+                >
+              </div>
+            </div>
+          </header>
+        </div>
+      </mat-card>
+
+      <div class="mt-16">
+        <navbar></navbar>
+      </div>
+      <div>
+        <div class="router-container">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>
+
+<ng-template #loading>
+  <mat-card fxLayout="row" fxLayoutAlign="start space-between" class="w-30-p">
+    <div class="circle w-68 h-68 shine"></div>
+    <div fxLayout="column" class="ml-16 pt-8">
+      <div class="line shine w-100 h-12"></div>
+      <div class="line shine w-140 h-12"></div>
+      <div class="line shine w-160 h-12"></div>
+    </div>
+  </mat-card>
+</ng-template>

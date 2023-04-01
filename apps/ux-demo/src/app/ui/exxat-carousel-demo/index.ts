@@ -1,0 +1,1 @@
+export * from './exxat-carousel-demo.module';

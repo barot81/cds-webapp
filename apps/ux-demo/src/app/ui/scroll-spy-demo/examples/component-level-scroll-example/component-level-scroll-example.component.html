@@ -1,0 +1,1283 @@
+<div
+  class="page-layout simple left-sidebar inner-sidebar inner-scroll scroll-spy-component-demo-page"
+>
+  <div #scrollSpyHeader fxLayout="row" fxLayout.xs="column">
+    <div class="pt-xs-16">
+      <button
+        mat-icon-button
+        routerLink="/admin/ux/ui/exxat-component-library"
+        class="action-icon"
+        aria-label="back arrow"
+      >
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
+    <div fxLayout="column" class="mb-16 px-xs-16 pt-xs-8 ml-md-8">
+      <h2
+        tabindex="0"
+        class="font-weight-600"
+        aria-label="Fieldwork Performance Evaluation For The Occupational Therapy Student"
+      >
+        Fieldwork Performance Evaluation For The Occupational Therapy Student
+      </h2>
+      <h5 fxLayout="row wrap" fxLayoutAlign="start center">
+        <span tabindex="0" aria-label="Rotation 1">Rotation 1</span>
+        <span class="dot"></span>
+        <span tabindex="0" aria-label="Student5 OT5">Student5 OT5</span>
+        <span class="dot"></span>
+        <span tabindex="0" aria-label="Internal Medicine"
+          >Internal Medicine</span
+        >
+        <span class="dot"></span>
+        <span tabindex="0" aria-label="May 1, 2020">May 1, 2020</span>
+        <span class="dot"></span>
+        <span tabindex="0" aria-label="Jul 31, 2020">Jul 31, 2020</span>
+      </h5>
+    </div>
+  </div>
+
+  <div class="ml-lg-44 content" fxFlex="100">
+    <!-- SIDEBAR -->
+    <fuse-sidebar
+      class="sidebar"
+      fxFlex.gt-md="25"
+      name="carded-left-sidebar-tabbed-2"
+      position="left"
+      lockedOpen="gt-md"
+      tabindex="0"
+      aria-label="sidebar with tree control"
+    >
+      <!-- SIDEBAR CONTENT -->
+      <div class="content" fusePerfectScrollbar>
+        <div class="scroll_spy_list_container">
+          <ul class="scroll_spy_list px-16" scrollSpyList>
+            <mat-tree
+              [dataSource]="dataSource"
+              [treeControl]="treeControl"
+              class="tree-examples-style"
+            >
+              <!-- child node -->
+              <mat-tree-node
+                *matTreeNodeDef="let node"
+                matTreeNodePadding
+                tabindex="0"
+                aria-label="this is a child node"
+              >
+                <button mat-icon-button disabled class="h-0"></button>
+                <div
+                  class="py-8 scroll_spy_list_item w-100-p tree-node-hover border-bottom"
+                  [attr.id]="node.id"
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  (click)="changeNavMenuItem(node.id)"
+                  (click)="activeNode = node"
+                  [ngClass]="{ 'tree-node-active': activeNode === node }"
+                  tabindex="0"
+                  aria-label="this is a child node"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    class="py-8 w-100-p"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-check-circle mx-8 s-18 primary-fg"
+                      tabindex="0"
+                      aria-label="circle checked"
+                    ></i>
+                    <div tabindex="0" attr.aria-label="{{ node.name }}">
+                      {{ node.name }}
+                    </div>
+                  </div>
+                </div>
+              </mat-tree-node>
+
+              <!-- parent node -->
+              <mat-tree-node
+                *matTreeNodeDef="let node; when: hasChild"
+                matTreeNodePadding
+                tabindex="0"
+                aria-label="this is a parent node"
+              >
+                <div
+                  class="scroll_spy_list_item w-100-p tree-node-hover border-bottom"
+                  [attr.id]="node.id"
+                  fxLayout="row"
+                  fxLayoutAlign="start center"
+                  (click)="changeNavMenuItem(node.id)"
+                  (click)="activeNode = node"
+                  [ngClass]="{ 'tree-node-active': activeNode === node }"
+                  tabindex="0"
+                  aria-label="this is a parent node"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    class="w-100-p py-8"
+                  >
+                    <button
+                      mat-icon-button
+                      matTreeNodeToggle
+                      class="action-icon"
+                      aria-label="toggle for parent node"
+                    >
+                      <i
+                        aria-hidden="true"
+                        [ngClass]="
+                          treeControl.isExpanded(node)
+                            ? 'fa-light fa-chevron-down s-18'
+                            : 'fa-light fa-chevron-right s-18'
+                        "
+                        class="accent-fg"
+                      ></i>
+                    </button>
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-circle mx-8 s-18"
+                        tabindex="0"
+                        aria-label="circle unchecked"
+                      ></i>
+                      <div tabindex="0" attr.aria-label="{{ node.name }}">
+                        {{ node.name }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-tree-node>
+            </mat-tree>
+          </ul>
+        </div>
+      </div>
+      <!-- / SIDEBAR CONTENT -->
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+    <div
+      class="center ml-lg-16"
+      fxLayout="column"
+      fxFlex.gt-md="75"
+      fxFlex="100"
+    >
+      <!-- CONTENT TOOLBAR -->
+      <div class="px-16" fxHide.gt-md>
+        <button
+          mat-icon-button
+          class="sidebar-toggle"
+          (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <div fxLayout="row" class="px-xs-16">
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          fxFlex.gt-sm="70"
+          fxFlex="100"
+        >
+          <div class="mb-16" fxLayout="row" fxLayoutAlign="start center">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              class="py-8 px-16 total-score-section"
+            >
+              <span
+                class="fuse-white-fg space-no-wrap"
+                tabindex="0"
+                aria-label="Total score is"
+                >Total score</span
+              >
+              <div class="mx-16">
+                <span class="fuse-white-fg">|</span>
+              </div>
+              <div class="">
+                <span
+                  class="font-size-24 fuse-white-fg font-weight-600"
+                  tabindex="0"
+                  aria-label="0"
+                  >0</span
+                >
+                <sub
+                  class="font-size-16 fuse-white-fg"
+                  tabindex="0"
+                  aria-label="out of 170"
+                  >/170</sub
+                >
+              </div>
+            </div>
+          </div>
+          <div class="mb-16" fxLayout="row" fxLayoutAlign="end center">
+            <div class="mr-8">
+              <button
+                mat-stroked-button
+                color="accent"
+                class="accent-border-btn"
+              >
+                Save
+              </button>
+            </div>
+            <div>
+              <button mat-raised-button color="accent">Submit</button>
+            </div>
+          </div>
+        </div>
+        <div class="mb-16" fxFlex.gt-sm="30" fxFlex="100" fxHide.lt-md></div>
+      </div>
+      <!-- / CONTENT TOOLBAR -->
+
+      <!-- CONTENT -->
+      <div
+        class="content"
+        fxFlex="100"
+        fusePerfectScrollbar
+        scrollSpyContent
+        [offsetTop]="scrollSpyHeaderHeight"
+      >
+        <div
+          class="spinner-container"
+          *ngIf="_scrollSpyService.$loading | async"
+        >
+          <mat-spinner></mat-spinner>
+        </div>
+        <div fxLayout="row wrap">
+          <div fxFlex="100" fxFlex.gt-sm="70">
+            <mat-card
+              class="p-0 mb-16"
+              tabindex="0"
+              aria-label="school feedback section"
+            >
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2
+                    class="primary-heading font-weight-600 text-capitalize"
+                    tabindex="0"
+                    aria-label="heading school feedback"
+                  >
+                    School Feedback
+                  </h2>
+                </div>
+              </header>
+              <div fxLayout="column">
+                <div fxLayout="row" fxLayoutAlign="start center" class="p-16">
+                  <div fxLayout="row" class="pr-16">
+                    <span tabindex="0" aria-label="date is">Date:</span>
+                    <span
+                      class="ml-8 font-weight-600"
+                      tabindex="0"
+                      aria-label="2 december 2020"
+                      >2/12/2020</span
+                    >
+                  </div>
+                  <span class="light-gray-color">|</span>
+                  <div fxLayout="row" class="pl-16">
+                    <span tabindex="0" aria-label="Admin is">Admin:</span>
+                    <span
+                      class="ml-8 font-weight-600"
+                      tabindex="0"
+                      aria-label="Alexia Pinto"
+                      >Alexia Pinto</span
+                    >
+                  </div>
+                </div>
+                <div fxLayout="row" class="comment-section p-16">
+                  <span tabindex="0" aria-label="comment is">Comment:</span>
+                  <span
+                    class="ml-8 font-weight-600"
+                    tabindex="0"
+                    aria-label="disapproved"
+                    >Disapproved</span
+                  >
+                </div>
+              </div>
+            </mat-card>
+            <mat-card class="p-0">
+              <div fxLayout="column">
+                <div
+                  class="mt-16 p-16 fuse-white-fg instruction-box"
+                  fxLayoutAlign="space-between center"
+                  fxLayout="row wrap"
+                  tabindex="0"
+                  aria-label="instruction section"
+                >
+                  <span
+                    class="font-18"
+                    tabindex="0"
+                    aria-label="Instructions are"
+                    >Instruction</span
+                  >
+                  <a
+                    class="font-16 fuse-white-fg"
+                    exxatDrawerAction
+                    [size]="'drawer-md'"
+                    [componentSelector]="
+                      _UXDemoDrawerService.get('ryzen-view-instruction-demo')
+                    "
+                    [caption]="'View Instruction'"
+                    [primaryAction]="'Save'"
+                    tabindex="0"
+                    aria-label="click to view instructions"
+                    ><u>View Instruction</u></a
+                  >
+                </div>
+
+                <div class="py-16 px-sm-16 px-xs-8">
+                  <!-- Basic information -->
+                  <mat-card class="p-0 mb-16">
+                    <mat-accordion
+                      class="w-100-p"
+                      tabindex="0"
+                      aria-label="expansion panel"
+                    >
+                      <mat-expansion-panel
+                        class="border-radius-20 exxat-list"
+                        #basic_tenets="matExpansionPanel"
+                      >
+                        <mat-expansion-panel-header
+                          class="border-bottom border-radius-0 card-header-title"
+                        >
+                          <mat-panel-title class="w-100-p">
+                            <div
+                              fxLayout="row"
+                              fxLayoutAlign="start center"
+                              fxFlex="100"
+                              fxFlex.xs="96"
+                              id="scroll_spy_list_item_0"
+                              class="scroll_spy_content_item pr-12 mr-12 border-right"
+                            >
+                              <div fxFlex="80" fxLayoutAlign="start center">
+                                <h2
+                                  class="primary-heading title-small-screen font-weight-600"
+                                >
+                                  Basic Information
+                                </h2>
+                              </div>
+                              <div
+                                class="font-weight-600"
+                                fxFlex="20"
+                                fxLayoutAlign="end center"
+                              >
+                                <span class="font-size-24">0</span>
+                                <sub class="font-size-16">/20</sub>
+                              </div>
+                            </div>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div fxLayout="column" class="p-16">
+                          <div class="" fxLayout="column" id="">
+                            <span
+                              class="practice-title font-18 font-weight-600 pb-16"
+                              tabindex="0"
+                              aria-label="practice 1"
+                              >Practice I</span
+                            >
+                            <!-- first name --->
+                            <div fxLayout="column" fxLayoutAlign="center start">
+                              <label
+                                required
+                                class="pb-8 form-field-title font-weight-600"
+                                tabindex="0"
+                                aria-label="label is Hours required per week"
+                                >Hours required per week</label
+                              >
+                              <mat-form-field appearance="fill" class="w-100-p">
+                                <input
+                                  matInput
+                                  placeholder="Enter the hours required per week"
+                                />
+                                <mat-error>Hours required per week</mat-error>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </mat-card>
+
+                  <!-- I. Fundamental of Practice card -->
+                  <mat-card class="p-0 mb-16">
+                    <mat-accordion
+                      class="w-100-p"
+                      tabindex="0"
+                      aria-label="expansion panel for"
+                    >
+                      <mat-expansion-panel
+                        class="border-radius-20 exxat-list"
+                        #fundamental_practice_panel="matExpansionPanel"
+                      >
+                        <mat-expansion-panel-header
+                          class="border-bottom border-radius-0 card-header-title"
+                        >
+                          <mat-panel-title class="w-100-p">
+                            <div
+                              fxLayout="row"
+                              fxLayoutAlign="start center"
+                              fxFlex="100"
+                              fxFlex.xs="96"
+                              id="scroll_spy_list_item_1"
+                              class="scroll_spy_content_item pr-12 mr-12 border-right"
+                            >
+                              <div fxFlex="80" fxLayoutAlign="start center">
+                                <h2
+                                  class="primary-heading title-small-screen font-weight-600"
+                                >
+                                  I. Fundamental of Practice
+                                </h2>
+                              </div>
+                              <div
+                                class="font-weight-600"
+                                fxFlex="20"
+                                fxLayoutAlign="end center"
+                              >
+                                <span class="font-size-24">0</span>
+                                <sub class="font-size-16">/20</sub>
+                              </div>
+                            </div>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div fxLayout="column" class="p-16">
+                          <div
+                            class="scroll_spy_content_item"
+                            fxLayout="column"
+                            id="scroll_spy_list_item_2"
+                          >
+                            <span
+                              class="practice-title font-18 font-weight-600 pb-16"
+                              tabindex="0"
+                              aria-label="practice 1"
+                              >Practice I</span
+                            >
+                            <!-- first name --->
+                            <div fxLayout="column" fxLayoutAlign="center start">
+                              <label
+                                required
+                                class="pb-8 form-field-title font-weight-600"
+                                tabindex="0"
+                                aria-label="label is Hours required per week"
+                                >Hours required per week</label
+                              >
+                              <mat-form-field appearance="fill" class="w-100-p">
+                                <input
+                                  matInput
+                                  placeholder="Enter the hours required per week"
+                                />
+                                <mat-error>Hours required per week</mat-error>
+                              </mat-form-field>
+                            </div>
+                            <div
+                              fxLayout="row wrap"
+                              fxLayoutAlign="start center"
+                              class="mb-32"
+                            >
+                              <div
+                                fxLayout="row"
+                                fxLayoutAlign="start center"
+                                class="mr-16"
+                              >
+                                <mat-checkbox></mat-checkbox>
+                                <span
+                                  class="font-18 checkbox-options ml-8"
+                                  tabindex="0"
+                                  aria-label="Weekend Required"
+                                  >Weekend Required</span
+                                >
+                              </div>
+                              <div
+                                fxLayout="row"
+                                fxLayoutAlign="start center"
+                                class="mr-16 pt-xs-8"
+                              >
+                                <mat-checkbox></mat-checkbox>
+                                <span
+                                  class="font-18 checkbox-options ml-8"
+                                  tabindex="0"
+                                  aria-label="Evening Required"
+                                  >Evening Required</span
+                                >
+                              </div>
+                              <div
+                                fxLayout="row"
+                                fxLayoutAlign="start center"
+                                class="mr-16 pt-xs-8"
+                              >
+                                <mat-checkbox></mat-checkbox>
+                                <span
+                                  class="font-18 checkbox-options ml-8"
+                                  tabindex="0"
+                                  aria-label="Flex Alternate Schedule"
+                                  >Flex Alternate Schedule</span
+                                >
+                              </div>
+                            </div>
+                            <div fxLayout="column" fxLayoutAlign="center start">
+                              <label
+                                required
+                                class="pb-8 form-field-title font-weight-600"
+                                tabindex="0"
+                                aria-label="label is Identify access to public transportation"
+                                >Identify access to public transportation</label
+                              >
+                              <mat-form-field appearance="fill" class="w-100-p">
+                                <input
+                                  matInput
+                                  placeholder="Identify access to public transportation"
+                                />
+                                <mat-error
+                                  >Identify access to public
+                                  transportation</mat-error
+                                >
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div
+                            class="scroll_spy_content_item"
+                            fxLayout="column"
+                            id="scroll_spy_list_item_3"
+                          >
+                            <span
+                              class="practice-title font-18 font-weight-600 pb-16"
+                              tabindex="0"
+                              aria-label="practice 2"
+                              >Practice II</span
+                            >
+                            <!-- first name --->
+                            <div fxLayout="column" fxLayoutAlign="center start">
+                              <label
+                                required
+                                class="pb-8 form-field-title font-weight-600"
+                                tabindex="0"
+                                aria-label="label is Identify access to public transportation"
+                                >Identify access to public transportation</label
+                              >
+                              <mat-form-field appearance="fill" class="w-100-p">
+                                <input
+                                  matInput
+                                  placeholder="Identify access to public transportation"
+                                />
+                                <mat-error
+                                  >Identify access to public
+                                  transportationk</mat-error
+                                >
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </mat-card>
+
+                  <!-- II. Basic Tenets -->
+                  <mat-card class="p-0 mb-16">
+                    <mat-accordion
+                      class="w-100-p"
+                      tabindex="0"
+                      aria-label="expansion panel"
+                    >
+                      <mat-expansion-panel
+                        class="border-radius-20 exxat-list"
+                        #basic_tenets="matExpansionPanel"
+                      >
+                        <mat-expansion-panel-header
+                          class="border-bottom border-radius-0 card-header-title"
+                        >
+                          <mat-panel-title class="w-100-p">
+                            <div
+                              fxLayout="row"
+                              fxLayoutAlign="start center"
+                              fxFlex="100"
+                              fxFlex.xs="96"
+                              id="scroll_spy_list_item_4"
+                              class="scroll_spy_content_item pr-12 mr-12 border-right"
+                            >
+                              <div fxFlex="80" fxLayoutAlign="start center">
+                                <h2
+                                  class="primary-heading title-small-screen font-weight-600"
+                                >
+                                  II. Basic Tenets
+                                </h2>
+                              </div>
+                              <div
+                                class="font-weight-600"
+                                fxFlex="20"
+                                fxLayoutAlign="end center"
+                              >
+                                <span class="font-size-24">0</span>
+                                <sub class="font-size-16">/20</sub>
+                              </div>
+                            </div>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div fxLayout="column" class="p-16">
+                          <div class="" fxLayout="column" id="">
+                            <span
+                              class="practice-title font-18 font-weight-600 pb-16"
+                              tabindex="0"
+                              aria-label="practice 1"
+                              >Practice I</span
+                            >
+                            <!-- first name --->
+                            <div fxLayout="column" fxLayoutAlign="center start">
+                              <label
+                                required
+                                class="pb-8 form-field-title font-weight-600"
+                                tabindex="0"
+                                aria-label="label is Hours required per week"
+                                >Hours required per week</label
+                              >
+                              <mat-form-field appearance="fill" class="w-100-p">
+                                <input
+                                  matInput
+                                  placeholder="Enter the hours required per week"
+                                />
+                                <mat-error>Hours required per week</mat-error>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </mat-card>
+
+                  <!-- III. Evaluation and Screening -->
+                  <mat-card class="p-0 mb-16">
+                    <mat-accordion
+                      class="w-100-p"
+                      tabindex="0"
+                      aria-label="expansion panel"
+                    >
+                      <mat-expansion-panel
+                        class="border-radius-20 exxat-list"
+                        #evaluation_screening="matExpansionPanel"
+                      >
+                        <mat-expansion-panel-header
+                          class="border-bottom border-radius-0 card-header-title"
+                        >
+                          <mat-panel-title class="w-100-p">
+                            <div
+                              fxLayout="row"
+                              fxLayoutAlign="start center"
+                              fxFlex="100"
+                              fxFlex.xs="96"
+                              id="scroll_spy_list_item_5"
+                              class="scroll_spy_content_item pr-12 mr-12 border-right"
+                            >
+                              <div fxFlex="80" fxLayoutAlign="start center">
+                                <h2
+                                  class="primary-heading title-small-screen font-weight-600"
+                                >
+                                  III. Evaluation and Screening
+                                </h2>
+                              </div>
+                              <div
+                                class="font-weight-600"
+                                fxFlex="20"
+                                fxLayoutAlign="end center"
+                              >
+                                <span class="font-size-24">0</span>
+                                <sub class="font-size-16">/20</sub>
+                              </div>
+                            </div>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div fxLayout="column" class="p-16">
+                          <div class="" fxLayout="column" id="">
+                            <span
+                              class="practice-title font-18 font-weight-600 pb-16"
+                              tabindex="0"
+                              aria-label="practice 1"
+                              >Practice I</span
+                            >
+                            <!-- first name --->
+                            <div fxLayout="column" fxLayoutAlign="center start">
+                              <label
+                                required
+                                class="pb-8 form-field-title font-weight-600"
+                                tabindex="0"
+                                aria-label="label is Hours required per week"
+                                >Hours required per week</label
+                              >
+                              <mat-form-field appearance="fill" class="w-100-p">
+                                <input
+                                  matInput
+                                  placeholder="Enter the hours required per week"
+                                />
+                                <mat-error>Hours required per week</mat-error>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </mat-card>
+
+                  <!--  IV. Intervention -->
+                  <mat-card class="p-0 mb-16">
+                    <mat-accordion
+                      class="w-100-p"
+                      tabindex="0"
+                      aria-label="expansion panel for"
+                    >
+                      <mat-expansion-panel
+                        class="border-radius-20 exxat-list"
+                        #intervention="matExpansionPanel"
+                      >
+                        <mat-expansion-panel-header
+                          class="border-bottom border-radius-0 card-header-title"
+                        >
+                          <mat-panel-title class="w-100-p">
+                            <div
+                              fxLayout="row"
+                              fxLayoutAlign="start center"
+                              fxFlex="100"
+                              fxFlex.xs="96"
+                              id="scroll_spy_list_item_6"
+                              class="scroll_spy_content_item pr-12 mr-12 border-right"
+                            >
+                              <div fxFlex="80" fxLayoutAlign="start center">
+                                <h2
+                                  class="primary-heading title-small-screen font-weight-600"
+                                >
+                                  IV. Intervention
+                                </h2>
+                              </div>
+                              <div
+                                class="font-weight-600"
+                                fxFlex="20"
+                                fxLayoutAlign="end center"
+                              >
+                                <span class="font-size-24">0</span>
+                                <sub class="font-size-16">/20</sub>
+                              </div>
+                            </div>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div fxLayout="column" class="p-16">
+                          <div
+                            class="scroll_spy_content_item"
+                            fxLayout="column"
+                            id="scroll_spy_list_item_7"
+                          >
+                            <span
+                              class="practice-title font-18 font-weight-600 pb-16"
+                              tabindex="0"
+                              aria-label="practice 1"
+                              >Practice I</span
+                            >
+                            <!-- first name --->
+                            <div fxLayout="column" fxLayoutAlign="center start">
+                              <label
+                                required
+                                class="pb-8 form-field-title font-weight-600"
+                                tabindex="0"
+                                aria-label="label is Hours required per week"
+                                >Hours required per week</label
+                              >
+                              <mat-form-field appearance="fill" class="w-100-p">
+                                <input
+                                  matInput
+                                  placeholder="Enter the hours required per week"
+                                />
+                                <mat-error>Hours required per week</mat-error>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div
+                            class="scroll_spy_content_item"
+                            fxLayout="column"
+                            id="scroll_spy_list_item_8"
+                          >
+                            <span
+                              class="practice-title font-18 font-weight-600 pb-16"
+                              tabindex="0"
+                              aria-label="practice 2"
+                              >Practice II</span
+                            >
+                            <!-- first name --->
+                            <div fxLayout="column" fxLayoutAlign="center start">
+                              <label
+                                required
+                                class="pb-8 form-field-title font-weight-600"
+                                tabindex="0"
+                                aria-label="label is Hours required per week"
+                                >Hours required per week</label
+                              >
+                              <mat-form-field appearance="fill" class="w-100-p">
+                                <input
+                                  matInput
+                                  placeholder="Enter the hours required per week"
+                                />
+                                <mat-error>Hours required per week</mat-error>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </mat-card>
+
+                  <!-- V. Evaluation and Screening -->
+                  <mat-card class="p-0 mb-16">
+                    <mat-accordion
+                      class="w-100-p"
+                      tabindex="0"
+                      aria-label="expansion panel"
+                    >
+                      <mat-expansion-panel
+                        class="border-radius-20 exxat-list"
+                        #management_occupational="matExpansionPanel"
+                      >
+                        <mat-expansion-panel-header
+                          class="border-bottom border-radius-0 card-header-title"
+                        >
+                          <mat-panel-title class="w-100-p">
+                            <div
+                              fxLayout="row"
+                              fxLayoutAlign="start center"
+                              fxFlex="100"
+                              fxFlex.xs="96"
+                              id="scroll_spy_list_item_9"
+                              class="scroll_spy_content_item pr-12 mr-12 border-right"
+                            >
+                              <div
+                                fxFlex="80"
+                                fxLayoutAlign="start center"
+                                class=""
+                              >
+                                <h2
+                                  class="primary-heading title-small-screen font-weight-600"
+                                >
+                                  V. Management of Occupational Therapy Service
+                                </h2>
+                              </div>
+                              <div
+                                class="font-weight-600"
+                                fxFlex="20"
+                                fxLayoutAlign="end center"
+                              >
+                                <span class="font-size-24">0</span>
+                                <sub class="font-size-16">/20</sub>
+                              </div>
+                            </div>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div fxLayout="column" class="p-16">
+                          <div class="" fxLayout="column" id="">
+                            <span
+                              class="practice-title font-18 font-weight-600 pb-16"
+                              tabindex="0"
+                              aria-label="practice 1"
+                              >Practice I</span
+                            >
+                            <!-- first name --->
+                            <div fxLayout="column" fxLayoutAlign="center start">
+                              <label
+                                required
+                                class="pb-8 form-field-title font-weight-600"
+                                tabindex="0"
+                                aria-label="label is Hours required per week"
+                                >Hours required per week</label
+                              >
+                              <mat-form-field appearance="fill" class="w-100-p">
+                                <input
+                                  matInput
+                                  placeholder="Enter the hours required per week"
+                                />
+                                <mat-error>Hours required per week</mat-error>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </mat-card>
+
+                  <!--   VI. Communication -->
+                  <mat-card class="p-0 mb-16">
+                    <mat-accordion
+                      class="w-100-p"
+                      tabindex="0"
+                      aria-label="expansion panel"
+                    >
+                      <mat-expansion-panel
+                        class="border-radius-20 exxat-list"
+                        #communication="matExpansionPanel"
+                      >
+                        <mat-expansion-panel-header
+                          class="border-bottom border-radius-0 card-header-title"
+                        >
+                          <mat-panel-title class="w-100-p">
+                            <div
+                              fxLayout="row"
+                              fxLayoutAlign="start center"
+                              fxFlex="100"
+                              fxFlex.xs="96"
+                              id="scroll_spy_list_item_10"
+                              class="scroll_spy_content_item pr-12 mr-12 border-right"
+                            >
+                              <div fxFlex="80" fxLayoutAlign="start center">
+                                <h2
+                                  class="primary-heading title-small-screen font-weight-600"
+                                >
+                                  VI. Communication
+                                </h2>
+                              </div>
+                              <div
+                                class="font-weight-600"
+                                fxFlex="20"
+                                fxLayoutAlign="end center"
+                              >
+                                <span class="font-size-24">0</span>
+                                <sub class="font-size-16">/20</sub>
+                              </div>
+                            </div>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div fxLayout="column" class="p-16">
+                          <div class="" fxLayout="column" id="">
+                            <span
+                              class="practice-title font-18 font-weight-600 pb-16"
+                              tabindex="0"
+                              aria-label="practice 1"
+                              >Practice I</span
+                            >
+                            <!-- first name --->
+                            <div fxLayout="column" fxLayoutAlign="center start">
+                              <label
+                                required
+                                class="pb-8 form-field-title font-weight-600"
+                                tabindex="0"
+                                aria-label="label is Hours required per week"
+                                >Hours required per week</label
+                              >
+                              <mat-form-field appearance="fill" class="w-100-p">
+                                <input
+                                  matInput
+                                  placeholder="Enter the hours required per week"
+                                />
+                                <mat-error>Hours required per week</mat-error>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </mat-card>
+
+                  <!-- VII. Professional Behaviors -->
+                  <mat-card class="p-0 mb-16">
+                    <mat-accordion
+                      class="w-100-p"
+                      tabindex="0"
+                      aria-label="expansion panel for"
+                    >
+                      <mat-expansion-panel
+                        class="border-radius-20 exxat-list"
+                        #professional_behaviors="matExpansionPanel"
+                      >
+                        <mat-expansion-panel-header
+                          class="border-bottom border-radius-0 card-header-title"
+                        >
+                          <mat-panel-title class="w-100-p">
+                            <div
+                              fxLayout="row"
+                              fxLayoutAlign="start center"
+                              fxFlex="100"
+                              fxFlex.xs="96"
+                              id="scroll_spy_list_item_11"
+                              class="scroll_spy_content_item pr-12 mr-12 border-right"
+                            >
+                              <div fxFlex="80" fxLayoutAlign="start center">
+                                <h2
+                                  class="primary-heading title-small-screen font-weight-600"
+                                >
+                                  VII. Professional Behaviors
+                                </h2>
+                              </div>
+                              <div
+                                class="font-weight-600"
+                                fxFlex="20"
+                                fxLayoutAlign="end center"
+                              >
+                                <span class="font-size-24">0</span>
+                                <sub class="font-size-16">/20</sub>
+                              </div>
+                            </div>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div fxLayout="column" class="p-16">
+                          <div
+                            class="scroll_spy_content_item"
+                            fxLayout="column"
+                            id="scroll_spy_list_item_12"
+                          >
+                            <span
+                              class="practice-title font-18 font-weight-600 pb-16"
+                              tabindex="0"
+                              aria-label="practice 1"
+                              >Practice I</span
+                            >
+                            <!-- first name --->
+                            <div fxLayout="column" fxLayoutAlign="center start">
+                              <label
+                                required
+                                class="pb-8 form-field-title font-weight-600"
+                                tabindex="0"
+                                aria-label="label is Hours required per week"
+                                >Hours required per week</label
+                              >
+                              <mat-form-field appearance="fill" class="w-100-p">
+                                <input
+                                  matInput
+                                  placeholder="Enter the hours required per week"
+                                />
+                                <mat-error>Hours required per week</mat-error>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div
+                            class="scroll_spy_content_item"
+                            fxLayout="column"
+                            id="scroll_spy_list_item_13"
+                          >
+                            <span
+                              class="practice-title font-18 font-weight-600 pb-16"
+                              tabindex="0"
+                              aria-label="practice 2"
+                              >Practice II</span
+                            >
+                            <!-- first name --->
+                            <div fxLayout="column" fxLayoutAlign="center start">
+                              <label
+                                required
+                                class="pb-8 form-field-title font-weight-600"
+                                tabindex="0"
+                                aria-label="label is Hours required per week"
+                                >Hours required per week</label
+                              >
+                              <mat-form-field appearance="fill" class="w-100-p">
+                                <input
+                                  matInput
+                                  placeholder="Enter the hours required per week"
+                                />
+                                <mat-error>Hours required per week</mat-error>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </mat-card>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+          <div
+            fxFlex="100"
+            fxFlex.gt-sm="30"
+            class="pl-md-16 mt-small-16"
+            tabindex="0"
+            aria-label="right side content"
+          >
+            <!-- card when there are no records -->
+            <mat-card
+              class="p-0 mb-16"
+              tabindex="0"
+              aria-label="last sent section"
+            >
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2
+                    class="primary-heading font-weight-600 text-capitalize"
+                    tabindex="0"
+                    aria-label="heading last sent"
+                  >
+                    Last Sent
+                  </h2>
+                </div>
+              </header>
+              <div class="p-16" tabindex="0" aria-label="no records">
+                No Records
+              </div>
+            </mat-card>
+
+            <!-- card when there are records -->
+            <mat-card
+              class="p-0 mb-16"
+              tabindex="0"
+              aria-label="last sent section"
+            >
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2
+                    class="primary-heading font-weight-600 text-capitalize"
+                    tabindex="0"
+                    aria-label="heading last sent"
+                  >
+                    Last Sent
+                  </h2>
+                </div>
+              </header>
+              <div fxLayout="column" class="px-16 py-16">
+                <div fxLayout="row" fxLayoutAlign="start start" class="pb-16">
+                  <exxat-avatar
+                    firstName="Francis"
+                    lastName="Leo"
+                  ></exxat-avatar>
+                  <div
+                    fxLayout="row wrap"
+                    fxLayoutAlign="space-between start"
+                    fxFlex="100"
+                    class="border-bottom"
+                  >
+                    <div fxLayout="column" class="pr-16 pb-16">
+                      <span
+                        class="font-16 font-weight-600"
+                        tabindex="0"
+                        aria-label="Francis Leo"
+                        >Francis Leo Francis Leo Francis Leo Francis Leo Francis
+                        Leo Francis Leo</span
+                      >
+                      <span tabindex="0" aria-label="Dec 7, 2020"
+                        >Dec 7, 2020
+                      </span>
+                      <span tabindex="0" aria-label="Sent: 2 times"
+                        >Sent: 2 times</span
+                      >
+                    </div>
+                    <div fxLayout="column" class="pb-16">
+                      <button
+                        mat-stroked-button
+                        color="accent"
+                        class="accent-border-btn mb-8"
+                      >
+                        Resend
+                      </button>
+                      <a
+                        class="space-no-wrap"
+                        (click)="openDialog()"
+                        tabindex="0"
+                        aria-label="enter to cancel request"
+                      >
+                        Cancel Request
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="start start" class="pb-16">
+                  <exxat-avatar
+                    firstName="Donald"
+                    lastName="Brend"
+                  ></exxat-avatar>
+                  <div
+                    fxLayout="row wrap"
+                    fxLayoutAlign="space-between start"
+                    fxFlex="100"
+                    class="border-bottom"
+                  >
+                    <div fxLayout="column" class="pr-16 pb-16">
+                      <span
+                        class="font-16 font-weight-600"
+                        tabindex="0"
+                        aria-label="Donald Brend"
+                        >Donald Brend</span
+                      >
+                      <span tabindex="0" aria-label="Dec 7, 2020"
+                        >Dec 7, 2020
+                      </span>
+                      <span tabindex="0" aria-label="Sent: 2 times"
+                        >Sent: 2 times Sent: 2 times Sent: 2 times Sent: 2 times
+                        Sent: 2 times Sent: 2 times</span
+                      >
+                    </div>
+                    <div fxLayout="column" class="pb-16">
+                      <button
+                        mat-stroked-button
+                        color="accent"
+                        class="accent-border-btn mb-8"
+                      >
+                        Resend
+                      </button>
+                      <a
+                        class="space-no-wrap"
+                        (click)="openDialog()"
+                        tabindex="0"
+                        aria-label="enter to cancel request"
+                      >
+                        Cancel Request
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="start start" class="pb-16">
+                  <exxat-avatar
+                    firstName="Tim"
+                    lastName="Cook"
+                    tabindex="0"
+                    aria-label="avatar"
+                  ></exxat-avatar>
+                  <div
+                    fxLayout="row wrap"
+                    fxLayoutAlign="space-between start"
+                    fxFlex="100"
+                    class=""
+                  >
+                    <div fxLayout="column" class="pr-16 pb-16">
+                      <span
+                        class="font-16 font-weight-600"
+                        tabindex="0"
+                        aria-label=" Tim Cook"
+                      >
+                        Tim Cook</span
+                      >
+                      <span tabindex="0" aria-label="Dec 7, 2020"
+                        >Dec 7, 2020
+                      </span>
+                      <span tabindex="0" aria-label="Sent: 2 times"
+                        >Sent: 2 times</span
+                      >
+                    </div>
+                    <div fxLayout="column" class="pb-16">
+                      <button
+                        mat-stroked-button
+                        color="accent"
+                        class="accent-border-btn mb-8"
+                      >
+                        Resend
+                      </button>
+                      <a
+                        class="space-no-wrap"
+                        (click)="openDialog()"
+                        tabindex="0"
+                        aria-label="enter to cancel request"
+                      >
+                        Cancel Request
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+      <!-- / CONTENT -->
+    </div>
+    <!-- / CENTER -->
+  </div>
+</div>

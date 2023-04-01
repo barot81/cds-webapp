@@ -1,0 +1,236 @@
+<div class="drawer-p">
+  <mat-card class="p-0 mb-16">
+    <header
+      fxLayout="row"
+      fxLayoutAlign="end center"
+      class="card-header-title card-header-border-bottom py-8 px-16"
+    >
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <span
+          class="font-16 font-weight-600 mr-16"
+          tabindex="0"
+          aria-label="Activate"
+          >Activate</span
+        >
+        <mat-slide-toggle> </mat-slide-toggle>
+      </div>
+    </header>
+    <div fxLayout="column" class="p-16">
+      <div fxLayout="column" class="mb-16">
+        <span
+          class="pb-12"
+          tabindex="0"
+          aria-label="Does this form contribute to the student's final score?"
+          >Does this form contribute to the student's final score?</span
+        >
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <mat-radio-button value="1" class="mr-16">Yes</mat-radio-button>
+          <mat-radio-button value="2">No</mat-radio-button>
+        </div>
+      </div>
+
+      <div
+        fxLayout="row"
+        class="mb-16 form-field-zero-spacing"
+        fxLayoutAlign="start center"
+      >
+        <span class="mr-16" tabindex="0" aria-label="Weightage (%)"
+          >Weightage (%) :</span
+        >
+        <mat-form-field appearance="fill" fxFlex="30" fxFlex.xs="70">
+          <mat-label>Enter Numeric Value</mat-label>
+          <input matInput formControlName="numericValue" />
+        </mat-form-field>
+      </div>
+
+      <mat-divider class="position-inherit"></mat-divider>
+
+      <div fxLayout="column" class="my-16 form-field-zero-spacing">
+        <span
+          class="mb-12"
+          tabindex="0"
+          aria-label="Publish date for the form is"
+          >Publish date for the form is</span
+        >
+        <div fxLayout="row wrap" fxLayoutAlign="start center">
+          <div class="pr-sm-16 mb-16" fxFlex="33.33" fxFlex.xs="100">
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Days</mat-label>
+              <input matInput formControlName="dayName" required />
+              <mat-error>Day is required!</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="pr-sm-16 mb-16" fxFlex="33.33" fxFlex.xs="100">
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Before or After</mat-label>
+              <mat-select formControlName="demo">
+                <mat-option
+                  *ngFor="let demo of demoList"
+                  value="{{ demo.value }}"
+                >
+                  {{ demo.viewValue }}
+                </mat-option>
+              </mat-select>
+              <mat-error>demo is required!</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="mb-16" fxFlex="33.33" fxFlex.xs="100">
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Anchor</mat-label>
+              <mat-select formControlName="anchor">
+                <mat-option
+                  *ngFor="let anchor of anchorList"
+                  value="{{ anchor.value }}"
+                >
+                  {{ anchor.viewValue }}
+                </mat-option>
+              </mat-select>
+              <mat-error>anchor is required!</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="column" class="form-field-zero-spacing">
+        <span
+          class="mb-12"
+          tabindex="0"
+          aria-label="Due date for the mid form is"
+          >Due date for the mid form is</span
+        >
+        <div fxLayout="row wrap" fxLayoutAlign="start center">
+          <div class="pr-sm-16 mb-16" fxFlex="33.33" fxFlex.xs="100">
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Days</mat-label>
+              <input matInput formControlName="dayName" required />
+              <mat-error>Day is required!</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="pr-sm-16 mb-16" fxFlex="33.33" fxFlex.xs="100">
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Before or After</mat-label>
+              <mat-select formControlName="demo">
+                <mat-option
+                  *ngFor="let demo of demoList"
+                  value="{{ demo.value }}"
+                >
+                  {{ demo.viewValue }}
+                </mat-option>
+              </mat-select>
+              <mat-error>demo is required!</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="mb-16" fxFlex="33.33" fxFlex.xs="100">
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Anchor</mat-label>
+              <mat-select formControlName="anchor">
+                <mat-option
+                  *ngFor="let anchor of anchorList"
+                  value="{{ anchor.value }}"
+                >
+                  {{ anchor.viewValue }}
+                </mat-option>
+              </mat-select>
+              <mat-error>anchor is required!</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <mat-divider class="position-inherit"></mat-divider>
+
+      <div fxLayout="column" class="mt-16">
+        <span
+          class="font-weight-600 mb-16"
+          tabindex="0"
+          aria-label="Add Benchmark and Select  Setting"
+          >Add Benchmark and Select Setting</span
+        >
+        <div class="mb-12">
+          <button mat-button color="accent">
+            <i
+              aria-hidden="true"
+              class="fa-light fa-plus mr-12 accent-fg s-18"
+            ></i>
+            <span>Add Benchmark</span>
+          </button>
+        </div>
+
+        <mat-card fxLayout="column">
+          <div fxLayout="column" class="mb-16">
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="">
+              <span
+                tabindex="0"
+                aria-label="Part-Time Outpatient Professional Behaviours and Patient Management"
+                >Part-Time Outpatient Professional Behaviours and Patient
+                Management</span
+              >
+              <button
+                mat-icon-button
+                role="img"
+                class="action-icon"
+                aria-label="edit icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-pen s-18 icon-fill"
+                ></i>
+              </button>
+            </div>
+            <!-- <div class="mt-8"> Add chips here </div> -->
+          </div>
+          <mat-divider class="position-inherit"></mat-divider>
+          <div fxLayout="column" class="my-16">
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="">
+              <span
+                tabindex="0"
+                aria-label="Part-Time Inpatient Professional Behaviours and Patient Management"
+                >Part-Time Inpatient Professional Behaviours and Patient
+                Management</span
+              >
+              <button
+                mat-icon-button
+                role="img"
+                class="action-icon"
+                aria-label="edit icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-pen s-18 icon-fill"
+                ></i>
+              </button>
+            </div>
+            <!-- <div class="mt-8"> Add chips here </div> -->
+          </div>
+          <mat-divider class="position-inherit"></mat-divider>
+          <div fxLayout="column" class="mt-16">
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="">
+              <span
+                tabindex="0"
+                aria-label="Women Health Professional Behaviours and Patient Management"
+                >Women Health Professional Behaviours and Patient
+                Management</span
+              >
+              <button
+                mat-icon-button
+                role="img"
+                class="action-icon"
+                aria-label="edit icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-pen s-18 icon-fill"
+                ></i>
+              </button>
+            </div>
+            <!-- <div class="mt-8"> Add chips here </div> -->
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </mat-card>
+</div>

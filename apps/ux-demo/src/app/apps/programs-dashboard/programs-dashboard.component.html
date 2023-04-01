@@ -1,0 +1,21 @@
+<div id="program_dashboard" class="page-layout full-width w-100-p">
+  <div class="center">
+    <div class="content width-lg margin-auto">
+      <div fxLayout="row wrap" fxLayoutAlign="start center">
+        <div class="p-16 program_list" fxLayout="row" fxLayoutAlign="start center" 
+          *ngFor="let item of programList;let i = index" fxFlex="100%" fxFlex.gt-sm="33.3%"
+          tabindex="0" attr.aria-label="Program {{i+1}} of {{programList.length}}" >
+         <a>
+           <div fxLayout="row" >
+            <mat-icon class="s-48 accent-fg mr-12">{{item.icon}}</mat-icon>
+             <div fxlayout="column" >
+              <h2 tabindex="0" attr.aria-label="Program title is {{item.title}}" class="primary-fg">{{item.title}}</h2>
+              <span tabindex="0" attr.aria-label="{{item.description}}" class="font-14 secondary-text">{{item.description}}</span>
+            </div>
+          </div>
+        </a> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

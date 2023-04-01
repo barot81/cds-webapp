@@ -1,0 +1,28 @@
+@mixin inner-page-tab1-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $action: map-get($theme, action);
+  $is-dark: map-get($theme, is-dark);
+
+  .wishlist-list {
+    .wishlist-list-item {
+      mat-list-item {
+        cursor: pointer;
+      }
+      &:hover {
+        @if ($is-dark) {
+          background: #595959;
+        } @else {
+          background: whitesmoke;
+        }
+      }
+    }
+  }
+}
+
+//for left sidebars icon
+.icon-color {
+  color: #350e4e;
+}

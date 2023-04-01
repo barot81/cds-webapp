@@ -1,0 +1,138 @@
+<div
+  id="home-screen-container"
+  class="page-layout simple full-width-page full-width inner-scroll"
+>
+  <!-- Header : START -->
+  <div fxLayout="column" #screen_header>
+    <div fxLayout="row wrap" fxLayoutAlign="center center" class="mt-xs-16">
+      <div
+        tabindex="0"
+        aria-label="School Logo"
+        class="w-360 h-100 fuse-white-bg"
+      >
+        <div class="font-22 text-center">
+          <span>SCHOOL LOGO goes here</span>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center" class="mt-16">
+      <div class="mx-16 text-center">
+        <span
+          tabindex="0"
+          aria-label="Welcome to Exxat"
+          class="font-weight-600 font-22"
+          >Welcome to Exxat
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- Header : END -->
+
+  <div class="center mt-16">
+    <div
+      class="content"
+      #home_screen_content
+      fxLayout.gt-sm="row"
+      fxLayout.sm="row wrap"
+      fxLayout="row wrap"
+    >
+      <div
+        [fxFlex.gt-sm]="100 / navigation.length"
+        fxFlex="100"
+        *ngFor="
+          let mainNav of navigation;
+          let isLast = last;
+          let isFirst = first;
+          let isOdd = odd;
+          let isEven = even
+        "
+        [ngClass]="{ 'pl-gt-sm-8': !isFirst, 'pr-gt-sm-8': !isLast }"
+      >
+        <mat-card
+          class="{{ mainNav.styleClasses.border }}-border p-0 mb-lt-md-16"
+        >
+          <!-- Card Header : START -->
+          <div
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            class="px-16 py-8 {{ mainNav.styleClasses.border }}-border-bottom"
+            tabindex="0"
+            [attr.aria-label]="'Title is' + mainNav.title"
+          >
+            <div *ngIf="mainNav.image && mainNav.image != null; else title">
+              <img
+                [src]="mainNav.image"
+                alt="Navigation Item"
+                class="nav-image"
+              />
+            </div>
+            <ng-template #title>
+              <div
+                class="font-20 font-weight-600 {{ mainNav.styleClasses.font }}"
+              >
+                <span>{{ mainNav.title }}</span>
+              </div>
+            </ng-template>
+            <div class="ml-8">
+              <span
+                class="font-20 font-weight-600 {{ mainNav.styleClasses.font }}"
+                >({{ mainNav.children.length }})</span
+              >
+            </div>
+          </div>
+          <!-- Card Header : END -->
+          <!-- Card Content : START -->
+          <div
+            class="card_content p-16 overflow-auto"
+            [style.height.px]="_headerService.scrollContentheight"
+            fxLayout="column"
+          >
+            <div
+              fxLayout="column"
+              fxLayoutAlign="start"
+              *ngFor="let navItem of mainNav.children"
+              (click)="navigate(navItem.url)"
+              class="py-12 px-16 {{
+                navItem.styleClasses.hoverBG
+              }} border-radius-8 cursor-pointer"
+            >
+              <div
+                fxLayout="row"
+                attr.aria-label="Click to view {{ navItem.title }} "
+                fxLayoutAlign="start center"
+              >
+                <i aria-hidden="true" class="{{ navItem.icon }} s-24"></i>
+                <div class="ml-16">
+                  <span
+                    class="font-weight-600 {{
+                      mainNav.styleClasses.font
+                    }} font-18"
+                    >{{ navItem.title }}</span
+                  >
+                </div>
+              </div>
+
+              <div fxLayout="row" fxLayoutAlign="start center" class="mt-8">
+                <div>
+                  <span
+                    tabindex="0"
+                    class="text-overflow-2"
+                    attr.aria-label="Description for {{
+                      navItem.title
+                    }} is Set up defining attributes of the program including mission, vision, accreditation standards and more."
+                    >Set up defining attributes of the program including
+                    mission, vision, accreditation standards and more defining
+                    attributes of the program including mission, vision,
+                    accreditation
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card Content : END -->
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

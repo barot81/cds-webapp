@@ -1,0 +1,203 @@
+<div id="exxat-drawers-sizes" class="p-24">
+  <div class="mat-title">Drawer With Highlight Menu Example</div>
+
+  <div fxLayout="column" fxLayout.gt-md="row" class="mb-16">
+    <div
+      class="preview mr-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"
+    >
+      <div class="mat-caption secondary-text">Drawer With Highlight Menu</div>
+      <mat-card>
+        <button
+          mat-icon-button
+          aria-label="Edit"
+          exxatDrawerAction
+          [componentSelector]="
+            exxatDrawerFormService.get('exxat-drawer-with-highlight-menu')
+          "
+          [size]="'drawer-lg'"
+          [caption]="'Drawer With Highlight Menu'"
+        >
+          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+        </button>
+      </mat-card>
+    </div>
+
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <fuse-highlight
+            lang="html"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+
+              <div id="high-light-nav-menu-item-demo-page" 
+              class="page-layout carded left-sidebar tabbed inner-scroll h-100-p pr-16">
+                <!-- SIDEBAR -->
+                <fuse-sidebar class="sidebar width-x-sm overflow-auto" name="carded-left-sidebar-tabbed-2" 
+                  position="left"
+                  lockedOpen="gt-md">
+                  <!-- SIDEBAR HEADER -->
+                  <div>
+                    <div fxLayout="row" fxLayoutAlign="start center" class="mt-12 px-12">
+                      <span class="font-16 font-weight-600">Highlight Nav Menu Item Example</span>
+                    </div>
+                    <div class="pt-16">
+                      <mat-divider></mat-divider>
+                    </div>
+                  </div>
+                  <!-- / SIDEBAR HEADER -->
+              
+                  <!-- SIDEBAR CONTENT -->
+                  <div class="content" fusePerfectScrollbar>
+                    <mat-list navMenuList>
+                      <button mat-button *ngFor="let item of leftNavMenuList" (click)="changeNavMenuItem(item.id)">
+                        <mat-list-item>
+                          <div fxLayout="row" fxLayoutAlign="start center">
+                            <div>
+                              <span class="font-16">item.title</span>
+                            </div>
+                          </div>
+                        </mat-list-item>
+                      </button>
+                    </mat-list>
+                  </div>
+                  <!-- / SIDEBAR CONTENT -->
+                </fuse-sidebar>
+                <!-- / SIDEBAR -->
+              
+                <!-- CENTER -->
+                <div class="center overflow-auto" highLightNavMenuContent [scrollLevel]="scrollLevel">
+                  <!-- CONTENT TOOLBAR -->
+                  <div class="toolbar pl-lg-16 pl-0">
+                    <button mat-icon-button class="sidebar-toggle" fxHide.gt-md
+                      (click)="toggleSidebar('carded-left-sidebar-tabbed-2')">
+                      <mat-icon>menu</mat-icon>
+                    </button>
+                  </div>
+                  <!-- / CONTENT TOOLBAR -->
+              
+                  <!-- CONTENT -->
+                  <div class="pt-16 pl-lg-16 pl-0">
+                    <div fxLayout="column" fxFlex="100">
+                      <div class="high-light-nav-menu-content" [id]=leftNavMenuList[0].id role="region">
+                        <span class="content-heading">Home</span>
+                        <br />
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </p>
+                      </div>
+                      <div class="high-light-nav-menu-content" [id]=leftNavMenuList[1].id role="region">
+                        <span class="content-heading">Work</span>
+                        <br />
+              
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </p>
+                      </div>
+                      <div class="high-light-nav-menu-content" [id]=leftNavMenuList[2].id role="region">
+                        <span class="content-heading">About</span>
+                        <br />
+              
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </p>
+                      </div>
+                      <div class="high-light-nav-menu-content" [id]=leftNavMenuList[3].id role="region">
+                        <span class="content-heading">Contact</span>
+                        <br />
+              
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- / CONTENT -->
+              
+                  <!-- </div> -->
+                  <!-- / CONTENT CARD -->
+                </div>
+                <!-- / CENTER -->
+              </div>
+
+                  </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+
+        <!-- 2nd tab content -->
+        <mat-tab label="TS">
+          <fuse-highlight
+            lang="html"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+
+              import { Component } from "@angular/core";
+              import { FuseSidebarService, HighLightNavMenuService } from "@exxat/ux";
+              import { SidebarFocusHelper } from "../../../exxat-sidebar/exxat-sidebar.service";
+              
+              @Component({
+                  selector: 'exxat-drawer-with-highlight-menu',
+                  templateUrl:'./exxat-drawer-with-highlight-menu.component.html',
+                  styleUrls: ['./exxat-drawer-with-highlight-menu.component.scss']
+              })
+              
+              export class ExxatDrawerWithHighlightMenuComponent{
+                  
+                  scrollLevel = 'component'
+              
+                  leftNavMenuList = [
+                    {
+                      id: 'home',
+                      title: 'Home',
+                    },
+                    {
+                      id: 'work',
+                      title: 'Work',
+                    },
+                    {
+                      id: 'about',
+                      title: 'About',
+                    },
+                    {
+                      id: 'contact',
+                      title: 'Contact',
+                    }
+                  ]
+                
+                  constructor(private readonly _fuseSidebarService: FuseSidebarService,
+                   private readonly highLightNavMenuService: HighLightNavMenuService,
+                    public _focus: SidebarFocusHelper) { }
+                
+                  ngOnInit() {
+                  }
+                
+                  toggleSidebar(name): void {
+                    this._fuseSidebarService.getSidebar(name).toggleOpen();
+                  }
+                
+                  changeNavMenuItem(id: string) {
+                    this._focus.shiftFocusWithId(id);
+                    this.highLightNavMenuService.setCurrentNavMenuItem(id);
+                  }
+              
+              }
+                    
+                  </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

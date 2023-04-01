@@ -1,0 +1,34 @@
+#high-light-nav-menu-item-demo-page {
+  &.page-layout.carded.left-sidebar>.sidebar .header {
+    height: auto !important;
+    max-height: auto !important;
+    min-height: auto !important;
+  }
+
+  .high-light-nav-menu-content {
+    padding: 16px;
+
+    &#home {
+      background: #a0cab5;
+    }
+
+    &#work {
+      background: #cde9ca;
+    }
+
+    &#about {
+      background: #f1edd0;
+    }
+
+    &#contact {
+      background: #f38a8a;
+    }
+  }
+
+  .content-heading {
+    font-size: 16px;
+    line-height: 2;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+}

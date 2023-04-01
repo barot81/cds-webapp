@@ -1,0 +1,43 @@
+
+
+<div><button mat-button class="primary-bg mb-16" (click)="openDialog()">Click for HTML</button></div>
+
+
+
+<div class="page-layout simple left-sidebar inner-scroll">
+    
+    <!-- SIDEBAR -->
+    <fuse-sidebar class="sidebar" name="simple-left-sidebar-2" position="left" lockedOpen="gt-md">
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content p-24" fusePerfectScrollbar>
+            <fuse-demo-sidebar></fuse-demo-sidebar>
+        </div>
+        <!-- / SIDEBAR CONTENT -->
+
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+    <div class="center pl-sm-16" fusePerfectScrollbar>
+
+        <!-- HEADER -->
+      
+        <!-- / HEADER -->
+
+        <!-- CONTENT -->
+        <div class="content p-24">
+            <button mat-icon-button class="sidebar-toggle mr-8" fxHide.gt-md
+                (click)="toggleSidebar('simple-left-sidebar-2')">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <h2>Page layout with left sidebar and seprate scrolls</h2>
+            <p>Place your content here in the content class, You can also add the header above the content.</p>
+        <p>In this page layout the sidebar and the content page has the different scroll</p>
+        </div>
+        <!-- / CONTENT -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

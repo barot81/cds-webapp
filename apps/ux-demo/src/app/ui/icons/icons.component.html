@@ -1,0 +1,50 @@
+<div id="helper-classes" class="page-layout simple tabbed" fxLayout="column">
+  <div class="gray-header mb-16">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="mr-16">
+          <button
+            mat-icon-button
+            aria-label="Click to go back"
+            class="action-icon mx-8"
+            routerLink="/admin/ux/ui/exxat-component-library"
+          >
+            <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+          </button>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+      </div>
+    </div>
+  </div>
+  <!-- CONTENT -->
+  <div class="content p-24">
+    <div>
+      <div fxLayout="column">
+        <div class="m-32">
+          <mat-form-field class="w-100-p">
+            <input
+              matInput
+              placeholder="Search an icon..."
+              (input)="filterIcons($event)"
+            />
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row wrap">
+          <div
+            class="icon-holder m-16"
+            fxLayout="column"
+            fxLayoutAlign="center center"
+            *ngFor="let icon of filteredIcons"
+          >
+            <mat-icon class="s-48">{{ icon.ligature }}</mat-icon>
+            <div class="icon-name mt-8">{{ icon.ligature }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- / CONTENT -->
+</div>

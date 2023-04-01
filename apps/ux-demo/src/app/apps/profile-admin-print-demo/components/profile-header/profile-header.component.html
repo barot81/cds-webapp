@@ -1,0 +1,27 @@
+<mat-card>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+
+        <button mat-icon-button class="sidebar-toggle mr-8" fxHide.gt-md
+            (click)="toggleSidebar('carded-left-sidebar-tabbed-2')">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <header>
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <exxat-avatar src="assets/images/avatars/anna-strong.png" firstName="Anna" lastName="Strong" size="lg">
+                </exxat-avatar>
+
+                <div fxLayout="column">
+                    <h2>Strong Anna</h2>
+                    <a class="word-break-all font-14 text-lowercase"
+                        href="mailto:anna.strong@universityname.com">Anna.strong@universityname.com</a>
+                    <span fxLayout="row" fxLayoutAlign="start center">(897)-982-7094</span>
+                    <span fxLayout="row" fxLayoutAlign="start center">Cohort-DPT-2020-Renamed | Group-DPT-2</span>
+                </div>
+            </div>
+        </header>
+
+    </div>
+
+</mat-card>

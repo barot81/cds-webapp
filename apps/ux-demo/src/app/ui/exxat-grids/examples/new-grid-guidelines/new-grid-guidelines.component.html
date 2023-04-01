@@ -1,0 +1,366 @@
+<div class="page-layout carded left-sidebar" id="new-grid-guidelines">
+  <fuse-sidebar
+    class="sidebar width-x-sm"
+    name="carded-left-sidebar-tabbed-2"
+    position="left"
+    lockedOpen="gt-md"
+  >
+    <div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-16">
+        <button
+          mat-button
+          class="action-icon"
+          aria-label="Add"
+          aria-hidden="true"
+        >
+          <mat-icon>add</mat-icon>
+          Add cohort
+        </button>
+      </div>
+      <div>
+        <mat-divider> </mat-divider>
+      </div>
+    </div>
+
+    <mat-list class="py-16">
+      <button
+        mat-button
+        class="no-space m-0 p-0"
+        *ngFor="let item of cohortList; let i = index"
+      >
+        <mat-list-item
+          class="description-text-wrap p-16"
+          [ngClass]="{ 'active-list-item': i === 1 }"
+        >
+          <div class="text-left">
+            <span>{{ item }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider
+          class="w-80-p margin-auto"
+          *ngIf="i != cohortList.length - 1"
+        >
+        </mat-divider>
+      </button>
+    </mat-list>
+  </fuse-sidebar>
+
+  <div class="center ml-lg-16">
+    <div #header>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div>
+          <h2 class="font-weight-600">Cohort 2022</h2>
+        </div>
+        <div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="end center"
+            fxFlex="100"
+            class="px-16 mt-12"
+          >
+            <button
+              mat-icon-button
+              class="icon-fill-bg filter-icon"
+              exxatDrawerAction
+              [componentSelector]="
+                _uXDemoDrawerService.get('ryzen-filter-and-edit-drawer')
+              "
+              [size]="'drawer-md'"
+              [caption]="'Filters'"
+              [primaryAction]="'Save'"
+            >
+              <i
+                aria-hidden="true"
+                class="fa-light fa-filter fuse-white-fg"
+              ></i>
+              <span _ngcontent-ffj-c615="" class="filter-badge">5</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="py-16">
+        <nav mat-tab-nav-bar>
+          <a
+            mat-tab-link
+            *ngFor="let link of navigations"
+            [routerLink]="link.url"
+            routerLinkActive
+            #rla="routerLinkActive"
+            [active]="rla.isActive"
+          >
+            <span>{{ link.title }}</span>
+          </a>
+        </nav>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="pb-16">
+        <div fxLayout="row" fxLayoutAlign="start">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <button
+              mat-button
+              class="action-icon"
+              aria-label="Add"
+              aria-hidden="true"
+            >
+              <mat-icon>add</mat-icon>
+              Import Student
+            </button>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <button
+              mat-button
+              class="action-icon"
+              aria-label="Add"
+              aria-hidden="true"
+            >
+              <mat-icon>add</mat-icon>
+              Add Student
+            </button>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <button
+              mat-button
+              class="action-icon"
+              aria-label="Add"
+              aria-hidden="true"
+            >
+              <mat-icon>build</mat-icon>
+              Edit Columns
+            </button>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <button
+              mat-button
+              class="action-icon"
+              aria-label="Add"
+              aria-hidden="true"
+            >
+              <mat-icon>grid_on</mat-icon>
+              Export to Excel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content table-rounded-border" fxLayout="column">
+      <div class="spinner-container" *ngIf="goToColumnLoading$ | async">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        fxFlex="100"
+        class="px-16 pt-12 pb-0 white-header"
+      >
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div fxLayout="column">
+            <exxat-search-bar [listofOptions]=""></exxat-search-bar>
+            <div>
+              <span class="font-12 secondary-text text-italic">
+                Total record 50
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <mat-form-field>
+            <input
+              type="text"
+              placeholder="Go to Column"
+              aria-label="Number"
+              matInput
+              [formControl]="columnControl"
+              [matAutocomplete]="auto"
+            />
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option
+                *ngFor="let option of filteredOptions | async"
+                [value]="option"
+              >
+                {{ option | titlecase }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <flex-table>
+        <div id="sticky-column-table">
+          <div
+            #auto_scroll_grid
+            class="content flex_table_content"
+            [style.height.px]="headerService.scrollContentheight"
+          >
+            <div class="exxat-sticky-table">
+              <table
+                class="exxat-table no-alternate-color"
+                mat-table
+                [dataSource]="dataSource"
+                *ngFor="let table of tables"
+              >
+                <ng-container matColumnDef="student">
+                  <th mat-header-cell *matHeaderCellDef id="student">
+                    Student (50)
+                  </th>
+                  <td
+                    mat-cell
+                    *matCellDef="let element"
+                    fxLayout="row"
+                    fxLayoutAlign="start start"
+                  >
+                    <img class="avatar" src="{{ element.src }}" fxHide.xs />
+                    <span class="list-item-name">{{ element.student }}</span>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="is">
+                  <th mat-header-cell *matHeaderCellDef id="is">IS</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="status-badge getstarted">Get Started</div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="mmr">
+                  <th mat-header-cell *matHeaderCellDef id="student">MMR</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="status-badge disapproved">Disapproved</div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="flu">
+                  <th mat-header-cell *matHeaderCellDef id="flu">FLU</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="status-badge inprogress">In Progress</div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tb">
+                  <th mat-header-cell *matHeaderCellDef id="tb">TB</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="status-badge pending">Pending for Review</div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="hepb">
+                  <th mat-header-cell *matHeaderCellDef id="hepb">HEP B</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="status-badge approved">Approved</div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="varicella">
+                  <th mat-header-cell *matHeaderCellDef id="varicella">
+                    VARICELLA
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="status-badge pending">Pending</div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tdap">
+                  <th mat-header-cell *matHeaderCellDef id="tdap">TDAP</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="status-badge expiring">Expiring</div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="hi">
+                  <th mat-header-cell *matHeaderCellDef id="hi">HI</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="status-badge expired">Expired</div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="cpr">
+                  <th mat-header-cell *matHeaderCellDef id="cpr">CPR</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="status-badge getstarted">Get Started</div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="pals">
+                  <th mat-header-cell *matHeaderCellDef id="pals">PALS</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="status-badge expired">Expired</div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="licensure">
+                  <th mat-header-cell *matHeaderCellDef id="licensure">
+                    LICENSURE
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="status-badge pending">Pending</div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="hipaa">
+                  <th mat-header-cell *matHeaderCellDef id="hipaa">HIPAA</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="status-badge approved">Approved</div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="sis">
+                  <th mat-header-cell *matHeaderCellDef id="sis">SIS</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="status-badge getstarted">Get Started</div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="corf">
+                  <th mat-header-cell *matHeaderCellDef id="corf">CORF</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="status-badge getstarted">Get Started</div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="ds">
+                  <th mat-header-cell *matHeaderCellDef id="ds">DS</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="status-badge pending">Pending</div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="bgc">
+                  <th mat-header-cell *matHeaderCellDef id="bgc">BGC</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="status-badge getstarted">Get Started</div>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="fp">
+                  <th mat-header-cell *matHeaderCellDef id="fp">FP</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="status-badge approved">Approved</div>
+                  </td>
+                </ng-container>
+
+                <tr
+                  mat-header-row
+                  *matHeaderRowDef="displayedColumns; sticky: true"
+                ></tr>
+
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: displayedColumns"
+                ></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </flex-table>
+
+      <mat-paginator [pageSize]="30" class="h-50"></mat-paginator>
+    </div>
+  </div>
+</div>

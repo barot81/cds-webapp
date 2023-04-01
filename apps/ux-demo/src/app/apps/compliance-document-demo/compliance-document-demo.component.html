@@ -1,0 +1,1160 @@
+<div
+  id="slot-page"
+  class="page-layout simple left-sidebar inner-sidebar inner-scroll"
+>
+  <!--header-->
+  <!-- 
+  <div fxLayout="row wrap" class="pb-8 px-xs-16 border-bottom" fxLayoutAlign="start center">
+    <span class="pt-12 pr-8 font-weight-600 space-no-wrap" tabindex="0" aria-label="Filter by">Filter by : </span>
+    <div class="header-tab-control mr-16">
+      <mat-form-field>
+        <mat-select placeholder="Cohort" [formControl]="cohortControl" multiple>
+          <mat-select-trigger>
+            {{cohortControl.value ? cohortControl.value[0] : ''}}
+            <span *ngIf="cohortControl.value?.length > 1" class="example-additional-selection">
+              (+{{cohortControl.value.length - 1}}
+              {{cohortControl.value?.length === 2 ? 'other' : 'others'}})
+            </span>
+          </mat-select-trigger>
+          <mat-option *ngFor="let cohort of cohorts" [value]="cohort.value">{{cohort.viewValue}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <a class="pt-12" tabindex="0" aria-label="reset link">Reset</a>
+  </div> -->
+
+  <div fxLayout="row" fxFlex="100">
+    <!--sidebar-->
+    <fuse-sidebar
+      tabindex="0"
+      class="sidebar"
+      name="compliance-document-sidebar"
+      position="left"
+      lockedOpen="gt-md"
+      fxFlex="100"
+      fxFlex.gt-md="20"
+      fxFlex.md="30"
+      fxFlex.sm="40"
+    >
+      <div class="content" aria-label="sidebar">
+        <mat-list class="p-0">
+          <button mat-button class="no-space m-0 p-0">
+            <mat-list-item
+              fxFlex
+              fxLayoutAlign="start center"
+              class="h-40 pl-8"
+            >
+              <span class="word-break-all space-pre-wrap text-left"
+                >Announcement</span
+              >
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="no-space m-0 p-0">
+            <mat-list-item
+              fxFlex
+              fxLayoutAlign="start center"
+              class="h-40 pl-8"
+            >
+              <span class="word-break-all space-pre-wrap text-left"
+                >Resources</span
+              >
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="no-space m-0 p-0">
+            <mat-list-item
+              fxFlex
+              fxLayoutAlign="start center"
+              class="h-40 pl-8"
+            >
+              <span class="word-break-all space-pre-wrap text-left"
+                >Attestation</span
+              >
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="no-space m-0 p-0">
+            <mat-list-item
+              fxFlex
+              fxLayoutAlign="start center"
+              class="h-40 pl-8"
+            >
+              <span class="word-break-all space-pre-wrap text-left"
+                >Program requirement</span
+              >
+            </mat-list-item>
+          </button>
+
+          <button mat-button class="no-space m-0 p-0">
+            <mat-list-item
+              fxFlex
+              fxLayoutAlign="start center"
+              class="h-40 active-list-item pl-8"
+            >
+              <span class="word-break-all space-pre-wrap text-left"
+                >Compliance document</span
+              >
+            </mat-list-item>
+          </button>
+        </mat-list>
+      </div>
+    </fuse-sidebar>
+
+    <!--page content-->
+    <div
+      class="center ml-lg-16"
+      fxLayout="column"
+      fxFlex="100"
+      fxFlex.gt-md="80"
+    >
+      <div #compliance_document_header>
+        <div class="pl-xs-8" fxLayout="row" fxLayoutAlign="start center">
+          <button
+            mat-icon-button
+            class="sidebar-toggle mr-8"
+            fxHide.gt-md
+            (click)="toggleSidebar('compliance-document-sidebar')"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+        <div
+          tabindex="0"
+          aria-label="This is a info message box"
+          class="message-box info mb-16"
+        >
+          This is a info message box!
+        </div>
+
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="pr-xs-16"
+        >
+          <button
+            mat-button
+            class="action-icon"
+            exxatDrawerAction
+            [size]="'drawer-md'"
+            [caption]="'Status'"
+            role="img"
+            [componentSelector]="_UXDemoDrawerService.get('ryzen-add-slot')"
+            tabindex="0"
+            aria-label="Add new category button"
+          >
+            <mat-icon>add</mat-icon>
+            Add new category
+          </button>
+          <button mat-raised-button color="accent" aria-label="publish button">
+            Publish
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="content overflow-auto mt-16"
+        [style.height.px]="
+          _headerService.scrollContentheight -
+          ((compliance_header_height$ | async) + 16)
+        "
+      >
+        <div class="masonry">
+          <!-- first matcard -->
+          <div class="matcard-brick">
+            <mat-card class="p-0">
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2
+                    class="primary-heading font-weight-600 text-capitalize"
+                    tabindex="0"
+                    aria-label="header health & immunization"
+                  >
+                    health & immunization
+                  </h2>
+                </div>
+                <button
+                  mat-icon-button
+                  class="icon-fill-bg"
+                  aria-label="Edit"
+                  exxatDrawerAction
+                  [size]="'drawer-sm'"
+                  [componentSelector]="
+                    _UXDemoDrawerService.get('ryzen-add-slot')
+                  "
+                  [caption]="'Status'"
+                  [primaryAction]="'Save'"
+                  role="img"
+                  aria-label="add to health & immunization"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-plus fuse-white-fg s-18"
+                  ></i>
+                </button>
+              </header>
+              <div fxLayout="column">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  fxFlex="100"
+                  class="px-16 py-8 border-bottom"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayout.xs="column"
+                    fxFlex="100"
+                    fxLayoutAlign.gt-xs="start center"
+                  >
+                    <div
+                      fxLayout="row"
+                      fxFlex.gt-xs="60"
+                      fxFlex="100"
+                      fxLayoutAlign="start center"
+                    >
+                      <span
+                        tabindex="0"
+                        aria-label=" Immunization summary"
+                        class="pr-16 font-16 font-weight-400"
+                      >
+                        Immunization summary
+                      </span>
+                    </div>
+                    <div
+                      fxLayout="row"
+                      fxFlex.gt-xs="40"
+                      fxFlex="100"
+                      fxLayoutAlign="start center"
+                      class="pt-xs-16"
+                    >
+                      <span
+                        tabindex="0"
+                        aria-label="Form Enabled "
+                        tooltip="Form Enabled "
+                        [options]="tooltipOptions"
+                        class="mr-8 tooltip-text-center action-icon-active"
+                        fxLayout="row"
+                        fxLayoutAlign="center center"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-check s-18 fuse-white-fg"
+                        ></i>
+                      </span>
+                      <span
+                        tabindex="0"
+                        aria-label="Review Required"
+                        tooltip="Review Required"
+                        [options]="tooltipOptions"
+                        class="mr-8 action-icon-active"
+                        fxLayout="row"
+                        fxLayoutAlign="center center"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-file-search s-18 fuse-white-fg"
+                        ></i>
+                      </span>
+                      <span
+                        tabindex="0"
+                        aria-label="Not shared with site"
+                        tooltip="Not shared with site"
+                        [options]="tooltipOptions"
+                        class="mr-8 action-icon-disable"
+                        fxLayout="row"
+                        fxLayoutAlign="center center"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-share-alt s-18 fuse-white-fg"
+                        ></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="end center">
+                    <button
+                      mat-icon-button
+                      class="action-icon"
+                      aria-label="click here to edit"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-pen icon-fill s-18"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  fxFlex="100"
+                  class="px-16 py-8 border-bottom"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayout.xs="column"
+                    fxFlex="100"
+                    fxLayoutAlign.gt-xs="start center"
+                  >
+                    <div
+                      fxLayout="row"
+                      fxFlex.gt-xs="60"
+                      fxFlex="100"
+                      fxLayoutAlign="start center"
+                    >
+                      <span
+                        tabindex="0"
+                        aria-label="FLU"
+                        class="pr-16 font-16 font-weight-400"
+                      >
+                        FLU
+                      </span>
+                    </div>
+                    <div
+                      fxLayout="row"
+                      fxFlex.gt-xs="40"
+                      fxFlex="100"
+                      fxLayoutAlign="start center"
+                      class="pt-xs-16"
+                    >
+                      <span
+                        tabindex="0"
+                        aria-label="Form Enabled "
+                        tooltip="Form Enabled "
+                        [options]="tooltipOptions"
+                        class="mr-8 tooltip-text-center action-icon-active"
+                        fxLayout="row"
+                        fxLayoutAlign="center center"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-check s-18 fuse-white-fg"
+                        ></i>
+                      </span>
+                      <span
+                        tabindex="0"
+                        aria-label="Review Required"
+                        tooltip="Review Required"
+                        [options]="tooltipOptions"
+                        class="mr-8 action-icon-active"
+                        fxLayout="row"
+                        fxLayoutAlign="center center"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-file-search s-18 fuse-white-fg"
+                        ></i>
+                      </span>
+                      <span
+                        tabindex="0"
+                        aria-label="Not shared with site"
+                        tooltip="Not shared with site"
+                        [options]="tooltipOptions"
+                        class="mr-8 action-icon-disable"
+                        fxLayout="row"
+                        fxLayoutAlign="center center"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-share-alt s-18 fuse-white-fg"
+                        ></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="end center">
+                    <button
+                      mat-icon-button
+                      class="action-icon"
+                      aria-label="click here to edit"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-pen icon-fill s-18"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  fxFlex="100"
+                  class="px-16 py-8 border-bottom"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayout.xs="column"
+                    fxFlex="100"
+                    fxLayoutAlign.gt-xs="start center"
+                  >
+                    <div
+                      fxLayout="row"
+                      fxFlex.gt-xs="60"
+                      fxFlex="100"
+                      fxLayoutAlign="start center"
+                    >
+                      <span
+                        tabindex="0"
+                        aria-label="TB"
+                        class="pr-16 font-16 font-weight-400"
+                      >
+                        TB
+                      </span>
+                    </div>
+                    <div
+                      fxLayout="row"
+                      fxFlex.gt-xs="40"
+                      fxFlex="100"
+                      fxLayoutAlign="start center"
+                      class="pt-xs-16"
+                    >
+                      <span
+                        tabindex="0"
+                        aria-label="Form Enabled "
+                        tooltip="Form Enabled "
+                        [options]="tooltipOptions"
+                        class="mr-8 tooltip-text-center action-icon-active"
+                        fxLayout="row"
+                        fxLayoutAlign="center center"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-check s-18 fuse-white-fg"
+                        ></i>
+                      </span>
+                      <span
+                        tabindex="0"
+                        aria-label="Review Required"
+                        tooltip="Review Required"
+                        [options]="tooltipOptions"
+                        class="mr-8 action-icon-active"
+                        fxLayout="row"
+                        fxLayoutAlign="center center"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-file-search s-18 fuse-white-fg"
+                        ></i>
+                      </span>
+                      <span
+                        tabindex="0"
+                        aria-label="Not shared with site"
+                        tooltip="Not shared with site"
+                        [options]="tooltipOptions"
+                        class="mr-8 action-icon-disable"
+                        fxLayout="row"
+                        fxLayoutAlign="center center"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-share-alt s-18 fuse-white-fg"
+                        ></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="end center">
+                    <button
+                      mat-icon-button
+                      class="action-icon"
+                      aria-label="click here to edit"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-pen icon-fill s-18"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  fxFlex="100"
+                  class="px-16 py-8 border-bottom"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayout.xs="column"
+                    fxFlex="100"
+                    fxLayoutAlign.gt-xs="start center"
+                  >
+                    <div
+                      fxLayout="row"
+                      fxFlex.gt-xs="60"
+                      fxFlex="100"
+                      fxLayoutAlign="start center"
+                    >
+                      <span
+                        tabindex="0"
+                        aria-label="Hep B"
+                        class="pr-16 font-16 font-weight-400"
+                      >
+                        Hep B
+                      </span>
+                    </div>
+                    <div
+                      fxLayout="row"
+                      fxFlex.gt-xs="40"
+                      fxFlex="100"
+                      fxLayoutAlign="start center"
+                      class="pt-xs-16"
+                    >
+                      <span
+                        tabindex="0"
+                        aria-label="Form Enabled "
+                        tooltip="Form Enabled "
+                        [options]="tooltipOptions"
+                        class="mr-8 tooltip-text-center action-icon-active"
+                        fxLayout="row"
+                        fxLayoutAlign="center center"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-check s-18 fuse-white-fg"
+                        ></i>
+                      </span>
+                      <span
+                        tabindex="0"
+                        aria-label="Review Required"
+                        tooltip="Review Required"
+                        [options]="tooltipOptions"
+                        class="mr-8 action-icon-active"
+                        fxLayout="row"
+                        fxLayoutAlign="center center"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-file-search s-18 fuse-white-fg"
+                        ></i>
+                      </span>
+                      <span
+                        tabindex="0"
+                        aria-label="Not shared with site"
+                        tooltip="Not shared with site"
+                        [options]="tooltipOptions"
+                        class="mr-8 action-icon-disable"
+                        fxLayout="row"
+                        fxLayoutAlign="center center"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-share-alt s-18 fuse-white-fg"
+                        ></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="end center">
+                    <button
+                      mat-icon-button
+                      class="action-icon"
+                      aria-label="click here to edit"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-pen icon-fill s-18"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  fxFlex="100"
+                  class="px-16 py-8 border-bottom"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayout.xs="column"
+                    fxFlex="100"
+                    fxLayoutAlign.gt-xs="start center"
+                  >
+                    <div
+                      fxLayout="row"
+                      fxFlex.gt-xs="60"
+                      fxFlex="100"
+                      fxLayoutAlign="start center"
+                    >
+                      <span
+                        tabindex="0"
+                        aria-label=" Physical Exam Medical Summary"
+                        class="pr-16 font-16 font-weight-400"
+                      >
+                        Physical Exam Medical Summary
+                      </span>
+                    </div>
+                    <div
+                      fxLayout="row"
+                      fxFlex.gt-xs="40"
+                      fxFlex="100"
+                      fxLayoutAlign="start center"
+                      class="pt-xs-16"
+                    >
+                      <span
+                        tabindex="0"
+                        aria-label="Form Enabled "
+                        tooltip="Form Enabled "
+                        [options]="tooltipOptions"
+                        class="mr-8 tooltip-text-center action-icon-active"
+                        fxLayout="row"
+                        fxLayoutAlign="center center"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-check s-18 fuse-white-fg"
+                        ></i>
+                      </span>
+                      <span
+                        tabindex="0"
+                        aria-label="Review Required"
+                        tooltip="Review Required"
+                        [options]="tooltipOptions"
+                        class="mr-8 action-icon-active"
+                        fxLayout="row"
+                        fxLayoutAlign="center center"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-file-search s-18 fuse-white-fg"
+                        ></i>
+                      </span>
+                      <span
+                        tabindex="0"
+                        aria-label="Not shared with site"
+                        tooltip="Not shared with site"
+                        [options]="tooltipOptions"
+                        class="mr-8 action-icon-disable"
+                        fxLayout="row"
+                        fxLayoutAlign="center center"
+                      >
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-share-alt s-18 fuse-white-fg"
+                        ></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="end center">
+                    <button
+                      mat-icon-button
+                      class="action-icon"
+                      aria-label="click here to edit"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fa-light fa-pen icon-fill s-18"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+
+          <!-- second card -->
+          <div class="matcard-brick">
+            <mat-card class="p-0">
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2
+                    class="primary-heading font-weight-600 text-capitalize"
+                    tabindex="0"
+                    aria-label="header attestation & ackowledge"
+                  >
+                    attestation & ackowledge
+                  </h2>
+                </div>
+                <button
+                  mat-icon-button
+                  class="icon-fill-bg"
+                  aria-label="Edit"
+                  exxatDrawerAction
+                  [size]="'drawer-sm'"
+                  [caption]="'Status'"
+                  [primaryAction]="'Save'"
+                  role="img"
+                  aria-label="add to attestation & ackowledge"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-plus fuse-white-fg s-18"
+                  ></i>
+                </button>
+              </header>
+              <div fxLayout="column">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="px-16 py-8"
+                >
+                  <span
+                    tabindex="0"
+                    aria-label="Physical exam"
+                    class="font-16 font-weight-400"
+                    >Physical exam</span
+                  >
+                  <button
+                    mat-icon-button
+                    class="action-icon"
+                    aria-label="click here for setting"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-cog icon-fill s-18"
+                      tabindex="0"
+                      aria-label="settings for Physical exam"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+
+          <!-- third card -->
+          <div class="matcard-brick mb-lg-0">
+            <mat-card class="p-0">
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2
+                    class="primary-heading font-weight-600 text-capitalize"
+                    tabindex="0"
+                    aria-label="header certification & training"
+                  >
+                    certification & training
+                  </h2>
+                </div>
+                <button
+                  mat-icon-button
+                  class="icon-fill-bg"
+                  aria-label="Edit"
+                  exxatDrawerAction
+                  [size]="'drawer-sm'"
+                  [componentSelector]="
+                    _UXDemoDrawerService.get('ryzen-add-slot')
+                  "
+                  [caption]="'Status'"
+                  [primaryAction]="'Save'"
+                  role="img"
+                  aria-label="add to certification & training"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-plus fuse-white-fg s-18"
+                  ></i>
+                </button>
+              </header>
+              <div fxLayout="column">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="px-16 py-8 border-bottom"
+                >
+                  <span
+                    tabindex="0"
+                    aria-label="Immunization Summary"
+                    class="font-16 font-weight-400"
+                    >Immunization Summary</span
+                  >
+                  <button
+                    mat-icon-button
+                    class="action-icon"
+                    aria-label="click here for setting"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-cog icon-fill s-18"
+                      tabindex="0"
+                      aria-label="settings for Physical exam"
+                    ></i>
+                  </button>
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="px-16 py-8 border-bottom"
+                >
+                  <div fxLayout="column">
+                    <span
+                      tabindex="0"
+                      aria-label="Flu"
+                      class="font-16 font-weight-400"
+                      >Flu</span
+                    >
+                    <span
+                      tabindex="0"
+                      aria-label="All disable"
+                      class="disable-status"
+                      >All disable</span
+                    >
+                  </div>
+                  <button
+                    mat-icon-button
+                    class="action-icon"
+                    aria-label="click here for setting"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-cog icon-fill s-18"
+                      tabindex="0"
+                      aria-label="settings for Physical exam"
+                    ></i>
+                  </button>
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="px-16 py-8 border-bottom"
+                >
+                  <span
+                    tabindex="0"
+                    aria-label="TB"
+                    class="font-16 font-weight-400"
+                    >TB</span
+                  >
+                  <button
+                    mat-icon-button
+                    class="action-icon"
+                    aria-label="click here for setting"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-cog icon-fill s-18"
+                      tabindex="0"
+                      aria-label="settings for Physical exam"
+                    ></i>
+                  </button>
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="px-16 py-8"
+                >
+                  <span
+                    tabindex="0"
+                    aria-label="Physical exam"
+                    class="font-16 font-weight-400"
+                    >Physical exam</span
+                  >
+                  <button
+                    mat-icon-button
+                    class="action-icon"
+                    aria-label="click here for setting"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-cog icon-fill s-18"
+                      tabindex="0"
+                      aria-label="settings for Physical exam"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+
+          <!-- fourth card -->
+          <div class="matcard-brick">
+            <mat-card class="p-0">
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2
+                    class="primary-heading font-weight-600 text-capitalize"
+                    tabindex="0"
+                    aria-label="header verification or identity document"
+                  >
+                    verification/identity document
+                  </h2>
+                </div>
+                <button
+                  mat-icon-button
+                  class="icon-fill-bg"
+                  aria-label="Edit"
+                  exxatDrawerAction
+                  [size]="'drawer-sm'"
+                  [caption]="'Status'"
+                  [primaryAction]="'Save'"
+                  role="img"
+                  aria-label="add to verification or identity document"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-plus fuse-white-fg s-18"
+                  ></i>
+                </button>
+              </header>
+              <div fxLayout="column">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="px-16 py-8 border-bottom"
+                >
+                  <span
+                    tabindex="0"
+                    aria-label="Immunization Summary"
+                    class="font-16 font-weight-400"
+                    >Immunization Summary</span
+                  >
+                  <button
+                    mat-icon-button
+                    class="action-icon"
+                    aria-label="click here for setting"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-cog icon-fill s-18"
+                      tabindex="0"
+                      aria-label="settings for Physical exam"
+                    ></i>
+                  </button>
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="px-16 py-8 border-bottom"
+                >
+                  <span
+                    tabindex="0"
+                    aria-label="Flu"
+                    class="font-16 font-weight-400"
+                    >Flu</span
+                  >
+                  <button
+                    mat-icon-button
+                    class="action-icon"
+                    aria-label="click here for setting"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-cog icon-fill s-18"
+                      tabindex="0"
+                      aria-label="settings for Physical exam"
+                    ></i>
+                  </button>
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="px-16 py-8 border-bottom"
+                >
+                  <span
+                    tabindex="0"
+                    aria-label="TB"
+                    class="font-16 font-weight-400"
+                    >TB</span
+                  >
+                  <button
+                    mat-icon-button
+                    class="action-icon"
+                    aria-label="click here for setting"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-cog icon-fill s-18"
+                      tabindex="0"
+                      aria-label="settings for Physical exam"
+                    ></i>
+                  </button>
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="px-16 py-8 border-bottom"
+                >
+                  <span
+                    tabindex="0"
+                    aria-label="Hep B"
+                    class="font-16 font-weight-400"
+                    >Hep B</span
+                  >
+                  <button
+                    mat-icon-button
+                    class="action-icon"
+                    aria-label="click here for setting"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-cog icon-fill s-18"
+                      tabindex="0"
+                      aria-label="settings for Physical exam"
+                    ></i>
+                  </button>
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="px-16 py-8"
+                >
+                  <span
+                    tabindex="0"
+                    aria-label="Physical exam"
+                    class="font-16 font-weight-400"
+                    >Physical exam</span
+                  >
+                  <button
+                    mat-icon-button
+                    class="action-icon"
+                    aria-label="click here for setting"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-cog icon-fill s-18"
+                      tabindex="0"
+                      aria-label="settings for Physical exam"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+
+          <!-- fifth card -->
+          <div class="matcard-brick">
+            <mat-card class="p-0">
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2
+                    class="primary-heading font-weight-600 text-capitalize"
+                    tabindex="0"
+                    aria-label="header membership & licensure"
+                  >
+                    membership & licensure
+                  </h2>
+                </div>
+                <button
+                  mat-icon-button
+                  class="icon-fill-bg"
+                  aria-label="Edit"
+                  exxatDrawerAction
+                  [size]="'drawer-sm'"
+                  [componentSelector]="
+                    _UXDemoDrawerService.get('ryzen-add-slot')
+                  "
+                  [caption]="'Status'"
+                  [primaryAction]="'Save'"
+                  role="img"
+                  aria-label="add to membership & licensure"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-plus fuse-white-fg s-18"
+                  ></i>
+                </button>
+              </header>
+              <div fxLayout="column">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="px-16 py-8 border-bottom"
+                >
+                  <span
+                    tabindex="0"
+                    aria-label="Hep B"
+                    class="font-16 font-weight-400"
+                    >Hep B</span
+                  >
+                  <button
+                    mat-icon-button
+                    class="action-icon"
+                    aria-label="click here for setting"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-cog icon-fill s-18"
+                      tabindex="0"
+                      aria-label="settings for Physical exam"
+                    ></i>
+                  </button>
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="px-16 py-8"
+                >
+                  <span
+                    tabindex="0"
+                    aria-label="Physical exam"
+                    class="font-16 font-weight-400"
+                    >Physical exam</span
+                  >
+                  <button
+                    mat-icon-button
+                    class="action-icon"
+                    aria-label="click here for setting"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-cog icon-fill s-18"
+                      tabindex="0"
+                      aria-label="settings for Physical exam"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+
+          <!-- sixth card -->
+          <div class="matcard-brick">
+            <mat-card class="p-0">
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title py-8 pr-8 pl-16"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2
+                    class="primary-heading font-weight-600 text-capitalize"
+                    tabindex="0"
+                    aria-label="header Additional documents"
+                  >
+                    Additional documents
+                  </h2>
+                </div>
+                <button
+                  mat-icon-button
+                  class="icon-fill-bg"
+                  aria-label="Edit"
+                  exxatDrawerAction
+                  [size]="'drawer-sm'"
+                  [componentSelector]="
+                    _UXDemoDrawerService.get('ryzen-add-slot')
+                  "
+                  [caption]="'Status'"
+                  [primaryAction]="'Save'"
+                  role="img"
+                  aria-label="add to Additional documents"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-plus fuse-white-fg s-18"
+                  ></i>
+                </button>
+              </header>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

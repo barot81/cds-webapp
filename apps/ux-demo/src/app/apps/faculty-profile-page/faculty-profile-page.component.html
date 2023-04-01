@@ -1,0 +1,810 @@
+<div
+  class="page-layout simple left-sidebar inner-sidebar inner-scroll faculty-page"
+>
+  <!-- HEADER -->
+  <div fxLayout="column">
+    <div class="mb-16 pt-xs-16 pl-xs-16">
+      <exxat-breadcrumb
+        [dataSource]="breadcrumbs"
+        [type]="_breadCrumbType.PARTIAL"
+      >
+      </exxat-breadcrumb>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <exxat-carousel
+        [width]="
+          headerItems.length === 1 ? screenWidth - 55 : screenWidth - 120
+        "
+        (OnChange)="onHeaderCarouselEvent($event)"
+        [maxItems]="headerItems.length"
+      >
+        <mat-card
+          *ngFor="
+            let item of headerItems;
+            let i = index;
+            let isFirst = first;
+            let isLast = last
+          "
+          [style.min-width.px]="
+            headerItems.length === 1 ? screenWidth - 55 : screenWidth - 120
+          "
+        >
+          <header
+            *ngIf="currentHeaderStep === i"
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            fxLayout.lt-md="column"
+            fxLayoutAlign.lt-md="center start"
+            fxFlex="100"
+            class="py-xs-8 w-100-p"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <exxat-avatar
+                src="assets/images/avatars/anna-strong.png"
+                size="lg"
+                tabindex="0"
+                aria-label="persons image"
+                fxHide.xs
+              ></exxat-avatar>
+              <div
+                fxLayout="column"
+                fxLayoutAlign="center start"
+                class="pr-8 ml-8"
+              >
+                <h2 tabindex="0" aria-label="Strong Anna">{{ item.title }}</h2>
+                <div fxLayout="row wrap" fxLayoutAlign="start center">
+                  <a
+                    class="mr-8"
+                    tabindex="0"
+                    aria-label="forrestbarrett@example.com"
+                    >forrestbarrett@example.com
+                  </a>
+                  <span class="mr-8">|</span>
+                  <span class="mr-8" tabindex="0" aria-label="Professor"
+                    >Professor</span
+                  >
+                  <span class="mr-8">|</span>
+                  <span class="mr-8" tabindex="0" aria-label="Dean">Dean </span>
+                  <span class="mr-8">|</span>
+                  <span class="mr-8" tabindex="0" aria-label="Position 1">
+                    Position 1
+                  </span>
+                  <span class="mr-8">|</span>
+                  <span tabindex="0" aria-label="Position 2"> Position 2</span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              fxLayout="column"
+              fxLayoutAlign.gt-xs="center end "
+              fxLayout.sm="row"
+              fxLayoutAlign.sm="start center"
+              class="mt-small-16 pr-8 ml-8"
+            >
+              <div
+                fxLayout="row"
+                fxLayoutAlign="end center"
+                fxLayout.xs="column"
+                class="pb-4"
+              >
+                <button mat-stroked-button color="accent" class="mr-16">
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-download s-18 accent-fg mr-8"
+                  ></i>
+                  Generate CV
+                </button>
+                <div class="pt-xs-16">
+                  <button mat-stroked-button color="accent">
+                    <i
+                      aria-hidden="true"
+                      class="fa-light fa-share-alt s-18 accent-fg mr-8"
+                    ></i>
+                    Share Personnel
+                  </button>
+                </div>
+              </div>
+
+              <a
+                class="font-weight-600 ml-8 pt-xs-8"
+                tabindex="0"
+                aria-label="Profile Share History"
+                >Profile Share History</a
+              >
+            </div>
+          </header>
+        </mat-card>
+      </exxat-carousel>
+    </div>
+    <button
+      mat-icon-button
+      class="sidebar-toggle mr-8 mt-8"
+      fxHide.gt-md
+      (click)="toggleSidebar('faculty-page-sidebar')"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content mt-16 height-inherit">
+    <!-- SIDEBAR -->
+    <fuse-sidebar
+      tabindex="0"
+      aria-label="sidebar"
+      class="sidebar faculty-sidebar-width sidebar-expand-collapse"
+      name="faculty-page-sidebar"
+      position="left"
+      lockedOpen="gt-md"
+      [folded]="false"
+      [foldedWidth]="60"
+      [foldedAutoTriggerOnHover]="true"
+    >
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="pr-4">
+        <div
+          class="search-wrapper hide-content-folded"
+          fxFlex="85"
+          tabindex="0"
+          aria-label="searchbar"
+        >
+          <div
+            class="search sidenav-search"
+            fxFlex
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <i
+              aria-hidden="true"
+              class="fa-light fa-magnifying-glass s-18"
+              fxFlex="10"
+            ></i>
+            <input
+              type="text"
+              class="font-14"
+              placeholder="Search"
+              fxFlex="90"
+            />
+          </div>
+        </div>
+        <button
+          mat-icon-button
+          class="toggle-sidebar-folded"
+          fxLayoutAlign="center center"
+          class="ml-8"
+          (click)="toggleSidebarFolded()"
+          fxHide.lt-lg
+          tabindex="0"
+          aria-label="toggle arrow for sidebar"
+        >
+          <i
+            aria-hidden="true"
+            class="fa-light fa-chevron-left s-16 left-arrow sidebar-blue-icon mr-4"
+          ></i>
+          <i
+            aria-hidden="true"
+            class="fa-light fa-chevron-right s-16 right-arrow display-none sidebar-blue-icon pl-4"
+          ></i>
+          <i
+            aria-hidden="true"
+            class="fa-light fa-thumbtack s-16 pin-sticky sidebar-blue-icon mr-4"
+          ></i>
+        </button>
+      </div>
+      <mat-divider class="hide-divider"></mat-divider>
+
+      <div
+        class="content position-relative"
+        fusePerfectScrollbar
+        [fusePerfectScrollbarOptions]="{ suppressScrollX: true }"
+        tabindex="0"
+        aria-label="sidebar content"
+      >
+        <mat-list class="p-0" fxLayout="column">
+          <!-- contains submenu -->
+          <button
+            mat-button
+            class="p-0 w-100-p"
+            *ngFor="let item of sidenavItem; let i = index"
+            (click)="activateNavigation(item.id)"
+          >
+            <mat-list-item
+              class="py-12 px-16 w-100-p"
+              fxLayoutAlign="start center"
+              [ngClass]="{ 'active-list-item': item.id === selectedId }"
+            >
+              <i
+                aria-hidden="true"
+                class="fa-light s-18"
+                [class]="item.icon"
+              ></i>
+              <span class="text-left pl-16 w-100-p hide-content-folded">{{
+                item.title
+              }}</span>
+            </mat-list-item>
+          </button>
+        </mat-list>
+      </div>
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+    <div
+      class="center ml-lg-16"
+      tabindex="0"
+      aria-label="right side content"
+      fusePerfectScrollbar
+    >
+      <!-- CONTENT -->
+      <div class="content page-content">
+        <div fxLayout="row wrap">
+          <!-- 1st column-->
+          <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="70">
+            <mat-card
+              class="p-0 mb-16"
+              tabindex="0"
+              aria-label="first mat card"
+            >
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2
+                    class="primary-heading font-weight-600 text-capitalize"
+                    tabindex="0"
+                    aria-label="card heading basic information"
+                  >
+                    Basic information
+                  </h2>
+                </div>
+                <button
+                  mat-icon-button
+                  aria-label="Edit"
+                  exxatDrawerAction
+                  [size]="'drawer-sm'"
+                  [caption]="'Status'"
+                  [primaryAction]="'Save'"
+                  role="img"
+                  class="action-icon"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-pen icon-fill s-18"
+                  ></i>
+                </button>
+              </header>
+              <div fxLayout="column" class="pl-16 pt-16 pb-8">
+                <div fxLayout="row wrap" fxLayoutAlign="start center">
+                  <div
+                    class="pr-16 pb-8 word-break-all"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxFlex.gt-sm="50"
+                    fxFlex="100"
+                  >
+                    <div
+                      class="font-weight-600 pr-8"
+                      tabindex="0"
+                      aria-label="First Name "
+                    >
+                      First Name :
+                    </div>
+                    <div class="" tabindex="0" aria-label="First Name is Anna">
+                      Anna
+                    </div>
+                  </div>
+                  <div
+                    class="pr-16 pb-8 word-break-all"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxFlex.gt-sm="50"
+                    fxFlex="100"
+                  >
+                    <div
+                      class="font-weight-600 pr-8"
+                      tabindex="0"
+                      aria-label="last name"
+                    >
+                      Last name :
+                    </div>
+                    <div class="" tabindex="0" aria-label="last Name is Strong">
+                      Strong
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="row wrap" fxLayoutAlign="start center">
+                  <div
+                    class="pr-16 pb-8 word-break-all"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxFlex.gt-sm="50"
+                    fxFlex="100"
+                  >
+                    <div
+                      class="font-weight-600 pr-8"
+                      tabindex="0"
+                      aria-label="middle name"
+                    >
+                      Middle name :
+                    </div>
+                    <div class="" tabindex="0" aria-label="Michel">Michel</div>
+                  </div>
+                  <div
+                    class="pr-16 pb-8 word-break-all"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxFlex.gt-sm="50"
+                    fxFlex="100"
+                  >
+                    <div
+                      class="font-weight-600 pr-8"
+                      tabindex="0"
+                      aria-label="Date of birth"
+                    >
+                      Date of birth :
+                    </div>
+                    <div class="" tabindex="0" aria-label="mm/dd/yyyy">
+                      mm/dd/yyyy
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="row wrap" fxLayoutAlign="start center">
+                  <div
+                    class="pr-16 pb-8 word-break-all"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxFlex.gt-sm="50"
+                    fxFlex="100"
+                  >
+                    <div
+                      class="font-weight-600 pr-8"
+                      tabindex="0"
+                      aria-label="Gender"
+                    >
+                      Gender :
+                    </div>
+                    <div class="" tabindex="0" aria-label="Female">Female</div>
+                  </div>
+                  <div
+                    class="pr-16 pb-8 word-break-all"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxFlex.gt-sm="50"
+                    fxFlex="100"
+                  >
+                    <div
+                      class="font-weight-600 pr-8"
+                      tabindex="0"
+                      aria-label="race"
+                    >
+                      Race :
+                    </div>
+                    <div class="" tabindex="0" aria-label=" ">-</div>
+                  </div>
+                </div>
+                <div fxLayout="row wrap" fxLayoutAlign="start center">
+                  <div
+                    class="pr-16 pb-8 word-break-all"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxFlex.gt-sm="50"
+                    fxFlex="100"
+                  >
+                    <div
+                      class="font-weight-600 pr-8"
+                      tabindex="0"
+                      aria-label="Phone number"
+                    >
+                      Phone number :
+                    </div>
+                    <div class="" tabindex="0" aria-label="123456789">
+                      123456789
+                    </div>
+                  </div>
+                  <div
+                    class="pr-16 pb-8 word-break-all"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxFlex.gt-sm="50"
+                    fxFlex="100"
+                  >
+                    <div
+                      class="font-weight-600 pr-8"
+                      tabindex="0"
+                      aria-label="Email address"
+                    >
+                      Email address :
+                    </div>
+                    <div
+                      class=""
+                      tabindex="0"
+                      aria-label="anna.strong@universityname.com"
+                    >
+                      anna.strong@universityname.com
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="row wrap" fxLayoutAlign="start center">
+                  <div
+                    class="pr-16 pb-8 word-break-all"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxFlex.gt-sm="50"
+                    fxFlex="100"
+                  >
+                    <div
+                      class="font-weight-600 pr-8"
+                      tabindex="0"
+                      aria-label="Alternate email"
+                    >
+                      Alternate email :
+                    </div>
+                    <div class="" tabindex="0" aria-label="">--</div>
+                  </div>
+                  <div
+                    class="pr-16 pb-8 word-break-all"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxFlex.gt-sm="50"
+                    fxFlex="100"
+                  >
+                    <div
+                      class="font-weight-600 pr-8"
+                      tabindex="0"
+                      aria-label="Ethinicity"
+                    >
+                      Ethinicity :
+                    </div>
+                    <div class="" tabindex="0" aria-label="Non-Hispanic">
+                      Non-Hispanic
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="row wrap" fxLayoutAlign="start center">
+                  <div
+                    class="pr-16 pb-8 word-break-all"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxFlex.gt-sm="50"
+                    fxFlex="100"
+                  >
+                    <div
+                      class="font-weight-600 pr-8"
+                      tabindex="0"
+                      aria-label="Administrative position"
+                    >
+                      Administrative position :
+                    </div>
+                    <div class="" tabindex="0" aria-label="Dean">Dean</div>
+                  </div>
+                  <div
+                    class="pr-16 pb-8 word-break-all"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxFlex.gt-sm="50"
+                    fxFlex="100"
+                  >
+                    <div
+                      class="font-weight-600 pr-8"
+                      tabindex="0"
+                      aria-label="Faculty Rank"
+                    >
+                      Faculty Rank :
+                    </div>
+                    <div class="" tabindex="0" aria-label="Professor">
+                      Professor
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+
+            <mat-card
+              class="p-0 mb-16"
+              tabindex="0"
+              aria-label="this is card 2"
+            >
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title py-8 pr-8 pl-16"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2
+                    class="primary-heading font-weight-600 text-capitalize"
+                    tabindex="0"
+                    aria-label="Address information"
+                  >
+                    Address information
+                  </h2>
+                </div>
+                <button
+                  mat-icon-button
+                  class="action-icon"
+                  aria-label="add"
+                  exxatDrawerAction
+                  [size]="'drawer-sm'"
+                  [caption]="'Status'"
+                  [primaryAction]="'Save'"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-plus icon-fill s-18"
+                  ></i>
+                </button>
+              </header>
+              <!-- document 1-->
+            </mat-card>
+
+            <mat-card
+              class="p-0 mb-16"
+              tabindex="0"
+              aria-label="this is card 3"
+            >
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title py-8 pr-8 pl-16"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2
+                    class="primary-heading font-weight-600 text-capitalize"
+                    tabindex="0"
+                    aria-label="Education"
+                  >
+                    Education
+                  </h2>
+                </div>
+                <button
+                  mat-icon-button
+                  class="action-icon"
+                  aria-label="add"
+                  exxatDrawerAction
+                  [size]="'drawer-sm'"
+                  [caption]="'Status'"
+                  [primaryAction]="'Save'"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-plus icon-fill s-18"
+                  ></i>
+                </button>
+              </header>
+            </mat-card>
+
+            <mat-card class="p-0 mb-16" tabindex="0" aria-label="card 4">
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title py-8 pr-8 pl-16"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2
+                    class="primary-heading font-weight-600 text-capitalize"
+                    tabindex="0"
+                    aria-label="Certifications"
+                  >
+                    Certifications
+                  </h2>
+                </div>
+                <button
+                  mat-icon-button
+                  class="action-icon"
+                  aria-label="add"
+                  exxatDrawerAction
+                  [size]="'drawer-sm'"
+                  [caption]="'Status'"
+                  [primaryAction]="'Save'"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-plus icon-fill s-18"
+                  ></i>
+                </button>
+              </header>
+            </mat-card>
+
+            <mat-card class="p-0 mb-16" tabindex="0" aria-label="card 5">
+              <header
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="card-header-title py-8 pr-8 pl-16"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2
+                    class="primary-heading font-weight-600 text-capitalize"
+                    tabindex="0"
+                    aria-label="Years of experience"
+                  >
+                    Years of experience
+                  </h2>
+                </div>
+                <button
+                  mat-icon-button
+                  class="action-icon"
+                  aria-label="add"
+                  exxatDrawerAction
+                  [size]="'drawer-sm'"
+                  [caption]="'Status'"
+                  [primaryAction]="'Save'"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-plus icon-fill s-18"
+                  ></i>
+                </button>
+              </header>
+            </mat-card>
+          </div>
+
+          <div
+            class="pl-md-16"
+            fxLayout="column"
+            fxFlex="100"
+            fxFlex.gt-sm="30"
+            tabindex="0"
+            aria-label="right side content"
+          >
+            <div class="mb-16 secondary-card accordian-group-style">
+              <header
+                class="secondary-info-header mb-0"
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2
+                    class="primary-heading font-weight-600 text-capitalize"
+                    tabindex="0"
+                    aria-label="Honors and awards"
+                  >
+                    Honors and awards
+                  </h2>
+                </div>
+                <button
+                  mat-icon-button
+                  aria-label="add button"
+                  exxatDrawerAction
+                  [size]="'drawer-sm'"
+                  [caption]="'Status'"
+                  [primaryAction]="'Save'"
+                  role="button"
+                  class="action-icon"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-plus icon-fill s-18"
+                  ></i>
+                </button>
+              </header>
+              <div class="px-8">
+                <mat-accordion
+                  class="w-100-p"
+                  tabindex="0"
+                  aria-label="this is accordian"
+                >
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <span class="font-weight-600 accent-fg">
+                          Scientist award
+                        </span>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div fxLayout="column">
+                      <div
+                        class="exxat-info pr-16 pb-16"
+                        fxLayout="column"
+                        fxLayoutAlign="center start"
+                      >
+                        <div
+                          class="title"
+                          tabindex="0"
+                          aria-label="Description"
+                        >
+                          Description
+                        </div>
+                        <div
+                          class="description"
+                          tabindex="0"
+                          aria-label="Description is Association of scientist of indian origin in america (ASIOA)"
+                        >
+                          Association of scientist of indian origin in america
+                          (ASIOA) Association of scientist of indian origin in
+                          america (ASIOA)
+                        </div>
+                      </div>
+                      <div
+                        class="exxat-info pr-16 pb-16"
+                        fxLayout="column"
+                        fxLayoutAlign="center start"
+                      >
+                        <div
+                          class="title"
+                          tabindex="0"
+                          aria-label="Organization"
+                        >
+                          Organization
+                        </div>
+                        <div
+                          class="description"
+                          tabindex="0"
+                          aria-label="Organization is Association of scientist of indian origin in america (ASIOA)"
+                        >
+                          Association of scientist of indian origin in america
+                          (ASIOA) Association of scientist of indian origin in
+                          america (ASIOA)
+                        </div>
+                      </div>
+                      <div
+                        class="exxat-info pr-16 pb-16"
+                        fxLayout="column"
+                        fxLayoutAlign="center start"
+                      >
+                        <div class="title" tabindex="0" aria-label="Notes">
+                          Notes
+                        </div>
+                        <div
+                          class="description"
+                          tabindex="0"
+                          aria-label="Note is -"
+                        >
+                          ---
+                        </div>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </div>
+            </div>
+
+            <div class="pb-16 secondary-card">
+              <header
+                class="secondary-info-header mb-0"
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+              >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <h2
+                    class="primary-heading font-weight-600 text-capitalize"
+                    tabindex="0"
+                    aria-label="Honors and awards"
+                  >
+                    Curriculam Vitae
+                  </h2>
+                </div>
+                <button
+                  mat-icon-button
+                  aria-label="add"
+                  exxatDrawerAction
+                  [size]="'drawer-sm'"
+                  [caption]="'Status'"
+                  [primaryAction]="'Save'"
+                  role="img"
+                  class="action-icon"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-plus icon-fill s-18"
+                  ></i>
+                </button>
+              </header>
+              <div class="px-8 pt-16">
+                <exxat-file-upload
+                  [fileConfiguration]="fileConfiguration"
+                  formControlName="fileDescriptions"
+                >
+                </exxat-file-upload>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / CONTENT -->
+    </div>
+    <!-- / CENTER -->
+  </div>
+  <!-- / CONTENT -->
+</div>

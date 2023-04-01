@@ -1,0 +1,242 @@
+<div
+  fxLayout="column"
+  class="table-rounded-border border-bottom-none white-background"
+>
+  <div fxLayout="column">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
+        <div
+          class="search-wrapper"
+          fxFlex="100"
+          search
+          [formControl]="searchItem"
+        >
+          <div
+            class="search table-search"
+            fxFlex
+            fxLayout="row"
+            fxLayoutAlign="start center"
+          >
+            <i
+              aria-hidden="true"
+              class="fa-light fa-magnifying-glass s-18 mr-4"
+            ></i>
+            <input
+              id="inputBox"
+              type="text"
+              placeholder="Search in 50 student"
+              fxFlex
+            />
+            <button
+              mat-icon-button
+              aria-label="clear search"
+              class="action-icon clear-button"
+            >
+              <i aria-hidden="true" class="fa-light fa-xmark s-18"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="px-16 w-100-p"
+          fxHide.lt-lg
+        >
+          <div fxLayout="row" fxLayoutAlign="start center" class="mr-8">
+            <span>Filters: </span>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center" class="mr-16">
+            <div class="table-header-chips">
+              <mat-chip-list #chipList aria-label="Fruit selection">
+                <div *ngFor="let fruit of fruits; let i = index">
+                  <mat-chip *ngIf="i < 2" (removed)="remove(fruit)">
+                    <span
+                      [tooltip]="chip_Content"
+                      [options]="tooltipOptions"
+                      class="chips-text"
+                      >{{ fruit | chipsCharSlice }}</span
+                    >
+                    <button matChipRemove>
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                    <ng-template #chip_Content>
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        <div class="font-weight-600">
+                          <span>Setting :</span>
+                        </div>
+                        <div class="ml-4">
+                          <span>{{ fruit }}</span>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </mat-chip>
+                </div>
+              </mat-chip-list>
+            </div>
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            *ngIf="fruits.length > 2"
+          >
+            <a
+              exxatDrawerAction
+              [componentSelector]="
+                _UXDemoDrawerService.get('ryzen-show-more-filter-drawer')
+              "
+              [size]="'drawer-sm'"
+              [caption]="'Show More Filters'"
+              [primaryAction]="'Apply'"
+            >
+              Show more
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <div
+          fxLayout="row"
+          fxLayoutAlign="end center"
+          class="border-right h-48 pr-16"
+          fxHide.lt-md
+        >
+          <button mat-stroked-button color="primary" aria-label="Add action 1">
+            <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+            <span class="ml-4">Add action 1</span>
+          </button>
+        </div>
+        <div fxLayout="row" class="mr-16 ml-8">
+          <button
+            matTooltip="Export"
+            aria-label="Export Table"
+            mat-icon-button
+            class="ml-8"
+            fxHide.lt-md
+          >
+            <i aria-hidden="true" class="fa-light fa-file-export s-18"></i>
+          </button>
+
+          <button
+            matTooltip="Edit Columns"
+            aria-label="Edit Columns"
+            mat-icon-button
+            class="ml-4"
+            fxHide.lt-md
+          >
+            <i aria-hidden="true" class="fa-light fa-wrench s-18"></i>
+          </button>
+
+          <button
+            matTooltip="Filter"
+            mat-icon-button
+            class="ml-4 filter-icon-button"
+            aria-label="filters"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
+              <span> 12 </span>
+            </div>
+          </button>
+
+          <button
+            tabindex="0"
+            aria-label="mat menu"
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            class="ml-4"
+            fxHide.gt-sm
+          >
+            <i aria-hidden="true" class="fal fa-ellipsis-h s-18"></i>
+          </button>
+          <mat-menu #menu="matMenu" fxHide.gt-sm>
+            <button mat-menu-item aria-label="Action 1">
+              <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i
+              >Action 1
+            </button>
+
+            <button mat-menu-item aria-label="Edit Columns">
+              <i aria-hidden="true" class="fa-light fa-wrench s-18 mr-8"></i
+              >Edit columns
+            </button>
+            <button mat-menu-item aria-label="Export file">
+              <i
+                aria-hidden="true"
+                class="fa-light fa-file-export s-18 mr-8"
+              ></i
+              >Export file
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="result-found-style"
+      tabindex="0"
+      aria-label="2 search results found"
+    >
+      2 Results Found
+    </div>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="w-100-p exxat-table">
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.position }}
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.name }}
+      </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef>Weight</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.weight }}
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef>Symbol</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.symbol }}
+      </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.email }}
+      </td>
+    </ng-container>
+
+    <!-- Statu Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.status }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    tabindex="0"
+    [pageSize]="30"
+    class="mat-paginator-sticky by"
+  ></mat-paginator>
+</div>

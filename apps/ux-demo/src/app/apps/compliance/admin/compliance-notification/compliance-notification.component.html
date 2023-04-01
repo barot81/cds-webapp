@@ -1,0 +1,482 @@
+<div id="compliance-notification-container" fxLayout="row" fxFlex="100">
+  <!-- SIDEBAR -->
+  <fuse-sidebar
+    class="sidebar height-fit-content"
+    name="carded-left-sidebar-tabbed-2"
+    position="left"
+    lockedOpen="gt-md"
+    tabindex="0"
+    aria-label="sidebar with tree control"
+  >
+    <!-- SEARCH -->
+    <div fxLayout="column" #sidebar_header>
+      <!-- SEARCH -->
+      <div class="search-wrapper" fxFlex.xs="100">
+        <div
+          class="search sidenav-search"
+          fxFlex
+          fxLayout="row"
+          fxLayoutAlign="start center"
+        >
+          <i aria-hidden="true" class="fal fa-search s-18"></i>
+          <input
+            type="text"
+            class="font-14"
+            placeholder="Search Student"
+            fxFlex
+          />
+        </div>
+      </div>
+      <div class="bb"></div>
+    </div>
+
+    <!-- / SEARCH -->
+    <div
+      class="content overflow-auto"
+      [style.height.px]="
+        _headerService.scrollContentheight -
+        ((sidebar_header_height$ | async) +
+          (_complaiceHeaderLayoutService.container_header_height$ | async) +
+          16)
+      "
+    >
+      <!--document List-->
+      <div class="sidebar-list-wrapper">
+        <div fxLayout="row" fxLayoutAlign="start center" class="pt-16 pl-24">
+          <div>
+            <mat-checkbox class="mr-8"></mat-checkbox>
+          </div>
+          <img
+            class="mat-avatar avatar"
+            src="assets/images/avatars/anna-strong.png"
+          />
+          <div tabindex="0" aria-label="Anna Strong" fxLayout="column">
+            <span>Strong Anna</span>
+          </div>
+        </div>
+        <!--Health & Immunization-->
+        <mat-list class="">
+          <h4
+            tabindex="0"
+            aria-label="Health & Immunization"
+            class="text-capitalize primary-fg text-left pl-24 pt-8 pb-8"
+          >
+            Health & Immunization
+          </h4>
+          <a class="no-space m-0 p-0">
+            <mat-list-item
+              class="p-16 active-list-item"
+              fxLayout="row"
+              fxLayoutAlign="start start"
+            >
+              <div class="mr-8">
+                <mat-checkbox></mat-checkbox>
+              </div>
+              <div
+                tabindex="0"
+                aria-label="Immunization summary Pending"
+                class=""
+                fxLayout="column"
+                fxLayoutAlign="center start"
+              >
+                <span class="pb-4">Immunization summary</span>
+                <div class="status-badge pending">Pending</div>
+              </div>
+            </mat-list-item>
+          </a>
+
+          <a class="no-space m-0 p-0">
+            <mat-list-item
+              class="p-16"
+              fxLayout="row"
+              fxLayoutAlign="start start"
+            >
+              <div class="mr-8">
+                <mat-checkbox></mat-checkbox>
+              </div>
+              <div
+                tabindex="0"
+                aria-label="Flu (Influenza) In progress"
+                class=""
+                fxLayout="column"
+                fxLayoutAlign="center start"
+              >
+                <span class="pb-4">Flu (Influenza)</span>
+                <div class="status-badge inprogress">In progress</div>
+              </div>
+            </mat-list-item>
+          </a>
+          <h4
+            tabindex="0"
+            aria-label="Life Insurance"
+            class="text-capitalize primary-fg text-left pl-24 pt-16"
+          >
+            Life Insurance
+          </h4>
+          <a class="no-space m-0 p-0">
+            <mat-list-item
+              class="p-16"
+              fxLayout="row"
+              fxLayoutAlign="start start"
+            >
+              <div class="mr-8">
+                <mat-checkbox></mat-checkbox>
+              </div>
+              <div
+                tabindex="0"
+                aria-label="CPR Expiring"
+                class=""
+                fxLayout="column"
+                fxLayoutAlign="center start"
+              >
+                <span class="pb-4">CPR</span>
+                <div class="status-badge expiring">Expiring</div>
+              </div>
+            </mat-list-item>
+          </a>
+
+          <a class="no-space m-0 p-0">
+            <mat-list-item
+              class="p-16"
+              fxLayout="row"
+              fxLayoutAlign="start start"
+            >
+              <div class="mr-8">
+                <mat-checkbox></mat-checkbox>
+              </div>
+              <div
+                tabindex="0"
+                aria-label="PALS Get Started"
+                class=""
+                fxLayout="column"
+                fxLayoutAlign="center start"
+              >
+                <span class="pb-4">PALS</span>
+                <div class="status-badge getstarted">Get started</div>
+              </div>
+            </mat-list-item>
+          </a>
+
+          <a class="no-space m-0 p-0">
+            <mat-list-item
+              class="p-16"
+              fxLayout="row"
+              fxLayoutAlign="start start"
+            >
+              <div class="mr-8">
+                <mat-checkbox></mat-checkbox>
+              </div>
+              <div
+                tabindex="0"
+                aria-label="HIPPA Approve"
+                class=""
+                fxLayout="column"
+                fxLayoutAlign="center start"
+              >
+                <span class="pb-4">HIPPA</span>
+                <div class="status-badge approved font-12">Approve</div>
+              </div>
+            </mat-list-item>
+          </a>
+        </mat-list>
+      </div>
+
+      <div class="sidebar-list-wrapper pt-16">
+        <div fxLayout="row" fxLayoutAlign="start center" class="pb-16 pl-16">
+          <div>
+            <mat-checkbox class="mr-8"></mat-checkbox>
+          </div>
+          <img
+            class="mat-avatar avatar"
+            src="assets/images/avatars/anna-strong.png"
+          />
+          <div fxLayout="column">
+            <span tabindex="0" aria-label="Strong Ann">Strong Anna</span>
+          </div>
+        </div>
+        <!--Health & Immunization-->
+        <mat-list class="">
+          <h4
+            tabindex="0"
+            aria-label="Health & Immunization"
+            class="text-capitalize primary-fg text-left pl-24 pt-8 pb-8"
+          >
+            Health & Immunization
+          </h4>
+          <a class="no-space m-0 p-0">
+            <mat-list-item
+              class="p-16"
+              fxLayout="row"
+              fxLayoutAlign="start start"
+            >
+              <div class="mr-8">
+                <mat-checkbox></mat-checkbox>
+              </div>
+              <div
+                tabindex="0"
+                aria-label="Immunization summary pending"
+                class=""
+                fxLayout="column"
+                fxLayoutAlign="center start"
+              >
+                <span class="pb-4">Immunization summary</span>
+                <div class="status-badge pending">Pending</div>
+              </div>
+            </mat-list-item>
+          </a>
+
+          <a class="no-space m-0 p-0">
+            <mat-list-item
+              class="p-16"
+              fxLayout="row"
+              fxLayoutAlign="start start"
+            >
+              <div class="mr-8">
+                <mat-checkbox></mat-checkbox>
+              </div>
+              <div
+                tabindex="0"
+                aria-label="Flu Influenza In Progress"
+                class=""
+                fxLayout="column"
+                fxLayoutAlign="center start"
+              >
+                <span class="pb-4">Flu (Influenza)</span>
+                <div class="status-badge inprogress">In progress</div>
+              </div>
+            </mat-list-item>
+          </a>
+          <h4
+            tabindex="0"
+            aria-label="Life Insurance"
+            class="text-capitalize primary-fg text-left pl-24 pt-16"
+          >
+            Life Insurance
+          </h4>
+          <a class="no-space m-0 p-0">
+            <mat-list-item
+              class="p-16"
+              fxLayout="row"
+              fxLayoutAlign="start start"
+            >
+              <div class="mr-8">
+                <mat-checkbox></mat-checkbox>
+              </div>
+              <div
+                tabindex="0"
+                aria-label="CPR Expiring"
+                class=""
+                fxLayout="column"
+                fxLayoutAlign="center start"
+              >
+                <span class="pb-4">CPR</span>
+                <div class="status-badge expiring">Expiring</div>
+              </div>
+            </mat-list-item>
+          </a>
+
+          <a class="no-space m-0 p-0">
+            <mat-list-item
+              class="p-16"
+              fxLayout="row"
+              fxLayoutAlign="start start"
+            >
+              <div class="mr-8">
+                <mat-checkbox></mat-checkbox>
+              </div>
+              <div
+                tabindex="0"
+                aria-label="PALS Get Started"
+                class=""
+                fxLayout="column"
+                fxLayoutAlign="center start"
+              >
+                <span class="pb-4">PALS</span>
+                <div class="status-badge getstarted">Get started</div>
+              </div>
+            </mat-list-item>
+          </a>
+
+          <a class="no-space m-0 p-0">
+            <mat-list-item
+              class="p-16"
+              fxLayout="row"
+              fxLayoutAlign="start start"
+            >
+              <div class="mr-8">
+                <mat-checkbox></mat-checkbox>
+              </div>
+              <div
+                tabindex="0"
+                aria-label="HIPAA Approve"
+                class=""
+                fxLayout="column"
+                fxLayoutAlign="center start"
+              >
+                <span class="pb-4">HIPPA</span>
+                <div class="status-badge approved font-12">Approve</div>
+              </div>
+            </mat-list-item>
+          </a>
+        </mat-list>
+      </div>
+    </div>
+  </fuse-sidebar>
+
+  <div class="center" fxFlex.gt-md="75" fxFlex="100">
+    <div class="mb-0">
+      <div fxLayout="row" fxLayoutAlign="start start">
+        <button
+          mat-icon-button
+          class="sidebar-toggle mr-8"
+          fxHide.gt-md
+          (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div
+      class="content overflow-auto"
+      [style.height.px]="
+        _headerService.scrollContentheight -
+        (_complaiceHeaderLayoutService.container_header_height$ | async)
+      "
+    >
+      <!--selected document section-->
+
+      <div fxLayout="row wrap" class="pl-lg-16" fxFlex="100">
+        <!--Document viewr-->
+        <div class="" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50">
+          <mat-card class="mb-16 p-0">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <h2
+                  tabindex="0"
+                  aria-label="Notification details"
+                  class="primary-heading font-weight-600 text-capitalize"
+                >
+                  Notification details
+                </h2>
+              </div>
+            </header>
+
+            <div class="pl-16 pt-16">
+              <div fxLayout="row" class="pr-16">
+                <mat-form-field appearance="outline" fxFlex="100">
+                  <mat-label>from</mat-label>
+                  <input matInput formControlName="from" required />
+                  <mat-error>This field is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" class="pr-16">
+                <mat-form-field appearance="outline" fxFlex="100">
+                  <mat-label>To</mat-label>
+                  <input matInput formControlName="to" required />
+                  <mat-error>This field is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" class="pr-16">
+                <mat-form-field appearance="outline" fxFlex="100">
+                  <mat-label>CC</mat-label>
+                  <input matInput formControlName="cc" required />
+                  <mat-error>This field is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" class="pr-16">
+                <mat-form-field appearance="outline" fxFlex="100">
+                  <mat-label>BCC</mat-label>
+                  <input matInput formControlName="bcc" required />
+                  <mat-error>This field is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" class="pr-16">
+                <mat-form-field appearance="outline" fxFlex="100">
+                  <mat-label>Subject</mat-label>
+                  <input matInput formControlName="subject" required />
+                  <mat-error>This field is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" class="pr-16">
+                <mat-form-field appearance="outline" fxFlex="50">
+                  <mat-label>Pick A Template</mat-label>
+                  <mat-select formControlName="template">
+                    <mat-option>Document Expiry Template</mat-option>
+                  </mat-select>
+                  <mat-error>template is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <button mat-raised-button color="primary" class="mr-16 mb-16">
+                send
+              </button>
+            </div>
+          </mat-card>
+        </div>
+        <!--/Document viewr-->
+
+        <!--Side Bar-->
+        <div
+          class="pl-md-16 pb-16"
+          fxLayout="column"
+          fxFlex="100"
+          fxFlex.gt-sm="50"
+        >
+          <header
+            class="secondary-info-header"
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <h2
+                tabindex="0"
+                aria-label="Template Preview"
+                class="text-capitalize"
+              >
+                Template Preview
+              </h2>
+            </div>
+            <button
+              mat-icon-button
+              aria-label="Edit"
+              exxatDrawerAction
+              class="icon-fill-bg"
+              [primaryAction]="'Save'"
+              [secondaryAction]="'Delete'"
+              [size]="'drawer-sm'"
+              role="img"
+              [entityKey]="0"
+              aria-hidden="false"
+            >
+              <i aria-hidden="true" class="fas fa-pen fuse-white-fg s-18"></i>
+            </button>
+          </header>
+
+          <div
+            tabindex="0"
+            aria-label="Dear $Target.TargetEntity.Entity.firstName, Please see below for the status of all documents uploaded to
+          Exxat. $Table1 Thank you, "
+            class="pl-16"
+          >
+            <p>Dear $Target.TargetEntity.Entity.firstName,</p>
+            <p>
+              Please see below for the status of all documents uploaded to
+              Exxat. $Table1
+            </p>
+            <p>Thank you,</p>
+          </div>
+        </div>
+        <!-- / CONTENT -->
+      </div>
+      <!-- / header tab group close -->
+      <!-- / CONTENT CARD -->
+
+      <!-- / CENTER -->
+    </div>
+  </div>
+</div>

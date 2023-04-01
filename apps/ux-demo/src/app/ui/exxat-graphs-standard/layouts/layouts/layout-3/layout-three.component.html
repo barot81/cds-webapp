@@ -1,0 +1,218 @@
+<div
+  fxLayout="column"
+  class="overflow-auto pb-120"
+  [style.height.px]="_headerService.scrollContentheight"
+>
+  <div fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="55">
+      <mat-card
+        class="p-0 mr-16"
+        tabindex="0"
+        aria-label="graph of population verus Country"
+      >
+        <header
+          tabindex="0"
+          aria-label="heading of population verus Country"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <span class="primary-heading">Header Title</span>
+          </div>
+        </header>
+
+        <div class="p-16" fxLayout="column">
+          <div fxLayout="column" class="mb-16">
+            <div class="font-weight-600 font-size-32"><span>00</span></div>
+            <div><span>Count...</span></div>
+          </div>
+
+          <div
+            class="h-400 w-100-p"
+            fxlayout="row"
+            fxLayoutAlign="start"
+            fxLayoutAlign="start"
+            tabindex="0"
+            aria-label="main graph content"
+          >
+            <ngx-charts-bar-vertical
+              [scheme]="colorScheme"
+              [results]="layout_three_single"
+              [animations]="false"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [legend]="showLegend"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              (select)="onSelect($event)"
+            >
+            </ngx-charts-bar-vertical>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start center" class="pt-16">
+            <div class="graph_legend" fxLayout="column" fxFlex="100">
+              <div class="legend_title font-weight-600 mb-4 font-16">
+                Legend
+              </div>
+              <div
+                fxLayout="row wrap"
+                fxLayoutAlign="start center"
+                class="legend_label_containter"
+              >
+                <div
+                  *ngFor="let item of layout_three_single"
+                  fxFlex="100"
+                  fxFlex.gt-md="25"
+                  fxFlex.md="50"
+                  class="legend_label"
+                  fxLayoutAlign="start center"
+                  fxLayout="row"
+                >
+                  <div
+                    class="legend_label_color"
+                    [style.backgroundColor]="item.color"
+                  ></div>
+                  <div [title]="item.name" class="legend_label_text">
+                    <span>{{ item.name }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="45">
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <fuse-highlight
+            lang="html"
+            class="source-code h-640 mt-16"
+            fxLayout="column"
+          >
+            <textarea #source hidden="hidden">
+
+                            <mat-card class="p-0" tabindex="0" aria-label="graph of population verus Country">
+
+                                <header tabindex="0" aria-label="heading of population verus Country" fxLayout="row" fxLayoutAlign="space-between center"
+                                class="card-header-title card-header-border-bottom py-8 pr-8 pl-16">
+                                <div fxLayout="row" fxLayoutAlign="start center">
+                                    <span class="primary-heading">Header Title
+                                    </span>
+                                </div>
+                            </header>
+            
+                            <div class="p-16" fxLayout="column">
+            
+                                <div fxLayout="column" class="mb-16">
+                                    <div class="font-weight-600 font-size-32"><span>00</span></div>
+                                    <div><span>Count...</span></div>
+                                </div>
+            
+                                <div class="h-400 w-100-p" fxlayout="row" fxLayoutAlign="start" fxLayoutAlign="start" tabindex="0" aria-label="main graph content">
+                                    <ngx-charts-bar-vertical [scheme]="colorScheme" [results]="layout_three_single"
+                                        [animations]="false"[gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
+                                        [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                                        [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+                                    </ngx-charts-bar-vertical>
+                                </div>
+            
+                                <div fxLayout="row" fxLayoutAlign="start center" class="pt-16">
+                                    <div class="graph_legend" fxLayout="column" fxFlex="100">
+                                        <div class="legend_title font-weight-600 mb-4 font-16">Legend</div>
+                                        <div fxLayout="row wrap" fxLayoutAlign="start center" class="legend_label_containter">
+                                            <div *ngFor="let item of layout_three_single" fxFlex="100" fxFlex.gt-md="25"
+                                                fxFlex.md="50" class="legend_label"
+                                                fxLayoutAlign="start center" fxLayout="row">
+                                                <div class="legend_label_color" [style.backgroundColor]="item.color"></div>
+                                                <div [title]="item.name" class="legend_label_text"><span>item.name</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                            </div>
+                
+                            </mat-card>
+                    </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+
+        <!-- 2nd tab content -->
+        <mat-tab label="TS">
+          <fuse-highlight
+            lang="ts"
+            class="source-code mt-16 h-640"
+            fxLayout="column"
+          >
+            <textarea #source hidden="hidden">
+                        import { Component } from "@angular/core";
+
+                        export var layout_two_single = [
+                        {
+                        "name": "Lagend 1",
+                        "value": 100,
+                        "color": '#BF342A'
+                        },
+                        {
+                        "name": "Lagend 2",
+                        "value": 66,
+                        "color": '#00BCD4'
+                        },
+                        {
+                        "name": "Lagend 3",
+                        "value": 90,
+                        "color": '#FFC107'
+                        },
+                        {
+                        "name": "Lagend 4",
+                        "value": 93,
+                        "color": '#8BC34A'
+                        }
+                        ];
+
+                        @Component({
+                        selector: 'exxat-graphs-layout-one',
+                        templateUrl: 'layout-one.component.html',
+                        })
+                        export class LayoutOneComponent {
+
+                        single: any[];
+                        multi: any[];
+
+                        // options
+                        showXAxis = true;
+                        showYAxis = true;
+                        gradient = false;
+                        showLegend = true;
+                        showXAxisLabel = true;
+                        xAxisLabel = 'Country';
+                        showYAxisLabel = true;
+                        yAxisLabel = 'Population';
+
+                        colorScheme = {
+                            domain: ['#BF342A', '#00BCD4', '#FFC107', '#8BC34A']
+                        };
+
+                        constructor() {
+                        Object.assign(this, { single })
+                        }
+
+                        onSelect(event) {
+                        console.log(event);
+                        }
+                        }
+            </textarea>
+          </fuse-highlight>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

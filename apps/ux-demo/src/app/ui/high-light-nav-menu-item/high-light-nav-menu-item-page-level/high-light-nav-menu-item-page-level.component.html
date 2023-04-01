@@ -1,0 +1,329 @@
+<div
+  id="high-light-nav-menu-item-demo-page"
+  class="page-layout carded left-sidebar tabbed inner-scroll"
+>
+  <!-- SIDEBAR -->
+  <fuse-sidebar
+    class="sidebar width-x-sm"
+    name="carded-left-sidebar-tabbed-2"
+    position="left"
+    lockedOpen="gt-md"
+  >
+    <!-- SIDEBAR HEADER -->
+    <div class="header">
+      <div fxLayout="row" fxLayoutAlign="start center" class="mt-12 ml-12">
+        <span class="font-18 font-weight-600 accent-fg"
+          >Highlight Nav Menu Item Example</span
+        >
+      </div>
+      <div class="pt-16">
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+    <!-- / SIDEBAR HEADER -->
+
+    <!-- SIDEBAR CONTENT -->
+    <div class="content" fusePerfectScrollbar>
+      <mat-list class="pt-16" navMenuList>
+        <button
+          mat-button
+          class="no-space m-0 p-0"
+          *ngFor="let item of leftNavMenuList"
+          (click)="changeNavMenuItem(item.id)"
+        >
+          <mat-list-item [attr.id]="item.id" class="p-16">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <div>
+                <span class="font-16">{{ item.title }}</span>
+              </div>
+            </div>
+          </mat-list-item>
+        </button>
+      </mat-list>
+    </div>
+    <!-- / SIDEBAR CONTENT -->
+  </fuse-sidebar>
+  <!-- / SIDEBAR -->
+
+  <!-- CENTER -->
+  <div
+    class="center ml-lg-16"
+    fusePerfectScrollbar
+    highLightNavMenuContent
+    [scrollLevel]="scrollLevel"
+  >
+    <!-- CONTENT CARD -->
+    <!-- <div class="content-card"> -->
+
+    <!-- CONTENT TOOLBAR -->
+    <div class="toolbar px-24 py-8">
+      <button
+        mat-icon-button
+        class="sidebar-toggle"
+        fxHide.gt-md
+        (click)="toggleSidebar('carded-left-sidebar-2')"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <!-- / CONTENT TOOLBAR -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+      <div fxLayout="column" fxFlex="100">
+        <div class="high-light-nav-menu-content" id="home">
+          <span class="font-weight-600 font-20">Home</span>
+          <br />
+          <span class="font-weight-600 font-18"
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+            placerat purus non massa laoreet, in dignissim turpis posuere. Ut a
+            hendrerit dolor. Vivamus feugiat dolor tellus, pulvinar ornare felis
+            sodales vitae. Ut suscipit auctor mi, sed finibus nunc blandit ut.
+            Sed ac neque tortor. Morbi eleifend nisl nec elementum auctor. Proin
+            justo leo, scelerisque sit amet aliquam et, accumsan ut neque.
+            Aliquam facilisis nisi convallis ipsum sagittis, in molestie arcu
+            ullamcorper. Aliquam eu felis orci. Vestibulum sodales, nunc vel
+            efficitur auctor, arcu dolor rhoncus felis, gravida porttitor massa
+            elit in est. Phasellus est purus, pretium id maximus ut, malesuada
+            sed mi. Donec ut libero nisi. Sed turpis magna, vestibulum ut diam
+            ac, consectetur sodales massa. Nullam nibh massa, lacinia vitae
+            dignissim a, aliquet vel quam. Proin eu nunc quis velit iaculis
+            vulputate. Class aptent taciti sociosqu ad litora torquent per
+            conubia nostra, per inceptos himenaeos. Nullam consectetur, risus at
+            pulvinar facilisis, massa nunc auctor quam, a faucibus massa odio et
+            nibh. Nunc egestas lacus at rutrum hendrerit. Duis vitae eleifend
+            dolor. Morbi et mi faucibus, sollicitudin mi at, pharetra ante. Duis
+            malesuada mauris in tellus placerat luctus. Sed mollis est enim.
+            Phasellus accumsan facilisis dolor non posuere. Vestibulum ante
+            ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+            curae; Pellentesque molestie, enim ac consectetur efficitur, nisi
+            risus ultricies lacus, ac congue nulla sem sit amet risus. In ac ex
+            lorem. Praesent nec malesuada arcu. Vivamus non velit tortor. Proin
+            in lectus nec mauris dignissim pellentesque eget suscipit libero.
+            Vivamus sodales porttitor eros a tincidunt. Donec leo nisi, tempor
+            malesuada erat in, aliquam cursus nisl. Proin massa lectus,
+            consectetur sit amet efficitur quis, accumsan eu dui. Ut mattis
+            ullamcorper commodo. Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit. Quisque imperdiet ornare bibendum. Aliquam a purus
+            eget urna tempus porttitor. Aenean sit amet suscipit ipsum. Fusce
+            egestas vel elit ac pellentesque. Ut aliquam libero et lectus
+            euismod eleifend. Aliquam porta, quam vel fermentum pulvinar, nulla
+            arcu pellentesque nibh, eget tincidunt lectus nulla sed leo. Proin
+            vel eleifend turpis. Vestibulum volutpat interdum iaculis. Cras
+            bibendum, massa et egestas tincidunt, dolor elit imperdiet orci, vel
+            rhoncus ante ipsum eu arcu. Ut ultricies hendrerit dui, sit amet
+            consequat justo luctus at. Morbi ac porttitor elit. Ut imperdiet
+            tempor ultrices. Pellentesque ipsum neque, fringilla id lobortis ut,
+            gravida in lectus. Phasellus suscipit ante vel finibus ullamcorper.
+            Suspendisse eget venenatis leo. Morbi est lectus, bibendum et
+            rhoncus mollis, fermentum a nisi. Fusce pulvinar, erat tristique
+            feugiat congue, nisi ipsum congue elit, sed interdum nisl risus sed
+            ligula. Duis imperdiet, erat vitae tincidunt tristique, sapien
+            libero suscipit lorem, sit amet suscipit magna metus at nisl. Nulla
+            nec metus eleifend, elementum neque tempus, vestibulum neque.
+            Phasellus sed diam a purus ultrices finibus vitae nec metus. Donec
+            molestie commodo libero nec semper. Phasellus porta elit ut diam
+            pharetra sollicitudin. Cras hendrerit sapien non hendrerit tempor.
+            Donec feugiat porttitor justo, id aliquet metus pellentesque in.
+            Integer scelerisque eleifend mauris vitae ornare. Vestibulum maximus
+            neque magna, at tincidunt est porta sit amet. Aliquam non velit sed
+            enim tristique mollis ac ac tellus. Duis sed mauris sit amet nibh
+            finibus consequat. Aenean luctus ullamcorper mi, quis bibendum magna
+            vulputate a.</span
+          >
+        </div>
+        <div class="high-light-nav-menu-content" id="work">
+          <span class="font-weight-600 font-20">Work</span>
+          <br />
+
+          <span class="font-weight-600 font-18"
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+            placerat purus non massa laoreet, in dignissim turpis posuere. Ut a
+            hendrerit dolor. Vivamus feugiat dolor tellus, pulvinar ornare felis
+            sodales vitae. Ut suscipit auctor mi, sed finibus nunc blandit ut.
+            Sed ac neque tortor. Morbi eleifend nisl nec elementum auctor. Proin
+            justo leo, scelerisque sit amet aliquam et, accumsan ut neque.
+            Aliquam facilisis nisi convallis ipsum sagittis, in molestie arcu
+            ullamcorper. Aliquam eu felis orci. Vestibulum sodales, nunc vel
+            efficitur auctor, arcu dolor rhoncus felis, gravida porttitor massa
+            elit in est. Phasellus est purus, pretium id maximus ut, malesuada
+            sed mi. Donec ut libero nisi. Sed turpis magna, vestibulum ut diam
+            ac, consectetur sodales massa. Nullam nibh massa, lacinia vitae
+            dignissim a, aliquet vel quam. Proin eu nunc quis velit iaculis
+            vulputate. Class aptent taciti sociosqu ad litora torquent per
+            conubia nostra, per inceptos himenaeos. Nullam consectetur, risus at
+            pulvinar facilisis, massa nunc auctor quam, a faucibus massa odio et
+            nibh. Nunc egestas lacus at rutrum hendrerit. Duis vitae eleifend
+            dolor. Morbi et mi faucibus, sollicitudin mi at, pharetra ante. Duis
+            malesuada mauris in tellus placerat luctus. Sed mollis est enim.
+            Phasellus accumsan facilisis dolor non posuere. Vestibulum ante
+            ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+            curae; Pellentesque molestie, enim ac consectetur efficitur, nisi
+            risus ultricies lacus, ac congue nulla sem sit amet risus. In ac ex
+            lorem. Praesent nec malesuada arcu. Vivamus non velit tortor. Proin
+            in lectus nec mauris dignissim pellentesque eget suscipit libero.
+            Vivamus sodales porttitor eros a tincidunt. Donec leo nisi, tempor
+            malesuada erat in, aliquam cursus nisl. Proin massa lectus,
+            consectetur sit amet efficitur quis, accumsan eu dui. Ut mattis
+            ullamcorper commodo. Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit. Quisque imperdiet ornare bibendum. Aliquam a purus
+            eget urna tempus porttitor. Aenean sit amet suscipit ipsum. Fusce
+            egestas vel elit ac pellentesque. Ut aliquam libero et lectus
+            euismod eleifend. Aliquam porta, quam vel fermentum pulvinar, nulla
+            arcu pellentesque nibh, eget tincidunt lectus nulla sed leo. Proin
+            vel eleifend turpis. Vestibulum volutpat interdum iaculis. Cras
+            bibendum, massa et egestas tincidunt, dolor elit imperdiet orci, vel
+            rhoncus ante ipsum eu arcu. Ut ultricies hendrerit dui, sit amet
+            consequat justo luctus at. Morbi ac porttitor elit. Ut imperdiet
+            tempor ultrices. Pellentesque ipsum neque, fringilla id lobortis ut,
+            gravida in lectus. Phasellus suscipit ante vel finibus ullamcorper.
+            Suspendisse eget venenatis leo. Morbi est lectus, bibendum et
+            rhoncus mollis, fermentum a nisi. Fusce pulvinar, erat tristique
+            feugiat congue, nisi ipsum congue elit, sed interdum nisl risus sed
+            ligula. Duis imperdiet, erat vitae tincidunt tristique, sapien
+            libero suscipit lorem, sit amet suscipit magna metus at nisl. Nulla
+            nec metus eleifend, elementum neque tempus, vestibulum neque.
+            Phasellus sed diam a purus ultrices finibus vitae nec metus. Donec
+            molestie commodo libero nec semper. Phasellus porta elit ut diam
+            pharetra sollicitudin. Cras hendrerit sapien non hendrerit tempor.
+            Donec feugiat porttitor justo, id aliquet metus pellentesque in.
+            Integer scelerisque eleifend mauris vitae ornare. Vestibulum maximus
+            neque magna, at tincidunt est porta sit amet. Aliquam non velit sed
+            enim tristique mollis ac ac tellus. Duis sed mauris sit amet nibh
+            finibus consequat. Aenean luctus ullamcorper mi, quis bibendum magna
+            vulputate a.</span
+          >
+        </div>
+        <div class="high-light-nav-menu-content" id="about">
+          <span class="font-weight-600 font-20">About</span>
+          <br />
+
+          <span class="font-weight-600 font-18"
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+            placerat purus non massa laoreet, in dignissim turpis posuere. Ut a
+            hendrerit dolor. Vivamus feugiat dolor tellus, pulvinar ornare felis
+            sodales vitae. Ut suscipit auctor mi, sed finibus nunc blandit ut.
+            Sed ac neque tortor. Morbi eleifend nisl nec elementum auctor. Proin
+            justo leo, scelerisque sit amet aliquam et, accumsan ut neque.
+            Aliquam facilisis nisi convallis ipsum sagittis, in molestie arcu
+            ullamcorper. Aliquam eu felis orci. Vestibulum sodales, nunc vel
+            efficitur auctor, arcu dolor rhoncus felis, gravida porttitor massa
+            elit in est. Phasellus est purus, pretium id maximus ut, malesuada
+            sed mi. Donec ut libero nisi. Sed turpis magna, vestibulum ut diam
+            ac, consectetur sodales massa. Nullam nibh massa, lacinia vitae
+            dignissim a, aliquet vel quam. Proin eu nunc quis velit iaculis
+            vulputate. Class aptent taciti sociosqu ad litora torquent per
+            conubia nostra, per inceptos himenaeos. Nullam consectetur, risus at
+            pulvinar facilisis, massa nunc auctor quam, a faucibus massa odio et
+            nibh. Nunc egestas lacus at rutrum hendrerit. Duis vitae eleifend
+            dolor. Morbi et mi faucibus, sollicitudin mi at, pharetra ante. Duis
+            malesuada mauris in tellus placerat luctus. Sed mollis est enim.
+            Phasellus accumsan facilisis dolor non posuere. Vestibulum ante
+            ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+            curae; Pellentesque molestie, enim ac consectetur efficitur, nisi
+            risus ultricies lacus, ac congue nulla sem sit amet risus. In ac ex
+            lorem. Praesent nec malesuada arcu. Vivamus non velit tortor. Proin
+            in lectus nec mauris dignissim pellentesque eget suscipit libero.
+            Vivamus sodales porttitor eros a tincidunt. Donec leo nisi, tempor
+            malesuada erat in, aliquam cursus nisl. Proin massa lectus,
+            consectetur sit amet efficitur quis, accumsan eu dui. Ut mattis
+            ullamcorper commodo. Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit. Quisque imperdiet ornare bibendum. Aliquam a purus
+            eget urna tempus porttitor. Aenean sit amet suscipit ipsum. Fusce
+            egestas vel elit ac pellentesque. Ut aliquam libero et lectus
+            euismod eleifend. Aliquam porta, quam vel fermentum pulvinar, nulla
+            arcu pellentesque nibh, eget tincidunt lectus nulla sed leo. Proin
+            vel eleifend turpis. Vestibulum volutpat interdum iaculis. Cras
+            bibendum, massa et egestas tincidunt, dolor elit imperdiet orci, vel
+            rhoncus ante ipsum eu arcu. Ut ultricies hendrerit dui, sit amet
+            consequat justo luctus at. Morbi ac porttitor elit. Ut imperdiet
+            tempor ultrices. Pellentesque ipsum neque, fringilla id lobortis ut,
+            gravida in lectus. Phasellus suscipit ante vel finibus ullamcorper.
+            Suspendisse eget venenatis leo. Morbi est lectus, bibendum et
+            rhoncus mollis, fermentum a nisi. Fusce pulvinar, erat tristique
+            feugiat congue, nisi ipsum congue elit, sed interdum nisl risus sed
+            ligula. Duis imperdiet, erat vitae tincidunt tristique, sapien
+            libero suscipit lorem, sit amet suscipit magna metus at nisl. Nulla
+            nec metus eleifend, elementum neque tempus, vestibulum neque.
+            Phasellus sed diam a purus ultrices finibus vitae nec metus. Donec
+            molestie commodo libero nec semper. Phasellus porta elit ut diam
+            pharetra sollicitudin. Cras hendrerit sapien non hendrerit tempor.
+            Donec feugiat porttitor justo, id aliquet metus pellentesque in.
+            Integer scelerisque eleifend mauris vitae ornare. Vestibulum maximus
+            neque magna, at tincidunt est porta sit amet. Aliquam non velit sed
+            enim tristique mollis ac ac tellus. Duis sed mauris sit amet nibh
+            finibus consequat. Aenean luctus ullamcorper mi, quis bibendum magna
+            vulputate a.</span
+          >
+        </div>
+        <div class="high-light-nav-menu-content" id="contact">
+          <span class="font-weight-600 font-20">Contact</span>
+          <br />
+
+          <span class="font-weight-600 font-18"
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+            placerat purus non massa laoreet, in dignissim turpis posuere. Ut a
+            hendrerit dolor. Vivamus feugiat dolor tellus, pulvinar ornare felis
+            sodales vitae. Ut suscipit auctor mi, sed finibus nunc blandit ut.
+            Sed ac neque tortor. Morbi eleifend nisl nec elementum auctor. Proin
+            justo leo, scelerisque sit amet aliquam et, accumsan ut neque.
+            Aliquam facilisis nisi convallis ipsum sagittis, in molestie arcu
+            ullamcorper. Aliquam eu felis orci. Vestibulum sodales, nunc vel
+            efficitur auctor, arcu dolor rhoncus felis, gravida porttitor massa
+            elit in est. Phasellus est purus, pretium id maximus ut, malesuada
+            sed mi. Donec ut libero nisi. Sed turpis magna, vestibulum ut diam
+            ac, consectetur sodales massa. Nullam nibh massa, lacinia vitae
+            dignissim a, aliquet vel quam. Proin eu nunc quis velit iaculis
+            vulputate. Class aptent taciti sociosqu ad litora torquent per
+            conubia nostra, per inceptos himenaeos. Nullam consectetur, risus at
+            pulvinar facilisis, massa nunc auctor quam, a faucibus massa odio et
+            nibh. Nunc egestas lacus at rutrum hendrerit. Duis vitae eleifend
+            dolor. Morbi et mi faucibus, sollicitudin mi at, pharetra ante. Duis
+            malesuada mauris in tellus placerat luctus. Sed mollis est enim.
+            Phasellus accumsan facilisis dolor non posuere. Vestibulum ante
+            ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+            curae; Pellentesque molestie, enim ac consectetur efficitur, nisi
+            risus ultricies lacus, ac congue nulla sem sit amet risus. In ac ex
+            lorem. Praesent nec malesuada arcu. Vivamus non velit tortor. Proin
+            in lectus nec mauris dignissim pellentesque eget suscipit libero.
+            Vivamus sodales porttitor eros a tincidunt. Donec leo nisi, tempor
+            malesuada erat in, aliquam cursus nisl. Proin massa lectus,
+            consectetur sit amet efficitur quis, accumsan eu dui. Ut mattis
+            ullamcorper commodo. Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit. Quisque imperdiet ornare bibendum. Aliquam a purus
+            eget urna tempus porttitor. Aenean sit amet suscipit ipsum. Fusce
+            egestas vel elit ac pellentesque. Ut aliquam libero et lectus
+            euismod eleifend. Aliquam porta, quam vel fermentum pulvinar, nulla
+            arcu pellentesque nibh, eget tincidunt lectus nulla sed leo. Proin
+            vel eleifend turpis. Vestibulum volutpat interdum iaculis. Cras
+            bibendum, massa et egestas tincidunt, dolor elit imperdiet orci, vel
+            rhoncus ante ipsum eu arcu. Ut ultricies hendrerit dui, sit amet
+            consequat justo luctus at. Morbi ac porttitor elit. Ut imperdiet
+            tempor ultrices. Pellentesque ipsum neque, fringilla id lobortis ut,
+            gravida in lectus. Phasellus suscipit ante vel finibus ullamcorper.
+            Suspendisse eget venenatis leo. Morbi est lectus, bibendum et
+            rhoncus mollis, fermentum a nisi. Fusce pulvinar, erat tristique
+            feugiat congue, nisi ipsum congue elit, sed interdum nisl risus sed
+            ligula. Duis imperdiet, erat vitae tincidunt tristique, sapien
+            libero suscipit lorem, sit amet suscipit magna metus at nisl. Nulla
+            nec metus eleifend, elementum neque tempus, vestibulum neque.
+            Phasellus sed diam a purus ultrices finibus vitae nec metus. Donec
+            molestie commodo libero nec semper. Phasellus porta elit ut diam
+            pharetra sollicitudin. Cras hendrerit sapien non hendrerit tempor.
+            Donec feugiat porttitor justo, id aliquet metus pellentesque in.
+            Integer scelerisque eleifend mauris vitae ornare. Vestibulum maximus
+            neque magna, at tincidunt est porta sit amet. Aliquam non velit sed
+            enim tristique mollis ac ac tellus. Duis sed mauris sit amet nibh
+            finibus consequat. Aenean luctus ullamcorper mi, quis bibendum magna
+            vulputate a.</span
+          >
+        </div>
+      </div>
+    </div>
+    <!-- / CONTENT -->
+
+    <!-- </div> -->
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

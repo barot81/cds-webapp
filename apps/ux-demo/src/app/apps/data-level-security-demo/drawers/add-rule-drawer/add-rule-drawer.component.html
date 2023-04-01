@@ -1,0 +1,357 @@
+<div class="drawer-p" fxLayout="column" fxLayoutAlign="start">
+  <mat-card fxLayout="column">
+    <!--First Row : START -->
+    <div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="space-between center">
+      <div fxFlex="49">
+        <mat-form-field appearance="fill" class="w-100-p">
+          <mat-label>User</mat-label>
+          <mat-select>
+            <mat-option
+              *ngFor="let item of userListOptions"
+              value="{{ item.value }}"
+            >
+              {{ item.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex="49">
+        <mat-form-field appearance="fill" class="w-100-p">
+          <mat-label>Role</mat-label>
+          <mat-select>
+            <mat-option
+              *ngFor="let item of roleListOptions"
+              value="{{ item.value }}"
+            >
+              {{ item.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <!--First Row : END -->
+
+    <!--Cohort Row : START -->
+    <div fxLayout="column">
+      <div
+        fxLayout="row wrap"
+        fxFlex="100"
+        fxLayoutAlign="space-between center"
+      >
+        <div fxFlex="49">
+          <mat-form-field appearance="fill" class="w-100-p">
+            <mat-label>Data Policy 1</mat-label>
+            <mat-select>
+              <mat-option
+                *ngFor="let item of dataPolicyOptions"
+                value="{{ item.value }}"
+              >
+                {{ item.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxLayout="column" class="pb-16">
+        <div class="pb-16">
+          <span class="font-16 font-weight-400">Select the Cohorts</span>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="100">
+          <div
+            fxLayout="row"
+            fxLayoutAlign="start start"
+            fxFlex="13"
+            fxFlex.lt-sm="100"
+            class="mb-8 text-center"
+            *ngFor="let item of cohortCheckBoxList"
+          >
+            <mat-checkbox></mat-checkbox>
+            <span
+              class="pl-8 pt-4"
+              tabindex="0"
+              [attr.aria-label]="item.viewValue"
+              >{{ item.viewValue }}</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Cohort Row : END -->
+
+    <!--Course Row : START -->
+    <div fxLayout="column">
+      <div
+        fxLayout="row wrap"
+        fxFlex="100"
+        fxLayoutAlign="space-between center"
+      >
+        <div fxFlex="49">
+          <mat-form-field appearance="fill" class="w-100-p">
+            <mat-label>Data Policy 2</mat-label>
+            <mat-select>
+              <mat-option
+                *ngFor="let item of dataPolicyOptions"
+                value="{{ item.value }}"
+              >
+                {{ item.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxLayout="column" class="pb-16">
+        <div class="pb-16">
+          <span class="font-16 font-weight-400">Select the Courses</span>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="100">
+          <div
+            fxLayout="row"
+            fxLayoutAlign="start start"
+            fxFlex="15"
+            fxFlex.lt-sm="100"
+            class="mb-8 text-center"
+            *ngFor="let item of coursesCheckBoxList"
+          >
+            <mat-checkbox></mat-checkbox>
+            <span
+              class="pl-8 pt-4"
+              tabindex="0"
+              [attr.aria-label]="item.viewValue"
+              >{{ item.viewValue }}</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Course Row : END -->
+
+    <!--Rotation Row : START -->
+    <div fxLayout="column">
+      <div
+        fxLayout="row wrap"
+        fxFlex="100"
+        fxLayoutAlign="space-between center"
+      >
+        <div fxFlex="49">
+          <mat-form-field appearance="fill" class="w-100-p">
+            <mat-label>Data Policy 3</mat-label>
+            <mat-select>
+              <mat-option
+                *ngFor="let item of dataPolicyOptions"
+                value="{{ item.value }}"
+              >
+                {{ item.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxLayout="column" class="pb-16">
+        <div class="pb-16">
+          <span class="font-16 font-weight-400">Select the Rotations</span>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlex="100">
+          <div
+            fxLayout="row"
+            fxLayoutAlign="start start"
+            fxFlex="15"
+            fxFlex.lt-sm="100"
+            class="mb-8 text-center"
+            *ngFor="let item of rotationsCheckBoxList"
+          >
+            <mat-checkbox></mat-checkbox>
+            <span
+              class="pl-8 pt-4"
+              tabindex="0"
+              [attr.aria-label]="item.viewValue"
+              >{{ item.viewValue }}</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Rotation Row : END -->
+
+    <!--Student Row : START -->
+    <div fxLayout="column">
+      <div
+        fxLayout="row wrap"
+        fxFlex="100"
+        fxLayoutAlign="space-between center"
+      >
+        <div fxFlex="49">
+          <mat-form-field appearance="fill" class="w-100-p">
+            <mat-label>Data Policy</mat-label>
+            <mat-select>
+              <mat-option
+                *ngFor="let item of dataPolicyOptions"
+                value="{{ item.value }}"
+              >
+                {{ item.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="end center" fxLayout="row">
+          <button mat-icon-button class="action-icon">
+            <i aria-hidden="true" class="fa-light fa-trash warn-fg s-18"></i>
+          </button>
+        </div>
+      </div>
+
+      <div fxLayout="column" class="pb-16">
+        <div class="table-rounded-border p-16">
+          <div class="mb-16">
+            <exxat-search-bar [listofOptions]=""></exxat-search-bar>
+          </div>
+
+          <div class="overflow-auto scroll-hover" [style.height.px]="250">
+            <table
+              tabindex="0"
+              aria-hidden="false"
+              mat-table
+              [dataSource]="dataSource"
+              class="w-100-p exxat-table pt-0"
+            >
+              <ng-container matColumnDef="select">
+                <th
+                  tabindex="0"
+                  aria-label="select"
+                  mat-header-cell
+                  *matHeaderCellDef
+                >
+                  <div class="text-center">
+                    <mat-checkbox
+                      (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()"
+                      [aria-label]="checkboxLabel()"
+                    >
+                    </mat-checkbox>
+                  </div>
+                </th>
+                <td
+                  tabindex="0"
+                  mat-cell
+                  *matCellDef="let element"
+                  class="text-center"
+                >
+                  <mat-checkbox
+                    (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(element) : null"
+                    [checked]="selection.isSelected(element)"
+                    [aria-label]="checkboxLabel(element)"
+                  >
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="studentName">
+                <th
+                  tabindex="0"
+                  aria-label="Student Name"
+                  class="pl-16"
+                  mat-header-cell
+                  *matHeaderCellDef
+                >
+                  Student Name
+                </th>
+                <td
+                  tabindex="0"
+                  attr.aria-label="Number is {{ element.studentName }}"
+                  mat-cell
+                  *matCellDef="let element"
+                  class="pl-16"
+                >
+                  {{ element.studentName }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="cohort">
+                <th
+                  tabindex="0"
+                  aria-label="cohort"
+                  mat-header-cell
+                  *matHeaderCellDef
+                >
+                  Cohort
+                </th>
+                <td
+                  tabindex="0"
+                  attr.aria-label="cohort is {{ element.cohort }}"
+                  mat-cell
+                  *matCellDef="let element"
+                >
+                  {{ element.cohort }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="course">
+                <th
+                  tabindex="0"
+                  aria-label="course"
+                  mat-header-cell
+                  *matHeaderCellDef
+                >
+                  Course
+                </th>
+                <td
+                  tabindex="0"
+                  mat-cell
+                  attr.aria-label="course is {{ element.course }}"
+                  *matCellDef="let element"
+                >
+                  {{ element.course }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="rotation">
+                <th
+                  tabindex="0"
+                  aria-label="rotation"
+                  mat-header-cell
+                  *matHeaderCellDef
+                >
+                  Rotation
+                </th>
+                <td
+                  tabindex="0"
+                  attr.aria-label="rotation is {{ element.rotation }}"
+                  mat-cell
+                  *matCellDef="let element"
+                >
+                  {{ element.rotation }}
+                </td>
+              </ng-container>
+
+              <tr
+                mat-header-row
+                *matHeaderRowDef="displayedColumns; sticky: true"
+              ></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Student Row : END -->
+
+    <div fxLayoutAlign="center center" fxLayout="row">
+      <button
+        mat-button
+        color="accent"
+        class="accent-border-btn"
+        aria-hidden="false"
+      >
+        <mat-icon aria-hidden="true">add</mat-icon>
+        <span aria-label="add a new rule"> Add Data Policy </span>
+      </button>
+    </div>
+  </mat-card>
+</div>

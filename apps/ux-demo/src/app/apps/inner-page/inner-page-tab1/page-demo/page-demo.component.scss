@@ -1,0 +1,16 @@
+@mixin demo-page-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $action: map-get($theme, action);
+  $is-dark: map-get($theme, is-dark);
+}
+
+.chips-footer {
+  position: fixed;
+  z-index: 9999;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}

@@ -1,0 +1,231 @@
+<div id="exxat-typography-cards" class="p-24">
+  <div class="mat-title">Exxat Cards Examples</div>
+  <div class="mat-card mat-elevation-z2 p-24" fxLayout="column">
+    <!-- @ Card With Header Title -->
+    <div fxLayout="column" fxLayout.gt-md="row">
+      <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+        <div class="mat-caption secondary-text">Card With Header</div>
+        <mat-card>
+          <header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            class="card-header-title py-8 pr-8 pl-16"
+          >
+            <div xLayout="row" fxLayoutAlign="start center">
+              <h2 class="primary-heading font-weight-600">Header Title</h2>
+            </div>
+          </header>
+        </mat-card>
+      </div>
+
+      <fuse-highlight
+        lang="html"
+        class="source-code"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <textarea #source hidden="hidden">
+          <mat-card>
+            <header fxLayout="row" fxLayoutAlign="space-between center"
+            class="card-header-title py-8 pr-8 pl-16">
+              <div xLayout="row" fxLayoutAlign="start center">
+                <h2 class="primary-heading font-weight-600">Header Title
+                </h2>
+              </div>
+            </header>
+          </mat-card>
+          </textarea
+        >
+      </fuse-highlight>
+    </div>
+
+    <!-- @ Card With Header Title And Header Icon -->
+
+    <div fxLayout="column" fxLayout.gt-md="row">
+      <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+        <div class="mat-caption secondary-text">
+          Card With Header Title And Header Icon
+        </div>
+        <mat-card>
+          <header fxLayout="row" fxLayoutAlign="space-between start">
+            <div xLayout="row" fxLayoutAlign="start center">
+              <h2 class="accent-fg">Header Title</h2>
+            </div>
+            <mat-icon role="img" aria-hidden="true">create</mat-icon>
+          </header>
+        </mat-card>
+      </div>
+
+      <fuse-highlight
+        lang="html"
+        class="source-code"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <textarea #source hidden="hidden">
+          <mat-card>
+            <header fxLayout="row" fxLayoutAlign="space-between start">
+              <div xLayout="row" fxLayoutAlign="start center">
+                <h2 class="accent-fg">Header Title
+                </h2>
+              </div>
+              <mat-icon role="img" aria-hidden="true">create</mat-icon>
+            </header>
+          </mat-card>
+          </textarea
+        >
+      </fuse-highlight>
+    </div>
+
+    <!-- @ Card With two column layout -->
+
+    <div fxLayout="column" fxLayout.gt-md="row">
+      <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+        <div class="mat-caption secondary-text">
+          Card With Header And Content
+        </div>
+        <mat-card>
+          <!--status heading and icon-->
+          <header fxLayout="row" fxLayoutAlign="space-between start">
+            <div xLayout="row" fxLayoutAlign="start center">
+              <h2 class="mb-16 accent-fg">Status</h2>
+            </div>
+            <mat-icon role="img" aria-hidden="true">create</mat-icon>
+          </header>
+          <!--status container/table-->
+          <div fxLayout="row wrap">
+            <div
+              class="exxat-info"
+              fxLayout="column"
+              fxFlex="100"
+              fxFlex.gt-sm="25"
+              fxFlex.gt-md="25"
+            >
+              <div class="title">Cohort</div>
+              <div class="description">class of 2020</div>
+            </div>
+            <div
+              class="exxat-info"
+              fxLayout="column"
+              fxFlex="100"
+              fxFlex.gt-sm="25"
+              fxFlex.gt-md="25"
+            >
+              <div class="title">Campus</div>
+              <div class="description">Texas</div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+
+      <fuse-highlight
+        lang="html"
+        class="source-code"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <textarea #source hidden="hidden">
+          <mat-card>
+            <!--status heading and icon-->
+            <header fxLayout="row" fxLayoutAlign="space-between start">
+                <div xLayout="row" fxLayoutAlign="start center">
+                    <h4 class="mb-16 accent-fg">Status
+                    </h4>
+                </div>
+                <mat-icon role="img" aria-hidden="true">create</mat-icon>
+            </header>
+            <!--status container/table-->
+            <div fxLayout="row wrap">
+                <div class="exxat-info" fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" fxFlex.gt-md="25">
+                    <div class="title">Cohort</div>
+                    <div class="description">class of 2020</div>
+                </div>
+                <div class="exxat-info" fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" fxFlex.gt-md="25">
+                    <div class="title">Campus</div>
+                    <div class="description">Texas</div>
+                </div>
+            </div>
+         </mat-card>
+          </textarea
+        >
+      </fuse-highlight>
+    </div>
+
+ <!-- @ Card With three column layout -->
+    <div fxLayout="column" fxLayout.gt-md="row">
+      <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+        <div class="mat-caption secondary-text">
+          Card With Header And Content
+        </div>
+        <mat-card>
+          <!--status heading and icon-->
+          <header fxLayout="row" fxLayoutAlign="space-between start">
+            <div xLayout="row" fxLayoutAlign="start center">
+              <h2 class="mb-16 accent-fg">Status</h2>
+            </div>
+            <mat-icon role="img" aria-hidden="true">create</mat-icon>
+          </header>
+          <!--status container/table-->
+          <div fxLayout="row wrap">
+            <div
+              class="exxat-info"
+              fxLayout="column"
+              fxFlex="100"
+              fxFlex.gt-sm="25"
+              fxFlex.gt-md="25"
+            >
+              <div class="title">Cohort</div>
+              <div class="description">class of 2020</div>
+            </div>
+            <div
+              class="exxat-info"
+              fxLayout="column"
+              fxFlex="100"
+              fxFlex.gt-sm="25"
+              fxFlex.gt-md="25"
+            >
+              <div class="title">Campus</div>
+              <div class="description">Texas</div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+
+      <fuse-highlight
+        lang="html"
+        class="source-code"
+        fxLayout="column"
+        fxLayoutAlign="center"
+        fxFlex="50"
+      >
+        <textarea #source hidden="hidden">
+          <mat-card>
+            <!--status heading and icon-->
+            <header fxLayout="row" fxLayoutAlign="space-between start">
+                <div xLayout="row" fxLayoutAlign="start center">
+                    <h4 class="mb-16 accent-fg">Status
+                    </h4>
+                </div>
+                <mat-icon role="img" aria-hidden="true">create</mat-icon>
+            </header>
+            <!--status container/table-->
+            <div fxLayout="row wrap">
+                <div class="exxat-info" fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" fxFlex.gt-md="25">
+                    <div class="title">Cohort</div>
+                    <div class="description">class of 2020</div>
+                </div>
+                <div class="exxat-info" fxLayout="column" fxFlex="100" fxFlex.gt-sm="25" fxFlex.gt-md="25">
+                    <div class="title">Campus</div>
+                    <div class="description">Texas</div>
+                </div>
+            </div>
+         </mat-card>
+          </textarea
+        >
+      </fuse-highlight>
+    </div>
+  </div>
+</div>

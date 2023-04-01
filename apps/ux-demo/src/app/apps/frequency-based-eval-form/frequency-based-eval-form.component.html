@@ -1,0 +1,485 @@
+<div
+  class="page-layout simple left-sidebar inner-sidebar inner-scroll frequency-based-eval-form"
+>
+  <div
+    fxLayout="row wrap"
+    fxLayoutAlign="space-between center"
+    #scrollSpyHeader
+  >
+    <div fxLayout="row">
+      <div class="pt-xs-16">
+        <button
+          mat-icon-button
+          routerLink="/admin/ux/ui/exxat-component-library"
+          class="action-icon"
+          aria-label="back arrow"
+        >
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+      <div fxLayout="column" class="mb-16 px-xs-16 pt-xs-8 ml-sm-8">
+        <h2
+          tabindex="0"
+          class="font-weight-600 word-break-all"
+          aria-label="heading CI Frequency Form"
+        >
+          CI Frequency Form
+        </h2>
+        <div fxLayout="row wrap" fxLayoutAlign="start center" class="font-16">
+          <span
+            tabindex="0"
+            aria-label="Ability Rehabilitation  "
+            class="pr-8 word-break-all"
+            >Ability Rehabilitation</span
+          >
+          |
+          <span
+            tabindex="0"
+            aria-label="OP Orthopedics Jan 1,2021- Jan 30,2020 "
+            class="ml-sm-8 word-break-all"
+            >OP Orthopedics Jan 1,2021- Jan 30,2020
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="overflow-auto">
+      <mat-card
+        class="p-0 overflow-auto"
+        fxLayout="row"
+        tabindex="0"
+        aria-label="status card "
+      >
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="border-right header-total-count-bg px-16 py-8 mr-16"
+        >
+          <span
+            class="font-weight-600 space-no-wrap"
+            tabindex="0"
+            aria-label=" Total Count is"
+            >Total Count :</span
+          >
+          <span class="font-size-24 ml-md-4" tabindex="0" aria-label=" 9">
+            9</span
+          >
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="border-right pr-16 py-8 mr-16"
+        >
+          <span
+            class="text-status-color save-status font-weight-600 space-no-wrap"
+            tabindex="0"
+            aria-label=" saved are"
+            >Save :</span
+          >
+          <span class="font-size-24 ml-4" tabindex="0" aria-label="2 "> 2</span>
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="border-right pr-16 py-8 mr-16"
+        >
+          <span
+            class="text-status-color submitted-status font-weight-600 space-no-wrap"
+            tabindex="0"
+            aria-label=" submitted are"
+            >Submitted :</span
+          >
+          <span class="font-size-24 ml-4" tabindex="0" aria-label=" 8"> 8</span>
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="border-right pr-16 py-8 mr-16"
+        >
+          <span
+            class="text-status-color pending-review-status font-weight-600 space-no-wrap"
+            tabindex="0"
+            aria-label="pendng review "
+            >Pending Review :</span
+          >
+          <span class="font-size-24 ml-4" tabindex="0" aria-label=" 12">
+            12</span
+          >
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" class="py-8 pr-16">
+          <span
+            class="text-status-color reviewed-status font-weight-600 space-no-wrap"
+            tabindex="0"
+            aria-label=" reviewed are"
+            >Reviewed :</span
+          >
+          <span class="font-size-24 ml-4" tabindex="0" aria-label="6 "> 6</span>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="content" fxLayout="row" fxLayout.lt-lg="column" fxFlex="100">
+    <!-- SIDEBAR -->
+    <div fxFlex.gt-md="25">
+      <div
+        class="mb-lg-16 mt-lg-12"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+      >
+        <button mat-button class="action-icon" aria-label="add form button ">
+          <mat-icon>add</mat-icon>
+          Add Form
+        </button>
+      </div>
+      <fuse-sidebar
+        class="sidebar page-sidebar mb-64"
+        name="carded-left-sidebar-tabbed-2"
+        position="left"
+        lockedOpen="gt-md"
+        tabindex="0"
+        aria-label="sidebar with tree control"
+      >
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="p-16 border-bottom"
+          tabindex="0"
+          aria-label=" sidebar header"
+        >
+          <span
+            class="font-20 pt-4 brown-heading font-weight-600"
+            tabindex="0"
+            aria-label="Instances"
+            >Instances</span
+          >
+          <button
+            mat-icon-button
+            class="action-icon filter-icon"
+            aria-label="filter"
+          >
+            <i
+              aria-hidden="true"
+              class="fa-light fa-sliders-h icon-fill s-18"
+            ></i>
+            <span class="filter-badge">4</span>
+          </button>
+        </div>
+        <!-- SIDEBAR CONTENT -->
+        <div
+          class="content mt-16"
+          fusePerfectScrollbar
+          tabindex="0"
+          aria-label=" sidebar content"
+        >
+          <mat-list tabindex="0" aria-label="roles list">
+            <button mat-button class="no-space m-0 p-0">
+              <mat-list-item class="p-12 active-list-item">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-14 font-weight-600 white-space-normal word-break-all text-left pr-16"
+                    >Jan 20, 2021</span
+                  >
+                  <div class="status-badge approved">Reviewed</div>
+                </div>
+              </mat-list-item>
+            </button>
+            <mat-divider class="w-90-p margin-auto"></mat-divider>
+            <button mat-button class="no-space m-0 p-0">
+              <mat-list-item class="p-12">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-14 font-weight-600 white-space-normal word-break-all text-left pr-16"
+                    >Jan 20, 2021</span
+                  >
+                  <div class="status-badge pending">Pending for review</div>
+                </div>
+              </mat-list-item>
+            </button>
+            <mat-divider class="w-90-p margin-auto"></mat-divider>
+            <button mat-button class="no-space m-0 p-0">
+              <mat-list-item class="p-12">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-14 font-weight-600 white-space-normal word-break-all text-left pr-16"
+                    >Jan 20, 2021</span
+                  >
+                  <div class="status-badge inprogress">Subbmitted</div>
+                </div>
+              </mat-list-item>
+            </button>
+            <mat-divider class="w-90-p margin-auto"></mat-divider>
+            <button mat-button class="no-space m-0 p-0">
+              <mat-list-item class="p-12">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-14 font-weight-600 white-space-normal word-break-all text-left pr-16"
+                    >Jan 20, 2021</span
+                  >
+                  <div class="status-badge getstarted">Save</div>
+                </div>
+              </mat-list-item>
+            </button>
+            <mat-divider class="w-90-p margin-auto"></mat-divider>
+            <button mat-button class="no-space m-0 p-0">
+              <mat-list-item class="p-12">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-14 font-weight-600 white-space-normal word-break-all text-left pr-16"
+                    >Jan 20, 2021</span
+                  >
+                  <div class="status-badge approved">Reviewed</div>
+                </div>
+              </mat-list-item>
+            </button>
+            <mat-divider class="w-90-p margin-auto"></mat-divider>
+            <button mat-button class="no-space m-0 p-0">
+              <mat-list-item class="p-12">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-14 font-weight-600 white-space-normal word-break-all text-left pr-16"
+                    >Jan 20, 2021</span
+                  >
+                  <div class="status-badge pending">Pending for review</div>
+                </div>
+              </mat-list-item>
+            </button>
+            <mat-divider class="w-90-p margin-auto"></mat-divider>
+            <button mat-button class="no-space m-0 p-0">
+              <mat-list-item class="p-12">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-14 font-weight-600 white-space-normal word-break-all text-left pr-16"
+                    >Jan 20, 2021</span
+                  >
+                  <div class="status-badge inprogress">Subbmitted</div>
+                </div>
+              </mat-list-item>
+            </button>
+            <mat-divider class="w-90-p margin-auto"></mat-divider>
+            <button mat-button class="no-space m-0 p-0">
+              <mat-list-item class="p-12">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  class="w-100-p"
+                >
+                  <span
+                    class="font-14 font-weight-600 white-space-normal word-break-all text-left pr-16"
+                    >Jan 20, 2021</span
+                  >
+                  <div class="status-badge getstarted">Save</div>
+                </div>
+              </mat-list-item>
+            </button>
+          </mat-list>
+        </div>
+        <!-- / SIDEBAR CONTENT -->
+      </fuse-sidebar>
+    </div>
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+    <div
+      class="center ml-lg-16"
+      fxLayout="column"
+      fxFlex.gt-md="75"
+      fxFlex="100"
+    >
+      <!-- CONTENT TOOLBAR -->
+      <div class="px-16 mb-8" fxHide.gt-md>
+        <button
+          mat-icon-button
+          class="sidebar-toggle"
+          (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="px-xs-16">
+        <div class="mb-16" fxLayout="row" fxLayoutAlign="start center">
+          <div
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            class="py-8 px-16 total-score-section"
+          >
+            <span
+              class="fuse-white-fg space-no-wrap"
+              tabindex="0"
+              aria-label="Total score is"
+              >Total score</span
+            >
+            <span class="fuse-white-fg mx-16">|</span>
+            <div class="">
+              <span
+                class="font-size-24 fuse-white-fg font-weight-600"
+                tabindex="0"
+                aria-label="0"
+                >0</span
+              >
+              <sub
+                class="font-size-16 fuse-white-fg"
+                tabindex="0"
+                aria-label="out of 170"
+                >/170</sub
+              >
+            </div>
+          </div>
+        </div>
+        <div class="mb-16" fxLayout="row" fxLayoutAlign="end center">
+          <div class="mr-8">
+            <button
+              mat-stroked-button
+              color="accent"
+              class="accent-border-btn"
+              aria-label=" save button"
+            >
+              Save
+            </button>
+          </div>
+          <div>
+            <button
+              mat-raised-button
+              color="accent"
+              aria-label=" submit button"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- / CONTENT TOOLBAR -->
+
+      <!-- CONTENT -->
+      <div
+        class="content"
+        fxFlex="100"
+        fusePerfectScrollbar
+        tabindex="0"
+        scrollSpyContent
+        [offsetTop]="scrollSpyHeaderHeight"
+        aria-label=" right side content"
+      >
+        <div fxFlex="100">
+          <mat-card class="p-0 mb-16" tabindex="0" aria-label="matcard 1">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+            >
+              <h2
+                class="primary-heading font-weight-600 text-capitalize"
+                tabindex="0"
+                aria-label="Title 1"
+              >
+                Title 1
+              </h2>
+            </header>
+            <div fxLayout="column" fxLayoutAlign="center start" class="p-16">
+              <label
+                required
+                class="pb-8 form-field-title font-weight-600 word-break-all"
+                tabindex="0"
+                aria-label="label is Date of Encounter "
+                >Date of Encounter
+              </label>
+              <mat-form-field appearance="fill" class="w-60-p">
+                <input matInput placeholder="MM DD,YYYY" />
+                <mat-error>MM DD,YYYY</mat-error>
+              </mat-form-field>
+            </div>
+          </mat-card>
+
+          <mat-card class="p-0 mb-16" tabindex="0" aria-label="matcard 2">
+            <header
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+            >
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <h2
+                  class="primary-heading font-weight-600 text-capitalize"
+                  tabindex="0"
+                  aria-label="Title 2"
+                >
+                  Title 2
+                </h2>
+              </div>
+            </header>
+
+            <div fxLayout="column" class="p-16">
+              <div fxLayout="column" fxLayoutAlign="center start">
+                <label
+                  required
+                  class="pb-8 form-field-title font-weight-600 word-break-all"
+                  tabindex="0"
+                  aria-label="label is Hours required per week"
+                  >Hours required per week</label
+                >
+                <mat-form-field appearance="fill" class="w-60-p">
+                  <input matInput placeholder="DD/MM/YYYY" />
+                  <mat-error>Hours required per week</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxLayout="column" fxLayoutAlign="center start">
+                <label
+                  required
+                  class="pb-8 form-field-title font-weight-600 word-break-all"
+                  tabindex="0"
+                  aria-label="label is Hours required per week"
+                  >Hours required per week</label
+                >
+                <mat-form-field appearance="fill" class="w-60-p">
+                  <input matInput placeholder="DD/MM/YYYY" />
+                  <mat-error>Hours required per week</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxLayout="column" fxLayoutAlign="center start">
+                <label
+                  required
+                  class="pb-8 form-field-title font-weight-600 word-break-all"
+                  tabindex="0"
+                  aria-label="label is Hours required per week"
+                  >Hours required per week</label
+                >
+                <mat-form-field appearance="fill" class="w-60-p">
+                  <input matInput placeholder="DD/MM/YYYY" />
+                  <mat-error>Hours required per week</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+      <!-- / CONTENT -->
+    </div>
+    <!-- / CENTER -->
+  </div>
+</div>

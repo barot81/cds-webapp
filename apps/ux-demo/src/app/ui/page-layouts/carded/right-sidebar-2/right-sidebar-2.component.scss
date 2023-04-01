@@ -1,0 +1,8 @@
+@import 'init';
+
+.element-height {
+  height: 100px;
+  @include media-breakpoint('gt-sm') {
+    height: 100vh !important;
+  }
+}

@@ -1,0 +1,208 @@
+<div fxLayout="column">
+  <div
+    class="preview mt-16"
+    fxLayout="column"
+    fxLayoutAlign="start"
+    fxFlex="50"
+  >
+    <mat-card>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <span class="font-weight-600 warn-fg mr-12">Node:-</span>
+        <span
+          >The validation of checkboxes and radio buttons must be handle at the
+          product page level. UI team has provided the class to add for Error UI
+          representation.</span
+        >
+      </div>
+    </mat-card>
+  </div>
+  <div fxLayout="column" fxLayout.gt-md="row" class="mt-16">
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+      <mat-card class="mr-16">
+        <form [formGroup]="form">
+          <!-- checkboxes --->
+
+          <div>
+            <div
+              class="mat-checkbox-container mb-16"
+              fxLayout="column"
+              [ngClass]="{
+                'mat-invalid': getControlError('checkBoxControl')
+              }"
+            >
+              <mat-label class="mb-12"> OU code </mat-label>
+              <mat-checkbox
+                *ngFor="let item of list; let i = index"
+                [ngClass]="{ 'mb-12': i < list.length - 1 }"
+                formControlName="checkBoxControl"
+              >
+                {{ item.viewValue }}
+              </mat-checkbox>
+            </div>
+            <mat-error class="mb-16" *ngIf="getControlError('checkBoxControl')"
+              >This is Required</mat-error
+            >
+          </div>
+
+          <!-- radio buttons --->
+
+          <div class="mb-16">
+            <div class="mat-radio-button-container">
+              <mat-radio-group
+                aria-label="Select ou code"
+                formControlName="radioButtonControl"
+              >
+                <mat-label class="mb-12"> OU code </mat-label>
+                <div fxLayout="row wrap" fxLayoutAlign="start center">
+                  <mat-radio-button
+                    *ngFor="let item of list; let i = index"
+                    class="mr-8"
+                    value="{{ item.value }}"
+                  >
+                    <span class="font-14">{{ item.viewValue }}</span>
+                  </mat-radio-button>
+                </div>
+              </mat-radio-group>
+            </div>
+            <mat-error
+              class="mb-16"
+              *ngIf="getControlError('radioButtonControl')"
+              >This is Required</mat-error
+            >
+          </div>
+        </form>
+      </mat-card>
+    </div>
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+      <mat-tab-group>
+        <mat-tab label="HTML">
+          <fuse-highlight
+            lang="html"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+ 
+            <mat-card>
+              <form [formGroup]="form">
+                <div>
+                  <div
+                    class="mat-checkbox-container mb-16"
+                    fxLayout="column"
+                    [ngClass]="{
+                      'mat-invalid': getControlError('checkBoxControl')
+                    }"
+                  >
+                    <mat-label class="mb-12"> OU code </mat-label>
+                    <mat-checkbox
+                      *ngFor="let item of list; let i = index"
+                      [ngClass]="{ 'mb-12': i < list.length - 1 }"
+                      formControlName="checkBoxControl"
+                    >
+                      item.viewValue 
+                    </mat-checkbox>
+                  </div>
+                  <mat-error class="mb-16" *ngIf="getControlError('checkBoxControl')"
+                    >This is Required</mat-error
+                  >
+                </div>
+
+                <div>
+                  <div class="mat-radio-button-container">
+                    <mat-radio-group
+                      aria-label="Select ou code"
+                      formControlName="radioButtonControl"
+                    >
+                      <mat-label class="mb-12"> OU code </mat-label>
+                      <div fxLayout="row wrap" fxLayoutAlign="start center">
+                        <mat-radio-button
+                          *ngFor="let item of list; let i = index"
+                          class="mr-8"
+                          value="item.value"
+                        >
+                          <span class="font-14">item.viewValue</span>
+                        </mat-radio-button>
+                      </div>
+                    </mat-radio-group>
+                  </div>
+                  <mat-error class="mb-16" *ngIf="getControlError('radioButtonControl')"
+                    >This is Required</mat-error
+                  >
+                </div>
+              </form>
+            </mat-card>
+          </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+        <mat-tab label="TS">
+          <fuse-highlight
+            lang="ts"
+            class="source-code mt-16"
+            fxLayout="column"
+            fxLayoutAlign="center"
+          >
+            <textarea #source hidden="hidden">
+ 
+            import { Component } from '@angular/core';
+            import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+            
+            @Component({
+              selector: 'exxat-checkbox-and-radio-button-example',
+              templateUrl: './check-box-and-radio-button-example.component.html',
+            })
+            export class CheckboxAndRadioButtonExampleComponent {
+              form: FormGroup;
+              list = [
+                { value: 'usc', viewValue: 'USC' },
+                { value: 'losrios', viewValue: 'LosRios' },
+                { value: 'exxat', viewValue: 'Exxat' },
+                { value: 'common', viewValue: 'Common' },
+              ];
+            
+              /**
+               *
+               */
+              constructor(private _fb: FormBuilder) {
+                this.initForm();
+              }
+            
+              private initForm() {
+                this.form = this._fb.group({
+                  checkBoxControl: [
+                    '',
+                    [
+                      (control) => {
+                        return !control.value ? { required: true } : null;
+                      },
+                    ],
+                  ],
+                  radioButtonControl: [
+                    '',
+                    [
+                      (control) => {
+                        return !control.value ? { required: true } : null;
+                      },
+                    ],
+                  ],
+                });
+              }
+            
+              getControlError(control: any) {
+                if (this.form.touched) {
+                  const value =
+                    this.form.get(control).touched && this.form.get(control).invalid;
+                  return value;
+                }
+              }
+            }
+            
+          </textarea
+            >
+          </fuse-highlight>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

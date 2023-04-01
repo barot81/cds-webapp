@@ -1,0 +1,28 @@
+<div
+  class="
+    page-layout
+    carded
+    fullwidth
+    full-width-page
+    inner-scroll
+    exxat-new-grid
+  "
+>
+  <div class="center p-0">
+    <div class="content-card border">
+      <div #mainHeader>
+        <exxat-simple-grid-header></exxat-simple-grid-header>
+      </div>
+      <div
+        class="content overflow-auto"
+        tabindex="0"
+        [style.height.px]="_scrollService.contentHeight"
+      >
+        <exxat-simple-grid></exxat-simple-grid>
+      </div>
+    </div>
+    <div #pagination>
+      <mat-paginator [pageSize]="30" class="bx bb"></mat-paginator>
+    </div>
+  </div>
+</div>

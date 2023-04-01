@@ -1,0 +1,494 @@
+<div fxLayout="column" fxLayout.gt-md="row" class="mt-16">
+  <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+    <mat-card class="mr-16">
+      <form name="form" [formGroup]="form" fxLayout="column">
+        <!-- first name --->
+        <div
+          fxLayout="row wrap"
+          fxLayoutAlign="start center"
+          fxFlex="1 0 auto"
+          class="w-50-p"
+        >
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>First name</mat-label>
+            <input matInput formControlName="firstName" required />
+            <mat-error tabindex="0" arai-label="First Name is Required"
+              >First Name is required!</mat-error
+            >
+          </mat-form-field>
+        </div>
+
+        <!-- disabled form field -->
+        <div
+          fxLayout="row wrap"
+          fxLayoutAlign="start center"
+          fxFlex="1 0 auto"
+          class="w-50-p pb-16"
+        >
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Enter numeric value</mat-label>
+            <input type="text" matInput formControlName="numValue" />
+          </mat-form-field>
+        </div>
+
+        <!-- checkboxes --->
+        <div
+          fxLayout="row wrap"
+          fxLayoutAlign="start center"
+          fxFlex="1 0 auto"
+          class="w-50-p"
+        >
+          <section class="mb-16" fxLayout="column">
+            <mat-checkbox
+              *ngFor="let check of checkboxList; let i = index"
+              [ngClass]="{ 'mb-16': i < checkboxList.length - 1 }"
+              formControlName="checkbox"
+            >
+              {{ check.viewValue }}
+            </mat-checkbox>
+          </section>
+        </div>
+
+        <!-- radio buttons --->
+        <div class="mb-16">
+          <mat-radio-group aria-label="Select mode" formControlName="mode">
+            <div fxLayout="column" fxLayoutAlign="start">
+              <mat-label> Mode </mat-label>
+              <div fxLayout="row wrap" fxLayoutAlign="start center">
+                <mat-radio-button class="mr-8" value="Option 1">
+                  <span class="font-14">Option 1</span>
+                </mat-radio-button>
+                <mat-radio-button value="Option 2">
+                  <span class="font-14">Option 2</span>
+                </mat-radio-button>
+              </div>
+            </div>
+          </mat-radio-group>
+        </div>
+
+        <!-- Input Box with  Button Control-->
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+          <div fxFlex="80">
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Add item</mat-label>
+              <input
+                type="text"
+                formControlName="addItem"
+                matInput
+                value="Item 1"
+                autocomplete="off"
+              />
+            </mat-form-field>
+          </div>
+          <div class="pl-12 mt-4">
+            <button
+              mat-stroked-button
+              color="primary"
+              class=""
+              aria-label="Primary"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+          <div fxFlex="80">
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Delete item</mat-label>
+              <input
+                type="text"
+                formControlName="deleteItem"
+                matInput
+                value="Item 1"
+                autocomplete="off"
+              />
+            </mat-form-field>
+          </div>
+          <div class="pl-12 mt-4">
+            <button
+              type="button"
+              mat-icon-button
+              color="warn"
+              aria-label="Delete"
+              class="delete-icon"
+            >
+              <i
+                aria-hidden="true"
+                class="fa-light fa-trash-alt warn-fg s-18"
+              ></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- comment box --->
+        <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <div class="text-center w-100-p">
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Comment</mat-label>
+              <textarea matInput></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- slide toggle --->
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="w-50-p"
+          fxFlex="1 0 auto"
+        >
+          <mat-slide-toggle class="mb-16" color="primary"
+            >Slide Me!</mat-slide-toggle
+          >
+        </div>
+
+        <!-- slider --->
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="w-50-p"
+          fxFlex="1 0 auto"
+        >
+          <mat-slider class="mb-16" color="primary"></mat-slider>
+        </div>
+
+        <!-- multi chips select --->
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-between end"
+          *ngIf="chipsArray.length !== 0"
+        >
+          <mat-form-field appearance="fill" class="w-100-p">
+            <mat-label tabindex="0" aria-label="Multi Select Example"
+              >Multi select example</mat-label
+            >
+            <mat-chip-list #chipList>
+              <mat-chip
+                *ngFor="let item of chipsArray"
+                [selectable]="selectable"
+                [removable]="removable"
+              >
+                {{ item }}
+                <mat-icon matChipRemove *ngIf="removable"> cancel </mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <button
+            type="button"
+            mat-raised-button
+            class="mr-8 mb-8"
+            *ngFor="let item of allchips"
+          >
+            {{ item.value }}
+          </button>
+        </div>
+
+        <!-- Filter autocomplete --->
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          fxFlex="1 0 auto"
+          class="w-50-p mt-16"
+        >
+          <mat-form-field fxFlex="100" appearance="fill">
+            <input
+              type="text"
+              placeholder="Pick one"
+              aria-label="Number"
+              matInput
+              [formControl]="myControl"
+              [matAutocomplete]="auto"
+            />
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option
+                *ngFor="let option of filteredOptions | async"
+                [value]="option"
+              >
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+  <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+    <mat-tab-group>
+      <!-- 1st tab content -->
+      <mat-tab label="HTML">
+        <fuse-highlight
+          lang="html"
+          class="source-code mt-16"
+          fxLayout="column"
+          fxLayoutAlign="center"
+        >
+          <textarea #source hidden="hidden">
+
+              <!-- first name --->
+              <div
+              fxLayout="row wrap"
+              fxLayoutAlign="start center"
+              fxFlex="1 0 auto"
+              class="w-50-p"
+              >
+              <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>First name</mat-label>
+              <input matInput formControlName="firstName" required />
+              <mat-error>First Name is required!</mat-error>
+              </mat-form-field>
+              </div>
+
+              <!-- disabled form field -->
+              <mat-form-field appearance="fill" fxFlex="100">
+                <mat-label>Enter numeric value</mat-label>
+                <input type="text" matInput formControlName="numValue" />
+              </mat-form-field>
+
+              <!-- checkboxes --->
+              <div
+              fxLayout="row wrap"
+              fxLayoutAlign="start center"
+              fxFlex="1 0 auto"
+              class="w-50-p"
+              >
+              <section class="mb-16" fxLayout="column">
+              <mat-checkbox
+              *ngFor="let check of checkboxList; let i = index"
+              [ngClass]="{ 'mb-16': i < checkboxList.length - 1 }"
+              formControlName="checkbox"
+              >
+              check.viewValue 
+              </mat-checkbox>
+              </section>
+              </div>
+
+              <!-- radio buttons --->
+              <div class="mb-16">
+                <mat-radio-group aria-label="Select mode" formControlName="mode">
+                  <div fxLayout="column" fxLayoutAlign="start">
+                    <mat-label> Mode </mat-label>
+                    <div fxLayout="row wrap" fxLayoutAlign="start center">
+                      <mat-radio-button class="mr-8" value="Option 1">
+                        <span class="font-14">Option 1</span>
+                      </mat-radio-button>
+                      <mat-radio-button value="Option 2">
+                        <span class="font-14">Option 2</span>
+                      </mat-radio-button>
+                    </div>
+                  </div>
+                </mat-radio-group>
+              </div>
+
+               <!-- Input Box with  Button Control-->
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+                  <div fxFlex="80">
+                    <mat-form-field appearance="fill" fxFlex="100">
+                      <mat-label>Add item</mat-label>
+                      <input type="text" formControlName="addItem" matInput value="Item 1" autocomplete="off" />
+                    </mat-form-field>
+                  </div>
+                  <div class="pl-12 mt-4">
+                    <button mat-stroked-button color="primary" class="btn btn-md" aria-label="Add">
+                      Add
+                    </button>
+                  </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+                  <div fxFlex="80">
+                    <mat-form-field appearance="fill" fxFlex="100">
+                      <mat-label>Delete item</mat-label>
+                      <input type="text" formControlName="deleteItem" matInput value="Item 1" autocomplete="off" />
+                    </mat-form-field>
+                  </div>
+                  <div class="pl-12 mt-4">
+                    <button type="button" mat-icon-button color="warn" aria-label="Delete" class="delete-icon">
+                      <i aria-hidden="true" class="fa-light fa-trash-alt warn-fg s-18"></i>
+                    </button>
+                  </div>
+                </div>
+
+              <!-- comment box --->
+              <div
+              fxLayout="row wrap"
+              fxLayoutAlign="start center"
+              fxFlex="1 0 auto"
+              class="mb-16"
+              >
+              <div class="text-center w-100-p">
+              <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Comment</mat-label>
+              Add a textarea tag here.
+              </mat-form-field>
+              </div>
+              </div>
+
+              <!-- slide toggle --->
+              <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              class="w-50-p"
+              fxFlex="1 0 auto"
+              >
+              <mat-slide-toggle class="mb-16" color="primary">Slide Me!</mat-slide-toggle>
+              </div>
+
+              <!-- slider --->
+              <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              class="w-50-p"
+              fxFlex="1 0 auto"
+              >
+              <mat-slider class="mb-16" color="primary"></mat-slider>
+              </div>
+
+                <!-- multi chips select --->
+                <div fxLayout="row" fxLayoutAlign="space-between end" *ngIf="chipsArray.length !== 0">
+                  <mat-form-field appearance="fill" class="w-100-p">
+                    <mat-label tabindex="0" aria-label="Multi Select Example">Multi select example</mat-label>
+                    <mat-chip-list #chipList>
+                      <mat-chip *ngFor="let item of chipsArray" [selectable]="selectable" [removable]="removable">
+                         item 
+                        <mat-icon matChipRemove *ngIf="removable"> cancel </mat-icon>
+                      </mat-chip>
+                    </mat-chip-list>
+                  </mat-form-field>
+                </div>
+
+                <div>
+                  <button type="button" mat-raised-button class="mr-8 mb-8" *ngFor="let item of allchips">
+                     item.value 
+                  </button>
+                </div>
+                
+              <!-- Filter autocomplete --->
+              <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxFlex="1 0 auto"
+              class="w-50-p mt-16"
+              >
+              <mat-form-field fxFlex="100" appearance="fill">
+              <input
+              type="text"
+              placeholder="Pick one"
+              aria-label="Number"
+              matInput
+              [formControl]="myControl"
+              [matAutocomplete]="auto"
+              />
+              <mat-autocomplete #auto="matAutocomplete">
+              <mat-option
+              *ngFor="let option of filteredOptions | async"
+              [value]="option"
+              >
+              option 
+              </mat-option>
+              </mat-autocomplete>
+              </mat-form-field>
+              </div>
+          </textarea>
+        </fuse-highlight>
+      </mat-tab>
+
+      <!-- 2nd tab content -->
+      <mat-tab label="TS">
+        <fuse-highlight
+          lang="ts"
+          class="source-code mt-16"
+          fxLayout="column"
+          fxLayoutAlign="center"
+        >
+          <textarea #source hidden="hidden">
+            import { Component, OnInit } from '@angular/core';
+            import {
+              Validators,
+              FormGroup,
+              FormBuilder,
+              FormControl,
+            } from '@angular/forms';
+            import { Observable } from 'rxjs';
+            import { map, startWith } from 'rxjs/operators';
+            
+            @Component({
+              selector: 'common-controls-page',
+              templateUrl: './common-controls-page.component.html',
+              styleUrls: ['common-controls-page.component.scss'],
+            })
+            export class CommonControlsPageComponent implements OnInit {
+              form: FormGroup;
+            
+              filteredOptions: Observable<string[]>;
+            
+              radioButtonList = [
+                { value: 'usc', viewValue: 'USC' },
+                { value: 'losrios', viewValue: 'LosRios' },
+              ];
+            
+              checkboxList = [
+                { value: 'usc', viewValue: 'USC' },
+                { value: 'losrios', viewValue: 'LosRios' },
+              ];
+            
+              chipsArray: string[] = ['One', 'Two', 'Three'];
+            
+              removable = true;
+              selectable = true;
+            
+              allchips: any[] = [
+                { value: 'One', selected: false },
+                { value: 'Two', selected: false },
+                { value: 'Three', selected: false },
+                { value: 'Four', selected: false },
+                { value: 'Five', selected: false },
+                { value: 'Six', selected: false },
+                { value: 'Seven', selected: false },
+                { value: 'Eight', selected: false },
+                { value: 'Nine', selected: false },
+                { value: 'Ten', selected: false },
+              ];
+            
+              myControl = new FormControl();
+              options: string[] = ['One', 'Two', 'Three'];
+            
+              /**
+               *
+               */
+              constructor(private _fb: FormBuilder) {
+                this.form = this._fb.group({
+                  firstName: ['', Validators.required],
+                  checkbox: ['', Validators.required],
+                  ssn: ['', Validators.required],
+                  numValue: ['', Validators.required],
+                  addItem: [''],
+                  deleteItem:['']
+                });
+              }
+            
+              ngOnInit(): void {
+                this.filteredOptions = this.myControl.valueChanges.pipe(
+                  startWith(''),
+                  map((value) => this._filter(value))
+                );
+              }
+            
+              private _filter(value: string): string[] {
+                const filterValue = value.toLowerCase();
+            
+                return this.options.filter((option) =>
+                  option.toLowerCase().includes(filterValue)
+                );
+              }
+            }
+            
+          </textarea>
+        </fuse-highlight>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

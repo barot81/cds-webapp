@@ -1,0 +1,176 @@
+<div class="drawer-p">
+
+  <mat-card fxLayout="column" fxLayoutAlign="center" class="pb-0 mb-16">
+    <form [formGroup]="options">
+      <div fxLayout="column">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between" class="mb-8">
+          <div fxLayout="row" class="w-80-p">
+            <label class="font-weight-600">Course measures</label>
+          </div>
+          <div fxLayout="row">
+            <div>
+              <mat-slide-toggle color="accent" checked="true">
+              </mat-slide-toggle>
+            </div>
+          </div>
+        </div>
+        <div class="pb-16">
+          <mat-divider></mat-divider>
+        </div>
+        <div fxLayout="row" class="w-100-p">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Course measures</mat-label>
+            <mat-chip-list #chipList aria-label="Fruit selection">
+              <mat-chip color="accent" *ngFor="let fruit of fruits" [selectable]="selectable" [removable]="removable"
+                (removed)="remove(fruit)">
+                {{fruit}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input #fruitInput [formControl]="fruitCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+              <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                {{fruit}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+        </div>
+      </div>
+    </form>
+  </mat-card>
+
+  <mat-card fxLayout="column" fxLayoutAlign="center" class="pb-0 mb-16">
+    <form [formGroup]="options">
+      <div fxLayout="column">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between">
+          <div fxLayout="row" class="w-80-p">
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Course measures</mat-label>
+              <input matInput [formControl]="termControl">
+            </mat-form-field>
+          </div>
+          <div fxLayout="row">
+            <div class="mt-16">
+              <mat-slide-toggle color="accent" checked="true">
+              </mat-slide-toggle>
+            </div>
+          </div>
+        </div>
+        <div class="pb-16">
+          <mat-divider></mat-divider>
+        </div>
+        <div fxLayout="row" class="w-100-p">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Course measures</mat-label>
+            <mat-chip-list #chipList aria-label="Fruit selection">
+              <mat-chip color="accent" *ngFor="let fruit of fruits" [selectable]="selectable" [removable]="removable"
+                (removed)="remove(fruit)">
+                {{fruit}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input #fruitInput [formControl]="fruitCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+              <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                {{fruit}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+        </div>
+      </div>
+    </form>
+  </mat-card>
+
+  <mat-card fxLayout="column" fxLayoutAlign="center" class="pb-0 mb-16">
+    <form [formGroup]="options">
+      <div fxLayout="column">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between">
+          <div fxLayout="row" class="w-80-p">
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Course measures</mat-label>
+              <input matInput [formControl]="termControl">
+            </mat-form-field>
+          </div>
+          <div fxLayout="row">
+            <div class="mt-16">
+              <mat-slide-toggle color="accent" checked="true">
+              </mat-slide-toggle>
+            </div>
+          </div>
+        </div>
+        <div class="pb-16">
+          <mat-divider></mat-divider>
+        </div>
+        <div fxLayout="row" class="w-100-p">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Course measures</mat-label>
+            <mat-chip-list #chipList aria-label="Fruit selection">
+              <mat-chip color="accent" *ngFor="let fruit of fruits" [selectable]="selectable" [removable]="removable"
+                (removed)="remove(fruit)">
+                {{fruit}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input #fruitInput [formControl]="fruitCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+              <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                {{fruit}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+        </div>
+      </div>
+    </form>
+  </mat-card>
+
+  <mat-card fxLayout="column" fxLayoutAlign="center" class="pb-0">
+    <form [formGroup]="options">
+      <div fxLayout="column">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between">
+          <div fxLayout="row" class="w-80-p">
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Course measures</mat-label>
+              <input matInput [formControl]="termControl">
+            </mat-form-field>
+          </div>
+          <div fxLayout="row">
+            <div class="mt-16">
+              <mat-slide-toggle color="accent" checked="true">
+              </mat-slide-toggle>
+            </div>
+          </div>
+        </div>
+        <div class="pb-16">
+          <mat-divider></mat-divider>
+        </div>
+        <div fxLayout="row" class="w-100-p">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Course measures</mat-label>
+            <mat-chip-list #chipList aria-label="Fruit selection">
+              <mat-chip color="accent" *ngFor="let fruit of fruits" [selectable]="selectable" [removable]="removable"
+                (removed)="remove(fruit)">
+                {{fruit}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input #fruitInput [formControl]="fruitCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+              <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                {{fruit}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+        </div>
+      </div>
+    </form>
+  </mat-card>
+
+</div>

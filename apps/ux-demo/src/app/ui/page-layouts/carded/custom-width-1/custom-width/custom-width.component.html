@@ -1,0 +1,32 @@
+
+<div class="content" >
+
+  <mat-dialog-content>
+  
+    <fuse-highlight lang="html" class="" fxLayout="column" fxLayoutAlign="center" fxFlex="100">
+      <textarea #source >
+     
+       <!-- /////////////////// custom width Page ////////////////// -->
+                <div class="page-layout carded" >
+                  <div  fxLayout="row wrap"  fxFlex="100">
+                      <div class="p-16 mr-md-16 mb-16" fxLayout="column"  fxFlex="100" fxFlex.md="49.1" fxFlex.gt-md="49.4">
+                          <h2>This is the column with 50% of width.</h2>
+                          <h2>You can change the width of the columns accordingly by changing the value of fxFlex.gt-sm.</h2>
+                      </div>
+                      <div class="p-16 mb-16" fxLayout="column"  fxFlex="100"  fxFlex.md="49.2" fxFlex.gt-md="49.4">
+                          <h2>This is the column with 50% of width.</h2>
+                          <h2>You can change the width of the columns accordingly by changing the value of fxFlex.gt-sm.</h2>
+                      </div>
+                  </div>
+              </div>
+        </textarea>
+    
+    </fuse-highlight>
+  
+  
+  </mat-dialog-content>
+  <!--<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+  </mat-dialog-actions>-->
+  </div>

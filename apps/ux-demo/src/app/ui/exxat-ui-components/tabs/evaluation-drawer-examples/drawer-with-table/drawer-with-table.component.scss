@@ -1,0 +1,16 @@
+@import 'init';
+
+
+.drawer-with-table {
+  .search-wrapper.search-grid {
+    @include media-breakpoint('lt-md') {
+      width: 300px !important;
+    }
+  }
+  td,
+  th {
+    @include media-breakpoint('lt-sm') {
+      min-width: 80vw !important;
+    }
+  }
+}

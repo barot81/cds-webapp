@@ -1,0 +1,355 @@
+<div id="snackbar-example" class="pt-16" fxLayout="column">
+  <div class="mb-16">
+    <span
+      ><strong class="accent-fg">Notes: </strong> import
+      <strong>ExxatSnackBarModule</strong> in your module.</span
+    >
+  </div>
+
+  <div fxLayout="row" fxLayout.lt-md="column" >
+    <div
+      class="preview pr-md-16 mb-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"  fxFlex.lt-md="100"
+    >
+      <mat-card>
+        <div class="mb-16">
+          <span class="secondary-text">Normal SnackBar With Close</span>
+        </div>
+
+        <button
+          mat-stroked-button
+          color="primary"
+          class=""
+          aria-label="Show snackbar"
+          (click)="openSnackBar({ message: 'This is normal snack bar' })"
+        >
+          Show Snackbar
+        </button>
+      </mat-card>
+    </div>
+
+    <div class="preview mb-16" fxLayout="column" fxLayoutAlign="start" fxFlex="50" fxFlex.lt-md="100">
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <div class="pt-16">
+            <fuse-highlight lang="html" class="source-code">
+              <textarea #source hidden="hidden">
+                  <button
+                  mat-stroked-button
+                  color="primary"
+                  class=""
+                  aria-label="Show snackbar"
+                  (click)="openSnackBar({ message: 'This is normal snack bar' })"
+                  >
+                  Show Snackbar
+                  </button>
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="TS">
+          <div class="pt-16">
+            <fuse-highlight lang="ts" class="source-code">
+              <textarea #source hidden="hidden">
+                import { Component } from '@angular/core';
+                import { SnackbarService } from '@exxat/ux';
+
+                @Component({
+                  selector: 'ryzen-snackbar-example-two',
+                  templateUrl: './snackbar-example-two.component.html'
+                })
+                export class SnackbarExampleTwoComponent {
+
+                  constructor(private _snackBarService: SnackbarService) {}
+
+                  openSnackBar(data: any, panelClass?: string, duration?: number) {
+                    duration = duration && duration !== null ? duration : 3000;
+                    this._snackBarService.openCustomSnackBar(data, duration, panelClass);
+                  }
+                }
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+  <div class="mt-16" fxLayout="row" fxLayout.lt-md="column">
+    <div
+    class="preview pr-md-16 mb-16"
+      fxLayout="column"
+      fxLayoutAlign="start"
+      fxFlex="50"  fxFlex.lt-md="100"
+    >
+      <mat-card>
+        <div class="mb-16">
+          <span class="secondary-text">Success SnackBar With Close</span>
+        </div>
+
+        <button
+          mat-stroked-button
+          color="primary"
+          class=""
+          aria-label="Show snackbar"
+          (click)="
+            openSnackBar(
+              {
+                message: 'This is successfull snackbar',
+                icon: 'fa-check s-18'
+              },
+              'snackbar-success'
+            )
+          "
+        >
+          Show Snackbar
+        </button>
+      </mat-card>
+    </div>
+
+    <div class="preview mb-16" fxLayout="column" fxLayoutAlign="start" fxFlex="50" fxFlex.lt-md="100">
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <div class="pt-16">
+            <fuse-highlight lang="html" class="source-code">
+              <textarea #source hidden="hidden">
+                   <button
+                    mat-stroked-button
+                    color="primary"
+                    class=""
+                    aria-label="Show snackbar"
+                    (click)="openSnackBar({ message: 'This is successfull snackbar', icon: 'fa-check s-18' },'snackbar-success')"
+                   >
+                    Show Snackbar
+                   </button>
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="TS">
+          <div class="pt-16">
+            <fuse-highlight lang="ts" class="source-code">
+              <textarea #source hidden="hidden">
+                import { Component } from '@angular/core';
+                import { SnackbarService } from '@exxat/ux';
+
+                @Component({
+                  selector: 'ryzen-snackbar-example-two',
+                  templateUrl: './snackbar-example-two.component.html'
+                })
+                export class SnackbarExampleTwoComponent {
+
+                  constructor(private _snackBarService: SnackbarService) {}
+
+                  openSnackBar(data: any, panelClass?: string, duration?: number) {
+                    duration = duration && duration !== null ? duration : 3000;
+                    this._snackBarService.openCustomSnackBar(data, duration, panelClass);
+                  }
+                }
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+  <div class="mt-16" fxLayout="row" fxLayout.lt-md="column">
+    <div
+    class="preview pr-md-16 mb-16"
+    fxLayout="column"
+    fxLayoutAlign="start"
+    fxFlex="50"  fxFlex.lt-md="100"
+    >
+      <mat-card>
+        <div class="mb-16">
+          <span class="secondary-text">Alert SnackBar With Close</span>
+        </div>
+
+        <button
+          mat-stroked-button
+          color="primary"
+          class=""
+          aria-label="Show snackbar"
+          (click)="
+            openSnackBar(
+              {
+                message: 'This is alert snackbar',
+                icon: 'fa-exclamation-triangle s-18'
+              },
+              'snackbar-alert'
+            )
+          "
+        >
+          Show Snackbar
+        </button>
+      </mat-card>
+    </div>
+
+    <div class="preview mb-16" fxLayout="column" fxLayoutAlign="start" fxFlex="50" fxFlex.lt-md="100">
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <div class="pt-16">
+            <fuse-highlight lang="html" class="source-code">
+              <textarea #source hidden="hidden">
+                <button
+                mat-stroked-button
+                color="primary"
+                class=""
+                aria-label="Show snackbar"
+                (click)="openSnackBar(
+                {
+                message: 'This is alert snackbar',
+                icon: 'fa-exclamation-triangle s-18'
+                },
+                'snackbar-alert')"
+                >
+                Show Snackbar
+                </button>
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="TS">
+          <div class="pt-16">
+            <fuse-highlight lang="ts" class="source-code">
+              <textarea #source hidden="hidden">
+                import { Component } from '@angular/core';
+                import { SnackbarService } from '@exxat/ux';
+
+                @Component({
+                  selector: 'ryzen-snackbar-example-two',
+                  templateUrl: './snackbar-example-two.component.html'
+                })
+                export class SnackbarExampleTwoComponent {
+
+                  constructor(private _snackBarService: SnackbarService) {}
+
+                  openSnackBar(data: any, panelClass?: string, duration?: number) {
+                    duration = duration && duration !== null ? duration : 3000;
+                    this._snackBarService.openCustomSnackBar(data, duration, panelClass);
+                  }
+                }
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+
+  <div class="mt-16" fxLayout="row" fxLayout.lt-md="column">
+    <div
+    class="preview pr-md-16 mb-16"
+    fxLayout="column"
+    fxLayoutAlign="start"
+    fxFlex="50"  fxFlex.lt-md="100"
+    >
+      <mat-card>
+        <div class="mb-16">
+          <span class="secondary-text">Warning SnackBar With Close</span>
+        </div>
+
+        <button
+          mat-stroked-button
+          color="primary"
+          class=""
+          aria-label="Show snackbar"
+          (click)="
+            openSnackBar(
+              {
+                message: 'This is warning snackbar',
+                icon: 'fa-exclamation-circle s-18'
+              },
+              'snackbar-warning'
+            )
+          "
+        >
+          Show Snackbar
+        </button>
+      </mat-card>
+    </div>
+
+    <div class="preview mb--16" fxLayout="column" fxLayoutAlign="start" fxFlex="50" fxFlex.lt-md="100">
+      <mat-tab-group>
+        <!-- 1st tab content -->
+        <mat-tab label="HTML">
+          <div class="pt-16">
+            <fuse-highlight lang="html" class="source-code">
+              <textarea #source hidden="hidden">
+                <button
+                mat-stroked-button
+                color="primary"
+                class=""
+                aria-label="Show snackbar"
+                (click)="openSnackBar(
+                {
+                message: 'This is warning snackbar',
+                icon: 'fa-exclamation-circle s-18'
+                },
+                'snackbar-warning')"
+                >
+                Show Snackbar
+                </button>
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="TS">
+          <div class="pt-16">
+            <fuse-highlight lang="ts" class="source-code">
+              <textarea #source hidden="hidden">
+                import { Component } from '@angular/core';
+                import { SnackbarService } from '@exxat/ux';
+
+                @Component({
+                  selector: 'ryzen-snackbar-example-two',
+                  templateUrl: './snackbar-example-two.component.html'
+                })
+                export class SnackbarExampleTwoComponent {
+
+                  constructor(private _snackBarService: SnackbarService) {}
+
+                  openSnackBar(data: any, panelClass?: string, duration?: number) {
+                    duration = duration && duration !== null ? duration : 3000;
+                    this._snackBarService.openCustomSnackBar(data, duration, panelClass);
+                  }
+                }
+              </textarea>
+            </fuse-highlight>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+  <div class="mt-16" fxLayout="column" fxLayout.gt-md="row">
+    <div class="preview" fxLayout="column" fxLayoutAlign="start" fxFlex="48">
+      <p class="warn-fg font-16" tabindex="0" aria-label="Note from UI Team">
+        Note from UI Team
+      </p>
+      <p
+        tabindex="0"
+        aria-label="Developers are requested not to make any extra self made Class or
+        write hardcode CSS or add Colors. Since we are following MULTI theme,
+        Theme will break if Material theme structure and guidlines are not
+        followed properly."
+        class="warn-fg font-14"
+      >
+        Developers are requested not to make any extra self made Class or write
+        hardcode CSS or add Colors. Since we are following MULTI theme, Theme
+        will break if Material theme structure and guidlines are not followed
+        properly.
+      </p>
+      <strong>Connect To UI team for any such cases.</strong>
+    </div>
+  </div>
+</div>

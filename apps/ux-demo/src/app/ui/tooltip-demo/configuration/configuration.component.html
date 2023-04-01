@@ -1,0 +1,79 @@
+<mat-card class="p-0 mt-16">
+  <header
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    class="card-header-title card-header-border-bottom py-8 pr-8 pl-16"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <h2 class="primary-heading font-weight-600">Configuration</h2>
+    </div>
+  </header>
+  <div fxLayout="column" class="p-16 border-bottom">
+    <div class="mb-16">
+      <span class="font-16 accent-fg"
+        ><strong>TooltipOptions</strong> Properties</span
+      >
+    </div>
+    <div
+      class="exxat-info mb-8"
+      fxLayout="row wrap"
+      fxFlex="100"
+      *ngFor="let item of props"
+    >
+      <div fxFlex.gt-sm="35">
+        <div class="title">{{ item.title }} :</div>
+      </div>
+      <div fxFlex.gt-sm="65">
+        <div class="description">{{ item.description }}</div>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="column" class="p-16">
+    <div class="mb-16">
+      <span class="font-16 accent-fg"><strong>Tooltip</strong> Directive</span>
+    </div>
+    <div class="exxat-info mb-8" fxLayout="row wrap" fxFlex="100">
+      <div fxFlex.gt-sm="35">
+        <div class="title">tooltip :</div>
+      </div>
+      <div fxFlex.gt-sm="65">
+        <div class="description">
+          Specify the content of the tooltip. If contentType is
+          <strong>Component</strong> then pass
+          <strong>Component Reference</strong>, If contentType is
+          <strong>Template</strong> then pass
+          <strong>ng-template Reference</strong>, If contentType is
+          <strong>string</strong> then pass <strong>String</strong>,
+        </div>
+      </div>
+    </div>
+    <div class="exxat-info mb-8" fxLayout="row wrap" fxFlex="100">
+      <div fxFlex.gt-sm="35">
+        <div class="title warn-fg">Deprecated Properties :</div>
+      </div>
+      <div fxFlex.gt-sm="65">
+        <div class="description">
+          <strong>"exclude", "excludeBeforeClick"</strong>
+        </div>
+      </div>
+    </div>
+    <div class="exxat-info mb-8 pb-8 border-bottom" fxLayout="row wrap" fxFlex="100">
+      <div fxFlex.gt-sm="35">
+        <div class="title warn-fg">Deprecated Events :</div>
+      </div>
+      <div fxFlex.gt-sm="65">
+        <div class="description">
+          <strong>"clickOutside"</strong>
+        </div>
+      </div>
+    </div>
+    <div class="exxat-info my-8" fxLayout="row wrap" fxFlex="100">
+      <div class="title warn-fg">Note :</div>
+      <div class="description">
+         Please do not use any explicit events like <strong>(mouseEnter)</strong>,
+        <strong>(mouseLeave)</strong> etc to handle the tooltip opening and
+        closing.
+      </div>
+    </div>
+  </div>
+</mat-card>

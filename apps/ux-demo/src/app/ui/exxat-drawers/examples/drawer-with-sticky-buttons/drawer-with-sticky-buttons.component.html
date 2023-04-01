@@ -1,0 +1,218 @@
+<!-- REACTIVE FORM EXAMPLE -->
+
+<div
+  fxLayout="row"
+  fxLayoutAlign="end center"
+  class="pt-16 pb-8 pr-16 sticky-element-0"
+>
+  <button mat-flat-button color="primary" class="mr-8">Primary</button>
+  <button mat-stroked-button color="primary">Secondary</button>
+</div>
+
+<form class="drawer-p pt-0" name="form" [formGroup]="fusionFormGroup">
+  <mat-card fxLayout="column" class="mb-8">
+    <div fxLayout="row" fxLayoutAlign="space-between start">
+      <mat-form-field appearance="fill" fxFlex="90">
+        <mat-label>First name</mat-label>
+        <input matInput formControlName="firstName" required />
+        <mat-error>First Name is required!</mat-error>
+      </mat-form-field>
+      <!-- <button mat-icon-button class="action-icon" aria-label="Edit" exxatManifoldPanelAction
+          [size]="'drawer-md'"
+          [caption]="'Drawer over drawer'" role="img" [primaryAction]="'Save'">
+          <mat-icon>edit</mat-icon>
+        </button> -->
+    </div>
+
+    <div
+      fxLayout="row wrap"
+      fxLayoutAlign="start center"
+      fxFlex="1 0 auto"
+      class="w-50-p"
+    >
+      <section class="mb-8" fxLayout="column">
+        <mat-checkbox
+          *ngFor="let check of checkboxList; let i = index"
+          [ngClass]="{ 'mb-8': i < checkboxList.length - 1 }"
+          formControlName="checkbox"
+        >
+          {{ check.viewValue }}
+        </mat-checkbox>
+      </section>
+    </div>
+
+    <div
+      fxLayout="row wrap"
+      fxLayoutAlign="start center"
+      fxFlex="1 0 auto"
+      class="w-50-p"
+    >
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Last 4 digits of SSN</mat-label>
+        <input matInput formControlName="ssn" />
+        <mat-error>Last 4 digits of SSN is required!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div
+      fxLayout="row wrap"
+      fxLayoutAlign="start center"
+      fxFlex="1 0 auto"
+      class="w-50-p mb-8"
+    >
+      <mat-radio-group aria-label="Select an option">
+        <mat-label class="font-16 mr-4"> Color : </mat-label>
+        <mat-radio-button class="mr-8" value="1"
+          ><span class="font-14">Option 1</span></mat-radio-button
+        >
+        <mat-radio-button value="2"
+          ><span class="font-14">Option 2</span></mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <div class="text-center w-100-p">
+        <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Comment</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card fxLayout="column" class="mb-8">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      class="w-50-p"
+      fxFlex="1 0 auto"
+    >
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Date of birth</mat-label>
+        <input matInput [matDatepicker]="picker2" />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker2"
+        ></mat-datepicker-toggle>
+        <mat-datepicker
+          #picker2
+          color="primary"
+          class="action-icon"
+        ></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      class="w-50-p"
+      fxFlex="1 0 auto"
+    >
+      <mat-slide-toggle class="mb-8">Slide me!</mat-slide-toggle>
+    </div>
+
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      fxFlex="1 0 auto"
+      class="w-50-p"
+    >
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option
+            *ngFor="let gender of checkboxList"
+            value="{{ gender.value }}"
+          >
+            {{ gender.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-error>Gender is required!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      class="w-50-p"
+      fxFlex="1 0 auto"
+    >
+      <mat-slider class="mb-8"></mat-slider>
+    </div>
+  </mat-card>
+
+  <mat-card fxLayout="column" class="mb-8">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="space-between end"
+      *ngIf="chipsArray.length !== 0"
+    >
+      <mat-form-field appearance="fill" class="w-100-p">
+        <mat-label>Multi select example</mat-label>
+        <mat-chip-list #chipList>
+          <mat-chip
+            *ngFor="let item of chipsArray"
+            [selectable]="selectable"
+            [removable]="removable"
+          >
+            {{ item }}
+            <mat-icon matChipRemove *ngIf="removable"> cancel </mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button
+        type="button"
+        mat-raised-button
+        class="mr-8 mb-8"
+        *ngFor="let item of allchips"
+      >
+        {{ item.value }}
+      </button>
+    </div>
+  </mat-card>
+
+  <mat-card fxLayout="column">
+    <div class="search-wrapper">
+      <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="s-16 secondary-text">search</mat-icon>
+        <input
+          matInput
+          placeholder="Search location"
+          fxFlex
+          formControlName="search"
+          [matAutocomplete]="auto"
+        />
+
+        <mat-autocomplete #auto="matAutocomplete" class="mat-option-height">
+          <mat-option>
+            <div fxLayout="column" fxLayoutAlign="center start">
+              <span class="font-weight-600">
+                Test site test test testy check 1</span
+              >
+              <span class="font-14"> Location 2</span>
+              <span class="font-12">
+                3039 SHRINE PL, #4Bcds, , LOS ANGELES, CA, 90007</span
+              >
+            </div>
+          </mat-option>
+
+          <mat-option>
+            <div fxLayout="column" fxLayoutAlign="center start">
+              <span class="font-weight-600">
+                Test site test test testy check 2</span
+              >
+              <span class="font-14"> Location 2</span>
+              <span class="font-12">
+                3039 SHRINE PL, #4Bcds, , LOS ANGELES, CA, 90007</span
+              >
+            </div>
+          </mat-option>
+        </mat-autocomplete>
+      </div>
+    </div>
+  </mat-card>
+</form>

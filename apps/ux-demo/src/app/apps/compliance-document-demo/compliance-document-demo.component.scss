@@ -1,0 +1,19 @@
+@import 'init';
+
+.disable-status {
+  color: $gray-color !important;
+}
+
+.action-icon-active {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background-color: $fruit-salad;
+}
+
+.action-icon-disable {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background-color: $silver;
+}

@@ -1,0 +1,820 @@
+<mat-dialog-content>
+  <mat-tab-group>
+    <mat-tab label="Container HTML">
+      <fuse-highlight
+        lang="html"
+        class="source-code mt-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+      >
+        <textarea #source hidden="hidden">
+            <div
+            class="
+            page-layout
+            carded
+            fullwidth
+            inner-scroll
+            exxat-new-grid
+            full-width-page
+            "
+            >
+            <div class="overflow-y-auto">
+            <!-- Main Header -->
+            <div class="mb-16" #mainHeader>
+            <exxat-tab-nav-bar
+            *ngIf="!(_fullScreen.fullScreenModeEnabled$ | async)"
+            ></exxat-tab-nav-bar>
+            </div>
+            <!-- / Main Header -->
+
+            <!-- CONTENT -->
+            <div class="content">
+            <router-outlet></router-outlet>
+            </div>
+            <!-- / CONTENT -->
+            </div>
+            </div>
+        </textarea>
+      </fuse-highlight>
+    </mat-tab>
+
+    <mat-tab label="Container TS">
+      <fuse-highlight
+        lang="ts"
+        class="source-code mt-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+      >
+        <textarea #source hidden="hidden">
+
+            import { Component, ElementRef, ViewChild } from '@angular/core';
+            import { FullScreenService, ScrollService } from '@exxat/ux';
+            import { NavigationEnd, Router } from '@angular/router';
+            import { filter } from 'rxjs/operators';
+            
+            @Component({
+              selector: 'exxat-container',
+              templateUrl: './container.component.html',
+            })
+            export class SearchBarGridsContainerComponenent {
+              @ViewChild('mainHeader') mainHeader: ElementRef;
+            
+              constructor(
+                public readonly _scrollService: ScrollService,
+                private _router: Router,
+                public _fullScreen: FullScreenService
+              ) {
+                this._router.events
+                  .pipe(filter((event) => event instanceof NavigationEnd))
+                  .subscribe(async () => {
+                    await this.setMainHeaderHeight();
+                  });
+              }
+              private async setMainHeaderHeight() {
+                setTimeout(async () => {
+                  if (this.mainHeader && this.mainHeader !== null) {
+                    // Set New Height to The Main Header
+                    await this._scrollService.setMainHeaderHeight(
+                      this.mainHeader.nativeElement.offsetHeight
+                    );
+                  }
+                });
+              }
+            }
+            
+        </textarea>
+      </fuse-highlight>
+    </mat-tab>
+
+    <mat-tab label="Page HTML">
+      <fuse-highlight
+        lang="html"
+        class="source-code mt-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+      >
+        <textarea #source hidden="hidden">
+
+            <div fxLayout="column" class="table-rounded-border white-background">
+                <div fxLayout="column">
+                  <div fxLayout="row" fxLayoutAlign="space-between center" class="w-100-p">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
+                      <div
+                      class="search-wrapper"
+                      fxFlex="100"
+                      search
+                      [formControl]="searchItem"
+                    >
+                      <div
+                        class="search table-search"
+                        fxFlex
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                      >
+                        <i aria-hidden="true" class="fa-light fa-magnifying-glass s-18"></i>
+                        <input
+                          id="inputBox"
+                          type="text"
+                          placeholder="Search in 50 student"
+                          [formControl]="searchItem"
+                          fxFlex
+                        />
+            
+                        <button
+                          mat-icon-button
+                          aria-label="clear search"
+                          class="action-icon clear-button"
+                        >
+                          <i aria-hidden="true" class="fa-light fa-xmark s-18"></i>
+                        </button>
+                      </div>
+                    </div>
+              
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        class="px-16 w-100-p"
+                        fxHide.lt-lg
+                      >
+                        <div fxLayout="row" fxLayoutAlign="start center" class="mr-8">
+                          <span>Filters: </span>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="start center" class="mr-16">
+                          <div class="table-header-chips">
+                            <mat-chip-list #chipList aria-label="Fruit selection">
+                              <mat-chip
+                                *ngFor="let fruit of fruits"
+                                (removed)="remove(fruit)"
+                              >
+                                <span
+                                  [tooltip]="chip_Content"
+                                  [options]="tooltipOptions"
+                                  class="chips-text"
+                                  >fruit </span
+                                >
+                                <button matChipRemove>
+                                  <mat-icon>cancel</mat-icon>
+                                </button>
+                                <ng-template #chip_Content>
+                                  <div fxLayout="row" fxLayoutAlign="start center">
+                                    <div class="font-weight-600">
+                                      <span>Setting :</span>
+                                    </div>
+                                    <div class="ml-4">
+                                      <span>fruit </span>
+                                    </div>
+                                  </div>
+                                </ng-template>
+                              </mat-chip>
+                            </mat-chip-list>
+                          </div>
+                        </div>
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="start center"
+                          *ngIf="fruits.length > 2"
+                        >
+                          <a
+                            exxatDrawerAction
+                            [componentSelector]="
+                              _UXDemoDrawerService.get('ryzen-show-more-filter-drawer')
+                            "
+                            [size]="'drawer-sm'"
+                            [caption]="'Show More Filters'"
+                            [primaryAction]="'Apply'"
+                          >
+                            Show more
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+              
+                    <div fxLayout="row" fxLayoutAlign="end center">
+                      <div
+                        fxLayout="row"
+                        fxLayoutAlign="end center"
+                        class="border-right h-48 pr-16"
+                        fxHide.lt-md
+                      >
+                        <button
+                          mat-stroked-button
+                          color="primary"
+                          class="mr-12"
+                          aria-label="Add action 1"
+                        >
+                          <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+                          <span class="ml-4">Add action 1</span>
+                        </button>
+                        <button mat-stroked-button color="primary" aria-label="Add action 2">
+                          <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+                          <span class="ml-4">Add action 2</span>
+                        </button>
+                      </div>
+                      <div fxLayout="row" class="mr-16 ml-8">
+                        <button
+                          matTooltip="Export"
+                          aria-label="Export Table"
+                          mat-icon-button
+                          class="ml-8"
+                          fxHide.lt-md
+                        >
+                          <i aria-hidden="true" class="fa-light fa-file-export s-18"></i>
+                        </button>
+              
+                        <button
+                          matTooltip="Edit Columns"
+                          aria-label="Edit Columns"
+                          exxatDrawerAction
+                          [componentSelector]="gridService.get('ryzen-edit-columns')"
+                          [size]="'drawer-sm'"
+                          [caption]="'Edit Columns'"
+                          mat-icon-button
+                          class="ml-4"
+                          fxHide.lt-md
+                        >
+                          <i aria-hidden="true" class="fa-light fa-wrench s-18"></i>
+                        </button>
+              
+                        <button
+                          matTooltip="Filter" 
+                          mat-icon-button
+                          class="ml-4 filter-icon-button"
+                          aria-label="filters"
+                          exxatDrawerAction
+                          [componentSelector]="
+                            _UXDemoDrawerService.get('ryzen-filter-drawer')
+                          "
+                          [size]="'drawer-lg'"
+                          [caption]="'Filters'"
+                          [primaryAction]="'Save'"
+                        >
+                          <div fxLayout="row" fxLayoutAlign="start center">
+                            <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
+                            <span> 12 </span>
+                          </div>
+                        </button>
+              
+                        <button
+                          tabindex="0"
+                          aria-label="mat menu"
+                          mat-icon-button
+                          [matMenuTriggerFor]="menu"
+                          class="ml-4"
+                          fxHide.gt-sm
+                        >
+                          <i aria-hidden="true" class="fal fa-ellipsis-h s-18"></i>
+                        </button>
+                        <mat-menu #menu="matMenu" fxHide.gt-sm>
+                          <button mat-menu-item aria-label="Action 1">
+                            <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i>Action 1
+                          </button>
+                          <button mat-menu-item aria-label="Action 2">
+                            <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i>Action 2
+                          </button>
+                          <button
+                            mat-menu-item
+                            aria-label="Edit Columns"
+                            exxatDrawerAction
+                            [componentSelector]="gridService.get('ryzen-edit-columns')"
+                            [size]="'drawer-sm'"
+                            [caption]="'Edit Columns'"
+                          >
+                            <i aria-hidden="true" class="fa-light fa-wrench s-18 mr-8"></i>Edit columns
+                          </button>
+                          <button mat-menu-item aria-label="Export file">
+                            <i aria-hidden="true" class="fa-light fa-file-export s-18 mr-8"></i>Export file
+                          </button>
+                        </mat-menu>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="result-found-style w-100-p"
+                    tabindex="0"
+                    aria-label="2 search results found"
+                  >
+                    2 Results Found
+                  </div>
+                </div>
+                <div
+                  class="overflow-auto hide-scroll"
+                  [style.height.px]="_scrollService.contentHeight$ | async"
+                >
+                  <table
+                    aria-label="This is a Simple table"
+                    mat-table
+                    [dataSource]="dataSource"
+                    class="w-100-p exxat-table"
+                    matSort
+                  >
+                    <!-- Table Code -->
+                  </table>
+                </div>
+                <mat-paginator
+                  tabindex="0"
+                  [pageSize]="30"
+                  class="mat-paginator-sticky bt"
+                ></mat-paginator>
+              </div>
+              
+        </textarea>
+      </fuse-highlight>
+    </mat-tab>
+
+    <mat-tab label="Page TS">
+      <fuse-highlight
+        lang="ts"
+        class="source-code mt-16"
+        fxLayout="column"
+        fxLayoutAlign="center"
+      >
+        <textarea #source hidden="hidden">
+
+            import {
+                AfterViewInit,
+                Component,
+                ElementRef,
+                HostListener,
+              } from '@angular/core';
+              import { MatDialog } from '@angular/material/dialog';
+              import { MatTableDataSource } from '@angular/material/table';
+              import { NavigationEnd, Router } from '@angular/router';
+              import { ExxatTag } from '@exxat/plugin';
+              import { FormControl } from '@angular/forms';
+              import { FullScreenService, ScrollService } from '@exxat/ux';
+              import { GridService } from 'libs/ux-demo/src/lib/apps/student-grid/grid.service';
+              import { UXDemoDrawerService } from 'libs/ux-demo/src/lib/ux-demo-drawer.service';
+              import { filter } from 'rxjs/operators';
+              import { WithStickyHeaderPopupComponent } from '../../components';
+              
+              export interface PeriodicElement {
+                name: string;
+                address: string;
+                email: string;
+                phone: string;
+                cohort: string;
+                status: string;
+                actions: string;
+                statusClass: string;
+              }
+              
+              const ELEMENT_DATA: PeriodicElement[] = [
+                {
+                  name: 'Albert Ortega',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+                {
+                  name: 'Albert Ortega',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'In-Active',
+                  actions: '',
+                  statusClass: 'disapproved',
+                },
+                {
+                  name: 'Albert Ortega',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+                {
+                  name: 'Albert Ortega',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+                {
+                  name: 'Bradford Montgomery',
+                  address: '247 Lookout Lane, Springfield Gardens, NY 11413',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+                {
+                  name: 'Albert Ortega',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+                {
+                  name: 'Albert Ortega',
+                  address: '247 Lookout Lane, Springfield Gardens, NY 11413',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+                {
+                  name: 'Bradford Montgomery',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'In-Active',
+                  actions: '',
+                  statusClass: 'disapproved',
+                },
+                {
+                  name: 'Albert Ortega',
+                  address: '16 942 NE. Glen Eagles St., Cantonment, FL 32533',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'In-Active',
+                  actions: '',
+                  statusClass: 'disapproved',
+                },
+                {
+                  name: 'Bradford Montgomery',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+                {
+                  name: 'Albert Ortega',
+                  address: '942 NE. Glen Eagles St., Cantonment, FL 32533',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'In-Active',
+                  actions: '',
+                  statusClass: 'disapproved',
+                },
+                {
+                  name: 'Bradford Montgomery',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+                {
+                  name: 'Albert Ortega',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+                {
+                  name: 'Albert Ortega',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+                {
+                  name: 'Albert Ortega',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'In-Active',
+                  actions: '',
+                  statusClass: 'disapproved',
+                },
+                {
+                  name: 'Albert Ortega',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+                {
+                  name: 'Albert Ortega',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+                {
+                  name: 'Bradford Montgomery',
+                  address: '247 Lookout Lane, Springfield Gardens, NY 11413',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+                {
+                  name: 'Albert Ortega',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+                {
+                  name: 'Albert Ortega',
+                  address: '247 Lookout Lane, Springfield Gardens, NY 11413',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+                {
+                  name: 'Bradford Montgomery',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'In-Active',
+                  actions: '',
+                  statusClass: 'disapproved',
+                },
+                {
+                  name: 'Albert Ortega',
+                  address: '16 942 NE. Glen Eagles St., Cantonment, FL 32533',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'In-Active',
+                  actions: '',
+                  statusClass: 'disapproved',
+                },
+                {
+                  name: 'Bradford Montgomery',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+                {
+                  name: 'Albert Ortega',
+                  address: '942 NE. Glen Eagles St., Cantonment, FL 32533',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'In-Active',
+                  actions: '',
+                  statusClass: 'disapproved',
+                },
+                {
+                  name: 'Bradford Montgomery',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+                {
+                  name: 'Albert Ortega',
+                  address: '16 Military Ave., Cary, NC 27511',
+                  email: 'albertortega@example.com',
+                  phone: '(435) 682-9206',
+                  cohort: 'Cohort XYZ',
+                  status: 'Active',
+                  actions: '',
+                  statusClass: 'approved',
+                },
+              ];
+              
+              @Component({
+                selector: 'exxat-with-sticky-header-grid',
+                templateUrl: './with-sticky-header.component.html',
+              })
+              export class WithStickyHeaderGridComponenent implements AfterViewInit {
+                private mainHeaderHeight: number;
+              
+                fullScreenMode = false;
+              
+                displayedColumns: string[] = [
+                  'name',
+                  'address',
+                  'email',
+                  'phone',
+                  'cohort',
+                  'status',
+                  'actions',
+                ];
+                dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+                clickedRows = new Set<PeriodicElement>();
+                highlightedRows = new Set<PeriodicElement>();
+              
+                tags: Array<ExxatTag> = [
+                  {
+                    id: Math.random(),
+                    name: 'Tag Label 1 Bigger Text',
+                    color: 'indigo-500',
+                    isChecked: true,
+                  },
+                  {
+                    id: Math.random(),
+                    name: 'Tag Label 2',
+                    color: 'deep-orange-500',
+                    isChecked: true,
+                  },
+                  {
+                    id: Math.random(),
+                    name: 'Tag Label 3',
+                    color: 'pink-500',
+                    isChecked: false,
+                  },
+                  {
+                    id: Math.random(),
+                    name: 'Tag Label 4 Bigger Text',
+                    color: 'blue-500',
+                    isChecked: true,
+                  },
+                  {
+                    id: Math.random(),
+                    name: 'Tag Label 5',
+                    color: 'gray-500',
+                    isChecked: true,
+                  },
+                  {
+                    id: Math.random(),
+                    name: 'Tag Label 6',
+                    color: 'purple-500',
+                    isChecked: false,
+                  },
+                  {
+                    id: Math.random(),
+                    name: 'Tag Label 7 Bigger Text',
+                    color: 'yellow-500',
+                    isChecked: true,
+                  },
+                  {
+                    id: Math.random(),
+                    name: 'Tag Label 8',
+                    color: 'green-500',
+                    isChecked: false,
+                  },
+                  {
+                    id: Math.random(),
+                    name: 'Tag Label 9',
+                    color: 'pink-500',
+                    isChecked: false,
+                  },
+                  {
+                    id: Math.random(),
+                    name: 'Tag Label 10 Bigger Text',
+                    color: 'indigo-500',
+                    isChecked: true,
+                  },
+                ];
+              
+                searchItem = new FormControl();
+
+                private currentURL = '/admin/ux/ui/search-bar-grids/with-sticky-header';
+              
+                constructor(
+                  public dialog: MatDialog,
+                  public _scrollService: ScrollService,
+                  public gridService: GridService,
+                  private elem: ElementRef,
+                  private _router: Router,
+                  public _UXDemoDrawerService: UXDemoDrawerService,
+                  public _fullScreenService: FullScreenService
+                ) {
+                  this._router.events
+                    .pipe(filter((event) => event instanceof NavigationEnd))
+                    .subscribe(async (event$) => {
+                      if (this.currentURL === event$['url']) {
+                        await this.resetContentHeaderHeight();
+                      }
+                    });
+                }
+              
+                ngAfterViewInit(): void {
+                  this.mainHeaderHeight = this._scrollService.getMainHeaderHeight();
+                }
+              
+                private async resetContentHeaderHeight() {
+                  setTimeout(async () => {
+                    // Set New Height to The Content Header
+                    await this._scrollService.resetContentHeaderHeight();
+                  });
+                }
+              
+                openDialog() {
+                  const dialogRef = this.dialog.open(WithStickyHeaderPopupComponent);
+                }
+              
+                //code for onclick single row select and outside table click event
+                clicked: string = '';
+                @HostListener('document:click', ['$event'])
+                DocumentClick(event: Event) {
+                  if (this.elem.nativeElement && this.elem.nativeElement !== null) {
+                    if (
+                      this.elem.nativeElement.querySelector('#simpleTable') &&
+                      this.elem.nativeElement.querySelector('#simpleTable') !== null
+                    ) {
+                      if (
+                        !this.elem.nativeElement
+                          .querySelector('#simpleTable')
+                          .contains(event.target)
+                      ) {
+                        if (this.clickedRows.size) {
+                          this.highlightedRows = this.clickedRows;
+                        }
+                        this.clickedRows = new Set<PeriodicElement>();
+                      }
+                    }
+                  }
+                }
+              
+                addRow(row) {
+                  if (this.clickedRows.size) {
+                    if (this.clickedRows.has(row)) {
+                      this.clickedRows = new Set<PeriodicElement>();
+                    } else {
+                      this.clickedRows = new Set<PeriodicElement>();
+                      this.clickedRows.add(row);
+                    }
+                  } else {
+                    this.clickedRows.add(row);
+                  }
+                  this.highlightedRows = new Set<PeriodicElement>();
+                }
+              
+                //chips code
+                fruits: string[] = [
+                'Internal Medicine',
+                'Family Medicine',
+                'Sports Medicine'
+              ];
+                remove(fruit: string): void {
+                  const index = this.fruits.indexOf(fruit);
+              
+                  if (index >= 0) {
+                    this.fruits.splice(index, 1);
+                  }
+                }
+                //chips code end
+              
+                SearchFields = [
+                  { value: 'Student Name', id: 1 },
+                  { value: 'Email', id: 2 },
+                  { value: 'Phone', id: 3 },
+                  { value: 'Practice Setting', id: 4 },
+                  { value: 'Time', id: 5 },
+                ];
+              
+                tooltipOptions = {
+                  contentType: 'template',
+                  placement: 'top',
+                  trigger: 'hover',
+                  'max-width': '450',
+                  width: '450',
+                  pointerEvents: 'auto'
+                };
+              }
+              
+        </textarea>
+      </fuse-highlight>
+    </mat-tab>
+  </mat-tab-group>
+</mat-dialog-content>

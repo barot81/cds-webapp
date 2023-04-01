@@ -1,0 +1,18 @@
+@import 'init';
+
+.configuration-page {
+  .page-content {
+    background: none !important;
+    box-shadow: none !important;
+    border-radius: 0% !important;
+    .border-right {
+      @include media-breakpoint('lt-sm') {
+        border-right: none !important;
+      }
+    }
+  }
+
+  .configuration-sidebar-width {
+    max-width: 340px;
+  }
+}

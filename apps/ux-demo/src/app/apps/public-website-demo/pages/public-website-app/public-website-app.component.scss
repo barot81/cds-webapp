@@ -1,0 +1,16 @@
+@import 'init';
+
+.custom-sidebar-layout {
+  .header-border-bottom {
+    border-bottom: 1px solid $nobel;
+  }
+  .date-text-color {
+    color: $dove-light-gray;
+  }
+  .right-side-content {
+    @include media-breakpoint('lt-md') {
+      margin: 8px !important;
+      height: auto !important;
+    }
+  }
+}

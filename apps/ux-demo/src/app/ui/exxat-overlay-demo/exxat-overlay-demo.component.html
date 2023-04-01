@@ -1,0 +1,37 @@
+<div
+  id="fileviewer-guidline"
+  class="page-layout w-100-p p-12"
+  fxLayout="column"
+>
+  <div class="center pl-0 pr-0">
+    <div class="gray-header mb-16">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div class="mr-8">
+            <button
+              mat-icon-button
+              aria-label="Click to go back"
+              routerLink="/admin/ux/ui/exxat-component-library"
+            >
+              <i aria-hidden="true" class="fa-light fa-arrow-left-long"></i>
+            </button>
+          </div>
+          <div class="mat-title">File Viewer Examples</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <fuse-theme-options [view]="'toggle'"></fuse-theme-options>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16">
+      <navbar></navbar>
+    </div>
+
+    <div class="mt-16">
+      <div class="router-container">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

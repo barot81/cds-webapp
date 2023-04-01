@@ -1,0 +1,1298 @@
+<div fxLayout="column">
+  <div fxLayout="row wrap" fxLayoutAlign="start" fxFlex="100">
+    <div fxLayout="column" fxFlex="50">
+      <mat-card class="p-0 my-16 mr-8">
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title py-8 pr-8 pl-16"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2 class="primary-heading font-weight-600">Mat Select</h2>
+          </div>
+          <button
+            mat-icon-button
+            aria-label="Click to view code"
+            class="action-icon"
+            (click)="_toggleView('simple_dropdown')"
+            [matTooltip]="
+              _getViewType('simple_dropdown') === _viewType.CONTROL
+                ? 'View Code'
+                : 'Hide Code'
+            "
+          >
+            <i aria-hidden="true" class="fa-light fa-code icon-fill"></i>
+          </button>
+        </header>
+        <div fxLayout="column" class="px-16">
+          <div
+            fxLayout="column"
+            *ngIf="
+              _getViewType('simple_dropdown') === _viewType.CONTROL;
+              else _code1
+            "
+          >
+            <mat-form-field appearance="fill" class="w-50-p">
+              <mat-label>Mat select</mat-label>
+              <mat-select [formControl]="_simpleFormControl">
+                <mat-option>-- None --</mat-option>
+                <mat-option *ngFor="let item of _list" [value]="item.value">
+                  {{ item.viewValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <ng-template #_code1>
+            <mat-tab-group>
+              <mat-tab label="HTML">
+                <fuse-highlight
+                  lang="html"
+                  class="source-code my-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                <mat-form-field appearance="fill">
+                <mat-label>Mat select</mat-label>
+                <mat-select [formControl]="_simpleFormControl">
+                <mat-option>-- None --</mat-option>
+                <mat-option
+                *ngFor="let item of _list"
+                [value]="item.value"
+                >
+                item.viewValue 
+                </mat-option>
+                </mat-select>
+                </mat-form-field>
+              </textarea
+                  >
+                </fuse-highlight>
+              </mat-tab>
+              <mat-tab label="TS">
+                <fuse-highlight
+                  lang="ts"
+                  class="source-code my-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                  import {Component} from '@angular/core';
+                  import {FormControl, Validators} from '@angular/forms';
+
+                  @Component({
+                    selector: 'dropdown-component',
+                    templateUrl: 'dropdown-component.html',
+                  })
+                  export class DropdownComponent {
+                    _simpleFormControl = new FormControl('', [Validators.required]);
+                    _list = [
+                    { value: 'usc', viewValue: 'USC' },
+                    { value: 'losrios', viewValue: 'LosRios' },
+                  ];
+                  }
+                </textarea
+                  >
+                </fuse-highlight>
+              </mat-tab>
+            </mat-tab-group>
+          </ng-template>
+        </div>
+      </mat-card>
+    </div>
+    <div fxLayout="column" fxFlex="50">
+      <mat-card class="p-0 my-16 ml-8">
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title py-8 pr-8 pl-16"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2 class="primary-heading font-weight-600">
+              Mat Select With Multiple Selection
+            </h2>
+          </div>
+          <button
+            mat-icon-button
+            aria-label="Click to view code"
+            class="action-icon"
+            (click)="_toggleView('checkbox_dropdown')"
+            [matTooltip]="
+              _getViewType('checkbox_dropdown') === _viewType.CONTROL
+                ? 'View Code'
+                : 'Hide Code'
+            "
+          >
+            <i aria-hidden="true" class="fa-light fa-code icon-fill"></i>
+          </button>
+        </header>
+        <div fxLayout="column" class="px-16">
+          <div
+            fxLayout="column"
+            *ngIf="
+              _getViewType('checkbox_dropdown') === _viewType.CONTROL;
+              else _code2
+            "
+          >
+            <mat-form-field appearance="fill" class="w-50-p">
+              <mat-label>Mat select with multiple selection</mat-label>
+              <mat-select [formControl]="_multiFormControl" multiple>
+                <mat-option *ngFor="let item of _list" [value]="item.value">{{
+                  item.viewValue
+                }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <ng-template #_code2>
+            <mat-tab-group>
+              <mat-tab label="HTML">
+                <fuse-highlight
+                  lang="html"
+                  class="source-code my-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Mat select with multiple selection</mat-label>
+                      <mat-select [formControl]="_multiFormControl" multiple>
+                        <mat-option
+                          *ngFor="let item of _list"
+                          [value]="item.value">
+                          item.viewValue
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+              </textarea
+                  >
+                </fuse-highlight>
+              </mat-tab>
+              <mat-tab label="TS">
+                <fuse-highlight
+                  lang="ts"
+                  class="source-code my-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                  import {Component} from '@angular/core';
+                  import {FormControl, Validators} from '@angular/forms';
+
+                  @Component({
+                    selector: 'dropdown-component',
+                    templateUrl: 'dropdown-component.html',
+                  })
+                  export class DropdownComponent {
+                    _multiFormControl = new FormControl('', [Validators.required]);
+                    _list = [
+                    { value: 'usc', viewValue: 'USC' },
+                    { value: 'losrios', viewValue: 'LosRios' },
+                  ];
+                  }
+                </textarea
+                  >
+                </fuse-highlight>
+              </mat-tab>
+            </mat-tab-group>
+          </ng-template>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <div fxLayout="row wrap" fxLayoutAlign="start" fxFlex="100">
+    <div fxLayout="column" fxFlex="50">
+      <mat-card class="p-0 mb-16 mr-8">
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title py-8 pr-8 pl-16"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2 class="primary-heading font-weight-600">
+              Mat Select With Settings
+            </h2>
+          </div>
+          <button
+            mat-icon-button
+            aria-label="Click to view code"
+            class="action-icon"
+            (click)="_toggleView('settings_dropdown')"
+            [matTooltip]="
+              _getViewType('settings_dropdown') === _viewType.CONTROL
+                ? 'View Code'
+                : 'Hide Code'
+            "
+          >
+            <i aria-hidden="true" class="fa-light fa-code icon-fill"></i>
+          </button>
+        </header>
+        <div fxLayout="column" class="px-16">
+          <div
+            fxLayout="column"
+            *ngIf="
+              _getViewType('settings_dropdown') === _viewType.CONTROL;
+              else _code3
+            "
+          >
+            <mat-form-field appearance="fill" class="w-50-p">
+              <mat-label>Practice settings</mat-label>
+              <mat-select [formControl]="_settingFormControl" multiple>
+                <mat-option
+                  class="line-height-inherit"
+                  *ngFor="let setting of settingList"
+                  [value]="setting"
+                >
+                  <mat-chip-list>
+                    <mat-chip
+                      class="exxat-{{ setting.color }}-bg"
+                      [attr.aria-label]="setting.title"
+                      fontColor
+                    >
+                      {{ setting.title }}</mat-chip
+                    >
+                  </mat-chip-list>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div
+              fxLayout="column"
+              *ngIf="(selectedSettings$ | async)?.length > 0"
+              class="mb-16"
+            >
+              <mat-chip-list aria-label="Selected">
+                <mat-chip
+                  class="exxat-{{ item.color }}-bg"
+                  [attr.aria-label]="item.title"
+                  fontColor
+                  *ngFor="let item of selectedSettings$ | async"
+                >
+                  {{ item.title }}</mat-chip
+                >
+              </mat-chip-list>
+            </div>
+          </div>
+          <ng-template #_code3>
+            <mat-tab-group>
+              <mat-tab label="HTML">
+                <fuse-highlight
+                  lang="html"
+                  class="source-code my-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                    <mat-form-field appearance="fill" class="w-50-p">
+                      <mat-label>Practice settings</mat-label>
+                      <mat-select [formControl]="_settingFormControl" multiple>
+                        <mat-option class="line-height-inherit"
+                          *ngFor="let setting of settingList"
+                          [value]="setting">
+                          <mat-chip-list>
+                            <mat-chip class="exxat- setting.color -bg" [attr.aria-label]="setting.title" fontColor>
+                               setting.title </mat-chip>
+                          </mat-chip-list>
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <div
+                    fxLayout="column"
+                    *ngIf="(selectedSettings$ | async)?.length > 0"
+                    class="mb-16">
+                    <mat-chip-list aria-label="Selected">
+                      <mat-chip
+                        class="exxat-item.color-bg"
+                        [attr.aria-label]="item.title"
+                        fontColor
+                        *ngFor="let item of selectedSettings$ | async">
+                         item.title
+                      </mat-chip>
+                    </mat-chip-list>
+                    </div> 
+
+              </textarea
+                  >
+                </fuse-highlight>
+              </mat-tab>
+              <mat-tab label="TS">
+                <fuse-highlight
+                  lang="ts"
+                  class="source-code my-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                  import {Component, OnInit} from '@angular/core';
+                  import {FormControl, Validators} from '@angular/forms';
+
+                  interface SettingItem {
+                    title: string;
+                    color: string;
+                  }
+                  
+                  @Component({
+                    selector: 'dropdown-component',
+                    templateUrl: 'dropdown-component.html',
+                  })
+                  export class DropdownComponent implements OnInit {
+                    _settingFormControl = new FormControl('', [Validators.required]);
+
+                    selectedSettings = new BehaviorSubject<Array<SettingItem>>(
+                      new Array<SettingItem>()
+                    );
+                  
+                    selectedSettings$ = this.selectedSettings.asObservable();
+
+                    settingList: Array<SettingItem> = [
+                      { title: 'General Rehab Outpatient', color: 'orange' },
+                      { title: 'OP-Vestibular', color: 'orange-peel' },
+                      { title: 'Nursing Facility', color: 'tapestry' },
+                      { title: 'Sports Res', color: 'keppel' },
+                      { title: 'IP - Pediatrics', color: 'tall-poppy' },
+                      { title: 'SNF/Sub-Acute/Acute Long-Term Care', color: 'robin-egg-blue' },
+                      { title: 'Outpatient Hands', color: 'persian-green' },
+                      { title: 'Inpatient Acute', color: 'dodger-blue-dark' },
+                      { title: 'College Health Services', color: 'bay-leaf' },
+                      { title: 'Mobile Health Care', color: 'mandy' },
+                      { title: 'Home Health', color: 'silver-chalice-dark' },
+                      { title: 'Behavioral Health Community', color: 'amaranth' },
+                    ];
+
+                    ngOnInit()
+                    {
+                      this._settingFormControl.valueChanges.subscribe((data) => {
+                        if (data && data !== null) {
+                          this.selectedSettings.next(data);
+                        }
+                      });
+                    }
+                  }
+                </textarea
+                  >
+                </fuse-highlight>
+              </mat-tab>
+            </mat-tab-group>
+          </ng-template>
+        </div>
+      </mat-card>
+    </div>
+    <div fxLayout="column" fxFlex="50">
+      <mat-card class="p-0 mb-16 ml-8">
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title py-8 pr-8 pl-16"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2 class="primary-heading font-weight-600">
+              Mat Select With Tooltip On-Hover of Option
+            </h2>
+          </div>
+          <button
+            mat-icon-button
+            aria-label="Example icon-button with a edit icon"
+            class="action-icon"
+            (click)="_toggleView('tooltip_on_hover_dropdown')"
+            [matTooltip]="
+              _getViewType('tooltip_on_hover_dropdown') === _viewType.CONTROL
+                ? 'View Code'
+                : 'Hide Code'
+            "
+          >
+            <i aria-hidden="true" class="fa-light fa-code icon-fill"></i>
+          </button>
+        </header>
+        <div fxLayout="column" class="px-16">
+          <div
+            fxLayout="column"
+            *ngIf="
+              _getViewType('tooltip_on_hover_dropdown') === _viewType.CONTROL;
+              else _code4
+            "
+          >
+            <mat-form-field appearance="fill" fxFlex="100" class="w-50-p">
+              <mat-label>Mat select with tooltip on-hover of option</mat-label>
+              <mat-select [formControl]="_tooltipHoverFormControl" multiple>
+                <mat-option
+                  *ngFor="let option of optionsList; let i = index"
+                  [ngClass]="{
+                    'mat-option-text ': isOptionTruncated('optionText_' + i)
+                  }"
+                  [value]="option"
+                  id="{{ 'optionText_' + i }}"
+                  class="dropdown-with-tooltip"
+                  [options]="tooltipOptions"
+                  [display]="isOptionTruncated('optionText_' + i)"
+                  [tooltip]="option"
+                >
+                  {{ option }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <ng-template #_code4>
+            <mat-tab-group>
+              <mat-tab label="HTML">
+                <fuse-highlight
+                  lang="html"
+                  class="source-code my-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                    <mat-form-field appearance="fill" fxFlex="100">
+                      <mat-label>Mat select with tooltip on-hover of option</mat-label>
+                      <mat-select [formControl]="_tooltipHoverFormControl" multiple>
+                        <mat-option
+                          *ngFor="let option of optionsList; let i = index"
+                          [ngClass]="{
+                            'mat-option-text ': isOptionTruncated('optionText_' + i)
+                          }"
+                          [value]="option"
+                          id="'optionText_' + i"
+                          class="dropdown-with-tooltip"
+                          [options]="tooltipOptions"
+                          [display]="isOptionTruncated('optionText_' + i)"
+                          [tooltip]="option"
+                        >
+                          option
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+              </textarea
+                  >
+                </fuse-highlight>
+              </mat-tab>
+              <mat-tab label="TS">
+                <fuse-highlight
+                  lang="ts"
+                  class="source-code my-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                  import {Component} from '@angular/core';
+                  import {FormControl, Validators} from '@angular/forms';
+
+                  @Component({
+                    selector: 'dropdown-component',
+                    templateUrl: 'dropdown-component.html',
+                  })
+                  export class DropdownComponent {
+                    _tooltipHoverFormControl = new FormControl('', [Validators.required]);
+
+                    tooltipOptions = {
+                      contentType: 'string',
+                      placement: 'right',
+                      trigger: 'hover',
+                      theme : 'light',
+                      'max-width': '300',
+                      width: '300',
+                      pointerEvents: 'auto',
+                    };
+
+                    optionsList: string[] = [
+                    'Lorem ipsum',
+                    'Lorem ipsum, or lipsum as it is sometimes known',
+                    'Lorem ipsum',
+                    'Lorem ipsum, or lipsum as it is sometimes known',
+                    'Lorem ipsum',
+                    'Lorem ipsum, or lipsum as it is sometimes known',
+                  ];
+
+                  //code for tooltip occours when ellipses occours
+                  isOptionTruncated(elementId: string): boolean {
+                    const elem = document.getElementById(elementId);
+                    if (elem) {
+                      let isBig = elem.scrollWidth > elem.clientWidth;
+                      if (isBig) {
+                        let optionText = Array.from(
+                          elem.getElementsByClassName(
+                            'mat-option-text '
+                          ) as HTMLCollectionOf<HTMLElement>
+                        );
+                        optionText[0].style.overflow = 'hidden !important';
+                        optionText[0].style.textOverflow = 'ellipsis !important';
+                        optionText[0].style.display = 'initial !important';
+                      }
+                      return isBig;
+                    } else {
+                      return false;
+                    }
+                  }
+
+                  }
+                </textarea
+                  >
+                </fuse-highlight>
+              </mat-tab>
+            </mat-tab-group>
+          </ng-template>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <div fxLayout="row wrap" fxLayoutAlign="start" fxFlex="100">
+    <div fxLayout="column" fxFlex="50">
+      <mat-card class="p-0 mb-16 mr-8">
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title py-8 pr-8 pl-16"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2 class="primary-heading font-weight-600">
+              Mat Select With Nested List
+            </h2>
+          </div>
+          <button
+            mat-icon-button
+            aria-label="Click to view code"
+            class="action-icon"
+            (click)="_toggleView('nested_list_dropdown')"
+            [matTooltip]="
+              _getViewType('nested_list_dropdown') === _viewType.CONTROL
+                ? 'View Code'
+                : 'Hide Code'
+            "
+          >
+            <i aria-hidden="true" class="fa-light fa-code icon-fill"></i>
+          </button>
+        </header>
+        <div fxLayout="column" class="px-16">
+          <div
+            fxLayout="column"
+            *ngIf="
+              _getViewType('nested_list_dropdown') === _viewType.CONTROL;
+              else _code5
+            "
+          >
+            <mat-form-field
+              appearance="fill"
+              class="select-form"
+              class="w-50-p"
+            >
+              <mat-label>Themes</mat-label>
+              <mat-select
+                placeholder="Years"
+                name="year"
+                class="filter-select"
+                [formControl]="_nestedFormControl"
+                [compareWith]="equals"
+                multiple
+              >
+                <mat-option #checkAll> Parent 1 </mat-option>
+                <mat-option
+                  *ngFor="let year of years"
+                  [value]="year"
+                  class="pl-40"
+                >
+                  <span>{{ year.viewValue }}</span>
+                </mat-option>
+                <mat-option #checkAll> Parent 2 </mat-option>
+                <mat-option
+                  *ngFor="let year of years"
+                  [value]="year"
+                  class="pl-40"
+                >
+                  <span>{{ year.viewValue }}</span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <ng-template #_code5>
+            <mat-tab-group>
+              <mat-tab label="HTML">
+                <fuse-highlight
+                  lang="html"
+                  class="source-code my-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                    <mat-form-field
+                    appearance="fill"
+                    class="select-form">
+                    <mat-label>Themes</mat-label>
+                    <mat-select
+                      placeholder="Years"
+                      name="year"
+                      class="filter-select"
+                      [formControl]="_nestedFormControl"
+                      [compareWith]="equals"
+                      multiple>
+                      <mat-option #checkAll> Parent 1 </mat-option>
+                      <mat-option
+                        *ngFor="let year of years"
+                        [value]="year"
+                        class="pl-40">
+                        <span>year.viewValue</span>
+                      </mat-option>
+                      <mat-option #checkAll> Parent 2 </mat-option>
+                      <mat-option
+                        *ngFor="let year of years"
+                        [value]="year"
+                        class="pl-40">
+                        <span>year.viewValue</span>
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+
+              </textarea
+                  >
+                </fuse-highlight>
+              </mat-tab>
+              <mat-tab label="TS">
+                <fuse-highlight
+                  lang="ts"
+                  class="source-code my-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                  import {Component, OnInit} from '@angular/core';
+                  import {FormControl, Validators} from '@angular/forms';
+                  
+                  @Component({
+                    selector: 'dropdown-component',
+                    templateUrl: 'dropdown-component.html',
+                  })
+                  export class DropdownComponent implements OnInit {
+
+                    _nestedFormControl = new FormControl('', Validators.required);
+
+                    years: any[];
+
+                    equals(objOne, objTwo) {
+                      if (typeof objOne !== 'undefined' && typeof objTwo !== 'undefined') {
+                        return objOne.id === objTwo.id;
+                      }
+                    }
+
+                    ngOnInit()
+                    {
+                      this.years = [
+                        { id: 1, viewValue: 'Child 1' },
+                        { id: 2, viewValue: 'Child 2' },
+                      ];
+                    }
+                  }
+                </textarea
+                  >
+                </fuse-highlight>
+              </mat-tab>
+            </mat-tab-group>
+          </ng-template>
+        </div>
+      </mat-card>
+    </div>
+    <div fxLayout="column" fxFlex="50">
+      <mat-card class="p-0 mb-16 ml-8">
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title py-8 pr-8 pl-16"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2 class="primary-heading font-weight-600">
+              Mat Select With Search
+            </h2>
+          </div>
+          <button
+            mat-icon-button
+            aria-label="Click to view code"
+            class="action-icon"
+            (click)="_toggleView('search_dropdown')"
+            [matTooltip]="
+              _getViewType('search_dropdown') === _viewType.CONTROL
+                ? 'View Code'
+                : 'Hide Code'
+            "
+          >
+            <i aria-hidden="true" class="fa-light fa-code icon-fill"></i>
+          </button>
+        </header>
+        <div fxLayout="column" class="px-16">
+          <div
+            fxLayout="column"
+            *ngIf="
+              _getViewType('search_dropdown') === _viewType.CONTROL;
+              else _code6
+            "
+          >
+            <mat-form-field class="w-50-p" appearance="fill" fxFlex="100">
+              <mat-label> Mat select with search </mat-label>
+              <mat-select>
+                <mat-option>
+                  <exxat-mat-select-search [formControl]="_searchFormControl">
+                  </exxat-mat-select-search>
+                </mat-option>
+                <mat-option
+                  *ngFor="let item of filteredDropdownSearchData | async"
+                  [value]="item.id"
+                >
+                  {{ item.title }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div class="mb-16" fxLayout="row wrap" fxLayoutAlign="start center">
+              <span class="font-weight-600 mr-8">Note:</span>
+              <ul>
+                <li>
+                  <span class="warn-fg"
+                    ><strong>"ngx-mat-select-search" </strong> is deprecate from
+                    our system, if you have used it please replace with
+                    <strong>"exxat-mat-select-search"</strong></span
+                  >
+                </li>
+                <li>
+                  <span class="warn-fg">
+                    import <strong>"exxat-mat-select-search"</strong> from
+                    <strong>"@exxat/ux"</strong> library.
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <ng-template #_code6>
+            <mat-tab-group>
+              <mat-tab label="HTML">
+                <fuse-highlight
+                  lang="html"
+                  class="source-code my-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                    <mat-form-field appearance="fill" fxFlex="100">
+                      <mat-label> Mat select with search </mat-label>
+                      <mat-select>
+                        <mat-option>
+                          <exxat-mat-select-search [formControl]="_searchFormControl">
+                          </exxat-mat-select-search>
+                        </mat-option>
+                        <mat-option
+                          *ngFor="let item of filteredDropdownSearchData | async"
+                          [value]="item.id"
+                        >
+                          item.title
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+              </textarea
+                  >
+                </fuse-highlight>
+              </mat-tab>
+              <mat-tab label="TS">
+                <fuse-highlight
+                  lang="ts"
+                  class="source-code my-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                  import {Component} from '@angular/core';
+                  import {FormControl, Validators} from '@angular/forms';
+
+                  interface DropdownSearchItem {
+                    id: number;
+                    title: string;
+                  }
+
+                  @Component({
+                    selector: 'dropdown-component',
+                    templateUrl: 'dropdown-component.html',
+                  })
+                  export class DropdownComponent {
+                    _searchFormControl = new FormControl('', [Validators.required]);
+
+                    dropdownSearchData: Array<DropdownSearchItem> = [
+                      {
+                        id: 1,
+                        title: 'Extra cheese',
+                      },
+                      {
+                        id: 2,
+                        title: 'Mushroom',
+                      },
+                      {
+                        id: 3,
+                        title: 'Onion',
+                      },
+                      {
+                        id: 4,
+                        title: 'Pepperoni',
+                      },
+                      {
+                        id: 5,
+                        title: 'Sausage',
+                      },
+                      {
+                        id: 6,
+                        title: 'Tomato',
+                      },
+                    ];
+
+                    filteredDropdownSearchData: Observable<Array<DropdownSearchItem>>;
+
+                    ngOnInit()
+                    {
+                      this.filteredDropdownSearchData = this._searchFormControl.valueChanges.pipe(
+                        startWith(''),
+                        map((value) => this._filterDropdownSearchData(value))
+                      );
+                    }
+
+                    private _filterDropdownSearchData(value: string): Array<DropdownSearchItem> {
+                      const filterValue = value.toLowerCase();
+                  
+                      return this.dropdownSearchData.filter((option) =>
+                        option.title.toLowerCase().includes(filterValue)
+                      );
+                    }
+
+                  }
+                </textarea
+                  >
+                </fuse-highlight>
+              </mat-tab>
+            </mat-tab-group>
+          </ng-template>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <div fxLayout="row wrap" fxLayoutAlign="start" fxFlex="100">
+    <div fxLayout="column" fxFlex="50">
+      <mat-card class="p-0 mb-16 mr-8">
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title py-8 pr-8 pl-16"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2 class="primary-heading font-weight-600">
+              Mat Multi Select With Search
+            </h2>
+          </div>
+          <button
+            mat-icon-button
+            aria-label="Click to view code"
+            class="action-icon"
+            (click)="_toggleView('multi_select_search_dropdown')"
+            [matTooltip]="
+              _getViewType('multi_select_search_dropdown') === _viewType.CONTROL
+                ? 'View Code'
+                : 'Hide Code'
+            "
+          >
+            <i aria-hidden="true" class="fa-light fa-code icon-fill"></i>
+          </button>
+        </header>
+        <div fxLayout="column" class="px-16">
+          <div
+            fxLayout="column"
+            *ngIf="
+              _getViewType('multi_select_search_dropdown') ===
+                _viewType.CONTROL;
+              else _code7
+            "
+          >
+            <mat-form-field appearance="fill" fxFlex="100" class="w-50-p">
+              <mat-label> Mat multi select with search </mat-label>
+              <mat-select
+                [formControl]="_multiSearchFormControl"
+                [multiple]="true"
+                #multiSelect
+              >
+                <mat-option>
+                  <exxat-mat-select-search
+                    [formControl]="_multiFilterFormControl"
+                    (toggleAll)="toggleSelectAll($event)"
+                  >
+                  </exxat-mat-select-search>
+                </mat-option>
+                <mat-option
+                  tabindex="0"
+                  *ngFor="
+                    let item of filteredMultiSearchData | async;
+                    let i = index
+                  "
+                  [ngClass]="{
+                    'mat-option-text ': isOptionTruncated(
+                      'optionText_' + 'id_' + item.id + '_' + item.title
+                    )
+                  }"
+                  [value]="item"
+                  id="{{ 'optionText_' + 'id_' + item.id + '_' + item.title }}"
+                  class="dropdown-with-tooltip"
+                  [options]="tooltipOptions"
+                  [display]="
+                    isOptionTruncated(
+                      'optionText_' + 'id_' + item.id + '_' + item.title
+                    )
+                  "
+                  [tooltip]="item.title"
+                >
+                  {{ item.title }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div class="mb-16" fxLayout="row wrap" fxLayoutAlign="start center">
+              <span class="font-weight-600 mr-8">Note:</span>
+              <ul>
+                <li>
+                  <span class="warn-fg"
+                    ><strong>"ngx-mat-select-search" </strong> is deprecate from
+                    our system, if you have used it please replace with
+                    <strong>"exxat-mat-select-search"</strong></span
+                  >
+                </li>
+                <li>
+                  <span class="warn-fg">
+                    import <strong>"exxat-mat-select-search"</strong> from
+                    <strong>"@exxat/ux"</strong> library.
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <ng-template #_code7>
+            <mat-tab-group>
+              <mat-tab label="HTML">
+                <fuse-highlight
+                  lang="html"
+                  class="source-code my-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                    <mat-form-field appearance="fill" fxFlex="100">
+                      <mat-label> Mat multi select with search </mat-label>
+                      <mat-select
+                        [formControl]="_multiSearchFormControl"
+                        [multiple]="true"
+                        #multiSelect
+                      >
+                        <mat-option>
+                          <exxat-mat-select-search
+                            [formControl]="_multiFilterFormControl"
+                            (toggleAll)="toggleSelectAll($event)"
+                          >
+                          </exxat-mat-select-search>
+                        </mat-option>
+                        <mat-option
+                          *ngFor="
+                            let item of filteredMultiSearchData | async;
+                            let i = index
+                          "
+                          tabindex="0"
+                          attr.aria-label="item"
+                          [ngClass]="{
+                            'mat-option-text ': isOptionTruncated(
+                              'optionText_' + 'id_' + item.id + '_' + item.title
+                            )
+                          }"
+                          [value]="item"
+                          id="'optionText_' + 'id_' + item.id + '_' + item.title"
+                          class="dropdown-with-tooltip"
+                          [options]="tooltipOptions"
+                          [display]="
+                            isOptionTruncated(
+                              'optionText_' + 'id_' + item.id + '_' + item.title
+                            )
+                          "
+                          [tooltip]="item.title"
+                        >
+                          item.title
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+
+              </textarea
+                  >
+                </fuse-highlight>
+              </mat-tab>
+              <mat-tab label="TS">
+                <fuse-highlight
+                  lang="ts"
+                  class="source-code my-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                  import {Component, OnInit} from '@angular/core';
+                  import {FormControl, Validators} from '@angular/forms';
+                  import { ToggleAllType } from '@exxat/ux';
+                  import { BehaviorSubject, Observable, Subject } from 'rxjs';
+                  import { map, startWith, take, takeUntil } from 'rxjs/operators'; 
+                  
+                  export class DropdownSearchItem {
+                    id: number;
+                    title: string;
+                  }
+
+                  @Component({
+                    selector: 'dropdown-component',
+                    templateUrl: 'dropdown-component.html',
+                  })
+                  export class DropdownComponent implements OnInit {
+
+                    _multiSearchFormControl = new FormControl('', Validators.required);
+                    _multiFilterFormControl = new FormControl('', Validators.required);
+
+                    tooltipOptions = {
+                      contentType: 'string',
+                      placement: 'right',
+                      trigger: 'hover',
+                      theme : 'light',
+                      'max-width': '300',
+                      width: '300',
+                      pointerEvents: 'auto',
+                    };
+
+                    // Dropdown With Search Data
+                    multiSearchData: Array<DropdownSearchItem> = [
+                      {
+                        id: 1,
+                        title: 'Extra cheese',
+                      },
+                      {
+                        id: 2,
+                        title: 'Mushroom',
+                      },
+                      {
+                        id: 3,
+                        title: 'Onion',
+                      },
+                      {
+                        id: 4,
+                        title: 'Lorem ipsum, or lipsum as it is sometimes known',
+                      },
+                      {
+                        id: 5,
+                        title: 'Sausage',
+                      },
+                      {
+                        id: 6,
+                        title: 'Lorem ipsum, or lipsum as it is sometimes known',
+                      },
+                    ];
+
+                    /** Subject that emits when the component has been destroyed. */
+                    protected _onDestroy = new Subject<void>();
+                  
+                    filteredMultiSearchData: Observable<Array<DropdownSearchItem>>;
+
+                    ngOnInit()
+                    {
+                      this.filteredMultiSearchData =
+                      this._multiFilterFormControl.valueChanges.pipe(
+                        startWith(''),
+                        map((value) => this._filterMultiSearchData(value))
+                      );
+                    }
+
+                    private _filterMultiSearchData(value: string): Array<DropdownSearchItem> {
+                      const filterValue = value.toLowerCase();
+                  
+                      return this.multiSearchData.filter((option) =>
+                        option.title.toLowerCase().includes(filterValue)
+                      );
+                    }
+                  
+                    toggleSelectAll($event: ToggleAllType) {
+                      this._multiSearchFormControl.patchValue(<any>$event.values);
+                    }
+                  }
+                </textarea
+                  >
+                </fuse-highlight>
+              </mat-tab>
+            </mat-tab-group>
+          </ng-template>
+        </div>
+      </mat-card>
+    </div>
+    <div fxLayout="column" fxFlex="50">
+      <mat-card class="p-0 my-16 ml-8">
+        <header
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="card-header-title py-8 pr-8 pl-16"
+        >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <h2 class="primary-heading font-weight-600">
+              Mat Select With Footer
+            </h2>
+          </div>
+          <button
+            mat-icon-button
+            aria-label="Click to view code"
+            class="action-icon"
+            (click)="_toggleView('select_with_footer_dropdown')"
+            [matTooltip]="
+              _getViewType('select_with_footer_dropdown') === _viewType.CONTROL
+                ? 'View Code'
+                : 'Hide Code'
+            "
+          >
+            <i aria-hidden="true" class="fa-light fa-code icon-fill"></i>
+          </button>
+        </header>
+        <div fxLayout="column" class="px-16">
+          <div
+            fxLayout="column"
+            *ngIf="
+              _getViewType('select_with_footer_dropdown') === _viewType.CONTROL;
+              else _code8
+            "
+          >
+            <mat-form-field appearance="fill" class="w-50-p">
+              <mat-label>Mat Select With Footer</mat-label>
+              <mat-select
+                panelClass="select-with-footer"
+                [formControl]="_categoryFormControl"
+              >
+                <div class="custom-panel">
+                  <mat-option
+                    *ngFor="let item of categoryListData"
+                    [value]="item.id"
+                    >{{ item.title }}</mat-option
+                  >
+                </div>
+                <footer>
+                  <div fxLayout="row" fxLayoutAlign="start center">
+                    <button class="link-btn ml-8 mt-8">
+                      <div fxLayout="row" fxLayoutAlign="start center">
+                        <i
+                          aria-hidden="true"
+                          class="fa-light fa-plus s-18 mr-4"
+                        ></i>
+                        <span class="font-weight-600">Add New Category</span>
+                      </div>
+                    </button>
+                  </div>
+                </footer>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <ng-template #_code8>
+            <mat-tab-group>
+              <mat-tab label="HTML">
+                <fuse-highlight
+                  lang="html"
+                  class="source-code my-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                      <mat-form-field appearance="fill" class="w-50-p">
+                        <mat-label>Mat Select With Footer</mat-label>
+                        <mat-select
+                          panelClass="select-with-footer"
+                          [formControl]="_categoryFormControl"
+                        >
+                          <div class="custom-panel">
+                            <mat-option
+                              *ngFor="let item of categoryListData"
+                              [value]="item.id"
+                              >item.title</mat-option
+                            >
+                          </div>
+                          <footer>
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                              <button class="link-btn ml-8 mt-8">
+                                <div fxLayout="row" fxLayoutAlign="start center">
+                                  <i
+                                    aria-hidden="true"
+                                    class="fa-light fa-plus s-18 mr-4"
+                                  ></i>
+                                  <span class="font-weight-600">Add New Category</span>
+                                </div>
+                              </button>
+                            </div>
+                          </footer>
+                        </mat-select>
+                      </mat-form-field>
+              </textarea
+                  >
+                </fuse-highlight>
+              </mat-tab>
+              <mat-tab label="TS">
+                <fuse-highlight
+                  lang="ts"
+                  class="source-code my-16"
+                  fxLayout="column"
+                  fxLayoutAlign="center"
+                >
+                  <textarea #source hidden="hidden">
+                  import {Component} from '@angular/core';
+                  import {FormControl, Validators} from '@angular/forms';
+
+                  @Component({
+                    selector: 'dropdown-component',
+                    templateUrl: 'dropdown-component.html',
+                  })
+                  export class DropdownComponent {
+                      _categoryFormControl = new FormControl('', Validators.required);
+                      // Category List Data
+
+                        categoryListData = [
+                          {
+                            id: 1,
+                            title: 'Health & Immunization',
+                          },
+                          {
+                            id: 2,
+                            title: 'Insurance & Liability Coverage',
+                          },
+                          {
+                            id: 3,
+                            title: 'Membership & Licensure',
+                          },
+                          {
+                            id: 4,
+                            title: 'Attestations & Acknowledgements',
+                          },
+                          {
+                            id: 5,
+                            title: 'Certifications & Trainings',
+                          },
+                          {
+                            id: 6,
+                            title: 'Verification / Identity Documents',
+                          },
+                          {
+                            id: 7,
+                            title: 'Additional Documents',
+                          },
+                          {
+                            id: 8,
+                            title: 'Annual Physical',
+                          },
+                          {
+                            id: 9,
+                            title: 'Covid-19 Test',
+                          },
+                          {
+                            id: 10,
+                            title: 'Covid-19 Vaccination',
+                          },
+                        ];
+                  }
+                </textarea
+                  >
+                </fuse-highlight>
+              </mat-tab>
+            </mat-tab-group>
+          </ng-template>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,259 @@
+<div id="rotation-drawer" class="drawer-p page-layout carded fullwidth inner-scroll " >
+
+  <div class="center p-0 ">
+  <div class="pb-16">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div>
+        <h4 class="font-weight-600">Rotation 1</h4>
+      </div>
+      
+      <div fxHide.lt-md>
+        <div class="header-icon">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          
+            <div fxLayout="row" fxLayoutAlign="center center" class="mr-12">
+              <mat-icon role="img" class="mat-icon  material-icons green-fg mr-4" aria-hidden="true">check_circle
+              </mat-icon>
+              <span>Sgr</span>
+            </div>
+         
+            <div fxLayout="row" fxLayoutAlign="center center" class="mr-12">
+              <mat-icon _ngcontent-frt-c398="" role="img" class="mat-icon  material-icons green-fg mr-4" aria-hidden="true">check_circle
+              </mat-icon>
+              <span>I Med</span>
+            </div>
+        
+            <div fxLayout="row" fxLayoutAlign="center center" class="mr-12">
+              <mat-icon _ngcontent-frt-c398="" role="img" class="mat-icon  material-icons green-fg mr-4" aria-hidden="true">check_circle
+              </mat-icon>
+              <span>F Med</span>
+            </div>
+     
+            <div fxLayout="row" fxLayoutAlign="center center" class="mr-12">
+              <mat-icon _ngcontent-frt-c398="" role="img" class="mat-icon  material-icons green-fg mr-4" aria-hidden="true">check_circle
+              </mat-icon>
+              <span>Endo</span>
+            </div>
+      
+            <div fxLayout="row" fxLayoutAlign="center center" class="mr-12">
+              <mat-icon _ngcontent-frt-c398="" role="img" class="mat-icon material-icons warn-fg mr-4" aria-hidden="true">cancel
+              </mat-icon>
+              <span>Sgr</span>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="center center" class="mr-12">
+              <mat-icon _ngcontent-frt-c398="" role="img" class="mat-icon material-icons warn-fg mr-4" aria-hidden="true">cancel
+              </mat-icon>
+              <span>I Med</span>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="center center" class="mr-12">
+              <mat-icon _ngcontent-frt-c398="" role="img" class="mat-icon material-icons warn-fg mr-4" aria-hidden="true">cancel
+              </mat-icon>
+              <span>F Med</span>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <mat-icon _ngcontent-frt-c398="" role="img" class="mat-icon material-icons warn-fg mr-4" aria-hidden="true">cancel
+              </mat-icon>
+              <span>Endo</span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-card ">
+  <div class="py-16 pl-16">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center ">
+    
+        <div class="search-wrapper search-grid">
+          <div class="search"  fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="s-16 secondary-text">search</mat-icon>
+            <input type="text" placeholder="Search">
+          </div>
+        </div>
+     
+        <div fxLayout="row" fxLayoutAlign="center center" fxHide.lt-sm class="pr-16">
+          
+          
+          <div class="header-filters custom-dropdown">
+            <mat-form-field >
+              <mat-select placeholder="Setting" [formControl]="settingcontrol" multiple>
+                <mat-select-trigger>
+                  {{settingcontrol.value ? settingcontrol.value[0] : ''}}
+                  <span *ngIf="settingcontrol.value?.length > 1" class="example-additional-selection">
+                    (+{{settingcontrol.value.length - 1}}
+                    {{settingcontrol.value?.length === 2 ? 'other' : 'others'}})
+                  </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let setting of settings" [value]="setting.value">{{setting.viewValue}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="header-filters custom-dropdown">
+            <mat-form-field>
+              <mat-select placeholder="Site Catagory" [formControl]="sitecontrol" multiple>
+                <mat-select-trigger>
+                  {{sitecontrol.value ? sitecontrol.value[0] : ''}}
+                  <span *ngIf="sitecontrol.value?.length > 1" class="example-additional-selection">
+                    (+{{sitecontrol.value.length - 1}}
+                    {{sitecontrol.value?.length === 2 ? 'other' : 'others'}})
+                  </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let site of sites" [value]="site.value">{{site.viewValue}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="header-filters custom-dropdown">
+            <mat-form-field >
+              <mat-select placeholder="Status" [formControl]="statuscontrol" multiple>
+                <mat-select-trigger>
+                  {{statuscontrol.value ? statuscontrol.value[0] : ''}}
+                  <span *ngIf="statuscontrol.value?.length > 1" class="example-additional-selection">
+                    (+{{statuscontrol.value.length - 1}}
+                    {{statuscontrol.value?.length === 2 ? 'other' : 'others'}})
+                  </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let status of status" [value]="status.value">{{status.viewValue}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="header-filters custom-dropdown">
+            <mat-form-field >
+              <mat-select placeholder="Slot Type" [formControl]="slotcontrol" multiple>
+                <mat-select-trigger>
+                  {{slotcontrol.value ? slotcontrol.value[0] : ''}}
+                  <span *ngIf="slotcontrol.value?.length > 1" class="example-additional-selection">
+                    (+{{slotcontrol.value.length - 1}}
+                    {{slotcontrol.value?.length === 2 ? 'other' : 'others'}})
+                  </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let slot of slots" [value]="slot.value">{{slot.viewValue}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+        </div>
+   
+    </div>
+  </div>
+
+ <mat-divider></mat-divider>
+
+<!--drawer content-->
+  <div class="content drawer-table" >
+    <table mat-table [dataSource]="dataSource" class=" w-100-p exxat-table pt-0">
+
+      <!--rank cloumn-->
+      <ng-container matColumnDef="rank">
+        <th class="pl-16" mat-header-cell *matHeaderCellDef> Rank</th>
+        <td mat-cell *matCellDef="let element" class="pl-16">
+          <div fxLayout="column" fxLayoutAlign="center start">
+            <span class="font-16"> {{element.rank}}</span>
+            <span class="font-16"> {{element.ranktype}}</span>
+          </div>
+        </td>
+      </ng-container>
+
+       <!--Site Details cloumn-->
+      <ng-container matColumnDef="siteDetails">
+        <th  mat-header-cell *matHeaderCellDef> Site details
+        </th>
+        <td mat-cell  *matCellDef="let element">
+          <div fxLayout="column" fxLayoutAlign="center start">
+            <h3> {{element.siteDetailTitle}}</h3>
+            <span class="font-16"> {{element.address}}</span>
+            <div fxLayout="row" fxLayoutAlign="start center" class="mt-8 spacing-wraper">
+               <div class="font-16"><a href=""> {{element.viewNotes}}</a></div>
+            
+               <div class="font-16 status-badge {{element.getStarted}}">
+                {{element.badgeValue1}}
+               </div>
+               <div fxLayout="row" fxLayoutAlign="start center" class="mt-8 status-badge {{element.getStarted}}">
+                <mat-icon _ngcontent-frt-c398="" role="img" class="mat-icon  material-icons green-fg" aria-hidden="true">{{element.matIconValue2}}
+                </mat-icon>
+               <span class="font-16"> {{element.badgeValue2}}</span>
+             </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" class="mt-8 status-badge {{element.expiring}}">
+                <mat-icon _ngcontent-frt-c398="" role="img" class="mat-icon  material-icons warn-fg mr-4" aria-hidden="true">{{element.matIconValue}}
+                </mat-icon>
+                <span class="font-16"> {{element.badgeValue3}}</span>
+            </div>
+            <span class="mt-8 warn-fg font-16"> {{element.text}}</span>
+          </div>
+        </td>
+      </ng-container>
+
+      <!--Distance column-->
+      <ng-container matColumnDef="distance">
+        <th  mat-header-cell *matHeaderCellDef>
+           Distance
+        </th>
+        <td mat-cell  *matCellDef="let element"> <span class="font-16">{{element.distance}} </span></td>
+      </ng-container>
+
+       <!--setting column-->
+      <ng-container matColumnDef="setting">
+        <th class=""  mat-header-cell *matHeaderCellDef>
+          Setting </th>
+          <td mat-cell  *matCellDef="let element">
+            <div class="message-box {{element.statusClass}} placement-message-box">
+              <span class="font-16">{{element.setting}}</span>
+            </div>
+          </td>
+      </ng-container>
+
+        <!--student preference column-->
+      <ng-container matColumnDef="studentpreferences">
+        <th class=""  mat-header-cell *matHeaderCellDef>
+          Student preferences </th>
+        <td mat-cell  *matCellDef="let element">
+          <span class="font-22"> <a> {{element.studentpreferences}}</a></span>
+        </td>
+      </ng-container>
+
+
+       <!--students placed column-->
+      <ng-container matColumnDef="studentplaced">
+        <th class=""  mat-header-cell *matHeaderCellDef>
+          Students placed </th>
+        <td mat-cell  *matCellDef="let element">
+         <span class="font-22"> <a> {{element.studentplaced}}</a></span>
+         </td>
+      </ng-container>
+
+      <ng-container matColumnDef="slotsavailable">
+        <th class=""  mat-header-cell *matHeaderCellDef>
+          Slots available </th>
+        <td mat-cell  *matCellDef="let element">
+          <span class="font-22"><a> {{element.slotsavailable}} </a></span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th class=""  mat-header-cell *matHeaderCellDef>
+         Action </th>
+        <td mat-cell  *matCellDef="let element"> 
+          <button mat-raised-button color="primary" class="font-16">Select</button>
+        </td>
+      </ng-container>
+
+     
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+    </table>
+
+  </div>
+  </div>
+</div>
+</div>
