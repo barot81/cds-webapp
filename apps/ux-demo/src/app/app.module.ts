@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { Bootstrap } from '@zhealthcare/bootstrap';
+import { ZhealthcareAngularBootstrapLegacyModule } from '@zhealthcare-common/angular-bootstrap-legacy';
 import { AppComponent } from './app.component';
 @NgModule({
-  imports: [Bootstrap],
+  imports: [ZhealthcareAngularBootstrapLegacyModule],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
 })

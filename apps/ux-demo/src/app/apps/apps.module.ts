@@ -590,7 +590,7 @@ const appRoutes: Routes = [
     HomeScreenDemoModule,
     SessionTimeOutModule,
     ComplianceSummaryGridModule,
-    StickyTableHeaderLayoutModule,
+    StickyTableHeaderLayoutModule
   ],
   providers: [GridService, NotificationService],
   exports: [

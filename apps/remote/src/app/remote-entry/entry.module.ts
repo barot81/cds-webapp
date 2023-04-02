@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { RemoteEntryComponent } from './entry.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
+import { AuthGuardService, loadRemoteModuleFromDefinitions } from '@zhealthcare/fusion/core';
 
 @NgModule({
   declarations: [RemoteEntryComponent, NxWelcomeComponent],
@@ -13,6 +14,16 @@ import { NxWelcomeComponent } from './nx-welcome.component';
       {
         path: '',
         component: RemoteEntryComponent,
+      },
+      {
+        path: 'ux',
+        loadChildren: () =>
+          loadRemoteModuleFromDefinitions(
+            'ux-demo',
+            './UxDemoModule',
+            'UxDemoModule'
+          ),
+        canActivate: [AuthGuardService],
       },
     ]),
   ],

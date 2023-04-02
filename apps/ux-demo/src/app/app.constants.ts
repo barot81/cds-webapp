@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
-import { RoleConfigType } from '@zhealthcare/bootstrap';
-import { AuthGuardService } from '@zhealthcare/fusion/core';
+import { RoleConfigType } from '@zhealthcare-common/angular-bootstrap-legacy';
 import { UserPersona } from '@zhealthcare/fusion/models';
-import { loadRemoteModule } from '@nrwl/angular/mf';
 
 const routes: Routes = [
   {

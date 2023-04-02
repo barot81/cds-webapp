@@ -27,9 +27,8 @@ export class zhealthcareComplianceTabNavbarComponent implements OnInit {
     }
   ]
 
-  constructor() { }
-
   ngOnInit() {
+    console.log("");
   }
 
 }

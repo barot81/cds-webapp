@@ -5,10 +5,9 @@ import { zhealthcareComplianceTabNavbarComponent } from './zhealthcare-complianc
 import { MaterialModule } from '@zhealthcare/ux';
 
 @NgModule({
-    imports: [CommonModule, MaterialModule, RouterModule],
-    exports: [zhealthcareComplianceTabNavbarComponent],
-    declarations: [zhealthcareComplianceTabNavbarComponent],
-    providers: [],
-  })
-  export class zhealthcareComplianceTabNavBarModule { }
-  
+  imports: [CommonModule, MaterialModule, RouterModule],
+  exports: [zhealthcareComplianceTabNavbarComponent],
+  declarations: [zhealthcareComplianceTabNavbarComponent],
+  providers: [],
+})
+export class zhealthcareComplianceTabNavBarModule {}

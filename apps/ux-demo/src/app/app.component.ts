@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { routes, roles } from './app.constants';
+import { navigations } from './nav/navigations';
+
+import { roleConfig, routes } from './routes/app-routes';
 
 @Component({
   selector: 'v4-app-root',
@@ -8,5 +10,6 @@ import { routes, roles } from './app.constants';
 })
 export class AppComponent {
   routes = routes;
-  roles = roles;
+  roleConfig = roleConfig;
+  navigations = navigations
 }
