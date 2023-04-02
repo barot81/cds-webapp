@@ -15,7 +15,7 @@ import {
   GlobalVariable,
   Logger,
 } from '@zhealthcare/fusion/core';
-import { NavigationChangeDetector, ProductNavigation, UserPersona } from '@zhealthcare/fusion/models';
+import { NavigationChangeDetector, UserPersona } from '@zhealthcare/fusion/models';
 import { FusionNavigationService } from '@zhealthcare/fusion/services';
 import { SplashScreenService } from '@zhealthcare/ux';
 import {
@@ -41,7 +41,6 @@ export class ZhealthcareAngularBootstrapLegacyComponent implements OnInit, OnCha
 
   fuseConfig: any;
   currentUrl: any = '';
-  navigation: ProductNavigation[];
   showNotification = true;
   click$: Observable<any>;
   versionCheckFrequency = 1000 * 60;
