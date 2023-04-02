@@ -65,7 +65,7 @@ export class AuthSandbox {
     // const selectedTenantId = this.userTypeService.currentTenantId;
     // const selectedOucode = this.userTypeService.currentOucode;
     // const isFaculty = this.userTypeService.isFacultyPersonaSelected();
-    console.log(navigations);
+    // console.log(navigations);
     return of(<NavigationChangeDetector>navigations);
   }
 

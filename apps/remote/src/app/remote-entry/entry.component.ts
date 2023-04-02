@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PageFacade } from '@zhealthcare/ux';
 
 @Component({
   selector: 'remote-entry',
@@ -20,4 +21,9 @@ import { Component } from '@angular/core';
   }
   `]
 })
-export class RemoteEntryComponent {}
+export class RemoteEntryComponent {
+
+  constructor(private pageFacade: PageFacade) {
+    this.pageFacade.setPageTitle('Patients');
+  }
+}

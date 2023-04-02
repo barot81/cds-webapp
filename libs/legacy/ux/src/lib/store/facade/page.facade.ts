@@ -7,14 +7,13 @@ import { Subject } from 'rxjs';
 import { Title } from '@angular/platform-browser';
 import { FusionNavigationService } from '@zhealthcare/fusion/services';
 import { NavigationItem } from '@zhealthcare/fusion/models';
-import { tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'any' })
 export class PageFacade {
   private _unsubscribe: Subject<any>;
   pageTitle$ = this.store.pipe(select(pageQuery.getPageTitle));
 
-  browserTitlePrefix: string = 'zhealthcare - ';
+  browserTitlePrefix: string = 'z-healthcare - ';
   constructor(
     private store: Store<PageFacade>,
     private titleService: Title,
