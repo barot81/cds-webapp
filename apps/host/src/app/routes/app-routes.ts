@@ -5,42 +5,27 @@ import {
   loadRemoteModuleFromDefinitions,
 } from '@zhealthcare/fusion/core';
 import { UserPersona } from '@zhealthcare/fusion/models';
-import { navigations } from '../nav/navigations';
 const routes: Routes = [
   {
-    path: 'admin/remote-legacy-home',
+    path: 'admin/remote-home',
     loadChildren: () =>
       loadRemoteModuleFromDefinitions(
-        'remote-legacy',
+        'remote',
         './Module',
         'RemoteEntryModule'
       ),
     canActivate: [AuthGuardService],
   },
-  {
-    path: '',
-    children: [
-      {
-        path: '',
-        loadChildren: () =>
-          import('@zhealthcare-common/angular-bootstrap').then(
-            (m) => m.ZhealthcareAngularBootstrapModule
-          ),
-        data: { navigations: navigations },
-        canActivate: [AuthGuardService],
-      }
-    ],
-  },
-  {
-    path: 'student/remote-legacy-home',
-    loadChildren: () =>
-      loadRemoteModuleFromDefinitions(
-        'remote-legacy',
-        './Module',
-        'RemoteEntryModule'
-      ),
-    canActivate: [AuthGuardService],
-  },
+  // {
+  //   path: 'student/remote-home',
+  //   loadChildren: () =>
+  //     loadRemoteModuleFromDefinitions(
+  //       'remote',
+  //       './Module',
+  //       'RemoteEntryModule'
+  //     ),
+  //   canActivate: [AuthGuardService],
+  // },
   {
     path: '**',
     redirectTo: 'dashboard',
@@ -49,7 +34,7 @@ const routes: Routes = [
 ];
 
 const roleConfig: RoleConfigType = {
-  [UserPersona.Administrator]: ['/admin/remote-legacy-home'],
-  [UserPersona.Student]: ['/student/remote-legacy-home'],
+  [UserPersona.Administrator]: ['/admin/remote-home']
+  // [UserPersona.Student]: ['/student/remote-home'],
 };
 export { routes, roleConfig };

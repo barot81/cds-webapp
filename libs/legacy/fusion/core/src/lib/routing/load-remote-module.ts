@@ -1,5 +1,4 @@
 import { loadRemoteModule, setRemoteDefinitions } from '@nrwl/angular/mf';
-import lodash from 'lodash';
 
 import { microfrontends } from '../configuration/fusion-config.service';
 import { MicroFrontEnds } from '../configuration/types/app-settings';

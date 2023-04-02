@@ -79,7 +79,7 @@ export class FusionModule {
     setAppInjector(injector);
     if (parentModule) {
       throw new Error(
-        'FuseModule is already loaded. Import it in the AppModule only!'
+        'Fusion Module is already loaded. Import it in the AppModule only!'
       );
     }
   }

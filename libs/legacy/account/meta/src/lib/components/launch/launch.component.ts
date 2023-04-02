@@ -29,7 +29,7 @@ import {
 } from '@zhealthcare/ux';
 import lodash from 'lodash';
 import { lastValueFrom, Observable, of, Subject } from 'rxjs';
-import { map, take, takeUntil } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 import { MetaSandbox } from '../../meta.sandbox';
 import { ProfileDataSource } from '../../models/datasource';
 import { BrowserStorage } from '../../models/storage.model';
@@ -60,7 +60,7 @@ export class LaunchComponent
   tenantList: any;
   selectedTenant: TenantWithOuCodeTree;
   isLoading = false;
-  inProgressCount: number = 0;
+  inProgressCount = 0;
   storage: BrowserStorage;
   selectedProgramOucode;
   oucodeTree: OuCodeAccessTree[];
@@ -145,24 +145,7 @@ export class LaunchComponent
   }
 
   private navigateByUserType() {
-    if (this.router.url === URLConstants.LAUNCH_URL) {
-      this.userState.UserState$.pipe(take(1)).subscribe((data) => {
-        const userRoleTypes = data.user.UserRoles.filter(
-          (x) =>
-            x.UserType !== null &&
-            !x.RoleCode.includes(MetaConstants.VIEW_AS_STUDENT_ROLE_CODE)
-        ).map((x) => x.UserType.toLowerCase());
-        if (userRoleTypes.findIndex((x) => x.includes('delegate')) > -1) {
-          this.router.navigateByUrl(URLConstants.DELEGATOR_LAUNCH_URL);
-        } else if (userRoleTypes.findIndex((x) => x.includes('student')) > -1) {
-          this.router.navigateByUrl(URLConstants.STUDENT_LAUNCH_URL);
-        } else if (userRoleTypes.findIndex((x) => x.includes('faculty')) > -1) {
-          this.router.navigateByUrl(URLConstants.FACULTY_LAUNCH_URL);
-        } else {
-          this.router.navigateByUrl(URLConstants.ADMIN_LAUNCH_URL);
-        }
-      });
-    }
+      this.router.navigateByUrl(URLConstants.ADMIN_LAUNCH_URL);
   }
 
   protected getRoleDocument(
@@ -294,13 +277,13 @@ export class LaunchComponent
     let targetUrl: string;
 
     if (selectedUserType) this.userTypeService.setUserType(selectedUserType);
-    let isFaculty = this.userTypeService.isFacultyPersonaSelected();
+    const isFaculty = this.userTypeService.isFacultyPersonaSelected();
     this.userTypeService.setCurrentContext(
       selectedTenant.TenantId,
       selectedOuCode
     );
     //get Navigation
-    this.fusionNavigatoinService.registration();
+    //this.fusionNavigatoinService.registration();
 
     this.showProgressBar();
     selectedTenant.OucodeTree = this.buildOucodeTree(
@@ -334,7 +317,7 @@ export class LaunchComponent
               localStorage.removeItem(
                 MetaConstants.MANAGE_ACCOUNT_SWITCH_BACK_KEY
               );
-              var returnUrl = localStorage.getItem(
+              const returnUrl = localStorage.getItem(
                 URLConstants.MANAGE_ACCOUNT_SWITCH_BACK_URL
               );
               if (returnUrl && returnUrl != '') {

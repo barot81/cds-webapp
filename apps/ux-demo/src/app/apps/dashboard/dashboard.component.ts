@@ -4,11 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'zhealthcare-app-dashboard',
   templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

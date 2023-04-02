@@ -64,7 +64,8 @@
       }
     },
     "microfrontends": {
-      "remote-legacy": "http://localhost:5201"
+      "remote": "http://localhost:5201",
+      "ux-demo":"http://localhost:5202"
     },
     "localization": {
       "languages": [
