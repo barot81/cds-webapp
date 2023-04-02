@@ -1,0 +1,16 @@
+<span
+  class="space-no-wrap font-14"
+  *ngFor="let item of value; trackBy: trackByValue"
+>
+  {{ item | date: format }} &nbsp;
+</span>
+<input
+  matInput
+  hidden
+  [value]="resetModel"
+  [matDatepicker]="matDatepicker"
+  [matDatepickerFilter]="matDatepickerFilter"
+  [min]="min"
+  [max]="max"
+  (dateChange)="dateChanged($event)"
+/>

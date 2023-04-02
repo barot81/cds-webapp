@@ -19,6 +19,8 @@ export * from './zhealthcare-time-picker/zhealthcare-time-dialog/zhealthcare-tim
 export * from './zhealthcare-time-picker/zhealthcare-time-picker.module';
 export * from './zhealthcare-time-picker/zhealthcare-time-picker/zhealthcare-time-picker.component';
 export * from './zhealthcare-time-picker/zhealthcare-time/zhealthcare-time.component';
+export * from './zhealthcare-calendar/zhealthcare-calendar.component';
+export * from './zhealthcare-calendar/zhealthcare-calendar.module';
 export * from './zhealthcare-tooltip/index';
 export * from './zhealthcare-tree/zhealthcare-tree.component';
 export * from './zhealthcare-tree/zhealthcare-tree.module';
@@ -60,3 +62,5 @@ export * from './theme-selection-sidebar';
 export * from './widget/widget-toggle.directive';
 export * from './widget/widget.component';
 export * from './widget/widget.module';
+export * from './dynamic-overlay';
+
