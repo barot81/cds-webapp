@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { GET, HttpService, Header, Query, Path } from '@zhealthcare/fusion/core';
 import {
   LaunchDataModel,
   Organization,
   OrgUnitInformation,
   OuCodeAccessTree,
+  TenantWithOuCodeTree,
 } from '@zhealthcare/fusion/models';
+import { Facilities } from './data/facilities';
+import { InhousePatientStatistics } from './data/inhouse-patient-statistics';
 
 @Injectable({providedIn:'any'})
 export class MetaApiClient extends HttpService {
@@ -18,12 +21,18 @@ export class MetaApiClient extends HttpService {
     return this.configService.getservice('foundation.meta').endpoint;
   }
 
-  @GET('/launch')
   Launch(
-    @Header('TenantId') header: string,
-    @Header('Oucodes') oucodes: string
-  ): Observable<LaunchDataModel[]> {
-    return null;
+    header: string,
+    oucodes: string
+  ): Observable<LaunchDataModel> {
+    const statistics = InhousePatientStatistics.map(x=> new OuCodeAccessTree(x.name, x.count, x.url, x.fullName, false, []));
+    const facilities = Facilities.map(x=> {
+      return {
+      key: x.name,
+      value: statistics
+    }
+  });
+  return of(new LaunchDataModel(facilities, null, null));
   }
 
   @GET('/launch/{tenantId}')

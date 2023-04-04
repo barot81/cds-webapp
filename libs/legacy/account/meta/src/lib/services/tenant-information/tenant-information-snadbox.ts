@@ -12,11 +12,7 @@ export class TenantInformationSandbox extends Sandbox {
     super();
   }
 
-  public getTenantInformationNameList(): Observable<any> {
-    return this.tenantInformationApiClient.getTenantInformation();
-  }
-
-  programs(tenantId: string): Observable<any> {
-    return this.tenantInformationApiClient.programs(tenantId);
+  public getFacilityInformationNameList(): Observable<any> {
+    return this.tenantInformationApiClient.getFacilityInformation();
   }
 }

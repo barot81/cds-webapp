@@ -23,7 +23,7 @@
         <div
           class="mb-16 px-32"
           *ngIf="
-            (uniqueTenants | async) &&
+            (uniqueFacilities | async) &&
             showTenantSelect &&
             !manageAccountSwitchbackKey
           "
@@ -48,11 +48,11 @@
                       </ngx-mat-select-search>
                     </mat-option>
                     <mat-option
-                      *ngFor="let tenant of uniqueTenants | async"
-                      [value]="tenant"
-                      (onSelectionChange)="onTenantChange(tenant, $event)"
+                      *ngFor="let facility of uniqueFacilities | async"
+                      [value]="facility"
+                      (onSelectionChange)="onTenantChange(facility, $event)"
                     >
-                      {{ tenant.name }}
+                      {{ facility.name }}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -79,7 +79,7 @@
                 tabindex="0"
                 attr.aria-label="This is a {{ item.value }} program."
               >
-                <a (click)="launch(item)" class="card-link-btn">
+                <a (click)="launch(item)" class="card-link-btn" fxLayout="row" fxLayoutAlign="space-between">
                   <div fxLayout="row">
                     <i
                       class="fa-light fa-address-card s-24 mr-12"
@@ -88,12 +88,18 @@
                     <div fxlayout="column">
                       <h2>{{ item.value }}</h2>
                       <span class="font-14 secondary-text"
-                        >This is {{ item.value }} Program, and it contains all
-                        information related to {{ item.value }}.</span
+                        ><b>{{ item.count }}</b> patients have been {{ item.key }}.</span
                       >
                     </div>
                   </div>
+                  <h2 class="count">{{ item.count }}</h2>
                 </a>
+                <div fxFlex fxLayoutAlign="flex-end" class="download-icon">
+                  <i
+                    aria-hidden="true"
+                    class="fa-light fa-download s-18 accent-fg"
+                  ></i>
+                </div>
               </mat-card>
             </div>
           </div>

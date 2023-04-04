@@ -7,8 +7,6 @@ import { AuthGuardService } from '@zhealthcare/fusion/core';
 import { FuseSidebarModule, MaterialModule } from '@zhealthcare/ux';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { AdminLaunchComponent } from './components/admin-launch/admin-launch.component';
-import { DelegatorLaunchComponent } from './components/delegator/delegator-launch.component';
-import { FacultyLaunchComponent } from './components/faculty-launch/faculty-launch-component';
 import { LaunchComponent } from './components/launch/launch.component';
 import { StudentLaunchComponent } from './components/student-launch/student-launch.component';
 import { MetaApiClient } from './meta.ApiClient';
@@ -32,16 +30,6 @@ const routes: Routes = [
     component: AdminLaunchComponent,
     canActivate: [AuthGuardService],
   },
-  {
-    path: 'faculty/account/launch',
-    component: FacultyLaunchComponent,
-    canActivate: [AuthGuardService],
-  },
-  {
-    path: 'delegator/account/launch',
-    component: DelegatorLaunchComponent,
-    canActivate: [AuthGuardService],
-  },
 ];
 
 @NgModule({
@@ -60,8 +48,6 @@ const routes: Routes = [
     LaunchComponent,
     StudentLaunchComponent,
     AdminLaunchComponent,
-    FacultyLaunchComponent,
-    DelegatorLaunchComponent,
   ],
   providers: [
     MetaApiClient,

@@ -27,7 +27,6 @@ import { UserPersona } from '@zhealthcare/fusion/models';
 import {
   FusionNavigationService,
   ManageUserService,
-  NavigationConstants,
 } from '@zhealthcare/fusion/services';
 import {
   FuseProgressBarService,
@@ -57,10 +56,10 @@ export class AdminLaunchComponent
   manageAccountSwitchbackKey;
   loadingPrograms = false;
   releaseNotesThreshold = 7;
-  uniqueTenants: BehaviorSubject<any>;
+  uniqueFacilities: BehaviorSubject<any>;
   showTenantSelect = false;
   _unsubscribeAll: Subject<any>;
-  searchTenantCtrl = new FormControl();
+  searchFacilityCtrl = new FormControl();
 
   @ViewChild('tenantNavsContainer', { read: ViewContainerRef, static: true })
   tenantNavsContainer!: any;
@@ -110,7 +109,7 @@ export class AdminLaunchComponent
     this.releaseNotesThreshold =
       _runtimeConfigLoaderService.getConfig().appSettings.releaseNoteNotification.offset;
     this._unsubscribeAll = new Subject();
-    this.uniqueTenants = new BehaviorSubject<any>(null);
+    this.uniqueFacilities = new BehaviorSubject<any>(null);
   }
 
   ngOnInit() {
@@ -120,22 +119,18 @@ export class AdminLaunchComponent
     );
     this.showProgressBar();
     this._TenantInformationSandbox
-      .getTenantInformationNameList()
+      .getFacilityInformationNameList()
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data: any) => {
-        const uniqueTenantsValue = this.getUniqueTenantList(data);
-        this.uniqueTenants.next(uniqueTenantsValue);
-        if (uniqueTenantsValue.length <= 1) {
-          this.singleTenantInit();
-        } else {
-          this.multiTenantInit();
-        }
-        this.searchTenantCtrl.valueChanges
+        const uniqueFacilitiesValue = this.getUniqueFacilitiesList(data);
+        this.uniqueFacilities.next(uniqueFacilitiesValue);
+         this.multiFacilityInit();
+        this.searchFacilityCtrl.valueChanges
           .pipe(takeUntil(this._unsubscribeAll))
           .subscribe(() => {
-            const filteredUniqueTenants = this.getUniqueTenantList(data)
-                  .filter((x) => x?.name?.toLowerCase().includes(this.searchTenantCtrl.value?.toLowerCase()));
-            this.uniqueTenants.next(filteredUniqueTenants);
+            const filtereduniqueFacilities = this.getUniqueFacilitiesList(data)
+                  .filter((x) => x?.name?.toLowerCase().includes(this.searchFacilityCtrl.value?.toLowerCase()));
+            this.uniqueFacilities.next(filtereduniqueFacilities);
           });
       });
   }
@@ -204,52 +199,17 @@ export class AdminLaunchComponent
     this.tenantWithOuCodes = orgCode.tenentWithOucodeAccessTrees;
   }
 
-  singleTenantInit() {
-    this.metaSandbox.launch().subscribe(
-      (orgCode: any) => {
-        this.sharedTenantInit(orgCode);
-        this.sortTenantWithOuCodesByTenantId();
-        if (orgCode.tenentWithOucodeAccessTrees.length === 1) {
-          this._headerService.setCurrentTenantName(
-            this.getTenantNameFromTenantList(
-              this.uniqueTenants.getValue(),
-              orgCode.tenentWithOucodeAccessTrees[0].key
-            )
-          );
-          this.next(orgCode.tenentWithOucodeAccessTrees[0], true);
-          this.hideProgressBar();
-        }
-      },
-      (error) => {
-        this.hideProgressBar();
-        Logger.error(
-          `Launch Component => NgOnInit Method => Launch Api failure => error: ${JSON.stringify(
-            error
-          )} | active Route:${this.router?.url}`
-        );
-      }
-    );
-  }
-
-  multiTenantInit() {
+  multiFacilityInit() {
     this.showTenantSelect = true;
     this.metaSandbox.launch().subscribe(
       (orgCode: any) => {
         this.sharedTenantInit(orgCode);
         this.sortTenantWithOuCodesByTenantId();
-        if (this.manageAccountSwitchbackKey) {
-          this.next(
-            orgCode.tenentWithOucodeAccessTrees.find(
-              (x) => x.key === localStorage.getItem('TenantId')
-            )
-          );
-        } else {
-          this.flag = true;
-          this.tenantList = orgCode.tenentWithOucodeAccessTrees.map(
-            (x) => x['key']
-          );
-          this.hideProgressBar();
-        }
+        this.flag = true;
+        this.tenantList = orgCode.tenentWithOucodeAccessTrees.map(
+          (x) => x['key']
+        );
+        this.hideProgressBar();
       },
       (error) => {
         this.hideProgressBar();
@@ -263,9 +223,7 @@ export class AdminLaunchComponent
   }
 
   next(obj, singleTenant?: boolean) {
-    if (this.manageAccountSwitchbackKey)
-      this.checkAndRedirectIfManageAccountProgramSelection(obj);
-    else this.programSelection(obj, singleTenant);
+    this.programSelection(obj, singleTenant);
   }
 
   async programSelection(tenatWithOucodes, singleTenant?: boolean) {
@@ -350,56 +308,6 @@ export class AdminLaunchComponent
         )} | active Route:${this.router?.url}`
       );
       this.router.navigateByUrl(URLConstants.DASHBOARD_URL);
-    }
-  }
-
-  checkAndRedirectIfManageAccountProgramSelection(tenatWithOucodes) {
-    if (!tenatWithOucodes?.value) {
-      this.metaSandbox.launchTenant(tenatWithOucodes.key).subscribe(
-        (orgCode: any) => {
-          tenatWithOucodes.value =
-            orgCode.tenentWithOucodeAccessTrees[0]?.value;
-          this.ManageAccountUpdateStateAndRedirect(tenatWithOucodes);
-        },
-        (error) => {
-          Logger.error(
-            `Admin Launch Component => Switch Back => LaunchTenant Api failure => error: ${JSON.stringify(
-              error
-            )} | active Route:${this.router?.url}`
-          );
-        }
-      );
-    } else {
-      this.ManageAccountUpdateStateAndRedirect(tenatWithOucodes);
-    }
-  }
-
-  ManageAccountUpdateStateAndRedirect(tenatWithOucodes) {
-    super.programSelection(tenatWithOucodes);
-    const switchBackOuCode = localStorage.getItem(
-      MetaConstants.MANAGE_ACCOUNT_SWITCH_BACK_KEY
-    );
-    if (switchBackOuCode) {
-      Logger.trace(
-        `Launch Component => ProgramSelection Method => Switch back to admin from manage account => Tenant With Oucode ${JSON.stringify(
-          tenatWithOucodes
-        )} |switch back Oucode : ${switchBackOuCode} |active Route:${
-          this.router?.url
-        }`
-      );
-      this.userTypeService.setCurrentContext(
-        this.selectedTenant.TenantId,
-        switchBackOuCode
-      );
-      this.fusionNavigatoinService.setCurrentNavigation(
-        NavigationConstants.Main
-      ); // set current navigation back to main BUG #76580 and #76582
-      this.updateStateAndRedirect(
-        this.selectedTenant,
-        switchBackOuCode,
-        UserPersona.Administrator
-      );
-      this.showProgramSelection = false;
     }
   }
 

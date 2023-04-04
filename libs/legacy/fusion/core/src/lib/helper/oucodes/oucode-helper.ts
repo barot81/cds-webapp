@@ -80,17 +80,12 @@ export class OucodeHelper {
     if (Array.isArray(Oucodes)) {
       Oucodes.forEach((element, index) => {
         const oucodeWithName = [];
-        oucodeWithName['key'] = element.Oucode;
-        oucodeWithName['value'] = !!element?.caption ? element.caption : element.fullName.replace('.',' - ');
-        this.getFullName(element);
-        if (
-          element.hasOwnProperty('Children') &&
-          element['Children'].length > 0
-        ) {
-          this.getProgramList(_oucodeWithNames, element.Children);
-        } else {
-          _oucodeWithNames.push(oucodeWithName);
-        }
+        oucodeWithName['key'] = element.Name;
+        oucodeWithName['value'] = element?.Name;
+        oucodeWithName['count'] = element?.Oucode;
+        oucodeWithName['url'] = element?.caption;
+        _oucodeWithNames.push(oucodeWithName);
+
       });
     }
     return _oucodeWithNames;

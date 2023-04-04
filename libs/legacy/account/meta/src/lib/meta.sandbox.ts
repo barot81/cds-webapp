@@ -14,7 +14,7 @@ export class MetaSandbox extends Sandbox {
     super();
   }
 
-  public launch(): Observable<LaunchDataModel[]> {
+  public launch(): Observable<LaunchDataModel> {
     return this.metaApiClient.Launch('Base', '1000');
   }
 

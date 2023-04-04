@@ -14,7 +14,7 @@ import { UserFacade } from '@zhealthcare/fusion/core';
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent extends BaseComponent
-  implements OnInit, OnDestroy {
+  implements OnDestroy {
   private _unsubscribe: Subject<any>;
   id = 0;
   initials = false;
@@ -34,9 +34,6 @@ export class AccountComponent extends BaseComponent
     this._unsubscribe = new Subject();
   }
 
-  ngOnInit() {
-
-  }
 
   openAccoutSetting() {
     const uiState = new UIState(AccountSettingComponent, this.id);

@@ -10,7 +10,7 @@
     flex-direction: column;
     margin: 15px 0;
   }
-  
+
   .program-radio-button {
     margin: 5px;
   }
@@ -29,7 +29,7 @@
 
   #program_dashboard {
     .margin-auto{
-      margin:0 auto; 
+      margin:0 auto;
     }
     display: flex;
     flex-direction: row;
@@ -44,4 +44,12 @@
       border-radius: 8px;
     }
   }
-  
+
+  .download-icon {
+    cursor: pointer;
+  }
+
+  .count {
+    display: inline-block;
+    text-align: right;
+   }

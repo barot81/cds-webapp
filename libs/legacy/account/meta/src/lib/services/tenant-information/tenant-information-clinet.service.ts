@@ -5,10 +5,12 @@ import {
   HttpService,
   Path,
 } from '@zhealthcare/fusion/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { Facilities } from '../../data/facilities';
 
 @Injectable({ providedIn: 'root' })
 export class TenantInformationApiClient extends HttpService {
+
   constructor(protected _fusionConfigService: FusionConfigService) {
     super();
   }
@@ -17,13 +19,7 @@ export class TenantInformationApiClient extends HttpService {
     return this._fusionConfigService.getservice('foundation.meta').endpoint;
   }
 
-  @GET<any>('/Tenant')
-  public getTenantInformation(): Observable<any> {
-    return null;
-  }
-
-  @GET<any>('/Program/{tenantId}')
-  public programs(@Path('tenantId') tenantId: any): Observable<any> {
-    return null;
+  public getFacilityInformation(): Observable<any> {
+    return of(Facilities);
   }
 }

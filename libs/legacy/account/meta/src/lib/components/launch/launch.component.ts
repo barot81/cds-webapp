@@ -105,7 +105,7 @@ export class LaunchComponent
     });
   }
 
-  getUniqueTenantList(payload: any) {
+  getUniqueFacilitiesList(payload: any) {
     const objectMap = {};
     return payload
       .filter((tenantInformation) => {
@@ -173,7 +173,7 @@ export class LaunchComponent
     }
   }
 
-  async programSelection(tenatWithOucodes) {
+  programSelection(tenatWithOucodes) {
     if (tenatWithOucodes) {
       this.selectedTenant = new TenantWithOuCodeTree(
         tenatWithOucodes.key,
@@ -181,7 +181,7 @@ export class LaunchComponent
       );
       this.oucodeWithNames = OucodeHelper.getProgramList(
         [],
-        await this.getPrograms()
+        this.selectedTenant.OucodeTree
       );
     } else this.oucodeWithNames = [];
   }
@@ -207,7 +207,6 @@ export class LaunchComponent
           this._layoutService._orgTimzone$.next(
             this.orgUnitInformation?.find((x) => x.isSelected)?.timeZone
           );
-          await this.getPrograms();
           this.setSelectedOUCode(selectedOucode);
         },
         (error) => {
@@ -216,36 +215,12 @@ export class LaunchComponent
       );
   }
 
-  async getPrograms() {
-    const orgUnitInformation = (
-      await lastValueFrom(
-        this._tenantInformationSandbox.programs(this.selectedTenant.TenantId)
-      )
-    )?.tenantWithOucodeAccessTrees.value;
-    const originalOrg = this.selectedTenant.OucodeTree;
-    const updatedOrgUnitInfo = OucodeHelper.replaceKeysDeep(
-      orgUnitInformation,
-      {
-        programName: 'caption',
-      }
-    );
-    this.tenantWithOucodeTreeWithCaption = updatedOrgUnitInfo[0];
-    this.orgFacade.SetOuCodeAccessTree(updatedOrgUnitInfo[0].Children);
-
-    const oucodeTree = lodash(lodash.cloneDeep(updatedOrgUnitInfo))
-      .keyBy('Name')
-      .mergeWith(lodash.keyBy(lodash.cloneDeep(originalOrg), 'Name'), OucodeHelper.customizer)
-      .values()
-      .value();
-    this.oucodeTree = OucodeHelper.flattenOUCodeTree(oucodeTree);
-    return oucodeTree;
-  }
 
   setSelectedOUCode(selectedOucode: string) {
     const selectedOUCode = this.oucodeTree?.find(
       (x) => x.Oucode === selectedOucode
     );
-    const selectedOUCodeCaption = !!selectedOUCode?.caption
+    const selectedOUCodeCaption = selectedOUCode?.caption
       ? selectedOUCode?.caption
       : selectedOUCode?.Name;
     this._headerService.setSelectedOUCodeCaption(selectedOUCodeCaption);

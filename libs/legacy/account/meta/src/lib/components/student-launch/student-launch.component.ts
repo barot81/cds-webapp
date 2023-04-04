@@ -75,10 +75,10 @@ export class StudentLaunchComponent extends LaunchComponent
   ngOnInit() {
     this.showProgressBar();
     this._tenantInformationSandbox
-      .getTenantInformationNameList()
+      .getFacilityInformationNameList()
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data: any) => {
-        this.uniqueTenants = this.getUniqueTenantList(data);
+        this.uniqueTenants = this.getUniqueFacilitiesList(data);
         this.studentInit();
       });
   }
