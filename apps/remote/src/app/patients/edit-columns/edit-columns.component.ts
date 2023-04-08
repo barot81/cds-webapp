@@ -1,43 +1,106 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { DrawerAdapter } from '@zhealthcare/ux';
+import { AfterViewInit, Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { FusionFormComponent } from '@zhealthcare/fusion/components';
+import { DrawerAdapter, DrawerService, ManifoldPanelService } from '@zhealthcare/ux';
+import { ColumnOption } from '../../models/response.model';
 
 @Component({
-  selector: 'ryzen-edit-columns',
+  selector: 'zhealthcare-display-columns-form',
   templateUrl: './edit-columns.component.html',
 })
-export class EditColumnsComponent implements DrawerAdapter {
-
-  columnsList = [
-    'Student Name',
-    'Email',
-    'Phone',
-    'Practice Setting',
-    'Time'
-  ];
-
+export class EditColumnsComponent
+  extends FusionFormComponent
+  implements DrawerAdapter, AfterViewInit
+{
+  displayColumns: ColumnOption[] = [];
+  remainingDisplayColumns: ColumnOption[] = [];
+  hiddenColumns: ColumnOption[] = [];
   editColumnsForm: FormGroup;
   data: any;
   key: string;
-  primaryAction() {
-    throw new Error("Method not implemented.");
-  }
-  secondaryAction() {
-    throw new Error("Method not implemented.");
-  }
+  removeColumnFlag = false;
 
-  constructor(private _formBuilder: FormBuilder) {
-
-    this.editColumnsForm = this._formBuilder.group({
-      columnControl: [this.columnsList[0]],
+  constructor(
+    private _formBuilder: FormBuilder,
+    public drawerService: DrawerService,
+    public manifoldPanelService: ManifoldPanelService
+  ) {
+    super();
+    this.dataSourceFacade.dataSourceDisplayColumns$
+      .subscribe((x) => {
+        this.displayColumns = [...x.displayColumns] || [];
+        this.remainingDisplayColumns =
+          x?.remainingDisplayColumns && x?.remainingDisplayColumns !== null
+            ? [...x?.remainingDisplayColumns]
+            : [];
+        this.fusionFormGroup = this._formBuilder.group({
+          columnControl: [this.displayColumns[0]]
+        });
+      })
+      .unsubscribe();
+    this.hiddenColumns = this.displayColumns.filter((ele) => {
+      return ele.hideEditColumn == true;
     });
   }
 
-
-
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.columnsList, event.previousIndex, event.currentIndex);
+  ngAfterViewInit(): void {
+    this.drawerService.setPrimaryActionState(false, false);
   }
 
+  primaryAction() {
+    this.dataSourceFacade.DisplayColumnUpdate(
+      this.displayColumns,
+      this.remainingDisplayColumns
+    );
+    this.manifoldPanelService.closeCurrentManifoldPanel();
+
+  }
+
+  secondaryAction() {
+    // throw new Error('Method not implemented.');
+  }
+
+  drop(event: CdkDragDrop<ColumnOption[]>) {
+    this.drawerService.setPrimaryActionState(this.fusionFormGroup.valid, false);
+    moveItemInArray(
+      (this.displayColumns = this.displayColumns.slice()),
+      event.previousIndex,
+      event.currentIndex
+    );
+  }
+
+  onRemoveColumn(column: ColumnOption) {
+    if (this.displayColumns.length - this.hiddenColumns.length > 1) {
+      const currentColumnIndex = this.displayColumns.findIndex(
+        (x) => x.fieldName === column.fieldName
+      );
+      this.remainingDisplayColumns.push(
+        this.displayColumns[currentColumnIndex]
+      );
+      const updatedDisplayColumns = [...this.displayColumns];
+      updatedDisplayColumns.splice(currentColumnIndex, 1);
+      this.displayColumns = updatedDisplayColumns;
+      this.drawerService.setPrimaryActionState(
+        this.fusionFormGroup.valid,
+        false
+      );
+    } else {
+      this.removeColumnFlag = true;
+    }
+  }
+
+  onAddColumn(column: ColumnOption) {
+    const currentColumnIndex = this.remainingDisplayColumns.findIndex(
+      (x) => x.fieldName === column.fieldName
+    );
+    this.displayColumns.push(this.remainingDisplayColumns[currentColumnIndex]);
+    if (this.displayColumns.length - this.hiddenColumns.length > 1) {
+      this.removeColumnFlag = false;
+    }
+    const updatedDisplayColumns = [...this.remainingDisplayColumns];
+    updatedDisplayColumns.splice(currentColumnIndex, 1);
+    this.remainingDisplayColumns = updatedDisplayColumns;
+    this.drawerService.setPrimaryActionState(this.fusionFormGroup.valid, false);
+  }
 }

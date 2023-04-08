@@ -14,5 +14,4 @@ export class Patient {
   public queryDate: string;
   public facility: string;
   public statusClass: string;
-  public statusClass2: string;
 }

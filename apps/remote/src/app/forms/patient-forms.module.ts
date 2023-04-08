@@ -26,18 +26,10 @@ import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { CKEditorModule } from '@zhealthcare/plugin/ckeditor';
 import { NotificationWizardModule } from '@zhealthcare/plugin/notifications';
 import { MarkdownModule } from 'ngx-markdown';
-// import { BulkUpdateComponent } from './bulk-update/bulk-update.component';
-// import { ProfileGridFiltersComponent } from './filters/grid-filters/grid-filters.component';
 import { StudentLandingGridFilterComponent } from './filters/student-landing-grid-filter/student-landing-grid-filter.component';
-// import { AddStudentComponent } from './add-student/add-student.component';
 import { ProfileShareHistoryComponent } from './share-profile/profile-share-history/profile-share-history.component';
-// import { ShareCompletedPlacementsComponent } from './share-profile/share-completed-placements/share-completed-placements.component';
-// import { ShareComplianceDocumentsComponent } from './share-profile/share-compliance-documents/share-compliance-documents.component';
 import { ChecklistDatabase } from './share-profile/share-selected-compliance-docs.service';
-// import { ShareWithSiteFailurePopupComponent } from './share-profile/share-with-site/share-with-site-failure-popup/share-with-site-failure-popup.component';
-// import { StudentShowMoreComponent } from './filters/show-more/show-more.component';
-// import { MatListModule } from '@angular/material/list';
-// import { MatCardModule } from '@angular/material/card';
+import { AddPatientComponent } from './add-patient/add-patient.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -62,7 +54,7 @@ import { ChecklistDatabase } from './share-profile/share-selected-compliance-doc
 
   declarations: [
     // ShareWithSiteComponent,
-   // AddStudentComponent,
+    AddPatientComponent,
     StudentLandingGridFilterComponent,
     ProfileShareHistoryComponent,
    // ShareComplianceDocumentsComponent,

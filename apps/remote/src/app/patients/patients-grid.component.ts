@@ -9,6 +9,7 @@ import { zhealthcareTag } from '@zhealthcare/plugin/tags';
 import { FullScreenService, ScrollService } from '@zhealthcare/ux';
 
 import { filter } from 'rxjs/operators';
+import { PatientFormsService } from '../forms/patient-forms.service';
 import { Patient } from '../models/patient.model';
 import { GridService } from '../services/grid.service';
 import { PatientService } from '../services/patient.service';
@@ -158,7 +159,8 @@ export class PatientsGridComponent implements AfterViewInit{
     private elem: ElementRef,
     private _router: Router,
     public _fullScreenService: FullScreenService,
-    public patientService : PatientService
+    public patientService : PatientService,
+    public patientFormService: PatientFormsService
   ) {
     this._router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -167,7 +169,7 @@ export class PatientsGridComponent implements AfterViewInit{
           await this.setHeaderHeights();
         }
       });
-      const patients = this.patientService.getPatients(localStorage.getItem('TenantId'));
+      const patients = this.patientService.getPatients();
       this.dataSource =  new MatTableDataSource(patients);
   }
 

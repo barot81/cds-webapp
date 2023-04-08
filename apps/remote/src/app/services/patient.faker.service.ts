@@ -18,8 +18,7 @@ export function generatePatients(count: number): Patient[] {
       comments: faker.lorem.sentence(),
       queryDate: faker.date.recent().toISOString(),
       facility: faker.helpers.arrayElement(['Appolo', 'Z-healthcare', 'Forties', 'Urgent Care D']),
-      statusClass: faker.random.word(),
-      statusClass2: faker.random.word()
+      statusClass: faker.random.word()
 
     };
 

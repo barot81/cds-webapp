@@ -1,0 +1,85 @@
+<form class="drawer-p" name="form" [formGroup]="fusionFormGroup">
+  <mat-card fxLayout="column" class="p-16">
+    <div fxLayout="row" fxLayoutAlign="space-between end">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Name</mat-label>
+        <input matInput noWhitespace formControlName="name" required />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Room</mat-label>
+        <input matInput noWhitespace formControlName="room" required />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Admit Date</mat-label>
+        <input readonly matInput [matDatepicker]="picker1" (click)="picker1.open()" [max]="maxDate"
+          formControlName="admitDate" />
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1 color="primary" class="action-icon"></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Health Plan</mat-label>
+        <input matInput noWhitespace formControlName="healthPlan">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>CDS</mat-label>
+        <input matInput noWhitespace formControlName="cds" required />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Query Status</mat-label>
+        <mat-select formControlName="queryStatus" (selectionChange)="OnQuerryStatusChanged($event)" required>
+          <mat-option *ngFor="let status of queryStatusList"
+          [ngClass]="{'mat-option-text ': isOptionTruncated(status)
+          }" id={{status}} [value]="status" class="dropdown-with-tooltip" [options]="tooltipOptions"
+          [display]="isOptionTruncated(status)"
+          [tooltip]="status">
+          {{status}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Query Date</mat-label>
+        <input readonly matInput [matDatepicker]="picker2" (click)="picker2.open()" [max]="maxDate"
+          formControlName="queryDate" />
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2 color="primary" class="action-icon"></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Comments</mat-label>
+        <input matInput noWhitespace formControlName="comments" />
+      </mat-form-field>
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Reimbursement Type</mat-label>
+        <mat-select formControlName="reimbursementType" (selectionChange)="OnReimbursementTypeChange($event)" required>
+          <mat-option *ngFor="let type of reimbursementTypeList"
+          [ngClass]="{'mat-option-text ': isOptionTruncated(type)
+          }" id={{type}} [value]="type" class="dropdown-with-tooltip" [options]="tooltipOptions"
+          [display]="isOptionTruncated(type)"
+          [tooltip]="type">
+          {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-card>
+</form>

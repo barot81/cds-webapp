@@ -5,43 +5,71 @@
         >Add or remove columns. To change the column order, drag and drop a
         field.
       </span>
-
-      <div fxFlex="100">
+      <div id="editColumnContainer">
         <div
           cdkDropList
-          class="exxat-drag-drop-list"
+          class="exxat-drag-drop-list w-100-p"
           (cdkDropListDropped)="drop($event)"
         >
           <div
-            class="exxat-drag-drop"
-            *ngFor="let column of columnsList"
+            *ngFor="let column of displayColumns"
+            [cdkDragDisabled]="column.defaultInEditColumn"
             cdkDrag
           >
-            <div class="icon-drag mr-8" cdkDragHandle>
-              <i aria-hidden="true" class="fa-light fa-grip-vertical s-20"></i>
+            <div *ngIf="!column.hideEditColumn" class="exxat-drag-drop">
+              <div class="icon-drag mr-8" cdkDragHandle>
+                <i
+                  class="fa-light fa-grip-vertical s-20"
+                  aria-hidden="true"
+                ></i>
+              </div>
+              <div class="content">{{ column.displayName }}</div>
+              <button
+                *ngIf="!column.defaultInEditColumn"
+                mat-icon-button
+                attr.aria-label="delete {{ column.displayName }} column"
+                color="warn"
+                (click)="onRemoveColumn(column)"
+                class="ml-8 delete-icon"
+              >
+                <i
+                  class="fa-light fa-trash-alt warn-fg s-18"
+                  aria-hidden="true"
+                ></i>
+              </button>
             </div>
-            <div class="content">{{ column }}</div>
-            <button
-              mat-icon-button
-              color="warn"
-              aria-label="Example icon-button with a delete icon"
-              class="ml-8 delete-icon"
-            >
-              <i aria-hidden="true" class="fa-light fa-trash-alt warn-fg"></i>
-            </button>
           </div>
         </div>
       </div>
-      <div fxLayout="row" fxLayoutAlign="center center">
+      <div
+        fxLayoutAlign="center center"
+        class="mb-16 mat-error"
+        *ngIf="removeColumnFlag"
+      >
+        Atleast one column is required
+      </div>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="center center"
+        *ngIf="remainingDisplayColumns.length > 0"
+      >
         <button
           mat-stroked-button
           color="primary"
-          class="width-fit-content"
-          aria-label="Add a Column"
+          [matMenuTriggerFor]="columnMenu"
         >
-          <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+          <i class="fa-light fa-plus s-16" aria-hidden="true"></i>
           <span class="ml-4">Add a Column</span>
         </button>
+        <mat-menu #columnMenu="matMenu" yPosition="below">
+          <button
+            mat-menu-item
+            *ngFor="let column of remainingDisplayColumns"
+            (click)="onAddColumn(column)"
+          >
+            {{ column.displayName }}
+          </button>
+        </mat-menu>
       </div>
     </div>
   </mat-card>
