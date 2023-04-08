@@ -10,11 +10,7 @@ import { PageFacade } from '@zhealthcare/ux';
   <!-- <zhealthcare-patients-grid></zhealthcare-patients-grid> -->
   `,
   styles:[`
-  :host {
-    display: block !important;
-    flex: 1 1 100%;
-    padding-top: 15px;
-  }
+
   .container {
     padding: 15px !important;
     height: 80% !important;

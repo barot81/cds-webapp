@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { FusionFormComponent } from '@zhealthcare/fusion/components';
 import { DrawerAdapter, DrawerService, ManifoldPanelService } from '@zhealthcare/ux';
 import { ColumnOption } from '../../models/response.model';
+import { PatientGridColInfo } from '../column-info.config';
 
 @Component({
   selector: 'zhealthcare-display-columns-form',
@@ -27,18 +28,10 @@ export class EditColumnsComponent
     public manifoldPanelService: ManifoldPanelService
   ) {
     super();
-    this.dataSourceFacade.dataSourceDisplayColumns$
-      .subscribe((x) => {
-        this.displayColumns = [...x.displayColumns] || [];
-        this.remainingDisplayColumns =
-          x?.remainingDisplayColumns && x?.remainingDisplayColumns !== null
-            ? [...x?.remainingDisplayColumns]
-            : [];
+        this.displayColumns = PatientGridColInfo;
         this.fusionFormGroup = this._formBuilder.group({
           columnControl: [this.displayColumns[0]]
         });
-      })
-      .unsubscribe();
     this.hiddenColumns = this.displayColumns.filter((ele) => {
       return ele.hideEditColumn == true;
     });
@@ -49,10 +42,6 @@ export class EditColumnsComponent
   }
 
   primaryAction() {
-    this.dataSourceFacade.DisplayColumnUpdate(
-      this.displayColumns,
-      this.remainingDisplayColumns
-    );
     this.manifoldPanelService.closeCurrentManifoldPanel();
 
   }

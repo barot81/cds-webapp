@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { FusionFormAdapter, FusionFormComponent } from '@zhealthcare/fusion/components';
 import { DrawerService, SnackbarService } from '@zhealthcare/ux';
@@ -11,7 +11,7 @@ import { PatientService } from '../../services/patient.service';
   templateUrl: 'add-patient.component.html'
 })
 
-export class AddPatientComponent extends FusionFormComponent implements OnInit, FusionFormAdapter {
+export class AddPatientComponent extends FusionFormComponent implements OnInit, FusionFormAdapter, AfterViewInit {
 
 
   maxDate =  new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
@@ -38,6 +38,9 @@ export class AddPatientComponent extends FusionFormComponent implements OnInit, 
       reimbursementType: new FormControl(''),
     });
 
+
+  }
+  ngAfterViewInit(): void {
     if(this.data) {
       this.fusionFormGroup.patchValue(this.data);
     }
