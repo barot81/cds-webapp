@@ -1,0 +1,86 @@
+@import 'init';
+.student-search-report {
+  height: calc(100vh - 171px) !important;
+  overflow: hidden;
+
+  .exxat-table {
+    width: 100% !important;
+    th,
+    td {
+      min-width: 15vw !important;
+
+      @include media-breakpoint('md') {
+        min-width: 23vw !important;
+      }
+
+      @include media-breakpoint('sm') {
+        min-width: 30vw !important;
+      }
+
+      &.checkbox-column {
+        min-width: 4vw !important;
+      }
+
+      &.phone-column {
+        min-width: 10vw !important;
+
+        @include media-breakpoint('sm') {
+          min-width: 15vw !important;
+        }
+      }
+
+      &.profileStaus-column {
+        min-width: 8vw !important;
+      }
+
+      &.invitation-status-column {
+        min-width: 25vw !important;
+
+        @include media-breakpoint('md') {
+          min-width: 30vw !important;
+        }
+
+        @include media-breakpoint('sm') {
+          min-width: 35vw !important;
+        }
+      }
+
+      &.student-category-width {
+        min-width: 15vw !important;
+
+        @include media-breakpoint('md') {
+          min-width: 15vw !important;
+        }
+
+        @include media-breakpoint('sm') {
+          min-width: 18vw !important;
+        }
+      }
+    }
+  }
+}
+
+.student-search-grid-with-compliance-header {
+  height: calc(100vh - 278px) !important;
+  overflow: auto;
+}
+
+.student-search-grid-with-filter {
+  height: calc(100vh - 296px) !important;
+  overflow: auto;
+}
+
+.student-search-grid-without-filter {
+  height: calc(100vh - 261px) !important;
+  overflow: auto;
+}
+
+.student-search-grid-with-filterandcompliance-header {
+  height: calc(100vh - 314px) !important;
+  overflow: auto;
+}
+
+.student-search-grid-with-loadingstate {
+  height: calc(100vh - 261px) !important;
+  overflow: auto;
+}

@@ -1,0 +1,195 @@
+{
+  "projectType": "application",
+  "sourceRoot": "apps/profile/src",
+  "prefix": "v4-app",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/profile",
+        "index": "apps/profile/src/index.html",
+        "main": "apps/profile/src/main.ts",
+        "polyfills": "apps/profile/src/polyfills.ts",
+        "tsConfig": "apps/profile/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/profile/src/favicon.ico",
+          {
+            "glob": "**/*",
+            "input": "libs/assets/src/global/",
+            "output": "/assets/"
+          },
+          {
+            "glob": "*",
+            "input": "./config",
+            "output": "./assets"
+          }
+        ],
+        "styles": [
+          "apps/profile/src/styles.scss",
+          "libs/assets/src/global/pdfjs/web/viewer.css",
+          "node_modules/@fortawesome/fontawesome-pro/css/all.css",
+          "node_modules/@fortawesome/fontawesome-pro/css/fontawesome.css"
+        ],
+        "scripts": [
+          "libs/assets/src/global/pdfjs/build/pdf.js",
+          "libs/assets/src/global/pdfjs/build/pdf.worker.js",
+          "libs/assets/src/global/pdfjs/web/viewer.js",
+          "libs/assets/src/global/TabCounter.js"
+        ],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/ux/src/lib/styles/app/shared"]
+        },
+        "customWebpackConfig": {
+          "path": "apps/profile/webpack.config.js"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/profile/webpack.prod.config.js"
+          }
+        },
+        "uat": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/profile/webpack.prod.config.js"
+          }
+        },
+        "qa": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/profile/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/profile/webpack.config.js"
+          }
+        },
+        "local": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/angular:webpack-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "profile:build:production"
+        },
+        "uat": {
+          "browserTarget": "profile:build:uat"
+        },
+        "qa": {
+          "browserTarget": "profile:build:qa"
+        },
+        "development": {
+          "browserTarget": "profile:build:development"
+        },
+        "local": {
+          "browserTarget": "profile:build:local"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4301,
+        "publicHost": "http://localhost:4301"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "profile:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/profile/**/*.ts", "apps/profile/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/profile"],
+      "options": {
+        "jestConfig": "apps/profile/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/angular:file-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "profile:build",
+        "port": 4301
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "profile:build:development"
+        },
+        "production": {
+          "buildTarget": "profile:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}

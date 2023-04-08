@@ -1,0 +1,8 @@
+<div class="page-layout  profile-admin carded fullwidth inner-scroll">
+    <div *ngIf="visible$ | async" #adminProfileHeader>
+        <div class="tab-nav-item">
+            <exxat-tabnavbar [navigationId]="'admin.profile.header'"></exxat-tabnavbar>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</div>
