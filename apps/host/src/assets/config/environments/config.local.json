@@ -65,7 +65,7 @@
     },
     "microfrontends": {
       "remote": "http://localhost:5201",
-      "ux-demo":"http://localhost:5202"
+      "ux-demo":"http://localhost:4801"
     },
     "localization": {
       "languages": [
@@ -134,7 +134,7 @@
       "voracoAuthKey": "6WoaEYI4fkocpJBjjiNjNN24tyDFpUjb"
     },
     "GoogleReCaptcha": {
-      "SiteKey": "6LfZRcoUAAAAAKjWaIHM-ZcmOvDaoXfec-WyRUS6"
+      "SiteKey": ""
     },
     "Cryptography": {
       "EnableEncryption": false,
@@ -159,7 +159,7 @@
       "subscriptionKey": "cmOsYE9rat66qiKh-dAX6CuRbK4nny8Vs7DRpTp-tXk"
     },
     "blobStorage": {
-      "fusionURI": "https://exxatfusion.blob.core.windows.net"
+      "fusionURI": ""
     }
   },
   "uiSettings": {

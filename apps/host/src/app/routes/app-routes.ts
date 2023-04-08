@@ -17,7 +17,7 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
   {
-    path: 'ux',
+    path: 'admin/ux',
     loadChildren: () =>
       loadRemoteModuleFromDefinitions(
         'ux-demo',

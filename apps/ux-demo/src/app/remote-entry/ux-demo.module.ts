@@ -26,4 +26,6 @@ const appRoutes: Routes = [
   declarations: [],
   providers: []
 })
-export class UxDemoModule {}
+export class UxDemoModule {
+
+}

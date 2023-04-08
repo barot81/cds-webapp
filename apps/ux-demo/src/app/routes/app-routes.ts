@@ -18,30 +18,6 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
   {
-    path: '',
-    children: [
-      {
-        path: '',
-        loadChildren: () =>
-          import('@zhealthcare-common/angular-bootstrap').then(
-            (m) => m.ZhealthcareAngularBootstrapModule
-          ),
-        data: { navigations: navigations },
-        canActivate: [AuthGuardService],
-      }
-    ],
-  },
-  {
-    path: 'student/remote-legacy-home',
-    loadChildren: () =>
-      loadRemoteModuleFromDefinitions(
-        'remote-legacy',
-        './Module',
-        'RemoteEntryModule'
-      ),
-    canActivate: [AuthGuardService],
-  },
-  {
     path: '**',
     redirectTo: 'dashboard',
   },
@@ -49,7 +25,6 @@ const routes: Routes = [
 ];
 
 const roleConfig: RoleConfigType = {
-  [UserPersona.Administrator]: ['/admin/remote-legacy-home'],
-  [UserPersona.Student]: ['/student/remote-legacy-home'],
+  [UserPersona.Administrator]: ['/admin/remote-legacy-home']
 };
 export { routes, roleConfig };
