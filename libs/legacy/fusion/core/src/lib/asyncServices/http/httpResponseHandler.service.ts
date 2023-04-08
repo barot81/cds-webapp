@@ -168,16 +168,16 @@ export class HttpResponseHandler {
   //  */
   private handleForbidden(responseBody: any): void {
     responseBody.ShowItAsToaster = true;
-    this.notificationService.displayNotification(
-      responseBody,
-      'error',
-      "You don't have permission to access. Contact your administrator"
-    );
-    Logger.error(
-      `httpResponseHandler => handleForbidden Method => You don't have permission to access. Contact your administrator. | Response Body : ${JSON.stringify(
-        responseBody
-      )}| Current Url: ${this.route}`
-    );
+    // this.notificationService.displayNotification(
+    //   responseBody,
+    //   'error',
+    //   "You don't have permission to access. Contact your administrator"
+    // );
+    // Logger.error(
+    //   `httpResponseHandler => handleForbidden Method => You don't have permission to access. Contact your administrator. | Response Body : ${JSON.stringify(
+    //     responseBody
+    //   )}| Current Url: ${this.route}`
+    // );
 
     const subscription_required = responseBody.headers.get(
       'subscription_required'

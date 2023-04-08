@@ -204,7 +204,7 @@ export class AdminLaunchComponent
     this.metaSandbox.launch().subscribe(
       (orgCode: any) => {
         this.sharedTenantInit(orgCode);
-        this.sortTenantWithOuCodesByTenantId();
+        // this.sortTenantWithOuCodesByTenantId();
         this.flag = true;
         this.tenantList = orgCode.tenentWithOucodeAccessTrees.map(
           (x) => x['key']

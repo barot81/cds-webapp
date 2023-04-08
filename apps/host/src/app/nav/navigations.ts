@@ -12,7 +12,7 @@ export const navigations = {
           id: 'dashboard',
           title: 'Home',
           type: 'menu-item',
-          url: '/dashboard',
+          url: '/admin/account/launch',
           classes: '{"bg":"pink-50-bg","font":"pink-fg","border":"pink"}',
           hidden: false,
           featureCode: 'navigation.programme'
@@ -201,7 +201,7 @@ export const navigations = {
               id: 'zhealthcare-ux-repo',
               title: 'Component Library',
               type: 'menu-item',
-              url: '/admin/ux/ui/zhealthcare-component-library',
+              url: '/ux/ui/zhealthcare-component-library',
               classes:
                 '{"bg":"green-50-bg","hoverBG":"green-50-hover-bg","activeBG":"green-100-bg"}',
               hidden: false,
@@ -250,7 +250,7 @@ export const navigations = {
                       id: 'Fullwidth-Page-scroll',
                       title: 'Fullwidth Page scroll',
                       type: 'menu-item',
-                      url: '/admin/ux/ui/page-layouts/layouts/fullwidth-page-scroll',
+                      url: '/ux/ui/page-layouts/layouts/fullwidth-page-scroll',
                       classes:
                         '{"bg":"green-50-bg","hoverBG":"green-50-hover-bg","activeBG":"green-100-bg"}',
                       hidden: false,
@@ -267,7 +267,7 @@ export const navigations = {
                       id: 'Fullwidth-Component-Scroll',
                       title: 'Fullwidth Component Scroll',
                       type: 'menu-item',
-                      url: '/admin/ux/ui/page-layouts/layouts/fullwidth-component-scroll',
+                      url: '/ux/ui/page-layouts/layouts/fullwidth-component-scroll',
                       classes:
                         '{"bg":"green-50-bg","hoverBG":"green-50-hover-bg","activeBG":"green-100-bg"}',
                       hidden: false,
@@ -284,7 +284,7 @@ export const navigations = {
                       id: 'zhealthcare-layout-Scroll',
                       title: 'Layout Scroll',
                       type: 'menu-item',
-                      url: '/admin/ux/ui/zhealthcare-layout-scroll',
+                      url: '/ux/ui/zhealthcare-layout-scroll',
                       classes:
                         '{"bg":"green-50-bg","hoverBG":"green-50-hover-bg","activeBG":"green-100-bg"}',
                       hidden: false,
@@ -301,7 +301,7 @@ export const navigations = {
                       id: 'Two-Column',
                       title: 'Two-Column',
                       type: 'menu-item',
-                      url: '/admin/ux/ui/page-layouts/layouts/two-column',
+                      url: '/ux/ui/page-layouts/layouts/two-column',
                       classes:
                         '{"bg":"green-50-bg","hoverBG":"green-50-hover-bg","activeBG":"green-100-bg"}',
                       hidden: false,
@@ -318,7 +318,7 @@ export const navigations = {
                       id: 'Two-Column-With-Header',
                       title: 'Two Column With Header',
                       type: 'menu-item',
-                      url: '/admin/ux/ui/page-layouts/layouts/two-column-with-header',
+                      url: '/ux/ui/page-layouts/layouts/two-column-with-header',
                       classes:
                         '{"bg":"green-50-bg","hoverBG":"green-50-hover-bg","activeBG":"green-100-bg"}',
                       hidden: false,
@@ -335,7 +335,7 @@ export const navigations = {
                       id: 'Two-Sidebar-Layout',
                       title: 'Two Sidebar Layout',
                       type: 'menu-item',
-                      url: '/admin/ux/ui/page-layouts/layouts/two-sidebar-layout',
+                      url: '/ux/ui/page-layouts/layouts/two-sidebar-layout',
                       classes:
                         '{"bg":"green-50-bg","hoverBG":"green-50-hover-bg","activeBG":"green-100-bg"}',
                       hidden: false,
@@ -354,7 +354,7 @@ export const navigations = {
                   id: 'left-sidebar',
                   title: 'Left Sidebar Layout',
                   type: 'menu-item',
-                  url: '/admin/ux/apps/left-sidebar-layout',
+                  url: '/ux/apps/left-sidebar-layout',
                   classes:
                     '{"bg":"green-50-bg","hoverBG":"green-50-hover-bg","activeBG":"green-100-bg"}',
                   hidden: false,

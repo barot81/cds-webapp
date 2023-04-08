@@ -1,0 +1,216 @@
+<!-- tabs for less that small screens -->
+<div class="h-100-p" fxLayout="column">
+  <div fxLayout="row" fxHide.gt-md class="pb-16">
+    <div>
+      <nav mat-tab-nav-bar>
+        <a
+          mat-tab-link
+          *ngFor="let item of bulkUpdateList"
+          [active]="item.id === selectedId"
+          (click)="navigateToBulkUpdateListItem(item.id)"
+        >
+          <span
+            >{{ item.title }}
+            <span *ngIf="item.count > 0">({{ item.count }})</span></span
+          >
+          <span *ngIf="item.count > 0"
+            ><i
+              aria-hidden="true"
+              class="fa-light fa-circle warn-fg s-8 pl-8"
+              aria-hidden="true"
+            ></i
+          ></span>
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="message-box info m-16">
+    All the edited fields will be updated for the
+    {{ selectedStudents?.length }} students. The red dot indicates if there are
+    any updates made in the section
+  </div>
+
+  <div fxLayout="row" fxFlex="100" class="h-100-p pb-16 pl-16">
+    <div
+      fxLayout="column"
+      fxFlex="100"
+      fxHide.lt-lg
+      class="white-background pt-16 overflow-auto box-shadow-right"
+      fxFlex.gt-md="30"
+    >
+      <mat-list class="py-16">
+        <button
+          mat-button
+          class="no-space m-0 p-0"
+          *ngFor="let item of bulkUpdateList; let i = index"
+          (click)="navigateToBulkUpdateListItem(item.id)"
+        >
+          <mat-list-item
+            class="p-16"
+            [ngClass]="{ 'active-list-item': selectedId === item.id }"
+          >
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              fxFlex="100"
+            >
+              <div
+                class="text-left white-space-normal"
+                fxLayout="row"
+                fxLayoutAlign="start center"
+              >
+                <span
+                  >{{ item.title }}
+                  <span *ngIf="item.count > 0">({{ item.count }})</span></span
+                >
+              </div>
+              <div
+                *ngIf="item.count > 0"
+                fxLayout="row"
+                fxLayoutAlign="end center"
+              >
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-circle warn-fg s-8"
+                ></i>
+              </div>
+            </div>
+          </mat-list-item>
+          <mat-divider
+            class="w-80-p margin-auto"
+            *ngIf="i !== bulkUpdateList.length - 1"
+          >
+          </mat-divider>
+        </button>
+      </mat-list>
+    </div>
+    <div
+      fxFlex.gt-md="70"
+      fxLayout="column"
+      fxFlex="100"
+      class="pl-sm-32 overflow-auto"
+    >
+      <div
+        *ngIf="selectedId === bulkUpdateList[0].id"
+        name="form"
+        [formGroup]="fusionFormGroup"
+      >
+        <mat-card fxLayout="column" class="p-16">
+          <div
+            *ngIf="studentsFromdifferentCohort"
+            class="message-box info mb-16"
+          >
+            The selected students are not from same cohort. Hence the Enrollment
+            Term, Group & Graduation Term are disabled as these are cohort
+            specific.
+          </div>
+          <a (click)="reset()" class="mb-16">Reset all</a>
+          <div
+            fxLayout="row wrap"
+            fxLayoutAlign="start center"
+            fxFlex="1 0 auto"
+          >
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Enrollment Term</mat-label>
+              <mat-select formControlName="enrollmentTerm">
+                <mat-option [value]="noChange">No Change</mat-option>
+                <mat-option [value]="null">-- None --</mat-option>
+                <mat-option
+                  *ngFor="let enrollment of cohortInformation?.enrollmentTerm"
+                  [value]="enrollment"
+                >
+                  {{ enrollment }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div
+            fxLayout="row wrap"
+            fxLayoutAlign="start center"
+            fxFlex="1 0 auto"
+          >
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Group</mat-label>
+              <mat-select formControlName="groupName">
+                <mat-option [value]="noChange">No Change</mat-option>
+                <mat-option [value]="null">-- None --</mat-option>
+                <mat-option
+                  *ngFor="let group of cohortInformation?.group"
+                  [value]="group"
+                >
+                  {{ group }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div
+            fxLayout="row wrap"
+            fxLayoutAlign="start center"
+            fxFlex="1 0 auto"
+          >
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Status</mat-label>
+              <mat-select
+                formControlName="profileStatus"
+                (selectionChange)="onStatusChange($event)"
+              >
+                <mat-option [value]="noChange">No Change</mat-option>
+                <mat-option
+                  *ngFor="let status of 'profilestatus' | lookups"
+                  [value]="status.itemId"
+                >
+                  {{ status.itemId }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div
+            fxLayout="row wrap"
+            fxLayoutAlign="start center"
+            fxFlex="1 0 auto"
+          >
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Academic Standing</mat-label>
+              <mat-select formControlName="academicStanding">
+                <mat-option [value]="noChange">No Change</mat-option>
+                <mat-option [value]="null">-- None --</mat-option>
+                <mat-option
+                  *ngFor="let status of SelectedprofileStatus | lookups"
+                  [value]="status.itemId"
+                >
+                  {{ status.itemId }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div
+            fxLayout="row wrap"
+            fxLayoutAlign="start center"
+            fxFlex="1 0 auto"
+          >
+            <mat-form-field appearance="fill" fxFlex="100">
+              <mat-label>Graduation Term</mat-label>
+              <mat-select formControlName="graduationTerm">
+                <mat-option [value]="noChange">No Change</mat-option>
+                <mat-option [value]="null">-- None --</mat-option>
+                <mat-option
+                  *ngFor="
+                    let graduationTerm of cohortInformation?.graduationTerm
+                  "
+                  [value]="graduationTerm"
+                >
+                  {{ graduationTerm }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

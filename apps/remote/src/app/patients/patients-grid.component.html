@@ -7,6 +7,7 @@
           fxFlex="100"
           search
           [formControl]="searchItem"
+          (keyup)="applyFilter($event)"
         >
           <div
             class="search table-search"
@@ -18,7 +19,7 @@
             <input
               id="inputBox"
               type="text"
-              placeholder="Search in 50 student"
+              placeholder="Search in all patients"
               [formControl]="searchItem"
               fxFlex
             />
@@ -219,7 +220,7 @@
     >
       <!-- Name Column -->
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef class="name-column">Name (50)</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="name-column">Patient Name</th>
         <td
           mat-cell
           *matCellDef="let element; let i = index"
@@ -237,48 +238,82 @@
       </ng-container>
 
       <!-- address Column -->
-      <ng-container matColumnDef="address">
-        <th mat-header-cell *matHeaderCellDef class="address-column">
-          Address
+      <ng-container matColumnDef="room">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header  class="address-column">
+          Room
         </th>
         <td mat-cell *matCellDef="let element" class="address-column">
-          {{ element.address }}
+          {{ element.room }}
         </td>
       </ng-container>
 
       <!-- email Column -->
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef class="email-width">Email</th>
+      <ng-container matColumnDef="admitDate">
+        <th mat-header-cell *matHeaderCellDef class="email-width">Admin Date</th>
         <td mat-cell *matCellDef="let element" class="email-width">
-          <a>{{ element.email }}</a>
+          <a>{{ element.admitDate }}</a>
         </td>
       </ng-container>
 
       <!-- phone Column -->
-      <ng-container matColumnDef="phone">
-        <th mat-header-cell *matHeaderCellDef class="column-width">Phone</th>
+      <ng-container matColumnDef="healthPlan">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-width">Health Plan</th>
         <td mat-cell *matCellDef="let element" class="column-width">
-          {{ element.phone }}
+          {{ element.healthPlan }}
         </td>
       </ng-container>
 
       <!-- cohort Column -->
-      <ng-container matColumnDef="cohort">
-        <th mat-header-cell *matHeaderCellDef class="column-width">Cohort</th>
+      <ng-container matColumnDef="cds">
+        <th mat-header-cell *matHeaderCellDef class="column-width">CDS</th>
         <td mat-cell *matCellDef="let element" class="column-width">
-          {{ element.cohort }}
+          {{ element.cds }}
         </td>
       </ng-container>
 
       <!-- status Column -->
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef class="column-width">Status</th>
+      <ng-container matColumnDef="queryStatus">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header  class="column-width">Query Status</th>
         <td mat-cell *matCellDef="let element" class="column-width">
           <div class="status-badge {{ element.statusClass }} w-88 text-center">
-            {{ element.status }}
+            {{ element.queryStatus }}
           </div>
         </td>
       </ng-container>
+
+
+    <!-- cohort Column -->
+    <ng-container matColumnDef="reimbursementType">
+      <th mat-header-cell *matHeaderCellDef class="column-width">Reimbursement Type</th>
+      <td mat-cell *matCellDef="let element" class="column-width">
+        {{ element.reimbursementType }}
+      </td>
+    </ng-container>
+
+    <!-- cohort Column -->
+    <ng-container matColumnDef="facility">
+      <th mat-header-cell *matHeaderCellDef class="column-width">Facility</th>
+      <td mat-cell *matCellDef="let element" class="column-width">
+        {{ element.facility }}
+      </td>
+    </ng-container>
+
+  <!-- cohort Column -->
+  <ng-container matColumnDef="comments">
+    <th mat-header-cell *matHeaderCellDef class="column-width">Comments</th>
+    <td mat-cell *matCellDef="let element" class="column-width">
+      {{ element.comments }}
+    </td>
+  </ng-container>
+
+
+  <!-- cohort Column -->
+  <ng-container matColumnDef="queryDate">
+    <th mat-header-cell *matHeaderCellDef class="column-width">Query Date</th>
+    <td mat-cell *matCellDef="let element" class="column-width">
+      {{ element.queryDate }}
+    </td>
+  </ng-container>
 
       <!-- actions Column -->
       <ng-container matColumnDef="actions">
@@ -298,6 +333,10 @@
         [class.row-selected]="clickedRows.has(row)"
         [class.row-highlighted]="highlightedRows.has(row)"
       ></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
     </table>
   </div>
   <div #pagination>

@@ -1,13 +1,17 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationEnd, Router } from '@angular/router';
 import { zhealthcareTag } from '@zhealthcare/plugin/tags';
 import { FullScreenService, ScrollService } from '@zhealthcare/ux';
 
 import { filter } from 'rxjs/operators';
-import { GridService } from '../serices/grid.service';
+import { Patient } from '../models/patient.model';
+import { GridService } from '../services/grid.service';
+import { PatientService } from '../services/patient.service';
 
 export interface PeriodicElement {
   name: string;
@@ -19,276 +23,14 @@ export interface PeriodicElement {
   actions: string;
   statusClass: string;
 }
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    name: 'Albert Ortega',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-  {
-    name: 'Albert Ortega',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'In-Active',
-    actions: '',
-    statusClass: 'disapproved',
-  },
-  {
-    name: 'Albert Ortega',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-  {
-    name: 'Albert Ortega',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-  {
-    name: 'Bradford Montgomery',
-    address: '247 Lookout Lane, Springfield Gardens, NY 11413',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-  {
-    name: 'Albert Ortega',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-  {
-    name: 'Albert Ortega',
-    address: '247 Lookout Lane, Springfield Gardens, NY 11413',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-  {
-    name: 'Bradford Montgomery',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'In-Active',
-    actions: '',
-    statusClass: 'disapproved',
-  },
-  {
-    name: 'Albert Ortega',
-    address: '16 942 NE. Glen Eagles St., Cantonment, FL 32533',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'In-Active',
-    actions: '',
-    statusClass: 'disapproved',
-  },
-  {
-    name: 'Bradford Montgomery',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-  {
-    name: 'Albert Ortega',
-    address: '942 NE. Glen Eagles St., Cantonment, FL 32533',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'In-Active',
-    actions: '',
-    statusClass: 'disapproved',
-  },
-  {
-    name: 'Bradford Montgomery',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-  {
-    name: 'Albert Ortega',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-  {
-    name: 'Albert Ortega',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-  {
-    name: 'Albert Ortega',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'In-Active',
-    actions: '',
-    statusClass: 'disapproved',
-  },
-  {
-    name: 'Albert Ortega',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-  {
-    name: 'Albert Ortega',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-  {
-    name: 'Bradford Montgomery',
-    address: '247 Lookout Lane, Springfield Gardens, NY 11413',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-  {
-    name: 'Albert Ortega',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-  {
-    name: 'Albert Ortega',
-    address: '247 Lookout Lane, Springfield Gardens, NY 11413',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-  {
-    name: 'Bradford Montgomery',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'In-Active',
-    actions: '',
-    statusClass: 'disapproved',
-  },
-  {
-    name: 'Albert Ortega',
-    address: '16 942 NE. Glen Eagles St., Cantonment, FL 32533',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'In-Active',
-    actions: '',
-    statusClass: 'disapproved',
-  },
-  {
-    name: 'Bradford Montgomery',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-  {
-    name: 'Albert Ortega',
-    address: '942 NE. Glen Eagles St., Cantonment, FL 32533',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'In-Active',
-    actions: '',
-    statusClass: 'disapproved',
-  },
-  {
-    name: 'Bradford Montgomery',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-  {
-    name: 'Albert Ortega',
-    address: '16 Military Ave., Cary, NC 27511',
-    email: 'albertortega@example.com',
-    phone: '(435) 682-9206',
-    cohort: 'Cohort XYZ',
-    status: 'Active',
-    actions: '',
-    statusClass: 'approved',
-  },
-];
+const ELEMENT_DATA: Patient[] = [];
 
 @Component({
   selector: 'zhealthcare-patients-grid',
   templateUrl: './patients-grid.component.html',
   styles:[]
 })
-export class PatientsGridComponent {
+export class PatientsGridComponent implements AfterViewInit{
   private settlementHeight = 20;
 
   searchItem = new FormControl();
@@ -296,18 +38,24 @@ export class PatientsGridComponent {
   @ViewChild('gridHeader') gridHeader: ElementRef;
   @ViewChild('pagination') pagination: ElementRef;
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   displayedColumns: string[] = [
     'name',
-    'address',
-    'email',
-    'phone',
-    'cohort',
-    'status',
-    'actions',
+    'room',
+    'admitDate',
+    'healthPlan',
+    'cds',
+    'queryStatus',
+    'queryDate',
+    'reimbursementType',
+    'comments',
+    'actions'
   ];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  clickedRows = new Set<PeriodicElement>();
-  highlightedRows = new Set<PeriodicElement>();
+
+  dataSource = new MatTableDataSource<Patient>([]);
+  clickedRows = new Set<Patient>();
+  highlightedRows = new Set<Patient>();
 
   tags: Array<zhealthcareTag> = [
     {
@@ -402,13 +150,15 @@ export class PatientsGridComponent {
     width: '450',
     pointerEvents: 'auto',
   };
+
   constructor(
     public dialog: MatDialog,
     public _scrollService: ScrollService,
     public gridService: GridService,
     private elem: ElementRef,
     private _router: Router,
-    public _fullScreenService: FullScreenService
+    public _fullScreenService: FullScreenService,
+    public patientService : PatientService
   ) {
     this._router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -417,6 +167,8 @@ export class PatientsGridComponent {
           await this.setHeaderHeights();
         }
       });
+      const patients = this.patientService.getPatients(localStorage.getItem('TenantId'));
+      this.dataSource =  new MatTableDataSource(patients);
   }
 
   private async setHeaderHeights() {
@@ -437,6 +189,21 @@ export class PatientsGridComponent {
     });
   }
 
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
   //code for onclick single row select and outside table click event
   @HostListener('document:click', ['$event'])
   DocumentClick(event: Event) {
@@ -453,7 +220,7 @@ export class PatientsGridComponent {
           if (this.clickedRows.size) {
             this.highlightedRows = this.clickedRows;
           }
-          this.clickedRows = new Set<PeriodicElement>();
+          this.clickedRows = new Set<Patient>();
         }
       }
     }
@@ -462,15 +229,15 @@ export class PatientsGridComponent {
   addRow(row) {
     if (this.clickedRows.size) {
       if (this.clickedRows.has(row)) {
-        this.clickedRows = new Set<PeriodicElement>();
+        this.clickedRows = new Set<Patient>();
       } else {
-        this.clickedRows = new Set<PeriodicElement>();
+        this.clickedRows = new Set<Patient>();
         this.clickedRows.add(row);
       }
     } else {
       this.clickedRows.add(row);
     }
-    this.highlightedRows = new Set<PeriodicElement>();
+    this.highlightedRows = new Set<Patient>();
   }
 
   //chips code

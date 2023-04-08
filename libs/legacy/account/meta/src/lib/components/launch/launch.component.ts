@@ -27,11 +27,10 @@ import {
   LayoutService,
   PageFacade,
 } from '@zhealthcare/ux';
-import lodash from 'lodash';
-import { lastValueFrom, Observable, of, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { MetaSandbox } from '../../meta.sandbox';
-import { ProfileDataSource } from '../../models/datasource';
+import { PatientDataSource } from '../../models/datasource';
 import { BrowserStorage } from '../../models/storage.model';
 import { TenantInformationSandbox } from '../../services/tenant-information/tenant-information-snadbox';
 
@@ -217,15 +216,13 @@ export class LaunchComponent
 
 
   setSelectedOUCode(selectedOucode: string) {
-    const selectedOUCode = this.oucodeTree?.find(
-      (x) => x.Oucode === selectedOucode
+    const selectedOuCodeTree = this.selectedTenant?.OucodeTree?.find(
+      (x) => x.Name === selectedOucode
     );
-    const selectedOUCodeCaption = selectedOUCode?.caption
-      ? selectedOUCode?.caption
-      : selectedOUCode?.Name;
+    const selectedOUCodeCaption = selectedOuCodeTree?.Name;
     this._headerService.setSelectedOUCodeCaption(selectedOUCodeCaption);
     this._headerService.setTenantWithOucodeTreeWithCaption(
-      this.tenantWithOucodeTreeWithCaption
+      selectedOuCodeTree
     );
   }
 
@@ -261,18 +258,19 @@ export class LaunchComponent
     //this.fusionNavigatoinService.registration();
 
     this.showProgressBar();
-    selectedTenant.OucodeTree = this.buildOucodeTree(
+    const oucodeTree = this.buildOucodeTree(
       selectedTenant.OucodeTree,
       selectedOuCode
     );
+    selectedOuCode = Object.assign({}, selectedOuCode, { OucodeTree: oucodeTree})
     this.orgFacade.SetTenantWithOucodes(selectedTenant);
     // Set Role Based Data in Local Storage
-    this.getRoleDocument(
-      selectedTenant.TenantId,
-      selectedOuCode,
-      isFaculty
-    ).subscribe(
-      (data) => {
+    // this.getRoleDocument(
+    //   selectedTenant.TenantId,
+    //   selectedOuCode,
+    //   isFaculty
+    // ).subscribe(
+    //   (data) => {
         // from this line to 235 this code should be in child component
         this.activatedRoute.queryParams.subscribe(
           (resp) => {
@@ -312,18 +310,18 @@ export class LaunchComponent
           }
         );
 
-        this.getOrgUnitInformation(selectedOuCode);
-        this.getTenantName(selectedTenant);
-      },
-      (error) => {
-        this.fuseProgressBarService.hide();
-      }
-    );
+        // this.getOrgUnitInformation(selectedOuCode);
+        // this.getTenantName(selectedTenant);
+    //   },
+    //   (error) => {
+    //     this.fuseProgressBarService.hide();
+    //   }
+    // );
   }
 
   removeStudentSessionFilters() {
     //Clear StudentGrid filters whenever we login or change program.
-    sessionStorage.removeItem(ProfileDataSource.Student_Grid_Datasource);
+    sessionStorage.removeItem(PatientDataSource.Patient_Grid_Datasource);
   }
   removeCourseSessionFilters() {
     // sessionStorage.removeItem(CourseDataSource.Course_Offering_Grid_Datasource);
@@ -340,37 +338,38 @@ export class LaunchComponent
   }
 
   buildOucodeTree(oucodeTrees, oucode) {
+
     if (Array.isArray(oucodeTrees)) {
       oucodeTrees.forEach((element, index) => {
-        if (oucodeTrees[index]['Oucode'] === oucode)
-          oucodeTrees[index]['isSelected'] = true;
+        if (element.Name === oucode)
+        element = Object.assign({}, element, { isSelected:  true });
         else if (element.hasOwnProperty('Children')) {
           this.buildOucodeTree(element.Children, oucode);
-          oucodeTrees[index]['isSelected'] = false;
+          element = Object.assign({}, element, { isSelected:  false });
         }
       });
     } else {
-      if (oucodeTrees['Oucode'] === oucode) oucodeTrees.isSelected = true;
+      if (oucodeTrees.Oucode === oucode) oucodeTrees.isSelected = true;
       else if (oucodeTrees.hasOwnProperty('Children')) {
         this.buildOucodeTree(oucodeTrees.Children, oucode);
-        oucodeTrees['isSelected'] = false;
+        oucodeTrees = Object.assign({}, oucodeTrees, { isSelected:  false });;
       }
     }
     return oucodeTrees;
   }
 
   getTenantName(selectedTenant: TenantWithOuCodeTree) {
-    let tenantId = selectedTenant.TenantId;
+    const tenantId = selectedTenant.TenantId;
     this.showProgressBar();
-    this.metaSandbox.getOrganizationInformation('Org.' + tenantId).subscribe(
-      (result) => {
-        this.storage.storageType.setItem('TenantName', result.name);
-        this.hideProgressBar();
-      },
-      (error) => {
-        this.fuseProgressBarService.hide();
-      }
-    );
+    // this.metaSandbox.getOrganizationInformation('Org.' + tenantId).subscribe(
+    //   (result) => {
+    //     this.storage.storageType.setItem('TenantName', result.name);
+    //     this.hideProgressBar();
+    //   },
+    //   (error) => {
+    //     this.fuseProgressBarService.hide();
+    //   }
+    // );
   }
 
   setSelectedTenant(tenant: any) {

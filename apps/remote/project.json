@@ -15,10 +15,30 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/remote/src/favicon.ico",
-          "apps/remote/src/assets"
+          "apps/remote/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/legacy/assets/global/",
+            "output": "./assets/"
+          }
+
         ],
-        "styles": ["apps/remote/src/styles.scss"],
+        "styles": ["apps/remote/src/styles.scss",
+        {
+          "input": "libs/legacy/ux/src/lib/styles/themes/_blue-theme.scss",
+          "inject": false,
+          "bundleName": "theme-blue"
+        },
+        {
+          "input": "libs/legacy/ux/src/lib/styles/themes/_purple-theme.scss",
+          "inject": false,
+          "bundleName": "theme-purple"
+        },
+        "node_modules/@fortawesome/fontawesome-pro/css/all.css"],
         "scripts": [],
+        "stylePreprocessorOptions": {
+        "includePaths": ["libs/legacy/ux/src/lib/styles/app/shared"]
+        },
         "customWebpackConfig": {
           "path": "apps/remote/webpack.config.js"
         }

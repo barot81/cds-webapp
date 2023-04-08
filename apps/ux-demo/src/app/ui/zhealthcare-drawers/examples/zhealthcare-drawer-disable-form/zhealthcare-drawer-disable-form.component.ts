@@ -3,7 +3,7 @@ import { DrawerAdapter } from '@zhealthcare/ux';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
-import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FusionFormComponent, FusionFormAdapter } from '@zhealthcare/fusion/components';
 
 interface Prop {

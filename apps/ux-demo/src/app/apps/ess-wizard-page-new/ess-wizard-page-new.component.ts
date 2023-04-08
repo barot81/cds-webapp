@@ -7,7 +7,7 @@ import { BreadCrumbType, CarouselEvent, FuseSidebarService, HeaderService } from
 import { SecurityContext } from '@zhealthcare/fusion/models';
 import { UXDemoDrawerService } from '../../remote-entry/ux-demo-drawer.service';
 import { GridService } from '../student-grid/grid.service';
-import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 interface HeaderContentItem {
     id: string;
     title: string;
@@ -104,7 +104,7 @@ export class EssWizardPageNewComponent implements OnInit,AfterViewInit{
 
   //table
   displayedColumns: string[] = ['form','weightage','publishDate',  'midtermDue', 'finalDueDate' , 'status' , 'action'];
- 
+
   dataSourceRight = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
 
@@ -131,7 +131,7 @@ export class EssWizardPageNewComponent implements OnInit,AfterViewInit{
     if (!this.isExpanded) {
       this.isShowing = false;
     }
-  }  
+  }
 
   templateList = [
     { value: "Template name 1", viewValue: "Template name 1" },
@@ -140,7 +140,7 @@ export class EssWizardPageNewComponent implements OnInit,AfterViewInit{
     { value: "Template name 4", viewValue: "Template name 4" }
   ];
 
-  
+
   signatureList = [
     { value: "Signature name 1", viewValue: "Signature name 1" },
     { value: "Signature name 2", viewValue: "Signature name 2" },

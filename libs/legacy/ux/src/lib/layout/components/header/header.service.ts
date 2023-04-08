@@ -32,9 +32,9 @@ export class HeaderService {
         }
         this.tenantName = new BehaviorSubject<string>(initialTenantName);
         this.selectedOUCodeCaption$ = new BehaviorSubject<string>(localStorage.getItem('selectedOUCodeCaption') ?? '');
-        if(localStorage.getItem('tenantWithOucodeTreeWithCaption')!=null) {
+        if(localStorage.getItem('tenantWithOucodeTreeWithCaption')) {
             const tenantWithOucodeTreeWithCaption = JSON.parse(localStorage.getItem('tenantWithOucodeTreeWithCaption'));
-            this.orgFacade.SetOuCodeAccessTree(tenantWithOucodeTreeWithCaption.Children);
+            this.orgFacade.SetOuCodeAccessTree(tenantWithOucodeTreeWithCaption?.Children);
           }
     }
 
@@ -53,9 +53,9 @@ export class HeaderService {
         this.selectedOUCodeCaption$.next(selectedOUCodeCaption ?? '')
     }
 
-    setTenantWithOucodeTreeWithCaption(tenantWithOucodeTreeWithCaption: OuCodeAccessTree) {
+    setTenantWithOucodeTreeWithCaption( tenantWithOucodeTreeWithCaption: OuCodeAccessTree) {
         localStorage.setItem('tenantWithOucodeTreeWithCaption', JSON.stringify(tenantWithOucodeTreeWithCaption));
-        this.orgFacade.SetOuCodeAccessTree(tenantWithOucodeTreeWithCaption.Children);
+        this.orgFacade.SetOuCodeAccessTree([tenantWithOucodeTreeWithCaption]);
    }
 
     setWindowHeight(height) {

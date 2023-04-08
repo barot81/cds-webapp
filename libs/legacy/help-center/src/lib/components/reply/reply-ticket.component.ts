@@ -5,7 +5,7 @@ import { ManifoldPanelService, SpinnerOverlayService } from '@zhealthcare/ux';
 // @ts-ignore
 import { ZendeskAPIClient } from '@zhealthcare/zendesk';
 import { RuntimeConfigLoaderService } from '@zhealthcare-core/angular-runtime-config';
-import * as ClassicEditor from '@exxat/ckeditor5-build-classic';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FusionFormAdapter } from '@zhealthcare/fusion/components';
 import {
   EventItem,

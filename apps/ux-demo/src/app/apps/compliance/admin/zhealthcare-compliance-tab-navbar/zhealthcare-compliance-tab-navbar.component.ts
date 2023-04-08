@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'ryzen-zhealthcare-compliance-tab-navbar',
   templateUrl: './zhealthcare-compliance-tab-navbar.component.html',
 })
-export class zhealthcareComplianceTabNavbarComponent implements OnInit {
+export class zhealthcareComplianceTabNavbarComponent {
 
   navigations = [
     {
@@ -26,9 +26,5 @@ export class zhealthcareComplianceTabNavbarComponent implements OnInit {
       //url: '/admin/ux/apps/compliance/admin/notifications'
     }
   ]
-
-  ngOnInit() {
-    console.log("");
-  }
 
 }

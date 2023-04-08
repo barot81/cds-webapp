@@ -150,34 +150,6 @@
 
       <!-- <div class="header-separator"></div> -->
       <!-- profile section -->
-      <ng-container *ngIf="hasDelegateRole$ | async; else elseBlock">
-        <button mat-button class="user-button">
-          <div fxLayout="row" fxLayoutAlign="center center">
-            <ng-container *ngIf="loggedInUser$ | async as loggedInUser">
-              <div fxLayout="row text-left">
-                <ng-container *ngIf="userName">
-                  <span class="username mr-8" fxHide fxShow.gt-sm>{{
-                    userName
-                  }}</span>
-                </ng-container>
-                <ng-container *ngIf="!userName">
-                  <span class="username mr-8" fxHide fxShow.gt-sm
-                    >{{ loggedInUser?.user?.FirstName }}
-                    {{ loggedInUser?.user?.LastName }}</span
-                  >
-                  <span class="username mr-12" fxHide fxShow.gt-sm
-                    >{{ _headerService.tenantName | async }} ({{
-                      _headerService.selectedOUCodeCaption$ | async
-                    }})</span
-                  >
-                </ng-container>
-              </div>
-              <!-- <mat-icon class="s-16"> keyboard_arrow_down</mat-icon> -->
-            </ng-container>
-          </div>
-        </button>
-      </ng-container>
-      <ng-template #elseBlock>
         <button
           mat-button
           aria-label="toggle user setting"
@@ -200,13 +172,10 @@
                 </ng-container>
                 <ng-container *ngIf="!userName">
                   <span class="username mr-8" fxHide fxShow.gt-sm
-                    >{{ loggedInUser?.user?.FirstName }}
-                    {{ loggedInUser?.user?.LastName }}</span
+                    > Vishal  </span
                   >
                   <span class="username mr-12" fxHide fxShow.gt-sm
-                    >{{ _headerService.tenantName | async }} ({{
-                      _headerService.selectedOUCodeCaption$ | async
-                    }})</span
+                    >( {{ _headerService.tenantName | async }} )</span
                   >
                 </ng-container>
               </div>
@@ -214,7 +183,6 @@
             </ng-container>
           </div>
         </button>
-      </ng-template>
 
       <!-- <ng-container  *ngIf='loggedInUser$ | async as loggedInUser'> -->
       <mat-menu #userMenu="matMenu">

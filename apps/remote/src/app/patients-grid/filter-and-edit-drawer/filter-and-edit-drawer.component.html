@@ -1,0 +1,246 @@
+<div class="h-100-p filter-edit-drawer" fxLayout="column">
+  <!-- Secondary nav for filter and edit tabs -->
+  <div
+    fxFlex
+    fxLayoutAlign="center center"
+    class="nav-tabs h-40"
+    style="overflow-y: hidden"
+  >
+    <nav
+      mat-tab-nav-bar
+      [disablePagination]="true"
+      class="secondary-tab-nav-bar"
+    >
+      <a
+        mat-tab-link
+        *ngFor="let item of operationList"
+        [active]="item.id === operationId"
+        (click)="navigateToOperationListItem(item.id)"
+      >
+        <span>{{ item.title }}</span>
+      </a>
+    </nav>
+  </div>
+  <!-- tabs for less that small screens -->
+  <div fxHide.gt-md>
+    <div *ngIf="operationId === operationList[0].id">
+      <nav mat-tab-nav-bar class="tertiary-tab-nav-bar">
+        <a
+          mat-tab-link
+          *ngFor="let item of filterList"
+          [active]="item.id === selectedId"
+          (click)="navigateToFilterListItem(item.id)"
+        >
+          <span
+            >{{ item.title }}
+            <span *ngIf="item.count > 0">({{ item.count }})</span></span
+          >
+          <i aria-hidden="true" class="fa-light fa-circle warn-fg s-8 pl-8"></i>
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Filter Tab -->
+  <div
+    *ngIf="operationId === operationList[0].id"
+    fxLayout="row"
+    fxFlex="100"
+    class="h-100-p"
+  >
+    <div
+      fxHide.lt-lg
+      class="white-background pt-16 overflow-auto box-shadow-right"
+      fxFlex.gt-md="30"
+    >
+      <a class="pl-16">Reset all</a>
+      <mat-list class="py-16">
+        <button
+          mat-button
+          class="no-space m-0 p-0"
+          *ngFor="let item of filterList; let i = index"
+          (click)="navigateToFilterListItem(item.id)"
+        >
+          <mat-list-item
+            class="p-16"
+            [ngClass]="{ 'active-list-item': selectedId === item.id }"
+          >
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+              fxFlex="100"
+            >
+              <div
+                class="text-left white-space-normal"
+                fxLayout="row"
+                fxLayoutAlign="start center"
+              >
+                <span
+                  >{{ item.title }}
+                  <span *ngIf="item.count > 0">({{ item.count }})</span></span
+                >
+              </div>
+              <div fxLayout="row" fxLayoutAlign="end center">
+                <i
+                  aria-hidden="true"
+                  class="fa-light fa-circle warn-fg s-8"
+                ></i>
+              </div>
+            </div>
+          </mat-list-item>
+          <mat-divider
+            class="w-80-p margin-auto"
+            *ngIf="i !== filterList.length - 1"
+          >
+          </mat-divider>
+        </button>
+      </mat-list>
+    </div>
+    <div fxFlex.gt-md="70" fxFlex="100" class="pl-24 overflow-auto">
+      <div *ngIf="selectedId === filterList[0].id">
+        <div fxFlex="100" fxLayout="column" class="pt-16">
+          <div
+            class="mb-12"
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+          >
+            <a>Select all</a>
+          </div>
+          <div fxLayout="column">
+            <div class="mb-16">
+              <mat-checkbox>
+                <div class="status-badge pending">Pending for review</div>
+              </mat-checkbox>
+            </div>
+            <div class="mb-16">
+              <mat-checkbox [checked]="true">
+                <div class="status-badge inprogress">In progress</div>
+              </mat-checkbox>
+            </div>
+            <div class="mb-16">
+              <mat-checkbox [checked]="true">
+                <div class="status-badge expiring">Expering</div>
+              </mat-checkbox>
+            </div>
+            <div class="mb-16">
+              <mat-checkbox [checked]="true">
+                <div class="status-badge getstarted">Get Started</div>
+              </mat-checkbox>
+            </div>
+            <div class="mb-16">
+              <mat-checkbox>
+                <div class="status-badge approved">Approve</div>
+              </mat-checkbox>
+            </div>
+            <div class="mb-16">
+              <mat-checkbox>
+                <div class="status-badge expired">Expired</div>
+              </mat-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="selectedId === filterList[1].id">
+        <div fxFlex="100" fxLayout="column" class="pt-16">
+          <mat-radio-group fxLayout="column">
+            <mat-radio-button value="Cohort 2020" checked class="mb-16"
+              >Cohort 2020</mat-radio-button
+            >
+            <mat-radio-button value="Cohort 2022" class="mb-16"
+              >Cohort 2022
+            </mat-radio-button>
+            <mat-radio-button value="Cohort 2021" class=""
+              >Cohort 2021</mat-radio-button
+            >
+          </mat-radio-group>
+        </div>
+      </div>
+      <div *ngIf="selectedId === filterList[2].id">
+        <div fxFlex="100" fxLayout="column" class="pt-16 pr-24">
+          <div class="search-wrapper search-grid">
+            <div
+              class="search"
+              fxFlex
+              fxLayout="row"
+              fxLayoutAlign="start center"
+            >
+              <mat-icon class="s-16 secondary-text">search</mat-icon>
+              <input type="text" placeholder="Search" fxFlex />
+            </div>
+          </div>
+          <div
+            class="my-16"
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+          >
+            <a>Clear all</a>
+          </div>
+          <div fxLayout="column">
+            <mat-checkbox [checked]="true" class="mb-8">
+              Immunization Summary
+            </mat-checkbox>
+            <mat-checkbox [checked]="true" class="mb-8"> Flu </mat-checkbox>
+            <mat-checkbox [checked]="true" class="mb-8">
+              Physical Exam
+            </mat-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Columns Tab -->
+  <div
+    *ngIf="operationId === operationList[1].id"
+    class="h-100-p drawer-p overflow-auto"
+  >
+    <mat-card class="mb-16">
+      <div fxLayout="column">
+        <span class="font-16 m-16"
+          >Add or remove columns. To change the column order, drag and drop a
+          field.
+        </span>
+        <div id="editColumnContainer">
+          <div
+            cdkDropList
+            class="exxat-drag-drop-list w-100-p"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div *ngFor="let column of columnsList" cdkDrag>
+              <div *ngIf="!column.hideEditColumn" class="exxat-drag-drop">
+                <div class="icon-drag">
+                  <mat-icon class="primary-fg font-22">drag_indicator</mat-icon>
+                </div>
+                <div class="content">{{ column }}</div>
+                <button (click)="onRemoveColumn(column)">
+                  <mat-icon class="warn-fg font-22 ml-16">close</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          fxLayout="row"
+          class="m-16"
+          fxLayoutAlign="start center"
+          [matMenuTriggerFor]="columnMenu"
+          *ngIf="remainingDisplayColumns.length > 0"
+        >
+          <button>
+            <mat-icon class="mr-4 accent-fg">add</mat-icon>
+          </button>
+          <span class="accent-fg">Add a Column</span>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+  <mat-menu #columnMenu="matMenu">
+    <mat-option
+      *ngFor="let column of remainingDisplayColumns"
+      (onSelectionChange)="onAddColumn(column)"
+    >
+      <span>{{ column }}</span>
+    </mat-option>
+  </mat-menu>
+</div>

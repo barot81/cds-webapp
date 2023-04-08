@@ -1,0 +1,72 @@
+<div class="drawer-p">
+  <button
+    (click)="reset()"
+    class="link-btn pl-0 py-0 mb-8"
+    aria-label="Reset to default"
+  >
+    Reset to default
+  </button>
+  <mat-card fxLayout="column">
+    <div fxLayout="column" fxLayoutAlign="start start">
+      <div fxLayout="row" fxLayoutAlign="start start" class="pb-4">
+        <span>Cohort: </span>
+        <button
+          *ngIf="chipList.length > 0"
+          (click)="clearAllChips()"
+          class="link-btn pl-0 ml-12"
+          aria-label="Clear"
+        >
+          Clear
+        </button>
+      </div>
+      <mat-chip-list class="example-chip">
+        <mat-chip
+          class="example-box"
+          *ngFor="let chip of chipList"
+          [removable]="removable"
+          (removed)="remove(chip)"
+        >
+          {{ chip }}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="start start" class="mt-12">
+      <div fxLayout="row" fxLayoutAlign="start start" class="pb-4">
+        <span>Status: </span>
+        <button class="link-btn pl-0 ml-12" aria-label="Clear">Clear</button>
+      </div>
+
+      <mat-chip-list class="example-chip">
+        <mat-chip
+          class="example-box"
+          *ngFor="let chip of chipList1"
+          [removable]="removable"
+          (removed)="remove(chip)"
+        >
+          {{ chip }}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="start start" class="mt-12">
+      <div fxLayout="row" fxLayoutAlign="start start" class="pb-4">
+        <span>Email: </span>
+        <button class="link-btn pl-0 ml-12" aria-label="Clear">Clear</button>
+      </div>
+      <mat-chip-list class="example-chip">
+        <mat-chip
+          class="example-box"
+          *ngFor="let chip of chipList2"
+          [removable]="removable"
+          (removed)="remove(chip)"
+        >
+          {{ chip }}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+  </mat-card>
+</div>

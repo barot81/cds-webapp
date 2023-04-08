@@ -16,6 +16,16 @@ const routes: Routes = [
       ),
     canActivate: [AuthGuardService],
   },
+  {
+    path: 'ux',
+    loadChildren: () =>
+      loadRemoteModuleFromDefinitions(
+        'ux-demo',
+        './UxDemoModule',
+        'UxDemoModule'
+      ),
+    canActivate: [AuthGuardService],
+  },
   // {
   //   path: 'student/remote-home',
   //   loadChildren: () =>

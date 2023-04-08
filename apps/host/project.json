@@ -39,6 +39,9 @@
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/host/webpack.config.js"
+        },
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/legacy/ux/src/lib/styles/app/shared"]
         }
       },
       "configurations": {
