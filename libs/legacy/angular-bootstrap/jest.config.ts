@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'legacy-angular-bootstrap-legacy',
+  displayName: 'legacy-angular-bootstrap',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/legacy/angular-bootstrap-legacy',
+  coverageDirectory: '../../../coverage/libs/legacy/angular-bootstrap',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

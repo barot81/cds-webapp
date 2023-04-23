@@ -10,7 +10,7 @@
     "host": "apps/host",
     "host-e2e": "apps/host-e2e",
     "legacy-account": "libs/legacy/account",
-    "legacy-angular-bootstrap-legacy": "libs/legacy/angular-bootstrap-legacy",
+    "legacy-angular-bootstrap": "libs/legacy/angular-bootstrap",
     "legacy-assets": "libs/legacy/assets",
     "legacy-fusion": "libs/legacy/fusion",
     "legacy-fusion-feature-flag": "libs/legacy/fusion/feature-flag",

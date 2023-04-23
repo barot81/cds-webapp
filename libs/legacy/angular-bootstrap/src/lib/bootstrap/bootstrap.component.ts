@@ -31,8 +31,8 @@ import { RoleConfigType } from './type';
 import { ZendeskUtilService } from './utils/zendesk/zendesk-util.service';
 
 @Component({
-  selector: 'zhealthcare-angular-bootstrap-legacy',
-  templateUrl: './bootstrap-legacy.component.html'
+  selector: 'zhealthcare-angular-bootstrap',
+  templateUrl: './bootstrap.component.html'
 })
 export class ZhealthcareAngularBootstrapLegacyComponent implements OnInit, OnChanges, OnDestroy {
   @Input() routes: Routes;

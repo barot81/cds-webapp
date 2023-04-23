@@ -22,8 +22,8 @@ import {
 } from '@zhealthcare/ux';
 import { ZendeskModule } from '@zhealthcare/zendesk';
 
-import { ZhealthcareAngularBootstrapLegacyComponent } from './bootstrap-legacy/bootstrap-legacy.component';
-import { zhealthcareBootstrapLegacyRoutingModule } from './bootstrap-legacy/bootstrap-legacy-routing.module';
+import { ZhealthcareAngularBootstrapLegacyComponent } from './bootstrap/bootstrap.component';
+import { zhealthcareBootstrapLegacyRoutingModule } from './bootstrap/bootstrap-routing.module';
 
 @NgModule({
   declarations: [ZhealthcareAngularBootstrapLegacyComponent],
