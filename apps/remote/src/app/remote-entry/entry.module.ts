@@ -11,7 +11,6 @@ import { FilterAndEditDrawerComponent } from '../patients/filter-and-edit-drawer
 import { EditColumnsComponent } from '../patients/edit-columns/edit-columns.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { PatientsSearchGridComponent } from '../patients-grid/patients-search-grid.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CustomDirectiveModule, RBACDirectiveModule } from '@zhealthcare/fusion/directives';
 import { DataSourceModule } from '@zhealthcare/plugin/data-source';
@@ -19,12 +18,13 @@ import { ProfileFormsModule } from '../forms/patient-forms.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClientModule } from '@angular/common/http';
 import { PatientService } from '../services/patient.service';
+import { PatientDetailsComponent } from '../patient-details/patient-details.component';
 
 @NgModule({
   declarations: [
     RemoteEntryComponent,
     PatientsGridComponent,
-    PatientsSearchGridComponent,
+    PatientDetailsComponent,
     EditColumnsComponent,
     FilterAndEditDrawerComponent,
     FilterDrawerComponent,
@@ -57,6 +57,10 @@ import { PatientService } from '../services/patient.service';
           {
             path: 'patients',
             component: PatientsGridComponent
+          },
+          {
+            path: 'patients/:id',
+            component: PatientDetailsComponent
           },
           {
             path: '',

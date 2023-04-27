@@ -117,11 +117,11 @@ export class PatientsGridComponent implements AfterViewInit{
   fruits = ['Internal Medicine', 'Family Medicine', 'Sports Medicine'];
 
   SearchFields = [
-    { value: 'Student Name', id: 1 },
-    { value: 'Email', id: 2 },
-    { value: 'Phone', id: 3 },
-    { value: 'Practice Setting', id: 4 },
-    { value: 'Time', id: 5 },
+    { value: 'Patient Name', id: 1 },
+    { value: 'Query Status', id: 2 },
+    { value: 'Room Id', id: 3 },
+    { value: 'CDS', id: 4 },
+    { value: 'MRN', id: 5 },
   ];
 
   tooltipOptions = {
