@@ -115,7 +115,6 @@ export class LoginComponent extends BaseComponent implements OnInit, OnDestroy {
     private identitySandbox: IdentitySandbox,
     private locationStrategy: LocationStrategy,
     private passwordStrengthService: PasswordStrengthService,
-    private userConsentSandbox: UserConsentSandbox,
     private route: ActivatedRoute,
     private authService: AuthService
   ) {
@@ -297,8 +296,6 @@ export class LoginComponent extends BaseComponent implements OnInit, OnDestroy {
           ) {
             checkAndRedirectToConsent(
               userState,
-              this.userConsentSandbox,
-              this.authService,
               this.router
             );
           } else {

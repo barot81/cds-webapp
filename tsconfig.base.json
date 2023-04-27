@@ -19,8 +19,8 @@
       "@zhealthcare-common/angular-bootstrap": [
         "libs/common/angular-bootstrap/src/index.ts"
       ],
-      "@zhealthcare-common/angular-bootstrap-legacy": [
-        "libs/legacy/angular-bootstrap-legacy/src/index.ts"
+      "@zhealthcare-common/angular-bootstrap": [
+        "libs/legacy/angular-bootstrap/src/index.ts"
       ],
       "@zhealthcare-common/angular-extended-http": [
         "libs/common/angular-extended-http/src/index.ts"

@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { RoleConfigType } from '@zhealthcare-common/angular-bootstrap-legacy';
+import { RoleConfigType } from '@zhealthcare-common/angular-bootstrap';
 import {
   AuthGuardService,
   loadRemoteModuleFromDefinitions,
@@ -7,7 +7,7 @@ import {
 import { UserPersona } from '@zhealthcare/fusion/models';
 const routes: Routes = [
   {
-    path: 'admin/remote-home',
+    path: 'admin',
     loadChildren: () =>
       loadRemoteModuleFromDefinitions(
         'remote',
@@ -44,7 +44,6 @@ const routes: Routes = [
 ];
 
 const roleConfig: RoleConfigType = {
-  [UserPersona.Administrator]: ['/admin/remote-home']
-  // [UserPersona.Student]: ['/student/remote-home'],
+  [UserPersona.Administrator]: ['/admin']
 };
 export { routes, roleConfig };

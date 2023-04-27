@@ -40,7 +40,7 @@ export const navigations = {
               id: 'program.information',
               title: 'Patients',
               type: 'menu-item',
-              url: '/admin/remote-home/patients',
+              url: '/admin/patients',
               classes:
                 '{"bg":"pink-50-bg","hoverBG":"pink-50-hover-bg","activeBG":"pink-100-bg"}',
               hidden: false,

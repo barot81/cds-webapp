@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 
-import { ZhealthcareAngularBootstrapLegacyModule } from '@zhealthcare-common/angular-bootstrap-legacy';
+import { ZhealthcareAngularBootstrapLegacyModule } from '@zhealthcare-common/angular-bootstrap';
 import { RuntimeConfigLoaderService } from '@zhealthcare-core/angular-runtime-config';
 
 import { AppComponent } from './app.component';

@@ -8,9 +8,10 @@ import { NavigationEnd, Router } from '@angular/router';
 import { zhealthcareTag } from '@zhealthcare/plugin/tags';
 import { FullScreenService, ScrollService } from '@zhealthcare/ux';
 
-import { filter } from 'rxjs/operators';
+import { filter, tap } from 'rxjs/operators';
 import { PatientFormsService } from '../forms/patient-forms.service';
-import { Patient } from '../models/patient.model';
+import { FakePatient } from '../models/fake-patient.model';
+import { PatientSerachColInfo } from '../models/patient-search.model';
 import { GridService } from '../services/grid.service';
 import { PatientService } from '../services/patient.service';
 
@@ -24,7 +25,7 @@ export interface PeriodicElement {
   actions: string;
   statusClass: string;
 }
-const ELEMENT_DATA: Patient[] = [];
+const ELEMENT_DATA: FakePatient[] = [];
 
 @Component({
   selector: 'zhealthcare-patients-grid',
@@ -41,22 +42,11 @@ export class PatientsGridComponent implements AfterViewInit{
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  displayedColumns: string[] = [
-    'name',
-    'room',
-    'admitDate',
-    'healthPlan',
-    'cds',
-    'queryStatus',
-    'queryDate',
-    'reimbursementType',
-    'comments',
-    'actions'
-  ];
+  displayedColumns: string[] = [];
 
-  dataSource = new MatTableDataSource<Patient>([]);
-  clickedRows = new Set<Patient>();
-  highlightedRows = new Set<Patient>();
+  dataSource = new MatTableDataSource<FakePatient>([]);
+  clickedRows = new Set<FakePatient>();
+  highlightedRows = new Set<FakePatient>();
 
   tags: Array<zhealthcareTag> = [
     {
@@ -127,11 +117,11 @@ export class PatientsGridComponent implements AfterViewInit{
   fruits = ['Internal Medicine', 'Family Medicine', 'Sports Medicine'];
 
   SearchFields = [
-    { value: 'Student Name', id: 1 },
-    { value: 'Email', id: 2 },
-    { value: 'Phone', id: 3 },
-    { value: 'Practice Setting', id: 4 },
-    { value: 'Time', id: 5 },
+    { value: 'Patient Name', id: 1 },
+    { value: 'Query Status', id: 2 },
+    { value: 'Room Id', id: 3 },
+    { value: 'CDS', id: 4 },
+    { value: 'MRN', id: 5 },
   ];
 
   tooltipOptions = {
@@ -151,6 +141,8 @@ export class PatientsGridComponent implements AfterViewInit{
     width: '450',
     pointerEvents: 'auto',
   };
+  patientsData$: any;
+  columnInformation: any;
 
   constructor(
     public dialog: MatDialog,
@@ -169,8 +161,20 @@ export class PatientsGridComponent implements AfterViewInit{
           await this.setHeaderHeights();
         }
       });
-      const patients = this.patientService.getPatients();
-      this.dataSource =  new MatTableDataSource(patients);
+      this.patientsData$ = this.patientService.getPatients().pipe(tap(x=>
+        console.log(x)
+        ));
+      this.columnInformation = PatientSerachColInfo;
+      this.InitializeDataSource();
+  }
+
+  private InitializeDataSource() {
+
+    this.columnInformation = PatientSerachColInfo;
+    this.displayedColumns = this.columnInformation
+                              .filter(x=> x.isDisplayColumn)
+                              .map(x=>x.fieldName);
+    this.displayedColumns.push("actions");
   }
 
   private async setHeaderHeights() {
@@ -180,7 +184,7 @@ export class PatientsGridComponent implements AfterViewInit{
         this.gridHeader !== null &&
         this.pagination &&
         this.pagination !== null
-      ) {
+        ) {
         // Set New Height to The Content Header
         await this._scrollService.setContentHeaderHeight(
           this.gridHeader.nativeElement.offsetHeight +
@@ -222,7 +226,7 @@ export class PatientsGridComponent implements AfterViewInit{
           if (this.clickedRows.size) {
             this.highlightedRows = this.clickedRows;
           }
-          this.clickedRows = new Set<Patient>();
+          this.clickedRows = new Set<FakePatient>();
         }
       }
     }
@@ -231,15 +235,15 @@ export class PatientsGridComponent implements AfterViewInit{
   addRow(row) {
     if (this.clickedRows.size) {
       if (this.clickedRows.has(row)) {
-        this.clickedRows = new Set<Patient>();
+        this.clickedRows = new Set<FakePatient>();
       } else {
-        this.clickedRows = new Set<Patient>();
+        this.clickedRows = new Set<FakePatient>();
         this.clickedRows.add(row);
       }
     } else {
       this.clickedRows.add(row);
     }
-    this.highlightedRows = new Set<Patient>();
+    this.highlightedRows = new Set<FakePatient>();
   }
 
   //chips code

@@ -20,7 +20,6 @@ import {
   UserSettingsSandbox,
 } from '@zhealthcare/fusion/core';
 import { TokenModel, User, UserPersona } from '@zhealthcare/fusion/models';
-import { NgxZendeskWebwidgetService } from 'ngx-zendesk-webwidget';
 import { ThemeSelectionService } from '../../../components';
 import { productNavigation } from '../../../navigation/navigation';
 import { PageFacade } from '../../../store/facade/page.facade';
@@ -87,7 +86,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     private _userSettingsSandbox: UserSettingsSandbox,
     public readonly _layoutService: LayoutService,
     public readonly _headerService: HeaderService,
-    private _NgxZendeskWebwidgetService: NgxZendeskWebwidgetService,
     private _oAuthService: OAuthService
   ) {
     if (localStorage.getItem('User')) {
@@ -171,9 +169,9 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         this.hiddenNavbar = settings.layout.navbar.hidden === true;
       });
 
-    this.getScheduledDowntimeInfo();
+    // this.getScheduledDowntimeInfo();
     this.logoutOnClearingStorage();
-    this.getUserSettings();
+    // this.getUserSettings();
 
     if (JSON.parse(sessionStorage.getItem(MetaConstants.IsDelegateUser))) {
       this.isDelegatorUser = true;
@@ -379,11 +377,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.showNotificationBanner = false;
   }
 
-  chatToggle() {
-    if (this._NgxZendeskWebwidgetService.isInitialized) {
-      this._NgxZendeskWebwidgetService.zE('webWidget', 'toggle');
-    }
-  }
 
   getUserSettings() {
     if (localStorage.getItem('User')) {

@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { RoleConfigType } from '@zhealthcare-common/angular-bootstrap-legacy';
+import { RoleConfigType } from '@zhealthcare-common/angular-bootstrap';
 import { UserPersona } from '@zhealthcare/fusion/models';
 
 const routes: Routes = [

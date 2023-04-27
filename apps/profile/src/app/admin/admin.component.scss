@@ -1,0 +1,15 @@
+@import 'init';
+
+.profile-admin {
+  .tab-nav-item {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 16px;
+
+    @include media-breakpoint('lt-md') {
+      margin-left: 8px;
+      margin-right: 8px;
+      margin-top: 8px;
+    }
+  }
+}

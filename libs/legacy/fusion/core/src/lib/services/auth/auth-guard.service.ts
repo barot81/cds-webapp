@@ -40,24 +40,7 @@ export class AuthGuardService implements CanActivate {
       );
     }
     this.userfacade.AuthState$.subscribe((authData) => {
-      if (
-        !(sessionStorage.getItem(MetaConstants.IsDelegateUser) === 'true') &&
-        (localStorage.getItem(MetaConstants.USER_CONSENT_LOCAL_STORAGE_KEY) ===
-          null ||
-          localStorage.getItem(MetaConstants.USER_CONSENT_LOCAL_STORAGE_KEY) ===
-            undefined)
-      ) {
-        if (
-          !!authData?.accessToken &&
-          url !== 'UserConsent' &&
-          localStorage.getItem('user.consent.loading') === null
-        ) {
-          this.router.navigateByUrl('UserConsent');
-          Logger.trace(
-            `Auth guard Service => Redirect to consent Page. current Route : ${url} | current access Token: ${authData?.accessToken}`
-          );
-        }
-      } else if (
+     if (
         sessionStorage.getItem(MetaConstants.IsDelegateUser) === 'true'
       ) {
         if (!authData?.accessToken && sessionStorage.getItem('Auth')) {

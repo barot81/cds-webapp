@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { UserConsentApiClient } from './user-consent.apiClient.service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({providedIn: 'any'})
 export class UserConsentSandbox {
@@ -12,16 +12,16 @@ export class UserConsentSandbox {
         return this.userConsentApiClient.createConsent("");
     }
     getConsent(): Observable<any> {
-        return this.userConsentApiClient.getConsent("Base", "1000");
+        return of({});
     }
     getConsentAgreeement(): Observable<any> {
-        return this.userConsentApiClient.getConsentAgreement("Base", "1000");
+        return  of({});
     }
     getPrivacyPolicy(): Observable<any> {
-        return this.userConsentApiClient.getPrivacyPolicy("Base", "1000");
+        return  of({});
     }
     getTermsOfUse(): Observable<any> {
-        return this.userConsentApiClient.getTermsOfUse("Base", "1000");
+        return  of({});
     }
 
 }

@@ -3,146 +3,94 @@ export const GraduationCalendar ='Graduation Calendar';
 
 export const PatientSerachColInfo = [
   {
-    displayName: 'Student Name',
+    displayName: 'Patient Name',
     fieldName: 'lastName',
     isSearchable: true,
     isDisplayColumn: true
   },
   {
-    displayName: 'Student ID',
-    fieldName: 'studentNumber',
+    displayName: 'Account No',
+    fieldName: 'accountNo',
     isSearchable: true,
     isDisplayColumn: true
   },
   {
-    displayName: 'Email',
-    fieldName: 'email',
+    displayName: 'Room',
+    fieldName: 'roomId',
     isSearchable: true,
     isDisplayColumn: true
   },
   {
-    displayName: 'Phone',
-    fieldName: 'phone',
+    displayName: 'Age',
+    fieldName: 'age',
+    isSearchable: false,
+    isDisplayColumn: true
+  },
+  {
+    displayName: 'Admissioin Date',
+    fieldName: 'admissioinDate',
     isSearchable: true,
     isDisplayColumn: true
   },
   {
-    displayName: 'Status',
-    fieldName: 'profileStatus',
+    displayName: 'Discharge Date',
+    fieldName: 'dischargeDate',
     isSearchable: false,
     isDisplayColumn: true
   },
   {
-    displayName: 'Cohort Name',
-    fieldName: 'cohortName',
+    displayName: 'Health Plan',
+    fieldName: 'healthPlanName',
     isSearchable: false,
     isDisplayColumn: true
   },
   {
-    displayName: 'Group Name',
-    fieldName: 'groupName',
-    isSearchable: false,
+    displayName: 'CDS',
+    fieldName: 'cds',
+    isSearchable: true,
     isDisplayColumn: true
   },
   {
-    displayName: 'Enrollment Calendar',
-    fieldName: 'enrollmentTerm',
-    isSearchable: false,
+    displayName: 'Query Status',
+    fieldName: 'queryStatus',
+    isSearchable: true,
     isDisplayColumn: true
   },
   {
-    displayName: 'Graduation Calendar',
-    fieldName: 'graduationTerm',
+    displayName: 'Query Date',
+    fieldName: 'queryDate',
     isSearchable: false,
     isDisplayColumn: true
   },
-  {
-    displayName: 'Campus',
-    fieldName: 'campus',
-    isSearchable: false,
-    isDisplayColumn: true
-  },
-  {
-    displayName: 'Student Category',
-    fieldName: 'category',
-    isSearchable: false,
-    isDisplayColumn: true
-  }
-]
 
-export const StudentInviteColInfo = [
   {
-    displayName: 'First Name',
-    fieldName: 'firstName',
-    isSearchable: true,
-    isDisplayColumn: true,
-    hideEditColumn: true
-  },
-  {
-    displayName: 'Student Name',
-    fieldName: 'lastName',
-    isSearchable: true,
-    isDisplayColumn: true
-  },
-  {
-    displayName: 'Student ID',
-    fieldName: 'studentNumber',
-    isSearchable: true,
-    isDisplayColumn: true
-  },
-  {
-    displayName: 'Email',
-    fieldName: 'email',
-    isSearchable: true,
-    isDisplayColumn: true
-  },
-  {
-    displayName: 'Status',
-    fieldName: 'profileStatus',
+    displayName: 'Reimbursement Type',
+    fieldName: 'reimbursementType',
     isSearchable: false,
     isDisplayColumn: true
   },
   {
-    displayName: 'Cohort Name',
-    fieldName: 'cohortName',
+    displayName: 'Concurrent/PostDC',
+    fieldName: 'concurrent_postDC',
     isSearchable: false,
     isDisplayColumn: true
   },
   {
-    displayName: 'Group Name',
-    fieldName: 'groupName',
+    displayName: 'Secondary Insurance',
+    fieldName: 'secondaryInsurance',
     isSearchable: false,
     isDisplayColumn: true
   },
   {
-    displayName: 'Enrollment Calendar',
-    fieldName: 'enrollmentTerm',
+    displayName: 'PDX',
+    fieldName: 'pdx',
     isSearchable: false,
     isDisplayColumn: true
   },
   {
-    displayName: 'Graduation Calendar',
-    fieldName: 'graduationTerm',
-    isSearchable: false,
-    isDisplayColumn: true
-  },
-  {
-    displayName: 'Campus',
-    fieldName: 'campus',
-    isSearchable: false,
-    isDisplayColumn: true
-  },
-  {
-    displayName: 'Student Category',
-    fieldName: 'category',
-    isSearchable: false,
-    isDisplayColumn: true
-  },
-  {
-    displayName: 'Account Status',
-    fieldName: 'accountStatus',
+    displayName: 'MRN',
+    fieldName: 'mrn',
     isSearchable: false,
     isDisplayColumn: true
   }
 ]
- // newline at end of file
