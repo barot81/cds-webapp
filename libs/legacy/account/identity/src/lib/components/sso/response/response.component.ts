@@ -82,7 +82,7 @@ export class ResponseComponent extends BaseComponent implements OnInit, OnDestro
         });
         this.userFacade.UserState$.pipe(takeUntil(this._unsubscribeAll)).subscribe((userState) => {
             if (userState && userState.user?.FirstName) {
-                checkAndRedirectToConsent(userState, this.userConsentSandbox, this.authService, this.route);
+                checkAndRedirectToConsent(userState, this.route);
             }
         });
     }

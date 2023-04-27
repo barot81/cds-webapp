@@ -30,7 +30,6 @@ import {
 import { Observable, of, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { MetaSandbox } from '../../meta.sandbox';
-import { PatientDataSource } from '../../models/datasource';
 import { BrowserStorage } from '../../models/storage.model';
 import { TenantInformationSandbox } from '../../services/tenant-information/tenant-information-snadbox';
 
@@ -264,79 +263,16 @@ export class LaunchComponent
     );
     selectedOuCode = Object.assign({}, selectedOuCode, { OucodeTree: oucodeTree})
     this.orgFacade.SetTenantWithOucodes(selectedTenant);
-    // Set Role Based Data in Local Storage
-    // this.getRoleDocument(
-    //   selectedTenant.TenantId,
-    //   selectedOuCode,
-    //   isFaculty
-    // ).subscribe(
-    //   (data) => {
-        // from this line to 235 this code should be in child component
-        this.activatedRoute.queryParams.subscribe(
+       this.activatedRoute.queryParams.subscribe(
           (resp) => {
             this.hideProgressBar();
-            targetUrl = resp.targetUrl;
-            if (targetUrl) {
-              this.removeStudentSessionFilters();
-              this.removeCourseSessionFilters();
-              this.removeSiteSessionFilters();
-              this.router.navigateByUrl(targetUrl);
-              Logger.trace(
-                `Launch Component => updateStateAndRedirect Method => TargetUrl Exists => Selected Tenant ${selectedTenant} | Selected Oucode : ${this.selectedOucode} | active Route:${this.router?.url} | targetUrl : ${targetUrl}`
-              );
-            } else if (
-              localStorage.getItem(MetaConstants.MANAGE_ACCOUNT_SWITCH_BACK_KEY)
-            ) {
-              localStorage.removeItem(
-                MetaConstants.MANAGE_ACCOUNT_SWITCH_BACK_KEY
-              );
-              const returnUrl = localStorage.getItem(
-                URLConstants.MANAGE_ACCOUNT_SWITCH_BACK_URL
-              );
-              if (returnUrl && returnUrl != '') {
-                this.router.navigateByUrl(returnUrl);
-              } else {
-                this.router.navigateByUrl('/dashboard');
-              }
-            } else {
-              this.removeStudentSessionFilters();
-              this.removeCourseSessionFilters();
-              this.removeSiteSessionFilters();
-              this.router.navigateByUrl('/dashboard');
-            }
+            this.router.navigateByUrl('/dashboard');
           },
           (error) => {
             this.fuseProgressBarService.hide();
           }
         );
-
-        // this.getOrgUnitInformation(selectedOuCode);
-        // this.getTenantName(selectedTenant);
-    //   },
-    //   (error) => {
-    //     this.fuseProgressBarService.hide();
-    //   }
-    // );
-  }
-
-  removeStudentSessionFilters() {
-    //Clear StudentGrid filters whenever we login or change program.
-    sessionStorage.removeItem(PatientDataSource.Patient_Grid_Datasource);
-  }
-  removeCourseSessionFilters() {
-    // sessionStorage.removeItem(CourseDataSource.Course_Offering_Grid_Datasource);
-    //  sessionStorage.removeItem(CourseDataSource.Course_Catlog_Grid_Datasource);
-  }
-
-  removeSiteSessionFilters() {
-    sessionStorage.removeItem('Site_Grid');
-    sessionStorage.removeItem('Location_Grid');
-    sessionStorage.removeItem('Personnel_Grid');
-    sessionStorage.removeItem('SitewithContract_Grid');
-    sessionStorage.removeItem('SitewithoutContract_Grid');
-    sessionStorage.removeItem('Explore_Location');
-  }
-
+}
   buildOucodeTree(oucodeTrees, oucode) {
 
     if (Array.isArray(oucodeTrees)) {
@@ -361,15 +297,6 @@ export class LaunchComponent
   getTenantName(selectedTenant: TenantWithOuCodeTree) {
     const tenantId = selectedTenant.TenantId;
     this.showProgressBar();
-    // this.metaSandbox.getOrganizationInformation('Org.' + tenantId).subscribe(
-    //   (result) => {
-    //     this.storage.storageType.setItem('TenantName', result.name);
-    //     this.hideProgressBar();
-    //   },
-    //   (error) => {
-    //     this.fuseProgressBarService.hide();
-    //   }
-    // );
   }
 
   setSelectedTenant(tenant: any) {

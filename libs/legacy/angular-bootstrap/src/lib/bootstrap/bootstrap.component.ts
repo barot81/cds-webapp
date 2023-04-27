@@ -57,16 +57,10 @@ export class ZhealthcareAngularBootstrapLegacyComponent implements OnInit, OnCha
     private navigationService: FusionNavigationService,
     private splashScreenService: SplashScreenService,
     private _fusionConfigService: FusionConfigService,
-    private notificationService: NotificationService,
     public _userTypeService: UserTypeService,
     private _lookupAPIClientService: LookupAPIClientService,
     private _orgFacade: OrgFacade,
     private _featureFlagService: FeatureFlagService,
-    private _http: HttpClient,
-    private readonly userFacade: UserFacade,
-    private readonly orgFacade: OrgFacade,
-    private zendeskUtilService: ZendeskUtilService,
-    private readonly userTypeService: UserTypeService
   ) {
     LoggingService.setApplicationInsights();
     router.events.subscribe((e) => {
@@ -169,7 +163,7 @@ export class ZhealthcareAngularBootstrapLegacyComponent implements OnInit, OnCha
     });
 
     this.selectedOucodeListener();
-    this.zendeskUtilService.prismChat(this._unsubscribeAll);
+    // this.zendeskUtilService.prismChat(this._unsubscribeAll);
   }
 
   selectedOucodeListener() {
