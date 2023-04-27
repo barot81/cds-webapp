@@ -2,23 +2,38 @@
   <mat-card fxLayout="column" class="p-16">
     <div fxLayout="row" fxLayoutAlign="space-between end">
       <mat-form-field appearance="fill" fxFlex="100">
-        <mat-label>Name</mat-label>
-        <input matInput noWhitespace formControlName="name" required />
+        <mat-label>First Name</mat-label>
+        <input matInput noWhitespace formControlName="firstName" required />
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between end">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Last Name</mat-label>
+        <input matInput noWhitespace formControlName="lastName" required />
       </mat-form-field>
     </div>
 
     <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
       <mat-form-field appearance="fill" fxFlex="100">
-        <mat-label>Room</mat-label>
-        <input matInput noWhitespace formControlName="room" required />
+        <mat-label>Room </mat-label>
+        <input matInput noWhitespace formControlName="roomId" required />
       </mat-form-field>
     </div>
 
     <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
       <mat-form-field appearance="fill" fxFlex="100">
-        <mat-label>Admit Date</mat-label>
+        <mat-label>Admission Date</mat-label>
         <input readonly matInput [matDatepicker]="picker1" (click)="picker1.open()" [max]="maxDate"
-          formControlName="admitDate" />
+          formControlName="admissionDate" />
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1 color="primary" class="action-icon"></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Discharge Date</mat-label>
+        <input readonly matInput [matDatepicker]="picker1" (click)="picker1.open()"
+          formControlName="dischargeDate" />
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1 color="primary" class="action-icon"></mat-datepicker>
       </mat-form-field>
@@ -27,7 +42,7 @@
     <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
       <mat-form-field appearance="fill" fxFlex="100">
         <mat-label>Health Plan</mat-label>
-        <input matInput noWhitespace formControlName="healthPlan">
+        <input matInput noWhitespace formControlName="healthPlanName">
       </mat-form-field>
     </div>
 
@@ -63,23 +78,53 @@
       </mat-form-field>
     </div>
 
+    <mat-form-field appearance="fill" fxFlex="100">
+      <mat-label>Reimbursement Type</mat-label>
+      <mat-select formControlName="reimbursementType" (selectionChange)="OnReimbursementTypeChange($event)" required>
+        <mat-option *ngFor="let type of reimbursementTypeList"
+        [ngClass]="{'mat-option-text ': isOptionTruncated(type)
+        }" id={{type}} [value]="type" class="dropdown-with-tooltip" [options]="tooltipOptions"
+        [display]="isOptionTruncated(type)"
+        [tooltip]="type">
+        {{type}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Concurrent/postDC</mat-label>
+        <input matInput noWhitespace formControlName="concurrent_postDC" />
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Secondary Insurance</mat-label>
+        <input matInput noWhitespace formControlName="secondaryInsurance" />
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>PDX</mat-label>
+        <input matInput noWhitespace formControlName="pdx" />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>MRN</mat-label>
+        <input matInput noWhitespace formControlName="mrn" />
+      </mat-form-field>
+    </div>
+
     <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
       <mat-form-field appearance="fill" fxFlex="100">
         <mat-label>Comments</mat-label>
-        <input matInput noWhitespace formControlName="comments" />
+        <textarea matInput noWhitespace formControlName="comments" rows="8">
+
+        </textarea>
       </mat-form-field>
-      <mat-form-field appearance="fill" fxFlex="100">
-        <mat-label>Reimbursement Type</mat-label>
-        <mat-select formControlName="reimbursementType" (selectionChange)="OnReimbursementTypeChange($event)" required>
-          <mat-option *ngFor="let type of reimbursementTypeList"
-          [ngClass]="{'mat-option-text ': isOptionTruncated(type)
-          }" id={{type}} [value]="type" class="dropdown-with-tooltip" [options]="tooltipOptions"
-          [display]="isOptionTruncated(type)"
-          [tooltip]="type">
-          {{type}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+
     </div>
   </mat-card>
 </form>

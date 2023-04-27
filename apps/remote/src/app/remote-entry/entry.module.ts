@@ -17,6 +17,8 @@ import { CustomDirectiveModule, RBACDirectiveModule } from '@zhealthcare/fusion/
 import { DataSourceModule } from '@zhealthcare/plugin/data-source';
 import { ProfileFormsModule } from '../forms/patient-forms.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { HttpClientModule } from '@angular/common/http';
+import { PatientService } from '../services/patient.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 ],
   imports: [
     CommonModule,
+    HttpClientModule,
     MaterialModule,
     LayoutModule,
     FuseSharedModule,
@@ -56,10 +59,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
             component: PatientsGridComponent
           },
           {
-            path: 'patients-grid',
-            component: PatientsSearchGridComponent
-          },
-          {
             path: '',
             redirectTo:'patients',
             pathMatch:'full'
@@ -68,7 +67,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
       }
     ]),
   ],
-  providers: [DatePipe]
+  providers: [DatePipe, PatientService]
 })
 export class RemoteEntryModule {
 }

@@ -14,9 +14,6 @@ pt-8
     <div class=" white-background " fusePerfectScrollbar>
       <div #profileSearchHeader>
         <div fxLayout="column">
-
-
-
           <div fxLayout="row" fxLayoutAlign="space-between center" class="w-100-p">
             <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
               <div class="search-wrapper" fxFlex="100">
@@ -46,44 +43,7 @@ pt-8
                             *ngFor="let fil of getFilterValue(item.value);let j = index">
                         <mat-chip *ngIf="gridFilter.length - 1 === 0 ? j < 2 : j < 1" (removed)="clearFilters(fil, item)">
                           <span tooltip="{{item.displayName}} : {{ fil }}" [options]="tooltipOptions" class="chips-text"
-                            *ngIf="
-                            item.fieldName !== 'cohortId' &&
-                            item.fieldName !== 'tagId' &&
-                            item.fieldName !== 'invitationStatus' &&
-                            item.fieldName !== 'campusId' &&
-                            item.fieldName !== 'categoryId' &&
-                            item.fieldName !== 'enrollmentTermId' &&
-                            item.fieldName !== 'graduationTermId'
-                          ">{{ fil | chipsCharSlice }}</span>
-                          <span tooltip="Tag : {{getTagsbyId(fil)}}" [options]="tooltipOptions" class="chips-text"
-                            *ngIf="item.fieldName === 'tagId'">{{
-                            getTagsbyId(fil) | chipsCharSlice
-                            }}</span>
-                          <span tooltip="Cohort : {{getCohortId(fil)}}" [options]="tooltipOptions" class="chips-text"
-                            *ngIf="item.fieldName === 'cohortId'">
-                            {{ getCohortId(fil) | chipsCharSlice }}
-                          </span>
-                          <span tooltip="Account Status : {{getInvitationStatusDescription(fil)}}"
-                            [options]="tooltipOptions" class="chips-text" *ngIf="item.fieldName === 'invitationStatus'">
-                            {{ getInvitationStatusDescription(fil) | chipsCharSlice }}
-                          </span>
-                          <span tooltip="Campus : {{getCampus(fil)}}" [options]="tooltipOptions" class="chips-text"
-                            *ngIf="item.fieldName === 'campusId'">
-                            {{ getCampus(fil) | chipsCharSlice }}
-                          </span>
-                          <span tooltip="Category : {{getCategory(fil)}}" [options]="tooltipOptions" class="chips-text"
-                            *ngIf="item.fieldName === 'categoryId'">
-                            {{ getCategory(fil) | chipsCharSlice }}
-                          </span>
-                          <span tooltip="Enrollment term : {{getEnrollmentTerm(fil)}}" [options]="tooltipOptions"
-                            class="chips-text" *ngIf="item.fieldName === 'enrollmentTermId'">
-                            {{ getEnrollmentTerm(fil) | chipsCharSlice }}
-                          </span>
-                          <span tooltip="Graduation term : {{getGraduationTerm(fil)}}" [options]="tooltipOptions"
-                            class="chips-text" *ngIf="item.fieldName === 'graduationTermId'">
-                            {{ getGraduationTerm(fil) | chipsCharSlice }}
-                          </span>
-
+                          >{{ fil | chipsCharSlice }}</span>
                           <button matChipRemove>
                             <mat-icon>cancel</mat-icon>
                           </button>
@@ -110,7 +70,7 @@ pt-8
                 " [size]="'drawer-sm'" [caption]="'Add Student'" [primaryAction]="'Save'"
                   featureCode="{{ profileCode }}" [params]="{ CAN: ['WRITE'] }" role="img" [entityKey]="'0'">
                   <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
-                  <span class="ml-4">Add Student</span>
+                  <span class="ml-4">Add Patient</span>
                 </button>
 
               </div>
@@ -141,10 +101,10 @@ pt-8
                 <mat-menu #menu="matMenu" fxHide.gt-sm>
                   <button mat-menu-item color="primary" aria-label="A" zhealthcareDrawerAction
                     [componentSelector]="_profileFormsService.get('profile-add-student-form')" [size]="'drawer-sm'"
-                    [caption]="'Add Student'" [primaryAction]="'Save'" featureCode="{{ profileCode }}"
+                    [caption]="'Add Patient'" [primaryAction]="'Save'" featureCode="{{ profileCode }}"
                     [params]="{ CAN: ['WRITE'] }" role="img" [entityKey]="'0'">
                     <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
-                    <span class="ml-4">Add Student</span>
+                    <span class="ml-4">Add Patient</span>
                   </button>
                   <button mat-menu-item aria-label="Edit Columns" zhealthcareDrawerAction
                     [componentSelector]="dataSourceComponentService.get('zhealthcare-display-columns-form')"
@@ -162,7 +122,7 @@ pt-8
           </div>
 
           <div
-            *ngIf="!(datasourceFacade.fusionDataSourceLoading$ | async ) && ((searchText && searchText!=='') || numberOfAppliedFilter>0)"
+            *ngIf="(datasourceFacade.fusionDataSourceLoading$ | async ) === false && ((searchText && searchText!=='') || numberOfAppliedFilter>0)"
             tabindex="0" aria-label="2 search results found">
             <div *ngIf=" (datasourceFacade.dataSourceTotal$ | async)!==0; else NoData"
               class="result-found-style w-100-p">
@@ -173,8 +133,8 @@ pt-8
         </div>
       </div>
 
-      <div class="content zhealthcare-sticky-table overflow-auto" [ngClass]="{'student-search-grid-with-filter':((searchText && searchText!=='') || numberOfAppliedFilter>0) && !(datasourceFacade.fusionDataSourceLoading$ | async ),
-      'student-search-grid-without-filter':!((searchText && searchText!=='') || numberOfAppliedFilter>0) && !(datasourceFacade.fusionDataSourceLoading$ | async ),
+      <div class="content zhealthcare-sticky-table overflow-auto" [ngClass]="{'student-search-grid-with-filter':((searchText && searchText!=='') || numberOfAppliedFilter>0) && (datasourceFacade.fusionDataSourceLoading$ | async ) === false,
+      'student-search-grid-without-filter':!((searchText && searchText!=='') || numberOfAppliedFilter>0) && (datasourceFacade.fusionDataSourceLoading$ | async ) === false,
   'student-search-grid-with-loadingstate':(datasourceFacade.fusionDataSourceLoading$ | async )}"
         (scroll)="scrollHandler($event)">
         <table id="stickyColumnTable" aria-label="This is a Simple table" mat-table
@@ -186,7 +146,7 @@ pt-8
           <ng-container matColumnDef="lastName" [sticky]="true">
             <th id="lastName" mat-header-cell *matHeaderCellDef mat-sort-header
               [ngClass]="{'column-shadow': scrollPointer !== 0 }">
-              Student Name
+              Patient Name
             </th>
             <td mat-cell *matCellDef="let element ; let i = index" [ngClass]="{'column-shadow': scrollPointer !== 0 }">
               <div fxLayout="row" fxLayoutAlign="start center">
@@ -203,31 +163,30 @@ pt-8
           </ng-container>
 
           <!-- studentNumber Column -->
-          <ng-container matColumnDef="studentNumber">
+          <ng-container matColumnDef="accountNo">
             <th id="student-id-header" mat-header-cell *matHeaderCellDef mat-sort-header>
-              Student ID
+              Account number
             </th>
             <td mat-cell *matCellDef="let element">
-              {{ element?.studentNumber }}
+              {{ element?.accountNo }}
             </td>
           </ng-container>
 
           <!-- email Column -->
-          <ng-container matColumnDef="email">
-            <th id="email" mat-header-cell *matHeaderCellDef class="email-width" mat-sort-header>Email</th>
+          <ng-container matColumnDef="roomId">
+            <th id="roomId" mat-header-cell *matHeaderCellDef class="email-width" mat-sort-header>Room Id</th>
             <td mat-cell *matCellDef="let element" class="email-width">
-              <a href="mailto:{{ element.email }}" class="text-lowercase ">{{ element.email
-                }}</a>
+             {{ element?.roomId }}
             </td>
           </ng-container>
 
           <!-- phone Column -->
-          <ng-container matColumnDef="phone">
+          <ng-container matColumnDef="admissioinDate">
             <th id="phone" class="phone-column" mat-header-cell *matHeaderCellDef mat-sort-header>
-              Phone
+              Admissioin Date
             </th>
             <td class="phone-column" mat-cell *matCellDef="let element">
-              {{ element.phone }}
+              {{ element.admissioinDate }}
             </td>
           </ng-container>
 

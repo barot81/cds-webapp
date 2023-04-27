@@ -1,9 +1,11 @@
 import { DatePipe } from '@angular/common';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FusionFormAdapter, FusionFormComponent } from '@zhealthcare/fusion/components';
 import { DrawerService, SnackbarService } from '@zhealthcare/ux';
-import { Patient } from '../../models/patient.model';
+import { FakePatient } from '../../models/fake-patient.model';
+import { richTextConfig } from '../../models/richtext.config';
 import { PatientService } from '../../services/patient.service';
 
 @Component({
@@ -11,46 +13,80 @@ import { PatientService } from '../../services/patient.service';
   templateUrl: 'add-patient.component.html'
 })
 
-export class AddPatientComponent extends FusionFormComponent implements OnInit, FusionFormAdapter, AfterViewInit {
+export class AddPatientComponent extends FusionFormComponent implements FusionFormAdapter, AfterViewInit {
 
 
   maxDate =  new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
-  reimbursementTypeList: Set<string>;
-  queryStatusList: Set<string>;
-  newPatientInfo: Patient;
+  newPatientInfo: FakePatient;
+  queryStatusList: string[];
+  reimbursementTypeList: string[];
+  comments: any;
 
-  constructor(private patientService: PatientService,
+  public componentEvents: string[] = [];
+  public Editor = ClassicEditor;
+  config: any;
+
+  constructor(public patientService: PatientService,
     private readonly fb: FormBuilder,
     private _drawerService: DrawerService,
     private _snackBarService: SnackbarService,
     private _datepipe: DatePipe) {
     super();
     this.fusionFormGroup = this.fb.group({
-      name: new FormControl(''),
-      room: new FormControl(''),
-      admitDate: new FormControl(''),
-      healthPlan: new FormControl(''),
+      lastName: new FormControl(''),
+      firstName: new FormControl(''),
+      roomId: new FormControl(''),
+      admissionDate: new FormControl(''),
+      dischargeDate: new FormControl(''),
+      healthPlanName: new FormControl(''),
       cds: new FormControl(''),
       queryStatus: new FormControl(''),
       queryDate: new FormControl(''),
-      facility: new FormControl(''),
-      comments: new FormControl(''),
       reimbursementType: new FormControl(''),
+      concurrent_postDC: new FormControl(''),
+      secondaryInsurance: new FormControl(''),
+      pdx: new FormControl(''),
+      mrn: new FormControl(''),
+      comments: new FormControl('')
     });
 
-
+    this.queryStatusList = ['No findings', 'Reviewed', 'Revised', 'Review Later'];
+    this.reimbursementTypeList = ['Medicare', 'Medicaid', 'Commercial'];
   }
   ngAfterViewInit(): void {
     if(this.data) {
       this.fusionFormGroup.patchValue(this.data);
+      this.comments = this.data?.comments;
     }
   }
 
-  ngOnInit() {
-//    this._drawerService.setPrimaryActionState(false, true);
+  public editorValue(event) {
+    this.comments = event.editor.getData();
+    this.comments = this.comments?.replace(/\\(?=[^\[\]]*\])|\\(?=\[)/g, ''); // (\\) this is to remove \ appended by ckeditor before brackets []
+    //this.summary = this.summary?.replace(/<\/?span[^>]*>/g,"")
+    this.fusionFormGroup.controls['comments'].setValue(this.comments);
+  }
 
-    this.reimbursementTypeList = new Set(this.patientService.getPatients().map(x=>x.reimbursementType));
-    this.queryStatusList = new Set(this.patientService.getPatients().map(x=>x.queryStatus));
+  createConfig() {
+    this.config = richTextConfig;
+    this.config.placeholder = 'Comments';
+  }
+
+  public onReady(event) {
+    this.componentEvents.push('The editor is ready.');
+  }
+
+  public onChange(event) {
+    this.componentEvents.push('Editor model changed.');
+    this.editorValue(event);
+  }
+
+  public onFocus(event) {
+    this.componentEvents.push('Focused the editing view.');
+  }
+
+  public onBlur(event) {
+    this.componentEvents.push('Blurred the editing view.');
   }
 
   isOptionTruncated(elementId: string): boolean {
@@ -141,8 +177,6 @@ export class AddPatientComponent extends FusionFormComponent implements OnInit, 
     throw new Error('Method not implemented.');
   }
 
-  panelClose() {
-
-   }
+  panelClose() { }
 };
 

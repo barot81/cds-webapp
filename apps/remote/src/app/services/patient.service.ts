@@ -29,6 +29,7 @@ export class PatientService {
     return this.httpClient.get(url).pipe(
       map((patients: any[]) => {
         this.patientData$.next(patients);
+        return patients;
       })
     );
     // return this.generateFakePatients(facility);

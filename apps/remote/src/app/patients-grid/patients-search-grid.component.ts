@@ -9,11 +9,11 @@ import { FusionConfigService, MethodType, UserFacade } from "@zhealthcare/fusion
 import { ExcelModel } from "@zhealthcare/fusion/models";
 import { ExportExcelService, FeatureMetadataService, FusionNavigationService } from "@zhealthcare/fusion/services";
 import { ColumnOption, DataSourceComponentService, DataSourceFacade, DataSourceResponse, DataSourceService, Filter, FusionDataSource, Item, Sort } from "@zhealthcare/plugin/data-source";
-import { FileConfiguration, FileEndpoint } from "@zhealthcare/plugin/file-upload";
+import { FileConfiguration } from "@zhealthcare/plugin/file-upload";
 import { HeaderService, ScrollService } from "@zhealthcare/ux";
 import { catchError, debounceTime, distinctUntilChanged, fromEvent, map, merge, Observable, Subject, takeUntil, tap } from "rxjs";
 import { EnrollmentCalendar, GraduationCalendar, PatientSerachColInfo } from "../models/patient-search.model";
-import { Patient } from "../models/patient.model";
+import { FakePatient } from "../models/fake-patient.model";
 import { ShowMore } from "../models/show-more.model";
 import { TagMaster } from "../models/tagmaster.model";
 import lodash from 'lodash';
@@ -36,7 +36,7 @@ export class PatientsSearchGridComponent implements OnInit, AfterViewInit, OnDes
 
   private readonly _unsubscribe: Subject<any>;
   displayedColumns$: Observable<string[]>;
-  data: Patient[] = [];
+  data: FakePatient[] = [];
   tagMaster: Array<TagMaster>;
   fileConfiguration: FileConfiguration;
   isLoadingResults = true;
@@ -96,14 +96,12 @@ export class PatientsSearchGridComponent implements OnInit, AfterViewInit, OnDes
   };
 
 
-  studentFullName = 'Student Name';
-  invitationStatus = 'Account Status';
+  studentFullName = 'Patient Name';
   hasPublishAccess: boolean;
 
   //constant
   stickyTable = '#stickyColumnTable';
-  columnsToSearch= ['FirstName', 'LastName', 'Email', 'Phone', 'ProfileStatus', 'Campus',
-    'Category','GroupName', 'CohortName', 'StudentNumber', 'EnrollmentTerm', 'GraduationTerm'];
+  columnsToSearch= [];
 
   constructor(
     public dataSourceComponentService: DataSourceComponentService,
@@ -124,23 +122,13 @@ export class PatientsSearchGridComponent implements OnInit, AfterViewInit, OnDes
     private readonly featureService: FeatureMetadataService,
     public readonly _profileAdminLayoutService: ProfileAdminLayoutService
   ) {
-    // this._lookupSandbox.loadSetupLookups();
     this.showMoreFilters = new Array<ShowMore>();
     this.feature = new FEATURECODE();
     this.profileCode = this.feature.studentFeatureEnrollment;
     this._unsubscribe = new Subject();
-    // this.campusLookup = new CampusLookup();
-    // // this.categoryLookup = new CategoryLookup();
-    // this.enrollmentTermLookup = new EnrollmentTermLookup();
-    // this.graduationTermLookup = new GraduationTermLookup();
     this.datasourceFacade.DataSourceDestroy();
-    this.fileConfiguration = new FileConfiguration();
-    this.fileConfiguration.fileEndpoint = new FileEndpoint(
-      'student.profile',
-      'student'
-    );
-    this.serviceEndPoint =
-      this.fusionConfidService.getservice('student.profile').endpoint;
+
+    this.serviceEndPoint = this._patientService.getEndpoint();
     this.loggedInUser$ = this.userFacade.UserState$.pipe(
       takeUntil(this._unsubscribe)
     );
@@ -158,7 +146,7 @@ export class PatientsSearchGridComponent implements OnInit, AfterViewInit, OnDes
 
 
     this.InitializeDataSource();
-    this._patientService.onStudentAdded.subscribe((isAdded) => {
+    this._patientService.onAdded.subscribe((isAdded) => {
       if (isAdded) {
         this.resetFilter();
         this.sortByCreatedTimeStamp();
@@ -171,55 +159,11 @@ export class PatientsSearchGridComponent implements OnInit, AfterViewInit, OnDes
       }
     });
 
-    // this._lookupSandbox.campusLookup$.pipe(takeUntil(this._unsubscribe)).subscribe(campus => {
-    //   this.campusLookup = campus;
-    // });
-    // this._lookupSandbox.categoryLookup$.pipe(takeUntil(this._unsubscribe)).subscribe(category => {
-    //   this.categoryLookup = category;
-    // });
-    // this._lookupSandbox.enrollmentTermLookup$.pipe(takeUntil(this._unsubscribe)).subscribe(enroll => {
-    //   this.enrollmentTermLookup = enroll;
-    // });
-    // this._lookupSandbox.graduationTermLookup$.pipe(takeUntil(this._unsubscribe)).subscribe(grad => {
-    //   this.graduationTermLookup = grad;
-    // });
-    // this._cohortFacade.allCohort$
-    //   .pipe(takeUntil(this._unsubscribe))
-    //   .subscribe((cohortList) => {
-    //     const cohortRes: Item[] = [];
-    //     cohortList.forEach((cohort) =>
-    //       cohortRes.push({ value: cohort.id, viewName: cohort.cohortName })
-    //     );
-    //     this.cohorts = cohortRes;
-    //   });
-
-    this._tagMasterFacade.allTagMaster$
-      .pipe(takeUntil(this._unsubscribe))
-      .subscribe((response) => {
-        if (response) {
-          this.tagMaster = response;
-          const tagRes: Item[] = [];
-          response.forEach((tag) =>
-            tagRes.push({ value: tag.id, viewName: tag.title })
-          );
-          this.tags = tagRes;
-        }
-      });
-
     this.columnInformation.forEach((x) => {
       this.fieldAndDisplayName.set(x.fieldName, x.displayName);
     });
     this.searchOptions = this.columnInformation.filter((x) => x.isSearchable);
-    this.datasourceFacade.fusionDataSource$
-      .pipe(takeUntil(this._unsubscribe))
-      .subscribe((res) => {
-        if (res) {
-          this.gridData = res;
-          this._patientService.profileListLoaded({ result: res?.data, count: res?.total });
-        }
-      });
 
-    this.clearSelectionOnBulkUpdateComplete();
   }
 
 
@@ -229,7 +173,8 @@ export class PatientsSearchGridComponent implements OnInit, AfterViewInit, OnDes
       columnName: 'lastName',
       direction: 'asc',
     };
-    dataSource.endPoint = `${this.serviceEndPoint}/ProfileReport/GetAllProfile`;
+
+    dataSource.endPoint = this._patientService.getEndpoint();
     dataSource.filters = this.defaultFilters;
     dataSource.displayColumns = this.columnInformation.filter(
       (x) => x.isDisplayColumn
@@ -239,7 +184,7 @@ export class PatientsSearchGridComponent implements OnInit, AfterViewInit, OnDes
     );
     dataSource.sort = sort;
     dataSource.pagination = { startIndex: 0, pageSize: 100 };
-    dataSource.requestType = MethodType.POST;
+    dataSource.requestType = MethodType.GET;
     dataSource.multiColumnSearch = this.columnsToSearch;
     this.datasourceFacade.InitializeDataSource(dataSource);
     // Logger.trace(`StudentModule : SearchComponent => InitializeDataSource()`);
@@ -253,17 +198,6 @@ export class PatientsSearchGridComponent implements OnInit, AfterViewInit, OnDes
 
     this.initializeSearchInput();
     //setup check
-    this.featureService.getLookupByName('invitationstatus').subscribe((res) => {
-      const invitationStatusRes: Item[] = [];
-      res.items.forEach((status) =>
-        invitationStatusRes.push({
-          value: status.itemId,
-          viewName: status.description,
-        })
-      );
-      invitationStatusRes.push({ value: 'processed', viewName: 'In Progress' });
-      this.invitationStatuses = invitationStatusRes;
-    });
 
     this.datasourceFacade.datasourceSerchFilter$
       .pipe(takeUntil(this._unsubscribe))
@@ -395,27 +329,6 @@ export class PatientsSearchGridComponent implements OnInit, AfterViewInit, OnDes
     }
   }
 
-  getinvitationStatus(item) {
-    if (item?.isSSOUser) {
-      return 'Activated';
-    }
-    if (item?.invitationDetails) {
-      let description = '';
-      description += this.getInvitationStatusDescription(
-        item?.invitationDetails?.status
-      );
-      description +=
-        item?.invitationDetails?.status !== 'activated'
-          ? ` ${this.datepipe.transform(
-            new Date(item?.invitationDetails?.statusTimestamp),
-            'MMMM d, y'
-          )}`
-          : '';
-      return description;
-    } else {
-      return this.getInvitationStatusDescription('notInvited');
-    }
-  }
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
     if (this.isAllSelected()) {
@@ -468,9 +381,6 @@ export class PatientsSearchGridComponent implements OnInit, AfterViewInit, OnDes
 
   sortByCreatedTimeStamp() {
 
-    // Logger.trace(
-    //   `StudentModule : SearchComponent => sortByCreatedTimeStamp()=> sort by timestamp`
-    // );
     this.displayedColumns$ =
       this.datasourceFacade.dataSourceDisplayColumns$.pipe(
         map((x) => x.displayColumns.map((y) => y.fieldName))
@@ -487,7 +397,7 @@ export class PatientsSearchGridComponent implements OnInit, AfterViewInit, OnDes
       sort,
       MethodType.POST
     );
-    this._patientService.onStudentAdded.next(false);
+    this._patientService.onAdded.next(false);
     this.initPagination();
   }
 
@@ -566,49 +476,6 @@ export class PatientsSearchGridComponent implements OnInit, AfterViewInit, OnDes
       const showFilter = new ShowMore();
       Object.assign(showFilter, x);
       showFilter.filterValue = new Map();
-      if (x.fieldName === "cohortId") {
-        showFilter?.filterValue?.set(x.value, this.getCohortId(x.value));
-      }
-      if (x.fieldName === "profileStatus") {
-        this.getFilterValue(x.value)?.forEach(y => {
-          showFilter?.filterValue?.set(y, y);
-        })
-      }
-      if (x.fieldName === "groupName") {
-        this.getFilterValue(x.value)?.forEach(y => {
-          showFilter?.filterValue?.set(y, y);
-        })
-      }
-      if (x.fieldName === "graduationTermId") {
-        this.getFilterValue(x.value)?.forEach(y => {
-          showFilter?.filterValue?.set(y, this.getGraduationTerm(y));
-        })
-      }
-      // if (x.fieldName === "categoryId") {
-      //   this.getFilterValue(x.value)?.forEach(y => {
-      //     showFilter?.filterValue?.set(y, this.getCategory(y));
-      //   })
-      // }
-      // if (x.fieldName === "campusId") {
-      //   this.getFilterValue(x.value)?.forEach(y => {
-      //     showFilter?.filterValue?.set(y, this.getCampus(y));
-      //   })
-      // }
-      // if (x.fieldName === "enrollmentTermId") {
-      //   this.getFilterValue(x.value)?.forEach(y => {
-      //     showFilter?.filterValue?.set(y, this.getEnrollmentTerm(y));
-      //   })
-      // }
-      if (x.fieldName === "tagId") {
-        this.getFilterValue(x.value)?.forEach(y => {
-          showFilter?.filterValue?.set(y, this.getTagsbyId(y));
-        })
-      }
-      if (x.fieldName === "invitationStatus") {
-        this.getFilterValue(x.value)?.forEach(y => {
-          showFilter?.filterValue?.set(y, this.getInvitationStatusDescription(y));
-        })
-      }
       this.showMoreFilters.push(showFilter);
 
     });
@@ -735,124 +602,6 @@ export class PatientsSearchGridComponent implements OnInit, AfterViewInit, OnDes
       return null;
     }
   }
-
-  // getCampus(id) {
-  //   if (
-  //     id !== undefined &&
-  //     id !== null &&
-  //     id !== '' &&
-  //     this.campusLookup?.campuses !== undefined &&
-  //     this.campusLookup?.campuses?.length > 0
-  //   ) {
-  //     return this.campusLookup?.campuses.find((x) => x.id === id) !== undefined
-  //       ? this.campusLookup?.campuses.find((x) => x.id === id).name
-  //       : '';
-  //   } else {
-  //     return null;
-  //   }
-  // }
-  // getCategory(id) {
-  //   if (
-  //     id !== undefined &&
-  //     id !== null &&
-  //     id !== '' &&
-  //     this.categoryLookup?.categories !== undefined &&
-  //     this.categoryLookup?.categories?.length > 0
-  //   ) {
-  //     return this.categoryLookup?.categories.find((x) => x.id === id) !== undefined
-  //       ? this.categoryLookup?.categories.find((x) => x.id === id).name
-  //       : '';
-  //   } else {
-  //     return null;
-  //   }
-  // }
-  // getEnrollmentTerm(id) {
-  //   if (
-  //     id !== undefined &&
-  //     id !== null &&
-  //     id !== '' &&
-  //     this.enrollmentTermLookup?.enrollmentTerms !== undefined &&
-  //     this.enrollmentTermLookup?.enrollmentTerms?.length > 0
-  //   ) {
-  //       const enrollmentTerm = this.enrollmentTermLookup?.enrollmentTerms.find((x) => x.id === id);
-  //       if(enrollmentTerm){
-  //         return enrollmentTerm.termDate ? `${enrollmentTerm.name} (${this.datepipe.transform(enrollmentTerm.termDate, 'MMMM d, y')})`: enrollmentTerm.name;
-  //       }
-  //       else{
-  //         return '';
-  //       }
-  //   } else {
-  //     return null;
-  //   }
-  // }
-
-  // getGraduationTerm(id) {
-  //   if (
-  //     id !== undefined &&
-  //     id !== null &&
-  //     id !== '' &&
-  //     this.graduationTermLookup?.graduationTerms !== undefined &&
-  //     this.graduationTermLookup?.graduationTerms?.length > 0
-  //   ) {
-  //     const graduationTerm = this.graduationTermLookup?.graduationTerms.find((x) => x.id === id);
-  //     if(graduationTerm){
-  //       return graduationTerm.termDate ? `${graduationTerm.name} (${this.datepipe.transform(graduationTerm.termDate, 'MMMM d, y')})`: graduationTerm.name;
-  //     }
-  //     else{
-  //       return '';
-  //     }
-  //   } else {
-  //     return null;
-  //   }
-  // }
-
-  getInvitationStatusDescription(itemId: string) {
-    if (
-      itemId !== undefined &&
-      itemId !== null &&
-      itemId !== '' &&
-      this.invitationStatuses !== undefined &&
-      this.invitationStatuses.length > 0
-    ) {
-      return this.invitationStatuses.find((x) => x.value === itemId) !==
-      undefined
-        ? this.invitationStatuses.find((x) => x.value === itemId).viewName
-        : '';
-    } else {
-      return null;
-    }
-  }
-
-  getTagsbyId(id: string) {
-    if (
-      id !== undefined &&
-      id !== null &&
-      id !== '' &&
-      this.tags !== undefined &&
-      this.tags.length > 0
-    ) {
-      return this.tags.find((x) => x.value === id) !== undefined
-        ? this.tags.find((x) => x.value === id).viewName
-        : '';
-    } else {
-      return null;
-    }
-  }
-
-
-  // Show in full screen
-
-  clearSelectionOnBulkUpdateComplete() {
-    this._patientService.bulkUpdateCompletionStatus$.pipe(takeUntil(this._unsubscribe))
-      .subscribe((response: boolean) => {
-        if (response) {
-          this.clearSelection();
-        }
-      }, (error) => {
-        // Logger.error(`StudentModule : SearchComponent => clearSelectionOnBulkUpdateComplete() ${error}`)
-      });
-  }
-
 
   //code for onclick single row select and outside table click event
   // eslint-disable-next-line @typescript-eslint/member-ordering

@@ -21,14 +21,20 @@ export const PatientSerachColInfo = [
     isDisplayColumn: true
   },
   {
+    displayName: 'Age',
+    fieldName: 'age',
+    isSearchable: false,
+    isDisplayColumn: true
+  },
+  {
     displayName: 'Admissioin Date',
     fieldName: 'admissioinDate',
     isSearchable: true,
     isDisplayColumn: true
   },
   {
-    displayName: 'Age',
-    fieldName: 'age',
+    displayName: 'Discharge Date',
+    fieldName: 'dischargeDate',
     isSearchable: false,
     isDisplayColumn: true
   },
@@ -56,12 +62,7 @@ export const PatientSerachColInfo = [
     isSearchable: false,
     isDisplayColumn: true
   },
-  {
-    displayName: 'Discharge Date',
-    fieldName: 'dischargeDate',
-    isSearchable: false,
-    isDisplayColumn: true
-  },
+
   {
     displayName: 'Reimbursement Type',
     fieldName: 'reimbursementType',

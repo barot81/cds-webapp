@@ -30,9 +30,11 @@ import { StudentLandingGridFilterComponent } from './filters/student-landing-gri
 import { ProfileShareHistoryComponent } from './share-profile/profile-share-history/profile-share-history.component';
 import { ChecklistDatabase } from './share-profile/share-selected-compliance-docs.service';
 import { AddPatientComponent } from './add-patient/add-patient.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
     UXStoreModule,

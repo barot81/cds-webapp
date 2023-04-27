@@ -1,0 +1,35 @@
+export const richTextConfig = {
+  toolbar: {
+    items: [
+      'heading',
+      '|',
+      'bold',
+      'italic',
+      'underline',
+      'alignment',
+      'link',
+      '|',
+      'bulletedList',
+      'numberedList',
+      '|',
+      'fontColor',
+      'fontSize',
+      '|',
+      'outdent',
+      'indent',
+      '|',
+      'blockQuote',
+      '|',
+      'undo',
+      'redo'
+    ],
+    viewportTopOffset: 30,
+    shouldNotGroupWhenFull: false,
+},
+placeholder: 'Rich Text Editor',
+language: 'en',
+licenseKey: '',
+link: {
+  addTargetToExternalLinks: true,
+},
+};
