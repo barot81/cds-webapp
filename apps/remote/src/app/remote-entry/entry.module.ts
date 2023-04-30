@@ -6,7 +6,7 @@ import { RemoteEntryComponent } from './entry.component';
 import { PatientsGridComponent } from '../patients/patients-grid.component';
 import { FilterDrawerComponent } from '../patients/filter-drawer/filter-drawer.component';
 import { ShowMoreFilterDrawerComponent } from '../patients/show-more-filter-drawer/show-more-filter-drawer.component';
-import { FlexTableModule, FuseDirectivesModule, FuseSharedModule, FuseSidebarModule, FuseThemeOptionsModule, LayoutModule, MaterialModule, ShowMoreModule } from '@zhealthcare/ux';
+import { FileUploadModule, FlexTableModule, FuseDirectivesModule, FuseSharedModule, FuseSidebarModule, FuseThemeOptionsModule, LayoutModule, MaterialModule, ShowMoreModule } from '@zhealthcare/ux';
 import { FilterAndEditDrawerComponent } from '../patients/filter-and-edit-drawer/filter-and-edit-drawer.component';
 import { EditColumnsComponent } from '../patients/edit-columns/edit-columns.component';
 import { StoreModule } from '@ngrx/store';
@@ -14,11 +14,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CustomDirectiveModule, RBACDirectiveModule } from '@zhealthcare/fusion/directives';
 import { DataSourceModule } from '@zhealthcare/plugin/data-source';
-import { ProfileFormsModule } from '../forms/patient-forms.module';
+import { PatientFormsModule } from '../forms/patient-forms.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClientModule } from '@angular/common/http';
 import { PatientService } from '../services/patient.service';
 import { PatientDetailsComponent } from '../patient-details/patient-details.component';
+import { PatientHeaderComponent } from '../patient-details/patient-header/patient-header.component';
+import { GeneralCommentsComponent } from '../patient-details/general-comments/general-comments.component';
+import { FeatureMetaDataPipesModule } from '@zhealthcare/fusion/pipes';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { PatientDetailsComponent } from '../patient-details/patient-details.comp
     EditColumnsComponent,
     FilterAndEditDrawerComponent,
     FilterDrawerComponent,
-    ShowMoreFilterDrawerComponent
+    ShowMoreFilterDrawerComponent,
+    PatientHeaderComponent,
+    GeneralCommentsComponent
 ],
   imports: [
     CommonModule,
@@ -43,10 +48,12 @@ import { PatientDetailsComponent } from '../patient-details/patient-details.comp
     FlexTableModule,
     CustomDirectiveModule,
     RBACDirectiveModule,
+    FileUploadModule,
     StoreModule,
     ShowMoreModule,
     DataSourceModule,
-    ProfileFormsModule,
+    PatientFormsModule,
+    FeatureMetaDataPipesModule,
     DragDropModule,
     EffectsModule.forFeature([]),
     RouterModule.forChild([
@@ -59,7 +66,7 @@ import { PatientDetailsComponent } from '../patient-details/patient-details.comp
             component: PatientsGridComponent
           },
           {
-            path: 'patients/:id',
+            path: 'patients/:id/details',
             component: PatientDetailsComponent
           },
           {

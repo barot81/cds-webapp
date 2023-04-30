@@ -13,14 +13,18 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationEnd, Router } from '@angular/router';
+import { DataSourceFacade, Filter } from '@zhealthcare/plugin/data-source';
 import { zhealthcareTag } from '@zhealthcare/plugin/tags';
-import { FullScreenService, ScrollService } from '@zhealthcare/ux';
-import { Subject } from 'rxjs';
+import { FullScreenService, PageFacade, ScrollService } from '@zhealthcare/ux';
+import { Observable, Subject } from 'rxjs';
 
-import { filter, takeUntil, tap } from 'rxjs/operators';
+import { filter, map, takeUntil, tap } from 'rxjs/operators';
 import { PatientFormsService } from '../forms/patient-forms.service';
 import { FakePatient } from '../models/fake-patient.model';
 import { PatientSerachColInfo } from '../models/patient-search.model';
+import { DatasourceDisplayModel } from "../models/DatasourceDisplayModel";
+import { Patient } from '../models/patient.model';
+import { ShowMore } from '../models/show-more.model';
 import { GridService } from '../services/grid.service';
 import { PatientService } from '../services/patient.service';
 
@@ -35,6 +39,7 @@ export interface PeriodicElement {
   statusClass: string;
 }
 const ELEMENT_DATA: FakePatient[] = [];
+const Patient_Grid_Datasource = 'Patient_Grid_Datasource';
 
 @Component({
   selector: 'zhealthcare-patients-grid',
@@ -44,16 +49,6 @@ const ELEMENT_DATA: FakePatient[] = [];
 export class PatientsGridComponent implements AfterViewInit,OnInit, OnDestroy {
   private settlementHeight = 20;
 
-  searchItem = new FormControl();
-
-  @ViewChild('gridHeader') gridHeader: ElementRef;
-  @ViewChild('pagination') pagination: ElementRef;
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  displayedColumns: string[] = [];
-
-  dataSource = new MatTableDataSource<FakePatient>([]);
   clickedRows = new Set<FakePatient>();
   highlightedRows = new Set<FakePatient>();
 
@@ -150,19 +145,46 @@ export class PatientsGridComponent implements AfterViewInit,OnInit, OnDestroy {
     width: '450',
     pointerEvents: 'auto',
   };
-  patientsData$: any;
+
+  @ViewChild('gridHeader') gridHeader: ElementRef;
+  @ViewChild('pagination') pagination: ElementRef;
+
+  @ViewChild(MatSort) sort: MatSort;
+  displayedColumns: string[] = [];
   columnInformation: any;
+  dataSource = new MatTableDataSource([]);
+
+  filter: Filter[] = [];
+  defaultFilters: Filter[];
+  showMoreFilters: ShowMore[];
+  filterQueryData: Patient;
+  filterQuery = '';
+
+  @ViewChild('searchInput', { static: true }) searchInput: ElementRef;
+  searchItem = new FormControl();
+  searchValue = '';
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  pageNumber = 1;
+  dataCount = 0;
+  isLoadingResults = false;
+
   private readonly _unsubscribe: Subject<any> = new Subject();
+
   constructor(
     public dialog: MatDialog,
     public _scrollService: ScrollService,
     public gridService: GridService,
     private elem: ElementRef,
+    private readonly _pageFacade: PageFacade,
     private _router: Router,
     public _fullScreenService: FullScreenService,
     public patientService: PatientService,
-    public patientFormService: PatientFormsService
+    public patientFormService: PatientFormsService,
+    public datasourceFacade: DataSourceFacade
+
   ) {
+    this._pageFacade.setPageTitle('Patient Details');
     this._router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(async (event$) => {
@@ -170,24 +192,54 @@ export class PatientsGridComponent implements AfterViewInit,OnInit, OnDestroy {
           await this.setHeaderHeights();
         }
       });
-    this.patientService.getPatients().subscribe();
+    this.patientService.getPatients().subscribe(x=> this.dataSource = new MatTableDataSource(x));
     this.columnInformation = PatientSerachColInfo;
     this.InitializeDataSource();
   }
   ngOnInit(): void {
-    this.patientsData$ = this.patientService.patientData$
-                            .pipe(takeUntil(this._unsubscribe),
-                            tap(console.log));
+    this.initializeDataSourceData();
+  }
+
+  private initializeDataSourceData() {
+    this.patientService.patientData$
+      .pipe(takeUntil(this._unsubscribe),
+        map(patients => this.dataSource = new MatTableDataSource(patients)))
+      .subscribe();
   }
 
   private InitializeDataSource() {
+    this.setDefaultFilters();
+    this.showMoreFilters = new Array<ShowMore>();
+    this.datasourceFacade.DataSourceDestroy();
+
     this.columnInformation = PatientSerachColInfo;
     this.displayedColumns = this.columnInformation
-      .filter((x) => x.isDisplayColumn)
-      .map((x) => x.fieldName);
+      .filter((x:DatasourceDisplayModel) => x.isDisplayColumn)
+      .map((x:DatasourceDisplayModel) => x.fieldName);
     this.displayedColumns.push('actions');
   }
 
+  setDefaultFilters() {
+    this.defaultFilters = [];
+    if (sessionStorage.getItem(Patient_Grid_Datasource)) {
+      if (localStorage.getItem('fusionDataSource')) {
+        // this.resetFilter();
+      }
+      const filterSessionData = JSON.parse(
+        sessionStorage.getItem(Patient_Grid_Datasource)
+      );
+      filterSessionData.filters.forEach((element) => {
+        if (element?.type === 'search' && element.value !== '') {
+          this.searchValue = element.value;
+        }
+        this.defaultFilters.push(element);
+      });
+      this.filter = this.defaultFilters;
+    } else {
+      const filters = {};
+      this.filter = this.defaultFilters;
+    }
+  }
   private async setHeaderHeights() {
     setTimeout(async () => {
       if (
@@ -212,12 +264,12 @@ export class PatientsGridComponent implements AfterViewInit,OnInit, OnDestroy {
   }
 
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    // const filterValue = (event.target as HTMLInputElement).value;
+    // this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    // if (this.dataSource.paginator) {
+    //   this.dataSource.paginator.firstPage();
+    // }
   }
 
   //code for onclick single row select and outside table click event
@@ -269,6 +321,5 @@ export class PatientsGridComponent implements AfterViewInit,OnInit, OnDestroy {
   ngOnDestroy(): void {
     this._unsubscribe.next(true);
     this._unsubscribe.complete();
-    this.patientsData$.complete();
   }
 }

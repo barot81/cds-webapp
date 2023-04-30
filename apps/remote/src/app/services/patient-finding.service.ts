@@ -1,38 +1,40 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { Finding } from '../models/Finding.model';
 import { Patient } from '../models/patient.model';
 import { generatePatients } from './patient.faker.service';
 
 @Injectable({ providedIn: 'any' })
-export class PatientService {
-  patients = [];
-  patientData$ = new BehaviorSubject<Patient[]>(null);
+export class PatientFindingService {
+  patientFinding;
+  patientFindingData$ = new BehaviorSubject<Finding[]>(null);
   loading$ = new BehaviorSubject<boolean>(false);
   public bulkUpdateCompletionStatus = new BehaviorSubject<any>(null);
   bulkUpdateCompletionStatus$ = this.bulkUpdateCompletionStatus.asObservable();
   public onAdded: BehaviorSubject<boolean>;
   public onFilterChange: BehaviorSubject<boolean>;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private activeRoute: ActivatedRoute) {
     this.onAdded = new BehaviorSubject<boolean>(false);
     this.onFilterChange = new BehaviorSubject<boolean>(false);
   }
 
   profileListLoaded(data: { result: any; count: number }) {
-    this.patientData$.next(data.result);
+    this.patientFindingData$.next(data.result);
   }
 
-  getPatients() {
+  getPatientFindings() {
     this.loading$.next(true);
     const url = this.getBaseEndpoint();
     return this.httpClient.get(url).pipe(
-      map((patients: any[]) => {
-        this.patients = patients;
-        this.patientData$.next(patients);
+      map((patientFinding: any[]) => {
+        this.patientFinding = patientFinding;
+        this.patientFindingData$.next(patientFinding);
         this.loading$.next(false);
-        return patients;
+        return patientFinding;
       }),
       catchError((err) => {
         this.loading$.next(false);
@@ -55,22 +57,23 @@ export class PatientService {
 
   public getBaseEndpoint() {
     const facility = localStorage.getItem('TenantId');
-    const url = `${environment.baseUrl}/api/Facilities/${facility}/patients`;
+    const patientId = this.activeRoute.paramMap['id'];
+    const url = `${environment.baseUrl}/api/Facilities/${facility}/patients/${patientId}/patientFinding`;
     return url;
   }
 
   private generateFakePatients(facility: string) {
-    this.patients = generatePatients(100);
-    this.patients
+    this.patientFinding = generatePatients(100);
+    this.patientFinding
       .filter((x) => x.facility === facility)
       .map((x) => {
         if (x.queryStatus.includes('pending') || x.queryStatus.includes('No'))
           x.statusClass = 'disapproved';
         else x.statusClass = 'approved';
       });
-    this.patientData$.next(this.patients);
-    console.log(JSON.stringify(this.patients));
-    return this.patients;
+    this.patientFindingData$.next(this.patientFinding);
+    console.log(JSON.stringify(this.patientFinding));
+    return this.patientFinding;
   }
 
   addPatient(patient: Patient) {
@@ -82,8 +85,8 @@ export class PatientService {
       })
       .pipe(
         map((x) => {
-          this.patients.push(patient);
-          this.patientData$.next(this.patients);
+          this.patientFinding.push(patient);
+          this.patientFindingData$.next(this.patientFinding);
           return x;
         })
       );
@@ -98,23 +101,23 @@ export class PatientService {
       })
       .pipe(
         map((x) => {
-          this.patients.splice(
-            this.patients.indexOf((y) => y.id === patient.id),
+          this.patientFinding.splice(
+            this.patientFinding.indexOf((y) => y.id === patient.id),
             1,
             patient
           );
-          this.patientData$.next(this.patients);
+          this.patientFindingData$.next(this.patientFinding);
           return x;
         })
       );
   }
 
   deleteePatient(id: any) {
-    this.patients.splice(
-      this.patients.indexOf((x) => x.id === id),
+    this.patientFinding.splice(
+      this.patientFinding.indexOf((x) => x.id === id),
       1
     );
-    this.patientData$.next(this.patients);
-    return this.patientData$;
+    this.patientFindingData$.next(this.patientFinding);
+    return this.patientFindingData$;
   }
 }

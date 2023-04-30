@@ -1,0 +1,96 @@
+<div #admin_Side_Student_Header>
+  <div>
+    <div class="w-100-p">
+      <div fxLayout="row" fxlayoutalign="start center" fxFlex="100">
+        <div fxFlex="100" *ngIf="(loading$ | async) === false; else loading">
+          <div fxLayout="row" fxLayoutAlign="space-between center" *ngIf="(patient$ | async) as patient">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <div class="no-avatar avatar-lg">
+                {{ this.firstInitial }}{{ this.lastInitial }}
+              </div>
+              &nbsp;&nbsp;&nbsp;
+              <div fxLayout="column" fxLayoutAlign="center start" fxFlex="100">
+                <div
+                  fxLayout="row wrap"
+                  fxLayoutAlign="start center"
+                  fxFlex="100"
+                >
+                  <h2>
+                    {{ patient.firstName }}&nbsp;
+                    {{ patient.lastName }}
+                    &nbsp;|&nbsp;
+                    {{
+                        patient.accountNo
+                    }}
+                  </h2>
+                  <profile-shared-student-tag></profile-shared-student-tag>
+                </div>
+                <div>
+
+                  <div class="banner-separator">
+                    <span> Admit Date : {{ patient.admissionDate }}</span>
+                    &nbsp;|&nbsp;
+                    <span>  LOS : {{ patient.los }}</span>
+                    &nbsp;|&nbsp;
+                    <span> Discharge Date : {{ patient.dischargeDate }}</span>
+
+                  </div>
+                  <div class="banner-separator">
+                    <span> Insurance : {{ patient.primaryInsurance }}</span>
+                    &nbsp;|&nbsp;
+                    <span>  {{ patient.SecondaryInsurance }}</span>
+                    &nbsp;|&nbsp;
+                  </div>
+                  <div class="banner-separator">
+                    <span> Contracted : {{ patient.contracted }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="start end">
+              <div
+                fxLayout="column"
+                fxLayoutAlign="start start"
+                fxLayout.gt-xs="row"
+                fxLayoutAlign.gt-xs="space-between start"
+              >
+                <div>
+                  <div class="banner-separator">
+                    MRN: {{ patient.mrn }}
+                  </div>
+                  <div class="banner-separator">
+                    <span>
+                      Reimbursement Type : {{ patient.reimbursementType }}
+                    </span>
+                  </div>
+                  <div class="banner-separator">
+                    <span>
+                      Financial Class : {{ patient.financialClass }}
+                    </span>
+                  </div>
+                  <div class="banner-separator">
+                    <span>
+                      Patient Class : {{ patient.patientClass }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<ng-template #loading>
+  <div fxLayout="row" fxLayoutAlign="start space-between" class="m-8">
+    <div class="square w-80 h-80 mr-8 shine"></div>
+    <div fxLayout="column" class="pt-8">
+      <div class="line shine w-140 h-8"></div>
+      <div class="line shine w-280 h-8"></div>
+      <div class="line shine w-180 h-8"></div>
+      <div class="line shine w-200 h-8"></div>
+    </div>
+  </div>
+</ng-template>

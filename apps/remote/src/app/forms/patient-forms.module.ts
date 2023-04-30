@@ -12,7 +12,6 @@ import {
 import { PatientFormsService } from './patient-forms.service';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-// import { ShareWithSiteComponent } from './share-profile/share-with-site/share-with-site.component';
 
 import {
   CustomDirectiveModule,
@@ -31,6 +30,7 @@ import { ProfileShareHistoryComponent } from './share-profile/profile-share-hist
 import { ChecklistDatabase } from './share-profile/share-selected-compliance-docs.service';
 import { AddPatientComponent } from './add-patient/add-patient.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AddGeneralCommentsComponent } from './add-general-comments/add-general-comments.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -55,26 +55,18 @@ import { HttpClientModule } from '@angular/common/http';
   ],
 
   declarations: [
-    // ShareWithSiteComponent,
     AddPatientComponent,
+    AddGeneralCommentsComponent,
     StudentLandingGridFilterComponent,
     ProfileShareHistoryComponent,
-   // ShareComplianceDocumentsComponent,
-    // ShareWithSiteFailurePopupComponent,
-   // ProfileGridFiltersComponent,
-   // ShareCompletedPlacementsComponent,
-    //BulkUpdateComponent,
-    //StudentShowMoreComponent
   ],
 
   providers: [
-    // ComponentRefreshService,
-    // InterventionRefreshService,
     PatientFormsService,
     ChecklistDatabase,
     { provide: MAT_DATE_FORMATS, useValue: zhealthcare_DATE_FORMATS },
   ],
 })
-export class ProfileFormsModule {
+export class PatientFormsModule {
   constructor() {}
 }

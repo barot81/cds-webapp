@@ -1,0 +1,45 @@
+
+
+<mat-card class="p-0 mb-8 mt-small-8">
+  <div fxLayout="row wrap" fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-md="100">
+    <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-md="100">
+      <header fxLayout="row" fxLayoutAlign="space-between center" class="card-header-title card-header-border-bottom"
+      >
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <span class="primary-heading font-weight-600" tabindex="0" aria-label="comments">
+            General Comments
+          </span>
+        </div>
+        <button mat-icon-button aria-label="Edit summary" zhealthcareDrawerAction
+          [componentSelector]="_patientFormService.get('patient-general-comments-form')"
+          [size]="'drawer-sm'" [data]="patientInfo"
+          title="General Comments"
+          [primaryAction]="'Save'" role="button" [entityKey]="patientInfo?.id">
+          <i aria-hidden="true"  class="fa-light fa-pen"></i>
+        </button>
+      </header>
+
+      <div *ngIf="(loading$ | async) === false; else loading" class="zhealthcare-info-container p-0">
+        <div class="zhealthcare-info p-16"   *ngIf="(generalComments$ | async) as generalComment">
+            <div class="title" tabindex="0" aria-label="General Comments">
+             General Comments
+            </div>
+            <div class="ck-editor-container description" tabindex="0"
+              attr.aria-label="{{ generalComment.comments}}"
+              [innerHTML]="generalComment.comments | mdToHTML | safeHTML">
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>
+<ng-template #loading>
+  <div fxLayout="row" fxLayoutAlign="start space-between">
+    <div fxLayout="column" class="pl-16 mt-16">
+      <div class="line shine w-140 h-8"></div>
+      <div class="line shine w-280 h-8"></div>
+      <div class="line shine w-180 h-8"></div>
+      <div class="line shine w-200 h-8"></div>
+    </div>
+  </div>
+</ng-template>

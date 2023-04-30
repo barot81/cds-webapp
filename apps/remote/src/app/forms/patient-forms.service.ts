@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ComponentMap } from '@zhealthcare/fusion/core';
+import { AddGeneralCommentsComponent } from './add-general-comments/add-general-comments.component';
 import { AddPatientComponent } from './add-patient/add-patient.component';
 // import { BulkUpdateComponent } from './bulk-update/bulk-update.component';
 // import { AreaOfProfessionalInterestFilterComponent } from './filters/area-of-professional-interest-filter/area-of-professional-interest-filter.component';
@@ -24,6 +25,7 @@ export class PatientFormsService extends ComponentMap {
 
     //add-student
     this.add('patient-add-form', AddPatientComponent);
+    this.add('patient-general-comments-form', AddGeneralCommentsComponent);
 
     // //bulk-update
     // this.add('profile-admin-bulk-update-form', BulkUpdateComponent)

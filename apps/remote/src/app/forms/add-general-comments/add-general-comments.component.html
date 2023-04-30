@@ -1,0 +1,11 @@
+<form class="drawer-p" name="form" [formGroup]="fusionFormGroup">
+
+  <mat-card fxLayout="column" class="p-16 mb-16">
+    <div fxLayout="row" fxLayoutAlign="space-between end">
+      <ckeditor class="editor-border p-0" fxFlex="100" data="{{comments | mdToHTML}}" #ckeditorComments [editor]="Editor" id="ckeditor_id"
+    name="classic-editor" [config]="config" (ready)="onReady($event)" (change)="onChange($event)"
+    (focus)="onFocus($event)" (blur)="onBlur($event)">
+      </ckeditor>
+    </div>
+  </mat-card>
+</form>
