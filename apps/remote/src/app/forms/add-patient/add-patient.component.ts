@@ -1,10 +1,10 @@
 import { DatePipe } from '@angular/common';
 import { AfterViewInit, Component } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FusionFormAdapter, FusionFormComponent } from '@zhealthcare/fusion/components';
 import { DrawerService, SnackbarService } from '@zhealthcare/ux';
-import { FakePatient } from '../../models/fake-patient.model';
+import { Patient } from '../../models/patient.model';
 import { richTextConfig } from '../../models/richtext.config';
 import { PatientService } from '../../services/patient.service';
 
@@ -17,7 +17,7 @@ export class AddPatientComponent extends FusionFormComponent implements FusionFo
 
 
   maxDate =  new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
-  newPatientInfo: FakePatient;
+  patientInfo: Patient = new Patient();
   queryStatusList: string[];
   reimbursementTypeList: string[];
   comments: any;
@@ -33,16 +33,21 @@ export class AddPatientComponent extends FusionFormComponent implements FusionFo
     private _datepipe: DatePipe) {
     super();
     this.fusionFormGroup = this.fb.group({
-      lastName: new FormControl(''),
-      firstName: new FormControl(''),
-      roomId: new FormControl(''),
+      lastName: new FormControl('kaptel'),
+      firstName: new FormControl('ankit'),
+      accountNo: new FormControl('',[
+        Validators.required,
+        Validators.pattern("^[0-9]*$"),
+        Validators.minLength(6)
+      ]),
+      roomId: new FormControl('R001'),
       admissionDate: new FormControl(''),
       dischargeDate: new FormControl(''),
       healthPlanName: new FormControl(''),
-      cds: new FormControl(''),
-      queryStatus: new FormControl(''),
+      cds: new FormControl('ashit'),
+      queryStatus: new FormControl('Reviewed'),
       queryDate: new FormControl(''),
-      reimbursementType: new FormControl(''),
+      reimbursementType: new FormControl('Medicaid'),
       concurrent_postDC: new FormControl(''),
       secondaryInsurance: new FormControl(''),
       pdx: new FormControl(''),
@@ -125,19 +130,26 @@ export class AddPatientComponent extends FusionFormComponent implements FusionFo
   }
 
   primaryAction() {
-    if (this.fusionFormGroup.invalid) return;
+    if (this.fusionFormGroup.invalid) {
+      this._drawerService.setPrimaryActionState(true, false);
+      return;
+    }
 
-    if (this.fusionFormGroup.value.admitDate !== null && this.fusionFormGroup.value.admitDate !== '') {
-      this.fusionFormGroup.value.admitDate = this._datepipe.transform(this.fusionFormGroup.value.admitDate, 'yyyy-MM-dd');
+    if (this.fusionFormGroup.value.admissionDate !== null && this.fusionFormGroup.value.admissionDate !== '') {
+      this.fusionFormGroup.value.admissionDate = this._datepipe.transform(this.fusionFormGroup.value.admissionDate, 'yyyy-MM-dd');
+    }
+    if (this.fusionFormGroup.value.dischargeDate !== null && this.fusionFormGroup.value.dischargeDate !== '') {
+      this.fusionFormGroup.value.dischargeDate = this._datepipe.transform(this.fusionFormGroup.value.dischargeDate, 'yyyy-MM-dd');
     }
     if (this.fusionFormGroup.value.queryDate !== null && this.fusionFormGroup.value.queryDate !== '') {
       this.fusionFormGroup.value.queryDate = this._datepipe.transform(this.fusionFormGroup.value.queryDate, 'yyyy-MM-dd');
     }
-    Object.assign(this.newPatientInfo, this.fusionFormGroup.value);
-    Object.assign(this.newPatientInfo.facility, localStorage.getItem('TenantId'));
+    this.patientInfo = {...this.fusionFormGroup.value};
+    this.patientInfo.facilityId = localStorage.getItem('TenantId');
 
     this._drawerService.setPrimaryActionState(false, true);
     if(this.data) {
+      this.patientInfo.id = this.data.id;
       this.editExistingPatient();
     } else {
       this.addNewPatient();
@@ -146,7 +158,7 @@ export class AddPatientComponent extends FusionFormComponent implements FusionFo
   }
   private addNewPatient() {
     this.patientService
-      .addPatient(this.newPatientInfo)
+      .addPatient(this.patientInfo)
       .subscribe((response) => {
         if (response) {
           this._snackBarService.openCustomSnackBar(
@@ -160,7 +172,7 @@ export class AddPatientComponent extends FusionFormComponent implements FusionFo
   }
   private editExistingPatient() {
     this.patientService
-      .updatePatient(this.newPatientInfo)
+      .updatePatient(this.patientInfo)
       .subscribe((response) => {
         if (response) {
           this._snackBarService.openCustomSnackBar(

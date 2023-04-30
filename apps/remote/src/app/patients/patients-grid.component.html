@@ -56,7 +56,7 @@ pt-8
           <div fxLayout="row" fxLayoutAlign="start center" class="mr-16">
             <div class="table-header-chips">
               <mat-chip-list #chipList aria-label="Fruit selection">
-                <div *ngFor="let fruit of fruits; let i = index">
+                <div *ngFor="let fruit of medicineTypes; let i = index">
                   <mat-chip *ngIf="i < 2" (removed)="remove(fruit)">
                     <span
                       [tooltip]="chip_Content"
@@ -85,7 +85,7 @@ pt-8
           <div
             fxLayout="row"
             fxLayoutAlign="start center"
-            *ngIf="fruits.length > 2"
+            *ngIf="medicineTypes.length > 2"
           >
             <a
               zhealthcareDrawerAction
@@ -119,6 +119,8 @@ pt-8
             [componentSelector]="patientFormService.get('patient-add-form')"
             [size]="'drawer-sm'"
             [caption]="'Add Patient'"
+            [primaryAction]="'Save'"
+
           >
             <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
             <span class="ml-4">Add Patient</span>
@@ -145,6 +147,7 @@ pt-8
             [caption]="'Edit Columns'"
             mat-icon-button
             class="ml-4"
+            [primaryAction]="'Save'"
             fxHide.lt-md
           >
             <i aria-hidden="true" class="fa-light fa-wrench s-18"></i>

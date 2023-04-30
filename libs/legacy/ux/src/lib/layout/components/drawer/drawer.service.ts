@@ -2,16 +2,7 @@ import {
   Injectable,
   ComponentFactoryResolver,
   OnDestroy,
-  NgModuleRef,
-  Component,
-  Injector,
   Compiler,
-  CompilerFactory,
-  ModuleWithComponentFactories,
-  ResolvedReflectiveFactory,
-  ComponentFactory,
-  getModuleFactory,
-  ChangeDetectorRef,
 } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
@@ -27,7 +18,6 @@ import { FuseProgressBarService } from '../../../components/progress-bar/progres
 import { take, takeUntil } from 'rxjs/operators';
 import { RoleBasedAccessService } from '@zhealthcare/fusion/services';
 import { MetaConstants, URLConstants } from '@zhealthcare/fusion/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { RouterStateFacade } from '../../../store/facade/router.facade';
 import { SnackbarService } from '../../../services/snackbar.service';
@@ -118,7 +108,7 @@ export class DrawerService implements OnDestroy {
   }
 
   checkForAllEmptyFields() {
-    let formData = this.componentRef.instance?.fusionFormGroup?.value;
+    const formData = this.componentRef.instance?.fusionFormGroup?.value;
     let isAllEmpty = true;
     this._routerStateFacade
       .getActiveRouteURL()
@@ -131,7 +121,7 @@ export class DrawerService implements OnDestroy {
           Object.keys(formData).length > 0
         ) {
           Object.keys(formData)?.forEach((task) => {
-            for (let taskField in formData[task]) {
+            for (const taskField in formData[task]) {
               if (
                 formData[task][taskField] !== undefined &&
                 formData[task][taskField] !== null &&

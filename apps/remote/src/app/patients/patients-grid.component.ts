@@ -1,4 +1,12 @@
-import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostListener,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -7,8 +15,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { NavigationEnd, Router } from '@angular/router';
 import { zhealthcareTag } from '@zhealthcare/plugin/tags';
 import { FullScreenService, ScrollService } from '@zhealthcare/ux';
+import { Subject } from 'rxjs';
 
-import { filter, tap } from 'rxjs/operators';
+import { filter, takeUntil, tap } from 'rxjs/operators';
 import { PatientFormsService } from '../forms/patient-forms.service';
 import { FakePatient } from '../models/fake-patient.model';
 import { PatientSerachColInfo } from '../models/patient-search.model';
@@ -30,9 +39,9 @@ const ELEMENT_DATA: FakePatient[] = [];
 @Component({
   selector: 'zhealthcare-patients-grid',
   templateUrl: './patients-grid.component.html',
-  styles:[]
+  styles: [],
 })
-export class PatientsGridComponent implements AfterViewInit{
+export class PatientsGridComponent implements AfterViewInit,OnInit, OnDestroy {
   private settlementHeight = 20;
 
   searchItem = new FormControl();
@@ -114,7 +123,7 @@ export class PatientsGridComponent implements AfterViewInit{
   private currentURL = '/admin/patients';
   clicked = '';
 
-  fruits = ['Internal Medicine', 'Family Medicine', 'Sports Medicine'];
+  medicineTypes = ['Internal Medicine', 'Family Medicine', 'Sports Medicine'];
 
   SearchFields = [
     { value: 'Patient Name', id: 1 },
@@ -143,7 +152,7 @@ export class PatientsGridComponent implements AfterViewInit{
   };
   patientsData$: any;
   columnInformation: any;
-
+  private readonly _unsubscribe: Subject<any> = new Subject();
   constructor(
     public dialog: MatDialog,
     public _scrollService: ScrollService,
@@ -151,7 +160,7 @@ export class PatientsGridComponent implements AfterViewInit{
     private elem: ElementRef,
     private _router: Router,
     public _fullScreenService: FullScreenService,
-    public patientService : PatientService,
+    public patientService: PatientService,
     public patientFormService: PatientFormsService
   ) {
     this._router.events
@@ -161,20 +170,22 @@ export class PatientsGridComponent implements AfterViewInit{
           await this.setHeaderHeights();
         }
       });
-      this.patientsData$ = this.patientService.getPatients().pipe(tap(x=>
-        console.log(x)
-        ));
-      this.columnInformation = PatientSerachColInfo;
-      this.InitializeDataSource();
+    this.patientService.getPatients().subscribe();
+    this.columnInformation = PatientSerachColInfo;
+    this.InitializeDataSource();
+  }
+  ngOnInit(): void {
+    this.patientsData$ = this.patientService.patientData$
+                            .pipe(takeUntil(this._unsubscribe),
+                            tap(console.log));
   }
 
   private InitializeDataSource() {
-
     this.columnInformation = PatientSerachColInfo;
     this.displayedColumns = this.columnInformation
-                              .filter(x=> x.isDisplayColumn)
-                              .map(x=>x.fieldName);
-    this.displayedColumns.push("actions");
+      .filter((x) => x.isDisplayColumn)
+      .map((x) => x.fieldName);
+    this.displayedColumns.push('actions');
   }
 
   private async setHeaderHeights() {
@@ -184,7 +195,7 @@ export class PatientsGridComponent implements AfterViewInit{
         this.gridHeader !== null &&
         this.pagination &&
         this.pagination !== null
-        ) {
+      ) {
         // Set New Height to The Content Header
         await this._scrollService.setContentHeaderHeight(
           this.gridHeader.nativeElement.offsetHeight +
@@ -199,7 +210,6 @@ export class PatientsGridComponent implements AfterViewInit{
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -248,12 +258,17 @@ export class PatientsGridComponent implements AfterViewInit{
 
   //chips code
   remove(fruit: string): void {
-    const index = this.fruits.indexOf(fruit);
+    const index = this.medicineTypes.indexOf(fruit);
 
     if (index >= 0) {
-      this.fruits.splice(index, 1);
+      this.medicineTypes.splice(index, 1);
     }
   }
   //chips code end
 
+  ngOnDestroy(): void {
+    this._unsubscribe.next(true);
+    this._unsubscribe.complete();
+    this.patientsData$.complete();
+  }
 }

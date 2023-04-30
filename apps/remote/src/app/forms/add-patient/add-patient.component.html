@@ -15,6 +15,12 @@
 
     <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
       <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Accoount No </mat-label>
+        <input matInput noWhitespace formControlName="accountNo" required maxlength="8"/>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field appearance="fill" fxFlex="100">
         <mat-label>Room </mat-label>
         <input matInput noWhitespace formControlName="roomId" required />
       </mat-form-field>
@@ -32,10 +38,10 @@
     <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
       <mat-form-field appearance="fill" fxFlex="100">
         <mat-label>Discharge Date</mat-label>
-        <input readonly matInput [matDatepicker]="picker1" (click)="picker1.open()"
+        <input readonly matInput [matDatepicker]="picker2" (click)="picker2.open()"
           formControlName="dischargeDate" />
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1 color="primary" class="action-icon"></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2 color="primary" class="action-icon"></mat-datepicker>
       </mat-form-field>
     </div>
 
@@ -71,10 +77,10 @@
     <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
       <mat-form-field appearance="fill" fxFlex="100">
         <mat-label>Query Date</mat-label>
-        <input readonly matInput [matDatepicker]="picker2" (click)="picker2.open()" [max]="maxDate"
+        <input readonly matInput [matDatepicker]="picker3" (click)="picker3.open()" [max]="maxDate"
           formControlName="queryDate" />
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2 color="primary" class="action-icon"></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3 color="primary" class="action-icon"></mat-datepicker>
       </mat-form-field>
     </div>
 
