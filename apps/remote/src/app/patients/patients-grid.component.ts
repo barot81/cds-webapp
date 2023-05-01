@@ -44,7 +44,7 @@ const Patient_Grid_Datasource = 'Patient_Grid_Datasource';
 @Component({
   selector: 'zhealthcare-patients-grid',
   templateUrl: './patients-grid.component.html',
-  styles: [],
+  styleUrls: ['./patients-grid.component.scss']
 })
 export class PatientsGridComponent implements AfterViewInit,OnInit, OnDestroy {
   private settlementHeight = 20;

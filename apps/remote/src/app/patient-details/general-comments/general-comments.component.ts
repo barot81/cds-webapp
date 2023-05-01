@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, map, Subject, takeUntil } from 'rxjs';
 import { PatientFormsService } from '../../forms/patient-forms.service';
 import { GeneralComments } from '../../models/general-comments.model';
 import { Patient } from '../../models/patient.model';
@@ -12,9 +12,12 @@ import { PatientService } from '../../services/patient.service';
 })
 export class GeneralCommentsComponent implements OnInit {
   loading$: any;
-  generalComments$: Subject<GeneralComments> = new BehaviorSubject(new GeneralComments());
+  generalComments$: Subject<GeneralComments> = new BehaviorSubject(
+    new GeneralComments()
+  );
   patientInfo: Patient;
-;
+  _unsubscribe: Subject<any> = new Subject();
+  patientId: any;
   constructor(
     public _patientFormService: PatientFormsService,
     private activatedRoute: ActivatedRoute,
@@ -23,6 +26,7 @@ export class GeneralCommentsComponent implements OnInit {
     this.loading$ = this.patientService.loading$;
     this.loading$.next(true);
     this.activatedRoute.params.subscribe((x) => {
+      this.patientId = x.id;
       this.patientService.getPatientById(x.id).subscribe((res) => {
         this.patientInfo = res;
         this.generalComments$.next(res.generalComment);
@@ -31,5 +35,22 @@ export class GeneralCommentsComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.patientService.patientData$
+      .pipe(
+        takeUntil(this._unsubscribe),
+        map((patients) => {
+          const selectedPatient = patients.find(x=>x.id === this.patientId);
+          this.generalComments$.next(selectedPatient.generalComment);
+        })
+      )
+      .subscribe();
+  }
+
+
+  ngOnDestroy(): void {
+    this._unsubscribe.next(true);
+    this._unsubscribe.complete();
+  }
+
 }

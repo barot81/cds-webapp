@@ -1,0 +1,234 @@
+<div class="drawer-p">
+
+  <form name="form" [formGroup]="fusionFormGroup" fxLayout="column" fxLayoutAlign="start">
+    <!--current address section-->
+    <mat-card class="p-0 mb-8">
+      <header fxLayout="row" fxLayoutAlign="space-between center" class="card-header-title card-header-border-bottom"
+        tabindex="0">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <span class="primary-heading font-weight-600 text-capitalize">
+            Patient Finding Information
+          </span>
+        </div>
+      </header>
+      <div class="p-16 pb-0" fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Query Type</mat-label>
+            <mat-select formControlName="queryType" (selectionChange)="OnQueryTypeChanged($event)" required>
+              <mat-option *ngFor="let queryType of queryTypeList" [ngClass]="{'mat-option-text ': isOptionTruncated(queryType)
+              }" id={{queryType}} [value]="queryType" class="dropdown-with-tooltip" [options]="tooltipOptions"
+                [display]="isOptionTruncated(queryType)" [tooltip]="queryType">
+                {{queryType}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>CDS Name</mat-label>
+            <input matInput noWhitespace formControlName="cdsName" required>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Query Date</mat-label>
+            <input readonly matInput [matDatepicker]="picker1" (click)="picker1.open()" [max]="maxDate"
+              formControlName="queryDate" />
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1 color="primary" class="action-icon"></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Query Diagnosis</mat-label>
+            <mat-select formControlName="queryDiagnosis" (selectionChange)="OnQueryDiagnosisChanged($event)" required>
+              <mat-option *ngFor="let diagnosis of queryDiagnosisList"
+                [ngClass]="{'mat-option-text ': isOptionTruncated(diagnosis)}" id={{diagnosis}} [value]="diagnosis"
+                class="dropdown-with-tooltip" [options]="tooltipOptions" [display]="isOptionTruncated(diagnosis)"
+                [tooltip]="diagnosis">
+                {{diagnosis}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Physician Name</mat-label>
+            <mat-select formControlName="physicianName" (selectionChange)="OnPhysicianNameChanged($event)" required>
+              <mat-option *ngFor="let name of physicianNameList" [ngClass]="{'mat-option-text ': isOptionTruncated(name)
+              }" id={{name}} [value]="name" class="dropdown-with-tooltip" [options]="tooltipOptions"
+                [display]="isOptionTruncated(name)" [tooltip]="name">
+                {{name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Clinical Indicators</mat-label>
+            <mat-select formControlName="clinicalIndicator" (selectionChange)="OnClinicalIndicatorChanged($event)"
+              required>
+              <mat-option *ngFor="let indicator of clinicalIndicatorList" [ngClass]="{'mat-option-text ': isOptionTruncated(indicator)
+              }" id={{indicator}} [value]="indicator" class="dropdown-with-tooltip" [options]="tooltipOptions"
+                [display]="isOptionTruncated(indicator)" [tooltip]="indicator">
+                {{indicator}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card class="p-0" fxLayout="column">
+      <div class="p-16 pb-0" fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Current DRG</mat-label>
+            <input matInput noWhitespace formControlName="currentDrg">
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Initial Weight</mat-label>
+            <input matInput noWhitespace formControlName="initialWeight">
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>GMLOS</mat-label>
+            <input matInput noWhitespace formControlName="gmlos">
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card class="p-0" fxLayout="column">
+      <div class="p-16 pb-0" fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Expected DRG</mat-label>
+            <input matInput noWhitespace formControlName="expectedDrg">
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Expected Weight</mat-label>
+            <input matInput noWhitespace formControlName="expectedWeight">
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Expected GMLOS</mat-label>
+            <input matInput noWhitespace formControlName="expectedGmlos">
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card class="p-0" fxLayout="column">
+      <div class="p-16 pb-0" fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Response Date</mat-label>
+            <input readonly matInput [matDatepicker]="picker2" (click)="picker2.open()" [max]="maxDate"
+              formControlName="responseDate" />
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2 color="primary" class="action-icon"></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Response Type</mat-label>
+            <mat-select formControlName="responseType" (selectionChange)="OnStatusChanged($event)" required>
+              <mat-option *ngFor="let type of responseTypeList" [ngClass]="{'mat-option-text ': isOptionTruncated(type)
+              }" id={{type}} [value]="type" class="dropdown-with-tooltip" [options]="tooltipOptions"
+                [display]="isOptionTruncated(type)" [tooltip]="type">
+                {{type}}
+              </mat-option>
+            </mat-select>
+
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Response</mat-label>
+            <input matInput noWhitespace formControlName="responseComment">
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Follow Up Comments</mat-label>
+            <input matInput noWhitespace formControlName="followupComment">
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card>
+
+    <mat-card class="p-0" fxLayout="column">
+      <div class="p-16 pb-0" fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Revised DRG</mat-label>
+            <input matInput noWhitespace formControlName="revisedDrg">
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Revised Weight</mat-label>
+            <input matInput noWhitespace formControlName="revisedWeight">
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Revised GMLOS</mat-label>
+            <input matInput noWhitespace formControlName="revisedGmlos">
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Weight Difference</mat-label>
+            <input matInput noWhitespace formControlName="weightDifference">
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card class="p-0" fxLayout="column">
+      <div class="p-16 pb-0" fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status" (selectionChange)="OnStatusChanged($event)" required>
+              <mat-option *ngFor="let st of statusList" [ngClass]="{'mat-option-text ': isOptionTruncated(st)
+              }" id={{st}} [value]="st" class="dropdown-with-tooltip" [options]="tooltipOptions"
+                [display]="isOptionTruncated(st)" [tooltip]="st">
+                {{st}}
+              </mat-option>
+            </mat-select>
+
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Clinical Summary</mat-label>
+            <textarea matInput noWhitespace formControlName="clinicalSummary" rows="8">
+            </textarea>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Comments</mat-label>
+            <textarea matInput noWhitespace formControlName="comments" rows="8">
+            </textarea>
+          </mat-form-field>
+        </div>
+
+      </div>
+    </mat-card>
+  </form>
+</div>

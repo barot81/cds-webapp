@@ -1,14 +1,23 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+} from '@angular/core';
+import { FormBuilder, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { FusionFormAdapter, FusionFormComponent } from '@zhealthcare/fusion/components';
+import {
+  FusionFormAdapter,
+  FusionFormComponent,
+} from '@zhealthcare/fusion/components';
 import { DrawerService, LayoutService, SnackbarService } from '@zhealthcare/ux';
 import { Subject } from 'rxjs';
 import { GeneralComments } from '../../models/general-comments.model';
 import { richTextConfig } from '../../models/richtext.config';
 import { PatientService } from '../../services/patient.service';
 import { Patient } from '../../models/patient.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'patient-add-general-comments',
@@ -16,47 +25,72 @@ import { Patient } from '../../models/patient.model';
 })
 export class AddGeneralCommentsComponent
   extends FusionFormComponent
-  implements OnInit, FusionFormAdapter, AfterViewInit, OnDestroy
+  implements FusionFormAdapter, AfterViewInit, OnDestroy
 {
-
   public componentEvents: string[] = [];
   public Editor = ClassicEditor;
   config: any;
   private readonly _unsubscribeAll: Subject<any>;
   comments: string;
   patientInfo: Patient;
+  queryStatusList: string[];
+
   constructor(
     private readonly fb: FormBuilder,
-    public route: ActivatedRoute,
+    public router: Router,
     private readonly _patientService: PatientService,
     private _layoutService: LayoutService,
     private cdr: ChangeDetectorRef,
     private _snackBarService: SnackbarService,
-    private _drawerService: DrawerService
-
+    private _drawerService: DrawerService,
+    private _datepipe: DatePipe
   ) {
     super();
 
     this._unsubscribeAll = new Subject();
 
     this.fusionFormGroup = this.fb.group({
-      comments: []
+      comments: new FormControl(''),
+      queryStatus: new FormControl('New'),
     });
 
+    this.queryStatusList = ['New', 'No query', 'Later Review', 'Revised'];
     this.createConfig();
   }
 
-  ngOnInit() {
+  OnQueryStatusChanged(queryStatus) {
+    if (queryStatus.value !== null && queryStatus.value !== undefined) {
+      this.fusionFormGroup.controls['queryStatus'].setValue(queryStatus.value);
+    }
+  }
+
+  isOptionTruncated(elementId: string): boolean {
+    const elem = document.getElementById(elementId);
+    if (elem) {
+      const isBig = elem.scrollWidth > elem.clientWidth;
+      if (isBig) {
+        const optionText = Array.from(
+          elem.getElementsByClassName(
+            'mat-option-text '
+          ) as HTMLCollectionOf<HTMLElement>
+        );
+        optionText[0].style.overflow = 'hidden !important';
+        optionText[0].style.textOverflow = 'ellipsis !important';
+        optionText[0].style.display = 'initial !important';
+      }
+      return isBig;
+    } else {
+      return false;
+    }
   }
 
   ngAfterViewInit(): void {
-    if(this.data) {
+    if (this.data) {
       this.setPatientInfo(this.data);
     } else {
-      this.route.params.subscribe((x) => {
-        this._patientService.getPatientById(x.id).subscribe((res) => {
-          this.setPatientInfo(res);
-        });
+      const patientId = this.routeParam.params['id'];
+      this._patientService.getPatientById(patientId).subscribe((res) => {
+        this.setPatientInfo(res);
       });
     }
   }
@@ -65,6 +99,7 @@ export class AddGeneralCommentsComponent
     this.patientInfo = patient;
     this.fusionFormGroup.patchValue(patient.generalComment);
     this.comments = patient?.generalComment?.comments;
+    this.fusionFormGroup.controls['queryStatus'].setValue(patient.queryStatus);
     this.cdr.detectChanges();
   }
 
@@ -100,21 +135,31 @@ export class AddGeneralCommentsComponent
   primaryAction() {
     if (this.key) {
       const generalComments: GeneralComments = {
-          comments: this.comments,
-          addedBy: this._layoutService.getUser()?.name,
-          addedOn: new Date().toUTCString(),
-      }
-       const updatedPatientInfo = {...this.patientInfo, generalComment: {...generalComments} };
-      this._patientService.updatePatient(updatedPatientInfo).subscribe(response => {
-        if (response) {
-          this._snackBarService.openCustomSnackBar(
-            { message: 'Patient Added Successfully.', icon: 'fa-check s-18' },
-            3000,
-            'snackbar-success'
-          );
-          this._drawerService.closeDrawer();
-        }
-      });
+        comments: this.comments,
+        addedBy: this._layoutService.getUser()?.name,
+        addedOn: this._datepipe.transform(new Date(), 'yyyy-MM-dd'),
+      };
+      const queryStatus = this.fusionFormGroup.controls['queryStatus'].value;
+      const updatedPatientInfo = {
+        ...this.patientInfo,
+        queryStatus: queryStatus,
+        generalComment: { ...generalComments },
+      };
+      this._patientService
+        .updatePatient(updatedPatientInfo)
+        .subscribe((response) => {
+          if (response) {
+            this._snackBarService.openCustomSnackBar(
+              {
+                message: 'General Comment Updated Successfully.',
+                icon: 'fa-check s-18',
+              },
+              3000,
+              'snackbar-success'
+            );
+            this._drawerService.closeDrawer();
+          }
+        });
     }
   }
 

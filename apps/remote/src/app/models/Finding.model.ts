@@ -1,5 +1,7 @@
 export class Finding {
   id: string;
+  patientId: string;
+  facilityId: string;
   queryType: string;
   cdsName: string; // p
   queryDate: string;

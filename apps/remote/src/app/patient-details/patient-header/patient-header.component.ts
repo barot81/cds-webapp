@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FileConfiguration, FileEndpoint } from '@zhealthcare/plugin/file-upload';
-import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Patient } from '../../models/patient.model';
 import { PatientService } from '../../services/patient.service';
 

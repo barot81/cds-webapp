@@ -4,7 +4,7 @@ import { PageFacade } from '@zhealthcare/ux';
 @Component({
   selector: 'remote-entry',
   template: `
-    <div class="container">
+    <div class="container" fxLayout="column" fxFlex="100">
       <router-outlet></router-outlet>
     </div>
   <!-- <zhealthcare-patients-grid></zhealthcare-patients-grid> -->

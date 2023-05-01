@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Finding } from '../models/Finding.model';
-import { Patient } from '../models/patient.model';
 
 @Injectable({ providedIn: 'any' })
 export class PatientFindingService {
@@ -28,9 +27,9 @@ export class PatientFindingService {
     this.patientFindingData$.next(data.result);
   }
 
-  getPatientFindingsByPatientId() {
+  getPatientFindingsByPatientId(patientId: string): Observable<Finding[]> {
     this.loading$.next(true);
-    const url = this.getBaseEndpoint();
+    const url = this.getBaseEndpoint(patientId);
     return this.httpClient.get(url).pipe(
       map((patientFinding: any[]) => {
         this.patientFinding = patientFinding;
@@ -44,28 +43,28 @@ export class PatientFindingService {
       })
     );
   }
-  getPatientFindingById(id: string): Observable<Finding> {
+  getPatientFindingById(patientId: string, id: string): Observable<Finding> {
     const patientFinding = this.patientFinding.find((x) => x.id == id);
     if (patientFinding) {
       return of(patientFinding);
     } else {
-      return this.getPatientFindingsByPatientId().pipe(map(x=>x.filter(x=>x.id== id)));
+      return this.getPatientFindingsByPatientId(patientId).pipe(map(x=>x.find(x=>x.id == id)));
     }
 
   }
 
-  private getBaseEndpoint() {
+  private getBaseEndpoint(patientId?: string) {
     const facility = localStorage.getItem('TenantId');
-    const patientId = this.activeRoute.paramMap['id'];
-    const url = `${environment.baseUrl}/api/${facility}/patients/${patientId}/patientFinding`;
+    patientId = patientId ?? this.activeRoute.paramMap['id'];
+    const url = `${environment.baseUrl}/api/${facility}/patients/${patientId}/Findings`;
     return url;
   }
 
-  addPatientFinding(patientFinding: Finding) {
+  addPatientFinding(patientId: string, patientFinding: Finding) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.httpClient
-      .post(this.getBaseEndpoint(), patientFinding, {
+      .post(this.getBaseEndpoint(patientId), patientFinding, {
         headers: headers,
       })
       .pipe(
@@ -77,16 +76,16 @@ export class PatientFindingService {
       );
   }
 
-  updatePatientFinding(patientFinding: Finding) {
+  updatePatientFinding(patientId: string, patientFinding: Finding) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.httpClient
-      .put(`${this.getBaseEndpoint()}/${patientFinding.id}`, patientFinding, {
+      .put(`${this.getBaseEndpoint(patientId)}/${patientFinding.id}`, patientFinding, {
         headers: headers,
       })
       .pipe(
         map((x) => {
-          this.patientFinding.splice(
+          this.patientFinding = this.patientFinding.splice(
             this.patientFinding.indexOf((y) => y.id === patientFinding.id),
             1,
             patientFinding
@@ -98,7 +97,7 @@ export class PatientFindingService {
   }
 
   deleteePatientFinding(id: any) {
-    this.patientFinding.splice(
+    this.patientFinding = this.patientFinding.splice(
       this.patientFinding.indexOf((x) => x.id === id),
       1
     );

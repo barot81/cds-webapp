@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, map, Subject, takeUntil } from 'rxjs';
 import { PatientFormsService } from '../../forms/patient-forms.service';
 import { Finding } from '../../models/Finding.model';
 import { PatientFindingService } from '../../services/patient-finding.service';
@@ -11,9 +11,11 @@ import { PatientFindingService } from '../../services/patient-finding.service';
 })
 export class PatientFindingsComponent implements OnInit {
   loading$: any;
-  patientFinding$: Subject<Finding> = new BehaviorSubject(new Finding());
+  patientFindings$: Subject<Finding[]> = new BehaviorSubject([]);
   patientInfo: Finding;
-;
+  patientId: any;
+  _unsubscribe: Subject<any> = new Subject();
+
   constructor(
     public _patientFormService: PatientFormsService,
     private activatedRoute: ActivatedRoute,
@@ -22,13 +24,20 @@ export class PatientFindingsComponent implements OnInit {
     this.loading$ = this.patientFindingService.loading$;
     this.loading$.next(true);
     this.activatedRoute.params.subscribe((x) => {
-      this.patientFindingService.getPatientFindingById(x.id).subscribe((res) => {
-        this.patientInfo = res;
-        this.patientFinding$.next(res);
+      this.patientId = x.id;
+      this.patientFindingService.getPatientFindingsByPatientId(this.patientId).subscribe((res) => {
+        this.patientFindings$.next(res);
         this.loading$.next(false);
       });
+      this.patientFindingService.patientFindingData$.pipe(takeUntil(this._unsubscribe),
+      map(x=> this.patientFindings$.next(x))).subscribe();
     });
   }
 
   ngOnInit() {}
+
+  ngOnDestroy(): void {
+    this._unsubscribe.next(true);
+    this._unsubscribe.complete();
+  }
 }

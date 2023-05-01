@@ -1,5 +1,310 @@
+<mat-card class="p-0 zhealthcare-info-container" fxLayout="column">
+  <div fxFlex="100" fxFlex.gt-sm="60">
+    <header class="card-header-title card-header-border-bottom">
+      <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
+        <div fxLayout="column" fxFlex="90">
+          <div fxLayout.gt-md="row" fxLayout="column" fxLayoutAlign.gt-md="start center" fxLayoutAlign="start start"
+            fxFlex="100">
+            <div class="secondary-card-header-title overflow-ellipses">
+              <span class="primary-heading">Finding Informations</span>
+            </div>
+          </div>
+        </div>
+        <button mat-icon-button aria-label="Add Finding Information" zhealthcareDrawerAction
+          [componentSelector]="
+        _patientFormService.get('patient-finding-form')
+      " [size]="'drawer-sm'" [caption]="'Add Finding Information'" [primaryAction]="'Save'" role="button"
+          [entityKey]="">
+          <i aria-hidden="true" class="fa-light fa-plus"></i>
+        </button>
+      </div>
+    </header>
+  </div>
+  <!--1st row-->
+  <div *ngIf="(loading$ | async) === false; else loading" class="p-16 zhealthcare-info">
+    <input type="checkbox" class="read-more-state" id="finding" #finding />
+    <div class="p-16" *ngIf="(patientFindings$ | async) as patientFindings">
+      <div [ngClass]="{ 'read-more-target': i > 1 }" *ngFor="let item of patientFindings; let i = index">
+        <div [ngClass]="{ 'mb-16': i <= 1 }" fxLayout="row" fxFlex="100" fxLayoutAlign="space-between start">
+          <div fxLayout="row" fxFlex="100" fxlayoutalign="space-between center">
+            <div fxLayout="column">
+              <mat-icon class="secondary-text mr-16" role="button" aria-hidden="true">location_city
+              </mat-icon>
+            </div>
+            <div fxLayout="column" fxFlex="100" attr.aria-label="finding {{ i + 1 }}">
+              <div fxLayout="column" fxLayout.gt-md="row">
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Query Type</div>
+                    <div class="description">
+                      {{ item?.queryType }}
+                      <span *ngIf="!item?.queryType">-</span>
+                    </div>
+                  </div>
+                </div>
 
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Query Date</div>
+                    <div class="description">
+                      {{ item?.queryDate | date:'MMMM d, y' }}
+                      <span *ngIf="!item?.queryDate">-</span>
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Query Diagnosis</div>
+                    <div class="description">
+                      {{ item?.queryDiagnosis }}
+                      <span *ngIf="!item?.queryDiagnosis">-</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div fxLayout="column" fxLayout.gt-md="row">
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">CDS Name</div>
+                    <div class="description">
+                      {{ item?.cdsName }}
+                      <span *ngIf="!item?.cdsName">-</span>
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Physician Name</div>
+                    <div class="description">
+                      {{ item?.physicianName }}
+                      <span *ngIf="!item?.physicianName">-</span>
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Clinical Indicators</div>
+                    <div class="description">
+                      {{ item?.clinicalIndicator }}
+                      <span *ngIf="!item?.clinicalIndicator">-</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div fxLayout="column" fxLayout.gt-md="row">
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Current DRG</div>
+                    <div class="description">
+                      {{ item?.currentDrg }}
+                      <span *ngIf="! item?.currentDrg">-</span>
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Initial Weight</div>
+                    <div class="description">
+                      {{ item?.initialWeight }}
+                      <span *ngIf="!item?.initialWeight">-</span>
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">GMLOS</div>
+                    <div class="description">
+                      {{ item?.gmlos }}
+                      <span *ngIf="!item?.gmlos">-</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div fxLayout="column" fxLayout.gt-md="row">
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Expected DRG</div>
+                    <div class="description">
+                      {{ item?.expectedDrg }}
+                      <span *ngIf="! item?.expectedDrg">-</span>
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Expected Weight</div>
+                    <div class="description">
+                      {{ item?.expectedWeight }}
+                      <span *ngIf="!item?.expectedWeight">-</span>
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Expected GMLOS</div>
+                    <div class="description">
+                      {{ item?.expectedGmlos}}
+                      <span *ngIf="!item?.expectedGmlos">-</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div fxLayout="column" fxLayout.gt-md="row">
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Response Date</div>
+                    <div class="description">
+                      {{ item?.responseDate }}
+                      <span *ngIf="!item?.responseDate">-</span>
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Response Type</div>
+                    <div class="description">
+                      {{ item?.responseType }}
+                      <span *ngIf="!item?.responseType">-</span>
+                    </div>
+                  </div>
+                </div>
 
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Response</div>
+                    <div class="description">
+                      {{ item?.responseComment }}
+                      <span *ngIf="!item?.responseComment">-</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div fxLayout="column" fxLayout.gt-md="row">
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Follow up Comments</div>
+                    <div class="description">
+                      {{ item?.followupComments }}
+                      <span *ngIf="!item?.followupComments">-</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <mat-divider></mat-divider>
+              </div>
+              <div fxLayout="column" fxLayout.gt-md="row" class="mt-8">
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Revised DRG</div>
+                    <div class="description">
+                      {{ item?.revisedDrg }}
+                      <span *ngIf="!item?.revisedDrg">-</span>
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="100">
+                  <div class="mb-16">
+                    <div class="title">Revised Weight</div>
+                    <div class="description">
+                      {{ item?.revisedWeight }}
+                      <span *ngIf="!item?.revisedWeight">-</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div fxLayout="column mt-8" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Revised GMLOS</div>
+                    <div class="description">
+                      {{ item?.revisedGmlos }}
+                      <span *ngIf="!item?.revisedGmlos">-</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div fxLayout="column" fxLayout.gt-md="row">
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Weight Difference</div>
+                    <div class="description">
+                      {{ item?.weightDifference }}
+                      <span *ngIf="!item?.weightDifference">-</span>
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                  <div class="mb-16">
+                    <div class="title">Status</div>
+                    <div class="description">
+                      {{ item?.status }}
+                      <span *ngIf="!item?.status">-</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div fxLayout="column" fxLayout.gt-md="row" class="mt-16">
+                  <div class="mb-16">
+                    <div class="title">Clinical Summary</div>
+                    <div class="description">
+                      {{ item?.clinicalSummary }}
+                      <span *ngIf="!item?.clinicalSummary">-</span>
+                    </div>
+                </div>
+              </div>
+              <div fxLayout="column" fxLayout.gt-md="row" class="mt-16">
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="100">
+                  <div class="mb-16">
+                    <div class="title">Comments</div>
+                    <div class="description">
+                      {{ item?.comments }}
+                      <span *ngIf="!item?.comments">-</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button mat-icon-button attr.aria-label="Edit Education {{ i + 1 }}" zhealthcareDrawerAction class="action-icon"
+              [componentSelector]="
+                _patientFormService.get('patient-finding-form')
+              " [size]="'drawer-sm'"
+              [caption]="'Finding Information'" [primaryAction]="'Save'" [secondaryAction]="'Delete'" role="button"
+              [entityKey]="item.id" [data]="item">
+              <i aria-hidden="true"  class="fa-light fa-pen"></i>
+            </button>
+          </div>
+        </div>
+        <div *ngIf="patientFindings?.length > 2">
+          <button (click)="finding.click()" *ngIf="i === 1 && !finding.checked" class="read-more-trigger link-btn"
+            id="show-more-label">
+            Show More Findings
+          </button>
+
+          <button *ngIf="i === patientFindings?.length - 1 && finding.checked" (click)="finding.click()"
+            class="read-less-trigger link-btn mt-8" id="show-more-label">
+            Show Less Findings
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+<!--skeleton-->
+<ng-template #loading>
+  <div fxLayout="row" fxLayoutAlign="start space-between" class="m-16">
+    <div fxLayout="column">
+      <div class="line shine w-140 h-8"></div>
+      <div class="line shine w-280 h-8"></div>
+      <div class="line shine w-180 h-8"></div>
+      <div class="line shine w-200 h-8"></div>
+    </div>
+  </div>
+</ng-template>
+<!--skeleton-->
+<!--
 <mat-card class="p-0 mb-8 mt-small-8">
   <div fxLayout="row wrap" fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-md="100">
     <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-md="100">
@@ -37,4 +342,4 @@
       <div class="line shine w-200 h-8"></div>
     </div>
   </div>
-</ng-template>
+</ng-template> -->
