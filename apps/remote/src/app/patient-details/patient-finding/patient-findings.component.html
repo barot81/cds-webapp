@@ -3,31 +3,26 @@
 <mat-card class="p-0 mb-8 mt-small-8">
   <div fxLayout="row wrap" fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-md="100">
     <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-md="100">
-      <header fxLayout="row" fxLayoutAlign="space-between center" class="card-header-title card-header-border-bottom"
-      >
+      <header fxLayout="row" fxLayoutAlign="space-between center" class="card-header-title card-header-border-bottom">
         <div fxLayout="row" fxLayoutAlign="start center">
           <span class="primary-heading font-weight-600" tabindex="0" aria-label="comments">
-            General Comments
+            Patient Findings
           </span>
         </div>
-        <button mat-icon-button aria-label="Edit summary" zhealthcareDrawerAction
-          [componentSelector]="_patientFormService.get('patient-general-comments-form')"
+        <button mat-icon-button aria-label="Edit Patient Findings" zhealthcareDrawerAction
+          [componentSelector]="_patientFormService.get('patient-finding-form')"
           [size]="'drawer-sm'" [data]="patientInfo"
-          title="General Comments"
+          title="Patient Finding"
           [primaryAction]="'Save'" role="button" [entityKey]="patientInfo?.id">
           <i aria-hidden="true"  class="fa-light fa-pen"></i>
         </button>
       </header>
 
       <div *ngIf="(loading$ | async) === false; else loading" class="zhealthcare-info-container p-0">
-        <div class="zhealthcare-info p-16"   *ngIf="(generalComments$ | async) as generalComment">
-            <div class="title" tabindex="0" aria-label="General Comments">
-             General Comments
-            </div>
-            <div class="ck-editor-container description" tabindex="0"
-              attr.aria-label="{{ generalComment.comments}}"
-              [innerHTML]="generalComment.comments | mdToHTML | safeHTML">
-            </div>
+        <div class="zhealthcare-info p-16"   *ngIf="(patientFindings$ | async) as patientFindings">
+          <div class="title" tabindex="0" aria-label="Patient Finding">
+            Patient Findings
+          </div>
         </div>
       </div>
     </div>

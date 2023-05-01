@@ -55,7 +55,7 @@ export class PatientService {
 
   public getBaseEndpoint() {
     const facility = localStorage.getItem('TenantId');
-    const url = `${environment.baseUrl}/api/Facilities/${facility}/patients`;
+    const url = `${environment.baseUrl}/api/${facility}/patients`;
     return url;
   }
 

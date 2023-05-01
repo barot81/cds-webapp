@@ -6,7 +6,8 @@ import { RemoteEntryComponent } from './entry.component';
 import { PatientsGridComponent } from '../patients/patients-grid.component';
 import { FilterDrawerComponent } from '../patients/filter-drawer/filter-drawer.component';
 import { ShowMoreFilterDrawerComponent } from '../patients/show-more-filter-drawer/show-more-filter-drawer.component';
-import { FileUploadModule, FlexTableModule, FuseDirectivesModule, FuseSharedModule, FuseSidebarModule, FuseThemeOptionsModule, LayoutModule, MaterialModule, ShowMoreModule } from '@zhealthcare/ux';
+import { FlexTableModule, FuseDirectivesModule, FuseSharedModule, FuseSidebarModule, FuseThemeOptionsModule, LayoutModule, MaterialModule, ShowMoreModule } from '@zhealthcare/ux';
+
 import { FilterAndEditDrawerComponent } from '../patients/filter-and-edit-drawer/filter-and-edit-drawer.component';
 import { EditColumnsComponent } from '../patients/edit-columns/edit-columns.component';
 import { StoreModule } from '@ngrx/store';
@@ -22,6 +23,8 @@ import { PatientDetailsComponent } from '../patient-details/patient-details.comp
 import { PatientHeaderComponent } from '../patient-details/patient-header/patient-header.component';
 import { GeneralCommentsComponent } from '../patient-details/general-comments/general-comments.component';
 import { FeatureMetaDataPipesModule } from '@zhealthcare/fusion/pipes';
+import { PatientFindingsComponent } from '../patient-details/patient-finding/patient-findings.component';
+import { zhealthcareAvatarModule } from '@zhealthcare/plugin/file-upload';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { FeatureMetaDataPipesModule } from '@zhealthcare/fusion/pipes';
     FilterDrawerComponent,
     ShowMoreFilterDrawerComponent,
     PatientHeaderComponent,
-    GeneralCommentsComponent
+    GeneralCommentsComponent,
+    PatientFindingsComponent
 ],
   imports: [
     CommonModule,
@@ -48,7 +52,7 @@ import { FeatureMetaDataPipesModule } from '@zhealthcare/fusion/pipes';
     FlexTableModule,
     CustomDirectiveModule,
     RBACDirectiveModule,
-    FileUploadModule,
+    zhealthcareAvatarModule,
     StoreModule,
     ShowMoreModule,
     DataSourceModule,

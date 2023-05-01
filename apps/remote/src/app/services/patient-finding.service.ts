@@ -5,7 +5,6 @@ import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Finding } from '../models/Finding.model';
 import { Patient } from '../models/patient.model';
-import { generatePatients } from './patient.faker.service';
 
 @Injectable({ providedIn: 'any' })
 export class PatientFindingService {
@@ -17,7 +16,10 @@ export class PatientFindingService {
   public onAdded: BehaviorSubject<boolean>;
   public onFilterChange: BehaviorSubject<boolean>;
 
-  constructor(private httpClient: HttpClient, private activeRoute: ActivatedRoute) {
+  constructor(
+    private httpClient: HttpClient,
+    private activeRoute: ActivatedRoute
+  ) {
     this.onAdded = new BehaviorSubject<boolean>(false);
     this.onFilterChange = new BehaviorSubject<boolean>(false);
   }
@@ -26,7 +28,7 @@ export class PatientFindingService {
     this.patientFindingData$.next(data.result);
   }
 
-  getPatientFindings() {
+  getPatientFindingsByPatientId() {
     this.loading$.next(true);
     const url = this.getBaseEndpoint();
     return this.httpClient.get(url).pipe(
@@ -42,69 +44,52 @@ export class PatientFindingService {
       })
     );
   }
-  getPatientById(id: string): Observable<Patient> {
-    const url = `${this.getBaseEndpoint()}/${id}`;
-    this.loading$.next(true);
-    return this.httpClient
-      .get<Patient>(url)
-      .pipe(
-        tap((x) => this.loading$.next(false)),
-        catchError((err) => {
-          this.loading$.next(false);
-          return of(err);
-      }));
+  getPatientFindingById(id: string): Observable<Finding> {
+    const patientFinding = this.patientFinding.find((x) => x.id == id);
+    if (patientFinding) {
+      return of(patientFinding);
+    } else {
+      return this.getPatientFindingsByPatientId().pipe(map(x=>x.filter(x=>x.id== id)));
+    }
+
   }
 
-  public getBaseEndpoint() {
+  private getBaseEndpoint() {
     const facility = localStorage.getItem('TenantId');
     const patientId = this.activeRoute.paramMap['id'];
-    const url = `${environment.baseUrl}/api/Facilities/${facility}/patients/${patientId}/patientFinding`;
+    const url = `${environment.baseUrl}/api/${facility}/patients/${patientId}/patientFinding`;
     return url;
   }
 
-  private generateFakePatients(facility: string) {
-    this.patientFinding = generatePatients(100);
-    this.patientFinding
-      .filter((x) => x.facility === facility)
-      .map((x) => {
-        if (x.queryStatus.includes('pending') || x.queryStatus.includes('No'))
-          x.statusClass = 'disapproved';
-        else x.statusClass = 'approved';
-      });
-    this.patientFindingData$.next(this.patientFinding);
-    console.log(JSON.stringify(this.patientFinding));
-    return this.patientFinding;
-  }
-
-  addPatient(patient: Patient) {
+  addPatientFinding(patientFinding: Finding) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.httpClient
-      .post(this.getBaseEndpoint(), patient, {
+      .post(this.getBaseEndpoint(), patientFinding, {
         headers: headers,
       })
       .pipe(
         map((x) => {
-          this.patientFinding.push(patient);
+          this.patientFinding.push(patientFinding);
           this.patientFindingData$.next(this.patientFinding);
           return x;
         })
       );
   }
 
-  updatePatient(patient: Patient) {
+  updatePatientFinding(patientFinding: Finding) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.httpClient
-      .put(`${this.getBaseEndpoint()}/${patient.id}`, patient, {
+      .put(`${this.getBaseEndpoint()}/${patientFinding.id}`, patientFinding, {
         headers: headers,
       })
       .pipe(
         map((x) => {
           this.patientFinding.splice(
-            this.patientFinding.indexOf((y) => y.id === patient.id),
+            this.patientFinding.indexOf((y) => y.id === patientFinding.id),
             1,
-            patient
+            patientFinding
           );
           this.patientFindingData$.next(this.patientFinding);
           return x;
@@ -112,7 +97,7 @@ export class PatientFindingService {
       );
   }
 
-  deleteePatient(id: any) {
+  deleteePatientFinding(id: any) {
     this.patientFinding.splice(
       this.patientFinding.indexOf((x) => x.id === id),
       1
