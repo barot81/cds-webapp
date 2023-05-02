@@ -184,7 +184,7 @@ export class PatientsGridComponent implements AfterViewInit,OnInit, OnDestroy {
     public datasourceFacade: DataSourceFacade
 
   ) {
-    this._pageFacade.setPageTitle('Patient Details');
+    this._pageFacade.setPageTitle('Patients');
     this._router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(async (event$) => {

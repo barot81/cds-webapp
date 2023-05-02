@@ -70,7 +70,7 @@
           <div class="mb-12" fxLayout="row">
             <div>
               <button
-                *ngIf="selectedStatus.length !== settings?.length"
+                *ngIf="selectedStatus.length !== status?.length"
                 (click)="selectAll('setting')"
                 class="link-btn pl-0 py-0"
                 aria-label="Select all"
@@ -79,7 +79,7 @@
               </button>
               <button
                 *ngIf="
-                  selectedStatus.length === settings?.length &&
+                  selectedStatus.length === status?.length &&
                   selectedStatus.length > 0
                 "
                 (click)="reset('setting')"
@@ -93,7 +93,7 @@
               <button
                 *ngIf="
                   selectedStatus.length > 0 &&
-                  selectedStatus.length !== settings?.length
+                  selectedStatus.length !== status?.length
                 "
                 (click)="unselect('setting')"
                 class="link-btn pl-0 py-0"
@@ -108,13 +108,13 @@
               fxLayout="row"
               fxFlex="100"
               class="mb-16"
-              *ngFor="let option of settings"
-              [checked]="isStatusChecked(option.id)"
-              [value]="option.id"
-              (change)="selectSetting($event, option.id)"
+              *ngFor="let status of statusList"
+              [checked]="isStatusChecked(status)"
+              [value]="status"
+              (change)="selectSetting($event, status)"
             >
-              <div class="status-badge {{ option.id }} ">
-                {{ option.title }}
+              <div class="status-badge {{ status }} ">
+                {{ status }}
               </div>
             </mat-checkbox>
           </div>
@@ -141,15 +141,15 @@
             </button>
           </div>
 
-          <mat-radio-group fxLayout="column" [(ngModel)]="selectedCohort">
+          <mat-radio-group fxLayout="column" [(ngModel)]="selectedQuerySelect">
             <mat-radio-button
-              [checked]="isCohortChecked(option.id)"
-              (change)="changeCohoort(option.id)"
-              *ngFor="let option of cohorts"
-              [value]="option.id"
+              [checked]="isQueystatusChecked(qstatus)"
+              (change)="changeQueryStatus(qstatus)"
+              *ngFor="let qstatus of QueryStatusList"
+              [value]="qstatus"
               class="mb-16 mat-radio-button-break"
             >
-              {{ option.title }}
+              {{ qstatus }}
             </mat-radio-button>
           </mat-radio-group>
         </div>

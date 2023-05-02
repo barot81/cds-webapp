@@ -85,8 +85,8 @@ export class FilterDrawerComponent {
   ];
 
   selectedStatus = [];
-  selectedCohort = '';
   selectedDocument = [];
+  selectedQueryStatus: [];
 
   getTagTitle(tag: zhealthcareTag): string {
     if (tag && tag !== null) {
@@ -107,31 +107,15 @@ export class FilterDrawerComponent {
   searchItem = new FormControl();
 
   filterList: filterListItem[] = [
-    { id: 'status-filter', title: 'Status', count: 4 },
-    { id: 'cohort-filter', title: 'Cohort', count: 3 },
-    { id: 'document-type-filter', title: 'Document Type', count: 0 }
+    { id: 'status-filter', title: 'Status', count: 0 },
+    { id: 'query-status-filter', title: 'Query Status', count: 0 },
+    { id: 'admit-date-filter', title: 'Admit Date', count: 0 },
+    { id: 'discharge-date-filter', title: 'Discharge Date', count: 0 }
   ];
 
-  settings: statusBadge[] = [
-    { id: 'pending', title: 'Pending for review' },
-    { id: 'inprogress', title: 'In progress' },
-    { id: 'expiring', title: 'Expiring' },
-    { id: 'getstarted', title: 'Get Started' },
-    { id: 'approved', title: 'Approved' },
-    { id: 'expired', title: 'Expired' }
-  ];
+  statusList = ['New', 'Reviewed', 'Later Review', 'No Query', 'Non DRG'];
+  QueryStatusList = ['Pending', 'Answered', 'Completed', 'Dropped', 'No Response'];
 
-  cohorts = [
-    { id: '2020', title: 'Cohort 2020' },
-    { id: '2021', title: 'Cohort 2021' },
-    { id: '2022', title: 'Cohort 2022' }
-  ];
-
-  documents = [
-    { id: 'immunization_summary', title: 'Immunization Summary' },
-    { id: 'flu', title: 'Flu' },
-    { id: 'physical_exam', title: 'Physical Exam' }
-  ];
 
   constructor(public _focus: SidebarFocusHelper) {
     this.selectedId = this.filterList[0].id;
@@ -139,8 +123,7 @@ export class FilterDrawerComponent {
 
   ngOnInit() {
     this.selectedStatus = [];
-    this.selectedCohort = '';
-    this.selectedDocument = [];
+    this.selectedQueryStatus = [];
   }
 
   navigateToFilterListItem(id: string) {
@@ -148,9 +131,9 @@ export class FilterDrawerComponent {
     this.selectedId = id;
   }
 
-  isCohortChecked(val: string) {
-    if (this.selectedCohort !== undefined) {
-      if (this.selectedCohort !== undefined && this.selectedCohort === val) {
+  isQueryStatusChecked(val: string) {
+    if (this.selectedQueryStatus !== undefined) {
+      if (this.selectedQueryStatus.find((x) => x === val) !== undefined) {
         return true;
       } else {
         return false;
@@ -172,22 +155,11 @@ export class FilterDrawerComponent {
     }
   }
 
-  isDocumentChecked(val: string) {
-    if (this.selectedDocument !== undefined) {
-      if (this.selectedDocument.find((x) => x === val) !== undefined) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
-    }
-  }
 
   selectAll(name: string) {
-    if (name === 'setting') {
+    if (name === 'status') {
       this.selectedStatus = [];
-      this.settings.forEach((tag) => {
+      this.statusList.forEach((tag) => {
         this.selectedStatus.push(tag.id);
       });
     }
