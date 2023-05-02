@@ -93,7 +93,7 @@ export class AuthService {
       .then(() => this.oauthService.tryLogin())
 
       .then(() => {
-        
+
         return this.oauthService
           .silentRefresh()
           .then(() => Promise.resolve())

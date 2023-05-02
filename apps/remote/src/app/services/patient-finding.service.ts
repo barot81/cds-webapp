@@ -85,8 +85,9 @@ export class PatientFindingService {
       })
       .pipe(
         map((x) => {
-          this.patientFinding = this.patientFinding.splice(
-            this.patientFinding.indexOf((y) => y.id === patientFinding.id),
+          const index = this.patientFinding.findIndex((y) => y.id === patientFinding.id);
+          this.patientFinding.splice(
+            index,
             1,
             patientFinding
           );

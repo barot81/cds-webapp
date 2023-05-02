@@ -23,21 +23,19 @@
               <div>
 
                 <div class="banner-separator">
-                  <span> Admit Date : {{ patient.admissionDate | date:'MMMM d, y' }}</span>
+                  <span> <b> Admit Date : </b>{{ patient.admissionDate | date:'MMMM d, y' }}</span>
                   &nbsp;&nbsp;
-                  <span> LOS : {{ patient.los }}</span>
+                  <span> <b> LOS : </b>{{ patient.los }}</span>
                   &nbsp;&nbsp;
-                  <span> Discharge Date : {{ patient.dischargeDate | date:'MMMM d, y' }}</span>
+                  <span> <b> Discharge Date :</b> {{ patient.dischargeDate | date:'MMMM d, y' }}</span>
 
                 </div>
                 <div class="banner-separator">
-                  <span> Insurance : {{ patient.primaryInsurance }}</span>
-                  &nbsp;&nbsp;
-                  <span> {{ patient.SecondaryInsurance }}</span>
-                  &nbsp;&nbsp;
+                  <span> <b> Insurance : </b>{{ patient.primaryInsurance }}</span>&nbsp;
+                  <span>{{ patient.secondaryInsurance }}</span>
                 </div>
                 <div class="banner-separator">
-                  <span> Contracted : {{ patient.contracted ? 'Yes' : 'No' }}</span>
+                  <span> <b> Contracted :</b> {{ patient.contracted ? 'Yes' : 'No' }}</span>
                 </div>
               </div>
             </div>
@@ -46,21 +44,21 @@
                 fxLayoutAlign.gt-xs="space-between start">
                 <div>
                   <div class="banner-separator">
-                    MRN: {{ patient.mrn }}
+                    <b> MRN:</b> {{ patient.mrn }}
                   </div>
                   <div class="banner-separator">
                     <span>
-                      Reimbursement Type : {{ patient.reimbursementType }}
+                     <b> Reimbursement Type :</b> {{ patient.reimbursementType }}
                     </span>
                   </div>
                   <div class="banner-separator">
                     <span>
-                      Financial Class : {{ patient.financialClass }}
+                      <b> Financial Class : </b>{{ patient.financialClass }}
                     </span>
                   </div>
                   <div class="banner-separator">
                     <span>
-                      Patient Class : {{ patient.patientClass }}
+                     <b> Patient Class : </b>{{ patient.patientClass }}
                     </span>
                   </div>
                 </div>

@@ -98,8 +98,8 @@ export class PatientService {
       })
       .pipe(
         map((x) => {
-          this.patients = this.patients.splice(
-            this.patients.indexOf((y) => y.id === patient.id),
+          this.patients.splice(
+            this.patients.findIndex((y) => y.id === patient.id),
             1,
             patient
           );

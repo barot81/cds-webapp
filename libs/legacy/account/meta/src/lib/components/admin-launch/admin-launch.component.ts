@@ -35,7 +35,6 @@ import {
   LayoutService,
   PageFacade,
 } from '@zhealthcare/ux';
-import moment from 'moment';
 import { BehaviorSubject, Subject, take, takeUntil } from 'rxjs';
 import { MetaSandbox } from '../../meta.sandbox';
 import { LocalStorage } from '../../models/storage.model';
@@ -106,8 +105,6 @@ export class AdminLaunchComponent
       _headerService
     );
     this.storage = new LocalStorage();
-    // this.releaseNotesThreshold =
-    //   _runtimeConfigLoaderService.getConfig().appSettings.releaseNoteNotification.offset;
     this._unsubscribeAll = new Subject();
     this.uniqueFacilities = new BehaviorSubject<any>(null);
   }
@@ -139,59 +136,6 @@ export class AdminLaunchComponent
     this._unsubscribeAll.next(true);
     this._unsubscribeAll.complete();
   }
-
-  // getReleaseNotesNotification() {
-  //   let isAdmin = false;
-  //   let isSuperAdmin = false;
-  //   if (!localStorage.getItem('User')) {
-  //     return;
-  //   }
-  //   const userRoles = JSON.parse(localStorage.getItem('User'))?.UserRoles;
-  //   const arr = userRoles?.filter(
-  //     (x) => x?.RoleCode?.includes('Admin') || x?.UserType === 'Administrator'
-  //   );
-  //   if (arr?.length > 0) isAdmin = true;
-  //   const superAdminRole = userRoles?.filter((x) =>
-  //     x?.RoleCode?.includes('DevOps')
-  //   );
-  //   if (superAdminRole.length > 0) isSuperAdmin = true;
-
-  //   if (!isAdmin) {
-  //     return;
-  //   }
-
-  //   this._releaseNotesSandbox.GetReleaseNotesNameList().subscribe((resp) => {
-  //     if (isSuperAdmin) {
-  //       resp = resp.filter((x) => x.isPublished);
-  //     }
-  //     resp.sort((a, b) => {
-  //       const isLater = moment(a.creationDate).isAfter(b.creationDate);
-  //       const isEquals = moment(a.creationDate).isSame(b.creationDate);
-  //       if (isEquals) return 0;
-  //       if (isLater) return -1;
-  //       else return 1;
-  //     });
-  //     const latestReleaseNote = resp[0];
-  //     const lastSeenReleaseNote = localStorage.getItem('lastSeenReleaseNote');
-  //     let showReleaseNotes = localStorage.getItem('showReleaseNotes');
-  //     if (
-  //       lastSeenReleaseNote !== JSON.stringify(latestReleaseNote?.creationDate)
-  //     ) {
-  //       showReleaseNotes = '';
-  //     }
-  //     const diffInDays = moment().diff(
-  //       moment(latestReleaseNote.creationDate),
-  //       'days'
-  //     );
-  //     if (diffInDays <= this.releaseNotesThreshold && !showReleaseNotes) {
-  //       this._headerService.showReleaseNotes.next(true);
-  //       localStorage.setItem(
-  //         'lastSeenReleaseNote',
-  //         JSON.stringify(latestReleaseNote?.creationDate)
-  //       );
-  //     }
-  //   });
-  // }
 
   sharedTenantInit(orgCode) {
     this.roleHash = orgCode.roleHash;

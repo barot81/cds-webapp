@@ -85,8 +85,7 @@ export class FilterDrawerComponent {
   ];
 
   selectedStatus = [];
-  selectedDocument = [];
-  selectedQueryStatus: [];
+  selectedQueryStatus = [];
 
   getTagTitle(tag: zhealthcareTag): string {
     if (tag && tag !== null) {
@@ -160,18 +159,14 @@ export class FilterDrawerComponent {
     if (name === 'status') {
       this.selectedStatus = [];
       this.statusList.forEach((tag) => {
-        this.selectedStatus.push(tag.id);
-      });
-    }
-    if (name === 'document') {
-      this.selectedDocument = [];
-      this.documents.forEach((doc) => {
-        this.selectedDocument.push(doc.id);
+        this.selectedStatus.push(tag);
       });
     }
   }
 
-  selectSetting(event: any, value: string) {
+
+
+  selectStatus(event: any, value: string) {
     if (event.checked === true) {
       this.selectedStatus.push(value.trim());
     }
@@ -182,42 +177,33 @@ export class FilterDrawerComponent {
     }
   }
 
-  selectCohort(cohort: string) {
-    if (cohort !== undefined) {
-      this.selectedCohort = cohort;
-    }
-  }
 
-  selectDocument(event: any, value: string) {
+  selectQueryStatus(event: any, value: string) {
     if (event.checked === true) {
-      this.selectedDocument.push(value.trim());
+      this.selectedQueryStatus.push(value.trim());
     }
     if (event.checked === false) {
-      this.selectedDocument = this.selectedDocument.filter(
+      this.selectedQueryStatus = this.selectedQueryStatus.filter(
         (x) => x !== value.trim()
       );
     }
   }
 
   reset(name: string) {
-    if (name === 'setting') {
+    if (name === 'status') {
       this.selectedStatus = [];
     }
-    if (name === 'document') {
-      this.selectedDocument = [];
+    if (name === 'queryStatus') {
+      this.selectedQueryStatus = [];
     }
   }
 
   unselect(name: string) {
-    if (name === 'setting') {
+    if (name === 'status') {
       this.selectedStatus = [];
     }
-    if (name === 'document') {
-      this.selectedDocument = [];
+    if (name === 'queryStatus') {
+      this.selectedQueryStatus = [];
     }
-  }
-
-  clearSelected() {
-    this.selectedCohort = '';
   }
 }

@@ -13,11 +13,12 @@ export class Patient {
   sex: string;
   healthPlanName: string;
   queryStatus: string;
+  queryDate: string;
   los: number;  // length of stay
   financialClass: string; //
   patientClass: string; // In or Out
   mrn: string; // medical record no of patient => patient id v MRN ( might be coming from ERM)
-  admissioinDate: string;
+  admissionDate: string;
   reimbursementType: string;
   dischargeDate: string;
   concurrent_postDC: string; //

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { UserSettingsApiClient } from './user-settings.apiClient';
 import { UserSettingsModel } from './user-settings.model';
 
@@ -10,14 +10,13 @@ export class UserSettingsSandbox {
   constructor(private userSettingsApiClient: UserSettingsApiClient) {}
 
   getUserSettings(userId): Observable<UserSettingsModel> {
-    return this.userSettingsApiClient.getUserSettings('Base', '1000', userId);
+    return of(
+      { userId:userId, theme:{ colorScheme :"theme-blue",mode :"light"}
+    }
+    );
   }
 
   updateUserSettings(userSettings): Observable<UserSettingsModel> {
-    return this.userSettingsApiClient.updateUserSettings(
-      'Base',
-      '1000',
-      userSettings
-    );
+    return of(userSettings);
   }
 }
