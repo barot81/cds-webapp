@@ -34,7 +34,7 @@ import { BrowserStorage } from '../../models/storage.model';
 import { TenantInformationSandbox } from '../../services/tenant-information/tenant-information-snadbox';
 
 @Component({
-  selector: 'account-launch',
+  selector: 'zhc-account-launch',
   template: '',
 })
 export class LaunchComponent
@@ -118,7 +118,7 @@ export class LaunchComponent
 
   getTenantNameFromTenantList(uniqueTenet, key) {
     const tenant = uniqueTenet.find((x) => x.tenantId === key);
-    this.setSelectedTenant(tenant);
+    this.setSelectedFacility(tenant);
     const tenantName = tenant?.name;
     return tenantName;
   }
@@ -299,7 +299,7 @@ export class LaunchComponent
     this.showProgressBar();
   }
 
-  setSelectedTenant(tenant: any) {
+  setSelectedFacility(tenant: any) {
     localStorage.setItem(MetaConstants.SELECTED_TENANT, JSON.stringify(tenant));
   }
 

@@ -196,16 +196,16 @@ export class AdminLaunchComponent
     } else this.oucodeWithNames = [];
   }
 
-  onTenantChange(tenant, event) {
+  onFacilityChange(tenant, event) {
     this.manageuser.setTenantId(tenant);
     if (event.isUserInput) {
       this._featureFlagService.resetFeatureFlags();
-      this._headerService.setCurrentTenantName(tenant.name);
-      this.setSelectedTenant(tenant);
-      const updatedTenantWithOucode = this.tenantWithOuCodes.find(
+      this._headerService.setCurrentFacilityName(tenant.name);
+      this.setSelectedFacility(tenant);
+      const updatedFacilityWithQuery = this.tenantWithOuCodes.find(
         (x) => x.key === tenant.tenantId
       );
-      if (updatedTenantWithOucode && !updatedTenantWithOucode?.value) {
+      if (updatedFacilityWithQuery && !updatedFacilityWithQuery?.value) {
         this.loadingPrograms = true;
         this.metaSandbox.launchTenant(tenant.tenantId).subscribe(
           (orgCode: any) => {
@@ -228,7 +228,7 @@ export class AdminLaunchComponent
         );
       } else {
         this.showProgramSelection = false;
-        this.next(updatedTenantWithOucode);
+        this.next(updatedFacilityWithQuery);
         this.showProgramSelection = true;
       }
     }

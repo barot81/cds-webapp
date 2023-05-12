@@ -8,7 +8,6 @@ import { FuseSidebarModule, MaterialModule } from '@zhealthcare/ux';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { AdminLaunchComponent } from './components/admin-launch/admin-launch.component';
 import { LaunchComponent } from './components/launch/launch.component';
-import { StudentLaunchComponent } from './components/student-launch/student-launch.component';
 import { MetaApiClient } from './meta.ApiClient';
 import { MetaSandbox } from './meta.sandbox';
 import { FacultyInformationApiClient } from './services/faculty-information/faculty-information-client.service';
@@ -18,11 +17,6 @@ const routes: Routes = [
   {
     path: 'account/launch',
     component: LaunchComponent,
-    canActivate: [AuthGuardService],
-  },
-  {
-    path: 'student/account/launch',
-    component: StudentLaunchComponent,
     canActivate: [AuthGuardService],
   },
   {
@@ -46,7 +40,6 @@ const routes: Routes = [
   exports: [LaunchComponent],
   declarations: [
     LaunchComponent,
-    StudentLaunchComponent,
     AdminLaunchComponent,
   ],
   providers: [

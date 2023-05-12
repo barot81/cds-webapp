@@ -50,7 +50,7 @@
                     <mat-option
                       *ngFor="let facility of uniqueFacilities | async"
                       [value]="facility"
-                      (onSelectionChange)="onTenantChange(facility, $event)"
+                      (onSelectionChange)="onFacilityChange(facility, $event)"
                     >
                       {{ facility.name }}
                     </mat-option>

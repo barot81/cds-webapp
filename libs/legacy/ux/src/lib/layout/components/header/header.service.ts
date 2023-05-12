@@ -42,7 +42,7 @@ export class HeaderService {
         return this.currentHeaderHeight.value;
     }
 
-    setCurrentTenantName(tenantName: string) {
+    setCurrentFacilityName(tenantName: string) {
         localStorage.setItem('tenantFullName', tenantName);
         this.orgFacade.SetTenantName(tenantName);
         this.tenantName.next(tenantName);

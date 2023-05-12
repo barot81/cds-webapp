@@ -1,7 +1,7 @@
 {
   "projectType": "application",
   "sourceRoot": "apps/ux-demo/src",
-  "prefix": "v4-app",
+  "prefix": "zhc",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",

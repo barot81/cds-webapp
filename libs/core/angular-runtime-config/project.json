@@ -1,7 +1,7 @@
 {
   "projectType": "library",
   "sourceRoot": "libs/core/angular-runtime-config/src",
-  "prefix": "zhealthcare.ui.packages",
+  "prefix": "zhc",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
