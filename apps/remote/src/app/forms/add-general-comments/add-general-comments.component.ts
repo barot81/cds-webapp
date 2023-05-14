@@ -14,7 +14,7 @@ import {
 import { DrawerService, LayoutService, SnackbarService } from '@zhealthcare/ux';
 import { Subject } from 'rxjs';
 import { GeneralComments } from '../../models/general-comments.model';
-import { richTextConfig } from '../../models/richtext.config';
+import { richTextConfig } from '../../configs/richtext.config';
 import { PatientService } from '../../services/patient.service';
 import { Patient } from '../../models/patient.model';
 import { DatePipe } from '@angular/common';

@@ -13,9 +13,10 @@ import {
 import { BehaviorSubject } from 'rxjs';
 import { PatientSerachColInfo } from '../../models/patient-search.model';
 import { ColumnOption } from '../../models/response.model';
+import { PatientGridService } from '../../services/patients-grid.service';
 
 @Component({
-  selector: 'zhealthcare-display-columns-form',
+  selector: 'zhc-display-columns-form',
   templateUrl: './edit-columns.component.html',
 })
 export class EditColumnsComponent
@@ -29,12 +30,14 @@ export class EditColumnsComponent
   data: any;
   key: string;
   removeColumnFlag = false;
+  isValid?: BehaviorSubject<boolean>;
 
   constructor(
     private _formBuilder: FormBuilder,
     private readonly fb: FormBuilder,
     public drawerService: DrawerService,
-    public manifoldPanelService: ManifoldPanelService
+    public manifoldPanelService: ManifoldPanelService,
+    public patientGridService: PatientGridService
   ) {
     super();
 
@@ -51,14 +54,14 @@ export class EditColumnsComponent
     throw new Error('Method not implemented.');
   }
 
-  isValid?: BehaviorSubject<boolean>;
-
   ngAfterViewInit(): void {
     this.drawerService.setPrimaryActionState(false, false);
   }
 
   primaryAction() {
     this.manifoldPanelService.closeCurrentManifoldPanel();
+    this.patientGridService.updateEditColumns(this.displayColumns);
+
   }
 
   secondaryAction() {

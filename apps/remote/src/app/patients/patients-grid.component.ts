@@ -13,7 +13,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationEnd, Router } from '@angular/router';
-import { DataSourceFacade, Filter } from '@zhealthcare/plugin/data-source';
+import { ColumnOption, DataSourceFacade, Filter } from '@zhealthcare/plugin/data-source';
 import { zhealthcareTag } from '@zhealthcare/plugin/tags';
 import { FullScreenService, PageFacade, ScrollService } from '@zhealthcare/ux';
 import { Observable, Subject } from 'rxjs';
@@ -22,7 +22,6 @@ import { filter, map, takeUntil, tap } from 'rxjs/operators';
 import { PatientFormsService } from '../forms/patient-forms.service';
 import { FakePatient } from '../models/fake-patient.model';
 import { PatientSerachColInfo } from '../models/patient-search.model';
-import { DatasourceDisplayModel } from "../models/DatasourceDisplayModel";
 import { Patient } from '../models/patient.model';
 import { ShowMore } from '../models/show-more.model';
 import { GridService } from '../services/grid.service';
@@ -42,7 +41,7 @@ const ELEMENT_DATA: FakePatient[] = [];
 const Patient_Grid_Datasource = 'Patient_Grid_Datasource';
 
 @Component({
-  selector: 'zhealthcare-patients-grid',
+  selector: 'zhc-patients-grid',
   templateUrl: './patients-grid.component.html',
   styleUrls: ['./patients-grid.component.scss']
 })
@@ -214,8 +213,8 @@ export class PatientsGridComponent implements AfterViewInit,OnInit, OnDestroy {
 
     this.columnInformation = PatientSerachColInfo;
     this.displayedColumns = this.columnInformation
-      .filter((x:DatasourceDisplayModel) => x.isDisplayColumn)
-      .map((x:DatasourceDisplayModel) => x.fieldName);
+      .filter((x:ColumnOption) => x.isDisplayColumn)
+      .map((x:ColumnOption) => x.fieldName);
     this.displayedColumns.push('actions');
   }
 

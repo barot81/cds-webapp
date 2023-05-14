@@ -44,7 +44,7 @@ import { LaunchComponent } from '../launch/launch.component';
 import { LaunchService } from '../launch/launch.service';
 
 @Component({
-  selector: 'account-admin-launch',
+  selector: 'zhc-admin-launch',
   templateUrl: './admin-launch.component.html',
   styleUrls: ['./../launch/launch.component.scss'],
 })
@@ -148,7 +148,6 @@ export class AdminLaunchComponent
     this.metaSandbox.launch().subscribe(
       (orgCode: any) => {
         this.sharedTenantInit(orgCode);
-        // this.sortTenantWithOuCodesByTenantId();
         this.flag = true;
         this.tenantList = orgCode.tenentWithOucodeAccessTrees.map(
           (x) => x['key']

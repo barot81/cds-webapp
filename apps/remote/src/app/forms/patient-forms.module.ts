@@ -29,7 +29,7 @@ import { AddPatientComponent } from './add-patient/add-patient.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AddGeneralCommentsComponent } from './add-general-comments/add-general-comments.component';
 import { AddPatientFindingComponent } from './add-patient-finding/add-patient-finding.component';
-import { StudentLandingGridFilterComponent } from './filters/student-landing-grid-filter/student-landing-grid-filter.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -56,8 +56,7 @@ import { StudentLandingGridFilterComponent } from './filters/student-landing-gri
   declarations: [
     AddPatientComponent,
     AddGeneralCommentsComponent,
-    AddPatientFindingComponent,
-    StudentLandingGridFilterComponent
+    AddPatientFindingComponent
   ],
 
   providers: [

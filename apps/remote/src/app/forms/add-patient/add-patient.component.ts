@@ -5,7 +5,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FusionFormAdapter, FusionFormComponent } from '@zhealthcare/fusion/components';
 import { DrawerService, SnackbarService } from '@zhealthcare/ux';
 import { Patient } from '../../models/patient.model';
-import { richTextConfig } from '../../models/richtext.config';
+import { richTextConfig } from '../../configs/richtext.config';
 import { PatientService } from '../../services/patient.service';
 
 @Component({

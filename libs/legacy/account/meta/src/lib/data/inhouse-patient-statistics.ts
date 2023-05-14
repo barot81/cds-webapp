@@ -1,13 +1,13 @@
 export const InhousePatientStatistics = [
   {
     name: 'Total',
-    count: '380',
+    count: '40',
     fullName: 'Total',
     url: '',
   },
   {
     name: 'New',
-    count: '0',
+    count: '15',
     fullName: 'New',
     url: '',
   },
@@ -18,15 +18,15 @@ export const InhousePatientStatistics = [
     url: '',
   },
   {
-    name: 'Reviewed',
+    name: 'Not Reviewed',
     count: '10',
-    fullName: 'Reviewed',
+    fullName: 'Not Reviewed',
     url: '',
   },
   {
-    name: 'No Query',
-    count: '284',
-    fullName: 'No Query',
+    name: 'Pending Query',
+    count: '145',
+    fullName: 'Pending Query',
     url: '',
   },
   {

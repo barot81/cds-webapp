@@ -1,9 +1,9 @@
-import { DatasourceDisplayModel } from "./DatasourceDisplayModel";
+import { ColumnOption } from "./response.model";
 
 export const EnrollmentCalendar ='Enrollment Calendar';
 export const GraduationCalendar ='Graduation Calendar';
 
-export const PatientSerachColInfo: DatasourceDisplayModel[] = [
+export const PatientSerachColInfo: ColumnOption[] = [
   {
     displayName: 'Patient Name',
     fieldName: 'lastName',
