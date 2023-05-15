@@ -10,9 +10,8 @@ import {
   DrawerService,
   ManifoldPanelService,
 } from '@zhealthcare/ux';
-import { BehaviorSubject } from 'rxjs';
-import { PatientSerachColInfo } from '../../models/patient-search.model';
-import { ColumnOption } from '../../models/response.model';
+import { BehaviorSubject, map } from 'rxjs';
+import { ColumnOption } from "../../models/datasource/columnOption.model";
 import { PatientGridService } from '../../services/patients-grid.service';
 
 @Component({
@@ -42,26 +41,38 @@ export class EditColumnsComponent
     super();
 
     this.fusionFormGroup = this.fb.group({});
-    this.displayColumns = PatientSerachColInfo;
+    this.patientGridService
+      .getEditColumns()
+      .pipe(
+        map((x) => {
+          this.displayColumns = x.filter((y) => y.isDisplayColumn && !y.isRemainingDisplayColumn);
+          this.remainingDisplayColumns = x.filter(
+            (y) => y.isRemainingDisplayColumn
+          );
+        })
+      )
+      .subscribe();
     this.fusionFormGroup = this._formBuilder.group({
-      columnControl: [this.displayColumns[0]],
+      columnControl: [],
     });
+
     this.hiddenColumns = this.displayColumns.filter((ele) => {
       return ele.hideEditColumn == true;
     });
   }
-  panelClose() {
-    throw new Error('Method not implemented.');
-  }
+  panelClose() {}
 
   ngAfterViewInit(): void {
     this.drawerService.setPrimaryActionState(false, false);
   }
 
   primaryAction() {
-    this.manifoldPanelService.closeCurrentManifoldPanel();
-    this.patientGridService.updateEditColumns(this.displayColumns);
+    this.displayColumns.map(x=> x.isRemainingDisplayColumn = false);
+    this.remainingDisplayColumns.map(x=> x.isRemainingDisplayColumn = true);
 
+    const totalColumns =  this.displayColumns.concat(this.remainingDisplayColumns);
+    this.patientGridService.updateEditColumns(totalColumns);
+    this.drawerService.closeDrawer();
   }
 
   secondaryAction() {

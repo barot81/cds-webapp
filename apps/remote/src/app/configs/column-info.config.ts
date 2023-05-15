@@ -1,7 +1,15 @@
-export const PatientGridColInfo = [
+import { ColumnOption } from "../models/datasource/columnOption.model";
+
+export const PatientGridColInfo: ColumnOption[] = [
   {
     displayName: 'Name',
     fieldName: 'name',
+    isSearchable: true,
+    isDisplayColumn: true
+  },
+  {
+    displayName: 'Account No',
+    fieldName: 'accountNo',
     isSearchable: true,
     isDisplayColumn: true
   },
@@ -12,14 +20,20 @@ export const PatientGridColInfo = [
     isDisplayColumn: true
   },
   {
-    displayName: 'Admit Date',
+    displayName: 'Admission Date',
     fieldName: 'admitDate',
     isSearchable: true,
     isDisplayColumn: true
   },
   {
+    displayName: 'Discharge Date',
+    fieldName: 'dischargeDate',
+    isSearchable: true,
+    isDisplayColumn: true
+  },
+  {
     displayName: 'Health Plan',
-    fieldName: 'healthPlan',
+    fieldName: 'healthPlanName',
     isSearchable: true,
     isDisplayColumn: true
   },
@@ -48,8 +62,26 @@ export const PatientGridColInfo = [
     isDisplayColumn: true
   },
   {
-    displayName: 'Comments',
-    fieldName: 'comments',
+    displayName: 'Concurrent/PostDC',
+    fieldName: 'concurrent_postDC',
+    isSearchable: false,
+    isDisplayColumn: true
+  },
+  {
+    displayName: 'Secondary Insurance',
+    fieldName: 'secondaryInsurance',
+    isSearchable: false,
+    isDisplayColumn: true
+  },
+  {
+    displayName: 'PDX',
+    fieldName: 'pdx',
+    isSearchable: false,
+    isDisplayColumn: true
+  },
+  {
+    displayName: 'MRN',
+    fieldName: 'mrn',
     isSearchable: false,
     isDisplayColumn: true
   }

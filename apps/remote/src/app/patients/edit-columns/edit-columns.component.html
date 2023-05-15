@@ -10,6 +10,7 @@
           cdkDropList
           class="zhealthcare-drag-drop-list w-100-p"
           (cdkDropListDropped)="drop($event)"
+          *ngIf="displayColumns.length>0"
         >
           <div
             *ngFor="let column of displayColumns"

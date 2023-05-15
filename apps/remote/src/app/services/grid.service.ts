@@ -11,7 +11,6 @@ export class GridService extends ComponentMap {
     super();
     this.add('ryzen-edit-columns', EditColumnsComponent);
     this.add('ryzen-filter-drawer', FilterDrawerComponent);
-    // this.add('ryzen-filter-and-edit-drawer', FilterAndEditDrawerComponent);
     this.add('ryzen-show-more-filter-drawer', ShowMoreFilterDrawerComponent);
   }
 }

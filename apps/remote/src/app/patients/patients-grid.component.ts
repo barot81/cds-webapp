@@ -13,19 +13,20 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationEnd, Router } from '@angular/router';
-import { ColumnOption, DataSourceFacade, Filter } from '@zhealthcare/plugin/data-source';
+import { DataSourceFacade, Filter } from '@zhealthcare/plugin/data-source';
 import { zhealthcareTag } from '@zhealthcare/plugin/tags';
 import { FullScreenService, PageFacade, ScrollService } from '@zhealthcare/ux';
 import { Observable, Subject } from 'rxjs';
 
 import { filter, map, takeUntil, tap } from 'rxjs/operators';
+import { PatientGridColInfo } from '../configs/column-info.config';
 import { PatientFormsService } from '../forms/patient-forms.service';
 import { FakePatient } from '../models/fake-patient.model';
-import { PatientSerachColInfo } from '../models/patient-search.model';
 import { Patient } from '../models/patient.model';
 import { ShowMore } from '../models/show-more.model';
 import { GridService } from '../services/grid.service';
 import { PatientService } from '../services/patient.service';
+import { PatientGridService } from '../services/patients-grid.service';
 
 export interface PeriodicElement {
   name: string;
@@ -43,9 +44,9 @@ const Patient_Grid_Datasource = 'Patient_Grid_Datasource';
 @Component({
   selector: 'zhc-patients-grid',
   templateUrl: './patients-grid.component.html',
-  styleUrls: ['./patients-grid.component.scss']
+  styleUrls: ['./patients-grid.component.scss'],
 })
-export class PatientsGridComponent implements AfterViewInit,OnInit, OnDestroy {
+export class PatientsGridComponent implements AfterViewInit, OnInit, OnDestroy {
   private settlementHeight = 20;
 
   clickedRows = new Set<FakePatient>();
@@ -149,7 +150,7 @@ export class PatientsGridComponent implements AfterViewInit,OnInit, OnDestroy {
   @ViewChild('pagination') pagination: ElementRef;
 
   @ViewChild(MatSort) sort: MatSort;
-  displayedColumns: string[] = [];
+  displayedColumns$: Observable<string[]>;
   columnInformation: any;
   dataSource = new MatTableDataSource([]);
 
@@ -180,8 +181,8 @@ export class PatientsGridComponent implements AfterViewInit,OnInit, OnDestroy {
     public _fullScreenService: FullScreenService,
     public patientService: PatientService,
     public patientFormService: PatientFormsService,
-    public datasourceFacade: DataSourceFacade
-
+    public datasourceFacade: DataSourceFacade,
+    private patientGridService: PatientGridService
   ) {
     this._pageFacade.setPageTitle('Patients');
     this._router.events
@@ -191,8 +192,10 @@ export class PatientsGridComponent implements AfterViewInit,OnInit, OnDestroy {
           await this.setHeaderHeights();
         }
       });
-    this.patientService.getPatients().subscribe(x=> this.dataSource = new MatTableDataSource(x));
-    this.columnInformation = PatientSerachColInfo;
+    this.patientService
+      .getPatients()
+      .subscribe((x) => (this.dataSource = new MatTableDataSource(x)));
+    this.columnInformation = PatientGridColInfo;
     this.InitializeDataSource();
   }
   ngOnInit(): void {
@@ -201,8 +204,10 @@ export class PatientsGridComponent implements AfterViewInit,OnInit, OnDestroy {
 
   private initializeDataSourceData() {
     this.patientService.patientData$
-      .pipe(takeUntil(this._unsubscribe),
-        map(patients => this.dataSource = new MatTableDataSource(patients)))
+      .pipe(
+        takeUntil(this._unsubscribe),
+        map((patients) => (this.dataSource = new MatTableDataSource(patients)))
+      )
       .subscribe();
   }
 
@@ -211,11 +216,20 @@ export class PatientsGridComponent implements AfterViewInit,OnInit, OnDestroy {
     this.showMoreFilters = new Array<ShowMore>();
     this.datasourceFacade.DataSourceDestroy();
 
-    this.columnInformation = PatientSerachColInfo;
-    this.displayedColumns = this.columnInformation
-      .filter((x:ColumnOption) => x.isDisplayColumn)
-      .map((x:ColumnOption) => x.fieldName);
-    this.displayedColumns.push('actions');
+    this.columnInformation = PatientGridColInfo;
+    this.displayedColumns$ = this.patientGridService.getEditColumns().pipe(
+      map((columns) => {
+        const disColumns = columns
+          ? columns
+              ?.filter((y) => y.isDisplayColumn && !y.isRemainingDisplayColumn)
+              .map((x) => x.fieldName)
+          : this.columnInformation
+              .filter((x) => x.isDisplayColumn && !x.isRemainingDisplayColumn)
+              .map((x) => x.fieldName);
+        disColumns.push('actions');
+        return disColumns;
+      })
+    );
   }
 
   setDefaultFilters() {
@@ -265,7 +279,6 @@ export class PatientsGridComponent implements AfterViewInit,OnInit, OnDestroy {
   applyFilter(event: Event) {
     // const filterValue = (event.target as HTMLInputElement).value;
     // this.dataSource.filter = filterValue.trim().toLowerCase();
-
     // if (this.dataSource.paginator) {
     //   this.dataSource.paginator.firstPage();
     // }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
-import { ColumnOption } from '../models/response.model';
+import { PatientGridColInfo } from '../configs/column-info.config';
+import { ColumnOption } from "../models/datasource/columnOption.model";
 
 @Injectable({ providedIn: 'root' })
 export class PatientGridService {
@@ -19,8 +20,7 @@ export class PatientGridService {
 
   getEditColumns(): Observable<ColumnOption[]> {
     return this.editColumns$.pipe(
-      map((x) => {
-        const columns = x?.filter((y) => y.isDisplayColumn);
+      map((columns) => {
         if (columns) return columns;
         return this.getEditColumnsFromLocalStorage();
       })
@@ -31,12 +31,11 @@ export class PatientGridService {
     const columnsFromLocalStorage = localStorage.getItem('patient_displaycolumn');
     if (columnsFromLocalStorage) {
       try {
-        return (<ColumnOption[]>JSON.parse(columnsFromLocalStorage)).filter(
-          (x) => x.isDisplayColumn
-        );
+        return (<ColumnOption[]>JSON.parse(columnsFromLocalStorage));
       } catch {
         return [];
       }
     }
+    return PatientGridColInfo;
   }
 }
