@@ -8,7 +8,6 @@ import { FilterDrawerComponent } from '../patients/filter-drawer/filter-drawer.c
 import { ShowMoreFilterDrawerComponent } from '../patients/show-more-filter-drawer/show-more-filter-drawer.component';
 import { FlexTableModule, FuseDirectivesModule, FuseSharedModule, FuseSidebarModule, FuseThemeOptionsModule, LayoutModule, MaterialModule, ShowMoreModule } from '@zhealthcare/ux';
 
-import { FilterAndEditDrawerComponent } from '../patients/filter-and-edit-drawer/filter-and-edit-drawer.component';
 import { EditColumnsComponent } from '../patients/edit-columns/edit-columns.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -32,7 +31,6 @@ import { zhealthcareAvatarModule } from '@zhealthcare/plugin/file-upload';
     PatientsGridComponent,
     PatientDetailsComponent,
     EditColumnsComponent,
-    FilterAndEditDrawerComponent,
     FilterDrawerComponent,
     ShowMoreFilterDrawerComponent,
     PatientHeaderComponent,
