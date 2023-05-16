@@ -1,7 +1,8 @@
 /* eslint-disable @angular-eslint/component-selector */
 /* eslint-disable @typescript-eslint/member-ordering */
-import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FusionFormAdapter, FusionFormComponent } from '@zhealthcare/fusion/components';
 import { TagView, zhealthcareTag } from '@zhealthcare/plugin/tags';
 import { SidebarFocusHelper } from '../../services/sidebar-helper.service';
 
@@ -18,72 +19,74 @@ export interface statusBadge {
 
 @Component({
   selector: 'ryzen-filter-drawer',
-  templateUrl: './filter-drawer.component.html'
+  templateUrl: './filter-drawer.component.html',
 })
-export class FilterDrawerComponent {
+export class FilterDrawerComponent  extends FusionFormComponent
+implements FusionFormAdapter, OnInit {
   tags: Array<zhealthcareTag> = [
     {
       id: Math.random(),
       name: 'Tag with 30 characters allowed',
       color: 'indigo-500',
-      isChecked: true
+      isChecked: true,
     },
     {
       id: Math.random(),
       name: 'Tag Label 2 1 Tag Lorem i',
       color: 'deep-orange-500',
-      isChecked: true
+      isChecked: true,
     },
     {
       id: Math.random(),
       name: 'Tag Label 3',
       color: 'pink-500',
-      isChecked: false
+      isChecked: false,
     },
     {
       id: Math.random(),
       name: 'Tag Label 4 Bigger Text 4',
       color: 'blue-500',
-      isChecked: true
+      isChecked: true,
     },
     {
       id: Math.random(),
       name: 'Tag Label 5',
       color: 'gray-500',
-      isChecked: true
+      isChecked: true,
     },
     {
       id: Math.random(),
       name: 'Tag Label 6',
       color: 'purple-500',
-      isChecked: false
+      isChecked: false,
     },
     {
       id: Math.random(),
       name: 'Tag Label 7 Bigger Text',
       color: 'yellow-500',
-      isChecked: true
+      isChecked: true,
     },
     {
       id: Math.random(),
       name: 'Tag Label 8 Bigger Text 8 ',
       color: 'green-500',
-      isChecked: false
+      isChecked: false,
     },
     {
       id: Math.random(),
       name: 'Tag Label 9',
       color: 'pink-500',
-      isChecked: false
+      isChecked: false,
     },
     {
       id: Math.random(),
       name: 'Tag Label 10 Bigger Text',
       color: 'indigo-500',
-      isChecked: true
-    }
+      isChecked: true,
+    },
   ];
 
+  filterFormGroup: FormGroup;
   selectedStatus = [];
   selectedQueryStatus = [];
 
@@ -108,16 +111,24 @@ export class FilterDrawerComponent {
   filterList: filterListItem[] = [
     { id: 'status-filter', title: 'Status', count: 0 },
     { id: 'query-status-filter', title: 'Query Status', count: 0 },
-    { id: 'admit-date-filter', title: 'Admit Date', count: 0 },
-    { id: 'discharge-date-filter', title: 'Discharge Date', count: 0 }
+    { id: 'admit-date-filter', title: 'Admission Date', count: 0 },
+    { id: 'discharge-date-filter', title: 'Discharge Date', count: 0 },
   ];
 
   statusList = ['New', 'Reviewed', 'Later Review', 'No Query', 'Non DRG'];
-  QueryStatusList = ['Pending', 'Answered', 'Completed', 'Dropped', 'No Response'];
+  queryStatusList = ['Pending', 'Answered', 'Completed', 'Dropped', 'No Response'];
 
-
-  constructor(public _focus: SidebarFocusHelper) {
+  constructor(public _focus: SidebarFocusHelper, private fb: FormBuilder) {
+    super();
     this.selectedId = this.filterList[0].id;
+    this.filterFormGroup = this.fb.group({
+      status: new FormControl(''),
+      queryStatus: new FormControl(''),
+      admissionStartDate: new FormControl(''),
+      admissionEndDate: new FormControl(''),
+      dischargeStartDate: new FormControl(''),
+      dischargeEndDate: new FormControl(''),
+    });
   }
 
   ngOnInit() {
@@ -154,17 +165,14 @@ export class FilterDrawerComponent {
     }
   }
 
-
   selectAll(name: string) {
     if (name === 'status') {
       this.selectedStatus = [];
-      this.statusList.forEach((tag) => {
-        this.selectedStatus.push(tag);
+      this.statusList.forEach((status) => {
+        this.selectedStatus.push(status);
       });
     }
   }
-
-
 
   selectStatus(event: any, value: string) {
     if (event.checked === true) {
@@ -176,7 +184,6 @@ export class FilterDrawerComponent {
       );
     }
   }
-
 
   selectQueryStatus(event: any, value: string) {
     if (event.checked === true) {
@@ -206,4 +213,25 @@ export class FilterDrawerComponent {
       this.selectedQueryStatus = [];
     }
   }
+
+  dateChange(propName: string, $event) {
+    this.filterFormGroup.controls[propName].setValue($event.value);
+  }
+
+  resetAllFilters() {
+    this.filterFormGroup.patchValue({
+      status: '',
+      queryStatus: '',
+      admissionStartDate: '',
+      admissionEndDate: '',
+      dischargeStartDate: '',
+      dischargeEndDate: '',
+    });
+    this.unselect('status');
+    this.unselect('queryStatus');
+  }
+
+  primaryAction() {}
+  secondaryAction() {}
+  panelClose() {}
 }

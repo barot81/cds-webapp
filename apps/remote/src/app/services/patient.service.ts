@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { PatientFilters } from '../models/datasource/patient-filters.model';
 import { Patient } from '../models/patient.model';
 import { generatePatients } from './patient.faker.service';
 
@@ -10,6 +11,7 @@ export class PatientService {
   patients = [];
   patientData$ = new BehaviorSubject<Patient[]>(null);
   loading$ = new BehaviorSubject<boolean>(false);
+
   public bulkUpdateCompletionStatus = new BehaviorSubject<any>(null);
   bulkUpdateCompletionStatus$ = this.bulkUpdateCompletionStatus.asObservable();
   public onAdded: BehaviorSubject<boolean>;
@@ -43,14 +45,13 @@ export class PatientService {
   getPatientById(id: string): Observable<Patient> {
     const url = `${this.getBaseEndpoint()}/${id}`;
     this.loading$.next(true);
-    return this.httpClient
-      .get<Patient>(url)
-      .pipe(
-        tap((x) => this.loading$.next(false)),
-        catchError((err) => {
-          this.loading$.next(false);
-          return of(err);
-      }));
+    return this.httpClient.get<Patient>(url).pipe(
+      tap((x) => this.loading$.next(false)),
+      catchError((err) => {
+        this.loading$.next(false);
+        return of(err);
+      })
+    );
   }
 
   public getBaseEndpoint() {
@@ -116,5 +117,31 @@ export class PatientService {
     );
     this.patientData$.next(this.patients);
     return this.patientData$;
+  }
+
+  applyFilter(filters: PatientFilters) {
+    const filterParams = this.getFilterParams(filters);
+    const endpoint = `${this.getBaseEndpoint()}?${this.getFilterParams(filters)}`;
+  }
+
+  getFilterParams(filters: PatientFilters) {
+    let qParams = '';
+    if (filters.status && filters.status.length > 0) {
+      filters.status.forEach((x) => {
+        qParams += `filters.status=${x}&`;
+      });
+    }
+    if (filters.queryStatus && filters.queryStatus.length > 0) {
+      filters.queryStatus.forEach((x) => {
+        qParams += `filters.queryStatus=${x}&`;
+      });
+    }
+    if (filters.admissionStartDate) {
+      qParams += `filters.admissionStartDate=${filters.admissionStartDate}&filters.admissionEndDate=${filters.admissionEndDate}`;
+    }
+    if (filters.dischargeStartDate) {
+      qParams += `filters.dischargeStartDate=${filters.dischargeStartDate}&filters.dischargeEndDate=${filters.dischargeEndDate}`;
+    }
+    return qParams;
   }
 }

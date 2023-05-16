@@ -1,0 +1,190 @@
+<div class=" carded inner-scroll exxat-new-grid
+  ">
+  <div class="student-search-report  table-rounded-border p-0">
+    <div class="spinner-container" *ngIf="datasourceFacade.fusionDataSourceLoading$ | async">
+      <mat-spinner color="accent"></mat-spinner>
+    </div>
+    <div class=" white-background " fusePerfectScrollbar>
+      <div #profileSearchHeader>
+        <div fxLayout="column">
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="w-100-p">
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
+              <div class="search-wrapper" fxFlex="100">
+                <div class="search table-search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                  <i aria-hidden="true" class="fa-light fa-magnifying-glass s-18 mr-4"></i>
+                  <input
+                  id="inputBox"
+                  type="text"
+                  maxlength="50"
+                  placeholder="Search"
+                  [formControl]="searchItem"
+                  fxFlex
+                  matInput
+                  #searchInput
+                  #matInput
+                  [(ngModel)]="searchValue"
+                  (keyup)="applySearch($event)"
+                />
+                <button
+                  mat-icon-button
+                  aria-label="clear search"
+                  class="action-icon clear-button"
+                  (click)="clearSearch()"
+                >
+                  <i class="fa-light fa-xmark s-18" aria-hidden="true"></i>
+                </button>
+                </div>
+              </div>
+
+
+              <div *ngIf="numberOfAppliedFilter>0" fxLayout="row" fxLayoutAlign="start center" class="px-16 w-100-p"
+                fxHide.lt-lg>
+                <div fxLayout="row" fxLayoutAlign="start center" class="mr-8">
+                  <span>Filters: </span>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center" *ngIf="numberOfAppliedFilter > 2">
+                  <a exxatDrawerAction [componentSelector]="_profileFormsService.get('profile-show-more')"
+                    [size]="'drawer-sm'" [data]="showMoreFilters" [primaryAction]="'Apply'"
+                    [caption]="'Show More Filters'" *ngIf="numberOfAppliedFilter> 2">Show more</a>
+                </div>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <div fxLayout="row" fxLayoutAlign="end center" class="border-right h-48" fxHide.lt-md>
+              </div>
+              <div fxLayout="row" class="mr-16 ml-8">
+
+                <exxat-edit-columns fxHide.lt-md></exxat-edit-columns>
+
+                <button matTooltip="Filter" mat-icon-button class="ml-4 filter-icon-button" aria-label="filters"
+                  exxatDrawerAction id="filter-provider" [componentSelector]="_tenantListDrawerService.get('tenant-list-filter-form')" [size]="'drawer-md'" [caption]="'Filters'" [primaryAction]="'Apply'">
+                  <div fxLayout="row" fxLayoutAlign="start center">
+                    <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
+                    <span *ngIf="numberOfAppliedFilter>0"> {{ gridFilter.length }} </span>
+                  </div>
+                </button>
+
+                <button tabindex="0" aria-label="mat menu" mat-icon-button [matMenuTriggerFor]="menu" class="ml-4"
+                  fxHide.gt-sm>
+                  <i aria-hidden="true" class="fal fa-ellipsis-h s-18"></i>
+                </button>
+                <mat-menu #menu="matMenu" fxHide.gt-sm>
+                  <button mat-menu-item aria-label="Edit Columns" exxatDrawerAction
+                    [componentSelector]="dataSourceComponentService.get('exxat-display-columns-form')"
+                    [size]="'drawer-sm'" [caption]="'Edit Columns'" role="img" [primaryAction]="'Save'"
+                    aria-hidden="true">
+                    <i aria-hidden="true" class="fa-light fa-wrench s-18 mr-8"></i>Edit columns
+                  </button>
+                </mat-menu>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content exxat-sticky-table overflow-auto" [ngClass]="{'student-search-grid-with-filter':((searchValue && searchValue!=='') || numberOfAppliedFilter>0) && (datasourceFacade.fusionDataSourceLoading$ | async ) === false,
+      'student-search-grid-without-filter':!((searchValue && searchValue!=='') || numberOfAppliedFilter>0) && (datasourceFacade.fusionDataSourceLoading$ | async ) === false,
+  'student-search-grid-with-loadingstate':(datasourceFacade.fusionDataSourceLoading$ | async )}"
+        (scroll)="scrollHandler($event)">
+        <table id="stickyColumnTable" aria-label="This is a Simple table" mat-table
+          [dataSource]="datasourceFacade.fusionDataSet$ | async"
+          class="mat-table cdk-table w-100-p exxat-table" matSort matSortDisableClear>
+
+          <ng-container matColumnDef="name">
+            <th id="TenantName" mat-header-cell *matHeaderCellDef mat-sort-header>
+              Tenant Name
+            </th>
+            <td mat-cell *matCellDef="let element">
+             <a  [id]="element.name" (click)="selectTenant({tenantId: element.tenantId, name: element.name})">{{ element.name.length > 0 ? element.name : element.tenantId }}</a>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="tenantId">
+            <th  id="TenantId" mat-header-cell *matHeaderCellDef>
+              Tenant Id
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.tenantId }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="associatedAccountManager">
+            <th  id="associatedAccountManager" mat-header-cell *matHeaderCellDef mat-sort-header>
+              Account Manager
+            </th>
+            <td  mat-cell *matCellDef="let element">
+              {{ element.associatedAccountManager}}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="region">
+            <th  id="region" mat-header-cell *matHeaderCellDef mat-sort-header>
+              Region
+            </th>
+            <td  mat-cell *matCellDef="let element">
+              {{ element.region }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="ouCodeCount">
+            <th  id="ouCodeCount" mat-header-cell *matHeaderCellDef>
+              Program Count
+            </th>
+            <td  mat-cell *matCellDef="let element">
+              {{ element.ouCodeCount }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="timeZone">
+            <th  id="timeZone" mat-header-cell *matHeaderCellDef mat-sort-header>
+              Time zone
+            </th>
+            <td  mat-cell *matCellDef="let element">
+              {{ element.timeZone === 'Eastern Standard Time'? 'EST':
+              element.timeZone === 'Eastern Daylight Time'? 'EDT' :
+              element.timeZone === 'Central Standard Time'? 'CST':
+              element.timeZone === 'Central Daylight Time'? 'CDT':
+              element.timeZone === 'Mountain Standard Time'? 'MST':
+              element.timeZone === 'Mountain Daylight Time'? 'MDT':
+              element.timeZone === 'Pacific Standard Time'? 'PST':
+              element.timeZone === 'Pacific Daylight Time'? 'PDT':
+              element.timeZone === 'Alaskan Standard Time'? 'AK':
+              element.timeZone === 'Alaskan Daylight Time'? 'AKDT':
+              element.timeZone === 'Indian Standard Time'? '+05:30':
+              element.timeZone === 'Hawaii-Aleutian Standard Time'? 'HST': null}}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="location">
+            <th  id="location" mat-header-cell *matHeaderCellDef>
+              Address
+            </th>
+            <td  mat-cell *matCellDef="let element">
+              {{ element.location ? (((element.location.city  && element.location.city.length>0) ? element.location.city+ ((element.location.state  && element.location.state.length>0)?', ':""):"")
+              + ((element.location.state  && element.location.state.length>0)?element.location.state:"")) : ""}}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="createdDatetime">
+            <th  id="createdDatetime" mat-header-cell *matHeaderCellDef>
+              Created Date & Time
+            </th>
+            <td  mat-cell *matCellDef="let element">
+{{convertDateIntoIst(element.createdDatetime)}}
+            </td>
+          </ng-container>
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns$ | async; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns$ | async" (click)="addRow(row)"
+            [class.row-selected]="clickedRows?.has(row)" [class.row-highlighted]="highlightedRows?.has(row)"></tr>
+        </table>
+        <div
+        *ngIf="(datasourceFacade.fusionDataSourceLoading$ | async ) === false && (datasourceFacade.dataSourceTotal$ | async)===0"
+        fxLayout="row wrap" fxLayoutAlign="center" class="pt-16 result-found-style warn-fg" tabindex="0"
+        aria-label="2 search results found">
+        We are sorry. No data found
+      </div>
+      </div>
+
+    </div>
+    <div #pagination>
+      <mat-paginator [pageSize]="itemsPerPage" class="bt" [length]="datasourceFacade.dataSourceTotal$ | async"></mat-paginator>
+    </div>
+  </div>
+</div>

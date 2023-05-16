@@ -21,12 +21,12 @@ import { Observable, Subject } from 'rxjs';
 import { filter, map, takeUntil, tap } from 'rxjs/operators';
 import { PatientGridColInfo } from '../configs/column-info.config';
 import { PatientFormsService } from '../forms/patient-forms.service';
-import { FakePatient } from '../models/fake-patient.model';
 import { Patient } from '../models/patient.model';
-import { ShowMore } from '../models/show-more.model';
+import { ShowMore } from '../models/datasource/show-more.model';
 import { GridService } from '../services/grid.service';
 import { PatientService } from '../services/patient.service';
 import { PatientGridService } from '../services/patients-grid.service';
+import { PatientDataSourceEnum } from '../configs/patient-datasource.enum';
 
 export interface PeriodicElement {
   name: string;
@@ -38,8 +38,6 @@ export interface PeriodicElement {
   actions: string;
   statusClass: string;
 }
-const ELEMENT_DATA: FakePatient[] = [];
-const Patient_Grid_Datasource = 'Patient_Grid_Datasource';
 
 @Component({
   selector: 'zhc-patients-grid',
@@ -49,8 +47,8 @@ const Patient_Grid_Datasource = 'Patient_Grid_Datasource';
 export class PatientsGridComponent implements AfterViewInit, OnInit, OnDestroy {
   private settlementHeight = 20;
 
-  clickedRows = new Set<FakePatient>();
-  highlightedRows = new Set<FakePatient>();
+  clickedRows = new Set<Patient>();
+  highlightedRows = new Set<Patient>();
 
   tags: Array<zhealthcareTag> = [
     {
@@ -234,12 +232,12 @@ export class PatientsGridComponent implements AfterViewInit, OnInit, OnDestroy {
 
   setDefaultFilters() {
     this.defaultFilters = [];
-    if (sessionStorage.getItem(Patient_Grid_Datasource)) {
+    if (sessionStorage.getItem(PatientDataSourceEnum.Patient_Grid)) {
       if (localStorage.getItem('fusionDataSource')) {
         // this.resetFilter();
       }
       const filterSessionData = JSON.parse(
-        sessionStorage.getItem(Patient_Grid_Datasource)
+        sessionStorage.getItem(PatientDataSourceEnum.Patient_Grid)
       );
       filterSessionData.filters.forEach((element) => {
         if (element?.type === 'search' && element.value !== '') {
@@ -249,7 +247,6 @@ export class PatientsGridComponent implements AfterViewInit, OnInit, OnDestroy {
       });
       this.filter = this.defaultFilters;
     } else {
-      const filters = {};
       this.filter = this.defaultFilters;
     }
   }
@@ -300,7 +297,7 @@ export class PatientsGridComponent implements AfterViewInit, OnInit, OnDestroy {
           if (this.clickedRows.size) {
             this.highlightedRows = this.clickedRows;
           }
-          this.clickedRows = new Set<FakePatient>();
+          this.clickedRows = new Set<Patient>();
         }
       }
     }
@@ -309,15 +306,15 @@ export class PatientsGridComponent implements AfterViewInit, OnInit, OnDestroy {
   addRow(row) {
     if (this.clickedRows.size) {
       if (this.clickedRows.has(row)) {
-        this.clickedRows = new Set<FakePatient>();
+        this.clickedRows = new Set<Patient>();
       } else {
-        this.clickedRows = new Set<FakePatient>();
+        this.clickedRows = new Set<Patient>();
         this.clickedRows.add(row);
       }
     } else {
       this.clickedRows.add(row);
     }
-    this.highlightedRows = new Set<FakePatient>();
+    this.highlightedRows = new Set<Patient>();
   }
 
   //chips code

@@ -7,413 +7,291 @@ inner-scroll
 zhealthcare-new-grid
 pt-8
   ">
-<div class="student-search-report  table-rounded-border p-0">
-  <div class=" white-background " fusePerfectScrollbar>
-  <div fxLayout="column" #gridHeader>
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="w-100-p">
-      <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
-        <div
-          class="search-wrapper"
-          fxFlex="100"
-          search
-          [formControl]="searchItem"
-          (keyup)="applyFilter($event)"
-        >
-          <div
-            class="search table-search"
-            fxFlex
-            fxLayout="row"
-            fxLayoutAlign="start center"
-          >
-            <i aria-hidden="true" class="fa-light fa-magnifying-glass s-18"></i>
-            <input
-              id="inputBox"
-              type="text"
-              placeholder="Search patients"
-              [formControl]="searchItem"
-              fxFlex
-            />
+  <div class="student-search-report  table-rounded-border p-0">
+    <div class="spinner-container" *ngIf="dataSource?.data?.length === -1">
+      <mat-spinner color="accent"></mat-spinner>
+    </div>
+    <div class="white-background" fusePerfectScrollbar>
+      <div fxLayout="column" #gridHeader>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="w-100-p">
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
+            <div class="search-wrapper" fxFlex="100" search [formControl]="searchItem" (keyup)="applyFilter($event)">
+              <div class="search table-search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                <i aria-hidden="true" class="fa-light fa-magnifying-glass s-18"></i>
+                <input id="inputBox" type="text" placeholder="Search patients" [formControl]="searchItem" fxFlex />
 
-            <button
-              mat-icon-button
-              aria-label="clear search"
-              class="action-icon clear-button"
-            >
-              <i aria-hidden="true" class="fa-light fa-xmark s-18"></i>
-            </button>
-          </div>
-        </div>
+                <button mat-icon-button aria-label="clear search" class="action-icon clear-button">
+                  <i aria-hidden="true" class="fa-light fa-xmark s-18"></i>
+                </button>
+              </div>
+            </div>
 
-        <div
-          fxLayout="row"
-          fxLayoutAlign="start center"
-          class="px-16 w-100-p"
-          fxHide.lt-lg
-        >
-          <div fxLayout="row" fxLayoutAlign="start center" class="mr-8">
-            <span>Filters: </span>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="start center" class="mr-16">
-            <div class="table-header-chips">
-              <mat-chip-list #chipList aria-label="Fruit selection">
-                <div *ngFor="let fruit of medicineTypes; let i = index">
-                  <mat-chip *ngIf="i < 2" (removed)="remove(fruit)">
-                    <span
-                      [tooltip]="chip_Content"
-                      [options]="tooltipOptions"
-                      class="chips-text"
-                      >{{ fruit | chipsCharSlice }}</span
-                    >
-                    <button matChipRemove>
-                      <mat-icon>cancel</mat-icon>
-                    </button>
-                    <ng-template #chip_Content>
-                      <div fxLayout="row" fxLayoutAlign="start center">
-                        <div class="font-weight-600">
-                          <span>Setting :</span>
-                        </div>
-                        <div class="ml-4">
-                          <span>{{ fruit }}</span>
-                        </div>
-                      </div>
-                    </ng-template>
-                  </mat-chip>
+            <div fxLayout="row" fxLayoutAlign="start center" class="px-16 w-100-p" fxHide.lt-lg>
+              <div fxLayout="row" fxLayoutAlign="start center" class="mr-8">
+                <span>Filters: </span>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="start center" class="mr-16">
+                <div class="table-header-chips">
+                  <mat-chip-list #chipList aria-label="Fruit selection">
+                    <div *ngFor="let fruit of medicineTypes; let i = index">
+                      <mat-chip *ngIf="i < 2" (removed)="remove(fruit)">
+                        <span [tooltip]="chip_Content" [options]="tooltipOptions" class="chips-text">{{ fruit |
+                          chipsCharSlice }}</span>
+                        <button matChipRemove>
+                          <mat-icon>cancel</mat-icon>
+                        </button>
+                        <ng-template #chip_Content>
+                          <div fxLayout="row" fxLayoutAlign="start center">
+                            <div class="font-weight-600">
+                              <span>Setting :</span>
+                            </div>
+                            <div class="ml-4">
+                              <span>{{ fruit }}</span>
+                            </div>
+                          </div>
+                        </ng-template>
+                      </mat-chip>
+                    </div>
+                  </mat-chip-list>
                 </div>
-              </mat-chip-list>
-            </div>
-          </div>
-          <div
-            fxLayout="row"
-            fxLayoutAlign="start center"
-            *ngIf="medicineTypes.length > 2"
-          >
-            <a
-              zhealthcareDrawerAction
-              [componentSelector]="
+              </div>
+              <div fxLayout="row" fxLayoutAlign="start center" *ngIf="medicineTypes.length > 2">
+                <a zhealthcareDrawerAction [componentSelector]="
                 gridService.get('ryzen-show-more-filter-drawer')
-              "
-              [size]="'drawer-sm'"
-              [caption]="'Show More Filters'"
-              [primaryAction]="'Apply'"
-            >
-              Show more
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div fxLayout="row" fxLayoutAlign="end center">
-        <div
-          fxLayout="row"
-          fxLayoutAlign="end center"
-          class="border-right h-48 pr-16"
-          fxHide.lt-md
-        >
-          <button
-            mat-stroked-button
-            color="primary"
-            class="mr-12"
-            aria-label="Add Patient"
-            zhealthcareDrawerAction
-            matTooltip="Add Patient"
-            [componentSelector]="patientFormService.get('patient-add-form')"
-            [size]="'drawer-sm'"
-            [caption]="'Add Patient'"
-            [primaryAction]="'Save'"
-
-          >
-            <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
-            <span class="ml-4">Add Patient</span>
-          </button>
-        </div>
-        <div fxLayout="row" class="mr-16 ml-8">
-          <button
-            matTooltip="Export"
-            tabindex="0"
-            aria-label="Export Table"
-            mat-icon-button
-            class="ml-8"
-            fxHide.lt-md
-          >
-            <i aria-hidden="true" class="fa-light fa-file-export s-18"></i>
-          </button>
-
-          <button
-            aria-label="Edit Columns"
-            zhealthcareDrawerAction
-            matTooltip="Edit columns"
-            [componentSelector]="gridService.get('ryzen-edit-columns')"
-            [size]="'drawer-sm'"
-            [caption]="'Edit Columns'"
-            mat-icon-button
-            class="ml-4"
-            [primaryAction]="'Save'"
-            fxHide.lt-md
-          >
-            <i aria-hidden="true" class="fa-light fa-wrench s-18"></i>
-          </button>
-
-          <button
-            mat-icon-button
-            class="ml-4 filter-icon-button"
-            aria-label="filters"
-            zhealthcareDrawerAction
-            matTooltip="Filter"
-            [componentSelector]="
-              gridService.get('ryzen-filter-drawer')
-            "
-            [size]="'drawer-sm'"
-            [caption]="'Filters'"
-            [primaryAction]="'Save'"
-          >
-            <div fxLayout="row" fxLayoutAlign="start center">
-              <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
-              <span> 12 </span>
+              " [size]="'drawer-sm'" [caption]="'Show More Filters'" [primaryAction]="'Apply'">
+                  Show more
+                </a>
+              </div>
             </div>
-          </button>
+          </div>
 
-          <button
-            tabindex="0"
-            aria-label="mat menu"
-            mat-icon-button
-            [matMenuTriggerFor]="menu"
-            class="ml-4"
-            fxHide.gt-sm
-          >
-            <i aria-hidden="true" class="fal fa-ellipsis-h s-18"></i>
-          </button>
-          <mat-menu #menu="matMenu" fxHide.gt-sm>
-            <button mat-menu-item aria-label="Add Column">
-              <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i
-              >Add Column
-            </button>
-            <button
-              mat-menu-item
-              aria-label="Edit Columns"
-              zhealthcareDrawerAction
-              [componentSelector]="gridService.get('ryzen-edit-columns')"
-              [size]="'drawer-sm'"
-              [caption]="'Edit Columns'"
-            >
-              <i aria-hidden="true" class="fa-light fa-wrench s-18 mr-8"></i
-              >Edit columns
-            </button>
-            <button mat-menu-item aria-label="Export file">
-              <i
-                aria-hidden="true"
-                class="fa-light fa-file-export s-18 mr-8"
-              ></i
-              >Export file
-            </button>
-          </mat-menu>
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <div fxLayout="row" fxLayoutAlign="end center" class="border-right h-48 pr-16" fxHide.lt-md>
+              <button mat-stroked-button color="primary" class="mr-12" aria-label="Add Patient" zhealthcareDrawerAction
+                matTooltip="Add Patient" [componentSelector]="patientFormService.get('patient-add-form')"
+                [size]="'drawer-sm'" [caption]="'Add Patient'" [primaryAction]="'Save'">
+                <i aria-hidden="true" class="fa-light fa-plus s-16"></i>
+                <span class="ml-4">Add Patient</span>
+              </button>
+            </div>
+            <div fxLayout="row" class="mr-16 ml-8">
+              <button matTooltip="Export" tabindex="0" aria-label="Export Table" mat-icon-button class="ml-8"
+                fxHide.lt-md>
+                <i aria-hidden="true" class="fa-light fa-file-export s-18"></i>
+              </button>
+
+              <button aria-label="Edit Columns" zhealthcareDrawerAction matTooltip="Edit columns"
+                [componentSelector]="gridService.get('ryzen-edit-columns')" [size]="'drawer-sm'"
+                [caption]="'Edit Columns'" mat-icon-button class="ml-4" [primaryAction]="'Save'" fxHide.lt-md>
+                <i aria-hidden="true" class="fa-light fa-wrench s-18"></i>
+              </button>
+
+              <button mat-icon-button class="ml-4 filter-icon-button" aria-label="filters" zhealthcareDrawerAction
+                matTooltip="Filter" [componentSelector]="
+              gridService.get('ryzen-filter-drawer')
+            " [size]="'drawer-sm'" [caption]="'Filters'" [primaryAction]="'Save'">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
+                  <span> 12 </span>
+                </div>
+              </button>
+
+              <button tabindex="0" aria-label="mat menu" mat-icon-button [matMenuTriggerFor]="menu" class="ml-4"
+                fxHide.gt-sm>
+                <i aria-hidden="true" class="fal fa-ellipsis-h s-18"></i>
+              </button>
+              <mat-menu #menu="matMenu" fxHide.gt-sm>
+                <button mat-menu-item aria-label="Add Column">
+                  <i aria-hidden="true" class="fa-light fa-plus s-18 mr-8"></i>Add Column
+                </button>
+                <button mat-menu-item aria-label="Edit Columns" zhealthcareDrawerAction
+                  [componentSelector]="gridService.get('ryzen-edit-columns')" [size]="'drawer-sm'"
+                  [caption]="'Edit Columns'">
+                  <i aria-hidden="true" class="fa-light fa-wrench s-18 mr-8"></i>Edit columns
+                </button>
+                <button mat-menu-item aria-label="Export file">
+                  <i aria-hidden="true" class="fa-light fa-file-export s-18 mr-8"></i>Export file
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+        </div>
+        <div class="result-found-style w-100-p" tabindex="0" aria-label="">
+          <!-- 2 Results Found -->
         </div>
       </div>
     </div>
-    <div
-      class="result-found-style w-100-p"
-      tabindex="0"
-      aria-label=""
-      >
-      <!-- 2 Results Found -->
+    <div class="content zhealthcare-sticky-table overflow-auto"
+      [style.height.px]="_scrollService.contentHeight$ | async">
+      <table aria-label="" mat-table [dataSource]="dataSource" class="w-100-p zhealthcare-table" matSort>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="name-column">Patient Name</th>
+          <td mat-cell *matCellDef="let element; let i = index" class="name-column">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <a [routerLink]="['./', element?.id, 'details']">
+                <span class="list-item-name">{{ element?.lastName }} {{ element?.firstName }}
+                </span>
+              </a>
+              <zhealthcare-tag-showcase [tags]="tags" class="ml-4" *ngIf="i % 3 === 0"></zhealthcare-tag-showcase>
+            </div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="accountNo">
+          <th id="student-id-header" mat-header-cell *matHeaderCellDef mat-sort-header>
+            Account number
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element?.accountNo }}
+          </td>
+        </ng-container>
+
+        <!-- address Column -->
+        <ng-container matColumnDef="room">
+          <th id="room" mat-header-cell *matHeaderCellDef mat-sort-header class="address-column">
+            Room
+          </th>
+          <td mat-cell *matCellDef="let element" class="address-column">
+            {{ element?.roomId }}
+          </td>
+        </ng-container>
+
+        <!-- email Column -->
+        <ng-container matColumnDef="admitDate">
+          <th id="phone" mat-header-cell *matHeaderCellDef class="email-width">Admissioin Date</th>
+          <td mat-cell *matCellDef="let element" class="email-width">
+            <a>{{ element?.admissioinDate | date:'MMMM d, y' }}</a>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dischargeDate">
+          <th id="phone" mat-header-cell *matHeaderCellDef class="email-width">Discharge Date</th>
+          <td mat-cell *matCellDef="let element" class="email-width">
+            <a>{{ element?.dischargeDate | date:'MMMM d, y' }}</a>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="profileStatus">
+          <th id="profileStatus" class="profileStaus-column" mat-header-cell *matHeaderCellDef mat-sort-header>
+            Profile Status
+          </th>
+          <td mat-cell class="profileStaus-column" *matCellDef="let element">
+            <span [ngClass]="{'warn-fg':element?.profileStatus?.toLowerCase()==='inactive'}">{{ element?.profileStatus
+              }}</span>
+          </td>
+        </ng-container>
+
+        <!-- phone Column -->
+        <ng-container matColumnDef="healthPlanName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-width">Health Plan</th>
+          <td mat-cell *matCellDef="let element" class="column-width">
+            {{ element?.healthPlanName }}
+          </td>
+        </ng-container>
+
+        <!-- cohort Column -->
+        <ng-container matColumnDef="cds">
+          <th mat-header-cell *matHeaderCellDef class="column-width">CDS</th>
+          <td mat-cell *matCellDef="let element" class="column-width">
+            {{ element?.cds }}
+          </td>
+        </ng-container>
+
+        <!-- status Column -->
+        <ng-container matColumnDef="queryStatus">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-width">Query Status</th>
+          <td mat-cell *matCellDef="let element" class="column-width">
+            <div class="status-badge {{ element?.statusClass }} w-88 text-center">
+              {{ element?.queryStatus }}
+            </div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="queryDate">
+          <th id="phone" mat-header-cell *matHeaderCellDef class="email-width">Query Date</th>
+          <td mat-cell *matCellDef="let element" class="email-width">
+            <a>{{ element?.queryDate }}</a>
+          </td>
+        </ng-container>
+
+
+
+        <!-- cohort Column -->
+        <ng-container matColumnDef="reimbursementType">
+          <th mat-header-cell *matHeaderCellDef class="column-width">Reimbursement Type</th>
+          <td mat-cell *matCellDef="let element" class="column-width">
+            {{ element?.reimbursementType }}
+          </td>
+        </ng-container>
+
+        <!-- cohort Column -->
+        <ng-container matColumnDef="age">
+          <th mat-header-cell *matHeaderCellDef class="column-width">Age</th>
+          <td mat-cell *matCellDef="let element" class="column-width">
+            {{ element?.age }}
+          </td>
+        </ng-container>
+
+        <!-- cohort Column -->
+        <ng-container matColumnDef="comments">
+          <th mat-header-cell *matHeaderCellDef class="column-width">Comments</th>
+          <td mat-cell *matCellDef="let element" class="column-width">
+            {{ element?.comments }}
+          </td>
+        </ng-container>
+
+
+        <!-- cohort Column -->
+        <ng-container matColumnDef="concurrent_postDC">
+          <th mat-header-cell *matHeaderCellDef class="column-width">Concurrent/PostDC</th>
+          <td mat-cell *matCellDef="let element" class="column-width">
+            {{ element?.concurrent_postDC }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="secondaryInsurance">
+          <th mat-header-cell *matHeaderCellDef class="column-width">Secondary Insurance</th>
+          <td mat-cell *matCellDef="let element" class="column-width">
+            {{ element?.secondaryInsurance }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="pdx">
+          <th mat-header-cell *matHeaderCellDef class="column-width">PDX</th>
+          <td mat-cell *matCellDef="let element" class="column-width">
+            {{ element?.pdx }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="mrn">
+          <th mat-header-cell *matHeaderCellDef class="column-width">MRN</th>
+          <td mat-cell *matCellDef="let element" class="column-width">
+            {{ element?.mrn }}
+          </td>
+        </ng-container>
+
+        <!-- actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef class="column-width">Actions</th>
+          <td mat-cell *matCellDef="let element" class="column-width">
+            <button mat-icon-button aria-label="edit item" zhealthcareDrawerAction
+              [componentSelector]="patientFormService.get('patient-add-form')" [size]="'drawer-sm'" [data]="element"
+              [caption]="'Edit Patient'" [primaryAction]="'save'">
+              <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="(displayedColumns$ | async); sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: (displayedColumns$ | async)" (click)="addRow(row)"
+          [class.row-selected]="clickedRows.has(row)" [class.row-highlighted]="highlightedRows.has(row)"></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">We are sorry. No data found. </td>
+        </tr>
+      </table>
+    </div>
+    <div #pagination>
+      <mat-paginator tabindex="0" [pageSize]="30" class="mat-paginator-sticky bt"></mat-paginator>
     </div>
   </div>
-</div>
-<div class="content zhealthcare-sticky-table overflow-auto"
-    [style.height.px]="_scrollService.contentHeight$ | async"
-  >
-    <table
-      aria-label=""
-      mat-table
-      [dataSource]="dataSource"
-      class="w-100-p zhealthcare-table"
-      matSort
-    >
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="name-column">Patient Name</th>
-        <td
-          mat-cell
-          *matCellDef="let element; let i = index"
-          class="name-column"
-        >
-          <div fxLayout="row" fxLayoutAlign="start center">
-            <a [routerLink]="['./', element?.id, 'details']">
-              <span class="list-item-name">{{ element?.lastName }} {{ element?.firstName }}
-              </span>
-            </a>
-            <zhealthcare-tag-showcase
-              [tags]="tags"
-              class="ml-4"
-              *ngIf="i % 3 === 0"
-            ></zhealthcare-tag-showcase>
-          </div>
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="accountNo">
-        <th id="student-id-header" mat-header-cell *matHeaderCellDef mat-sort-header>
-          Account number
-        </th>
-        <td mat-cell *matCellDef="let element">
-          {{ element?.accountNo }}
-        </td>
-      </ng-container>
-
-      <!-- address Column -->
-      <ng-container matColumnDef="room">
-        <th id="room" mat-header-cell *matHeaderCellDef mat-sort-header  class="address-column">
-          Room
-        </th>
-        <td mat-cell *matCellDef="let element" class="address-column">
-          {{ element?.roomId }}
-        </td>
-      </ng-container>
-
-      <!-- email Column -->
-      <ng-container matColumnDef="admitDate">
-        <th id="phone" mat-header-cell *matHeaderCellDef class="email-width">Admissioin Date</th>
-        <td mat-cell *matCellDef="let element" class="email-width">
-          <a>{{ element?.admissioinDate | date:'MMMM d, y' }}</a>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="dischargeDate">
-        <th id="phone" mat-header-cell *matHeaderCellDef class="email-width">Discharge Date</th>
-        <td mat-cell *matCellDef="let element" class="email-width">
-          <a>{{ element?.dischargeDate | date:'MMMM d, y' }}</a>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="profileStatus">
-        <th id="profileStatus" class="profileStaus-column" mat-header-cell *matHeaderCellDef mat-sort-header>
-         Profile Status
-        </th>
-        <td mat-cell class="profileStaus-column" *matCellDef="let element">
-          <span [ngClass]="{'warn-fg':element?.profileStatus?.toLowerCase()==='inactive'}">{{ element?.profileStatus
-            }}</span>
-        </td>
-      </ng-container>
-
-      <!-- phone Column -->
-      <ng-container matColumnDef="healthPlanName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-width">Health Plan</th>
-        <td mat-cell *matCellDef="let element" class="column-width">
-          {{ element?.healthPlanName }}
-        </td>
-      </ng-container>
-
-      <!-- cohort Column -->
-      <ng-container matColumnDef="cds">
-        <th mat-header-cell *matHeaderCellDef class="column-width">CDS</th>
-        <td mat-cell *matCellDef="let element" class="column-width">
-          {{ element?.cds }}
-        </td>
-      </ng-container>
-
-      <!-- status Column -->
-      <ng-container matColumnDef="queryStatus">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header  class="column-width">Query Status</th>
-        <td mat-cell *matCellDef="let element" class="column-width">
-          <div class="status-badge {{ element?.statusClass }} w-88 text-center">
-            {{ element?.queryStatus }}
-          </div>
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="queryDate">
-        <th id="phone" mat-header-cell *matHeaderCellDef class="email-width">Query Date</th>
-        <td mat-cell *matCellDef="let element" class="email-width">
-          <a>{{ element?.queryDate }}</a>
-        </td>
-      </ng-container>
-
-
-
-    <!-- cohort Column -->
-    <ng-container matColumnDef="reimbursementType">
-      <th mat-header-cell *matHeaderCellDef class="column-width">Reimbursement Type</th>
-      <td mat-cell *matCellDef="let element" class="column-width">
-        {{ element?.reimbursementType }}
-      </td>
-    </ng-container>
-
-    <!-- cohort Column -->
-    <ng-container matColumnDef="age">
-      <th mat-header-cell *matHeaderCellDef class="column-width">Age</th>
-      <td mat-cell *matCellDef="let element" class="column-width">
-        {{ element?.age }}
-      </td>
-    </ng-container>
-
-  <!-- cohort Column -->
-  <ng-container matColumnDef="comments">
-    <th mat-header-cell *matHeaderCellDef class="column-width">Comments</th>
-    <td mat-cell *matCellDef="let element" class="column-width">
-      {{ element?.comments }}
-    </td>
-  </ng-container>
-
-
-  <!-- cohort Column -->
-  <ng-container matColumnDef="concurrent_postDC">
-    <th mat-header-cell *matHeaderCellDef class="column-width">Concurrent/PostDC</th>
-    <td mat-cell *matCellDef="let element" class="column-width">
-      {{ element?.concurrent_postDC }}
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="secondaryInsurance">
-    <th mat-header-cell *matHeaderCellDef class="column-width">Secondary Insurance</th>
-    <td mat-cell *matCellDef="let element" class="column-width">
-      {{ element?.secondaryInsurance }}
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="pdx">
-    <th mat-header-cell *matHeaderCellDef class="column-width">PDX</th>
-    <td mat-cell *matCellDef="let element" class="column-width">
-      {{ element?.pdx }}
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="mrn">
-    <th mat-header-cell *matHeaderCellDef class="column-width">MRN</th>
-    <td mat-cell *matCellDef="let element" class="column-width">
-      {{ element?.mrn }}
-    </td>
-  </ng-container>
-
-      <!-- actions Column -->
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef class="column-width">Actions</th>
-        <td mat-cell *matCellDef="let element" class="column-width">
-          <button mat-icon-button aria-label="edit item"
-          zhealthcareDrawerAction [componentSelector]="patientFormService.get('patient-add-form')" [size]="'drawer-sm'"
-              [data]="element" [caption]="'Edit Patient'" [primaryAction]="'save'"
-          >
-            <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="(displayedColumns$ | async); sticky: true"></tr>
-      <tr
-        mat-row
-        *matRowDef="let row; columns: (displayedColumns$ | async)"
-        (click)="addRow(row)"
-        [class.row-selected]="clickedRows.has(row)"
-        [class.row-highlighted]="highlightedRows.has(row)"
-      ></tr>
-
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">We are sorry. No data found. </td>
-      </tr>
-    </table>
-  </div>
-  <div #pagination>
-    <mat-paginator
-      tabindex="0"
-      [pageSize]="30"
-      class="mat-paginator-sticky bt"
-    ></mat-paginator>
-  </div>
-</div>
 </div>
 
 <ng-template #NoData>
