@@ -30,12 +30,8 @@ import {
   FusionDataSource,
   Sort,
 } from '@zhealthcare/plugin/data-source';
+import { HeaderService, ScrollService } from '@zhealthcare/ux';
 import {
-  HeaderService,
-  ScrollService
-} from '@zhealthcare/ux';
-import {
-  BehaviorSubject,
   catchError,
   map,
   merge,
@@ -44,19 +40,20 @@ import {
   takeUntil,
   tap,
   of as observableOf,
-  debounce,
   debounceTime,
 } from 'rxjs';
-import * as moment from "moment";
-import { HttpHeaders } from '@angular/common/http';
+import * as moment from 'moment';
 import { GridService } from '../../services/grid.service';
+import { PatientGridColInfo } from '../../configs/column-info.config';
+import { environment } from 'apps/remote/src/environments/environment';
+import { PatientService } from '../../services/patient.service';
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'tenant-list',
-  templateUrl: './tenant-list.component.html',
+  selector: 'zhc-patient-grid',
+  templateUrl: './patient-grid.component.html',
   //   styleUrls: ['./provider-list.component.scss'],
 })
-export class TenantListComponent implements OnInit, AfterViewInit, OnDestroy {
+export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly _unsubscribe: Subject<any>;
   displayedColumns$: Observable<string[]>;
   isLoadingResults = true;
@@ -72,7 +69,7 @@ export class TenantListComponent implements OnInit, AfterViewInit, OnDestroy {
   textContainerElement: Element;
   defaultFilters: Filter[];
   gridFilter: Filter[] = [];
-  filterObj = []
+  filterObj = [];
   numberOfAppliedFilter = 0;
   columnInformation: ColumnOption[];
   fusionData$;
@@ -99,7 +96,7 @@ export class TenantListComponent implements OnInit, AfterViewInit, OnDestroy {
   stickyTable = '#stickyColumnTable';
   columnsToSearch = ['name', 'tenantId', 'region', 'timeZone', 'location'];
 
-  @Output() tenantClick: EventEmitter<any> = new EventEmitter<any>();
+  @Output() patientClick: EventEmitter<any> = new EventEmitter<any>();
   constructor(
     public dataSourceComponentService: DataSourceComponentService,
     public datasourceFacade: DataSourceFacade,
@@ -108,21 +105,19 @@ export class TenantListComponent implements OnInit, AfterViewInit, OnDestroy {
     public _headerService: HeaderService,
     public _scrollService: ScrollService,
     private readonly _fusionNavigationService: FusionNavigationService,
+    private readonly _patientService: PatientService,
     private readonly userFacade: UserFacade,
     public datepipe: DatePipe,
     public _media: MediaObserver,
-    protected metaSandbox: MetaSandbox,
-    protected configService: FusionConfigService,
-    private _tenantSelectionFilterService:TenantSelectionFilterService
+    protected configService: FusionConfigService
   ) {
     this._unsubscribe = new Subject();
     this.datasourceFacade.DataSourceDestroy();
-    this.serviceEndPoint =
-      this.configService.getservice('foundation.meta').endpoint;
+    this.serviceEndPoint = this._patientService.getBaseEndpoint();
     this.loggedInUser$ = this.userFacade.UserState$.pipe(
       takeUntil(this._unsubscribe)
     );
-    this.columnInformation = TenantListModel;
+    this.columnInformation = PatientGridColInfo;
     this.defaultFilters = [];
     this.InitializeDataSource();
     this.applyFilter();
@@ -137,14 +132,10 @@ export class TenantListComponent implements OnInit, AfterViewInit, OnDestroy {
           this.gridData = res;
         }
       });
-  }
+  }2
   InitializeDataSource() {
     const dataSource: FusionDataSource = new FusionDataSource();
-    dataSource.endPoint = `${this.serviceEndPoint}/Tenant/DetailedInfo`;
-    dataSource.customHeaders = [
-      { name: 'tenantId', value: 'Base'},
-      { name: 'ouCodes', value: '1000'}
-    ]
+    dataSource.endPoint = this.serviceEndPoint;
     dataSource.filters = this.defaultFilters;
     dataSource.displayColumns = this.columnInformation.filter(
       (x) => x.isDisplayColumn
@@ -183,17 +174,15 @@ export class TenantListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-     if (this._tenantListDrawerService.reloadFilter) {
-      this._tenantListDrawerService.reloadFilter.subscribe((data) => {
+    if (this._patientGridService.reloadFilter) {
+      this._patientGridService.reloadFilter.subscribe((data) => {
         if (data) {
           this.applyFilter();
         }
       });
     }
     this.datasourceFacade.datasourceSerchFilter$
-      .pipe(
-        debounceTime(300),
-        takeUntil(this._unsubscribe))
+      .pipe(debounceTime(300), takeUntil(this._unsubscribe))
       .subscribe((x) => {
         if (x !== undefined && x !== null) {
           this.currentField = x.fieldName;
@@ -205,11 +194,6 @@ export class TenantListComponent implements OnInit, AfterViewInit, OnDestroy {
     Logger.trace(
       `TenantListModule :TenantListComponent => ngOnInit() completed`
     );
-  }
-  getNavigations() {
-    return this._fusionNavigationService.getNavigationItem('sso.config')[
-      'children'
-    ];
   }
 
   isChecked(id) {
@@ -226,9 +210,6 @@ export class TenantListComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.paginator?.pageIndex !== undefined) {
       this.paginator.pageIndex = 0;
     }
-    Logger.trace(
-      `StudentModule : SearchComponent => initPagination()=> page set to : ${this.paginator?.pageIndex}`
-    );
   }
 
   ngAfterViewInit() {
@@ -266,60 +247,64 @@ export class TenantListComponent implements OnInit, AfterViewInit, OnDestroy {
       return false;
     }
   }
-  applyFilter(){
-    this.filterObj=[];
-    const filtervalues = this._tenantSelectionFilterService.getAppliedFilters();
-    if(filtervalues && filtervalues.length > 0){
+  applyFilter() {
+    this.filterObj = [];
+    const filtervalues = this._patientGridService.getAppliedFilters();
+    if (filtervalues && filtervalues.length > 0) {
       this.filterObj = [...filtervalues];
     }
-    if( this.filterObj.length > 0){
+    if (this.filterObj.length > 0) {
       this.datasourceFacade.updateAllDataSourceFilter(this.filterObj, 0);
-      const searchFilter  = this.filterObj.filter(ele => ele.fieldName === 'SearchString')
-      if(searchFilter && searchFilter.length > 0){
+      const searchFilter = this.filterObj.filter(
+        (ele) => ele.fieldName === 'SearchString'
+      );
+      if (searchFilter && searchFilter.length > 0) {
         this.searchValue = searchFilter[0].value;
       }
     }
-
-
   }
 
   applySearch(event) {
     const searchValue = this.searchValue?.trim();
-    if(searchValue.length > 0){
-    const searchFilter = [...this.filterObj];
-    if(!(searchFilter.some(ele => ele.fieldName === 'SearchString'))){
-      searchFilter.push({
-        fieldName: 'SearchString',
-        value: searchValue,
-        operator: 'Equals',
-        type: 'dropdown',
-        displayName: 'Search Tenant',
-      });
-    }else {
-      const searchIndex = searchFilter.findIndex(ele => ele.fieldName === 'SearchString');
-      searchFilter.splice(searchIndex,1,{
-        fieldName: 'SearchString',
-        value: searchValue,
-        operator: 'Equals',
-        type: 'dropdown',
-        displayName: 'Search Tenant',
-      });
+    if (searchValue.length > 0) {
+      const searchFilter = [...this.filterObj];
+      if (!searchFilter.some((ele) => ele.fieldName === 'SearchString')) {
+        searchFilter.push({
+          fieldName: 'SearchString',
+          value: searchValue,
+          operator: 'Equals',
+          type: 'dropdown',
+          displayName: 'Search Patient',
+        });
+      } else {
+        const searchIndex = searchFilter.findIndex(
+          (ele) => ele.fieldName === 'SearchString'
+        );
+        searchFilter.splice(searchIndex, 1, {
+          fieldName: 'SearchString',
+          value: searchValue,
+          operator: 'Equals',
+          type: 'dropdown',
+          displayName: 'Search Patient',
+        });
       }
-    this.filterObj = [...searchFilter];
-    this.datasourceFacade.updateAllDataSourceFilter(this.filterObj, 0);
-    this._tenantSelectionFilterService.setAppliedFilters(this.filterObj);
+      this.filterObj = [...searchFilter];
+      this.datasourceFacade.updateAllDataSourceFilter(this.filterObj, 0);
+      this._patientGridService.setAppliedFilters(this.filterObj);
     }
-    if(searchValue.length === 0){
+    if (searchValue.length === 0) {
       this.clearSearch();
     }
   }
 
   clearSearch() {
     this.searchValue = '';
-    const searchFilter  = this.filterObj.filter(ele => ele.fieldName !== 'SearchString')
-  this.filterObj = [...searchFilter];
-  this.datasourceFacade.updateAllDataSourceFilter(this.filterObj, 0);
-    this._tenantSelectionFilterService.setAppliedFilters(this.filterObj);
+    const searchFilter = this.filterObj.filter(
+      (ele) => ele.fieldName !== 'SearchString'
+    );
+    this.filterObj = [...searchFilter];
+    this.datasourceFacade.updateAllDataSourceFilter(this.filterObj, 0);
+    this._patientGridService.setAppliedFilters(this.filterObj);
   }
 
   getLatestFusionFilter() {
@@ -357,9 +342,6 @@ export class TenantListComponent implements OnInit, AfterViewInit, OnDestroy {
       operator: filterData.operator,
       value: filterValue.trim(),
     });
-    Logger.trace(
-      `StudentModule : SearchComponent => clearFilters()=> all filter cleared`
-    );
   }
 
   resetFilter() {
@@ -372,12 +354,11 @@ export class TenantListComponent implements OnInit, AfterViewInit, OnDestroy {
     });
     this.gridFilter = [];
     this.datasourceFacade.updateAllDataSourceFilter(this.gridFilter);
-
   }
 
   textChanged(textValue) {
-    this.datasourceFacade.updateSerchFilter('fullName', {
-      fieldName: 'fullName',
+    this.datasourceFacade.updateSerchFilter('name', {
+      fieldName: 'name',
       operator: 'contains',
       value: textValue,
       type: 'search',
@@ -426,16 +407,9 @@ export class TenantListComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     this.highlightedRows = new Set<ColumnOption>();
   }
-  selectTenant(selectedTenantId) {
-    this.tenantClick.emit(selectedTenantId);
+  selectPatient(selectedPatientId) {
+    this.patientClick.emit(selectedPatientId);
   }
-
-  convertDateIntoIst(date){
-    if(date){
-      return moment.utc(date).local().format('D MMM, YYYY h:mm A [IST]');
-    }
-    return null;
-   }
 
   ngOnDestroy(): void {
     this._unsubscribe.next(true);

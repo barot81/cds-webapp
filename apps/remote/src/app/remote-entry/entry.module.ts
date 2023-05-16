@@ -24,6 +24,7 @@ import { GeneralCommentsComponent } from '../patient-details/general-comments/ge
 import { FeatureMetaDataPipesModule } from '@zhealthcare/fusion/pipes';
 import { PatientFindingsComponent } from '../patient-details/patient-finding/patient-findings.component';
 import { zhealthcareAvatarModule } from '@zhealthcare/plugin/file-upload';
+import { PatientGridComponent } from '../patients/patients-grid/patient-grid.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { zhealthcareAvatarModule } from '@zhealthcare/plugin/file-upload';
     ShowMoreFilterDrawerComponent,
     PatientHeaderComponent,
     GeneralCommentsComponent,
-    PatientFindingsComponent
+    PatientFindingsComponent,
+    PatientGridComponent
 ],
   imports: [
     CommonModule,
@@ -65,7 +67,7 @@ import { zhealthcareAvatarModule } from '@zhealthcare/plugin/file-upload';
         children: [
           {
             path: 'patients',
-            component: PatientsGridComponent
+            component: PatientGridComponent
           },
           {
             path: 'patients/:id/details',
