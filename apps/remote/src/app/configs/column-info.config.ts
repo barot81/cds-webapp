@@ -3,7 +3,7 @@ import { ColumnOption } from "../models/datasource/columnOption.model";
 export const PatientGridColInfo: ColumnOption[] = [
   {
     displayName: 'Name',
-    fieldName: 'name',
+    fieldName: 'firstName',
     isSearchable: true,
     isDisplayColumn: true
   },

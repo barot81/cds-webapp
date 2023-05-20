@@ -153,7 +153,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
       },
     };
     const sort: Sort = {
-      columnName: 'name', //this.defaultSortCoulmn,
+      columnName: 'firstName', //this.defaultSortCoulmn,
       direction: 'asc',
       customFieldParm: {
         sortByFieldName: 'SortByField',
