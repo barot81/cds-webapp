@@ -245,9 +245,10 @@
             [class.row-selected]="clickedRows?.has(row)" [class.row-highlighted]="highlightedRows?.has(row)"></tr>
         </table>
         <div
-        *ngIf="(datasourceFacade.fusionDataSourceLoading$ | async ) === false && (datasourceFacade.dataSourceTotal$ | async)===0"
+        *ngIf="(datasourceFacade.fusionDataSourceLoading$ | async ) === false
+        && (datasourceFacade.dataSourceTotal$ | async) === 0"
         fxLayout="row wrap" fxLayoutAlign="center" class="pt-16 result-found-style warn-fg" tabindex="0"
-        aria-label="2 search results found">
+        aria-label="no data found.">
         We are sorry. No data found
       </div>
       </div>

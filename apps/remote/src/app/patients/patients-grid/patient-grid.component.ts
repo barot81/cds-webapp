@@ -45,7 +45,6 @@ import {
 import * as moment from 'moment';
 import { GridService } from '../../services/grid.service';
 import { PatientGridColInfo } from '../../configs/column-info.config';
-import { environment } from 'apps/remote/src/environments/environment';
 import { PatientService } from '../../services/patient.service';
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -113,7 +112,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {
     this._unsubscribe = new Subject();
     this.datasourceFacade.DataSourceDestroy();
-    this.serviceEndPoint = this._patientService.getBaseEndpoint();
+    this.serviceEndPoint = this._patientService.getDatasourceBaseEndpoint();
     this.loggedInUser$ = this.userFacade.UserState$.pipe(
       takeUntil(this._unsubscribe)
     );
@@ -154,10 +153,10 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     };
     const sort: Sort = {
       columnName: 'firstName', //this.defaultSortCoulmn,
-      direction: 'asc',
+      direction: '1',
       customFieldParm: {
-        sortByFieldName: 'SortByField',
-        sortDirectionFieldName: 'OrderBy',
+        sortByFieldName: 'SortBy',
+        sortDirectionFieldName: 'Order',
       },
     };
     dataSource.sort = sort;

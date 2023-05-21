@@ -60,6 +60,12 @@ export class PatientService {
     return url;
   }
 
+  public getDatasourceBaseEndpoint() {
+    const facility = localStorage.getItem('TenantId');
+    const url = `${environment.baseUrl}/api/${facility}/patientsInfo`;
+    return url;
+  }
+
   private generateFakePatients(facility: string) {
     this.patients = generatePatients(100);
     this.patients

@@ -5,62 +5,62 @@
     "unauthorizedEndpoints": [],
     "notFoundEndpoints": [],
     "auth": {
-      "endpoint": "https://api-identity.dev.exxat.net"
+      "endpoint": "https://api-identity.dev.zhealthcare.net"
     },
     "realtime": {
-      "endpoint": "https://foundation-meta-gw.dev.exxat.net/Account"
+      "endpoint": "https://foundation-meta-gw.dev.zhealthcare.net/Account"
     },
     "gateway": {
       "endpoint": ""
     },
     "services": {
       "foundation.meta": {
-        "endpoint": "https://api-meta.dev.exxat.net"
+        "endpoint": "https://api-meta.dev.zhealthcare.net"
       },
       "v3.account": {
-        "endpoint": "https://exxat-dev-webapps.azurewebsites.net/fusion/account/LoginWithToken"
+        "endpoint": "https://zhealthcare-dev-webapps.azurewebsites.net/fusion/account/LoginWithToken"
       },
       "v3.launch": {
-        "endpoint": "https://exxat-dev-webapps.azurewebsites.net/Fusion/Home/Launch"
+        "endpoint": "https://zhealthcare-dev-webapps.azurewebsites.net/Fusion/Home/Launch"
       },
       "v3.login": {
-        "endpoint": "https://exxat-dev-webapps.azurewebsites.net/Fusion/Account/Login"
+        "endpoint": "https://zhealthcare-dev-webapps.azurewebsites.net/Fusion/Account/Login"
       },
       "help.center": {
         "endpoint": "http://localhost:65301"
       },
       "payment": {
-        "endpoint": "https://api-payment.dev.exxat.net"
+        "endpoint": "https://api-payment.dev.zhealthcare.net"
       },
       "settingdictionary": {
-        "endpoint": "https://api-config-labels.dev.exxat.net/"
+        "endpoint": "https://api-config-labels.dev.zhealthcare.net/"
       },
       "featureflag": {
-        "endpoint": "https://api-feature-management.dev.exxat.net/"
+        "endpoint": "https://api-feature-management.dev.zhealthcare.net/"
       },
       "help.center.salesForceUrl": {
-        "endpoint": "https://exxat.force.com/v4Help/s/"
+        "endpoint": "https://zhealthcare.force.com/v4Help/s/"
       },
       "help.center.supportNumber": {
         "endpoint": "323-999-1559"
       },
       "help.center.zendeskURL": {
-        "endpoint": "https://exxat.zendesk.com/"
+        "endpoint": "https://zhealthcare.zendesk.com/"
       },
-      "help.center.exxatForceURL": {
-        "endpoint": "https://exxat.force.com/v4Help/s/"
+      "help.center.zhealthcareForceURL": {
+        "endpoint": "https://zhealthcare.force.com/v4Help/s/"
       },
       "prismChatURL": {
-        "endpoint": "https://prism-zendesk-api.dev.exxat.net/"
+        "endpoint": "https://prism-zendesk-api.dev.zhealthcare.net/"
       },
       "foundation.registration": {
-        "endpoint": "https://api-registration.dev.exxat.net"
+        "endpoint": "https://api-registration.dev.zhealthcare.net"
       },
       "tenantonboarding": {
-        "endpoint": "https://api-tenantonboarding.dev.exxat.net"
+        "endpoint": "https://api-tenantonboarding.dev.zhealthcare.net"
       },
       "userConfiguration": {
-        "endpoint": "https://api-userconfiguration.dev.exxat.net"
+        "endpoint": "https://api-userconfiguration.dev.zhealthcare.net"
       }
     },
     "microfrontends": {
@@ -105,12 +105,12 @@
     },
     "azureAdB2C": {
       "clientId": "78b46724-ca0f-44a8-b9e8-8572512a5150",
-      "activeDirectory": "exxatdev",
-      "tenant": "exxatdev.onmicrosoft.com",
+      "activeDirectory": "zhealthcaredev",
+      "tenant": "zhealthcaredev.onmicrosoft.com",
       "signUpSignInPolicyId": "B2C_1_DefaultSignUpAndSignIn",
       "forgotPassword": "B2C_1_DefaultPasswordReset",
       "redirectUri": "http://localhost:4200/admission/login",
-      "b2cScopes": ["https://exxatdev.onmicrosoft.com/api/read"]
+      "b2cScopes": ["https://zhealthcaredev.onmicrosoft.com/api/read"]
     },
     "authGuardSettings": {
       "loginUrl": "/account/login",
@@ -147,10 +147,10 @@
         "controlSettings": {
           "searchControlSetting": {
             "apiKey": "A917C2E2B64B7F87B7B285472BE5E297",
-            "searchUriICD": "https://datasearchexxat.search.windows.net/indexes/dev-icd-index/docs/search?api-version=2019-05-06",
-            "autocompleteUriICD": "https://datasearchexxat.search.windows.net/indexes/dev-icd-index/docs/autocomplete?",
-            "searchUriCPT": "https://datasearchexxat.search.windows.net/indexes/dev-cpt-index/docs/search?api-version=2019-05-06",
-            "autocompleteUriCPT": "https://datasearchexxat.search.windows.net/indexes/dev-cpt-index/docs/autocomplete?"
+            "searchUriICD": "https://datasearchzhealthcare.search.windows.net/indexes/dev-icd-index/docs/search?api-version=2019-05-06",
+            "autocompleteUriICD": "https://datasearchzhealthcare.search.windows.net/indexes/dev-icd-index/docs/autocomplete?",
+            "searchUriCPT": "https://datasearchzhealthcare.search.windows.net/indexes/dev-cpt-index/docs/search?api-version=2019-05-06",
+            "autocompleteUriCPT": "https://datasearchzhealthcare.search.windows.net/indexes/dev-cpt-index/docs/autocomplete?"
           }
         }
       }

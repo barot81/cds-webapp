@@ -49,7 +49,9 @@ export class DataSourceFacade {
     customHeaders: CustomHeader[] = [],
     applyPagination = true,
     sort: Sort = null,
-    requestType: string = MethodType.GET
+    requestType: string = MethodType.GET,
+    filters?: Filter[],
+    pagination?:Pagination
   ) {
     // localStorage.removeItem('fusionDataSource'); : kp
     let fusionDataSource: FusionDataSource = JSON.parse(
@@ -73,8 +75,17 @@ export class DataSourceFacade {
       if (sort !== null) {
         fusionDataSource.sort = { ...fusionDataSource.sort, ...sort };
       }
+      if (pagination !== null) {
+        fusionDataSource.pagination = { ...fusionDataSource.pagination, ...pagination };
+      }
       fusionDataSource.filters = [];
       fusionDataSource.requestType = requestType;
+      if(customHeaders && customHeaders.length > 0){
+        fusionDataSource.customHeaders = customHeaders;
+      }
+      if(filters && filters.length > 0){
+        fusionDataSource.filters = filters;
+      }
       localStorage.setItem(
         'fusionDataSource',
         JSON.stringify(fusionDataSource)
@@ -88,6 +99,8 @@ export class DataSourceFacade {
         applyPagination: applyPagination,
         sort: fusionDataSource.sort,
         requestType: requestType,
+        filters:fusionDataSource.filters,
+        pagination:fusionDataSource.pagination
       })
     );
   }
@@ -156,6 +169,7 @@ export class DataSourceFacade {
         payload.filters === (undefined || null) || payload.filters?.length === 0
           ? fusionDataSource.filters
           : payload.filters;
+    fusionDataSource.customHeaders = payload.customHeaders;
     localStorage.setItem('fusionDataSource', JSON.stringify(fusionDataSource));
 
     this.store.dispatch(
@@ -204,8 +218,7 @@ export class DataSourceFacade {
     fusionDataSource.filters = filters;
 
     if (
-      fusionDataSource.pagination !== undefined &&
-      fusionDataSource.pagination !== null
+      fusionDataSource.pagination
     ) {
       fusionDataSource.pagination.startIndex = startIndex;
       fusionDataSource.pagination.pageSize = pageSize;
@@ -233,10 +246,7 @@ export class DataSourceFacade {
     );
     let filters = [];
     if (
-      fusionDataSource &&
-      fusionDataSource !== null &&
-      fusionDataSource.filters !== undefined &&
-      fusionDataSource.filters !== null
+      fusionDataSource?.filters
     )
       filters = [
         ...fusionDataSource.filters.filter((x) => x.type !== 'search'),
@@ -244,10 +254,7 @@ export class DataSourceFacade {
     filters.push(filter);
 
     if (
-      fusionDataSource &&
-      fusionDataSource !== null &&
-      fusionDataSource.pagination !== undefined &&
-      fusionDataSource.pagination !== null
+      fusionDataSource?.pagination
     ) {
       fusionDataSource.pagination.startIndex = 0;
       fusionDataSource.pagination.pageSize = pageSize;
@@ -279,7 +286,7 @@ export class DataSourceFacade {
     const fusionDataSource: FusionDataSource = JSON.parse(
       localStorage.getItem('fusionDataSource')
     );
-    if(!!columnName){
+    if(columnName){
       fusionDataSource.sort.columnName = columnName;
       fusionDataSource.sort.direction = direction;
     }
@@ -301,6 +308,7 @@ export class DataSourceFacade {
           remainingDisplayColumns: [],
           requestType: null,
           multiColumnSearch: null,
+          customHeaders:fusionDataSource.customHeaders
         },
       })
     );

@@ -2,8 +2,15 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { FusionFormAdapter, FusionFormComponent } from '@zhealthcare/fusion/components';
+import {
+  FusionFormAdapter,
+  FusionFormComponent,
+} from '@zhealthcare/fusion/components';
+import { DataSourceFacade, Filter, FusionDataSource } from '@zhealthcare/plugin/data-source';
 import { TagView, zhealthcareTag } from '@zhealthcare/plugin/tags';
+import { DrawerService, ThemeSelectionComponent } from '@zhealthcare/ux';
+import { Subject, takeUntil } from 'rxjs';
+import { GridService } from '../../services/grid.service';
 import { SidebarFocusHelper } from '../../services/sidebar-helper.service';
 
 export interface filterListItem {
@@ -21,8 +28,11 @@ export interface statusBadge {
   selector: 'ryzen-filter-drawer',
   templateUrl: './filter-drawer.component.html',
 })
-export class FilterDrawerComponent  extends FusionFormComponent
-implements FusionFormAdapter, OnInit {
+export class FilterDrawerComponent
+  extends FusionFormComponent
+  implements FusionFormAdapter, OnInit
+{
+  private readonly _unsubscribe: Subject<any>;
   tags: Array<zhealthcareTag> = [
     {
       id: Math.random(),
@@ -116,9 +126,22 @@ implements FusionFormAdapter, OnInit {
   ];
 
   statusList = ['New', 'Reviewed', 'Later Review', 'No Query', 'Non DRG'];
-  queryStatusList = ['Pending', 'Answered', 'Completed', 'Dropped', 'No Response'];
+  queryStatusList = [
+    'Pending',
+    'Answered',
+    'Completed',
+    'Dropped',
+    'No Response',
+  ];
 
-  constructor(public _focus: SidebarFocusHelper, private fb: FormBuilder) {
+  constructor(
+    public _focus: SidebarFocusHelper,
+    private fb: FormBuilder,
+    private dataSourceFacade: DataSourceFacade,
+    public drawerService: DrawerService,
+    private gridService: GridService
+
+  ) {
     super();
     this.selectedId = this.filterList[0].id;
     this.filterFormGroup = this.fb.group({
@@ -134,6 +157,32 @@ implements FusionFormAdapter, OnInit {
   ngOnInit() {
     this.selectedStatus = [];
     this.selectedQueryStatus = [];
+    this.dataSourceFacade.fusionDataSource$
+      .pipe(takeUntil(this._unsubscribe))
+      .subscribe((x) => {
+        if (x !== undefined && x !== null && x.filters?.length > 0) {
+          this.setFilterValue(x);
+        }
+        this.updateCount();
+      });
+    this.updateCount();
+    this.drawerService.setPrimaryActionState(false, false);
+  }
+
+  setFilterValue(dataSource: FusionDataSource) {
+    this.fusionFormGroup.patchValue({
+      status: dataSource.filters.filter(x=>x.fieldName === 'status').map(x=>x.value),
+      queryStatus: dataSource.filters.filter(x=>x.fieldName === 'queryStatus').map(x=>x.value),
+      admissionStartDate: dataSource.filters.find(x=>x.fieldName == 'admissionStartDate').value,
+      admissionEndDate: dataSource.filters.find(x=>x.fieldName == 'admissionEndDate').value,
+      dischargeStartDate: dataSource.filters.find(x=>x.fieldName == 'dischargeStartDate').value,
+      dischargeEndDate: dataSource.filters.find(x=>x.fieldName == 'dischargeEndDate').value
+    });
+  }
+
+  updateCount() {
+      this.filterList.find(x => x.id === 'status').count = this.selectedStatus.length;
+      this.filterList.find(x => x.id === 'queryStatus').count = this.selectedQueryStatus.length;
   }
 
   navigateToFilterListItem(id: string) {
@@ -231,7 +280,64 @@ implements FusionFormAdapter, OnInit {
     this.unselect('queryStatus');
   }
 
-  primaryAction() {}
+  primaryAction() {
+    const filters: Filter[] = [];
+    if (this.selectedStatus && this.selectedStatus.length > 0) {
+      this.selectedStatus.forEach((ele) =>{
+        filters.push({
+          fieldName: 'Filters.Status',
+          value: ele,
+          operator: 'eq',
+          type: 'dropdown',
+          displayName: 'Status'
+        });
+      })
+    }
+    if (this.selectedQueryStatus && this.selectedQueryStatus.length > 0) {
+      this.selectedQueryStatus.forEach((ele) => {
+        filters.push({
+          fieldName: 'Filters.QueryStatus',
+          value: ele,
+          operator: 'eq',
+          type: 'dropdown',
+          displayName: 'Query Status'
+        });
+      });
+    }
+    const fieldsMapping = [
+      {
+        controlName: 'admissionStartDate',
+        filterName: 'Filters.AdmissionStartDate'
+      },
+      {
+        controlName: 'admissionEndDate',
+        filterName: 'Filters.AdmissionEndDate'
+      },
+      {
+        controlName: 'dischargeStartDate',
+        filterName: 'Filters.DischargeStartDate'
+      },
+      {
+        controlName: 'dischargeEndDate',
+        filterName: 'Filters.DischargeEndDate'
+      },
+    ]
+    fieldsMapping.forEach(prop => {
+      const fieldValue = this.filterFormGroup.controls[prop.controlName].value;
+      if (fieldValue) {
+        filters.push({
+          fieldName: prop.controlName,
+          value: fieldValue,
+          operator: 'eq',
+          type: 'dropdown',
+          displayName: prop.controlName
+        });
+      }
+
+    });
+    this.dataSourceFacade.updateAllDataSourceFilter(filters);
+    this.gridService.setAppliedFilters(filters);
+  }
   secondaryAction() {}
   panelClose() {}
 }

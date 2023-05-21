@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'zhealthcare-toggle-filter',
+  selector: 'zhc-toggle-filter',
   templateUrl: './zhealthcare-toggle-filter.component.html',
   styleUrls: ['./zhealthcare-toggle-filter.component.scss']
 })

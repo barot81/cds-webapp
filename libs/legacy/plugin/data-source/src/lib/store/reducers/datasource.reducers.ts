@@ -37,18 +37,20 @@ const dataSourceReducer = createReducer(
   initialFusionDataSource,
   on(
     DataSourceActions.LoadDataSource,
-    (state: FusionDataSource, { endPoint, columnOptions, sort, requestType }) => {
-      const pagination = { ...state.pagination };
-      pagination.startIndex = pagination.startIndex || 0;
+    (state: FusionDataSource, { endPoint, columnOptions,customHeaders, applyPagination,sort, requestType, filters, pagination }) => {
+      const _pagination = pagination || { ...state.pagination };
       return {
         ...state,
         loading: true,
         endPoint: endPoint,
         displayColumns: columnOptions.filter(x => x.isDisplayColumn),
         remainingDisplayColumns: columnOptions.filter(x => x.isRemainingDisplayColumn),
-        pagination: pagination,
+        pagination: _pagination,
         sort: sort,
-        requestType: requestType
+        filters: filters,
+        requestType: requestType,
+        customHeaders:customHeaders,
+        applyPagination:applyPagination
       };
     }
   ),

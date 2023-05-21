@@ -1,6 +1,8 @@
+/* eslint-disable no-unsafe-optional-chaining */
+/* eslint-disable @angular-eslint/component-selector */
 import { AfterViewInit, Component } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { DrawerAdapter, DrawerService } from '@zhealthcare/ux';
+import { DrawerAdapter, ManifoldPanelService, DrawerService } from '@zhealthcare/ux';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DataSourceFacade } from '../../store/facades/datasource.facade';
 import { FusionFormComponent } from '@zhealthcare/fusion/components';
@@ -20,11 +22,12 @@ export class zhealthcareDisplayColumnsFormComponent
   editColumnsForm: FormGroup;
   data: any;
   key: string;
-  removeColumnFlag: boolean = false;
+  removeColumnFlag = false;
 
   constructor(
     private _formBuilder: FormBuilder,
     public dataSourceFacade: DataSourceFacade,
+    private readonly _maniFoldPanelService: ManifoldPanelService,
     public drawerService: DrawerService
   ) {
     super();
@@ -36,7 +39,7 @@ export class zhealthcareDisplayColumnsFormComponent
             ? [...x?.remainingDisplayColumns]
             : [];
         this.fusionFormGroup = this._formBuilder.group({
-          columnControl: [this.displayColumns[0]]
+          columnControl: [this.displayColumns[0]],
         });
       })
       .unsubscribe();
@@ -46,7 +49,7 @@ export class zhealthcareDisplayColumnsFormComponent
   }
 
   ngAfterViewInit(): void {
-    this.drawerService.setPrimaryActionState(false, false);
+    this._maniFoldPanelService.managePrimaryActionStyle(true);
   }
 
   primaryAction() {
@@ -54,7 +57,7 @@ export class zhealthcareDisplayColumnsFormComponent
       this.displayColumns,
       this.remainingDisplayColumns
     );
-    this.drawerService.closeDrawer();
+    this._maniFoldPanelService.closeCurrentManifoldPanel();
   }
 
   secondaryAction() {
@@ -62,7 +65,9 @@ export class zhealthcareDisplayColumnsFormComponent
   }
 
   drop(event: CdkDragDrop<ColumnOption[]>) {
-    this.drawerService.setPrimaryActionState(this.fusionFormGroup.valid, false);
+    this._maniFoldPanelService.managePrimaryActionStyle(
+      !this.fusionFormGroup.valid
+    );
     moveItemInArray(
       (this.displayColumns = this.displayColumns.slice()),
       event.previousIndex,
@@ -81,9 +86,8 @@ export class zhealthcareDisplayColumnsFormComponent
       const updatedDisplayColumns = [...this.displayColumns];
       updatedDisplayColumns.splice(currentColumnIndex, 1);
       this.displayColumns = updatedDisplayColumns;
-      this.drawerService.setPrimaryActionState(
-        this.fusionFormGroup.valid,
-        false
+      this._maniFoldPanelService.managePrimaryActionStyle(
+        !this.fusionFormGroup.valid
       );
     } else {
       this.removeColumnFlag = true;
@@ -101,6 +105,8 @@ export class zhealthcareDisplayColumnsFormComponent
     const updatedDisplayColumns = [...this.remainingDisplayColumns];
     updatedDisplayColumns.splice(currentColumnIndex, 1);
     this.remainingDisplayColumns = updatedDisplayColumns;
-    this.drawerService.setPrimaryActionState(this.fusionFormGroup.valid, false);
+    this._maniFoldPanelService.managePrimaryActionStyle(
+      !this.fusionFormGroup.valid
+    );
   }
 }

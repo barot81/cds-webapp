@@ -45,10 +45,10 @@ export class DataSourceService {
           ) {
             if (dataSource.sort.customFieldParm) {
               endpoint +=
-                (endpoint[endpoint.length - 1] === ('?' || '&') ? '' : '&') + this.getCustomSortData(dataSource);
+                (endpoint[endpoint.length - 1] === ('?' || '&') ? '' : endpoint.includes('?') ? '&' : '?') + this.getCustomSortData(dataSource);
             } else {
               endpoint +=
-                (endpoint[endpoint.length - 1] === ('?' || '&') ? '' : '&') +
+                (endpoint[endpoint.length - 1] === ('?' || '&') ? '' : endpoint.includes('?') ? '&' : '?') +
                 `$SortBy=${dataSource.sort.columnName} ${dataSource.sort.direction}`;
             }
           }
@@ -85,7 +85,7 @@ export class DataSourceService {
               dataSource.filters.forEach((filter) => {
                 const currentFilter = this.getFilter(filter);
                 subEndpoint +=
-                  dataSource?.filterQueryparmByFieldName ? `${currentFilter}&` : (currentFilter?.length > 2 ? `and ${currentFilter}` : '');
+                  dataSource?.filterQueryparmByFieldName ? `${currentFilter}&` : (currentFilter?.length > 2 ? ` and ${currentFilter}` : '');
               });
               if (subEndpoint.length > 2)
               endpoint +=
@@ -120,8 +120,8 @@ export class DataSourceService {
           if (filter.value.length == 1)
             return `${filter.fieldName} eq '${filter.value[0]}'`;
         } else if (
-          filter.fieldName !== (undefined || null || '') &&
-          filter.value !== (undefined || null || '')
+          filter.fieldName &&
+          filter.value
         ) {
           const filterValue = filter.value
             .replace('&', '&&')
@@ -222,12 +222,12 @@ export class DataSourceService {
 
     if (customHeaders.length > 0) {
       customHeaders.forEach((x) => {
-        headers = headers.append(x.name, x.value);
+        headers = headers.set(x.name, x.value);
       });
     }
     if (this.customHeaders && this.customHeaders.length > 0) {
       this.customHeaders.forEach((x) => {
-        headers = headers.append(x.name, x.value);
+        headers = headers.set(x.name, x.value);
       });
     }
     return headers;
@@ -333,12 +333,7 @@ export class DataSourceService {
     let requestType: string;
     this.dataSourceFacade.fusionDataSource$
       .subscribe((x) => {
-        if (
-          x !== undefined &&
-          x !== null &&
-          x.requestType !== undefined &&
-          x.requestType !== null
-        ) {
+        if (x?.requestType) {
           requestType = x.requestType;
         } else {
           requestType = MethodType.GET;

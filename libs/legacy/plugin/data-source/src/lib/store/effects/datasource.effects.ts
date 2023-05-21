@@ -313,7 +313,8 @@ export class DataSourceEffects {
   ) { }
 
   private formatResponse(response: any, endPoint: string) {
-    return (response?.result && response?.count) ?
+    return (response && typeof response === 'object' && Object.prototype.hasOwnProperty.call(response, 'result')
+      && Object.prototype.hasOwnProperty.call(response, 'count')) ?
       {
         data: response.result,
         total: response.count,

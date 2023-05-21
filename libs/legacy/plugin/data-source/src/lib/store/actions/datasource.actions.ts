@@ -16,6 +16,8 @@ export const LoadDataSource = createAction(
     applyPagination: boolean;
     sort: Sort;
     requestType: string;
+    filters: Filter[];
+    pagination:Pagination
   }>()
 );
 
@@ -23,6 +25,7 @@ export const InitializeDataSource = createAction(
   '[DataSource Initialized] DataSource Initialized',
   props<{ payload: any }>()
 );
+
 export const DataSourceLoaded = createAction(
   '[DataSource Loaded] DataSource Loaded',
   props<{ payload: any }>()
