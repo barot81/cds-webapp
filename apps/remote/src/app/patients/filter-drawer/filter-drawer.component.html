@@ -27,7 +27,7 @@
                 <span>{{ item.title }}
                   <span *ngIf="item.count > 0">({{ item.count }})</span></span>
               </div>
-              <div fxLayout="row" fxLayoutAlign="end center">
+              <div fxLayout="row" fxLayoutAlign="end center" *ngIf="item.count > 0">
                 <i aria-hidden="true" class="fa-solid fa-circle warn-fg s-8"></i>
               </div>
             </div>

@@ -13,6 +13,7 @@ import {
 } from '@zhealthcare/plugin/data-source';
 import { TagView, zhealthcareTag } from '@zhealthcare/plugin/tags';
 import { DrawerService } from '@zhealthcare/ux';
+import moment from 'moment';
 import { Subject, takeUntil } from 'rxjs';
 import { GridService } from '../../services/grid.service';
 import { SidebarFocusHelper } from '../../services/sidebar-helper.service';
@@ -147,6 +148,7 @@ export class FilterDrawerComponent
     public drawerService: DrawerService,
     private gridService: GridService
   ) {
+
     super();
     this._unsubscribe = new Subject();
     this.selectedId = this.filterList[0].id;
@@ -186,13 +188,13 @@ export class FilterDrawerComponent
       .forEach(x => this.queryStatusList.find((y) => y.name === x.value).isSelected = true);
 
     const stDate = dataSource.filters.find(x => x.fieldName == 'Filters.AdmissionStartDate')?.value;
-    const astDate = stDate ? new Date(stDate)?.getTime(): '';
+    const astDate = stDate ? moment(stDate, 'MM/DD/YYYY'): '';
     const endDate = dataSource.filters.find(x => x.fieldName == 'Filters.AdmissionEndDate')?.value;
-    const aendDate = endDate ? new Date(endDate)?.getTime(): '';
+    const aendDate = endDate ? moment(endDate, 'MM/DD/YYYY') : '';
     const disStartDate = dataSource.filters.find(x => x.fieldName == 'Filters.DischargeStartDate')?.value;
-    const disStDate = disStartDate ? new Date(disStartDate)?.getTime() : '';
+    const disStDate = disStartDate ?  moment(disStartDate, 'MM/DD/YYYY') : '';
     const disDate = dataSource.filters.find(x => x.fieldName == 'Filters.DischargeEndDate')?.value;
-    const disEndDate = disDate ? new Date(disDate)?.getTime() : '';
+    const disEndDate = disDate ? moment(disDate, 'MM/DD/YYYY') : '';
     this.fusionFormGroup.patchValue({
       status: this.statusList.filter((x) => x.isSelected),
       queryStatus: this.queryStatusList.filter((x) => x.isSelected),
@@ -214,6 +216,8 @@ export class FilterDrawerComponent
       this.selectedStatusCount;
     this.filterList.find((x) => x.id === 'queryStatus').count =
       this.selectedQueryStatusCount;
+      this.filterList.find(x=>x.id === 'admitDate').count = this.fusionFormGroup.controls['admissionStartDate'].value ? 1 : 0;
+      this.filterList.find(x=>x.id === 'dischargeDate').count = this.fusionFormGroup.controls['disrchargeStartDate'].value ? 1 : 0;
   }
 
   navigateToFilterListItem(id: string) {
@@ -225,9 +229,13 @@ export class FilterDrawerComponent
     if (name === 'status') {
       this.statusList.map((x) => (x.isSelected = true));
       this.selectedStatusCount = this.statusList.length;
-    } else if (name === 'queryStatus')
+      this.filterList.find((x) => x.id === 'status').count = this.selectedStatusCount;
+    } else if (name === 'queryStatus') {
       this.queryStatusList.map((x) => (x.isSelected = true));
-    this.selectedQueryStatusCount = this.queryStatusList.length;
+      this.selectedQueryStatusCount = this.queryStatusList.length;
+      this.filterList.find((x) => x.id === 'queryStatus').count = this.selectedStatusCount;
+    }
+
   }
 
   onStatusChange(isChecked: boolean, value: string) {
@@ -235,6 +243,7 @@ export class FilterDrawerComponent
     this.selectedStatusCount = this.statusList.filter(
       (x) => x.isSelected
     ).length;
+    this.filterList.find((x) => x.id === 'status').count = this.selectedStatusCount;
   }
 
   onQueryStatusChange(isChecked: boolean, value: string) {
@@ -243,20 +252,27 @@ export class FilterDrawerComponent
     this.selectedQueryStatusCount = this.queryStatusList.filter(
       (x) => x.isSelected
     ).length;
+    this.filterList.find((x) => x.id === 'queryStatus').count = this.selectedStatusCount;
+
   }
 
   reset(name: string) {
     if (name === 'status') {
       this.statusList.forEach((x) => (x.isSelected = false));
       this.selectedStatusCount = 0;
+      this.filterList.find((x) => x.id === 'status').count = 0;
     } else if (name === 'queryStatus') {
       this.queryStatusList.forEach((x) => (x.isSelected = false));
       this.selectedQueryStatusCount = 0;
+      this.filterList.find((x) => x.id === 'queryStatus').count = 0;
     }
   }
 
   dateChange(propName: string, $event) {
     this.fusionFormGroup.controls[propName].setValue($event.value);
+    propName.includes('discharge')
+    ? this.filterList.find(x=>x.id === 'dischargeDate').count = this.fusionFormGroup.controls[propName].value ? 1 : 0
+    : this.filterList.find(x=>x.id === 'admitDate').count = this.fusionFormGroup.controls[propName].value ? 1 : 0;
   }
 
   resetAllFilters() {
@@ -270,6 +286,7 @@ export class FilterDrawerComponent
     });
     this.reset('status');
     this.reset('queryStatus');
+    this.filterList.forEach(x=>x.count = 0);
   }
 
   primaryAction() {
@@ -323,7 +340,7 @@ export class FilterDrawerComponent
       if (fieldValue) {
         filters.push({
           fieldName: prop.filterName,
-          value: this.convertDateToString(new Date(fieldValue)),
+          value: this.convertDateToString(fieldValue),
           operator: 'eq',
           displayName: prop.controlName,
         });
@@ -333,8 +350,8 @@ export class FilterDrawerComponent
     this.gridService.setAppliedFilters(filters);
   }
 
-  convertDateToString(date: Date) {
-    return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
+  convertDateToString(date) {
+    return `${date.month()+1}/${date.date()}/${date.year()}`;
   }
 
   secondaryAction() {}
