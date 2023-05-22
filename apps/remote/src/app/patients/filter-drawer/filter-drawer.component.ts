@@ -271,8 +271,8 @@ export class FilterDrawerComponent
   dateChange(propName: string, $event) {
     this.fusionFormGroup.controls[propName].setValue($event.value);
     propName.includes('discharge')
-    ? this.filterList.find(x=>x.id === 'dischargeDate').count = this.fusionFormGroup.controls[propName].value ? 1 : 0
-    : this.filterList.find(x=>x.id === 'admitDate').count = this.fusionFormGroup.controls[propName].value ? 1 : 0;
+    ? this.filterList.find(x=>x.id === 'dischargeDate').count = this.fusionFormGroup.controls[propName]?.value ? 1 : 0
+    : this.filterList.find(x=>x.id === 'admitDate').count = this.fusionFormGroup.controls[propName]?.value ? 1 : 0;
   }
 
   resetAllFilters() {

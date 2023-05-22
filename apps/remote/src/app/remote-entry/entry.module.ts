@@ -3,12 +3,9 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { RemoteEntryComponent } from './entry.component';
-import { PatientsGridComponent } from '../patients/patients-grid.component';
 import { FilterDrawerComponent } from '../patients/filter-drawer/filter-drawer.component';
 import { ShowMoreFilterDrawerComponent } from '../patients/show-more-filter-drawer/show-more-filter-drawer.component';
 import { FlexTableModule, FuseDirectivesModule, FuseSharedModule, FuseSidebarModule, FuseThemeOptionsModule, LayoutModule, MaterialModule, ShowMoreModule } from '@zhealthcare/ux';
-
-import { EditColumnsComponent } from '../patients/edit-columns/edit-columns.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -29,9 +26,7 @@ import { PatientGridComponent } from '../patients/patients-grid/patient-grid.com
 @NgModule({
   declarations: [
     RemoteEntryComponent,
-    PatientsGridComponent,
     PatientDetailsComponent,
-    EditColumnsComponent,
     FilterDrawerComponent,
     ShowMoreFilterDrawerComponent,
     PatientHeaderComponent,
