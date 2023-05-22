@@ -255,7 +255,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.filterObj.length > 0) {
       this.datasourceFacade.updateAllDataSourceFilter(this.filterObj, 0);
       const searchFilter = this.filterObj.filter(
-        (ele) => ele.fieldName === 'SearchString'
+        (ele) => ele.fieldName === 'SearchQuery'
       );
       if (searchFilter && searchFilter.length > 0) {
         this.searchValue = searchFilter[0].value;
@@ -267,9 +267,9 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     const searchValue = this.searchValue?.trim();
     if (searchValue.length > 0) {
       const searchFilter = [...this.filterObj];
-      if (!searchFilter.some((ele) => ele.fieldName === 'SearchString')) {
+      if (!searchFilter.some((ele) => ele.fieldName === 'SearchQuery')) {
         searchFilter.push({
-          fieldName: 'SearchString',
+          fieldName: 'SearchQuery',
           value: searchValue,
           operator: 'Equals',
           type: 'dropdown',
@@ -277,10 +277,10 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
         });
       } else {
         const searchIndex = searchFilter.findIndex(
-          (ele) => ele.fieldName === 'SearchString'
+          (ele) => ele.fieldName === 'SearchQuery'
         );
         searchFilter.splice(searchIndex, 1, {
-          fieldName: 'SearchString',
+          fieldName: 'SearchQuery',
           value: searchValue,
           operator: 'Equals',
           type: 'dropdown',
@@ -299,7 +299,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   clearSearch() {
     this.searchValue = '';
     const searchFilter = this.filterObj.filter(
-      (ele) => ele.fieldName !== 'SearchString'
+      (ele) => ele.fieldName !== 'SearchQuery'
     );
     this.filterObj = [...searchFilter];
     this.datasourceFacade.updateAllDataSourceFilter(this.filterObj, 0);
