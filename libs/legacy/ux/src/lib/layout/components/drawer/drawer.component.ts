@@ -88,8 +88,8 @@ export class DrawerComponent implements OnInit, AfterViewInit, OnDestroy {
     this._layoutService.drawerSize
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((response) => {
-        if (!!response) {
-          if (!!this.drawerSize)
+        if (response) {
+          if (this.drawerSize)
             this.renderer.removeClass(this.el.nativeElement, this.drawerSize);
           this.drawerSize = response;
           this.renderer.addClass(this.el.nativeElement, response);

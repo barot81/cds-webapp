@@ -207,7 +207,7 @@ export class DataSourceFacade {
     const fusionDataSource: FusionDataSource = JSON.parse(
       localStorage.getItem('fusionDataSource')
     );
-    if (fusionDataSource.filters !== undefined) {
+    if (fusionDataSource.filters) {
       const searchFilter = fusionDataSource.filters.filter(
         (x) => x.type === 'search'
       );

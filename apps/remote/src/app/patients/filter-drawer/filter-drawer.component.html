@@ -36,38 +36,32 @@
       </mat-list>
     </div>
     <form fxFlex.gt-md="70" fxFlex="100" class="pl-16 overflow-auto" role="main" name="form"
-      [formGroup]="filterFormGroup">
+      [formGroup]="fusionFormGroup">
       <div *ngIf="selectedId === filterList[0].id">
         <div fxFlex="100" fxLayout="column" class="word-break-word pt-16">
           <div class="mb-12" fxLayout="row">
             <div>
-              <button *ngIf="selectedStatus.length !== statusList.length" (click)="selectAll('status')"
+              <button *ngIf="selectedStatusCount !== statusList.length" (click)="selectAll('status')"
                 class="link-btn pl-0 py-0" aria-label="Select all">
                 Select all
               </button>
-              <button *ngIf="
-                  selectedStatus.length === statusList?.length &&
-                  selectedStatus.length > 0
-                " (click)="reset('status')" class="link-btn pl-0 py-0" aria-label="Clear all">
+              <button *ngIf="selectedStatusCount === statusList?.length" (click)="reset('status')" class="link-btn pl-0 py-0" aria-label="Clear all">
                 Clear all
               </button>
             </div>
             <div class="ml-24">
-              <button *ngIf="
-                  selectedStatus.length > 0 &&
-                  selectedStatus.length !== statusList?.length
-                " (click)="unselect('status')" class="link-btn pl-0 py-0" aria-label="Unselect">
-                Unselect({{ selectedStatus.length }})
+              <button *ngIf="selectedStatusCount > 0 && selectedStatusCount !== statusList?.length" (click)="reset('status')" class="link-btn pl-0 py-0" aria-label="Unselect">
+                Unselect({{ selectedStatusCount }})
               </button>
             </div>
           </div>
           <div fxLayout="column">
             <!-- <mat-form-field></mat-form-field> -->
             <mat-checkbox fxLayout="row" fxFlex="100" class="mb-16" *ngFor="let status of statusList"
-              formControlName="status" [checked]="isStatusChecked(status)" [value]="status"
-              (change)="selectStatus($event, status)">
-              <div class="status-badge {{ status }} ">
-                {{ status }}
+              [checked]="status.isSelected"
+              (change)="onStatusChange($event.checked, status.name)">
+              <div class="status-badge {{ status.name }} ">
+                {{ status.name }}
               </div>
             </mat-checkbox>
           </div>
@@ -77,32 +71,28 @@
         <div fxFlex="100" fxLayout="column" class="word-break-word pt-16">
           <div class="mb-12" fxLayout="row">
             <div>
-              <button *ngIf="selectedQueryStatus.length !== queryStatusList.length" (click)="selectAll('queryStatus')"
+              <button *ngIf="selectedQueryStatusCount !== queryStatusList?.length" (click)="selectAll('queryStatus')"
                 class="link-btn pl-0 py-0" aria-label="Select all">
                 Select all
               </button>
-              <button *ngIf="
-                  selectedQueryStatus.length === queryStatusList?.length &&
-                  selectedQueryStatus.length > 0
-                " (click)="reset('queryStatus')" class="link-btn pl-0 py-0" aria-label="Clear all">
+              <button *ngIf="selectedQueryStatusCount === queryStatusList?.length"
+                (click)="reset('queryStatus')" class="link-btn pl-0 py-0" aria-label="Clear all">
                 Clear all
               </button>
             </div>
             <div class="ml-24">
-              <button *ngIf="
-                  selectedQueryStatus.length > 0 &&
-                  selectedQueryStatus.length !== queryStatusList.length
-                " (click)="unselect('queryStatus')" class="link-btn pl-0 py-0" aria-label="Unselect">
-                Unselect({{ selectedQueryStatus.length }})
+              <button *ngIf="selectedQueryStatusCount > 0 && selectedQueryStatusCount < queryStatusList.length
+                " (click)="reset('queryStatus')" class="link-btn pl-0 py-0" aria-label="Unselect">
+                Unselect({{ selectedQueryStatusCount }})
               </button>
             </div>
           </div>
           <div fxLayout="column">
             <mat-checkbox fxLayout="row" fxFlex="100" class="mb-16" *ngFor="let queryStatus of queryStatusList"
-              formControlName="queryStatus" [checked]="isQueryStatusChecked(queryStatus)" [value]="queryStatus"
-              (change)="selectQueryStatus($event, queryStatus)">
-              <div class="status-badge {{ queryStatus }} ">
-                {{ queryStatus }}
+               [checked]="queryStatus.isSelected" [value]="queryStatus.name"
+              (change)="onQueryStatusChange($event.checked, queryStatus.name)">
+              <div class="status-badge {{ queryStatus.name }} ">
+                {{ queryStatus.name }}
               </div>
             </mat-checkbox>
           </div>

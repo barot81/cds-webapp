@@ -1,14 +1,18 @@
 /* eslint-disable @angular-eslint/component-selector */
 /* eslint-disable @typescript-eslint/member-ordering */
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormControl } from '@angular/forms';
 import {
   FusionFormAdapter,
   FusionFormComponent,
 } from '@zhealthcare/fusion/components';
-import { DataSourceFacade, Filter, FusionDataSource } from '@zhealthcare/plugin/data-source';
+import {
+  DataSourceFacade,
+  Filter,
+  FusionDataSource,
+} from '@zhealthcare/plugin/data-source';
 import { TagView, zhealthcareTag } from '@zhealthcare/plugin/tags';
-import { DrawerService, ThemeSelectionComponent } from '@zhealthcare/ux';
+import { DrawerService } from '@zhealthcare/ux';
 import { Subject, takeUntil } from 'rxjs';
 import { GridService } from '../../services/grid.service';
 import { SidebarFocusHelper } from '../../services/sidebar-helper.service';
@@ -30,7 +34,7 @@ export interface statusBadge {
 })
 export class FilterDrawerComponent
   extends FusionFormComponent
-  implements FusionFormAdapter, OnInit
+  implements FusionFormAdapter, OnInit, OnDestroy
 {
   private readonly _unsubscribe: Subject<any>;
   tags: Array<zhealthcareTag> = [
@@ -96,10 +100,6 @@ export class FilterDrawerComponent
     },
   ];
 
-  filterFormGroup: FormGroup;
-  selectedStatus = [];
-  selectedQueryStatus = [];
-
   getTagTitle(tag: zhealthcareTag): string {
     if (tag && tag !== null) {
       return tag.name && tag.name !== null ? tag.name : tag.title;
@@ -115,23 +115,29 @@ export class FilterDrawerComponent
   public tagView = TagView;
 
   selectedId: string;
-
-  searchItem = new FormControl();
+  selectedStatusCount = 0;
+  selectedQueryStatusCount = 0;
 
   filterList: filterListItem[] = [
-    { id: 'status-filter', title: 'Status', count: 0 },
-    { id: 'query-status-filter', title: 'Query Status', count: 0 },
-    { id: 'admit-date-filter', title: 'Admission Date', count: 0 },
-    { id: 'discharge-date-filter', title: 'Discharge Date', count: 0 },
+    { id: 'status', title: 'Status', count: 0 },
+    { id: 'queryStatus', title: 'Query Status', count: 0 },
+    { id: 'admitDate', title: 'Admission Date', count: 0 },
+    { id: 'dischargeDate', title: 'Discharge Date', count: 0 },
   ];
 
-  statusList = ['New', 'Reviewed', 'Later Review', 'No Query', 'Non DRG'];
+  statusList = [
+    { name: 'New', isSelected: false },
+    { name: 'Reviewed', isSelected: false },
+    { name: 'Later Review', isSelected: false },
+    { name: 'No Query', isSelected: false },
+    { name: 'Non DRG', isSelected: false },
+  ];
   queryStatusList = [
-    'Pending',
-    'Answered',
-    'Completed',
-    'Dropped',
-    'No Response',
+    { name: 'Pending', isSelected: false },
+    { name: 'Answered', isSelected: false },
+    { name: 'Completed', isSelected: false },
+    { name: 'Dropped', isSelected: false },
+    { name: 'No Response', isSelected: false },
   ];
 
   constructor(
@@ -140,13 +146,13 @@ export class FilterDrawerComponent
     private dataSourceFacade: DataSourceFacade,
     public drawerService: DrawerService,
     private gridService: GridService
-
   ) {
     super();
+    this._unsubscribe = new Subject();
     this.selectedId = this.filterList[0].id;
-    this.filterFormGroup = this.fb.group({
-      status: new FormControl(''),
-      queryStatus: new FormControl(''),
+    this.fusionFormGroup = this.fb.group({
+      status: new FormControl([]),
+      queryStatus: new FormControl([]),
       admissionStartDate: new FormControl(''),
       admissionEndDate: new FormControl(''),
       dischargeStartDate: new FormControl(''),
@@ -155,12 +161,10 @@ export class FilterDrawerComponent
   }
 
   ngOnInit() {
-    this.selectedStatus = [];
-    this.selectedQueryStatus = [];
     this.dataSourceFacade.fusionDataSource$
       .pipe(takeUntil(this._unsubscribe))
       .subscribe((x) => {
-        if (x !== undefined && x !== null && x.filters?.length > 0) {
+        if (x && x.filters?.length > 0) {
           this.setFilterValue(x);
         }
         this.updateCount();
@@ -170,19 +174,46 @@ export class FilterDrawerComponent
   }
 
   setFilterValue(dataSource: FusionDataSource) {
+    dataSource.filters
+      .filter((x) => x.fieldName === 'Filters.Status')
+      .forEach(x => {
+        this.statusList.find((y) => y.name === x.value).isSelected = true;
+        console.log(this.statusList.find((y) => y.name === x.value).isSelected);
+      });
+
+    dataSource.filters
+      .filter((x) => x.fieldName === 'Filters.QueryStatus')
+      .forEach(x => this.queryStatusList.find((y) => y.name === x.value).isSelected = true);
+
+    const stDate = dataSource.filters.find(x => x.fieldName == 'Filters.AdmissionStartDate')?.value;
+    const astDate = stDate ? new Date(stDate)?.getTime(): '';
+    const endDate = dataSource.filters.find(x => x.fieldName == 'Filters.AdmissionEndDate')?.value;
+    const aendDate = endDate ? new Date(endDate)?.getTime(): '';
+    const disStartDate = dataSource.filters.find(x => x.fieldName == 'Filters.DischargeStartDate')?.value;
+    const disStDate = disStartDate ? new Date(disStartDate)?.getTime() : '';
+    const disDate = dataSource.filters.find(x => x.fieldName == 'Filters.DischargeEndDate')?.value;
+    const disEndDate = disDate ? new Date(disDate)?.getTime() : '';
     this.fusionFormGroup.patchValue({
-      status: dataSource.filters.filter(x=>x.fieldName === 'status').map(x=>x.value),
-      queryStatus: dataSource.filters.filter(x=>x.fieldName === 'queryStatus').map(x=>x.value),
-      admissionStartDate: dataSource.filters.find(x=>x.fieldName == 'admissionStartDate').value,
-      admissionEndDate: dataSource.filters.find(x=>x.fieldName == 'admissionEndDate').value,
-      dischargeStartDate: dataSource.filters.find(x=>x.fieldName == 'dischargeStartDate').value,
-      dischargeEndDate: dataSource.filters.find(x=>x.fieldName == 'dischargeEndDate').value
+      status: this.statusList.filter((x) => x.isSelected),
+      queryStatus: this.queryStatusList.filter((x) => x.isSelected),
+      admissionStartDate: astDate,
+      admissionEndDate: aendDate,
+      dischargeStartDate: disStDate,
+      dischargeEndDate: disEndDate
     });
   }
 
   updateCount() {
-      this.filterList.find(x => x.id === 'status').count = this.selectedStatus.length;
-      this.filterList.find(x => x.id === 'queryStatus').count = this.selectedQueryStatus.length;
+    this.selectedStatusCount = this.statusList.filter(
+      (x) => x.isSelected
+    ).length;
+    this.selectedQueryStatusCount = this.queryStatusList.filter(
+      (x) => x.isSelected
+    ).length;
+    this.filterList.find((x) => x.id === 'status').count =
+      this.selectedStatusCount;
+    this.filterList.find((x) => x.id === 'queryStatus').count =
+      this.selectedQueryStatusCount;
   }
 
   navigateToFilterListItem(id: string) {
@@ -190,85 +221,46 @@ export class FilterDrawerComponent
     this.selectedId = id;
   }
 
-  isQueryStatusChecked(val: string) {
-    if (this.selectedQueryStatus !== undefined) {
-      if (this.selectedQueryStatus.find((x) => x === val) !== undefined) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
-    }
-  }
-
-  isStatusChecked(val: string) {
-    if (this.selectedStatus !== undefined) {
-      if (this.selectedStatus.find((x) => x === val) !== undefined) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
-    }
-  }
-
   selectAll(name: string) {
     if (name === 'status') {
-      this.selectedStatus = [];
-      this.statusList.forEach((status) => {
-        this.selectedStatus.push(status);
-      });
-    }
+      this.statusList.map((x) => (x.isSelected = true));
+      this.selectedStatusCount = this.statusList.length;
+    } else if (name === 'queryStatus')
+      this.queryStatusList.map((x) => (x.isSelected = true));
+    this.selectedQueryStatusCount = this.queryStatusList.length;
   }
 
-  selectStatus(event: any, value: string) {
-    if (event.checked === true) {
-      this.selectedStatus.push(value.trim());
-    }
-    if (event.checked === false) {
-      this.selectedStatus = this.selectedStatus.filter(
-        (x) => x !== value.trim()
-      );
-    }
+  onStatusChange(isChecked: boolean, value: string) {
+    this.statusList.find((x) => x.name === value.trim()).isSelected = isChecked;
+    this.selectedStatusCount = this.statusList.filter(
+      (x) => x.isSelected
+    ).length;
   }
 
-  selectQueryStatus(event: any, value: string) {
-    if (event.checked === true) {
-      this.selectedQueryStatus.push(value.trim());
-    }
-    if (event.checked === false) {
-      this.selectedQueryStatus = this.selectedQueryStatus.filter(
-        (x) => x !== value.trim()
-      );
-    }
+  onQueryStatusChange(isChecked: boolean, value: string) {
+    this.queryStatusList.find((x) => x.name === value.trim()).isSelected =
+      isChecked;
+    this.selectedQueryStatusCount = this.queryStatusList.filter(
+      (x) => x.isSelected
+    ).length;
   }
 
   reset(name: string) {
     if (name === 'status') {
-      this.selectedStatus = [];
-    }
-    if (name === 'queryStatus') {
-      this.selectedQueryStatus = [];
-    }
-  }
-
-  unselect(name: string) {
-    if (name === 'status') {
-      this.selectedStatus = [];
-    }
-    if (name === 'queryStatus') {
-      this.selectedQueryStatus = [];
+      this.statusList.forEach((x) => (x.isSelected = false));
+      this.selectedStatusCount = 0;
+    } else if (name === 'queryStatus') {
+      this.queryStatusList.forEach((x) => (x.isSelected = false));
+      this.selectedQueryStatusCount = 0;
     }
   }
 
   dateChange(propName: string, $event) {
-    this.filterFormGroup.controls[propName].setValue($event.value);
+    this.fusionFormGroup.controls[propName].setValue($event.value);
   }
 
   resetAllFilters() {
-    this.filterFormGroup.patchValue({
+    this.fusionFormGroup.patchValue({
       status: '',
       queryStatus: '',
       admissionStartDate: '',
@@ -276,68 +268,80 @@ export class FilterDrawerComponent
       dischargeStartDate: '',
       dischargeEndDate: '',
     });
-    this.unselect('status');
-    this.unselect('queryStatus');
+    this.reset('status');
+    this.reset('queryStatus');
   }
 
   primaryAction() {
     const filters: Filter[] = [];
-    if (this.selectedStatus && this.selectedStatus.length > 0) {
-      this.selectedStatus.forEach((ele) =>{
+    const selectedStatus = this.statusList.filter((x) => x.isSelected);
+    if (selectedStatus.length > 0) {
+      selectedStatus.forEach((ele) => {
         filters.push({
           fieldName: 'Filters.Status',
-          value: ele,
+          value: ele.name,
           operator: 'eq',
           type: 'dropdown',
-          displayName: 'Status'
+          displayName: 'Status',
         });
-      })
+      });
     }
-    if (this.selectedQueryStatus && this.selectedQueryStatus.length > 0) {
-      this.selectedQueryStatus.forEach((ele) => {
+    const selectedQueryStatus = this.queryStatusList.filter(
+      (x) => x.isSelected
+    );
+    if (selectedQueryStatus.length > 0) {
+      selectedQueryStatus.forEach((ele) => {
         filters.push({
           fieldName: 'Filters.QueryStatus',
-          value: ele,
+          value: ele.name,
           operator: 'eq',
           type: 'dropdown',
-          displayName: 'Query Status'
+          displayName: 'Query Status',
         });
       });
     }
     const fieldsMapping = [
       {
         controlName: 'admissionStartDate',
-        filterName: 'Filters.AdmissionStartDate'
+        filterName: 'Filters.AdmissionStartDate',
       },
       {
         controlName: 'admissionEndDate',
-        filterName: 'Filters.AdmissionEndDate'
+        filterName: 'Filters.AdmissionEndDate',
       },
       {
         controlName: 'dischargeStartDate',
-        filterName: 'Filters.DischargeStartDate'
+        filterName: 'Filters.DischargeStartDate',
       },
       {
         controlName: 'dischargeEndDate',
-        filterName: 'Filters.DischargeEndDate'
+        filterName: 'Filters.DischargeEndDate',
       },
-    ]
-    fieldsMapping.forEach(prop => {
-      const fieldValue = this.filterFormGroup.controls[prop.controlName].value;
+    ];
+    fieldsMapping.forEach((prop) => {
+      const fieldValue = this.fusionFormGroup.controls[prop.controlName].value;
       if (fieldValue) {
         filters.push({
-          fieldName: prop.controlName,
-          value: fieldValue,
+          fieldName: prop.filterName,
+          value: this.convertDateToString(new Date(fieldValue)),
           operator: 'eq',
-          type: 'dropdown',
-          displayName: prop.controlName
+          displayName: prop.controlName,
         });
       }
-
     });
     this.dataSourceFacade.updateAllDataSourceFilter(filters);
     this.gridService.setAppliedFilters(filters);
   }
+
+  convertDateToString(date: Date) {
+    return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
+  }
+
   secondaryAction() {}
   panelClose() {}
+
+  ngOnDestroy(): void {
+    this._unsubscribe.next(true);
+    this._unsubscribe.complete();
+  }
 }
