@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpService } from '@zhealthcare/fusion/core';
 import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { PatientFilters } from '../models/datasource/patient-filters.model';
@@ -7,17 +8,20 @@ import { Patient } from '../models/patient.model';
 import { generatePatients } from './patient.faker.service';
 
 @Injectable({ providedIn: 'any' })
-export class PatientService {
+export class PatientService extends HttpService {
   patients = [];
-  patientData$ = new BehaviorSubject<Patient[]>(null);
+  patientData$ = new BehaviorSubject<Patient[]>([]);
   loading$ = new BehaviorSubject<boolean>(false);
 
-  public bulkUpdateCompletionStatus = new BehaviorSubject<any>(null);
-  bulkUpdateCompletionStatus$ = this.bulkUpdateCompletionStatus.asObservable();
   public onAdded: BehaviorSubject<boolean>;
   public onFilterChange: BehaviorSubject<boolean>;
 
-  constructor(private httpClient: HttpClient) {
+  protected getBaseUrl(): string {
+    return this.configService.getservice('facility').endpoint;
+  }
+
+  constructor() {
+    super();
     this.onAdded = new BehaviorSubject<boolean>(false);
     this.onFilterChange = new BehaviorSubject<boolean>(false);
   }
@@ -56,13 +60,13 @@ export class PatientService {
 
   public getBaseEndpoint() {
     const facility = localStorage.getItem('TenantId');
-    const url = `${environment.baseUrl}/api/${facility}/patients`;
+    const url = `${this.getBaseUrl()}/${facility}/patients`;
     return url;
   }
 
   public getDatasourceBaseEndpoint() {
     const facility = localStorage.getItem('TenantId');
-    const url = `${environment.baseUrl}/api/${facility}/patientsInfo`;
+    const url = `${this.getBaseUrl()}/${facility}/patientsInfo`;
     return url;
   }
 
@@ -125,29 +129,4 @@ export class PatientService {
     return this.patientData$;
   }
 
-  applyFilter(filters: PatientFilters) {
-    const filterParams = this.getFilterParams(filters);
-    const endpoint = `${this.getBaseEndpoint()}?${this.getFilterParams(filters)}`;
-  }
-
-  getFilterParams(filters: PatientFilters) {
-    let qParams = '';
-    if (filters.status && filters.status.length > 0) {
-      filters.status.forEach((x) => {
-        qParams += `filters.status=${x}&`;
-      });
-    }
-    if (filters.queryStatus && filters.queryStatus.length > 0) {
-      filters.queryStatus.forEach((x) => {
-        qParams += `filters.queryStatus=${x}&`;
-      });
-    }
-    if (filters.admissionStartDate) {
-      qParams += `filters.admissionStartDate=${filters.admissionStartDate}&filters.admissionEndDate=${filters.admissionEndDate}`;
-    }
-    if (filters.dischargeStartDate) {
-      qParams += `filters.dischargeStartDate=${filters.dischargeStartDate}&filters.dischargeEndDate=${filters.dischargeEndDate}`;
-    }
-    return qParams;
-  }
 }

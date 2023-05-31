@@ -16,6 +16,8 @@ import {
 import {
   OrgUnitInformation,
   FacilityWiseStatuses,
+  StatusCount,
+  UserPersona,
 } from '@zhealthcare/fusion/models';
 import { FusionNavigationService } from '@zhealthcare/fusion/services';
 import {
@@ -53,7 +55,7 @@ export class LaunchComponent
   orgUnitInformation: OrgUnitInformation[] = [];
   protected _unsubscribe: Subject<any>;
   tenantList: any;
-  selectedFacility: FacilityWiseStatuses;
+  selectedFacilityWiseStatuses: FacilityWiseStatuses;
   isLoading = false;
   inProgressCount = 0;
   storage: BrowserStorage;
@@ -108,7 +110,6 @@ export class LaunchComponent
 
   getTenantNameFromTenantList(uniqueTenet, key) {
     const tenant = uniqueTenet.find((x) => x.tenantId === key);
-    this.setSelectedFacility(tenant);
     const tenantName = tenant?.name;
     return tenantName;
   }
@@ -161,15 +162,15 @@ export class LaunchComponent
   //   }
   // }
 
-  programSelection(tenatWithOucodes) {
-    if (tenatWithOucodes) {
-      this.selectedFacility = new FacilityWiseStatuses(
-        tenatWithOucodes.key,
-        tenatWithOucodes.value
+  programSelection(facilityId: string, statusCounts: StatusCount[]) {
+    if (facilityId && statusCounts) {
+      this.selectedFacilityWiseStatuses = new FacilityWiseStatuses(
+        facilityId,
+        statusCounts
       );
       this.oucodeWithNames = OucodeHelper.getStatusList(
         [],
-        this.selectedFacility.StatusCount
+        this.selectedFacilityWiseStatuses.StatusCount
       );
     } else this.oucodeWithNames = [];
   }
@@ -220,11 +221,20 @@ export class LaunchComponent
 
   updateStateAndRedirect(
     selectedFacility: FacilityWiseStatuses,
-    selectedStatus: string
+    selectedStatus: string,
+    selectedUserType: UserPersona
   ) {
     this.showProgressBar();
-    selectedFacility.StatusCount.find(x=>x.status === selectedStatus).isSelected = true;
-    this.orgFacade.SetFacilityWiseStatuses(selectedFacility);
+    if (selectedUserType) this.userTypeService.setUserType(selectedUserType);
+
+    const updatedStatusCount = [...selectedFacility.StatusCount];
+    updatedStatusCount.map(x=> x.isSelected = false);
+    updatedStatusCount.find(x=>x.name === selectedStatus).isSelected = true;
+    const updatedFacility = {
+      ...selectedFacility,
+      StatusCount: updatedStatusCount
+    }
+    this.orgFacade.SetFacilityWiseStatuses(updatedFacility);
        this.activatedRoute.queryParams.subscribe(
           (resp) => {
             this.hideProgressBar();
@@ -242,9 +252,6 @@ export class LaunchComponent
     this.showProgressBar();
   }
 
-  setSelectedFacility(tenant: any) {
-    localStorage.setItem(MetaConstants.SELECTED_TENANT, JSON.stringify(tenant));
-  }
 
   ngOnDestroy() {
     this.fuseProgressBarService.hide();

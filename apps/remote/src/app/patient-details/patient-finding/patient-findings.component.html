@@ -6,14 +6,13 @@
           <div fxLayout.gt-md="row" fxLayout="column" fxLayoutAlign.gt-md="start center" fxLayoutAlign="start start"
             fxFlex="100">
             <div class="secondary-card-header-title overflow-ellipses">
-              <span class="primary-heading">Finding Informations</span>
+              <span class="primary-heading">Query Findings</span>
             </div>
           </div>
         </div>
-        <button mat-icon-button aria-label="Add Finding Information" zhealthcareDrawerAction
-          [componentSelector]="
+        <button mat-icon-button aria-label="Add Finding Information" zhealthcareDrawerAction [componentSelector]="
         _patientFormService.get('patient-finding-form')
-      " [size]="'drawer-sm'" [caption]="'Add Finding Information'" [primaryAction]="'Save'" role="button"
+      " [size]="'drawer-lg'" [caption]="'Add Finding Information'" [primaryAction]="'Save'" role="button"
           [entityKey]="">
           <i aria-hidden="true" class="fa-light fa-plus"></i>
         </button>
@@ -26,10 +25,13 @@
     <div class="p-16" *ngIf="(patientFindings$ | async) as patientFindings">
       <div [ngClass]="{ 'read-more-target': i > 1 }" *ngFor="let item of patientFindings; let i = index">
         <div [ngClass]="{ 'mb-16': i <= 1 }" fxLayout="row" fxFlex="100" fxLayoutAlign="space-between start">
-          <div fxLayout="row" fxFlex="100" fxlayoutalign="space-between center">
+          <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
             <div fxLayout="column">
               <mat-icon class="secondary-text mr-16" role="button" aria-hidden="true">location_city
               </mat-icon>
+              <!-- <h5 class="font-weight-600 mb-12 accent-fg font-16">
+                Patient Query Findings
+              </h5> -->
             </div>
             <div fxLayout="column" fxFlex="100" attr.aria-label="finding {{ i + 1 }}">
               <div fxLayout="column" fxLayout.gt-md="row">
@@ -244,12 +246,12 @@
                 </div>
               </div>
               <div fxLayout="column" fxLayout.gt-md="row" class="mt-16">
-                  <div class="mb-16">
-                    <div class="title">Clinical Summary</div>
-                    <div class="description">
-                      {{ item?.clinicalSummary }}
-                      <span *ngIf="!item?.clinicalSummary">-</span>
-                    </div>
+                <div class="mb-16">
+                  <div class="title">Clinical Summary</div>
+                  <div class="description">
+                    {{ item?.clinicalSummary }}
+                    <span *ngIf="!item?.clinicalSummary">-</span>
+                  </div>
                 </div>
               </div>
               <div fxLayout="column" fxLayout.gt-md="row" class="mt-16">
@@ -266,13 +268,12 @@
             </div>
           </div>
           <div>
-            <button mat-icon-button attr.aria-label="Edit Education {{ i + 1 }}" zhealthcareDrawerAction class="action-icon"
-              [componentSelector]="
+            <button mat-icon-button attr.aria-label="Edit Education {{ i + 1 }}" zhealthcareDrawerAction
+              class="action-icon" [componentSelector]="
                 _patientFormService.get('patient-finding-form')
-              " [size]="'drawer-sm'"
-              [caption]="'Finding Information'" [primaryAction]="'Save'" [secondaryAction]="'Delete'" role="button"
-              [entityKey]="item.id" [data]="item">
-              <i aria-hidden="true"  class="fa-light fa-pen"></i>
+              " [size]="'drawer-lg'" [caption]="'Finding Information'" [primaryAction]="'Save'"
+              [secondaryAction]="'Delete'" role="button" [entityKey]="item.id" [data]="item">
+              <i aria-hidden="true" class="fa-light fa-pen"></i>
             </button>
           </div>
         </div>

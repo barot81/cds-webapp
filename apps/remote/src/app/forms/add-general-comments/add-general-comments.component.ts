@@ -54,7 +54,7 @@ export class AddGeneralCommentsComponent
       queryStatus: new FormControl('New'),
     });
 
-    this.queryStatusList = ['New', 'No query', 'Later Review', 'Revised'];
+    this.queryStatusList = ['No Query', 'Later Review'];
     this.createConfig();
   }
 
@@ -97,10 +97,15 @@ export class AddGeneralCommentsComponent
 
   private setPatientInfo(patient) {
     this.patientInfo = patient;
-    this.fusionFormGroup.patchValue(patient.generalComment);
-    this.comments = patient?.generalComment?.comments;
+
+    this.queryStatusList.unshift(patient.queryStatus);
     this.fusionFormGroup.controls['queryStatus'].setValue(patient.queryStatus);
-    this.cdr.detectChanges();
+
+    // setTimeout(() => {
+    //   this.comments = patient?.generalComment?.comments;
+    //   this.fusionFormGroup.controls['comments'].patchValue(this.comments);
+    // }, 0);
+   // this.cdr.detectChanges();
   }
 
   createConfig() {

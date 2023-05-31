@@ -123,9 +123,9 @@
 
           <!-- email Column -->
           <ng-container matColumnDef="admitDate">
-            <th id="phone" mat-header-cell *matHeaderCellDef class="email-width">Admissioin Date</th>
+            <th id="phone" mat-header-cell *matHeaderCellDef class="email-width">Admit Date</th>
             <td mat-cell *matCellDef="let element" class="email-width">
-              <a>{{ element?.admissioinDate | date:'MMMM d, y' }}</a>
+              <a>{{ element?.admissionDate | date:'MMMM d, y' }}</a>
             </td>
           </ng-container>
 
@@ -174,11 +174,9 @@
           <ng-container matColumnDef="queryDate">
             <th id="phone" mat-header-cell *matHeaderCellDef class="email-width">Query Date</th>
             <td mat-cell *matCellDef="let element" class="email-width">
-              <a>{{ element?.queryDate }}</a>
+              <a>{{ element?.queryDate | date:'MMMM d, y'}}</a>
             </td>
           </ng-container>
-
-
 
           <!-- cohort Column -->
           <ng-container matColumnDef="reimbursementType">

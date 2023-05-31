@@ -189,12 +189,12 @@ function setSecurityHeader<T>(
     );
     if (orgState.FacilityWiseStatuses.FacilityId === HttpConstants.BASE) {
       oucodesArray = orgState.FacilityWiseStatuses.StatusCount.map(
-        (x) => x.status
+        (x) => x.name
       );
     } else {
       oucodesArray = orgState.FacilityWiseStatuses.StatusCount.filter(
         (x) => x.isSelected
-      ).map((x) => x.status);
+      ).map((x) => x.name);
     }
     oucodesArray = oucodesArray.filter(function (elem, index, self) {
       return index === self.indexOf(elem);

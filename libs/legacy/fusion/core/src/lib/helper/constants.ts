@@ -21,7 +21,7 @@ export class MethodType {
     public static readonly IsDelegateUser = 'IsDelegateUser';
     public static readonly FACILITYID = 'FacilityId';
     public static readonly OUCODES = 'Oucodes';
-    public static readonly SELECTED_TENANT = 'selectedTenant';
+    public static readonly SelectedStatus = 'SelectedStatus';
   }
 
   export class TokenConstants {

@@ -271,9 +271,6 @@ export class NotificationLogComponent
   }
 
   ngOnChanges() {
-    this._orgFacade.selectedOucode$.subscribe((x) => {
-      this.ouCode = x.Oucode;
-    });
     this.pageNumber = 1;
     this.dataSource.data = [];
     this.dataSource = new MatTableDataSource([]);

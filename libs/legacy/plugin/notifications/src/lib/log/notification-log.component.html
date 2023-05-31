@@ -123,7 +123,7 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;">
                 </tr>
             </table>
-            <div *ngIf="(dataSource.data === undefined || dataSource.data.length === 0) && !(isLoadingResults$ | async)">
+            <div *ngIf="(dataSource.data === undefined || dataSource.data.length === 0) && (isLoadingResults$ | async) === false">
               <div class="message-box warning">No results found</div>
           </div>
         </div>

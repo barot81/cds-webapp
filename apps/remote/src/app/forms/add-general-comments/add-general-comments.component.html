@@ -16,9 +16,10 @@
     </div>
 
     <div fxLayout="row" fxLayoutAlign="space-between end">
-      <ckeditor class="editor-border p-0" fxFlex="100" data="{{comments | mdToHTML}}" #ckeditorComments [editor]="Editor" id="ckeditor_id"
-    name="classic-editor" [config]="config" (ready)="onReady($event)" (change)="onChange($event)"
-    (focus)="onFocus($event)" (blur)="onBlur($event)">
+      <ckeditor class="editor-border p-0" fxFlex="100" data="{{comments | mdToHTML}}" #ckeditorComments [editor]="Editor" id="ckeditor_id"
+    name="classic-editor" [config]="config" (ready)="onReady($event)" (change)="onChange($event)" formControlName="comments"
+    (focus)="onFocus($event)" (blur)="onBlur($event)" [(ngModel)]="comments"
+    >
       </ckeditor>
     </div>
   </mat-card>

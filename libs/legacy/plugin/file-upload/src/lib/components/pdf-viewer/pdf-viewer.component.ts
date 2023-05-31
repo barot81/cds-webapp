@@ -51,8 +51,6 @@ constructor(readonly cdr:ChangeDetectorRef, private orgFacade:OrgFacade, private
 
     const AuthData = (sessionStorage.getItem("IsDelegateUser") === 'true')?JSON.parse(sessionStorage.getItem('Auth')):JSON.parse(localStorage.getItem('Auth'));
     this._Auth='Bearer '+AuthData['accessToken'];
-    this.orgFacade.selectedOucode$.pipe(
-      takeUntil(this._unsubscribe)).subscribe(x=>this._Oucodes = x.Oucode);
 
     this._TanentId=(sessionStorage.getItem("IsDelegateUser") === 'true') ? sessionStorage.getItem('TenantId'): localStorage.getItem('TenantId');
     this.cdr.detectChanges();

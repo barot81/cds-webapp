@@ -18,9 +18,9 @@ export class UserTypeService {
   userPersona$: Subject<UserPersona> = new Subject<UserPersona>();
 
   constructor() {
-    const oucodeList = OucodeHelper.getOuCodeFlatList(JSON.parse(localStorage.getItem(MetaConstants.OUCODES)));
-    const selectedOuCode = oucodeList?.find(x => x.isSelected)?.Oucode;
-    this.setCurrentContext(localStorage.getItem(MetaConstants.FACILITYID), selectedOuCode);
+    // const oucodeList = OucodeHelper.getOuCodeFlatList(JSON.parse(localStorage.getItem(MetaConstants.OUCODES)));
+    // const selectedOuCode = oucodeList?.find(x => x.isSelected)?.Oucode;
+    // this.setCurrentContext(localStorage.getItem(MetaConstants.FACILITYID), selectedOuCode);
   }
 
   setUserType(userPersona: UserPersona) {
@@ -29,9 +29,9 @@ export class UserTypeService {
   }
 
   getUserType(): UserPersona {
-    var userType = sessionStorage.getItem(ACTIVE_USER_TYPE_KEY_NAME);
+    const userType = sessionStorage.getItem(ACTIVE_USER_TYPE_KEY_NAME);
     if (userType) {
-      var userPersona: UserPersona = UserPersona[userType];
+      const userPersona: UserPersona = UserPersona[userType];
       this.currentUserPersona = userPersona;
       this.userPersona$.next(this.currentUserPersona);
       return userPersona;
@@ -46,13 +46,14 @@ export class UserTypeService {
   }
 
   isFacultyPersonaSelected(): boolean {
-    var userType = sessionStorage.getItem(ACTIVE_USER_TYPE_KEY_NAME);
-    if (userType)
-      return userType == UserPersona.FacultyPersona;
-    else
-      userType = localStorage.getItem(ACTIVE_USER_TYPE_KEY_NAME);
+    // var userType = sessionStorage.getItem(ACTIVE_USER_TYPE_KEY_NAME);
+    // if (userType)
+    //   return userType == UserPersona.FacultyPersona;
+    // else
+    //   userType = localStorage.getItem(ACTIVE_USER_TYPE_KEY_NAME);
 
-    return userType == UserPersona.FacultyPersona;
+    // return userType == UserPersona.FacultyPersona;
+    return false;
   }
 
   setCurrentContext(tenantId: string, oucode: string) {

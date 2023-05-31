@@ -16,19 +16,19 @@ if (!statusCount) {
     sessionStorage.setItem('Statuses', JSON.stringify(statusCount));
 }
 
-const initialOucodes = statusCount
+const initialStatuses = statusCount
   ? statusCount
   : [
       {
-        status: 'Total',
-        count: '0',
+        name: 'Total',
+        count: 0,
         isSelected: false,
       },
     ];
 export const initialMetaState: OrgState = {
   FacilityWiseStatuses: {
     FacilityId: facilityId ? facilityId : 'Base',
-    StatusCount: initialOucodes,
+    StatusCount: initialStatuses,
   },
 };
 

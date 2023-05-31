@@ -5,62 +5,17 @@
     "unauthorizedEndpoints": [],
     "notFoundEndpoints": [],
     "auth": {
-      "endpoint": "https://api-identity.dev.zhealthcare.net"
+      "endpoint": ""
     },
     "realtime": {
-      "endpoint": "https://foundation-meta-gw.dev.zhealthcare.net/Account"
+      "endpoint": ""
     },
     "gateway": {
       "endpoint": ""
     },
     "services": {
-      "foundation.meta": {
-        "endpoint": "https://api-meta.dev.zhealthcare.net"
-      },
-      "v3.account": {
-        "endpoint": "https://zhealthcare-dev-webapps.azurewebsites.net/fusion/account/LoginWithToken"
-      },
-      "v3.launch": {
-        "endpoint": "https://zhealthcare-dev-webapps.azurewebsites.net/Fusion/Home/Launch"
-      },
-      "v3.login": {
-        "endpoint": "https://zhealthcare-dev-webapps.azurewebsites.net/Fusion/Account/Login"
-      },
-      "help.center": {
-        "endpoint": "http://localhost:65301"
-      },
-      "payment": {
-        "endpoint": "https://api-payment.dev.zhealthcare.net"
-      },
-      "settingdictionary": {
-        "endpoint": "https://api-config-labels.dev.zhealthcare.net/"
-      },
-      "featureflag": {
-        "endpoint": "https://api-feature-management.dev.zhealthcare.net/"
-      },
-      "help.center.salesForceUrl": {
-        "endpoint": "https://zhealthcare.force.com/v4Help/s/"
-      },
-      "help.center.supportNumber": {
-        "endpoint": "323-999-1559"
-      },
-      "help.center.zendeskURL": {
-        "endpoint": "https://zhealthcare.zendesk.com/"
-      },
-      "help.center.zhealthcareForceURL": {
-        "endpoint": "https://zhealthcare.force.com/v4Help/s/"
-      },
-      "prismChatURL": {
-        "endpoint": "https://prism-zendesk-api.dev.zhealthcare.net/"
-      },
-      "foundation.registration": {
-        "endpoint": "https://api-registration.dev.zhealthcare.net"
-      },
-      "tenantonboarding": {
-        "endpoint": "https://api-tenantonboarding.dev.zhealthcare.net"
-      },
-      "userConfiguration": {
-        "endpoint": "https://api-userconfiguration.dev.zhealthcare.net"
+      "facility": {
+        "endpoint": "https://localhost:7198/api"
       }
     },
     "microfrontends": {
@@ -104,17 +59,17 @@
       "excludedTenants": []
     },
     "azureAdB2C": {
-      "clientId": "78b46724-ca0f-44a8-b9e8-8572512a5150",
-      "activeDirectory": "zhealthcaredev",
-      "tenant": "zhealthcaredev.onmicrosoft.com",
-      "signUpSignInPolicyId": "B2C_1_DefaultSignUpAndSignIn",
-      "forgotPassword": "B2C_1_DefaultPasswordReset",
-      "redirectUri": "http://localhost:4200/admission/login",
-      "b2cScopes": ["https://zhealthcaredev.onmicrosoft.com/api/read"]
+      "clientId": "",
+      "activeDirectory": "",
+      "tenant": "",
+      "signUpSignInPolicyId": "",
+      "forgotPassword": "",
+      "redirectUri": "",
+      "b2cScopes": [""]
     },
     "authGuardSettings": {
-      "loginUrl": "/account/login",
-      "launchUrl": "/account/launch"
+      "loginUrl": "",
+      "launchUrl": ""
     },
     "userIdleSettings": {
       "idle": 1800,
@@ -127,36 +82,36 @@
       "oldTokenDeleteOffset": 120
     },
     "helpCenterSettings": {
-      "switchOverInfo": "Tickets raised after January 14, 2023 are only listed below"
+      "switchOverInfo": ""
     },
     "resources": {
       "eventDaysOffSet": 7,
-      "voracoAuthKey": "6WoaEYI4fkocpJBjjiNjNN24tyDFpUjb"
+      "voracoAuthKey": ""
     },
     "GoogleReCaptcha": {
       "SiteKey": ""
     },
     "Cryptography": {
       "EnableEncryption": false,
-      "Key": "Cryptography Key Kprocks!ankitkp",
-      "IV": "Key cryp!ankitKP",
+      "Key": "",
+      "IV": "",
       "Keysizes": 128
     },
     "other": {
       "platformSettings": {
         "controlSettings": {
           "searchControlSetting": {
-            "apiKey": "A917C2E2B64B7F87B7B285472BE5E297",
-            "searchUriICD": "https://datasearchzhealthcare.search.windows.net/indexes/dev-icd-index/docs/search?api-version=2019-05-06",
-            "autocompleteUriICD": "https://datasearchzhealthcare.search.windows.net/indexes/dev-icd-index/docs/autocomplete?",
-            "searchUriCPT": "https://datasearchzhealthcare.search.windows.net/indexes/dev-cpt-index/docs/search?api-version=2019-05-06",
-            "autocompleteUriCPT": "https://datasearchzhealthcare.search.windows.net/indexes/dev-cpt-index/docs/autocomplete?"
+            "apiKey": "",
+            "searchUriICD": "",
+            "autocompleteUriICD": "",
+            "searchUriCPT": "",
+            "autocompleteUriCPT": ""
           }
         }
       }
     },
     "AzureMap": {
-      "subscriptionKey": "cmOsYE9rat66qiKh-dAX6CuRbK4nny8Vs7DRpTp-tXk"
+      "subscriptionKey": ""
     },
     "blobStorage": {
       "fusionURI": ""

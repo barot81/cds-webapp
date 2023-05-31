@@ -23,7 +23,7 @@ import {
   UserTypeService,
 } from '@zhealthcare/fusion/core';
 import { FeatureFlagService } from '@zhealthcare/fusion-feature-flag';
-import { UserPersona } from '@zhealthcare/fusion/models';
+import { StatusCount, UserPersona } from '@zhealthcare/fusion/models';
 import {
   FusionNavigationService,
   ManageUserService,
@@ -42,7 +42,6 @@ import { ReleaseNotesSandbox } from '../../services/releaseNote/release-notes.sa
 import { FacilitySandbox } from '../../services/facilities/facility.sandbox';
 import { LaunchComponent } from '../launch/launch.component';
 import { LaunchService } from '../launch/launch.service';
-import { FacilityStatusModel } from '../../services/facilities/facility-clinet.service';
 
 @Component({
   selector: 'zhc-admin-launch',
@@ -63,7 +62,7 @@ export class AdminLaunchComponent
 
   @ViewChild('tenantNavsContainer', { read: ViewContainerRef, static: true })
   tenantNavsContainer!: any;
-  facilityStatuses: FacilityStatusModel[] = [];
+  facilityStatuses: StatusCount[] = [];
 
   constructor(
     protected userState: UserFacade,
@@ -149,44 +148,43 @@ export class AdminLaunchComponent
     this.tenantWithOuCodes = orgCode.tenentWithOucodeAccessTrees;
   }
 
-  next(obj, singleTenant?: boolean) {
-    this.programSelection(obj, singleTenant);
-  }
+  // next(obj, singleTenant?: boolean) {
+  //   this.programSelection(obj, singleTenant);
+  // }
 
-  async programSelection(tenatWithOucodes, singleTenant?: boolean) {
-    if (tenatWithOucodes) {
-      await super.programSelection(tenatWithOucodes);
-      if (this.oucodeWithNames.length === 1) {
-        if (singleTenant) {
-          const tenantAppExists$ =
-            this._launchService.tenantAppExistSubject.asObservable();
-          tenantAppExists$.pipe(take(2)).subscribe((tenantAppExists) => {
-            if (tenantAppExists) {
-              this.showProgramSelection = true;
-            } else if (tenantAppExists == false) {
-              this.updateStateAndRedirect(
-                this.selectedFacility,
-                this.oucodeWithNames[0].key
-              );
-              this.showProgramSelection = false;
-            }
-          });
-        }
-      } else {
-        this.showProgramSelection = true;
-      }
-    } else this.oucodeWithNames = [];
-  }
+  // async programSelection(tenatWithOucodes, singleTenant?: boolean) {
+  //   if (tenatWithOucodes) {
+  //     await super.programSelection(tenatWithOucodes);
+  //     if (this.oucodeWithNames.length === 1) {
+  //       if (singleTenant) {
+  //         const tenantAppExists$ =
+  //           this._launchService.tenantAppExistSubject.asObservable();
+  //         tenantAppExists$.pipe(take(2)).subscribe((tenantAppExists) => {
+  //           if (tenantAppExists) {
+  //             this.showProgramSelection = true;
+  //           } else if (tenantAppExists == false) {
+  //             this.updateStateAndRedirect(
+  //               this.selectedFacilityWiseStatuses,
+  //               this.oucodeWithNames[0].key
+  //             );
+  //             this.showProgramSelection = false;
+  //           }
+  //         });
+  //       }
+  //     } else {
+  //       this.showProgramSelection = true;
+  //     }
+  //   } else this.oucodeWithNames = [];
+  // }
 
-  onFacilityChange(tenant, event) {
-    this.manageuser.setTenantId(tenant);
+  onFacilityChange(facilityId, event) {
+    this.manageuser.setTenantId(facilityId);
     if (event.isUserInput) {
       this._featureFlagService.resetFeatureFlags();
-      this._headerService.setCurrentFacilityName(tenant.name);
-      this.setSelectedFacility(tenant);
+      this._headerService.setCurrentFacilityName(facilityId.name);
       this.loadingPrograms = true;
       this.showProgressBar();
-      this._facilitySandox.getStatusCounts(tenant.name).subscribe(
+      this._facilitySandox.getStatusCounts(facilityId.name).subscribe(
         statuses => {
           this.facilityStatuses = [];
             this.loadingPrograms = false;
@@ -194,19 +192,20 @@ export class AdminLaunchComponent
             this.hideProgressBar();
             if(statuses.findIndex(x=> x.name === 'Total') === -1) {
               const totalCount = statuses.reduce((sum, current) => sum + current.count, 0);
-              this.facilityStatuses.push(new FacilityStatusModel('Total', totalCount));
+              this.facilityStatuses.push(new StatusCount('Total', totalCount));
             }
             this.facilityStatuses = this.facilityStatuses.concat(statuses);
+            this.programSelection(facilityId, this.facilityStatuses);
         }
       )
     }
   }
 
   launch(item) {
-    this.setSelectedFacility(item.key);
     this.updateStateAndRedirect(
-      this.selectedFacility,
-      item.key
+      this.selectedFacilityWiseStatuses,
+      item.name,
+      UserPersona.Administrator
     );
   }
 

@@ -88,14 +88,14 @@ export class FileApiClient extends HttpService {
           if (!headers.has('TenantId')) {
             headers = headers.append(
               'TenantId',
-              orgState.TenantWithOuCodeTree.FacilityId
+              orgState.FacilityWiseStatuses.FacilityId
             );
           }
           if (!headers.has('Oucodes'))
             headers = this.getOucodeHeaders(
               headers,
-              orgState.TenantWithOuCodeTree.OucodeTree,
-              orgState.TenantWithOuCodeTree.FacilityId === 'Base' ? false : true
+              orgState.FacilityWiseStatuses.StatusCount,
+              orgState.FacilityWiseStatuses.FacilityId === 'Base' ? false : true
             );
         }
       }),
@@ -160,14 +160,14 @@ export class FileApiClient extends HttpService {
           if (!headers.has('TenantId')) {
             headers = headers.append(
               'TenantId',
-              orgState.TenantWithOuCodeTree.FacilityId
+              orgState.FacilityWiseStatuses.FacilityId
             );
           }
           if (!headers.has('Oucodes'))
             headers = this.getOucodeHeaders(
               headers,
-              orgState.TenantWithOuCodeTree.OucodeTree,
-              orgState.TenantWithOuCodeTree.FacilityId === 'Base' ? false : true
+              orgState.FacilityWiseStatuses.StatusCount,
+              orgState.FacilityWiseStatuses.FacilityId === 'Base' ? false : true
             );
         }
       }),
@@ -223,14 +223,14 @@ export class FileApiClient extends HttpService {
           if (!headers.has('TenantId')) {
             headers = headers.append(
               'TenantId',
-              orgState.TenantWithOuCodeTree.FacilityId
+              orgState.FacilityWiseStatuses.FacilityId
             );
           }
           if (!headers.has('Oucodes'))
             headers = this.getOucodeHeaders(
               headers,
-              orgState.TenantWithOuCodeTree.OucodeTree,
-              orgState.TenantWithOuCodeTree.FacilityId === 'Base' ? false : true
+              orgState.FacilityWiseStatuses.StatusCount,
+              orgState.FacilityWiseStatuses.FacilityId === 'Base' ? false : true
             );
         }
       }),
@@ -283,14 +283,14 @@ export class FileApiClient extends HttpService {
           if (!headers.has('TenantId')) {
             headers = headers.append(
               'TenantId',
-              orgState.TenantWithOuCodeTree.FacilityId
+              orgState.FacilityWiseStatuses.FacilityId
             );
           }
           if (!headers.has('Oucodes'))
             headers = this.getOucodeHeaders(
               headers,
-              orgState.TenantWithOuCodeTree.OucodeTree,
-              orgState.TenantWithOuCodeTree.FacilityId === 'Base' ? false : true
+              orgState.FacilityWiseStatuses.StatusCount,
+              orgState.FacilityWiseStatuses.FacilityId === 'Base' ? false : true
             );
         }
       }),
@@ -373,15 +373,15 @@ export class FileApiClient extends HttpService {
         if (orgState !== undefined) {
           if (!headers.has('TenantId')) {
             headers = headers.append(
-              'TenantId',
-              orgState.TenantWithOuCodeTree.FacilityId
+              'FacilityId',
+              orgState.FacilityWiseStatuses.FacilityId
             );
           }
           if (!headers.has('Oucodes'))
             headers = this.getOucodeHeaders(
               headers,
-              orgState.TenantWithOuCodeTree.OucodeTree,
-              orgState.TenantWithOuCodeTree.FacilityId === 'Base' ? false : true
+              orgState.FacilityWiseStatuses.StatusCount,
+              orgState.FacilityWiseStatuses.FacilityId === 'Base' ? false : true
             );
         }
       }),

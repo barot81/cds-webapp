@@ -208,8 +208,8 @@ export class DataSourceService {
     if (orgState !== undefined) {
       oucodesArray = OucodeHelper.getOucodeList(
         oucodesArray,
-        orgState.TenantWithOuCodeTree.OucodeTree,
-        orgState.TenantWithOuCodeTree.FacilityId === HttpConstants.BASE
+        orgState.FacilityWiseStatuses.StatusCount,
+        orgState.FacilityWiseStatuses.FacilityId === HttpConstants.BASE
           ? false
           : true
       );

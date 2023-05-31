@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 
 import { Sandbox } from '@zhealthcare/fusion/core';
 import { FacilityApiClient } from './facility-clinet.service';
+import { StatusCount } from '@zhealthcare/fusion/models';
 
 @Injectable({ providedIn: 'root' })
 export class FacilitySandbox extends Sandbox {
@@ -21,7 +22,3 @@ export class FacilitySandbox extends Sandbox {
   }
 }
 
-export class StatusCount {
-  constructor(public name: string, public count: number) {}
-
-}

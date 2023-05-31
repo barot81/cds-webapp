@@ -23,7 +23,7 @@ export class FeatureFlagService {
       this._featureFlags =
         (await lastValueFrom(
           this.featureFlagDataService.getFeatureFlags(
-            JSON.parse(<any>localStorage.getItem(MetaConstants.SELECTED_TENANT))
+            JSON.parse(<any>localStorage.getItem(MetaConstants.FACILITYID))
               ?.tenantId ?? HttpConstants.BASE
           )
         )) ?? {};

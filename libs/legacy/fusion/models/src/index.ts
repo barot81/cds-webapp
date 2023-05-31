@@ -2,7 +2,7 @@ export * from './lib/auth/hashData.model';
 export * from './lib/auth/launchData.model';
 export * from './lib/auth/roleNavigation.model';
 export * from './lib/auth/tenantWithOuCodes';
-export * from './lib/auth/tenantWithOucodeTree';
+export * from './lib/auth/facilityWiseStatusCount';
 export * from './lib/auth/token-session-info.model';
 export * from './lib/auth/token.model';
 export * from './lib/auth/user';

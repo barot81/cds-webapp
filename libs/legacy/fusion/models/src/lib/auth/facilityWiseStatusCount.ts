@@ -2,9 +2,9 @@
 export class StatusCount {
 
   constructor(
-      public status: string,
-      public count: string,
-      public isSelected: boolean) {
+      public name: string,
+      public count: number,
+      public isSelected: boolean = false) {
   }
 }
 

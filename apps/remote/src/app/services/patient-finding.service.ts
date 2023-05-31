@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpService } from '@zhealthcare/fusion/core';
 import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Finding } from '../models/Finding.model';
 
 @Injectable({ providedIn: 'any' })
-export class PatientFindingService {
+export class PatientFindingService extends HttpService {
   patientFinding;
   patientFindingData$ = new BehaviorSubject<Finding[]>(null);
   loading$ = new BehaviorSubject<boolean>(false);
@@ -16,11 +17,16 @@ export class PatientFindingService {
   public onFilterChange: BehaviorSubject<boolean>;
 
   constructor(
-    private httpClient: HttpClient,
     private activeRoute: ActivatedRoute
   ) {
+    super();
     this.onAdded = new BehaviorSubject<boolean>(false);
     this.onFilterChange = new BehaviorSubject<boolean>(false);
+  }
+
+
+  protected getBaseUrl(): string {
+    return this.configService.getservice('facility').endpoint;
   }
 
   profileListLoaded(data: { result: any; count: number }) {
@@ -56,7 +62,7 @@ export class PatientFindingService {
   private getBaseEndpoint(patientId?: string) {
     const facility = localStorage.getItem('TenantId');
     patientId = patientId ?? this.activeRoute.paramMap['id'];
-    const url = `${environment.baseUrl}/api/${facility}/patients/${patientId}/Findings`;
+    const url = `${this.getBaseUrl()}/api/${facility}/patients/${patientId}/Findings`;
     return url;
   }
 
