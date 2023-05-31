@@ -20,6 +20,7 @@ import {
   MatTreeFlattener,
 } from '@angular/material/tree';
 import { OrgFacade, UserFacade, AuthSandbox, UIState } from '@zhealthcare/fusion/core';
+import { MetaConstants } from '../../../../../../../fusion/core/src/lib/helper/constants';
 
 /**
  * Node for to-do item
@@ -318,14 +319,14 @@ export class AccountSettingComponent
   }
 
   updateTanentData(): void {
-    const statusCount = JSON.parse(localStorage.getItem('StatusCounts'));
+    // const statusCount = JSON.parse(localStorage.getItem('StatusCounts'));
 
-    const updatedStatusCount = this.updateData(statusCount, this.checklistSelection.selected);
+    // const updatedStatusCount = this.updateData(statusCount, this.checklistSelection.selected);
 
-    const facilityId = localStorage.getItem('FacilityId');
-    const a = new FacilityWiseStatuses(facilityId, updatedStatusCount);
+    // const facilityId = localStorage.getItem(MetaConstants.FACILITYID);
+    // const a = new FacilityWiseStatuses(facilityId, updatedStatusCount);
 
-    this.orgFacade.UpdateFacilityWiseStatuses(a);
+    // this.orgFacade.UpdateFacilityWiseStatuses(a);
 
     // Refresh current component
 

@@ -501,6 +501,10 @@ export class AuthEffects {
             'StatusCount',
             JSON.stringify(data.payload.StatusCount)
           );
+          localStorage.setItem(
+            'selectedStatus',
+            data.payload.StatusCount.find(x=>x.isSelected).name
+          );
           sessionStorage.setItem('FacilityId', data.payload.FacilityId);
           sessionStorage.setItem(
             'StatusCount',

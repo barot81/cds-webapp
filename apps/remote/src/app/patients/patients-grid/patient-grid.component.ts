@@ -42,7 +42,6 @@ import {
   of as observableOf,
   debounceTime,
 } from 'rxjs';
-import * as moment from 'moment';
 import { GridService } from '../../services/grid.service';
 import { PatientGridColInfo } from '../../configs/column-info.config';
 import { PatientService } from '../../services/patient.service';
@@ -93,7 +92,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     pointerEvents: 'auto',
   };
   stickyTable = '#stickyColumnTable';
-  columnsToSearch = ['name', 'tenantId', 'region', 'timeZone', 'location'];
+  columnsToSearch = ['name', 'facilityId', 'mrn', 'accountNo'];
 
   @Output() patientClick: EventEmitter<any> = new EventEmitter<any>();
   constructor(
@@ -129,9 +128,11 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
       .subscribe((res) => {
         if (res) {
           this.gridData = res;
+          this.numberOfAppliedFilter = res.filters.length;
         }
       });
-  }2
+  }
+
   InitializeDataSource() {
     const dataSource: FusionDataSource = new FusionDataSource();
     dataSource.endPoint = this.serviceEndPoint;
@@ -152,7 +153,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
       },
     };
     const sort: Sort = {
-      columnName: 'firstName', //this.defaultSortCoulmn,
+      columnName: 'patientName', //this.defaultSortCoulmn,
       direction: '1',
       customFieldParm: {
         sortByFieldName: 'SortBy',
@@ -162,6 +163,14 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     dataSource.sort = sort;
     dataSource.requestType = MethodType.GET;
     dataSource.multiColumnSearch = this.columnsToSearch;
+    const selectedStatus = localStorage.getItem('selectedStatus');
+    const defaultFilter: Filter = {
+      fieldName: 'Filters.ReviewStatus',
+      operator: 'eq',
+      value: selectedStatus
+    };
+    dataSource.filters = selectedStatus === 'Total' ? [] : [defaultFilter];
+
     this.datasourceFacade.InitializeDataSource(dataSource);
     Logger.trace(
       `ProviderListModule : ProviderListComponent => InitializeDataSource()`

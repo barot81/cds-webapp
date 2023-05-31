@@ -1,14 +1,15 @@
 import { FacilityWiseStatuses, StatusCount } from '@zhealthcare/fusion/models';
+import { MetaConstants } from '../../helper/constants';
 import { OrgActions, OrgActionTypes } from '../actions/org.actions';
 
 export interface OrgState {
   FacilityWiseStatuses: FacilityWiseStatuses;
 }
-let facilityId = sessionStorage.getItem('FacilityId');
+let facilityId = sessionStorage.getItem(MetaConstants.SelectedFacilityName);
 let statusCount: StatusCount[] = JSON.parse(sessionStorage.getItem('Statuses'));
 if (!facilityId) {
-  facilityId = localStorage.getItem('FacilityId');
-  if (facilityId) sessionStorage.setItem('FacilityId', facilityId);
+  facilityId = localStorage.getItem(MetaConstants.SelectedFacilityName);
+  if (facilityId) sessionStorage.setItem(MetaConstants.SelectedFacilityName, facilityId);
 }
 if (!statusCount) {
   statusCount = JSON.parse(localStorage.getItem('Statuses'));

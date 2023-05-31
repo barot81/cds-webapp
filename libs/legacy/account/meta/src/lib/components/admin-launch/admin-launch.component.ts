@@ -195,7 +195,7 @@ export class AdminLaunchComponent
               this.facilityStatuses.push(new StatusCount('Total', totalCount));
             }
             this.facilityStatuses = this.facilityStatuses.concat(statuses);
-            this.programSelection(facilityId, this.facilityStatuses);
+            this.programSelection(facilityId.name, this.facilityStatuses);
         }
       )
     }

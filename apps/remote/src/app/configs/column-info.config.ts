@@ -2,14 +2,14 @@ import { ColumnOption } from "../models/datasource/columnOption.model";
 
 export const PatientGridColInfo: ColumnOption[] = [
   {
-    displayName: 'Name',
-    fieldName: 'firstName',
+    displayName: 'Patient Name',
+    fieldName: 'patientName',
     isSearchable: true,
     isDisplayColumn: true
   },
   {
     displayName: 'Account No',
-    fieldName: 'accountNo',
+    fieldName: 'patientNo',
     isSearchable: true,
     isDisplayColumn: true
   },
@@ -20,7 +20,7 @@ export const PatientGridColInfo: ColumnOption[] = [
     isDisplayColumn: true
   },
   {
-    displayName: 'Admission Date',
+    displayName: 'Admit Date',
     fieldName: 'admitDate',
     isSearchable: true,
     isDisplayColumn: true
@@ -33,7 +33,7 @@ export const PatientGridColInfo: ColumnOption[] = [
   },
   {
     displayName: 'Health Plan',
-    fieldName: 'healthPlanName',
+    fieldName: 'healthPlan',
     isSearchable: true,
     isDisplayColumn: true
   },
@@ -74,14 +74,32 @@ export const PatientGridColInfo: ColumnOption[] = [
     isDisplayColumn: true
   },
   {
-    displayName: 'PDX',
-    fieldName: 'pdx',
+    displayName: 'MRN',
+    fieldName: 'mrn',
     isSearchable: false,
     isDisplayColumn: true
   },
   {
-    displayName: 'MRN',
-    fieldName: 'mrn',
+    displayName: 'Patient Class',
+    fieldName: 'patientClass',
+    isSearchable: false,
+    isDisplayColumn: true
+  },
+  {
+    displayName: 'Financial Class',
+    fieldName: 'financialClass',
+    isSearchable: false,
+    isDisplayColumn: true
+  },
+  {
+    displayName: 'Contracted',
+    fieldName: 'contracted',
+    isSearchable: false,
+    isDisplayColumn: true
+  },
+  {
+    displayName: 'LOS',
+    fieldName: 'los',
     isSearchable: false,
     isDisplayColumn: true
   }

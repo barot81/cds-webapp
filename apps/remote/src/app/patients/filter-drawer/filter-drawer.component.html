@@ -120,25 +120,6 @@
 
         </div>
       </div>
-      <div *ngIf="selectedId === filterList[3].id">
-        <div fxFlex="100" fxLayout="column" class="word-break-word pr-md-16 pt-16">
-          <mat-label>
-            Discharge Date Range
-          </mat-label>
-          <div fxFlex="100" fxLayout="row" fxLayoutAlign="center center" class="word-break-word pr-md-16 pt-16">
-            <mat-form-field appearance="fill" fxFlex="100">
-              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-              <mat-date-range-picker #picker1></mat-date-range-picker>
-              <mat-date-range-input [rangePicker]="picker1" (click)="picker1.open()" (keydown)="(false)">
-                <input matStartDate formControlName="dischargeStartDate"
-                  (dateChange)="dateChange('dischargeStartDate', $event)" />
-                <input matEndDate formControlName="dischargeEndDate"
-                  (dateChange)="dateChange('dischargeEndDate', $event)" />
-              </mat-date-range-input>
-            </mat-form-field>
-          </div>
-        </div>
-      </div>
     </form>
   </div>
 </div>

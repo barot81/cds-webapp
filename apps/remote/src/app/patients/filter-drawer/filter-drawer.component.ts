@@ -120,15 +120,14 @@ export class FilterDrawerComponent
   selectedQueryStatusCount = 0;
 
   filterList: filterListItem[] = [
-    { id: 'status', title: 'Status', count: 0 },
+    { id: 'reviewStatus', title: 'Review Status', count: 0 },
     { id: 'queryStatus', title: 'Query Status', count: 0 },
-    { id: 'admitDate', title: 'Admission Date', count: 0 },
-    { id: 'dischargeDate', title: 'Discharge Date', count: 0 },
+    { id: 'admitDate', title: 'Admission Date', count: 0 }
   ];
 
   statusList = [
     { name: 'New', isSelected: false },
-    { name: 'Reviewed', isSelected: false },
+    { name: 'No Reviewed', isSelected: false },
     { name: 'Later Review', isSelected: false },
     { name: 'No Query', isSelected: false },
     { name: 'Non DRG', isSelected: false },
@@ -153,12 +152,10 @@ export class FilterDrawerComponent
     this._unsubscribe = new Subject();
     this.selectedId = this.filterList[0].id;
     this.fusionFormGroup = this.fb.group({
-      status: new FormControl([]),
+      reviewStatus: new FormControl([]),
       queryStatus: new FormControl([]),
       admissionStartDate: new FormControl(''),
-      admissionEndDate: new FormControl(''),
-      dischargeStartDate: new FormControl(''),
-      dischargeEndDate: new FormControl(''),
+      admissionEndDate: new FormControl('')
     });
   }
 
@@ -177,7 +174,7 @@ export class FilterDrawerComponent
 
   setFilterValue(dataSource: FusionDataSource) {
     dataSource.filters
-      .filter((x) => x.fieldName === 'Filters.Status')
+      .filter((x) => x.fieldName === 'Filters.ReviewStatus')
       .forEach(x => {
         this.statusList.find((y) => y.name === x.value).isSelected = true;
         console.log(this.statusList.find((y) => y.name === x.value).isSelected);
@@ -191,17 +188,11 @@ export class FilterDrawerComponent
     const astDate = stDate ? moment(stDate, 'MM/DD/YYYY'): '';
     const endDate = dataSource.filters.find(x => x.fieldName == 'Filters.AdmissionEndDate')?.value;
     const aendDate = endDate ? moment(endDate, 'MM/DD/YYYY') : '';
-    const disStartDate = dataSource.filters.find(x => x.fieldName == 'Filters.DischargeStartDate')?.value;
-    const disStDate = disStartDate ?  moment(disStartDate, 'MM/DD/YYYY') : '';
-    const disDate = dataSource.filters.find(x => x.fieldName == 'Filters.DischargeEndDate')?.value;
-    const disEndDate = disDate ? moment(disDate, 'MM/DD/YYYY') : '';
     this.fusionFormGroup.patchValue({
       status: this.statusList.filter((x) => x.isSelected),
       queryStatus: this.queryStatusList.filter((x) => x.isSelected),
       admissionStartDate: astDate,
-      admissionEndDate: aendDate,
-      dischargeStartDate: disStDate,
-      dischargeEndDate: disEndDate
+      admissionEndDate: aendDate
     });
   }
 
@@ -212,12 +203,11 @@ export class FilterDrawerComponent
     this.selectedQueryStatusCount = this.queryStatusList.filter(
       (x) => x.isSelected
     ).length;
-    this.filterList.find((x) => x.id === 'status').count =
+    this.filterList.find((x) => x.id === 'reviewStatus').count =
       this.selectedStatusCount;
     this.filterList.find((x) => x.id === 'queryStatus').count =
       this.selectedQueryStatusCount;
       this.filterList.find(x=>x.id === 'admitDate').count = this.fusionFormGroup.controls['admissionStartDate'].value ? 1 : 0;
-      this.filterList.find(x=>x.id === 'dischargeDate').count = this.fusionFormGroup.controls['disrchargeStartDate'].value ? 1 : 0;
   }
 
   navigateToFilterListItem(id: string) {
@@ -226,10 +216,10 @@ export class FilterDrawerComponent
   }
 
   selectAll(name: string) {
-    if (name === 'status') {
+    if (name === 'reviewStatus') {
       this.statusList.map((x) => (x.isSelected = true));
       this.selectedStatusCount = this.statusList.length;
-      this.filterList.find((x) => x.id === 'status').count = this.selectedStatusCount;
+      this.filterList.find((x) => x.id === 'reviewStatus').count = this.selectedStatusCount;
     } else if (name === 'queryStatus') {
       this.queryStatusList.map((x) => (x.isSelected = true));
       this.selectedQueryStatusCount = this.queryStatusList.length;
@@ -243,7 +233,7 @@ export class FilterDrawerComponent
     this.selectedStatusCount = this.statusList.filter(
       (x) => x.isSelected
     ).length;
-    this.filterList.find((x) => x.id === 'status').count = this.selectedStatusCount;
+    this.filterList.find((x) => x.id === 'reviewStatus').count = this.selectedStatusCount;
   }
 
   onQueryStatusChange(isChecked: boolean, value: string) {
@@ -257,10 +247,10 @@ export class FilterDrawerComponent
   }
 
   reset(name: string) {
-    if (name === 'status') {
+    if (name === 'reviewStatus') {
       this.statusList.forEach((x) => (x.isSelected = false));
       this.selectedStatusCount = 0;
-      this.filterList.find((x) => x.id === 'status').count = 0;
+      this.filterList.find((x) => x.id === 'reviewStatus').count = 0;
     } else if (name === 'queryStatus') {
       this.queryStatusList.forEach((x) => (x.isSelected = false));
       this.selectedQueryStatusCount = 0;
@@ -270,9 +260,7 @@ export class FilterDrawerComponent
 
   dateChange(propName: string, $event) {
     this.fusionFormGroup.controls[propName].setValue($event.value);
-    propName.includes('discharge')
-    ? this.filterList.find(x=>x.id === 'dischargeDate').count = this.fusionFormGroup.controls[propName]?.value ? 1 : 0
-    : this.filterList.find(x=>x.id === 'admitDate').count = this.fusionFormGroup.controls[propName]?.value ? 1 : 0;
+    this.filterList.find(x=>x.id === 'admitDate').count = this.fusionFormGroup.controls[propName]?.value ? 1 : 0;
   }
 
   resetAllFilters() {
@@ -280,11 +268,9 @@ export class FilterDrawerComponent
       status: '',
       queryStatus: '',
       admissionStartDate: '',
-      admissionEndDate: '',
-      dischargeStartDate: '',
-      dischargeEndDate: '',
+      admissionEndDate: ''
     });
-    this.reset('status');
+    this.reset('reviewStatus');
     this.reset('queryStatus');
     this.filterList.forEach(x=>x.count = 0);
   }
@@ -295,11 +281,11 @@ export class FilterDrawerComponent
     if (selectedStatus.length > 0) {
       selectedStatus.forEach((ele) => {
         filters.push({
-          fieldName: 'Filters.Status',
+          fieldName: 'Filters.ReviewStatus',
           value: ele.name,
           operator: 'eq',
           type: 'dropdown',
-          displayName: 'Status',
+          displayName: 'Review Status',
         });
       });
     }
@@ -325,15 +311,7 @@ export class FilterDrawerComponent
       {
         controlName: 'admissionEndDate',
         filterName: 'Filters.AdmissionEndDate',
-      },
-      {
-        controlName: 'dischargeStartDate',
-        filterName: 'Filters.DischargeStartDate',
-      },
-      {
-        controlName: 'dischargeEndDate',
-        filterName: 'Filters.DischargeEndDate',
-      },
+      }
     ];
     fieldsMapping.forEach((prop) => {
       const fieldValue = this.fusionFormGroup.controls[prop.controlName].value;

@@ -22,6 +22,7 @@ export class MethodType {
     public static readonly FACILITYID = 'FacilityId';
     public static readonly OUCODES = 'Oucodes';
     public static readonly SelectedStatus = 'SelectedStatus';
+    public static readonly SelectedFacilityName = 'facilityName';
   }
 
   export class TokenConstants {

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpService } from '@zhealthcare/fusion/core';
+import { HttpService, MetaConstants } from '@zhealthcare/fusion/core';
 import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { PatientFilters } from '../models/datasource/patient-filters.model';
@@ -59,13 +59,13 @@ export class PatientService extends HttpService {
   }
 
   public getBaseEndpoint() {
-    const facility = localStorage.getItem('TenantId');
+    const facility = localStorage.getItem(MetaConstants.SelectedFacilityName);
     const url = `${this.getBaseUrl()}/${facility}/patients`;
     return url;
   }
 
   public getDatasourceBaseEndpoint() {
-    const facility = localStorage.getItem('TenantId');
+    const facility = localStorage.getItem(MetaConstants.SelectedFacilityName);
     const url = `${this.getBaseUrl()}/${facility}/patientsInfo`;
     return url;
   }

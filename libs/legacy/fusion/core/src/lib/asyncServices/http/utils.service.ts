@@ -249,7 +249,7 @@ function handleDelegatorRequest<T>(
   const baseUrl = _this.getEndpoint(_this.getBaseUrl());
   const tokenModel: TokenModel = JSON.parse(sessionStorage.getItem('Auth'));
   headers = RequestHeader.setTokenHeader(tokenModel, headers);
-  var observable: Observable<HttpResponse<T>> = _this.orgFacade.OrgState$.pipe(
+  const observable: Observable<HttpResponse<T>> = _this.orgFacade.OrgState$.pipe(
     map((orgState: OrgState) => {
       headers = setSecurityHeader<T>(orgState, headers, method, body);
       //This line is temperarily commented - need to fix this delete body["securityContext"];

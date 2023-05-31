@@ -12,27 +12,12 @@
               <div class="search-wrapper" fxFlex="100">
                 <div class="search table-search" fxFlex fxLayout="row" fxLayoutAlign="start center">
                   <i aria-hidden="true" class="fa-light fa-magnifying-glass s-18 mr-4"></i>
-                  <input
-                  id="inputBox"
-                  type="text"
-                  maxlength="50"
-                  placeholder="Search"
-                  [formControl]="searchItem"
-                  fxFlex
-                  matInput
-                  #searchInput
-                  #matInput
-                  [(ngModel)]="searchValue"
-                  (keyup)="applySearch($event)"
-                />
-                <button
-                  mat-icon-button
-                  aria-label="clear search"
-                  class="action-icon clear-button"
-                  (click)="clearSearch()"
-                >
-                  <i class="fa-light fa-xmark s-18" aria-hidden="true"></i>
-                </button>
+                  <input id="inputBox" type="text" maxlength="50" placeholder="Search" [formControl]="searchItem" fxFlex
+                    matInput #searchInput #matInput [(ngModel)]="searchValue" (keyup)="applySearch($event)" />
+                  <button mat-icon-button aria-label="clear search" class="action-icon clear-button"
+                    (click)="clearSearch()">
+                    <i class="fa-light fa-xmark s-18" aria-hidden="true"></i>
+                  </button>
                 </div>
               </div>
 
@@ -43,9 +28,10 @@
                   <span>Filters: </span>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="start center" *ngIf="numberOfAppliedFilter > 2">
-                  <a zhealthcareDrawerAction [componentSelector]="_patientGridService.get('ryzen-show-more-filter-drawer')"
-                    [size]="'drawer-sm'" [data]="showMoreFilters" [primaryAction]="'Apply'"
-                    [caption]="'Show More Filters'" *ngIf="numberOfAppliedFilter> 2">Show more</a>
+                  <a zhealthcareDrawerAction
+                    [componentSelector]="_patientGridService.get('ryzen-show-more-filter-drawer')" [size]="'drawer-sm'"
+                    [data]="showMoreFilters" [primaryAction]="'Apply'" [caption]="'Show More Filters'"
+                    *ngIf="numberOfAppliedFilter> 2">Show more</a>
                 </div>
               </div>
             </div>
@@ -58,10 +44,12 @@
                 <zhealthcare-edit-columns fxHide.lt-md></zhealthcare-edit-columns>
 
                 <button matTooltip="Filter" mat-icon-button class="ml-4 filter-icon-button" aria-label="filters"
-                  zhealthcareDrawerAction id="filter-provider" [componentSelector]="_patientGridService.get('ryzen-filter-drawer')" [size]="'drawer-md'" [caption]="'Filters'" [primaryAction]="'Apply'">
+                  zhealthcareDrawerAction id="filter-provider"
+                  [componentSelector]="_patientGridService.get('ryzen-filter-drawer')" [size]="'drawer-md'"
+                  [caption]="'Filters'" [primaryAction]="'Apply'">
                   <div fxLayout="row" fxLayoutAlign="start center">
                     <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
-                    <span *ngIf="numberOfAppliedFilter>0"> {{ gridFilter.length }} </span>
+                    <span *ngIf="numberOfAppliedFilter>0"> {{ numberOfAppliedFilter }} </span>
                   </div>
                 </button>
 
@@ -87,27 +75,27 @@
   'student-search-grid-with-loadingstate':(datasourceFacade.fusionDataSourceLoading$ | async )}"
         (scroll)="scrollHandler($event)">
         <table id="stickyColumnTable" aria-label="This is a Simple table" mat-table
-          [dataSource]="datasourceFacade.fusionDataSet$ | async"
-          class="mat-table cdk-table w-100-p zhealthcare-table" matSort matSortDisableClear>
+          [dataSource]="datasourceFacade.fusionDataSet$ | async" class="mat-table cdk-table w-100-p zhealthcare-table"
+          matSort matSortDisableClear>
 
-          <ng-container matColumnDef="firstName">
+          <ng-container matColumnDef="patientName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header class="name-column">Patient Name</th>
             <td mat-cell *matCellDef="let element; let i = index" class="name-column">
               <div fxLayout="row" fxLayoutAlign="start center">
                 <a [routerLink]="['./', element?.id, 'details']">
-                  <span class="list-item-name">{{ element?.firstName }} {{ element?.lastName }}
+                  <span class="list-item-name">{{ element?.patientName }}
                   </span>
                 </a>
                 <zhealthcare-tag-showcase [tags]="tags" class="ml-4" *ngIf="i % 3 === 0"></zhealthcare-tag-showcase>
               </div>
             </td>
           </ng-container>
-          <ng-container matColumnDef="accountNo">
+          <ng-container matColumnDef="patientNo">
             <th id="student-id-header" mat-header-cell *matHeaderCellDef mat-sort-header>
-              Account number
+              Patient #
             </th>
             <td mat-cell *matCellDef="let element">
-              {{ element?.accountNo }}
+              {{ element?.patientNo }}
             </td>
           </ng-container>
 
@@ -117,7 +105,7 @@
               Room
             </th>
             <td mat-cell *matCellDef="let element" class="address-column">
-              {{ element?.roomId }}
+              {{ element?.room }}
             </td>
           </ng-container>
 
@@ -125,7 +113,7 @@
           <ng-container matColumnDef="admitDate">
             <th id="phone" mat-header-cell *matHeaderCellDef class="email-width">Admit Date</th>
             <td mat-cell *matCellDef="let element" class="email-width">
-              <a>{{ element?.admissionDate | date:'MMMM d, y' }}</a>
+              <a>{{ element?.admitDate | date:'MMMM d, y' }}</a>
             </td>
           </ng-container>
 
@@ -136,21 +124,38 @@
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="profileStatus">
-            <th id="profileStatus" class="profileStaus-column" mat-header-cell *matHeaderCellDef mat-sort-header>
-              Profile Status
+          <ng-container matColumnDef="financialClass">
+            <th id="financialClass" class="profileStaus-column" mat-header-cell *matHeaderCellDef mat-sort-header>
+              Financial Class
             </th>
             <td mat-cell class="profileStaus-column" *matCellDef="let element">
-              <span [ngClass]="{'warn-fg':element?.profileStatus?.toLowerCase()==='inactive'}">{{ element?.profileStatus
+              <span >{{ element?.financial
                 }}</span>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="patientClass">
+            <th id="patientClass" class="profileStaus-column" mat-header-cell *matHeaderCellDef mat-sort-header>
+              Patient Class
+            </th>
+            <td mat-cell class="profileStaus-column" *matCellDef="let element">
+              <span [ngClass]="{'warn-fg':element?.patientClass?.toLowerCase()==='inactive'}">{{ element?.patientClass
+                }}</span>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="los">
+            <th id="los" class="profileStaus-column" mat-header-cell *matHeaderCellDef mat-sort-header>
+              Los
+            </th>
+            <td mat-cell class="profileStaus-column" *matCellDef="let element">
+              <span>{{ element?.los }}</span>
             </td>
           </ng-container>
 
           <!-- phone Column -->
-          <ng-container matColumnDef="healthPlanName">
+          <ng-container matColumnDef="healthPlan">
             <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-width">Health Plan</th>
             <td mat-cell *matCellDef="let element" class="column-width">
-              {{ element?.healthPlanName }}
+              {{ element?.healthPlan }}
             </td>
           </ng-container>
 
@@ -172,7 +177,7 @@
             </td>
           </ng-container>
           <ng-container matColumnDef="queryDate">
-            <th id="phone" mat-header-cell *matHeaderCellDef class="email-width">Query Date</th>
+            <th id="queryDate" mat-header-cell *matHeaderCellDef class="email-width">Query Date</th>
             <td mat-cell *matCellDef="let element" class="email-width">
               <a>{{ element?.queryDate | date:'MMMM d, y'}}</a>
             </td>
@@ -203,7 +208,20 @@
           <ng-container matColumnDef="concurrent_postDC">
             <th mat-header-cell *matHeaderCellDef class="column-width">Concurrent/PostDC</th>
             <td mat-cell *matCellDef="let element" class="column-width">
-              {{ element?.concurrent_postDC }}
+              <span [ngClass]="element?.concurrent_postDC === 'Retro' ? 'accent-100-bg font-weight-400 p-4': 'green-100-bg p-4 font-weight-400'">
+                {{ element?.concurrent_postDC }}
+              </span>
+
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="contracted">
+            <th mat-header-cell *matHeaderCellDef class="column-width">Contracted</th>
+            <td mat-cell *matCellDef="let element" class="column-width">
+              <span [ngClass]="element?.contracted === true ? 'green-fg': 'warn-fg'">
+                {{ element?.contracted  ? 'Yes': 'No'}}
+              </span>
+
             </td>
           </ng-container>
           <ng-container matColumnDef="secondaryInsurance">
@@ -213,12 +231,7 @@
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="pdx">
-            <th mat-header-cell *matHeaderCellDef class="column-width">PDX</th>
-            <td mat-cell *matCellDef="let element" class="column-width">
-              {{ element?.pdx }}
-            </td>
-          </ng-container>
+
           <ng-container matColumnDef="mrn">
             <th mat-header-cell *matHeaderCellDef class="column-width">MRN</th>
             <td mat-cell *matCellDef="let element" class="column-width">
@@ -242,18 +255,17 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns$ | async" (click)="addRow(row)"
             [class.row-selected]="clickedRows?.has(row)" [class.row-highlighted]="highlightedRows?.has(row)"></tr>
         </table>
-        <div
-        *ngIf="(datasourceFacade.fusionDataSourceLoading$ | async ) === false
-        && (datasourceFacade.dataSourceTotal$ | async) === 0"
-        fxLayout="row wrap" fxLayoutAlign="center" class="pt-16 result-found-style warn-fg" tabindex="0"
-        aria-label="no data found.">
-        We are sorry. No data found
-      </div>
+        <div *ngIf="(datasourceFacade.fusionDataSourceLoading$ | async ) === false
+        && (datasourceFacade.dataSourceTotal$ | async) === 0" fxLayout="row wrap" fxLayoutAlign="center"
+          class="pt-16 result-found-style warn-fg" tabindex="0" aria-label="no data found.">
+          We are sorry. No data found
+        </div>
       </div>
 
     </div>
     <div #pagination>
-      <mat-paginator [pageSize]="itemsPerPage" class="bt" [length]="datasourceFacade.dataSourceTotal$ | async"></mat-paginator>
+      <mat-paginator [pageSize]="itemsPerPage" class="bt" [length]="datasourceFacade.dataSourceTotal$ | async">
+      </mat-paginator>
     </div>
   </div>
 </div>
