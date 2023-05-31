@@ -49,7 +49,7 @@ import { PatientService } from '../../services/patient.service';
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'zhc-patient-grid',
   templateUrl: './patient-grid.component.html',
-  //   styleUrls: ['./provider-list.component.scss'],
+  styleUrls: ['./patient-grid.component.scss'],
 })
 export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly _unsubscribe: Subject<any>;
@@ -92,7 +92,14 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     pointerEvents: 'auto',
   };
   stickyTable = '#stickyColumnTable';
-  columnsToSearch = ['name', 'facilityId', 'mrn', 'accountNo'];
+  columnsToSearch = ['patientName', 'patientNo', 'mrn', 'room', 'reimbursementType'];
+  colorBadges = {
+    'No Query' : 'approved',
+    'Non DRG':'notapproved',
+    'New':'new',
+    'Later Review':'pendingreview',
+    'Pending Query': 'inprogress'
+  };
 
   @Output() patientClick: EventEmitter<any> = new EventEmitter<any>();
   constructor(
@@ -170,7 +177,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
       value: selectedStatus
     };
     dataSource.filters = selectedStatus === 'Total' ? [] : [defaultFilter];
-
+    dataSource.customHeaders = [];
     this.datasourceFacade.InitializeDataSource(dataSource);
     Logger.trace(
       `ProviderListModule : ProviderListComponent => InitializeDataSource()`
@@ -230,7 +237,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
           this.datasourceFacade.GetDataSource(
             this.sort.active,
             this.sort.direction == 'asc' ? '1' : '-1',
-            page,
+            page*this.paginator.pageSize + 1,
             this.paginator.pageSize
           );
           return null;

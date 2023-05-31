@@ -204,19 +204,11 @@ export class DataSourceService {
     orgState: OrgState
   ): HttpHeaders {
     headers = RequestHeader.setDefaultHeaders(headers);
-    let oucodesArray: string[] = [];
-    if (orgState !== undefined) {
-      oucodesArray = OucodeHelper.getOucodeList(
-        oucodesArray,
-        orgState.FacilityWiseStatuses.StatusCount,
-        orgState.FacilityWiseStatuses.FacilityId === HttpConstants.BASE
-          ? false
-          : true
-      );
+    if (orgState) {
       headers = RequestHeader.setFacilityAndStatusHeader(
         headers,
         orgState,
-        oucodesArray
+        []
       );
     }
 
@@ -303,7 +295,7 @@ export class DataSourceService {
             (x) => x.fieldName !== '' && x.value !== ''
           );
           filters.forEach((x) => {
-            if (x !== undefined && x.fieldName !== undefined) {
+            if (x?.fieldName) {
               let condition: string;
               if (x.type === 'search') {
                 condition = 'Contains';

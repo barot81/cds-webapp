@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpService } from '@zhealthcare/fusion/core';
+import { HttpService, MetaConstants } from '@zhealthcare/fusion/core';
 import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Finding } from '../models/Finding.model';
@@ -60,9 +60,9 @@ export class PatientFindingService extends HttpService {
   }
 
   private getBaseEndpoint(patientId?: string) {
-    const facility = localStorage.getItem('TenantId');
+    const facility = localStorage.getItem(MetaConstants.SelectedFacilityName );
     patientId = patientId ?? this.activeRoute.paramMap['id'];
-    const url = `${this.getBaseUrl()}/api/${facility}/patients/${patientId}/Findings`;
+    const url = `${this.getBaseUrl()}/${facility}/patients/${patientId}/Findings`;
     return url;
   }
 

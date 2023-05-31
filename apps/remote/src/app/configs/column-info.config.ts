@@ -8,7 +8,7 @@ export const PatientGridColInfo: ColumnOption[] = [
     isDisplayColumn: true
   },
   {
-    displayName: 'Account No',
+    displayName: 'Patient #',
     fieldName: 'patientNo',
     isSearchable: true,
     isDisplayColumn: true
@@ -26,33 +26,27 @@ export const PatientGridColInfo: ColumnOption[] = [
     isDisplayColumn: true
   },
   {
-    displayName: 'Discharge Date',
-    fieldName: 'dischargeDate',
-    isSearchable: true,
-    isDisplayColumn: true
-  },
-  {
     displayName: 'Health Plan',
     fieldName: 'healthPlan',
     isSearchable: true,
     isDisplayColumn: true
   },
   {
-    displayName: 'CDS',
-    fieldName: 'cds',
+    displayName: 'LOS',
+    fieldName: 'los',
     isSearchable: false,
     isDisplayColumn: true
   },
   {
-    displayName: 'Query Status',
-    fieldName: 'queryStatus',
+    displayName: 'Review Status',
+    fieldName: 'reviewStatus',
     isSearchable: true,
     isDisplayColumn: true
   },
   {
-    displayName: 'Query Date',
-    fieldName: 'queryDate',
-    isSearchable: false,
+    displayName: 'CDS',
+    fieldName: 'cds',
+    isSearchable: true,
     isDisplayColumn: true
   },
   {
@@ -62,44 +56,14 @@ export const PatientGridColInfo: ColumnOption[] = [
     isDisplayColumn: true
   },
   {
-    displayName: 'Concurrent/PostDC',
-    fieldName: 'concurrent_postDC',
+    displayName: 'Drg No - Description',
+    fieldName: 'drgNo',
     isSearchable: false,
     isDisplayColumn: true
   },
   {
-    displayName: 'Secondary Insurance',
-    fieldName: 'secondaryInsurance',
-    isSearchable: false,
-    isDisplayColumn: true
-  },
-  {
-    displayName: 'MRN',
-    fieldName: 'mrn',
-    isSearchable: false,
-    isDisplayColumn: true
-  },
-  {
-    displayName: 'Patient Class',
-    fieldName: 'patientClass',
-    isSearchable: false,
-    isDisplayColumn: true
-  },
-  {
-    displayName: 'Financial Class',
-    fieldName: 'financialClass',
-    isSearchable: false,
-    isDisplayColumn: true
-  },
-  {
-    displayName: 'Contracted',
-    fieldName: 'contracted',
-    isSearchable: false,
-    isDisplayColumn: true
-  },
-  {
-    displayName: 'LOS',
-    fieldName: 'los',
+    displayName: 'Query Date',
+    fieldName: 'queryDate',
     isSearchable: false,
     isDisplayColumn: true
   }

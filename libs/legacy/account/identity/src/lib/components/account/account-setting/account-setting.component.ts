@@ -4,8 +4,6 @@ import { BaseComponent, EventItem } from '@zhealthcare/fusion/core';
 import { Router } from '@angular/router';
 import {
   TenantWithOuCodes,
-  OuCode,
-  FacilityWiseStatuses,
 } from '@zhealthcare/fusion/models';
 import { MatDialog } from '@angular/material/dialog';
 import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
@@ -20,7 +18,6 @@ import {
   MatTreeFlattener,
 } from '@angular/material/tree';
 import { OrgFacade, UserFacade, AuthSandbox, UIState } from '@zhealthcare/fusion/core';
-import { MetaConstants } from '../../../../../../../fusion/core/src/lib/helper/constants';
 
 /**
  * Node for to-do item

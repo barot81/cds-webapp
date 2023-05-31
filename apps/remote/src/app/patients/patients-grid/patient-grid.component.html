@@ -1,6 +1,5 @@
-<div class=" carded inner-scroll zhealthcare-new-grid
-  ">
-  <div class="student-search-report  table-rounded-border p-0">
+<div class="carded inner-scroll zhealthcare-new-grid">
+  <div class="patient-search-report  table-rounded-border p-0">
     <div class="spinner-container" *ngIf="datasourceFacade.fusionDataSourceLoading$ | async">
       <mat-spinner color="accent"></mat-spinner>
     </div>
@@ -70,9 +69,11 @@
           </div>
         </div>
       </div>
-      <div class="content zhealthcare-sticky-table overflow-auto" [ngClass]="{'student-search-grid-with-filter':((searchValue && searchValue!=='') || numberOfAppliedFilter>0) && (datasourceFacade.fusionDataSourceLoading$ | async ) === false,
-      'student-search-grid-without-filter':!((searchValue && searchValue!=='') || numberOfAppliedFilter>0) && (datasourceFacade.fusionDataSourceLoading$ | async ) === false,
-  'student-search-grid-with-loadingstate':(datasourceFacade.fusionDataSourceLoading$ | async )}"
+      <div class="content zhealthcare-sticky-table overflow-auto"
+      [ngClass]="{
+        'student-search-grid-with-filter': ((searchValue && searchValue!=='') || numberOfAppliedFilter>0) && (datasourceFacade.fusionDataSourceLoading$ | async ) === false,
+        'student-search-grid-without-filter':!((searchValue && searchValue!=='') || numberOfAppliedFilter>0) && (datasourceFacade.fusionDataSourceLoading$ | async ) === false,
+        'student-search-grid-with-loadingstate':(datasourceFacade.fusionDataSourceLoading$ | async )}"
         (scroll)="scrollHandler($event)">
         <table id="stickyColumnTable" aria-label="This is a Simple table" mat-table
           [dataSource]="datasourceFacade.fusionDataSet$ | async" class="mat-table cdk-table w-100-p zhealthcare-table"
@@ -91,7 +92,7 @@
             </td>
           </ng-container>
           <ng-container matColumnDef="patientNo">
-            <th id="student-id-header" mat-header-cell *matHeaderCellDef mat-sort-header>
+            <th id="patient-id-header" mat-header-cell *matHeaderCellDef mat-sort-header>
               Patient #
             </th>
             <td mat-cell *matCellDef="let element">
@@ -101,25 +102,25 @@
 
           <!-- address Column -->
           <ng-container matColumnDef="room">
-            <th id="room" mat-header-cell *matHeaderCellDef mat-sort-header class="address-column">
+            <th id="room" mat-header-cell *matHeaderCellDef mat-sort-header class="room-column">
               Room
             </th>
-            <td mat-cell *matCellDef="let element" class="address-column">
+            <td mat-cell *matCellDef="let element" class="room-column">
               {{ element?.room }}
             </td>
           </ng-container>
 
           <!-- email Column -->
           <ng-container matColumnDef="admitDate">
-            <th id="phone" mat-header-cell *matHeaderCellDef class="email-width">Admit Date</th>
-            <td mat-cell *matCellDef="let element" class="email-width">
+            <th id="admitDate" mat-header-cell *matHeaderCellDef class="admit-date-column">Admit Date</th>
+            <td mat-cell *matCellDef="let element" class="admit-date-column">
               <a>{{ element?.admitDate | date:'MMMM d, y' }}</a>
             </td>
           </ng-container>
 
           <ng-container matColumnDef="dischargeDate">
-            <th id="phone" mat-header-cell *matHeaderCellDef class="email-width">Discharge Date</th>
-            <td mat-cell *matCellDef="let element" class="email-width">
+            <th id="admitDate" mat-header-cell *matHeaderCellDef class="email-width">Discharge Date</th>
+            <td mat-cell *matCellDef="let element" class="adnutDate-width">
               <a>{{ element?.dischargeDate | date:'MMMM d, y' }}</a>
             </td>
           </ng-container>
@@ -129,24 +130,23 @@
               Financial Class
             </th>
             <td mat-cell class="profileStaus-column" *matCellDef="let element">
-              <span >{{ element?.financial
+              <span>{{ element?.financial
                 }}</span>
             </td>
           </ng-container>
-          <ng-container matColumnDef="patientClass">
-            <th id="patientClass" class="profileStaus-column" mat-header-cell *matHeaderCellDef mat-sort-header>
-              Patient Class
+          <ng-container matColumnDef="drgNo">
+            <th id="drgNo" class="profileStaus-column" mat-header-cell *matHeaderCellDef mat-sort-header>
+              DRG No - Description
             </th>
             <td mat-cell class="profileStaus-column" *matCellDef="let element">
-              <span [ngClass]="{'warn-fg':element?.patientClass?.toLowerCase()==='inactive'}">{{ element?.patientClass
-                }}</span>
+              <span>{{ element?.drgNo}} - {{element?.diagnosis}}</span>
             </td>
           </ng-container>
           <ng-container matColumnDef="los">
-            <th id="los" class="profileStaus-column" mat-header-cell *matHeaderCellDef mat-sort-header>
+            <th id="los" class="los-column" mat-header-cell *matHeaderCellDef mat-sort-header>
               Los
             </th>
-            <td mat-cell class="profileStaus-column" *matCellDef="let element">
+            <td mat-cell class="los-column" *matCellDef="let element">
               <span>{{ element?.los }}</span>
             </td>
           </ng-container>
@@ -168,11 +168,12 @@
           </ng-container>
 
           <!-- status Column -->
-          <ng-container matColumnDef="queryStatus">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-width">Query Status</th>
-            <td mat-cell *matCellDef="let element" class="column-width">
-              <div class="status-badge {{ element?.statusClass }} w-88 text-center">
-                {{ element?.queryStatus }}
+          <ng-container matColumnDef="reviewStatus">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="review-status-column text-center">Review Status
+            </th>
+            <td mat-cell *matCellDef="let element" class="column-width review-status-column">
+              <div class="status-badge {{ colorBadges[element?.reviewStatus] }} text-center">
+                {{ element?.reviewStatus }}
               </div>
             </td>
           </ng-container>
@@ -208,7 +209,8 @@
           <ng-container matColumnDef="concurrent_postDC">
             <th mat-header-cell *matHeaderCellDef class="column-width">Concurrent/PostDC</th>
             <td mat-cell *matCellDef="let element" class="column-width">
-              <span [ngClass]="element?.concurrent_postDC === 'Retro' ? 'accent-100-bg font-weight-400 p-4': 'green-100-bg p-4 font-weight-400'">
+              <span
+                [ngClass]="element?.concurrent_postDC === 'Retro' ? 'accent-100-bg font-weight-400 p-4': 'green-100-bg p-4 font-weight-400'">
                 {{ element?.concurrent_postDC }}
               </span>
 
@@ -219,7 +221,7 @@
             <th mat-header-cell *matHeaderCellDef class="column-width">Contracted</th>
             <td mat-cell *matCellDef="let element" class="column-width">
               <span [ngClass]="element?.contracted === true ? 'green-fg': 'warn-fg'">
-                {{ element?.contracted  ? 'Yes': 'No'}}
+                {{ element?.contracted ? 'Yes': 'No'}}
               </span>
 
             </td>
