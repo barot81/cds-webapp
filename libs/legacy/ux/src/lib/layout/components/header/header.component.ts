@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   lastLoginTime: any = new Date();
   private _unsubscribeAll: Subject<any>;
   loggedInUser$: Observable<any>;
-  tenantId$: Observable<string>;
+  facilityId$: Observable<string>;
   selectedOucodeName$: Observable<string>;
   selectedOucode$: Observable<string>;
   hasDelegateRole$: Observable<boolean>;
@@ -113,20 +113,12 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         x?.user?.UserRoles?.some((y) => y.RoleCode.includes('Delegate.'))
       )
     );
-    this.tenantId$ = this.orgFacade.OrgState$.pipe(
+    this.facilityId$ = this.orgFacade.OrgState$.pipe(
       takeUntil(this._unsubscribeAll),
       map((x) => {
-        if (x.TenantWithOuCodeTree?.TenantId !== HttpConstants.BASE)
-          return x.TenantWithOuCodeTree?.TenantId;
+        if (x.FacilityWiseStatuses?.FacilityId !== HttpConstants.BASE)
+          return x.FacilityWiseStatuses?.FacilityId;
       })
-    );
-    this.selectedOucodeName$ = this.orgFacade.selectedOucode$.pipe(
-      takeUntil(this._unsubscribeAll),
-      map((x) => x?.Name)
-    );
-    this.selectedOucode$ = this.orgFacade.selectedOucode$.pipe(
-      takeUntil(this._unsubscribeAll),
-      map((x) => x?.Oucode)
     );
 
     this.pageFacade.pageTitle$

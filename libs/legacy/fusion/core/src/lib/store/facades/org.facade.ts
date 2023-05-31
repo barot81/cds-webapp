@@ -1,77 +1,56 @@
 import {
     AppState,
-    getLeafOucodeList,
     getOrgState,
-    getSelectedTenant,
-    getSelectedTenantName,
-    getUserAccessedOuCodes,
-    selectedOucode,
+    getSelectedFacility,
+    getSelectedStatus,
   } from './../selectors/app.states';
 
   import { Injectable } from '@angular/core';
   import { Store } from '@ngrx/store';
   import { Observable } from 'rxjs';
 
-  import {
-    GetTenantWithOucodes,
-    SetOuCodeAccessTree,
-    SetTenantName,
-    SetTenantWithOucodes,
-    UpdateTenantWithOucodes,
-  } from '../actions/org.actions';
 
   import {
     AccessedOuCode,
-    OuCodeAccessTree,
-    TenantWithOuCodeTree,
+    FacilityWiseStatuses,
+    StatusCount,
   } from '@zhealthcare/fusion/models';
   import { distinctUntilChanged } from 'rxjs/operators';
   import { OrgState } from '../reducers/org.reducers';
+import { GetFacilityWiseStatuses, SetFacilityName, SetFacilityWithStatuses, SetStatusCount, UpdateFacilityWiseStatuses } from '../actions/org.actions';
 
   @Injectable({ providedIn: 'any' })
   export class OrgFacade {
     OrgState$: Observable<OrgState>;
-    selectedOucode$: Observable<OuCodeAccessTree>;
-    selectedTenant$: Observable<string>;
-    selectedTenantName$ : Observable<string>;
-    userAccessedOucodes$: Observable<AccessedOuCode[]>;
-    leafOucodeList$: Observable<AccessedOuCode[]>;
+    selectedFacilityId$: Observable<string>;
+    selectedStatus$: Observable<string>;
     constructor(public appState$: Store<AppState>) {
       this.OrgState$ = this.appState$.select(getOrgState);
-      this.selectedOucode$ = this.appState$
-        .select(selectedOucode)
+      this.selectedFacilityId$ = this.appState$
+        .select(getSelectedFacility)
         .pipe(distinctUntilChanged());
-      this.selectedTenant$ = this.appState$
-        .select(getSelectedTenant)
-        .pipe(distinctUntilChanged());
-      this.userAccessedOucodes$ = this.appState$
-        .select(getUserAccessedOuCodes)
-        .pipe(distinctUntilChanged());
-      this.selectedTenantName$ = this.appState$
-        .select(getSelectedTenantName)
-        .pipe(distinctUntilChanged());
-      this.leafOucodeList$ = this.appState$
-        .select(getLeafOucodeList)
+      this.selectedStatus$ = this.appState$
+        .select(getSelectedStatus)
         .pipe(distinctUntilChanged());
     }
 
-    SetTenantWithOucodes(payload: TenantWithOuCodeTree) {
-      this.appState$.dispatch(new SetTenantWithOucodes(payload));
+    SetFacilityWiseStatuses(payload: FacilityWiseStatuses) {
+      this.appState$.dispatch(new SetFacilityWithStatuses(payload));
     }
 
-    UpdateTenantWithOucodes(payload: TenantWithOuCodeTree) {
-      this.appState$.dispatch(new UpdateTenantWithOucodes(payload));
+    UpdateFacilityWiseStatuses(payload: FacilityWiseStatuses) {
+      this.appState$.dispatch(new UpdateFacilityWiseStatuses(payload));
     }
 
-    GetTenantWithOucodes() {
-      this.appState$.dispatch(new GetTenantWithOucodes());
+    GetFacilityWiseStatuses() {
+      this.appState$.dispatch(new GetFacilityWiseStatuses());
     }
 
-    SetTenantName(payload: string) {
-      this.appState$.dispatch(new SetTenantName(payload));
+    SetFacilityName(payload: string) {
+      this.appState$.dispatch(new SetFacilityName(payload));
     }
 
-    SetOuCodeAccessTree(payload: OuCodeAccessTree[]) {
-      this.appState$.dispatch(new SetOuCodeAccessTree(payload));
+    SetStatusCount(payload: StatusCount[]) {
+      this.appState$.dispatch(new SetStatusCount(payload));
     }
   }

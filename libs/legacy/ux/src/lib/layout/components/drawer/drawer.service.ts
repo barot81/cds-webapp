@@ -48,7 +48,7 @@ export class DrawerService implements OnDestroy {
     this._unsubscribeAll = new Subject();
     window.addEventListener('storage', (event) => {
       if (
-        [MetaConstants.TENANTID, MetaConstants.OUCODES].includes(event.key) &&
+        [MetaConstants.FACILITYID, MetaConstants.OUCODES].includes(event.key) &&
         !event.newValue
       ) {
         this.closeDrawer();

@@ -10,7 +10,6 @@ import { AdminLaunchComponent } from './components/admin-launch/admin-launch.com
 import { LaunchComponent } from './components/launch/launch.component';
 import { MetaApiClient } from './meta.ApiClient';
 import { MetaSandbox } from './meta.sandbox';
-import { FacultyInformationApiClient } from './services/faculty-information/faculty-information-client.service';
 import { LookupAPIClientService } from './services/lookup/lookup-APIClient.service';
 
 const routes: Routes = [
@@ -45,7 +44,6 @@ const routes: Routes = [
   providers: [
     MetaApiClient,
     MetaSandbox,
-    FacultyInformationApiClient,
     LookupAPIClientService,
   ],
 })

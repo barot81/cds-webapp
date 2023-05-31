@@ -6,7 +6,7 @@ import {
   NavigationChangeDetector,
   OrgUnit,
   Organization,
-  TenantWithOuCodeTree,
+  FacilityWiseStatuses,
   LaunchDataModel,
   ProductNavigation,
 } from '@zhealthcare/fusion/models';

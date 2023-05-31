@@ -38,17 +38,6 @@ export class FeatureMetadataService extends Sandbox {
     this.formValidationAPIClient.serviceName = serviceEndpoint;
 
     this.serviceCode = serviceCode;
-    this.orgFacade.selectedOucode$
-      .pipe(
-        map((x) => {
-          if (x !== undefined && x !== null) {
-            this.oucodeName = x.Name;
-            this.lookupPrefix = `${this.serviceCode}.${this.oucodeName}.Lookup.`;
-            this.settingPrefix = `${this.serviceCode}.${this.oucodeName}.Settings`;
-          }
-        })
-      )
-      .subscribe();
   }
 
   ////////////////////////////////////////////////

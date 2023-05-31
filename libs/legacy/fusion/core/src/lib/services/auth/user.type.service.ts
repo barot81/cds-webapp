@@ -20,7 +20,7 @@ export class UserTypeService {
   constructor() {
     const oucodeList = OucodeHelper.getOuCodeFlatList(JSON.parse(localStorage.getItem(MetaConstants.OUCODES)));
     const selectedOuCode = oucodeList?.find(x => x.isSelected)?.Oucode;
-    this.setCurrentContext(localStorage.getItem(MetaConstants.TENANTID), selectedOuCode);
+    this.setCurrentContext(localStorage.getItem(MetaConstants.FACILITYID), selectedOuCode);
   }
 
   setUserType(userPersona: UserPersona) {

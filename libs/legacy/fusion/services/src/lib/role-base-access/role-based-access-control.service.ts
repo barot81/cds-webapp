@@ -20,44 +20,11 @@ export class RoleBasedAccessService {
   microserviceWiseFeatures = [];
 
   constructor(
-    private readonly authSandbax: AuthSandbox,
     private roleService: RoleService,
-    private orgFacade: OrgFacade,
-    private userTypeService: UserTypeService
   ) {
-    this.initializeRoleMeta();
   }
 
-  private initializeRoleMeta() {
-    this.roleMeta = this.roleService.getItem();
-    if (this.roleMeta) {
-      this.microserviceWiseFeatures = this.roleMeta?.data?.accesses ? this.roleMeta.data.accesses : [];
-    } else {
-      let tenantId = localStorage.getItem(MetaConstants.TENANTID);
-      let isFaculty = this.userTypeService.isFacultyPersonaSelected();
 
-      const hashCode = !this.roleMeta ? null : this.roleMeta.hash;
-      this.orgFacade.selectedOucode$.pipe(
-        switchMap(soc => {
-          if (soc) {
-            return this.authSandbax
-              .role(hashCode, tenantId, soc.Oucode, isFaculty);
-          }
-          else return of(null);
-        }
-        ))
-        .subscribe((response) => {
-          if (response) {
-            if (response['isModified']) {
-              this.roleService.setItem(response);
-            }
-            this.roleMeta = response;
-            this.microserviceWiseFeatures = this.roleMeta?.data?.accesses ? this.roleMeta.data.accesses : [];
-          }
-        })
-        .unsubscribe();
-    }
-  }
 
 
   hasAccess(microservicodeWithfeatureCode: string, params: {}): boolean {
@@ -89,19 +56,7 @@ export class RoleBasedAccessService {
     const microserviceCodes = this.microserviceWiseFeatures?.filter(
       (x) => x.microserviceCode === codeArray[0]
     );
-    let flag = false;
-    for (let microserviceCode of microserviceCodes) {
-      const featureCode = microserviceCode?.features?.find(function (res) {
-        return res.featureCode === codeArray[1];
-      });
-      if (featureCode) {
-        flag = this.checkPermission(featureCode.permissions, params);
-        if (flag === true) {
-          break;
-        }
-      }
-    }
-    return flag;
+    return false;
   }
 
   private checkPermission(

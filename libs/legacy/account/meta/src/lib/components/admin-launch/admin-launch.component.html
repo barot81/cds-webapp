@@ -24,8 +24,7 @@
           class="mb-16 px-32"
           *ngIf="
             (uniqueFacilities | async) &&
-            showTenantSelect &&
-            !manageAccountSwitchbackKey
+            showTenantSelect
           "
         >
           <mat-card>
@@ -75,9 +74,9 @@
                 fxFlex="100"
                 fxFlex.gt-sm="30"
                 fxFlex.gt-md="30"
-                *ngFor="let item of oucodeWithNames"
+                *ngFor="let item of facilityStatuses"
                 tabindex="0"
-                attr.aria-label="This is a {{ item.value }} program."
+                attr.aria-label="This is a {{ item.name }} program."
               >
                 <a (click)="launch(item)" class="card-link-btn" fxLayout="row" fxLayoutAlign="space-between">
                   <div fxLayout="row">
@@ -86,9 +85,9 @@
                       aria-hidden="true"
                     ></i>
                     <div fxlayout="column">
-                      <h2>{{ item.value }}</h2>
+                      <h2>{{ item.name }}</h2>
                       <span class="font-14 secondary-text"
-                        ><b>{{ item.count }}</b> patients have been {{ item.key }}.</span
+                        ><b>{{ item.count }}</b> patients have been {{ item.name }}.</span
                       >
                     </div>
                   </div>

@@ -14,11 +14,9 @@ import { UserSettingsModel } from './user-settings.model';
   providedIn: 'any',
 })
 export class UserSettingsApiClient extends HttpService {
-  config;
+  config = '';
   constructor() {
     super();
-    this.config =
-      this.configService.appSettings.services['userConfiguration'].endpoint;
   }
 
   getBaseUrl() {

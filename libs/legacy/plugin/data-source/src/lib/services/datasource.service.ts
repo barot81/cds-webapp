@@ -209,11 +209,11 @@ export class DataSourceService {
       oucodesArray = OucodeHelper.getOucodeList(
         oucodesArray,
         orgState.TenantWithOuCodeTree.OucodeTree,
-        orgState.TenantWithOuCodeTree.TenantId === HttpConstants.BASE
+        orgState.TenantWithOuCodeTree.FacilityId === HttpConstants.BASE
           ? false
           : true
       );
-      headers = RequestHeader.setTenantAndOucodeHeader(
+      headers = RequestHeader.setFacilityAndStatusHeader(
         headers,
         orgState,
         oucodesArray

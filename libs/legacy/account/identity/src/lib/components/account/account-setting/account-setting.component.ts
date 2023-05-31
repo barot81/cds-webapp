@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import {
   TenantWithOuCodes,
   OuCode,
-  TenantWithOuCodeTree,
+  FacilityWiseStatuses,
 } from '@zhealthcare/fusion/models';
 import { MatDialog } from '@angular/material/dialog';
 import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
@@ -318,21 +318,21 @@ export class AccountSettingComponent
   }
 
   updateTanentData(): void {
-    let ouData = JSON.parse(localStorage.getItem('Oucodes'));
+    const statusCount = JSON.parse(localStorage.getItem('StatusCounts'));
 
-    let updatedOu = this.updateData(ouData, this.checklistSelection.selected);
+    const updatedStatusCount = this.updateData(statusCount, this.checklistSelection.selected);
 
-    let tanentId = localStorage.getItem('TenantId');
-    let a = new TenantWithOuCodeTree(tanentId, updatedOu);
+    const facilityId = localStorage.getItem('FacilityId');
+    const a = new FacilityWiseStatuses(facilityId, updatedStatusCount);
 
-    this.orgFacade.UpdateTenantWithOucodes(a);
+    this.orgFacade.UpdateFacilityWiseStatuses(a);
 
     // Refresh current component
 
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
-    let currentUrl = this.router.url + '?';
+    const currentUrl = this.router.url + '?';
     this.router.navigateByUrl(currentUrl).then(() => {
       this.router.navigated = false;
       this.router.navigate([this.router.url]);

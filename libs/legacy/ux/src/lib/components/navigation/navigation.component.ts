@@ -42,7 +42,7 @@ export class FusionNavigationComponent implements OnChanges, OnInit, OnDestroy {
   ) {
     // Set the private defaults
     this._unsubscribeAll = new Subject();
-    this.isOucodeSelected$ = this._orgFacade.selectedOucode$.pipe(
+    this.isOucodeSelected$ = this._orgFacade.selectedStatus$.pipe(
       takeUntil(this._unsubscribeAll),
       map((x) => (x === undefined || x === null ? false : true))
     );

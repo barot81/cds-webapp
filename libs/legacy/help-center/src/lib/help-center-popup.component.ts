@@ -265,7 +265,7 @@ export class HelpCenterPopupComponent
       combineLatest(
         this.userFacade.AuthState$,
         this._orgFacade.selectedOucode$,
-        this._orgFacade.selectedTenant$
+        this._orgFacade.selectedFacilityId$
       ).subscribe(([tokenModel, selectedOucode, selectedTenant]) => {
         const token = tokenModel.accessToken;
         if (token && selectedOucode && selectedTenant) {

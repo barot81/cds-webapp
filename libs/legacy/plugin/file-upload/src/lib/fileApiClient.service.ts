@@ -88,14 +88,14 @@ export class FileApiClient extends HttpService {
           if (!headers.has('TenantId')) {
             headers = headers.append(
               'TenantId',
-              orgState.TenantWithOuCodeTree.TenantId
+              orgState.TenantWithOuCodeTree.FacilityId
             );
           }
           if (!headers.has('Oucodes'))
             headers = this.getOucodeHeaders(
               headers,
               orgState.TenantWithOuCodeTree.OucodeTree,
-              orgState.TenantWithOuCodeTree.TenantId === 'Base' ? false : true
+              orgState.TenantWithOuCodeTree.FacilityId === 'Base' ? false : true
             );
         }
       }),
@@ -160,14 +160,14 @@ export class FileApiClient extends HttpService {
           if (!headers.has('TenantId')) {
             headers = headers.append(
               'TenantId',
-              orgState.TenantWithOuCodeTree.TenantId
+              orgState.TenantWithOuCodeTree.FacilityId
             );
           }
           if (!headers.has('Oucodes'))
             headers = this.getOucodeHeaders(
               headers,
               orgState.TenantWithOuCodeTree.OucodeTree,
-              orgState.TenantWithOuCodeTree.TenantId === 'Base' ? false : true
+              orgState.TenantWithOuCodeTree.FacilityId === 'Base' ? false : true
             );
         }
       }),
@@ -223,14 +223,14 @@ export class FileApiClient extends HttpService {
           if (!headers.has('TenantId')) {
             headers = headers.append(
               'TenantId',
-              orgState.TenantWithOuCodeTree.TenantId
+              orgState.TenantWithOuCodeTree.FacilityId
             );
           }
           if (!headers.has('Oucodes'))
             headers = this.getOucodeHeaders(
               headers,
               orgState.TenantWithOuCodeTree.OucodeTree,
-              orgState.TenantWithOuCodeTree.TenantId === 'Base' ? false : true
+              orgState.TenantWithOuCodeTree.FacilityId === 'Base' ? false : true
             );
         }
       }),
@@ -283,14 +283,14 @@ export class FileApiClient extends HttpService {
           if (!headers.has('TenantId')) {
             headers = headers.append(
               'TenantId',
-              orgState.TenantWithOuCodeTree.TenantId
+              orgState.TenantWithOuCodeTree.FacilityId
             );
           }
           if (!headers.has('Oucodes'))
             headers = this.getOucodeHeaders(
               headers,
               orgState.TenantWithOuCodeTree.OucodeTree,
-              orgState.TenantWithOuCodeTree.TenantId === 'Base' ? false : true
+              orgState.TenantWithOuCodeTree.FacilityId === 'Base' ? false : true
             );
         }
       }),
@@ -374,14 +374,14 @@ export class FileApiClient extends HttpService {
           if (!headers.has('TenantId')) {
             headers = headers.append(
               'TenantId',
-              orgState.TenantWithOuCodeTree.TenantId
+              orgState.TenantWithOuCodeTree.FacilityId
             );
           }
           if (!headers.has('Oucodes'))
             headers = this.getOucodeHeaders(
               headers,
               orgState.TenantWithOuCodeTree.OucodeTree,
-              orgState.TenantWithOuCodeTree.TenantId === 'Base' ? false : true
+              orgState.TenantWithOuCodeTree.FacilityId === 'Base' ? false : true
             );
         }
       }),

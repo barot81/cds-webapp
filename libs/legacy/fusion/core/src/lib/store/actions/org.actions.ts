@@ -1,39 +1,39 @@
 import { Action } from '@ngrx/store';
-import { OuCodeAccessTree, TenantWithOuCodeTree } from '@zhealthcare/fusion/models';
+import { FacilityWiseStatuses, StatusCount } from '@zhealthcare/fusion/models';
 
 export enum OrgActionTypes {
 
-    SetTenantWithOucodes = '[Auth] set TenantWithOuCodeTree',
-    GetTenantWithOucodes = '[Auth] get TenantWithOuCodeTree',
-    UpdateTenantWithOucodes = '[Auth] update TenantWithOuCodeTree',
+    SetFacilityWithStatuses = '[Auth] set FacilityWiseStatuses',
+    GetFacilityWiseStatuses = '[Auth] get FacilityWiseStatuses',
+    UpdateFacilityWiseStatuses = '[Auth] update FacilityWiseStatuses',
     LaunchSuccess = '[Auth] Launch Success',
     LaunchFailure = '[Auth] Launch Failure',
-    SetTenantName = '[Auth] SET TenantName',
-    SetOuCodeAccessTree = '[Auth] SET OuCodeAccessTree',
+    SetFacilityName = '[Auth] SET FacilityName',
+    SetStatusCount = '[Auth] SET StatusCount',
 }
 
 
-export class SetTenantWithOucodes implements Action {
-    readonly type = OrgActionTypes.SetTenantWithOucodes;
-    constructor(public payload: TenantWithOuCodeTree) {
+export class SetFacilityWithStatuses implements Action {
+    readonly type = OrgActionTypes.SetFacilityWithStatuses;
+    constructor(public payload: FacilityWiseStatuses) {
     }
 }
-export class UpdateTenantWithOucodes implements Action {
-    readonly type = OrgActionTypes.UpdateTenantWithOucodes;
-    constructor(public payload: TenantWithOuCodeTree) {
+export class UpdateFacilityWiseStatuses implements Action {
+    readonly type = OrgActionTypes.UpdateFacilityWiseStatuses;
+    constructor(public payload: FacilityWiseStatuses) {
     }
 }
 
-export class GetTenantWithOucodes implements Action {
-    readonly type = OrgActionTypes.GetTenantWithOucodes;
+export class GetFacilityWiseStatuses implements Action {
+    readonly type = OrgActionTypes.GetFacilityWiseStatuses;
 }
 export class LaunchSuccess implements Action {
     readonly type = OrgActionTypes.LaunchSuccess;
-    constructor(public payload: TenantWithOuCodeTree[]) {
+    constructor(public payload: FacilityWiseStatuses[]) {
     }
 }
-export class SetTenantName implements Action {
-    readonly type = OrgActionTypes.SetTenantName;
+export class SetFacilityName implements Action {
+    readonly type = OrgActionTypes.SetFacilityName;
     constructor(public payload: string) {
     }
 }
@@ -43,17 +43,17 @@ export class LaunchFailure implements Action {
     constructor(public payload: any) {}
 }
 
-export class SetOuCodeAccessTree implements Action {
-    readonly type = OrgActionTypes.SetOuCodeAccessTree;
-    constructor(public payload: OuCodeAccessTree[]) {}
+export class SetStatusCount implements Action {
+    readonly type = OrgActionTypes.SetStatusCount;
+    constructor(public payload: StatusCount[]) {}
 }
 
 export type OrgActions =
-  | SetTenantWithOucodes
-  | UpdateTenantWithOucodes
-  | GetTenantWithOucodes
+  | SetFacilityWithStatuses
+  | UpdateFacilityWiseStatuses
+  | GetFacilityWiseStatuses
   | LaunchSuccess
   | LaunchFailure
-  | SetTenantName
-  | SetOuCodeAccessTree;
+  | SetFacilityName
+  | SetStatusCount;
 

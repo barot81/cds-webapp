@@ -123,7 +123,7 @@ function getDescriptor<T>(
           }
           if (
             !isEmpty(localStorage.getItem('Auth')) &&
-            (isEmpty(localStorage.getItem(MetaConstants.TENANTID)) ||
+            (isEmpty(localStorage.getItem(MetaConstants.FACILITYID)) ||
               isEmpty(localStorage.getItem(MetaConstants.OUCODES))) &&
             headers['TenantId'] !== HttpConstants.BASE &&
             !this.router.url.includes('launch') &&
@@ -182,24 +182,24 @@ function setSecurityHeader<T>(
   if (orgState !== undefined) {
     oucodesArray = OucodeHelper.getOucodeList(
       oucodesArray,
-      orgState.TenantWithOuCodeTree.OucodeTree,
-      orgState.TenantWithOuCodeTree.TenantId === HttpConstants.BASE
+      orgState.FacilityWiseStatuses.StatusCount,
+      orgState.FacilityWiseStatuses.FacilityId === HttpConstants.BASE
         ? false
         : true
     );
-    if (orgState.TenantWithOuCodeTree.TenantId === HttpConstants.BASE) {
-      oucodesArray = orgState.TenantWithOuCodeTree.OucodeTree.map(
-        (x) => x.Oucode
+    if (orgState.FacilityWiseStatuses.FacilityId === HttpConstants.BASE) {
+      oucodesArray = orgState.FacilityWiseStatuses.StatusCount.map(
+        (x) => x.status
       );
     } else {
-      oucodesArray = orgState.TenantWithOuCodeTree.FlatArray.filter(
+      oucodesArray = orgState.FacilityWiseStatuses.StatusCount.filter(
         (x) => x.isSelected
-      ).map((x) => x.Oucode);
+      ).map((x) => x.status);
     }
     oucodesArray = oucodesArray.filter(function (elem, index, self) {
       return index === self.indexOf(elem);
     });
-    headers = RequestHeader.setTenantAndOucodeHeader(
+    headers = RequestHeader.setFacilityAndStatusHeader(
       headers,
       orgState,
       oucodesArray

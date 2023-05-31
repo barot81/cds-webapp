@@ -1,7 +1,7 @@
 import { Input, Component, TemplateRef, AfterViewInit } from '@angular/core';
 import { SecurityContext, OuCode } from '@zhealthcare/fusion/models';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { OrgFacade, OucodeHelper } from '@zhealthcare/fusion/core';
+import { OrgFacade } from '@zhealthcare/fusion/core';
 
 
 
@@ -33,7 +33,7 @@ export class SecurityContextComponent implements  ControlValueAccessor,AfterView
 
   onTouched: any = () => { };
 
-  onChange = (securityContext:SecurityContext) => {};
+  onChange = (securityContext: SecurityContext) => {};
 
 
   constructor(
@@ -52,7 +52,6 @@ export class SecurityContextComponent implements  ControlValueAccessor,AfterView
     }
   }
   writeValue(value: SecurityContext): void {
-    this.getOucodeContext();
     this._securityContext = value;
 
     if(this._securityContext !== undefined && this._securityContext !== null &&
@@ -79,13 +78,6 @@ export class SecurityContextComponent implements  ControlValueAccessor,AfterView
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
-  }
-
-  getOucodeContext() {
-    this.orgFacade.OrgState$.subscribe(data => {
-         this.oucodeContext["oucodeList"]=OucodeHelper.getOuCodeFlatList(data.TenantWithOuCodeTree.OucodeTree);
-
-     });
   }
 
   onOucodeChanged(selectedOucode) {

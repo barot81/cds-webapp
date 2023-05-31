@@ -5,7 +5,6 @@ import {
   AuthSandbox,
   BaseComponent,
   FusionConfigService,
-  Logger,
   MetaConstants,
   OrgFacade,
   OucodeHelper,
@@ -16,9 +15,7 @@ import {
 } from '@zhealthcare/fusion/core';
 import {
   OrgUnitInformation,
-  OuCodeAccessTree,
-  TenantWithOuCodeTree,
-  UserPersona,
+  FacilityWiseStatuses,
 } from '@zhealthcare/fusion/models';
 import { FusionNavigationService } from '@zhealthcare/fusion/services';
 import {
@@ -31,7 +28,7 @@ import { Observable, of, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { MetaSandbox } from '../../meta.sandbox';
 import { BrowserStorage } from '../../models/storage.model';
-import { TenantInformationSandbox } from '../../services/tenant-information/tenant-information-snadbox';
+import { FacilitySandbox } from '../../services/facilities/facility.sandbox';
 
 @Component({
   selector: 'zhc-account-launch',
@@ -56,13 +53,11 @@ export class LaunchComponent
   orgUnitInformation: OrgUnitInformation[] = [];
   protected _unsubscribe: Subject<any>;
   tenantList: any;
-  selectedTenant: TenantWithOuCodeTree;
+  selectedFacility: FacilityWiseStatuses;
   isLoading = false;
   inProgressCount = 0;
   storage: BrowserStorage;
   selectedProgramOucode;
-  oucodeTree: OuCodeAccessTree[];
-  tenantWithOucodeTreeWithCaption: OuCodeAccessTree;
 
   constructor(
     protected userState: UserFacade,
@@ -78,18 +73,13 @@ export class LaunchComponent
     protected userTypeService: UserTypeService,
     protected _fusionConfigService: FusionConfigService,
     protected _layoutService: LayoutService,
-    protected _tenantInformationSandbox: TenantInformationSandbox,
+    protected _tenantInformationSandbox: FacilitySandbox,
     protected _headerService: HeaderService
   ) {
     super();
     this._unsubscribe = new Subject();
   }
 
-  getselectedProgram() {
-    this.orgFacade.selectedOucode$
-      .pipe(takeUntil(this._unsubscribe))
-      .subscribe((x) => (this.selectedProgramOucode = x.Oucode));
-  }
 
   ngOnInit() {
     this.pageFacade.setPageTitle('Launch');
@@ -146,84 +136,72 @@ export class LaunchComponent
       this.router.navigateByUrl(URLConstants.ADMIN_LAUNCH_URL);
   }
 
-  protected getRoleDocument(
-    tenantId?: string,
-    oucode?: string,
-    isFaculty?: boolean
-  ): Observable<any> {
-    const roleMeta = this.roleService.getItem();
-    const HashCode = !roleMeta ? null : roleMeta.hash;
-    const hashFlag = !roleMeta
-      ? true
-      : roleMeta.hash != this.roleHash
-      ? true
-      : false;
-    if (hashFlag) {
-      return this.authSandbox.role(HashCode, tenantId, oucode, isFaculty).pipe(
-        map((response) => {
-          if (response['isModified']) {
-            this.roleService.setItem(response);
-          }
-        })
-      );
-    } else {
-      return of(roleMeta);
-    }
-  }
+  // protected getRoleDocument(
+  //   tenantId?: string,
+  //   oucode?: string,
+  //   isFaculty?: boolean
+  // ): Observable<any> {
+  //   const roleMeta = this.roleService.getItem();
+  //   const HashCode = !roleMeta ? null : roleMeta.hash;
+  //   const hashFlag = !roleMeta
+  //     ? true
+  //     : roleMeta.hash != this.roleHash
+  //     ? true
+  //     : false;
+  //   if (hashFlag) {
+  //     return this.authSandbox.role(HashCode, tenantId, oucode, isFaculty).pipe(
+  //       map((response) => {
+  //         if (response['isModified']) {
+  //           this.roleService.setItem(response);
+  //         }
+  //       })
+  //     );
+  //   } else {
+  //     return of(roleMeta);
+  //   }
+  // }
 
   programSelection(tenatWithOucodes) {
     if (tenatWithOucodes) {
-      this.selectedTenant = new TenantWithOuCodeTree(
+      this.selectedFacility = new FacilityWiseStatuses(
         tenatWithOucodes.key,
         tenatWithOucodes.value
       );
-      this.oucodeWithNames = OucodeHelper.getProgramList(
+      this.oucodeWithNames = OucodeHelper.getStatusList(
         [],
-        this.selectedTenant.OucodeTree
+        this.selectedFacility.StatusCount
       );
     } else this.oucodeWithNames = [];
   }
 
   getOrgUnitInformation(selectedOucode: string): void {
-    this.showProgressBar();
-    this.metaSandbox
-      .getOrgUnitInformation(
-        this.selectedTenant.TenantId,
-        this.oucodeWithNames.map((x) => x.key)
-      )
-      .subscribe(
-        async (orgUnitInformation: OrgUnitInformation[]) => {
-          this.hideProgressBar();
-          this.orgUnitInformation = orgUnitInformation;
-          this.orgUnitInformation.forEach(
-            (x) => (x.isSelected = x.oucode === selectedOucode ? true : false)
-          );
-          this.storage.storageType.setItem(
-            'orgUnitInformation',
-            JSON.stringify(this.orgUnitInformation)
-          );
-          this._layoutService._orgTimzone$.next(
-            this.orgUnitInformation?.find((x) => x.isSelected)?.timeZone
-          );
-          this.setSelectedOUCode(selectedOucode);
-        },
-        (error) => {
-          this.fuseProgressBarService.hide();
-        }
-      );
+    // this.showProgressBar();
+    // this.metaSandbox
+    //   .getOrgUnitInformation(
+    //     this.selectedTenant.FacilityId,
+    //     this.oucodeWithNames.map((x) => x.key)
+    //   )
+    //   .subscribe(
+    //     async (orgUnitInformation: OrgUnitInformation[]) => {
+    //       this.hideProgressBar();
+    //       this.orgUnitInformation = orgUnitInformation;
+    //       this.orgUnitInformation.forEach(
+    //         (x) => (x.isSelected = x.oucode === selectedOucode ? true : false)
+    //       );
+    //       this.storage.storageType.setItem(
+    //         'orgUnitInformation',
+    //         JSON.stringify(this.orgUnitInformation)
+    //       );
+    //       this._layoutService._orgTimzone$.next(
+    //         this.orgUnitInformation?.find((x) => x.isSelected)?.timeZone
+    //       );
+    //     },
+    //     (error) => {
+    //       this.fuseProgressBarService.hide();
+    //     }
+    //   );
   }
 
-
-  setSelectedOUCode(selectedOucode: string) {
-    const selectedOuCodeTree = this.selectedTenant?.OucodeTree?.find(
-      (x) => x.Name === selectedOucode
-    );
-    const selectedOUCodeCaption = selectedOuCodeTree?.Name;
-    this._headerService.setSelectedOUCodeCaption(selectedOUCodeCaption);
-    this._headerService.setTenantWithOucodeTreeWithCaption(
-      selectedOuCodeTree
-    );
-  }
 
   protected sortTenantWithOuCodesByTenantId() {
     if (this.tenantWithOuCodes && this.tenantWithOuCodes.length > 1) {
@@ -241,28 +219,12 @@ export class LaunchComponent
   }
 
   updateStateAndRedirect(
-    selectedTenant: TenantWithOuCodeTree,
-    selectedOuCode: string,
-    selectedUserType?: UserPersona
+    selectedFacility: FacilityWiseStatuses,
+    selectedStatus: string
   ) {
-    let targetUrl: string;
-
-    if (selectedUserType) this.userTypeService.setUserType(selectedUserType);
-    const isFaculty = this.userTypeService.isFacultyPersonaSelected();
-    this.userTypeService.setCurrentContext(
-      selectedTenant.TenantId,
-      selectedOuCode
-    );
-    //get Navigation
-    //this.fusionNavigatoinService.registration();
-
     this.showProgressBar();
-    const oucodeTree = this.buildOucodeTree(
-      selectedTenant.OucodeTree,
-      selectedOuCode
-    );
-    selectedOuCode = Object.assign({}, selectedOuCode, { OucodeTree: oucodeTree})
-    this.orgFacade.SetTenantWithOucodes(selectedTenant);
+    selectedFacility.StatusCount.find(x=>x.status === selectedStatus).isSelected = true;
+    this.orgFacade.SetFacilityWiseStatuses(selectedFacility);
        this.activatedRoute.queryParams.subscribe(
           (resp) => {
             this.hideProgressBar();
@@ -273,29 +235,10 @@ export class LaunchComponent
           }
         );
 }
-  buildOucodeTree(oucodeTrees, oucode) {
 
-    if (Array.isArray(oucodeTrees)) {
-      oucodeTrees.forEach((element, index) => {
-        if (element.Name === oucode)
-        element = Object.assign({}, element, { isSelected:  true });
-        else if (element.hasOwnProperty('Children')) {
-          this.buildOucodeTree(element.Children, oucode);
-          element = Object.assign({}, element, { isSelected:  false });
-        }
-      });
-    } else {
-      if (oucodeTrees.Oucode === oucode) oucodeTrees.isSelected = true;
-      else if (oucodeTrees.hasOwnProperty('Children')) {
-        this.buildOucodeTree(oucodeTrees.Children, oucode);
-        oucodeTrees = Object.assign({}, oucodeTrees, { isSelected:  false });;
-      }
-    }
-    return oucodeTrees;
-  }
 
-  getTenantName(selectedTenant: TenantWithOuCodeTree) {
-    const tenantId = selectedTenant.TenantId;
+  getTenantName(selectedTenant: FacilityWiseStatuses) {
+    const tenantId = selectedTenant.FacilityId;
     this.showProgressBar();
   }
 

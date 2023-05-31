@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { OrgFacade } from '@zhealthcare/fusion/core';
-import { OuCodeAccessTree } from '@zhealthcare/fusion/models';
 
 @Injectable({
     providedIn: 'root'
@@ -13,50 +12,33 @@ export class HeaderService {
     public currentHeaderHeight: BehaviorSubject<number>;
     public showReleaseNotes: BehaviorSubject<boolean>;
     public scrollContentheight: number;
-    public tenantName: BehaviorSubject<string>;
+    public facilityName$: BehaviorSubject<string>;
     public selectedOUCodeCaption$: BehaviorSubject<string>;
     orgFacade: OrgFacade;
     defaultAddedHeight = 82;
-    /**
-     *
-     */
     constructor(orgFacade: OrgFacade) {
         this.currentHeaderHeight = new BehaviorSubject<number>(100);
         this.windowHeight = new BehaviorSubject<number>(window.innerHeight);
         this.showReleaseNotes = new BehaviorSubject<boolean>(false);
-        let initialTenantName = "";
+        let initialFacilityName = "";
         this.orgFacade = orgFacade;
-        if(localStorage.getItem('tenantFullName') != null){
-            initialTenantName = localStorage.getItem('tenantFullName');
-            orgFacade.SetTenantName(initialTenantName);
+        if(localStorage.getItem('facilityName') != null){
+            initialFacilityName = localStorage.getItem('facilityName');
+            orgFacade.SetFacilityName(initialFacilityName);
         }
-        this.tenantName = new BehaviorSubject<string>(initialTenantName);
-        this.selectedOUCodeCaption$ = new BehaviorSubject<string>(localStorage.getItem('selectedOUCodeCaption') ?? '');
-        if(localStorage.getItem('tenantWithOucodeTreeWithCaption')) {
-            const tenantWithOucodeTreeWithCaption = JSON.parse(localStorage.getItem('tenantWithOucodeTreeWithCaption'));
-            this.orgFacade.SetOuCodeAccessTree(tenantWithOucodeTreeWithCaption?.Children);
-          }
+        this.facilityName$ = new BehaviorSubject<string>(initialFacilityName);
     }
 
     getCurrentHeaderHeight() {
         return this.currentHeaderHeight.value;
     }
 
-    setCurrentFacilityName(tenantName: string) {
-        localStorage.setItem('tenantFullName', tenantName);
-        this.orgFacade.SetTenantName(tenantName);
-        this.tenantName.next(tenantName);
+    setCurrentFacilityName(facilityName: string) {
+        localStorage.setItem('facilityName', facilityName);
+        this.orgFacade.SetFacilityName(facilityName);
+        this.facilityName$.next(facilityName);
     }
 
-    setSelectedOUCodeCaption(selectedOUCodeCaption: string) {
-        localStorage.setItem('selectedOUCodeCaption', selectedOUCodeCaption);
-        this.selectedOUCodeCaption$.next(selectedOUCodeCaption ?? '')
-    }
-
-    setTenantWithOucodeTreeWithCaption( tenantWithOucodeTreeWithCaption: OuCodeAccessTree) {
-        localStorage.setItem('tenantWithOucodeTreeWithCaption', JSON.stringify(tenantWithOucodeTreeWithCaption));
-        this.orgFacade.SetOuCodeAccessTree([tenantWithOucodeTreeWithCaption]);
-   }
 
     setWindowHeight(height) {
         this.windowHeight = new BehaviorSubject<number>(height);

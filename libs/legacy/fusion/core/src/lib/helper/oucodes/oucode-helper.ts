@@ -76,19 +76,18 @@ export class OucodeHelper {
     return node;
   }
 
-  static getProgramList(_oucodeWithNames, Oucodes) {
-    if (Array.isArray(Oucodes)) {
-      Oucodes.forEach((element, index) => {
-        const oucodeWithName = [];
-        oucodeWithName['key'] = element.Name;
-        oucodeWithName['value'] = element?.Name;
-        oucodeWithName['count'] = element?.Oucode;
-        oucodeWithName['url'] = element?.caption;
-        _oucodeWithNames.push(oucodeWithName);
-
+  static getStatusList(_statusesWithCount, stautsCounts) {
+    if (Array.isArray(stautsCounts)) {
+      stautsCounts.forEach((element, index) => {
+        const statusWithCount = [];
+        statusWithCount['key'] = element.Name;
+        statusWithCount['value'] = element?.Name;
+        statusWithCount['count'] = element?.Oucode;
+        statusWithCount['url'] = element?.caption;
+        _statusesWithCount.push(statusWithCount);
       });
     }
-    return _oucodeWithNames;
+    return _statusesWithCount;
   }
 
   static getFullName(element: any) {

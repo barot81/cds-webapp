@@ -167,14 +167,14 @@ export class ZhealthcareAngularBootstrapLegacyComponent implements OnInit, OnCha
   }
 
   selectedOucodeListener() {
-    this._orgFacade.selectedOucode$
-      .pipe(withLatestFrom(this._orgFacade.OrgState$))
-      .subscribe(async ([selectedOUCode, orgState]) => {
-        if (selectedOUCode) {
-          await this.getSettingDictionary(selectedOUCode, orgState);
-          await this.getFeatureFlag();
-        }
-      });
+    // this._orgFacade.selectedOucode$
+    //   .pipe(withLatestFrom(this._orgFacade.OrgState$))
+    //   .subscribe(async ([selectedOUCode, orgState]) => {
+    //     if (selectedOUCode) {
+    //       await this.getSettingDictionary(selectedOUCode, orgState);
+    //       await this.getFeatureFlag();
+    //     }
+    //   });
   }
 
   async getSettingDictionary(selectedOUCode, orgState) {

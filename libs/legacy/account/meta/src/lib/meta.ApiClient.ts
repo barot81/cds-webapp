@@ -5,11 +5,7 @@ import {
   LaunchDataModel,
   Organization,
   OrgUnitInformation,
-  OuCodeAccessTree,
-  TenantWithOuCodeTree,
 } from '@zhealthcare/fusion/models';
-import { Facilities } from './data/facilities';
-import { InhousePatientStatistics } from './data/inhouse-patient-statistics';
 
 @Injectable({providedIn:'any'})
 export class MetaApiClient extends HttpService {
@@ -18,22 +14,22 @@ export class MetaApiClient extends HttpService {
   }
 
   protected getBaseUrl(): string {
-    return this.configService.getservice('foundation.meta').endpoint;
+    return this.configService.getservice('facility').endpoint;
   }
 
-  Launch(
-    header: string,
-    oucodes: string
-  ): Observable<LaunchDataModel> {
-    const statistics = InhousePatientStatistics.map(x=> new OuCodeAccessTree(x.name, x.count, x.url, x.fullName, false, []));
-    const facilities = Facilities.map(x=> {
-      return {
-      key: x.name,
-      value: statistics
-    }
-  });
-  return of(new LaunchDataModel(facilities, null, null));
-  }
+  // Launch(
+  //   header: string,
+  //   oucodes: string
+  // ): Observable<LaunchDataModel> {
+  //   // const statistics = FacilityStatuses.map(x=> new OuCodeAccessTree(x.name, x.count, x.url, x.fullName, false, []));
+  //   // const facilities = Facilities.map(x=> {
+  //   //   return {
+  //   //   key: x.name,
+  //   //   value: statistics
+  //   // }
+  // // });
+  // return of(new LaunchDataModel(null, null, null));
+  // }
 
   @GET('/launch/{tenantId}')
   LaunchTenant(
@@ -60,10 +56,6 @@ export class MetaApiClient extends HttpService {
     return null;
   }
 
-  @GET<OuCodeAccessTree>('/OrgUnit/GetProgramsWithOucode')
-  getAllOrgUnitInformation(): Observable<OuCodeAccessTree> {
-    return null;
-  }
 
   @GET<Organization>('/Organization/{id}')
   public getOrganizationInformation(

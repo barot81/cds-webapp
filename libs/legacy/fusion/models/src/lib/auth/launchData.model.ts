@@ -1,4 +1,4 @@
-import { TenantWithOuCodeTree } from './tenantWithOucodeTree';
+import { FacilityWiseStatuses } from './tenantWithOucodeTree';
 export class LaunchDataModel {
   constructor(
     public tenentWithOucodeAccessTrees: any[],

@@ -46,13 +46,13 @@ export class RequestHeader {
     }
   }
 
-  static setTenantAndOucodeHeader(headers: HttpHeaders, orgState: OrgState,  oucodesArray: string[]) {
-    if (!headers.has('TenantId')) {
-      headers = headers.set('TenantId', orgState?.TenantWithOuCodeTree?.TenantId ? orgState.TenantWithOuCodeTree.TenantId : 'Base' );
+  static setFacilityAndStatusHeader(headers: HttpHeaders, orgState: OrgState,  oucodesArray: string[]) {
+    if (!headers.has('FacilityId')) {
+      headers = headers.set('FacilityId', orgState?.FacilityWiseStatuses?.FacilityId ? orgState.FacilityWiseStatuses.FacilityId : 'Base' );
     }
-    if (!headers.has('Oucodes') && oucodesArray) {
+    if (!headers.has('Status') && oucodesArray) {
       oucodesArray.forEach(x => {
-        headers = headers.append('Oucodes', x);
+        headers = headers.append('Status', x);
       });
     }
     return headers;

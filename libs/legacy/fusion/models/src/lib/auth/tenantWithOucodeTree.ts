@@ -1,13 +1,10 @@
 
-export class OuCodeAccessTree {
+export class StatusCount {
 
   constructor(
-      public Name: string,
-      public Oucode: string,
-      public caption: string,
-      public fullName: string,
-      public isSelected: boolean,
-      public Children: OuCodeAccessTree[]) {
+      public status: string,
+      public count: string,
+      public isSelected: boolean) {
   }
 }
 
@@ -20,13 +17,11 @@ export class AccessedOuCode {
   ) {}
 }
 
-export class TenantWithOuCodeTree {
+export class FacilityWiseStatuses {
 
   constructor(
-      public TenantId: string,
-      public OucodeTree: OuCodeAccessTree[],
-      public FlatArray:any[]= [],
-      public TenantName: string = "Base",
+      public FacilityId: string,
+      public StatusCount: StatusCount[]
     ) {
   }
 }

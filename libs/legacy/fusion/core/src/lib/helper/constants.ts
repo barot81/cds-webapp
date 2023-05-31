@@ -4,12 +4,12 @@ export class MethodType {
     public static readonly PUT = 'PUT';
     public static readonly DELETE = 'DELETE';
   }
-  
+
   export class HttpConstants {
     public static readonly BASE = 'Base';
     public static readonly BASE_OUCODE = '1000';
   }
-  
+
   export class MetaConstants {
     public static readonly VIEW_AS_STUDENT_ROLE_CODE = 'ViewAsStudent';
     public static readonly MANAGE_ACCOUNT_SWITCH_BACK_KEY =
@@ -19,11 +19,11 @@ export class MethodType {
     public static readonly USER_CONSENT_LOCAL_STORAGE_KEY =
       'user.consent.consentedAt';
     public static readonly IsDelegateUser = 'IsDelegateUser';
-    public static readonly TENANTID = 'TenantId';
+    public static readonly FACILITYID = 'FacilityId';
     public static readonly OUCODES = 'Oucodes';
     public static readonly SELECTED_TENANT = 'selectedTenant';
   }
-  
+
   export class TokenConstants {
     public static readonly HAS_TOKEN_REQUIRED = 'HasTokenRenewRequired';
     public static readonly TOKEN_SESSION_INFO = 'tokenSessionInfo';
@@ -47,4 +47,3 @@ export class MethodType {
     public static readonly DELEGATE_PATH = '/gateway/delegator';
     public static readonly DELEGATE_REFRESH_URL = '/delegator/session-timeout';
   }
-  

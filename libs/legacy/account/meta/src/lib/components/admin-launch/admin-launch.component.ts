@@ -39,9 +39,10 @@ import { BehaviorSubject, Subject, take, takeUntil } from 'rxjs';
 import { MetaSandbox } from '../../meta.sandbox';
 import { LocalStorage } from '../../models/storage.model';
 import { ReleaseNotesSandbox } from '../../services/releaseNote/release-notes.sandbox';
-import { TenantInformationSandbox } from '../../services/tenant-information/tenant-information-snadbox';
+import { FacilitySandbox } from '../../services/facilities/facility.sandbox';
 import { LaunchComponent } from '../launch/launch.component';
 import { LaunchService } from '../launch/launch.service';
+import { FacilityStatusModel } from '../../services/facilities/facility-clinet.service';
 
 @Component({
   selector: 'zhc-admin-launch',
@@ -62,6 +63,7 @@ export class AdminLaunchComponent
 
   @ViewChild('tenantNavsContainer', { read: ViewContainerRef, static: true })
   tenantNavsContainer!: any;
+  facilityStatuses: FacilityStatusModel[] = [];
 
   constructor(
     protected userState: UserFacade,
@@ -79,13 +81,14 @@ export class AdminLaunchComponent
     protected _layoutService: LayoutService,
     protected _headerService: HeaderService,
     protected _releaseNotesSandbox: ReleaseNotesSandbox,
-    protected _TenantInformationSandbox: TenantInformationSandbox,
+    protected _TenantInformationSandbox: FacilitySandbox,
     protected _runtimeConfigLoaderService: RuntimeConfigLoaderService,
     protected manageuser: ManageUserService,
     private _fuseSidebarService: FuseSidebarService,
     private resolver: ComponentFactoryResolver,
     private _featureFlagService: FeatureFlagService,
-    private _launchService: LaunchService
+    private _launchService: LaunchService,
+    private _facilitySandox: FacilitySandbox
   ) {
     super(
       userState,
@@ -111,22 +114,25 @@ export class AdminLaunchComponent
 
   ngOnInit() {
     super.ngOnInit();
-    this.manageAccountSwitchbackKey = localStorage.getItem(
-      MetaConstants.MANAGE_ACCOUNT_SWITCH_BACK_KEY
-    );
     this.showProgressBar();
     this._TenantInformationSandbox
-      .getFacilityInformationNameList()
+      .getFacilityNames()
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data: any) => {
+        this.hideProgressBar();
         const uniqueFacilitiesValue = this.getUniqueFacilitiesList(data);
         this.uniqueFacilities.next(uniqueFacilitiesValue);
-         this.multiFacilityInit();
+        this.showTenantSelect = true;
         this.searchFacilityCtrl.valueChanges
           .pipe(takeUntil(this._unsubscribeAll))
           .subscribe(() => {
-            const filtereduniqueFacilities = this.getUniqueFacilitiesList(data)
-                  .filter((x) => x?.name?.toLowerCase().includes(this.searchFacilityCtrl.value?.toLowerCase()));
+            const filtereduniqueFacilities = this.getUniqueFacilitiesList(
+              data
+            ).filter((x) =>
+              x?.name
+                ?.toLowerCase()
+                .includes(this.searchFacilityCtrl.value?.toLowerCase())
+            );
             this.uniqueFacilities.next(filtereduniqueFacilities);
           });
       });
@@ -141,28 +147,6 @@ export class AdminLaunchComponent
     this.roleHash = orgCode.roleHash;
     this.navigationHash = orgCode.navigationHash;
     this.tenantWithOuCodes = orgCode.tenentWithOucodeAccessTrees;
-  }
-
-  multiFacilityInit() {
-    this.showTenantSelect = true;
-    this.metaSandbox.launch().subscribe(
-      (orgCode: any) => {
-        this.sharedTenantInit(orgCode);
-        this.flag = true;
-        this.tenantList = orgCode.tenentWithOucodeAccessTrees.map(
-          (x) => x['key']
-        );
-        this.hideProgressBar();
-      },
-      (error) => {
-        this.hideProgressBar();
-        Logger.error(
-          `Launch Component => NgOnInit Method => Launch Api failure => error: ${JSON.stringify(
-            error
-          )} | active Route:${this.router?.url}`
-        );
-      }
-    );
   }
 
   next(obj, singleTenant?: boolean) {
@@ -181,9 +165,8 @@ export class AdminLaunchComponent
               this.showProgramSelection = true;
             } else if (tenantAppExists == false) {
               this.updateStateAndRedirect(
-                this.selectedTenant,
-                this.oucodeWithNames[0].key,
-                UserPersona.Administrator
+                this.selectedFacility,
+                this.oucodeWithNames[0].key
               );
               this.showProgramSelection = false;
             }
@@ -201,46 +184,30 @@ export class AdminLaunchComponent
       this._featureFlagService.resetFeatureFlags();
       this._headerService.setCurrentFacilityName(tenant.name);
       this.setSelectedFacility(tenant);
-      const updatedFacilityWithQuery = this.tenantWithOuCodes.find(
-        (x) => x.key === tenant.tenantId
-      );
-      if (updatedFacilityWithQuery && !updatedFacilityWithQuery?.value) {
-        this.loadingPrograms = true;
-        this.metaSandbox.launchTenant(tenant.tenantId).subscribe(
-          (orgCode: any) => {
+      this.loadingPrograms = true;
+      this.showProgressBar();
+      this._facilitySandox.getStatusCounts(tenant.name).subscribe(
+        statuses => {
+          this.facilityStatuses = [];
             this.loadingPrograms = false;
-            const selectedTenant = this.tenantWithOuCodes.find(
-              (x) => x.key === tenant.tenantId
-            );
-            selectedTenant.value =
-              orgCode.tenentWithOucodeAccessTrees[0]?.value;
-            this.next(selectedTenant);
-          },
-          (error) => {
+            this.showProgramSelection = true;
             this.hideProgressBar();
-            Logger.error(
-              `Launch Component => NgOnInit Method => Launch Api failure => error: ${JSON.stringify(
-                error
-              )} | active Route:${this.router?.url}`
-            );
-          }
-        );
-      } else {
-        this.showProgramSelection = false;
-        this.next(updatedFacilityWithQuery);
-        this.showProgramSelection = true;
-      }
+            if(statuses.findIndex(x=> x.name === 'Total') === -1) {
+              const totalCount = statuses.reduce((sum, current) => sum + current.count, 0);
+              this.facilityStatuses.push(new FacilityStatusModel('Total', totalCount));
+            }
+            this.facilityStatuses = this.facilityStatuses.concat(statuses);
+        }
+      )
     }
   }
 
   launch(item) {
-    this.setSelectedOUCode(item.key);
+    this.setSelectedFacility(item.key);
     this.updateStateAndRedirect(
-      this.selectedTenant,
-      item.key,
-      UserPersona.Administrator
+      this.selectedFacility,
+      item.key
     );
-    this.manageuser.setOucode(item.key);
   }
 
   manageAccount(state) {

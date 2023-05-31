@@ -3,4 +3,4 @@ export * from './lib/components/launch/launch.service';
 export * from './lib/meta.module';
 export * from './lib/meta.sandbox';
 export * from './lib/services/lookup/lookup-APIClient.service';
-export * from './lib/services/tenant-information/tenant-information-snadbox';
+export * from './lib/services/facilities/facility.sandbox';
