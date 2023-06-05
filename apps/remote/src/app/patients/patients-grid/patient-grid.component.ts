@@ -45,6 +45,10 @@ import {
 import { GridService } from '../../services/grid.service';
 import { PatientGridColInfo } from '../../configs/column-info.config';
 import { PatientService } from '../../services/patient.service';
+export class AppliedGridFilter {
+
+  constructor(public name: string, public values: string[]) { }
+}
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'zhc-patient-grid',
@@ -66,7 +70,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   highlightedRows = new Set<ColumnOption>();
   textContainerElement: Element;
   defaultFilters: Filter[];
-  gridFilter: Filter[] = [];
+  gridFilter: AppliedGridFilter[] = [];
   filterObj = [];
   numberOfAppliedFilter = 0;
   columnInformation: ColumnOption[];
@@ -107,7 +111,13 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     'Pending Query': 'inprogress',
   };
 
+  fieldDisplayNameMapping = {
+    'Filters.ReviewStatus': 'Review Status',
+    'Filters.QueryStatus': 'query status',
+    'Filters.AdmitStartDate': 'Admit Date',
+  };
   @Output() patientClick: EventEmitter<any> = new EventEmitter<any>();
+  appliedFilters: Filter[];
   constructor(
     public dataSourceComponentService: DataSourceComponentService,
     public datasourceFacade: DataSourceFacade,
@@ -181,6 +191,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
       fieldName: 'Filters.ReviewStatus',
       operator: 'eq',
       value: selectedStatus,
+      displayName: 'Review Status'
     };
     dataSource.filters = selectedStatus === 'Total' ? [] : [defaultFilter];
     dataSource.customHeaders = [];
@@ -333,19 +344,38 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
       .pipe(takeUntil(this._unsubscribe))
       .subscribe((x) => {
         if (x?.filters) {
-          if (x.filters.length === 0) {
+          if(x.filters.length === 0)
             this.gridFilter = [];
-          } else if (x.filters.length > 0) {
-            this.gridFilter = x.filters.filter(
-              (y) => y.type !== 'search' && y.value.trim() !== ''
-            );
+          else if (x.filters.length > 0) {
+            this.appliedFilters = x.filters;
+            this.setGridFilterDisplay(x);
           }
         }
       });
   }
 
-  getFilterValue(value: string) {
-    return value;
+  private setGridFilterDisplay(x: FusionDataSource) {
+    this.gridFilter = [];
+    const currentFilters = x.filters.filter(
+      (y) => y.type !== 'search' && y.value.trim() !== ''
+    );
+    currentFilters.forEach((x) => {
+      const filter = this.gridFilter.find(y => y.name === x.displayName);
+      if (filter) {
+        if (!filter.values.includes(x.value))
+          filter.values.push(x.value);
+      }
+      else if(x.displayName === 'admitStartDate') {
+        this.gridFilter.push(new AppliedGridFilter('Admit Date', [x.value]));
+      } else if(x.displayName === 'admitEndDate') {
+        const filter = this.gridFilter.find(y => y.name === 'Admit Date');
+        const startDate = filter.values[0];
+        filter.values.splice(0,1, `${startDate}-${x.value}`);
+      }
+      else {
+        this.gridFilter.push(new AppliedGridFilter(x.displayName, [x.value]));
+      }
+    });
   }
 
   createFilter(filter: Filter) {
@@ -355,15 +385,9 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     return null;
   }
 
-  clearFilters(value: string, filterData: Filter) {
-    const currValue = filterData.value.trim().split('~');
-    const filterValue = currValue.filter((x) => x !== value.trim()).join('~');
-    this.datasourceFacade.updateDataSourceFilter({
-      fieldName: filterData.fieldName,
-      displayName: filterData.displayName,
-      operator: filterData.operator,
-      value: filterValue.trim(),
-    });
+  clearFilters(value: string, filter: AppliedGridFilter) {
+    const remainingFilters = this.appliedFilters.filter(x=>x.value !== value || x.displayName !== filter.name);
+    this.datasourceFacade.updateAllDataSourceFilter(remainingFilters);
   }
 
   resetFilter() {
@@ -375,7 +399,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
       displayName: this.displayName,
     });
     this.gridFilter = [];
-    this.datasourceFacade.updateAllDataSourceFilter(this.gridFilter);
+    this.datasourceFacade.updateAllDataSourceFilter([]);
   }
 
   textChanged(textValue) {

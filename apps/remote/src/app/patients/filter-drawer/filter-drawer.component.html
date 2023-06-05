@@ -41,16 +41,16 @@
         <div fxFlex="100" fxLayout="column" class="word-break-word pt-16">
           <div class="mb-12" fxLayout="row">
             <div>
-              <button *ngIf="selectedStatusCount !== statusList.length" (click)="selectAll('status')"
+              <button *ngIf="selectedStatusCount !== statusList.length" (click)="selectAll('reviewStatus')"
                 class="link-btn pl-0 py-0" aria-label="Select all">
                 Select all
               </button>
-              <button *ngIf="selectedStatusCount === statusList?.length" (click)="reset('status')" class="link-btn pl-0 py-0" aria-label="Clear all">
+              <button *ngIf="selectedStatusCount === statusList?.length" (click)="reset('reviewStatus')" class="link-btn pl-0 py-0" aria-label="Clear all">
                 Clear all
               </button>
             </div>
             <div class="ml-24">
-              <button *ngIf="selectedStatusCount > 0 && selectedStatusCount !== statusList?.length" (click)="reset('status')" class="link-btn pl-0 py-0" aria-label="Unselect">
+              <button *ngIf="selectedStatusCount > 0 && selectedStatusCount !== statusList?.length" (click)="reset('reviewStatus')" class="link-btn pl-0 py-0" aria-label="Unselect">
                 Unselect({{ selectedStatusCount }})
               </button>
             </div>

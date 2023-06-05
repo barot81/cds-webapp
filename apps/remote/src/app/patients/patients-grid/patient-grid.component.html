@@ -30,103 +30,26 @@
                   <div class="table-header-chips">
                     <mat-chip-list #chipList>
                       <div *ngFor="let item of gridFilter; let i = index">
-                        <div
-                          *ngIf="i < 2"
-                          fxLayout="row"
-                          fxLayoutAlign="start center"
-                        >
-                          <div
-                            fxLayout="row"
-                            fxLayoutAlign="start center"
-                            *ngFor="
-                              let fil of item.value;
+                            <mat-chip
+                              (removed)="clearFilters(fil, item)"
+                              *ngFor="
+                              let fil of item.values;
                               let j = index
                             "
-                          >
-                            <mat-chip
-                              *ngIf="
-                                gridFilter.length - 1 === 0 ? j < 2 : j < 1
-                              "
-                              (removed)="clearFilters(fil, item)"
                             >
                               <span
-                                tooltip="{{ item.displayName }} : {{ fil }}"
+                                tooltip="{{ item.name }} : {{ fil }}"
                                 [options]="tooltipOptions"
                                 class="chips-text"
-                                >{{ fil | chipsCharSlice }}</span
+                                >{{ fil }}</span
                               >
-                              <span
-                                tooltip="Review Status : {{ getTagsbyId(fil) }}"
-                                [options]="tooltipOptions"
-                                class="chips-text"
-                                *ngIf="item.fieldName === 'reviewS'"
-                                >{{ getTagsbyId(fil) | chipsCharSlice }}</span
-                              >
-                              <span
-                                tooltip="Account Status : {{
-                                  getInvitationStatusDescription(fil)
-                                }}"
-                                [options]="tooltipOptions"
-                                class="chips-text"
-                                *ngIf="item.fieldName === 'invitationStatus'"
-                              >
-                                {{
-                                  getInvitationStatusDescription(fil)
-                                    | chipsCharSlice
-                                }}
-                              </span>
-                              <span
-                                tooltip="Campus : {{ getCampus(fil) }}"
-                                [options]="tooltipOptions"
-                                class="chips-text"
-                                *ngIf="item.fieldName === 'campusId'"
-                              >
-                                {{ getCampus(fil) | chipsCharSlice }}
-                              </span>
-                              <span
-                                tooltip="Category : {{ getCategory(fil) }}"
-                                [options]="tooltipOptions"
-                                class="chips-text"
-                                *ngIf="item.fieldName === 'categoryId'"
-                              >
-                                {{ getCategory(fil) | chipsCharSlice }}
-                              </span>
-                              <span
-                                tooltip="Enrollment term : {{
-                                  getEnrollmentTerm(fil)
-                                }}"
-                                [options]="tooltipOptions"
-                                class="chips-text"
-                                *ngIf="item.fieldName === 'enrollmentTermId'"
-                              >
-                                {{ getEnrollmentTerm(fil) | chipsCharSlice }}
-                              </span>
-                              <span
-                                tooltip="Graduation term : {{
-                                  getGraduationTerm(fil)
-                                }}"
-                                [options]="tooltipOptions"
-                                class="chips-text"
-                                *ngIf="item.fieldName === 'graduationTermId'"
-                              >
-                                {{ getGraduationTerm(fil) | chipsCharSlice }}
-                              </span>
-
                               <button matChipRemove>
                                 <mat-icon>cancel</mat-icon>
                               </button>
                             </mat-chip>
-                          </div>
                         </div>
-                      </div>
                     </mat-chip-list>
                   </div>
-                </div>
-                <div fxLayout="row" fxLayoutAlign="start center" *ngIf="numberOfAppliedFilter > 2">
-                  <a zhealthcareDrawerAction
-                    [componentSelector]="_patientGridService.get('ryzen-show-more-filter-drawer')" [size]="'drawer-sm'"
-                    [data]="showMoreFilters" [primaryAction]="'Apply'" [caption]="'Show More Filters'"
-                    *ngIf="numberOfAppliedFilter> 2">Show more</a>
                 </div>
               </div>
             </div>

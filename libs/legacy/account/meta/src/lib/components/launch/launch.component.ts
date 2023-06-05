@@ -27,7 +27,6 @@ import {
   PageFacade,
 } from '@zhealthcare/ux';
 import { Observable, of, Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
 import { MetaSandbox } from '../../meta.sandbox';
 import { BrowserStorage } from '../../models/storage.model';
 import { FacilitySandbox } from '../../services/facilities/facility.sandbox';

@@ -221,10 +221,16 @@ export class FilterDrawerComponent
       this.statusList.map((x) => (x.isSelected = true));
       this.selectedStatusCount = this.statusList.length;
       this.filterList.find((x) => x.id === 'reviewStatus').count = this.selectedStatusCount;
+      this.fusionFormGroup.patchValue({
+        reviewStatus: this.statusList.filter(x=>x.isSelected).map(x=>x.name)
+      });
     } else if (name === 'queryStatus') {
       this.queryStatusList.map((x) => (x.isSelected = true));
       this.selectedQueryStatusCount = this.queryStatusList.length;
       this.filterList.find((x) => x.id === 'queryStatus').count = this.selectedStatusCount;
+      this.fusionFormGroup.patchValue({
+        queryStatus: this.queryStatusList.filter(x=>x.isSelected).map(x=>x.name)
+      });
     }
 
   }
