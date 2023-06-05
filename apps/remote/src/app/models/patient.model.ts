@@ -1,4 +1,4 @@
-import { GeneralComments } from "./general-comments.model";
+import { GeneralComment } from "./general-comments.model";
 
 export class Patient {
   id: string;
@@ -6,8 +6,7 @@ export class Patient {
   roomId: string;
   accountNo: number;
   isActive: boolean;
-  firstName: string;
-  lastName: string;
+  patientName: string;
   cds: string; // clinical decision support ( reviewer from vishal team ) => person who will put values for queries
   age: number;
   sex: string;
@@ -25,12 +24,13 @@ export class Patient {
   secondaryInsurance: string;
   contracted: boolean;
   pdx: string; // priniple diagnosis
-  generalComment: GeneralComments;
+  generalComment: GeneralComment;
   createdBy: string;
   createdTime: string;
   lastUpdatedBy: string;
   lastUpdatedTime: string;
   statusClass: string;
+  reviewStatus: string;
 }
 
 // EHR / EMR

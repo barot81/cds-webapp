@@ -14,8 +14,8 @@ export class PatientHeaderComponent {
   patient$: Subject<Patient> = new BehaviorSubject(new Patient());
   public loading$;
   fileConfiguration;
-  firstInitial: any;
-  lastInitial: any;
+  initial2: any;
+  initial1: any;
 
   constructor(private activatedRoute: ActivatedRoute, private patientService: PatientService) {
     this.loading$ = this.patientService.loading$;
@@ -23,17 +23,16 @@ export class PatientHeaderComponent {
       this.patientService.getPatientById(x.id).subscribe(x=>{
           this.patient$.next(x);
           this.loading$.next(false);
+          this.setInitials(x.patientName);
       })
     });
   }
 
-  setInitials(patient) {
-    if (patient.firstName) {
-      this.firstInitial = patient.firstName.charAt(0).toUpperCase();
-    }
-
-    if (patient.lastName) {
-      this.lastInitial = patient.lastName.charAt(0).toUpperCase();
+  setInitials(patientName: string) {
+    if (patientName) {
+      const patientArr = patientName.split(' ');
+      this.initial1 = patientArr[1].charAt(0).toUpperCase();
+      this.initial2 = patientArr[0].charAt(0).toUpperCase();
     }
   }
 }

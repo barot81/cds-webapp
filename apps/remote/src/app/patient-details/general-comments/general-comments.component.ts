@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, map, Subject, takeUntil } from 'rxjs';
 import { PatientFormsService } from '../../forms/patient-forms.service';
-import { GeneralComments } from '../../models/general-comments.model';
+import { GeneralComment } from '../../models/general-comments.model';
 import { Patient } from '../../models/patient.model';
 import { PatientService } from '../../services/patient.service';
 
@@ -12,8 +12,8 @@ import { PatientService } from '../../services/patient.service';
 })
 export class GeneralCommentsComponent implements OnInit, OnDestroy {
   loading$: any;
-  generalComments$: Subject<GeneralComments> = new BehaviorSubject(
-    new GeneralComments()
+  generalComments$: Subject<GeneralComment> = new BehaviorSubject(
+    new GeneralComment()
   );
   patientInfo: Patient;
   _unsubscribe: Subject<any> = new Subject();
@@ -43,8 +43,10 @@ export class GeneralCommentsComponent implements OnInit, OnDestroy {
         takeUntil(this._unsubscribe),
         map((patients) => {
           const selectedPatient = patients.find(x=>x.id === this.patientId);
-          if(selectedPatient)
-           this.generalComments$.next(selectedPatient.generalComment);
+          if(selectedPatient) {
+            this.generalComments$.next(selectedPatient.generalComment);
+            this.patientInfo.reviewStatus = selectedPatient.reviewStatus;
+          }
         })
       )
       .subscribe();

@@ -13,7 +13,10 @@ import {
 } from '@zhealthcare/fusion/components';
 import { DrawerService, LayoutService, SnackbarService } from '@zhealthcare/ux';
 import { Subject } from 'rxjs';
-import { GeneralComments } from '../../models/general-comments.model';
+import {
+  GeneralComment,
+  PatientComment,
+} from '../../models/general-comments.model';
 import { richTextConfig } from '../../configs/richtext.config';
 import { PatientService } from '../../services/patient.service';
 import { Patient } from '../../models/patient.model';
@@ -32,8 +35,8 @@ export class AddGeneralCommentsComponent
   config: any;
   private readonly _unsubscribeAll: Subject<any>;
   comments: string;
-  patientInfo: Patient;
-  queryStatusList: string[];
+  patientInfo: PatientComment;
+  reviewStatusList: string[];
 
   constructor(
     private readonly fb: FormBuilder,
@@ -51,16 +54,18 @@ export class AddGeneralCommentsComponent
 
     this.fusionFormGroup = this.fb.group({
       comments: new FormControl(''),
-      queryStatus: new FormControl('New'),
+      reviewStatus: new FormControl('New'),
     });
 
-    this.queryStatusList = ['No Query', 'Later Review'];
+    this.reviewStatusList = ['No Query', 'Later Review'];
     this.createConfig();
   }
 
-  OnQueryStatusChanged(queryStatus) {
-    if (queryStatus.value !== null && queryStatus.value !== undefined) {
-      this.fusionFormGroup.controls['queryStatus'].setValue(queryStatus.value);
+  OnReviewStatusChanged(reviewStatus) {
+    if (reviewStatus.value !== null && reviewStatus.value !== undefined) {
+      this.fusionFormGroup.controls['reviewStatus'].setValue(
+        reviewStatus.value
+      );
     }
   }
 
@@ -95,17 +100,22 @@ export class AddGeneralCommentsComponent
     }
   }
 
-  private setPatientInfo(patient) {
-    this.patientInfo = patient;
+  private setPatientInfo(patient:Patient) {
+    this.patientInfo = {
+      id: patient.id,
+      generalComment: patient.generalComment,
+      reviewStatus: patient.reviewStatus
+    };
+    if(!this.reviewStatusList.includes(patient.reviewStatus)) {
+      this.reviewStatusList.unshift(patient.reviewStatus);
+    }
+    this.fusionFormGroup.controls['reviewStatus'].setValue(
+      this.patientInfo.reviewStatus
+    );
+    this.fusionFormGroup.controls['comments'].setValue(
+      this.patientInfo.generalComment.comments
+    );
 
-    this.queryStatusList.unshift(patient.queryStatus);
-    this.fusionFormGroup.controls['queryStatus'].setValue(patient.queryStatus);
-
-    // setTimeout(() => {
-    //   this.comments = patient?.generalComment?.comments;
-    //   this.fusionFormGroup.controls['comments'].patchValue(this.comments);
-    // }, 0);
-   // this.cdr.detectChanges();
   }
 
   createConfig() {
@@ -113,45 +123,17 @@ export class AddGeneralCommentsComponent
     this.config.placeholder = 'General Comments';
   }
 
-  public editorValue(event) {
-    this.comments = event.editor.getData();
-    this.comments = this.comments?.replace(/\\(?=[^\[\]]*\])|\\(?=\[)/g, ''); // (\\) this is to remove \ appended by ckeditor before brackets []
-    //this.summary = this.summary?.replace(/<\/?span[^>]*>/g,"")
-    this.fusionFormGroup.controls['comments'].setValue(this.comments);
-  }
-
-  public onReady(event) {
-    this.componentEvents.push('The editor is ready.');
-  }
-
-  public onChange(event) {
-    this.componentEvents.push('Editor model changed.');
-    this.editorValue(event);
-  }
-
-  public onFocus(event) {
-    this.componentEvents.push('Focused the editing view.');
-  }
-
-  public onBlur(event) {
-    this.componentEvents.push('Blurred the editing view.');
-  }
 
   primaryAction() {
     if (this.key) {
-      const generalComments: GeneralComments = {
-        comments: this.comments,
-        addedBy: this._layoutService.getUser()?.name,
+      this.patientInfo.generalComment  = {
+        comments: this.fusionFormGroup.controls['comments'].value,
+        addedBy: this._layoutService.getUser()?.name ?? '',
         addedOn: this._datepipe.transform(new Date(), 'yyyy-MM-dd'),
       };
-      const queryStatus = this.fusionFormGroup.controls['queryStatus'].value;
-      const updatedPatientInfo = {
-        ...this.patientInfo,
-        queryStatus: queryStatus,
-        generalComment: { ...generalComments },
-      };
+      this.patientInfo.reviewStatus = this.fusionFormGroup.controls['reviewStatus'].value;
       this._patientService
-        .updatePatient(updatedPatientInfo)
+        .updatePatientComments(this.patientInfo)
         .subscribe((response) => {
           if (response) {
             this._snackBarService.openCustomSnackBar(
@@ -164,6 +146,18 @@ export class AddGeneralCommentsComponent
             );
             this._drawerService.closeDrawer();
           }
+        },
+        (error)=>
+        {
+          this._snackBarService.openCustomSnackBar(
+            {
+              message: 'General Comment in not updated Successfully.',
+              icon: 'fa-check s-18',
+            },
+            3000,
+            'snackbar-error'
+          );
+          this._drawerService.closeDrawer();
         });
     }
   }

@@ -4,6 +4,7 @@ import { HttpService, MetaConstants } from '@zhealthcare/fusion/core';
 import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { PatientFilters } from '../models/datasource/patient-filters.model';
+import { GeneralComment, PatientComment } from '../models/general-comments.model';
 import { Patient } from '../models/patient.model';
 import { generatePatients } from './patient.faker.service';
 
@@ -115,6 +116,35 @@ export class PatientService extends HttpService {
             patient
           );
           this.patientData$.next(this.patients);
+          return x;
+        })
+      );
+  }
+
+  updatePatientComments(patientComment: PatientComment) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.httpClient
+      .put(`${this.getBaseEndpoint()}/${patientComment.id}/comments`, patientComment, {
+        headers: headers,
+      })
+      .pipe(
+        map((x) => {
+          const existingPatient = this.patients.find((y) => y.id === patientComment.id);
+          if(existingPatient) {
+            existingPatient.generalComments = patientComment.generalComment;
+            existingPatient.reviewStatus = patientComment.reviewStatus;
+            this.patientData$.next(this.patients);
+          } else {
+            if(!this.patients) this.patients = [];
+            this.patients.push({
+              id: patientComment.id,
+              generalComment: patientComment.generalComment,
+              reviewStatus: patientComment.reviewStatus
+            })
+            this.patientData$.next(this.patients);
+            this.getPatients().subscribe();
+          }
           return x;
         })
       );

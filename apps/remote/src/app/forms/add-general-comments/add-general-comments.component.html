@@ -4,8 +4,8 @@
     <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
       <mat-form-field appearance="fill" fxFlex="100">
         <mat-label>Query Status</mat-label>
-        <mat-select formControlName="queryStatus" (selectionChange)="OnQueryStatusChanged($event)" required>
-          <mat-option *ngFor="let st of queryStatusList" [ngClass]="{'mat-option-text ': isOptionTruncated(st)
+        <mat-select formControlName="reviewStatus" (selectionChange)="OnReviewStatusChanged($event)" required>
+          <mat-option *ngFor="let st of reviewStatusList" [ngClass]="{'mat-option-text ': isOptionTruncated(st)
           }" id={{st}} [value]="st" class="dropdown-with-tooltip" [options]="tooltipOptions"
             [display]="isOptionTruncated(st)" [tooltip]="st">
             {{st}}
@@ -14,13 +14,19 @@
 
       </mat-form-field>
     </div>
+    <mat-form-field appearance="fill" fxFlex="100">
+      <mat-label>General Comments</mat-label>
+      <textarea matInput noWhitespace formControlName="comments" rows="2">
+    </textarea>
+    </mat-form-field>
 
-    <div fxLayout="row" fxLayoutAlign="space-between end">
+
+    <!-- <div fxLayout="row" fxLayoutAlign="space-between end">
       <ckeditor class="editor-border p-0" fxFlex="100" data="{{comments | mdToHTML}}" #ckeditorComments [editor]="Editor" id="ckeditor_id"
     name="classic-editor" [config]="config" (ready)="onReady($event)" (change)="onChange($event)" formControlName="comments"
     (focus)="onFocus($event)" (blur)="onBlur($event)" [(ngModel)]="comments"
     >
       </ckeditor>
-    </div>
+    </div> -->
   </mat-card>
 </form>

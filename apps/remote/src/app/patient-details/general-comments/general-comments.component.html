@@ -18,10 +18,10 @@
       <div *ngIf="(loading$ | async) === false; else loading" class="zhealthcare-info-container p-0">
         <div fxLayout="column" fxLayoutAlign="top" fxFlex="33" class="zhealthcare-info p-16">
           <div class="mb-16">
-            <div class="title">Query Status</div>
+            <div class="title">Review Status</div>
             <div class="description">
-              {{ patientInfo?.queryStatus }}
-              <span *ngIf="!patientInfo?.queryStatus">-</span>
+              {{ patientInfo?.reviewStatus }}
+              <span *ngIf="!patientInfo?.reviewStatus">-</span>
             </div>
           </div>
         </div>

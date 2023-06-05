@@ -1,14 +1,14 @@
 
 import { faker } from '@faker-js/faker';
 import { v4 as uuidv4 } from 'uuid';
-import { GeneralComments } from '../models/general-comments.model';
+import { GeneralComment } from '../models/general-comments.model';
 import { Patient } from '../models/patient.model';
 
 export function generatePatients(count: number): Patient[] {
   const patients: Patient[] = [];
 
   for (let i = 0; i < count; i++) {
-    const comment:  GeneralComments  = {
+    const comment:  GeneralComment  = {
       comments : faker.lorem.sentence(),
       addedBy : faker.helpers.arrayElement(['Vishal', '', 'Ankit', 'Ashit']),
       addedOn : faker.date.recent().toISOString()
@@ -20,13 +20,14 @@ export function generatePatients(count: number): Patient[] {
     const patient: Patient = {
       id: uuidv4(),
       // name: faker.name.fullName(),
-      firstName: faker.name.firstName(),
-      lastName: faker.name.lastName(),
+      patientName: faker.name.fullName(),
+      // lastName: faker.name.lastName(),
       roomId: faker.random.alphaNumeric(4).toUpperCase(),
       admissionDate: faker.date.recent().toISOString(),
       healthPlanName: faker.helpers.arrayElement(['Aetna', 'Blue Cross', 'United Healthcare', 'Cigna']),
       cds: faker.helpers.arrayElement(['Vishal', '', 'Ankit', 'Ashit']),
       queryStatus: faker.helpers.arrayElement(['No findings', 'Reviewed', 'Revised', 'Review Later']),
+      reviewStatus: faker.helpers.arrayElement(['No findings', 'Reviewed', 'Revised', 'Review Later']),
       queryDate: faker.date.recent.toString(),
       reimbursementType: faker.helpers.arrayElement(['Medicare', 'Medicaid', 'Commercial']),
       generalComment: comment,
