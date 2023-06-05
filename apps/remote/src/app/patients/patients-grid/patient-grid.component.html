@@ -1,10 +1,10 @@
-<div class="carded inner-scroll zhealthcare-new-grid">
-  <div class="patient-search-report  table-rounded-border p-0">
+<div class="page-layout carded fullwidth full-width-page inner-scroll pt-8">
+  <div class="patient-search-report table-rounded-border p-0">
     <div class="spinner-container" *ngIf="datasourceFacade.fusionDataSourceLoading$ | async">
       <mat-spinner color="accent"></mat-spinner>
     </div>
     <div class=" white-background " fusePerfectScrollbar>
-      <div #profileSearchHeader>
+      <div #patientSearchHeader>
         <div fxLayout="column">
           <div fxLayout="row" fxLayoutAlign="space-between center" class="w-100-p">
             <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
@@ -25,6 +25,102 @@
                 fxHide.lt-lg>
                 <div fxLayout="row" fxLayoutAlign="start center" class="mr-8">
                   <span>Filters: </span>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center" class="mr-16">
+                  <div class="table-header-chips">
+                    <mat-chip-list #chipList>
+                      <div *ngFor="let item of gridFilter; let i = index">
+                        <div
+                          *ngIf="i < 2"
+                          fxLayout="row"
+                          fxLayoutAlign="start center"
+                        >
+                          <div
+                            fxLayout="row"
+                            fxLayoutAlign="start center"
+                            *ngFor="
+                              let fil of item.value;
+                              let j = index
+                            "
+                          >
+                            <mat-chip
+                              *ngIf="
+                                gridFilter.length - 1 === 0 ? j < 2 : j < 1
+                              "
+                              (removed)="clearFilters(fil, item)"
+                            >
+                              <span
+                                tooltip="{{ item.displayName }} : {{ fil }}"
+                                [options]="tooltipOptions"
+                                class="chips-text"
+                                >{{ fil | chipsCharSlice }}</span
+                              >
+                              <span
+                                tooltip="Review Status : {{ getTagsbyId(fil) }}"
+                                [options]="tooltipOptions"
+                                class="chips-text"
+                                *ngIf="item.fieldName === 'reviewS'"
+                                >{{ getTagsbyId(fil) | chipsCharSlice }}</span
+                              >
+                              <span
+                                tooltip="Account Status : {{
+                                  getInvitationStatusDescription(fil)
+                                }}"
+                                [options]="tooltipOptions"
+                                class="chips-text"
+                                *ngIf="item.fieldName === 'invitationStatus'"
+                              >
+                                {{
+                                  getInvitationStatusDescription(fil)
+                                    | chipsCharSlice
+                                }}
+                              </span>
+                              <span
+                                tooltip="Campus : {{ getCampus(fil) }}"
+                                [options]="tooltipOptions"
+                                class="chips-text"
+                                *ngIf="item.fieldName === 'campusId'"
+                              >
+                                {{ getCampus(fil) | chipsCharSlice }}
+                              </span>
+                              <span
+                                tooltip="Category : {{ getCategory(fil) }}"
+                                [options]="tooltipOptions"
+                                class="chips-text"
+                                *ngIf="item.fieldName === 'categoryId'"
+                              >
+                                {{ getCategory(fil) | chipsCharSlice }}
+                              </span>
+                              <span
+                                tooltip="Enrollment term : {{
+                                  getEnrollmentTerm(fil)
+                                }}"
+                                [options]="tooltipOptions"
+                                class="chips-text"
+                                *ngIf="item.fieldName === 'enrollmentTermId'"
+                              >
+                                {{ getEnrollmentTerm(fil) | chipsCharSlice }}
+                              </span>
+                              <span
+                                tooltip="Graduation term : {{
+                                  getGraduationTerm(fil)
+                                }}"
+                                [options]="tooltipOptions"
+                                class="chips-text"
+                                *ngIf="item.fieldName === 'graduationTermId'"
+                              >
+                                {{ getGraduationTerm(fil) | chipsCharSlice }}
+                              </span>
+
+                              <button matChipRemove>
+                                <mat-icon>cancel</mat-icon>
+                              </button>
+                            </mat-chip>
+                          </div>
+                        </div>
+                      </div>
+                    </mat-chip-list>
+                  </div>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="start center" *ngIf="numberOfAppliedFilter > 2">
                   <a zhealthcareDrawerAction
@@ -71,9 +167,9 @@
       </div>
       <div class="content zhealthcare-sticky-table overflow-auto"
       [ngClass]="{
-        'student-search-grid-with-filter': ((searchValue && searchValue!=='') || numberOfAppliedFilter>0) && (datasourceFacade.fusionDataSourceLoading$ | async ) === false,
-        'student-search-grid-without-filter':!((searchValue && searchValue!=='') || numberOfAppliedFilter>0) && (datasourceFacade.fusionDataSourceLoading$ | async ) === false,
-        'student-search-grid-with-loadingstate':(datasourceFacade.fusionDataSourceLoading$ | async )}"
+        'patient-search-grid-with-filter': ((searchValue && searchValue!=='') || numberOfAppliedFilter>0) && (datasourceFacade.fusionDataSourceLoading$ | async ) === false,
+        'patient-search-grid-without-filter':!((searchValue && searchValue!=='') || numberOfAppliedFilter>0) && (datasourceFacade.fusionDataSourceLoading$ | async ) === false,
+        'patient-search-grid-with-loadingstate':(datasourceFacade.fusionDataSourceLoading$ | async )}"
         (scroll)="scrollHandler($event)">
         <table id="stickyColumnTable" aria-label="This is a Simple table" mat-table
           [dataSource]="datasourceFacade.fusionDataSet$ | async" class="mat-table cdk-table w-100-p zhealthcare-table"

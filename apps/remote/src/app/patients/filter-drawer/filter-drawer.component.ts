@@ -127,11 +127,12 @@ export class FilterDrawerComponent
 
   statusList = [
     { name: 'New', isSelected: false },
-    { name: 'No Reviewed', isSelected: false },
+    { name: 'Pending Query', isSelected: false },
     { name: 'Later Review', isSelected: false },
     { name: 'No Query', isSelected: false },
     { name: 'Non DRG', isSelected: false },
   ];
+
   queryStatusList = [
     { name: 'Pending', isSelected: false },
     { name: 'Answered', isSelected: false },
@@ -189,7 +190,7 @@ export class FilterDrawerComponent
     const endDate = dataSource.filters.find(x => x.fieldName == 'Filters.AdmitEndDate')?.value;
     const aendDate = endDate ? moment(endDate, 'MM/DD/YYYY') : '';
     this.fusionFormGroup.patchValue({
-      status: this.statusList.filter((x) => x.isSelected),
+      reviewStatus: this.statusList.filter((x) => x.isSelected),
       queryStatus: this.queryStatusList.filter((x) => x.isSelected),
       admitStartDate: astDate,
       admitEndDate: aendDate
@@ -234,6 +235,9 @@ export class FilterDrawerComponent
       (x) => x.isSelected
     ).length;
     this.filterList.find((x) => x.id === 'reviewStatus').count = this.selectedStatusCount;
+    this.fusionFormGroup.patchValue({
+      reviewStatus: this.statusList.filter(x=>x.isSelected).map(x=>x.name)
+    });
   }
 
   onQueryStatusChange(isChecked: boolean, value: string) {
@@ -243,7 +247,9 @@ export class FilterDrawerComponent
       (x) => x.isSelected
     ).length;
     this.filterList.find((x) => x.id === 'queryStatus').count = this.selectedStatusCount;
-
+    this.fusionFormGroup.patchValue({
+      queryStatus: this.queryStatusList.filter(x=>x.isSelected).map(x=>x.name)
+    });
   }
 
   reset(name: string) {
@@ -251,11 +257,25 @@ export class FilterDrawerComponent
       this.statusList.forEach((x) => (x.isSelected = false));
       this.selectedStatusCount = 0;
       this.filterList.find((x) => x.id === 'reviewStatus').count = 0;
+      this.fusionFormGroup.patchValue({
+        reviewStatus:[]
+      });
     } else if (name === 'queryStatus') {
       this.queryStatusList.forEach((x) => (x.isSelected = false));
       this.selectedQueryStatusCount = 0;
       this.filterList.find((x) => x.id === 'queryStatus').count = 0;
+      this.fusionFormGroup.patchValue({
+        queryStatus:[]
+      });
     }
+  }
+
+  resetDate() {
+    this.fusionFormGroup.patchValue({
+      admitStartDate: '',
+      admitEndDate: ''
+    });
+    this.filterList.find(x=>x.id === 'admitDate').count = 0;
   }
 
   dateChange(propName: string, $event) {

@@ -3,14 +3,6 @@
   <form name="form" [formGroup]="fusionFormGroup" fxLayout="column" fxLayoutAlign="start">
     <!--current address section-->
     <mat-card class="p-0 mb-8">
-      <header fxLayout="row" fxLayoutAlign="space-between center" class="card-header-title card-header-border-bottom"
-        tabindex="0">
-        <div fxLayout="row" fxLayoutAlign="start center">
-          <span class="primary-heading font-weight-600 text-capitalize">
-            Patient Finding Information
-          </span>
-        </div>
-      </header>
       <div class="p-16 pb-0" fxLayout="column">
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
           <mat-form-field appearance="fill" fxFlex="32.5">
@@ -90,24 +82,6 @@
             <mat-label>GMLOS</mat-label>
             <input matInput noWhitespace formControlName="gmlos">
           </mat-form-field>
-          <mat-form-field appearance="fill" fxFlex="18">
-            <mat-label>Response Date</mat-label>
-            <input readonly matInput [matDatepicker]="picker2" (click)="picker2.open()" [max]="maxDate"
-              formControlName="responseDate" />
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2 color="primary" class="action-icon"></mat-datepicker>
-          </mat-form-field>
-          <mat-form-field appearance="fill" fxFlex="15">
-            <mat-label>Response Type</mat-label>
-            <mat-select formControlName="responseType" (selectionChange)="OnStatusChanged($event)" required>
-              <mat-option *ngFor="let type of responseTypeList" [ngClass]="{'mat-option-text ': isOptionTruncated(type)
-              }" id={{type}} [value]="type" class="dropdown-with-tooltip" [options]="tooltipOptions"
-                [display]="isOptionTruncated(type)" [tooltip]="type">
-                {{type}}
-              </mat-option>
-            </mat-select>
-
-          </mat-form-field>
         </div>
       </div>
       <div class="p-16 pb-0" fxLayout="column">
@@ -124,9 +98,22 @@
             <mat-label>Expected GMLOS</mat-label>
             <input matInput noWhitespace formControlName="expectedGmlos">
           </mat-form-field>
-          <mat-form-field appearance="fill" fxFlex="34">
-            <mat-label>Response</mat-label>
-            <input matInput noWhitespace formControlName="responseComment">
+          <mat-form-field appearance="fill" fxFlex="18">
+            <mat-label>Response Date</mat-label>
+            <input readonly matInput [matDatepicker]="picker2" (click)="picker2.open()" [max]="maxDate"
+              formControlName="responseDate" />
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2 color="primary" class="action-icon"></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="fill" fxFlex="15">
+            <mat-label>Response Type</mat-label>
+            <mat-select formControlName="responseType" (selectionChange)="OnStatusChanged($event)" required>
+              <mat-option *ngFor="let type of responseTypeList" [ngClass]="{'mat-option-text ': isOptionTruncated(type)
+              }" id={{type}} [value]="type" class="dropdown-with-tooltip" [options]="tooltipOptions"
+                [display]="isOptionTruncated(type)" [tooltip]="type">
+                {{type}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
@@ -136,6 +123,12 @@
             <textarea matInput noWhitespace formControlName="followupComment" rows="2">
           </textarea>
           </mat-form-field>
+
+          <mat-form-field appearance="fill" fxFlex="34">
+            <mat-label>Response</mat-label>
+            <textarea matInput noWhitespace formControlName="responseComment" rows="2"></textarea>
+          </mat-form-field>
+
         </div>
       </div>
 

@@ -60,7 +60,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('text_Container', { static: false }) textContainerRef: ElementRef;
   @ViewChild('pagination') pagination: ElementRef;
-  @ViewChild('profileSearchHeader') profileSearchHeader: ElementRef;
+  @ViewChild('patientSearchHeader') patientSearchHeader: ElementRef;
   @ViewChild('searchInput', { static: true }) searchInput: ElementRef;
   clickedRows = new Set<ColumnOption>();
   highlightedRows = new Set<ColumnOption>();
@@ -72,7 +72,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   columnInformation: ColumnOption[];
   fusionData$;
   searchOptions: ColumnOption[];
-  itemsPerPage = 10;
+  itemsPerPage = 20;
   fieldAndDisplayName: Map<string, string> = new Map();
   serviceEndPoint: string;
   gridData: any;
@@ -92,13 +92,19 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     pointerEvents: 'auto',
   };
   stickyTable = '#stickyColumnTable';
-  columnsToSearch = ['patientName', 'patientNo', 'mrn', 'room', 'reimbursementType'];
+  columnsToSearch = [
+    'patientName',
+    'patientNo',
+    'mrn',
+    'room',
+    'reimbursementType',
+  ];
   colorBadges = {
-    'No Query' : 'approved',
-    'Non DRG':'notapproved',
-    'New':'new',
-    'Later Review':'pendingreview',
-    'Pending Query': 'inprogress'
+    'No Query': 'approved',
+    'Non DRG': 'notapproved',
+    New: 'new',
+    'Later Review': 'pendingreview',
+    'Pending Query': 'inprogress',
   };
 
   @Output() patientClick: EventEmitter<any> = new EventEmitter<any>();
@@ -174,7 +180,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     const defaultFilter: Filter = {
       fieldName: 'Filters.ReviewStatus',
       operator: 'eq',
-      value: selectedStatus
+      value: selectedStatus,
     };
     dataSource.filters = selectedStatus === 'Total' ? [] : [defaultFilter];
     dataSource.customHeaders = [];
@@ -205,7 +211,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
           this.searchValue = x.value;
         }
       });
-    // this.getLatestFusionFilter();
+    this.getLatestFusionFilter();
     Logger.trace(
       `TenantListModule :TenantListComponent => ngOnInit() completed`
     );
@@ -237,7 +243,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
           this.datasourceFacade.GetDataSource(
             this.sort.active,
             this.sort.direction == 'asc' ? '1' : '-1',
-            page*this.paginator.pageSize + 1,
+            page * this.paginator.pageSize + 1,
             this.paginator.pageSize
           );
           return null;
@@ -326,19 +332,20 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     this.datasourceFacade.fusionDataSource$
       .pipe(takeUntil(this._unsubscribe))
       .subscribe((x) => {
-        if (x !== undefined && x !== null && x.filters?.length === 0) {
-          this.gridFilter = [];
-        }
-        if (x !== undefined && x !== null && x.filters?.length > 0) {
-          this.gridFilter = x.filters.filter(
-            (y) => y.type !== 'search' && y.value.trim() !== ''
-          );
+        if (x?.filters) {
+          if (x.filters.length === 0) {
+            this.gridFilter = [];
+          } else if (x.filters.length > 0) {
+            this.gridFilter = x.filters.filter(
+              (y) => y.type !== 'search' && y.value.trim() !== ''
+            );
+          }
         }
       });
   }
 
   getFilterValue(value: string) {
-    return value.split('~');
+    return value;
   }
 
   createFilter(filter: Filter) {

@@ -227,9 +227,13 @@ export class LaunchComponent
     this.showProgressBar();
     if (selectedUserType) this.userTypeService.setUserType(selectedUserType);
 
-    const updatedStatusCount = [...selectedFacility.StatusCount];
-    updatedStatusCount.map(x=> x.isSelected = false);
-    updatedStatusCount.find(x=>x.name === selectedStatus).isSelected = true;
+    const updatedStatusCount =  selectedFacility.StatusCount.map(x => {
+                                    if(x.name === selectedStatus)
+                                      return Object.assign({}, x, {isSelected: true})
+                                    else if(x.isSelected)
+                                      return Object.assign({}, x, {isSelected: false})
+                                    return x;
+                                });
     const updatedFacility = {
       ...selectedFacility,
       StatusCount: updatedStatusCount

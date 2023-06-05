@@ -4,18 +4,17 @@
       *ngIf="(loading$ | async) === false; else loading">
       <div fxLayout="row" fxflex="100">
         <div fxLayout="row" fxLayoutAlign="start" fxFlex="7" class="ml-8">
-          <zhealthcare-avatar [firstName]="patient?.firstName" [lastName]="patient?.lastName" size="lg">
+          <zhealthcare-avatar [firstName]="patient?.patientName" [lastName]="patient?.patientName" size="lg">
           </zhealthcare-avatar>
         </div>
           <div fxLayout="row" fxLayoutAlign="space-between center" >
             <div fxLayout="column" fxLayoutAlign="center start" class="word-break-all mr-16">
               <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="100">
                 <h2>
-                  {{ patient.firstName }}&nbsp;
-                  {{ patient.lastName }}
+                  {{ patient.patientName }}&nbsp;
                   &nbsp;|&nbsp;
                   {{
-                  patient.accountNo
+                  patient.patientNo
                   }}
                 </h2>
                 <profile-shared-student-tag></profile-shared-student-tag>
@@ -23,7 +22,7 @@
               <div>
 
                 <div class="banner-separator">
-                  <span> <b> Admit Date : </b>{{ patient.admissionDate | date:'MMMM d, y' }}</span>
+                  <span> <b> Admit Date : </b>{{ patient.admitDate | date:'MMMM d, y' }}</span>
                   &nbsp;&nbsp;
                   <span> <b> LOS : </b>{{ patient.los }}</span>
                   &nbsp;&nbsp;

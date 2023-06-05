@@ -184,21 +184,36 @@ export class AdminLaunchComponent
       this._headerService.setCurrentFacilityName(facilityId.name);
       this.loadingPrograms = true;
       this.showProgressBar();
-      this._facilitySandox.getStatusCounts(facilityId.name).subscribe(
-        statuses => {
+      this._facilitySandox
+        .getStatusCounts(facilityId.name)
+        .subscribe((statuses) => {
           this.facilityStatuses = [];
-            this.loadingPrograms = false;
-            this.showProgramSelection = true;
-            this.hideProgressBar();
-            if(statuses.findIndex(x=> x.name === 'Total') === -1) {
-              const totalCount = statuses.reduce((sum, current) => sum + current.count, 0);
-              this.facilityStatuses.push(new StatusCount('Total', totalCount));
-            }
-            this.facilityStatuses = this.facilityStatuses.concat(statuses);
-            this.programSelection(facilityId.name, this.facilityStatuses);
-        }
-      )
+          this.loadingPrograms = false;
+          this.showProgramSelection = true;
+          this.hideProgressBar();
+          this.arrangeTiles(statuses);
+          this.programSelection(facilityId.name, this.facilityStatuses);
+        });
     }
+  }
+
+  arrangeTiles(statusCounts: StatusCount[]) {
+    const orderedTiles = [
+      'New',
+      'Pending Query',
+      'Later Review',
+      'No Query',
+      'Non DRG',
+    ];
+    const totalCount = statusCounts.find((x) => x.name === 'Total')?.count
+                      ?? statusCounts.reduce((sum, current) => sum + current.count, 0);
+    this.facilityStatuses.push(new StatusCount('Total', totalCount));
+
+    orderedTiles.forEach((x) => {
+      this.facilityStatuses.push(
+        new StatusCount(x, statusCounts.find((y) => y.name === x)?.count ?? 0)
+      );
+    });
   }
 
   launch(item) {
