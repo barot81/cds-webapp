@@ -132,14 +132,26 @@ export class AddPatientFindingComponent
     this.loading = true;
     this.patientId = this.routeParam.params['id'];
 
-    // this.fusionFormGroup.get('drgSearch').valueChanges
-    // .pipe(takeUntil(this._onDestroy))
-    //   .subscribe(() => {
-    //     this.filterDrgs();
-    //   });
+    this.fusionFormGroup.get('currentDrgNo').valueChanges
+    .pipe(takeUntil(this._onDestroy))
+      .subscribe(() => {
+        this.filterDrgs('currentDrgNo');
+      });
 
+
+    this.fusionFormGroup.get('expectedDrgNo').valueChanges
+    .pipe(takeUntil(this._onDestroy))
+      .subscribe(() => {
+        this.filterDrgs('expectedDrgNo');
+      });
+
+
+    this.fusionFormGroup.get('revisedDrgNo').valueChanges
+    .pipe(takeUntil(this._onDestroy))
+      .subscribe(() => {
+        this.filterDrgs('revisedDrgNo');
+      });
     this.lookupService.getPhycianNames().subscribe((x) => this.physicianNameList = x);
-
     this.lookupService.getDiagnosisLookup().subscribe((x) =>
       this.queryDiagnosisList = x.items.map((x) => x.name)
     );
@@ -151,18 +163,18 @@ export class AddPatientFindingComponent
         .subscribe((x) => {
           this.drgLookup = x;
           this.loading = false;
-          // this.drgLookups$.next(x.slice());
+          this.drgLookups$.next(x.slice());
         });
       }
     );
   }
 
 
-  protected filterDrgs() {
+  protected filterDrgs(formControlName: string) {
     if (!this.drgLookup) {
       return;
     }
-    let search = this.fusionFormGroup.get('drgSearch').value;
+    let search = this.fusionFormGroup.get(formControlName).value;
     if (!search) {
       this.drgLookups$.next(this.drgLookup.slice());
       return;

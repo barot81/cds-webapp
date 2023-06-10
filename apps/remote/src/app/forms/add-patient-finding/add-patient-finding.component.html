@@ -8,9 +8,9 @@
           <mat-form-field appearance="fill" fxFlex="32.5">
             <mat-label>Query Type</mat-label>
             <mat-select formControlName="queryType" (selectionChange)="OnQueryTypeChanged($event)" required>
-              <mat-option *ngFor="let queryType of queryTypeList" [ngClass]="{'mat-option-text ': isOptionTruncated(queryType)
-              }" id={{queryType}} [value]="queryType" class="dropdown-with-tooltip" [options]="tooltipOptions"
-                [display]="isOptionTruncated(queryType)" [tooltip]="queryType">
+              <mat-option *ngFor="let queryType of queryTypeList" [ngClass]="{'mat-option-text ': queryType
+              }" id={{queryType}} [value]="queryType" class="dropdown-with-tooltip"[options]="tooltipOptions"
+              [display]="queryType" [tooltip]="queryType">
                 {{queryType}}
               </mat-option>
             </mat-select>
@@ -70,28 +70,27 @@
     <mat-card class="p-0 mb-8" fxLayout="column">
       <div class="p-16 pb-0" fxLayout="column">
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
-
-          <!-- <mat-form-field class="w-100-p" appearance="fill" #singleSelect fxFlex="10">
-            <mat-label>Current Drg </mat-label>
-            <mat-select formControlName="currentDrgNo">
+          <mat-form-field appearance="fill" fxFlex="10" class="w-100-p">
+            <mat-label> Drg No </mat-label>
+            <mat-select (selectionChange)="onDrgChange($event)">
               <mat-option>
                 <ngx-mat-select-search
-                  [FormControl]="drgSearch"
+                  formControlName="currentDrgNo"
                   placeholderLabel="Search"
                   noEntriesFoundLabel="No entry matches"
                 >
                 </ngx-mat-select-search>
               </mat-option>
               <mat-option
-                *ngFor="let drg of (drgLookups$ | async)"
-                [value]="drg.no"
-                (onSelectionChange)="onDrgChange($event)"
+                *ngFor="let item of drgLookups$ | async"
+                [value]="item.no"
               >
-                {{ drg.no }}
+                {{ item.no }}
               </mat-option>
             </mat-select>
-          </mat-form-field> -->
-          <mat-form-field appearance="fill" fxFlex="10">
+          </mat-form-field>
+
+          <!-- <mat-form-field appearance="fill" fxFlex="10">
             <mat-label>Current Drg</mat-label>
             <mat-select formControlName="currentDrgNo" (selectionChange)="onDrgChange($event)"
               required>
@@ -101,7 +100,7 @@
                 {{drg.no}}
               </mat-option>
             </mat-select>
-          </mat-form-field>
+          </mat-form-field> -->
           <mat-form-field appearance="fill" fxFlex="53">
             <mat-label>Current DRG Description</mat-label>
             <input matInput  formControlName="currentDrgDescription">
@@ -118,7 +117,27 @@
       </div>
       <div class="p-16 pb-0" fxLayout="column">
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
-          <mat-form-field appearance="fill" fxFlex="10">
+          <mat-form-field appearance="fill" fxFlex="10" class="w-100-p">
+            <mat-label>Expected Drg No </mat-label>
+            <mat-select (selectionChange)="onExpectedDrgChange($event)">
+              <mat-option>
+                <ngx-mat-select-search
+                  formControlName="expectedDrgNo"
+                  placeholderLabel="Search"
+                  noEntriesFoundLabel="No entry matches"
+                >
+                </ngx-mat-select-search>
+              </mat-option>
+              <mat-option
+                *ngFor="let item of drgLookups$ | async"
+                [value]="item.no"
+
+              >
+                {{ item.no }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- <mat-form-field appearance="fill" fxFlex="10">
             <mat-label>Expected Drg</mat-label>
             <mat-select formControlName="expectedDrgNo" (selectionChange)="onExpectedDrgChange($event)"
               required>
@@ -128,7 +147,7 @@
                 {{drg.no}}
               </mat-option>
             </mat-select>
-          </mat-form-field>
+          </mat-form-field> -->
           <mat-form-field appearance="fill" fxFlex="53">
             <mat-label>Expected DRG Description</mat-label>
             <input matInput  formControlName="expectedDrgDescription">
@@ -182,7 +201,28 @@
     <mat-card class="p-0" fxLayout="column">
       <div class="p-16 pb-0" fxLayout="column">
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
-          <mat-form-field appearance="fill" fxFlex="10">
+          <mat-form-field appearance="fill" fxFlex="10" class="w-100-p">
+            <mat-label> Ending Drg No </mat-label>
+            <mat-select (selectionChange)="onEndingDrgChange($event)">
+              <mat-option>
+                <ngx-mat-select-search
+                  formControlName="revisedDrgNo"
+                  placeholderLabel="Search"
+                  noEntriesFoundLabel="No entry matches"
+                >
+                </ngx-mat-select-search>
+              </mat-option>
+              <mat-option
+                *ngFor="let item of drgLookups$ | async"
+                [value]="item.no"
+
+              >
+                {{ item.no }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- <mat-form-field appearance="fill" fxFlex="10">
             <mat-label>Ending Drg</mat-label>
             <mat-select formControlName="revisedDrgNo" (selectionChange)="onEndingDrgChange($event)"
               required>
@@ -192,7 +232,7 @@
                 {{drg.no}}
               </mat-option>
             </mat-select>
-          </mat-form-field>
+          </mat-form-field> -->
           <mat-form-field appearance="fill" fxFlex="53">
             <mat-label>Ending DRG Description</mat-label>
             <input matInput  formControlName="revisedDrgDescription">
@@ -246,9 +286,9 @@
 <div *ngIf="loading">
 <mat-card fxLayout="column" fxLayoutAlign="start space-between" fxLayoutGap="15" class="w-100-p m-16">
   <div fxLayout="row" class="ml-16 pt-8"  fxLayoutGap="15">
-    <div class="line shine w-200 h-12" fxflex="30"></div>
-    <div class="line shine w-200 h-12" fxflex="30"></div>
-    <div class="line shine w-200 h-12" fxflex="30"></div>
+    <div class="line shine w-200 h-12" fxflex="33"></div>
+    <div class="line shine w-200 h-12" fxflex="33"></div>
+    <div class="line shine w-200 h-12" fxflex="33"></div>
   </div>
   <div fxLayout="row" class="ml-16 pt-8"  fxLayoutGap="15">
     <div class="line shine w-200 h-12" fxflex="30"></div>
@@ -260,13 +300,13 @@
 <mat-card fxLayout="column" fxLayoutAlign="start space-between" fxflex="100" class="w-100-p m-16">
   <div fxLayout="row" class="ml-16 pt-8" fxflex="100">
     <div class="line shine w-60 h-12" fxflex="10"></div>
-    <div class="line shine w-250 h-12" fxflex="50"></div>
-    <div class="line shine w-150 h-12" fxflex="30"></div>
+    <div class="line shine w-200 h-12" fxflex="50"></div>
+    <div class="line shine w-100 h-12" fxflex="30"></div>
   </div>
-  <div fxLayout="column" class="ml-16 pt-8" fxflex="100">
+  <div fxLayout="row" class="ml-16 pt-8" fxflex="100">
     <div class="line shine w-60 h-12" fxflex="10"></div>
-    <div class="line shine w-250 h-12" fxflex="50"></div>
-    <div class="line shine w-150 h-12" fxflex="30"></div>
+    <div class="line shine w-200 h-12" fxflex="50"></div>
+    <div class="line shine w-100 h-12" fxflex="30"></div>
   </div>
 </mat-card>
 </div>

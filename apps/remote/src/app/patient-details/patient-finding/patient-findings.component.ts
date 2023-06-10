@@ -1,4 +1,4 @@
-import { Component,  OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component,  OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, map, Subject, takeUntil } from 'rxjs';
 import { PatientFormsService } from '../../forms/patient-forms.service';
@@ -10,6 +10,7 @@ import { LookupService } from '../../services/lookup.service';
 @Component({
   selector: 'patient-findings',
   templateUrl: 'patient-findings.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PatientFindingsComponent implements OnInit {
   loading$: any;
