@@ -22,7 +22,7 @@ export class Finding {
   revisedWeight: string;
   revisedGMLOS: string;
   weightDifference: string;
-  status: string;
+  queryStatus: string;
   clinicalSummary: string;
   comments: string;
 }

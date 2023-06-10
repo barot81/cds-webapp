@@ -21,7 +21,7 @@
               </div>
 
 
-              <div *ngIf="numberOfAppliedFilter>0" fxLayout="row" fxLayoutAlign="start center" class="px-16 w-100-p"
+              <div *ngIf="gridFilter.length > 0" fxLayout="row" fxLayoutAlign="start center" class="px-16 w-100-p"
                 fxHide.lt-lg>
                 <div fxLayout="row" fxLayoutAlign="start center" class="mr-8">
                   <span>Filters: </span>
@@ -30,24 +30,17 @@
                   <div class="table-header-chips">
                     <mat-chip-list #chipList>
                       <div *ngFor="let item of gridFilter; let i = index">
-                            <mat-chip
-                              (removed)="clearFilters(fil, item)"
-                              *ngFor="
+                        <mat-chip (removed)="clearFilters(fil, item)" *ngFor="
                               let fil of item.values;
                               let j = index
-                            "
-                            >
-                              <span
-                                tooltip="{{ item.name }} : {{ fil }}"
-                                [options]="tooltipOptions"
-                                class="chips-text"
-                                >{{ fil }}</span
-                              >
-                              <button matChipRemove>
-                                <mat-icon>cancel</mat-icon>
-                              </button>
-                            </mat-chip>
-                        </div>
+                            ">
+                          <span tooltip="{{ item.name }} : {{ fil }}" [options]="tooltipOptions" class="chips-text">{{
+                            fil }}</span>
+                          <button matChipRemove>
+                            <mat-icon>cancel</mat-icon>
+                          </button>
+                        </mat-chip>
+                      </div>
                     </mat-chip-list>
                   </div>
                 </div>
@@ -67,7 +60,7 @@
                   [caption]="'Filters'" [primaryAction]="'Apply'">
                   <div fxLayout="row" fxLayoutAlign="start center">
                     <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
-                    <span *ngIf="numberOfAppliedFilter>0"> {{ numberOfAppliedFilter }} </span>
+                    <span *ngIf="gridFilter.length> 0"> {{ gridFilter.length }} </span>
                   </div>
                 </button>
 
@@ -88,8 +81,7 @@
           </div>
         </div>
       </div>
-      <div class="content zhealthcare-sticky-table overflow-auto"
-      [ngClass]="{
+      <div class="content zhealthcare-sticky-table overflow-auto" [ngClass]="{
         'patient-search-grid-with-filter': ((searchValue && searchValue!=='') || numberOfAppliedFilter>0) && (datasourceFacade.fusionDataSourceLoading$ | async ) === false,
         'patient-search-grid-without-filter':!((searchValue && searchValue!=='') || numberOfAppliedFilter>0) && (datasourceFacade.fusionDataSourceLoading$ | async ) === false,
         'patient-search-grid-with-loadingstate':(datasourceFacade.fusionDataSourceLoading$ | async )}"
@@ -133,14 +125,14 @@
           <ng-container matColumnDef="admitDate">
             <th id="admitDate" mat-header-cell *matHeaderCellDef class="admit-date-column">Admit Date</th>
             <td mat-cell *matCellDef="let element" class="admit-date-column">
-              <a>{{ element?.admitDate | date:'MMMM d, y' }}</a>
+              <p>{{ element?.admitDate | date:'MMMM d, y' }}</p>
             </td>
           </ng-container>
 
           <ng-container matColumnDef="dischargeDate">
             <th id="admitDate" mat-header-cell *matHeaderCellDef class="email-width">Discharge Date</th>
             <td mat-cell *matCellDef="let element" class="adnutDate-width">
-              <a>{{ element?.dischargeDate | date:'MMMM d, y' }}</a>
+              <p>{{ element?.dischargeDate | date:'MMMM d, y' }}</p>
             </td>
           </ng-container>
 
@@ -158,7 +150,8 @@
               DRG No - Description
             </th>
             <td mat-cell class="profileStaus-column" *matCellDef="let element">
-              <span>{{ element?.drgNo}} - {{element?.diagnosis}}</span>
+              <span *ngIf="!!element?.drgNo; else na">{{ element?.drgNo}} - {{element?.diagnosis}}</span>
+              <span #na>NA</span>
             </td>
           </ng-container>
           <ng-container matColumnDef="los">
@@ -172,7 +165,7 @@
 
           <!-- phone Column -->
           <ng-container matColumnDef="healthPlan">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-width">Health Plan</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-width">Insurance</th>
             <td mat-cell *matCellDef="let element" class="column-width">
               {{ element?.healthPlan }}
             </td>
@@ -205,7 +198,7 @@
 
           <!-- cohort Column -->
           <ng-container matColumnDef="reimbursementType">
-            <th mat-header-cell *matHeaderCellDef class="column-width">Reimbursement Type</th>
+            <th mat-header-cell *matHeaderCellDef class="column-width" mat-sort-header>Reimbursement Type</th>
             <td mat-cell *matCellDef="let element" class="column-width">
               {{ element?.reimbursementType }}
             </td>

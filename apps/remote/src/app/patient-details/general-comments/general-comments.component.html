@@ -27,16 +27,18 @@
         </div>
 
 
-      <div class="zhealthcare-info p-16" *ngIf="(generalComments$ | async) as generalComment">
-        <div class="title" tabindex="0" aria-label="General Comments">
-          General Comments
-        </div>
-        <div class="ck-editor-container description" tabindex="0" attr.aria-label="{{ generalComment.comments}}"
-          [innerHTML]="generalComment.comments | mdToHTML | safeHTML">
+        <div class="zhealthcare-info p-16">
+          <div class="title" tabindex="0" aria-label="General Comments">
+            General Comments
+          </div>
+          <div class="ck-editor-container description"
+            *ngIf="(generalComments$ | async) as generalComment"
+            tabindex="0" attr.aria-label="{{ generalComment.comments}}"
+            [innerHTML]="generalComment.comments | mdToHTML | safeHTML">
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
 </mat-card>
 <ng-template #loading>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HeaderService } from '@zhealthcare/ux';
 
 @Component({
   selector: 'patient-details',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class PatientDetailsComponent implements OnInit {
 
-  constructor() {
+  constructor(_headerService:HeaderService ) {
   }
 
   ngOnInit() { }

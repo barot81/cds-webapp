@@ -1,6 +1,6 @@
 <div class="drawer-p">
 
-  <form name="form" [formGroup]="fusionFormGroup" fxLayout="column" fxLayoutAlign="start">
+  <form name="form" [formGroup]="fusionFormGroup" fxLayout="column" fxLayoutAlign="start" *ngIf="!loading">
     <!--current address section-->
     <mat-card class="p-0 mb-8">
       <div class="p-16 pb-0" fxLayout="column">
@@ -26,7 +26,7 @@
 
           <mat-form-field appearance="fill" fxFlex="34">
             <mat-label>CDS Name</mat-label>
-            <input matInput noWhitespace formControlName="cdsName" required>
+            <input matInput  formControlName="cdsName" required>
           </mat-form-field>
         </div>
 
@@ -70,42 +70,87 @@
     <mat-card class="p-0 mb-8" fxLayout="column">
       <div class="p-16 pb-0" fxLayout="column">
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
-          <mat-form-field appearance="fill" fxFlex="32.5">
-            <mat-label>Current DRG</mat-label>
-            <input matInput noWhitespace formControlName="currentDrg">
+
+          <!-- <mat-form-field class="w-100-p" appearance="fill" #singleSelect fxFlex="10">
+            <mat-label>Current Drg </mat-label>
+            <mat-select formControlName="currentDrgNo">
+              <mat-option>
+                <ngx-mat-select-search
+                  [FormControl]="drgSearch"
+                  placeholderLabel="Search"
+                  noEntriesFoundLabel="No entry matches"
+                >
+                </ngx-mat-select-search>
+              </mat-option>
+              <mat-option
+                *ngFor="let drg of (drgLookups$ | async)"
+                [value]="drg.no"
+                (onSelectionChange)="onDrgChange($event)"
+              >
+                {{ drg.no }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+          <mat-form-field appearance="fill" fxFlex="10">
+            <mat-label>Current Drg</mat-label>
+            <mat-select formControlName="currentDrgNo" (selectionChange)="onDrgChange($event)"
+              required>
+              <mat-option *ngFor="let drg of drgLookup" [ngClass]="{'mat-option-text ': isOptionTruncated(drg.no)}"
+                id={{drg.no}} [value]="drg.no" class="dropdown-with-tooltip" [options]="tooltipOptions"
+                [display]="isOptionTruncated(drg.no)" [tooltip]="drg.no">
+                {{drg.no}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill" fxFlex="53">
+            <mat-label>Current DRG Description</mat-label>
+            <input matInput  formControlName="currentDrgDescription">
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="14">
             <mat-label>Initial Weight</mat-label>
-            <input matInput noWhitespace formControlName="initialWeight">
+            <input matInput  formControlName="initialWeight">
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="14">
             <mat-label>GMLOS</mat-label>
-            <input matInput noWhitespace formControlName="gmlos">
+            <input matInput  formControlName="gmlos">
           </mat-form-field>
         </div>
       </div>
       <div class="p-16 pb-0" fxLayout="column">
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
-          <mat-form-field appearance="fill" fxFlex="32.5">
-            <mat-label>Expected DRG</mat-label>
-            <input matInput noWhitespace formControlName="expectedDrg">
+          <mat-form-field appearance="fill" fxFlex="10">
+            <mat-label>Expected Drg</mat-label>
+            <mat-select formControlName="expectedDrgNo" (selectionChange)="onExpectedDrgChange($event)"
+              required>
+              <mat-option *ngFor="let drg of drgLookup" [ngClass]="{'mat-option-text ': isOptionTruncated(drg.no)}"
+               id={{drg.no}} [value]="drg.no" class="dropdown-with-tooltip" [options]="tooltipOptions"
+                [display]="isOptionTruncated(drg.no)" [tooltip]="drg.no">
+                {{drg.no}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill" fxFlex="53">
+            <mat-label>Expected DRG Description</mat-label>
+            <input matInput  formControlName="expectedDrgDescription">
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="14">
             <mat-label>Expected Weight</mat-label>
-            <input matInput noWhitespace formControlName="expectedWeight">
+            <input matInput  formControlName="expectedWeight">
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="14">
             <mat-label>Expected GMLOS</mat-label>
-            <input matInput noWhitespace formControlName="expectedGmlos">
+            <input matInput  formControlName="expectedGmlos">
           </mat-form-field>
-          <mat-form-field appearance="fill" fxFlex="18">
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
+          <mat-form-field appearance="fill" fxFlex="32">
             <mat-label>Response Date</mat-label>
-            <input readonly matInput [matDatepicker]="picker2" (click)="picker2.open()" [max]="maxDate"
+            <input readonly matInput [matDatepicker]="picker2" (click)="picker2.open()"
               formControlName="responseDate" />
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2 color="primary" class="action-icon"></mat-datepicker>
           </mat-form-field>
-          <mat-form-field appearance="fill" fxFlex="15">
+          <mat-form-field appearance="fill" fxFlex="32">
             <mat-label>Response Type</mat-label>
             <mat-select formControlName="responseType" (selectionChange)="OnStatusChanged($event)" required>
               <mat-option *ngFor="let type of responseTypeList" [ngClass]="{'mat-option-text ': isOptionTruncated(type)
@@ -115,19 +160,20 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
+
         </div>
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
 
-          <mat-form-field appearance="fill" fxFlex="63.5">
+          <mat-form-field appearance="fill" fxFlex="32">
+            <mat-label>Response</mat-label>
+            <textarea matInput  formControlName="responseComment" rows="2"></textarea>
+          </mat-form-field>
+          <mat-form-field appearance="fill" fxFlex="68">
             <mat-label>Follow Up Comments</mat-label>
-            <textarea matInput noWhitespace formControlName="followupComment" rows="2">
+            <textarea matInput  formControlName="followupComment" rows="2">
           </textarea>
           </mat-form-field>
 
-          <mat-form-field appearance="fill" fxFlex="34">
-            <mat-label>Response</mat-label>
-            <textarea matInput noWhitespace formControlName="responseComment" rows="2"></textarea>
-          </mat-form-field>
 
         </div>
       </div>
@@ -136,26 +182,41 @@
     <mat-card class="p-0" fxLayout="column">
       <div class="p-16 pb-0" fxLayout="column">
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
-          <mat-form-field appearance="fill" fxFlex="32.5">
-            <mat-label>Ending DRG</mat-label>
-            <input matInput noWhitespace formControlName="revisedDrg">
+          <mat-form-field appearance="fill" fxFlex="10">
+            <mat-label>Ending Drg</mat-label>
+            <mat-select formControlName="revisedDrgNo" (selectionChange)="onEndingDrgChange($event)"
+              required>
+              <mat-option *ngFor="let drg of drgLookup" [ngClass]="{'mat-option-text ': isOptionTruncated(drg.no)}"
+              id={{drg.no}} [value]="drg.no" class="dropdown-with-tooltip" [options]="tooltipOptions"
+                [display]="isOptionTruncated(drg.no)" [tooltip]="drg.no">
+                {{drg.no}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill" fxFlex="53">
+            <mat-label>Ending DRG Description</mat-label>
+            <input matInput  formControlName="revisedDrgDescription">
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="14">
             <mat-label>Ending Weight</mat-label>
-            <input matInput noWhitespace formControlName="revisedWeight">
+            <input matInput  formControlName="revisedWeight">
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="14">
             <mat-label>Ending GMLOS</mat-label>
-            <input matInput noWhitespace formControlName="revisedGmlos">
+            <input matInput  formControlName="revisedGmlos">
           </mat-form-field>
 
-          <mat-form-field appearance="fill" fxFlex="15">
+        </div>
+      </div>
+      <div class="p-16 pb-0" fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
+          <mat-form-field appearance="fill" fxFlex="10">
             <mat-label>Weight Difference</mat-label>
-            <input matInput noWhitespace formControlName="weightDifference">
+            <input matInput  formControlName="weightDifference">
           </mat-form-field>
-          <mat-form-field appearance="fill" fxFlex="18">
-            <mat-label>Status</mat-label>
-            <mat-select formControlName="status" (selectionChange)="OnStatusChanged($event)" required>
+          <mat-form-field appearance="fill" fxFlex="21">
+            <mat-label>Query Status</mat-label>
+            <mat-select formControlName="queryStatus" (selectionChange)="OnStatusChanged($event)" required>
               <mat-option *ngFor="let st of statusList" [ngClass]="{'mat-option-text ': isOptionTruncated(st)
               }" id={{st}} [value]="st" class="dropdown-with-tooltip" [options]="tooltipOptions"
                 [display]="isOptionTruncated(st)" [tooltip]="st">
@@ -164,18 +225,16 @@
             </mat-select>
           </mat-form-field>
         </div>
-      </div>
-      <div class="p-16 pb-0" fxLayout="column">
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
 
           <mat-form-field appearance="fill" fxFlex="50">
             <mat-label>Clinical Summary</mat-label>
-            <textarea matInput noWhitespace formControlName="clinicalSummary" rows="3">
+            <textarea matInput  formControlName="clinicalSummary" rows="3">
             </textarea>
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="50">
             <mat-label>Comments</mat-label>
-            <textarea matInput noWhitespace formControlName="comments" rows="3">
+            <textarea matInput  formControlName="comments" rows="3">
             </textarea>
           </mat-form-field>
         </div>
@@ -183,3 +242,32 @@
     </mat-card>
   </form>
 </div>
+
+<div *ngIf="loading">
+<mat-card fxLayout="column" fxLayoutAlign="start space-between" fxLayoutGap="15" class="w-100-p m-16">
+  <div fxLayout="row" class="ml-16 pt-8"  fxLayoutGap="15">
+    <div class="line shine w-200 h-12" fxflex="30"></div>
+    <div class="line shine w-200 h-12" fxflex="30"></div>
+    <div class="line shine w-200 h-12" fxflex="30"></div>
+  </div>
+  <div fxLayout="row" class="ml-16 pt-8"  fxLayoutGap="15">
+    <div class="line shine w-200 h-12" fxflex="30"></div>
+    <div class="line shine w-200 h-12" fxflex="30"></div>
+    <div class="line shine w-200 h-12" fxflex="30"></div>
+  </div>
+</mat-card>
+
+<mat-card fxLayout="column" fxLayoutAlign="start space-between" fxflex="100" class="w-100-p m-16">
+  <div fxLayout="row" class="ml-16 pt-8" fxflex="100">
+    <div class="line shine w-60 h-12" fxflex="10"></div>
+    <div class="line shine w-250 h-12" fxflex="50"></div>
+    <div class="line shine w-150 h-12" fxflex="30"></div>
+  </div>
+  <div fxLayout="column" class="ml-16 pt-8" fxflex="100">
+    <div class="line shine w-60 h-12" fxflex="10"></div>
+    <div class="line shine w-250 h-12" fxflex="50"></div>
+    <div class="line shine w-150 h-12" fxflex="30"></div>
+  </div>
+</mat-card>
+</div>
+

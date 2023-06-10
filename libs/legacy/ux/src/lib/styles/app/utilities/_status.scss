@@ -92,6 +92,23 @@
     color: $white;
   }
 
+  &.nondrg {
+    background: $orange-light;
+  }
+
+  &.noquery {
+    background: $light-green;
+  }
+  &.reviewed {
+    background: $accent-shade-background;
+    color: $scarlet-gum;
+  }
+
+  &.new {
+    background: $onahau;
+    color: $dodger-blue-dark;
+  }
+
   &.selected-box {
     background: whitesmoke;
   }

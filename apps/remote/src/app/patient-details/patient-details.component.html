@@ -1,15 +1,11 @@
 <div class="mt-8" fxLayout="row" fxFlex="100">
-  <div class="page-layout simple fullwidth full-width-page" fxLayout="column" fxFlex="100">
-    <div fxLayout="column" fxLayoutAlign="center" fxFlex="100">
-      <div fxLayout="column" fxFlex="100">
-        <div class="mb-8" fxLayout="column" fxFlex="100">
-          <patient-header></patient-header>
-        </div>
-        <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-md="100">
-            <patients-general-comments></patients-general-comments>
-            <patient-findings></patient-findings>
-      </div>
-      </div>
+  <div class="page-layout simple fullwidth inner-scroll full-width-page">
+    <div class="content">
+      <patient-header></patient-header>
+    </div>
+    <div class="content overflow-auto" style="height: calc(100vh - 175px) !important;">
+      <patients-general-comments></patients-general-comments>
+      <patient-findings></patient-findings>
     </div>
   </div>
 </div>

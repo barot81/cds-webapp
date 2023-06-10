@@ -104,11 +104,12 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     'reimbursementType',
   ];
   colorBadges = {
-    'No Query': 'approved',
-    'Non DRG': 'notapproved',
-    New: 'new',
+    'No Query': 'noquery',
+    'Non DRG': 'nondrg',
+    'New': 'inprogress',
     'Later Review': 'pendingreview',
-    'Pending Query': 'inprogress',
+    'Pending Query': 'notapproved',
+    'Reviewed': 'reviewed'
   };
 
   fieldDisplayNameMapping = {
@@ -304,8 +305,8 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
         searchFilter.push({
           fieldName: 'SearchQuery',
           value: searchValue,
-          operator: 'Equals',
-          type: 'dropdown',
+          operator: 'contains',
+          type: 'search',
           displayName: 'Search Patient',
         });
       } else {
@@ -315,13 +316,13 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
         searchFilter.splice(searchIndex, 1, {
           fieldName: 'SearchQuery',
           value: searchValue,
-          operator: 'Equals',
-          type: 'dropdown',
+          operator: 'contains',
+          type: 'search',
           displayName: 'Search Patient',
         });
       }
       this.filterObj = [...searchFilter];
-      this.datasourceFacade.updateAllDataSourceFilter(this.filterObj, 0);
+      this.datasourceFacade.updateSerchFilter('SearchQuery', searchFilter.find(x=>x.type='search'), 20);
       this._patientGridService.setAppliedFilters(this.filterObj);
     }
     if (searchValue.length === 0) {
@@ -335,7 +336,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
       (ele) => ele.fieldName !== 'SearchQuery'
     );
     this.filterObj = [...searchFilter];
-    this.datasourceFacade.updateAllDataSourceFilter(this.filterObj, 0);
+    this.datasourceFacade.updateSerchFilter('SearchQuery', searchFilter.find(x=>x.type='search'), 20);
     this._patientGridService.setAppliedFilters(this.filterObj);
   }
 
@@ -403,8 +404,8 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   textChanged(textValue) {
-    this.datasourceFacade.updateSerchFilter('name', {
-      fieldName: 'name',
+    this.datasourceFacade.updateSerchFilter('SearchQuery', {
+      fieldName: 'SearchQuery',
       operator: 'contains',
       value: textValue,
       type: 'search',

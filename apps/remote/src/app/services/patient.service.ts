@@ -1,10 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpService, MetaConstants } from '@zhealthcare/fusion/core';
 import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
-import { environment } from '../../environments/environment';
-import { PatientFilters } from '../models/datasource/patient-filters.model';
-import { GeneralComment, PatientComment } from '../models/general-comments.model';
+import {  PatientComment } from '../models/general-comments.model';
 import { Patient } from '../models/patient.model';
 import { generatePatients } from './patient.faker.service';
 
@@ -13,7 +11,7 @@ export class PatientService extends HttpService {
   patients = [];
   patientData$ = new BehaviorSubject<Patient[]>([]);
   loading$ = new BehaviorSubject<boolean>(false);
-
+  updatedStatus$ = new BehaviorSubject<string>('');
   public onAdded: BehaviorSubject<boolean>;
   public onFilterChange: BehaviorSubject<boolean>;
 
@@ -69,6 +67,18 @@ export class PatientService extends HttpService {
     const facility = localStorage.getItem(MetaConstants.SelectedFacilityName);
     const url = `${this.getBaseUrl()}/${facility}/patientsInfo`;
     return url;
+  }
+
+  public getPhycianNames() {
+    const url = `${this.getBaseEndpoint()}`;
+    this.loading$.next(true);
+    return this.httpClient.get<Patient>(url).pipe(
+      tap((x) => this.loading$.next(false)),
+      catchError((err) => {
+        this.loading$.next(false);
+        return of(err);
+      })
+    );
   }
 
   private generateFakePatients(facility: string) {
@@ -145,6 +155,34 @@ export class PatientService extends HttpService {
             this.patientData$.next(this.patients);
             this.getPatients().subscribe();
           }
+          return x;
+        })
+      );
+  }
+
+  updaetReviewStatus(patientId: string, reviewStatus: string ) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.httpClient
+      .put(`${this.getBaseEndpoint()}/${patientId}/reviewStatus`,{ reviewStatus: reviewStatus} ,{
+        headers: headers,
+      })
+      .pipe(
+        map((x) => {
+          const existingPatient = this.patients.find((y) => y.id === patientId);
+          if(existingPatient) {
+            existingPatient.reviewStatus = reviewStatus;
+            this.patientData$.next(this.patients);
+          } else {
+            if(!this.patients) this.patients = [];
+            this.patients.push({
+              id: patientId,
+              reviewStatus: reviewStatus
+            })
+            this.patientData$.next(this.patients);
+            this.getPatients().subscribe();
+          }
+          this.updatedStatus$.next(reviewStatus);
           return x;
         })
       );

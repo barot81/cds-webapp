@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 import {
   Body,
   POST,
   HttpService,
-  Query
 
 } from '@zhealthcare/fusion/core';
 import { EmailOTPModel } from './components/forgot-password/EmailOTPModel';
 import { ChangePassword } from '@zhealthcare/ux';
 import { HttpHeaders } from '@angular/common/http';
-import { LoginProvider } from './components/sso/models/login-provider.model';
 import { map } from 'rxjs/operators';
 import { SSOFormData } from './components/sso/models/formdata.model';
 
@@ -68,20 +66,15 @@ export class IdentityApiClient extends HttpService {
   }
 
   public getTokenFromRefreshHash(refreshHash: string):Observable<any>{
-    var headers = new HttpHeaders();
-    headers = headers.append("refreshHash", refreshHash);
-    return this.httpClient.get(this.getBaseUrl() + "/Account/V4Redirector", {headers: headers});
+    return of({});
   }
 
   redirectToV3() {
-    var auth = localStorage.getItem("Auth");
-    var header = new HttpHeaders();
-    header = header.append("Authorization","Bearer "+JSON.parse(auth).accessToken);
-    return this.httpClient.get(this.configService.getservice('v3.account').endpoint, {headers: header, observe: "response", withCredentials: true});
+    return of({});
   }
 
   public getProviders(username: string): Observable<any> {
-    return this.httpClient.get(this.getBaseUrl() + "/account/GetUserAccount?username="+username).pipe(map((res: LoginProvider[]) => {return res;}));
+    return of({});
   }
 
   //@GET("/Request/SSOService")

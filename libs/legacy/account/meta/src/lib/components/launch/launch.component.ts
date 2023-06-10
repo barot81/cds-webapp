@@ -136,30 +136,6 @@ export class LaunchComponent
       this.router.navigateByUrl(URLConstants.ADMIN_LAUNCH_URL);
   }
 
-  // protected getRoleDocument(
-  //   tenantId?: string,
-  //   oucode?: string,
-  //   isFaculty?: boolean
-  // ): Observable<any> {
-  //   const roleMeta = this.roleService.getItem();
-  //   const HashCode = !roleMeta ? null : roleMeta.hash;
-  //   const hashFlag = !roleMeta
-  //     ? true
-  //     : roleMeta.hash != this.roleHash
-  //     ? true
-  //     : false;
-  //   if (hashFlag) {
-  //     return this.authSandbox.role(HashCode, tenantId, oucode, isFaculty).pipe(
-  //       map((response) => {
-  //         if (response['isModified']) {
-  //           this.roleService.setItem(response);
-  //         }
-  //       })
-  //     );
-  //   } else {
-  //     return of(roleMeta);
-  //   }
-  // }
 
   programSelection(facilityId: string, statusCounts: StatusCount[]) {
     if (facilityId && statusCounts) {
@@ -174,33 +150,7 @@ export class LaunchComponent
     } else this.oucodeWithNames = [];
   }
 
-  getOrgUnitInformation(selectedOucode: string): void {
-    // this.showProgressBar();
-    // this.metaSandbox
-    //   .getOrgUnitInformation(
-    //     this.selectedTenant.FacilityId,
-    //     this.oucodeWithNames.map((x) => x.key)
-    //   )
-    //   .subscribe(
-    //     async (orgUnitInformation: OrgUnitInformation[]) => {
-    //       this.hideProgressBar();
-    //       this.orgUnitInformation = orgUnitInformation;
-    //       this.orgUnitInformation.forEach(
-    //         (x) => (x.isSelected = x.oucode === selectedOucode ? true : false)
-    //       );
-    //       this.storage.storageType.setItem(
-    //         'orgUnitInformation',
-    //         JSON.stringify(this.orgUnitInformation)
-    //       );
-    //       this._layoutService._orgTimzone$.next(
-    //         this.orgUnitInformation?.find((x) => x.isSelected)?.timeZone
-    //       );
-    //     },
-    //     (error) => {
-    //       this.fuseProgressBarService.hide();
-    //     }
-    //   );
-  }
+  getOrgUnitInformation(selectedOucode: string): void { }
 
 
   protected sortTenantWithOuCodesByTenantId() {

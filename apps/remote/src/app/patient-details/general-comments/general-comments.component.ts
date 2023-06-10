@@ -39,17 +39,21 @@ export class GeneralCommentsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.patientService.patientData$
-      .pipe(
-        takeUntil(this._unsubscribe),
-        map((patients) => {
-          const selectedPatient = patients.find(x=>x.id === this.patientId);
-          if(selectedPatient) {
-            this.generalComments$.next(selectedPatient.generalComment);
-            this.patientInfo.reviewStatus = selectedPatient.reviewStatus;
-          }
-        })
-      )
-      .subscribe();
+      .pipe(takeUntil(this._unsubscribe))
+      .subscribe(patients => {
+        const selectedPatient = patients.find(x=>x.id === this.patientId);
+        if(selectedPatient) {
+          selectedPatient.generalComment.comments = selectedPatient.generalComment.comments ?? '-';
+          this.generalComments$.next(selectedPatient.generalComment);
+          this.patientInfo.reviewStatus = selectedPatient.reviewStatus;
+        }
+    });
+
+    this.patientService.updatedStatus$
+      .pipe(takeUntil(this._unsubscribe))
+      .subscribe((status) => {
+        this.patientInfo.reviewStatus = status;
+    });
   }
 
   ngOnDestroy(): void {

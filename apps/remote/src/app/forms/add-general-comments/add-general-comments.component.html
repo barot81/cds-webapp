@@ -3,7 +3,7 @@
   <mat-card fxLayout="column" class="p-16 mb-16">
     <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
       <mat-form-field appearance="fill" fxFlex="100">
-        <mat-label>Query Status</mat-label>
+        <mat-label>Review Status</mat-label>
         <mat-select formControlName="reviewStatus" (selectionChange)="OnReviewStatusChanged($event)" required>
           <mat-option *ngFor="let st of reviewStatusList" [ngClass]="{'mat-option-text ': isOptionTruncated(st)
           }" id={{st}} [value]="st" class="dropdown-with-tooltip" [options]="tooltipOptions"
