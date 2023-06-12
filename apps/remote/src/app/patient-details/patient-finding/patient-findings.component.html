@@ -1,6 +1,6 @@
-<mat-card class="p-0 zhealthcare-info-container" fxLayout="column">
+<div class="p-0 zhealthcare-info-container" fxLayout="column">
   <div fxFlex="100" fxFlex.gt-sm="60">
-    <header class="card-header-title card-header-border-bottom">
+    <mat-card class="card-header-title card-header-border-bottom">
       <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
         <div fxLayout="column" fxFlex="90">
           <div fxLayout.gt-md="row" fxLayout="column" fxLayoutAlign.gt-md="start center" fxLayoutAlign="start start"
@@ -17,14 +17,14 @@
           <i aria-hidden="true" class="fa-light fa-plus"></i>
         </button>
       </div>
-    </header>
+    </mat-card>
   </div>
   <!--1st row-->
-  <div *ngIf="(loading$ | async) === false; else loading" class="p-16 zhealthcare-info">
+  <div *ngIf="(loading$ | async) === false; else loading" class="zhealthcare-info">
     <input type="checkbox" class="read-more-state" id="finding" #finding />
-    <div class="p-16" *ngIf="(patientFindings$ | async) as patientFindings">
+    <div class="" *ngIf="(patientFindings$ | async) as patientFindings">
       <div [ngClass]="{ 'read-more-target': i > 1 }" *ngFor="let item of patientFindings; let i = index">
-        <div [ngClass]="{ 'mb-16': i <= 1 }" fxLayout="row" fxFlex="100" fxLayoutAlign="space-between start">
+        <mat-card fxLayout="row" fxFlex="100" class="p-8" fxLayoutAlign="space-between start">
           <!-- <div fxLayout="row" fxLayoutAlign="center center" class="m-4 pr-8">
             <b>{{i+1}}</b>
           </div> -->
@@ -256,9 +256,6 @@
                   </div>
                 </div>
               </div>
-              <div style="border: 1px solid grey;">
-                <mat-divider></mat-divider>
-              </div>
             </div>
           </div>
           <div>
@@ -271,7 +268,8 @@
             </button>
           </div>
 
-        </div>
+        </mat-card>
+
         <div *ngIf="patientFindings?.length > 2">
           <button (click)="finding.click()" *ngIf="i === 1 && !finding.checked" class="read-more-trigger link-btn"
             id="show-more-label">
@@ -286,7 +284,7 @@
       </div>
     </div>
   </div>
-</mat-card>
+</div>
 
 <!--skeleton-->
 <ng-template #loading>
