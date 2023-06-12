@@ -151,7 +151,9 @@
             </th>
             <td mat-cell class="profileStaus-column" *matCellDef="let element">
               <span *ngIf="!!element?.drgNo; else na">{{ element?.drgNo}} - {{element?.diagnosis}}</span>
-              <span #na>NA</span>
+              <ng-template #na>
+                <span >NA</span>
+              </ng-template>
             </td>
           </ng-container>
           <ng-container matColumnDef="los">

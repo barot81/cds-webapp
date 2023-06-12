@@ -36,11 +36,10 @@
                 class="w-50-p"
               >
                 <mat-form-field class="w-100-p" appearance="fill">
-                  <mat-label> </mat-label>
-                  <mat-select>
+                  <mat-select [formControl]="facilitySelection">
                     <mat-option>
                       <ngx-mat-select-search
-                        [formControl]="searchTenantCtrl"
+                        [formControl]="searchFacilityCtrl"
                         placeholderLabel="Search"
                         noEntriesFoundLabel="No entry matches"
                       >
@@ -48,7 +47,7 @@
                     </mat-option>
                     <mat-option
                       *ngFor="let facility of uniqueFacilities | async"
-                      [value]="facility"
+                      [value]="facility.name"
                       (onSelectionChange)="onFacilityChange(facility, $event)"
                     >
                       {{ facility.name }}

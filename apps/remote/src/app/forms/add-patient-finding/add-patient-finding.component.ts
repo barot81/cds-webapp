@@ -43,8 +43,6 @@ export class AddPatientFindingComponent
   PatientInfo: Patient;
   loading = false;
   drgLookups$ : Subject<DrgLookup[]> = new BehaviorSubject([]);
-
-  @ViewChild('singleSelect') singleSelect: MatSelect;
   constructor(
     private readonly fb: FormBuilder,
     private _drawerService: DrawerService,
@@ -55,64 +53,66 @@ export class AddPatientFindingComponent
     private lookupService: LookupService
   ) {
     super();
-    this.fusionFormGroup = this.fb.group({
-      queryType: new FormControl('Quality'),
-      cdsName: new FormControl('Vishal'),
-      queryDate: new FormControl(new Date('05/01/2023')),
-      queryDiagnosis: new FormControl('Encephalopathy-AMS'),
-      physicianName: new FormControl('FARUKHI MOHAMMAD U'),
-      clinicalIndicator: new FormControl('strong'),
-      currentDrgNo: new FormControl('191'),
-      currentDrgDescription: new FormControl('CHRONIC OBSTRUCTIVE PULMONARY DISEASE WITH CC'),
-      initialWeight: new FormControl('1.19'),
-      gmlos: new FormControl('4.35'),
-      expectedDrgNo: new FormControl('190-3'),
-      expectedDrgDescription: new FormControl('ACUTE MYOCARDIAL INFARCTION'),
-      expectedWeight: new FormControl('2.11'),
-      expectedGmlos: new FormControl('6.30'),
-      responseDate: new FormControl(new Date('01/01/2023')),
-      responseType: new FormControl('Neutral'),
-      responseComment: new FormControl(''),
-      followupComment: new FormControl(''),
-      revisedDrgNo: new FormControl('190-4'),
-      revisedDrgDescription: new FormControl('ACUTE MYOCARDIAL INFARCTION '),
-      revisedWeight: new FormControl('3.02'),
-      revisedGmlos: new FormControl('12.34'),
-      weightDifference: new FormControl('1.83'),
-      queryStatus: new FormControl('Pending'),
-      clinicalSummary: new FormControl(''),
-      comments: new FormControl(''),
-    });
-
     // this.fusionFormGroup = this.fb.group({
-    //   queryType: new FormControl('', Validators.required),
-    //   cdsName: new FormControl('vishal'),
-    //   queryDate: new FormControl(new Date()),
-    //   queryDiagnosis: new FormControl(''),
-    //   physicianName: new FormControl(''),
-    //   clinicalIndicator: new FormControl(''),
-    //   currentDrgNo: new FormControl(''),
-    //   //drgSearch:new FormControl(''),
-    //   currentDrgDescription: new FormControl(''),
-    //   initialWeight: new FormControl(''),
-    //   gmlos: new FormControl(''),
-    //   expectedDrgNo: new FormControl(''),
-    //   expectedDrgDescription: new FormControl(''),
-    //   expectedWeight: new FormControl(''),
-    //   expectedGmlos: new FormControl(''),
-    //   responseDate: new FormControl(''),
-    //   responseType: new FormControl(''),
+    //   queryType: new FormControl('Quality'),
+    //   cdsName: new FormControl('Vishal'),
+    //   queryDate: new FormControl(new Date('05/01/2023')),
+    //   queryDiagnosis: new FormControl('Encephalopathy-AMS'),
+    //   physicianName: new FormControl('FARUKHI MOHAMMAD U'),
+    //   clinicalIndicator: new FormControl('strong'),
+    //   currentDrgNo: new FormControl('191'),
+    //   currentDrgDescription: new FormControl('CHRONIC OBSTRUCTIVE PULMONARY DISEASE WITH CC'),
+    //   initialWeight: new FormControl('1.19'),
+    //   gmlos: new FormControl('4.35'),
+    //   expectedDrgNo: new FormControl('190-3'),
+    //   expectedDrgDescription: new FormControl('ACUTE MYOCARDIAL INFARCTION'),
+    //   expectedWeight: new FormControl('2.11'),
+    //   expectedGmlos: new FormControl('6.30'),
+    //   responseDate: new FormControl(new Date('01/01/2023')),
+    //   responseType: new FormControl('Neutral'),
     //   responseComment: new FormControl(''),
     //   followupComment: new FormControl(''),
-    //   revisedDrgNo: new FormControl(''),
-    //   revisedDrgDescription: new FormControl(''),
-    //   revisedWeight: new FormControl(''),
-    //   revisedGmlos: new FormControl(''),
-    //   weightDifference: new FormControl(''),
-    //   queryStatus: new FormControl(''),
+    //   revisedDrgNo: new FormControl('190-4'),
+    //   revisedDrgDescription: new FormControl('ACUTE MYOCARDIAL INFARCTION '),
+    //   revisedWeight: new FormControl('3.02'),
+    //   revisedGmlos: new FormControl('12.34'),
+    //   weightDifference: new FormControl('1.83'),
+    //   queryStatus: new FormControl('Pending'),
     //   clinicalSummary: new FormControl(''),
     //   comments: new FormControl(''),
     // });
+
+    this.fusionFormGroup = this.fb.group({
+      queryType: new FormControl('', Validators.required),
+      cdsName: new FormControl('Vishal'),
+      queryDate: new FormControl(new Date()),
+      queryDiagnosis: new FormControl(''),
+      physicianName: new FormControl(''),
+      clinicalIndicator: new FormControl(''),
+      currentDrgNo: new FormControl(''),
+      currentDrgSearch: new FormControl(''),
+      currentDrgDescription: new FormControl(''),
+      initialWeight: new FormControl(''),
+      gmlos: new FormControl(''),
+      expectedDrgNo: new FormControl(''),
+      expectedDrgSearch: new FormControl(''),
+      expectedDrgDescription: new FormControl(''),
+      expectedWeight: new FormControl(''),
+      expectedGmlos: new FormControl(''),
+      responseDate: new FormControl(''),
+      responseType: new FormControl(''),
+      responseComment: new FormControl(''),
+      followupComment: new FormControl(''),
+      revisedDrgNo: new FormControl(''),
+      revisedDrgSearch: new FormControl(''),
+      revisedDrgDescription: new FormControl(''),
+      revisedWeight: new FormControl(''),
+      revisedGmlos: new FormControl(''),
+      weightDifference: new FormControl(''),
+      queryStatus: new FormControl(''),
+      clinicalSummary: new FormControl(''),
+      comments: new FormControl(''),
+    });
 
     this.queryTypeList = ['CDI', 'Coding', 'Quality', 'Case Management'];
     this.queryDiagnosisList = [];
@@ -132,24 +132,24 @@ export class AddPatientFindingComponent
     this.loading = true;
     this.patientId = this.routeParam.params['id'];
 
-    this.fusionFormGroup.get('currentDrgNo').valueChanges
+    this.fusionFormGroup.get('currentDrgSearch').valueChanges
     .pipe(takeUntil(this._onDestroy))
       .subscribe(() => {
-        this.filterDrgs('currentDrgNo');
+        this.filterDrgs('currentDrgSearch');
       });
 
 
-    this.fusionFormGroup.get('expectedDrgNo').valueChanges
+    this.fusionFormGroup.get('expectedDrgSearch').valueChanges
     .pipe(takeUntil(this._onDestroy))
       .subscribe(() => {
-        this.filterDrgs('expectedDrgNo');
+        this.filterDrgs('expectedDrgSearch');
       });
 
 
-    this.fusionFormGroup.get('revisedDrgNo').valueChanges
+    this.fusionFormGroup.get('revisedDrgSearch').valueChanges
     .pipe(takeUntil(this._onDestroy))
       .subscribe(() => {
-        this.filterDrgs('revisedDrgNo');
+        this.filterDrgs('revisedDrgSearch');
       });
     this.lookupService.getPhycianNames().subscribe((x) => this.physicianNameList = x);
     this.lookupService.getDiagnosisLookup().subscribe((x) =>

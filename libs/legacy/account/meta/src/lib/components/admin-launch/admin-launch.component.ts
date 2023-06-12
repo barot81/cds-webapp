@@ -59,10 +59,12 @@ export class AdminLaunchComponent
   showTenantSelect = false;
   _unsubscribeAll: Subject<any>;
   searchFacilityCtrl = new FormControl();
+  facilitySelection = new FormControl('');
 
   @ViewChild('tenantNavsContainer', { read: ViewContainerRef, static: true })
   tenantNavsContainer!: any;
   facilityStatuses: StatusCount[] = [];
+  private _changeSubscription: any;
 
   constructor(
     protected userState: UserFacade,
@@ -80,7 +82,7 @@ export class AdminLaunchComponent
     protected _layoutService: LayoutService,
     protected _headerService: HeaderService,
     protected _releaseNotesSandbox: ReleaseNotesSandbox,
-    protected _TenantInformationSandbox: FacilitySandbox,
+    protected _facilityInfoSandbox: FacilitySandbox,
     protected _runtimeConfigLoaderService: RuntimeConfigLoaderService,
     protected manageuser: ManageUserService,
     private _fuseSidebarService: FuseSidebarService,
@@ -103,18 +105,19 @@ export class AdminLaunchComponent
       userTypeService,
       fusionConfigService,
       _layoutService,
-      _TenantInformationSandbox,
+      _facilityInfoSandbox,
       _headerService
     );
     this.storage = new LocalStorage();
     this._unsubscribeAll = new Subject();
     this.uniqueFacilities = new BehaviorSubject<any>(null);
+
   }
 
   ngOnInit() {
     super.ngOnInit();
     this.showProgressBar();
-    this._TenantInformationSandbox
+    this._facilityInfoSandbox
       .getFacilityNames()
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data: any) => {
@@ -134,7 +137,19 @@ export class AdminLaunchComponent
             );
             this.uniqueFacilities.next(filtereduniqueFacilities);
           });
-      });
+    });
+
+    const existingFacility = localStorage.getItem('FacilityId');
+    if(existingFacility) {
+      this.searchFacilityCtrl.setValue(existingFacility);
+      this.facilitySelection.setValue(existingFacility);
+
+      this.onFacilityChange({
+        name: existingFacility,
+        tenantId: existingFacility
+      }, {isUserInput: true});
+
+    }
   }
 
   ngOnDestroy(): void {

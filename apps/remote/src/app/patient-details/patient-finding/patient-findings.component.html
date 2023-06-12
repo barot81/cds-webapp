@@ -25,9 +25,9 @@
     <div class="p-16" *ngIf="(patientFindings$ | async) as patientFindings">
       <div [ngClass]="{ 'read-more-target': i > 1 }" *ngFor="let item of patientFindings; let i = index">
         <div [ngClass]="{ 'mb-16': i <= 1 }" fxLayout="row" fxFlex="100" fxLayoutAlign="space-between start">
-          <div fxLayout="row" fxLayoutAlign="center center" class="m-4 pr-8">
+          <!-- <div fxLayout="row" fxLayoutAlign="center center" class="m-4 pr-8">
             <b>{{i+1}}</b>
-          </div>
+          </div> -->
           <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
             <div fxLayout="column" fxFlex="100" attr.aria-label="finding {{ i + 1 }}">
               <div fxLayout="row" fxLayout.gt-md="row">
@@ -100,7 +100,7 @@
                   <div class="mb-16">
                     <div class="title">Initial Weight</div>
                     <div class="description">
-                      {{ item?.initialWeight }}
+                      {{ item?.initialWeight | number : '1.3-3' }}
                       <span *ngIf="!item?.initialWeight">-</span>
                     </div>
                   </div>
@@ -129,7 +129,7 @@
                   <div class="mb-16">
                     <div class="title">Expected Weight</div>
                     <div class="description">
-                      {{ item?.expectedWeight }}
+                      {{ item?.expectedWeight | number : '1.3-3'  }}
                       <span *ngIf="!item?.expectedWeight">-</span>
                     </div>
                   </div>
@@ -145,7 +145,7 @@
                 </div>
               </div>
               <div fxLayout="row" fxLayout.gt-md="row" fxLayoutGap="7">
-                <div fxLayout="column" fxLayoutAlign="top" fxFlex="16.5">
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
                   <div class="mb-16">
                     <div class="title">Response Date</div>
                     <div class="description">
@@ -163,7 +163,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
                   <div class="mb-16">
                     <div class="title">Response</div>
@@ -173,7 +172,9 @@
                     </div>
                   </div>
                 </div>
-                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+              </div>
+              <div fxLayout="row" fxLayout.gt-md="row">
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="100">
                   <div class="mb-16">
                     <div class="title">Follow up Comments</div>
                     <div class="description">
@@ -182,7 +183,6 @@
                     </div>
                   </div>
                 </div>
-
               </div>
               <div fxLayout="row" fxLayout.gt-md="row" class="mt-8" fxLayoutGap="7">
                 <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
@@ -198,7 +198,7 @@
                   <div class="mb-16">
                     <div class="title">Ending Weight</div>
                     <div class="description">
-                      {{ item?.revisedWeight }}
+                      {{ item?.revisedWeight | number : '1.3-3' }}
                       <span *ngIf="!item?.revisedWeight">-</span>
                     </div>
                   </div>
@@ -218,7 +218,7 @@
                   <div class="mb-16">
                     <div class="title">Weight Difference</div>
                     <div class="description">
-                      {{ item?.weightDifference }}
+                      {{ item?.weightDifference | number : '1.3-3' }}
                       <span *ngIf="!item?.weightDifference">-</span>
                     </div>
                   </div>
@@ -256,7 +256,7 @@
                   </div>
                 </div>
               </div>
-              <div>
+              <div style="border: 1px solid grey;">
                 <mat-divider></mat-divider>
               </div>
             </div>

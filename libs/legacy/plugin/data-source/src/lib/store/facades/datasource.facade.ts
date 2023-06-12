@@ -209,10 +209,10 @@ export class DataSourceFacade {
     );
     if (fusionDataSource.filters) {
       const searchFilter = fusionDataSource.filters.filter(
-        (x) => x.type === 'search'
+        (x) => x && x.type === 'search'
       );
       searchFilter.forEach((x) => {
-        if (x !== undefined && x !== null && x.value !== '') filters.push(x);
+        if (x  && x.value !== '') filters.push(x);
       });
     }
     fusionDataSource.filters = filters;

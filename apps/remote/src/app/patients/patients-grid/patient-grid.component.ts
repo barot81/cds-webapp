@@ -387,7 +387,14 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   clearFilters(value: string, filter: AppliedGridFilter) {
-    const remainingFilters = this.appliedFilters.filter(x=>x.value !== value || x.displayName !== filter.name);
+    let remainingFilters;
+    if(filter.name === 'Admit Date') {
+      const values = value.split('-');
+      remainingFilters = this.appliedFilters.filter(x=> !values.includes(x.value));
+    } else {
+      remainingFilters = this.appliedFilters.filter(x=>x.value !== value || x.displayName !== filter.name);
+    }
+
     this.datasourceFacade.updateAllDataSourceFilter(remainingFilters);
   }
 

@@ -45,14 +45,16 @@ export class GeneralCommentsComponent implements OnInit, OnDestroy {
         if(selectedPatient) {
           selectedPatient.generalComment.comments = selectedPatient.generalComment.comments ?? '-';
           this.generalComments$.next(selectedPatient.generalComment);
-          this.patientInfo.reviewStatus = selectedPatient.reviewStatus;
+          if(this.patientInfo)
+            this.patientInfo.reviewStatus = selectedPatient.reviewStatus;
         }
     });
 
     this.patientService.updatedStatus$
       .pipe(takeUntil(this._unsubscribe))
       .subscribe((status) => {
-        this.patientInfo.reviewStatus = status;
+        if(this.patientInfo)
+          this.patientInfo.reviewStatus = status;
     });
   }
 
