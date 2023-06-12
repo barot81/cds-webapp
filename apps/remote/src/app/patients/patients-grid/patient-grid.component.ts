@@ -41,13 +41,15 @@ import {
   tap,
   of as observableOf,
   debounceTime,
+  filter,
+  pairwise,
 } from 'rxjs';
 import { GridService } from '../../services/grid.service';
 import { PatientGridColInfo } from '../../configs/column-info.config';
 import { PatientService } from '../../services/patient.service';
+import { NavigationEnd, Router, RoutesRecognized } from '@angular/router';
 export class AppliedGridFilter {
-
-  constructor(public name: string, public values: string[]) { }
+  constructor(public name: string, public values: string[]) {}
 }
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -106,10 +108,10 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   colorBadges = {
     'No Query': 'noquery',
     'Non DRG': 'nondrg',
-    'New': 'inprogress',
+    New: 'inprogress',
     'Later Review': 'pendingreview',
     'Pending Query': 'notapproved',
-    'Reviewed': 'reviewed'
+    Reviewed: 'reviewed',
   };
 
   fieldDisplayNameMapping = {
@@ -131,7 +133,8 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     private readonly userFacade: UserFacade,
     public datepipe: DatePipe,
     public _media: MediaObserver,
-    protected configService: FusionConfigService
+    protected configService: FusionConfigService,
+    public router: Router
   ) {
     this._unsubscribe = new Subject();
     this.datasourceFacade.DataSourceDestroy();
@@ -139,6 +142,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     this.loggedInUser$ = this.userFacade.UserState$.pipe(
       takeUntil(this._unsubscribe)
     );
+    this.ifLaunchpageResetFilter();
     this.columnInformation = PatientGridColInfo;
     this.defaultFilters = [];
     this.InitializeDataSource();
@@ -155,6 +159,18 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
           this.numberOfAppliedFilter = res.filters.length;
         }
       });
+  }
+
+  ifLaunchpageResetFilter() {
+    this.router.events.pipe(
+      filter(e => e instanceof RoutesRecognized),
+      pairwise()
+    )
+    .subscribe((event: any[]) => {
+      if (event[0].urlAfterRedirects.includes('launch')) {
+        this._patientGridService.resetAppliedFilters();
+      }
+    });
   }
 
   InitializeDataSource() {
@@ -192,7 +208,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
       fieldName: 'Filters.ReviewStatus',
       operator: 'eq',
       value: selectedStatus,
-      displayName: 'Review Status'
+      displayName: 'Review Status',
     };
     dataSource.filters = selectedStatus === 'Total' ? [] : [defaultFilter];
     dataSource.customHeaders = [];
@@ -322,7 +338,11 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
         });
       }
       this.filterObj = [...searchFilter];
-      this.datasourceFacade.updateSerchFilter('SearchQuery', searchFilter.find(x=>x.type='search'), 20);
+      this.datasourceFacade.updateSerchFilter(
+        'SearchQuery',
+        this.filterObj.find(x => x.type === 'search'),
+        20
+      );
       this._patientGridService.setAppliedFilters(this.filterObj);
     }
     if (searchValue.length === 0) {
@@ -336,7 +356,11 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
       (ele) => ele.fieldName !== 'SearchQuery'
     );
     this.filterObj = [...searchFilter];
-    this.datasourceFacade.updateSerchFilter('SearchQuery', searchFilter.find(x=>x.type='search'), 20);
+    this.datasourceFacade.updateSerchFilter(
+      'SearchQuery',
+      searchFilter.find((x) => (x.type = 'search')),
+      20
+    );
     this._patientGridService.setAppliedFilters(this.filterObj);
   }
 
@@ -345,8 +369,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
       .pipe(takeUntil(this._unsubscribe))
       .subscribe((x) => {
         if (x?.filters) {
-          if(x.filters.length === 0)
-            this.gridFilter = [];
+          if (x.filters.length === 0) this.gridFilter = [];
           else if (x.filters.length > 0) {
             this.appliedFilters = x.filters;
             this.setGridFilterDisplay(x);
@@ -361,19 +384,16 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
       (y) => y.type !== 'search' && y.value.trim() !== ''
     );
     currentFilters.forEach((x) => {
-      const filter = this.gridFilter.find(y => y.name === x.displayName);
+      const filter = this.gridFilter.find((y) => y.name === x.displayName);
       if (filter) {
-        if (!filter.values.includes(x.value))
-          filter.values.push(x.value);
-      }
-      else if(x.displayName === 'admitStartDate') {
+        if (!filter.values.includes(x.value)) filter.values.push(x.value);
+      } else if (x.displayName === 'admitStartDate') {
         this.gridFilter.push(new AppliedGridFilter('Admit Date', [x.value]));
-      } else if(x.displayName === 'admitEndDate') {
-        const filter = this.gridFilter.find(y => y.name === 'Admit Date');
+      } else if (x.displayName === 'admitEndDate') {
+        const filter = this.gridFilter.find((y) => y.name === 'Admit Date');
         const startDate = filter.values[0];
-        filter.values.splice(0,1, `${startDate}-${x.value}`);
-      }
-      else {
+        filter.values.splice(0, 1, `${startDate}-${x.value}`);
+      } else {
         this.gridFilter.push(new AppliedGridFilter(x.displayName, [x.value]));
       }
     });
@@ -388,13 +408,19 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
 
   clearFilters(value: string, filter: AppliedGridFilter) {
     let remainingFilters;
-    if(filter.name === 'Admit Date') {
+    if (filter.name === 'Admit Date') {
       const values = value.split('-');
-      remainingFilters = this.appliedFilters.filter(x=> !values.includes(x.value));
+      remainingFilters = this.appliedFilters.filter(
+        (x) => !values.includes(x.value)
+      );
     } else {
-      remainingFilters = this.appliedFilters.filter(x=>x.value !== value || x.displayName !== filter.name);
+      remainingFilters = this.appliedFilters.filter(
+        (x) => x.value !== value || x.displayName !== filter.name
+      );
+      if (value === localStorage.getItem('selectedStatus'))
+        localStorage.removeItem('selectedStatus');
     }
-
+    this._patientGridService.removeFilter(value, filter.name);
     this.datasourceFacade.updateAllDataSourceFilter(remainingFilters);
   }
 
@@ -470,4 +496,5 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     this._unsubscribe.complete();
     this.datasourceFacade.DataSourceDestroy();
   }
+
 }

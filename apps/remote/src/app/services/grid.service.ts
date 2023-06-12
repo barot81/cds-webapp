@@ -20,8 +20,18 @@ export class GridService extends ComponentMap {
   getAppliedFilters() {
     return this.appliedFilters;
   }
+
+  resetAppliedFilters() {
+    this.appliedFilters = [...[]];
+  }
+
   setAppliedFilters(filters: Filter[]) {
     this.appliedFilters = filters;
     this.onFilterChange$.next(true);
+  }
+
+  removeFilter(value: string, displayName: string) {
+    const currentFilterIndex = this.appliedFilters.findIndex(x=>x.displayName === displayName && x.value === value);
+    this.appliedFilters = [...this.appliedFilters.slice().splice(currentFilterIndex,1)];
   }
 }

@@ -43,8 +43,8 @@ export class GeneralCommentsComponent implements OnInit, OnDestroy {
       .subscribe(patients => {
         const selectedPatient = patients.find(x=>x.id === this.patientId);
         if(selectedPatient) {
-          selectedPatient.generalComment.comments = selectedPatient.generalComment.comments ?? '-';
-          this.generalComments$.next(selectedPatient.generalComment);
+          selectedPatient.generalComment.comments = selectedPatient?.generalComment?.comments ?? '-';
+          this.generalComments$.next(selectedPatient?.generalComment);
           if(this.patientInfo)
             this.patientInfo.reviewStatus = selectedPatient.reviewStatus;
         }
