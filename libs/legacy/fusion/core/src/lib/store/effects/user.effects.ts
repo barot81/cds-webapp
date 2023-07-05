@@ -39,7 +39,6 @@ import {
   UpdateFacilityWiseStatuses,
   SetFacilityWithStatuses,
 } from '../actions/org.actions';
-import { UserFacade } from '../facades/user.facade';
 import { MsalService } from '../../services/auth/msal.service';
 import { UserService } from '../../services/auth/user.service';
 import { FusionConfigService } from '../../configuration/fusion-config.service';
@@ -55,14 +54,13 @@ import { AppStateHelper } from '../../helper/app-state/app-state.helper';
 export class AuthEffects {
   private lastLogintime: any;
   private tokenModel: TokenModel;
-  private readonly launchUrl: string;
+  // private readonly launchUrl: string;
   private readonly loginUrl: string;
   private userInputModel: UserInputModel;
   constructor(
     private readonly authService: AuthService,
     private readonly userService: UserService,
     private readonly msalService: MsalService,
-    private readonly userFacade$: UserFacade,
     private readonly actions: Actions,
     private readonly router: Router,
     private readonly config: FusionConfigService,
@@ -72,7 +70,7 @@ export class AuthEffects {
     private readonly dialog: MatDialog,
     private readonly roleService: RoleService
   ) {
-    this.launchUrl = this.config.get('authGuardSettings')?.launchUrl;
+    // this.launchUrl = this.config.get('authGuardSettings')?.launchUrl;
     this.loginUrl = this.config.get('authGuardSettings')?.loginUrl;
   }
 

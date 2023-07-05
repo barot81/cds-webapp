@@ -1,8 +1,22 @@
 import { Platform } from '@angular/cdk/platform';
 import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
-import { Router, NavigationStart, NavigationEnd, Routes, ActivatedRoute } from '@angular/router';
+import {
+  Component,
+  Inject,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import {
+  Router,
+  NavigationStart,
+  NavigationEnd,
+  Routes,
+  ActivatedRoute,
+} from '@angular/router';
+import { MsalBroadcastService, MsalService } from '@azure/msal-angular';
 import { LookupAPIClientService } from '@zhealthcare/account/meta';
 import { FeatureFlagService } from '@zhealthcare/fusion-feature-flag';
 import {
@@ -15,7 +29,10 @@ import {
   GlobalVariable,
   Logger,
 } from '@zhealthcare/fusion/core';
-import { NavigationChangeDetector, UserPersona } from '@zhealthcare/fusion/models';
+import {
+  NavigationChangeDetector,
+  UserPersona,
+} from '@zhealthcare/fusion/models';
 import { FusionNavigationService } from '@zhealthcare/fusion/services';
 import { SplashScreenService } from '@zhealthcare/ux';
 import {
@@ -30,11 +47,20 @@ import {
 import { RoleConfigType } from './type';
 import { ZendeskUtilService } from './utils/zendesk/zendesk-util.service';
 
+import {
+  EventMessage,
+  EventType,
+  AuthenticationResult,
+  InteractionStatus,
+} from '@azure/msal-browser';
+
 @Component({
-  selector: 'zhealthcare-angular-bootstrap',
-  templateUrl: './bootstrap.component.html'
+  selector: 'zhc-angular-bootstrap',
+  templateUrl: './bootstrap.component.html',
 })
-export class ZhealthcareAngularBootstrapLegacyComponent implements OnInit, OnChanges, OnDestroy {
+export class ZhealthcareAngularBootstrapLegacyComponent
+  implements OnInit, OnChanges, OnDestroy
+{
   @Input() routes: Routes;
   @Input() roleConfig: RoleConfigType;
   @Input() navigations: NavigationChangeDetector;
@@ -61,6 +87,8 @@ export class ZhealthcareAngularBootstrapLegacyComponent implements OnInit, OnCha
     private _lookupAPIClientService: LookupAPIClientService,
     private _orgFacade: OrgFacade,
     private _featureFlagService: FeatureFlagService,
+    private msalBroadcastService: MsalBroadcastService,
+    private authService: MsalService
   ) {
     LoggingService.setApplicationInsights();
     router.events.subscribe((e) => {
@@ -100,10 +128,7 @@ export class ZhealthcareAngularBootstrapLegacyComponent implements OnInit, OnCha
 
   setNavigations() {
     if (this.navigations) {
-      this.navigationService.updateNavigationIfChanged(
-        this.navigations,
-        null
-      );
+      this.navigationService.updateNavigationIfChanged(this.navigations, null);
     }
   }
 
@@ -116,7 +141,9 @@ export class ZhealthcareAngularBootstrapLegacyComponent implements OnInit, OnCha
           this.roleConfig &&
           Object.keys(this.roleConfig).length > 0
         ) {
-          this.router.navigate(this.roleConfig[this._userTypeService.getUserType()]);
+          this.router.navigate(
+            this.roleConfig[this._userTypeService.getUserType()]
+          );
         }
       });
   }
@@ -163,7 +190,32 @@ export class ZhealthcareAngularBootstrapLegacyComponent implements OnInit, OnCha
     });
 
     this.selectedOucodeListener();
+
+    this.azureAdLogin();
     // this.zendeskUtilService.prismChat(this._unsubscribeAll);
+  }
+  azureAdLogin() {
+    this.msalBroadcastService.msalSubject$
+      .pipe(
+        filter((msg: EventMessage) => msg.eventType === EventType.LOGIN_SUCCESS)
+      )
+      .subscribe((result: EventMessage) => {
+        const payload = result.payload as AuthenticationResult;
+        this.authService.instance.setActiveAccount(payload.account);
+      });
+
+    this.msalBroadcastService.inProgress$
+      .pipe(
+        filter((status: InteractionStatus) => status === InteractionStatus.None)
+      )
+      .subscribe(() => {
+       // this.setLoginDisplay();
+      });
+  }
+
+  setLoginDisplay() {
+    const isExists = this.authService.instance.getAllAccounts().length > 0;
+    if (isExists) this.router.navigateByUrl('/admin/account/launch');
   }
 
   selectedOucodeListener() {

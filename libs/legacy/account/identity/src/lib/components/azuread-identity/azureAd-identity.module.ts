@@ -8,10 +8,11 @@ import {
   SkipSelf,
 } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MsalGuard, MsalInterceptor, MsalModule, MsalRedirectComponent } from '@azure/msal-angular';
-import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
+import { MsalBroadcastService, MsalGuard, MsalGuardConfiguration, MsalInterceptor, MsalInterceptorConfiguration, MsalModule, MsalRedirectComponent, MsalService, MSAL_GUARD_CONFIG, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG, ProtectedResourceScopes } from '@azure/msal-angular';
+import { InteractionType, IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
 import { FusionConfigService } from '@zhealthcare/fusion/core';
 import { MaterialModule } from '@zhealthcare/ux';
+import { loginRequest, msalConfig, protectedResources } from './auth-config';
 import { AzureAdIdentityComponent } from './azuread-identity.component';
 
 export function azureAdInitialize(
@@ -37,6 +38,57 @@ export function azureAdInitialize(
 //       authRequest: loginRequest
 //   };
 // }
+/**
+ * Here we pass the configuration parameters to create an MSAL instance.
+ * For more info, visit: https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/docs/v2-docs/configuration.md
+ */
+ export function MSALInstanceFactory(): IPublicClientApplication {
+  return new PublicClientApplication(msalConfig);
+}
+
+/**
+* MSAL Angular will automatically retrieve tokens for resources
+* added to protectedResourceMap. For more info, visit:
+* https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/docs/v2-docs/initialization.md#get-tokens-for-web-api-calls
+*/
+export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
+  const protectedResourceMap = new Map<string, Array<string | ProtectedResourceScopes> | null>();
+
+  protectedResourceMap.set(protectedResources.apiTodoList.endpoint, [
+      {
+          httpMethod: 'GET',
+          scopes: [...protectedResources.apiTodoList.scopes.read]
+      },
+      {
+          httpMethod: 'POST',
+          scopes: [...protectedResources.apiTodoList.scopes.write]
+      },
+      {
+          httpMethod: 'PUT',
+          scopes: [...protectedResources.apiTodoList.scopes.write]
+      },
+      {
+          httpMethod: 'DELETE',
+          scopes: [...protectedResources.apiTodoList.scopes.write]
+      }
+  ]);
+
+  return {
+      interactionType: InteractionType.Popup,
+      protectedResourceMap,
+  };
+}
+
+/**
+* Set your default interaction type for MSALGuard here. If you have any
+* additional scopes you want the user to consent upon login, add them here as well.
+*/
+export function MSALGuardConfigFactory(): MsalGuardConfiguration {
+  return {
+      interactionType: InteractionType.Redirect,
+      authRequest: loginRequest
+  };
+}
 const isIE = window.navigator.userAgent.indexOf('MSIE') > 0 ||
 window.navigator.userAgent.indexOf('Trident/') > 0
 
@@ -45,75 +97,33 @@ window.navigator.userAgent.indexOf('Trident/') > 0
     BrowserModule,
     CommonModule,
     MaterialModule,
-    MsalModule.forRoot(
-      new PublicClientApplication({
-        auth: {
-          clientId: 'ccdf8d9f-bd27-49d3-8239-8f37dcaeae99',
-          redirectUri: 'http://localhost:5200',
-          authority: 'https://login.microsoftonline.com/ed1842b4-e4ca-4da6-8587-1f81a3cffa8f',
-          knownAuthorities: ['https://login.microsoftonline.com/ed1842b4-e4ca-4da6-8587-1f81a3cffa8f']
-        },
-        cache: {
-          cacheLocation: 'localStorage',
-          storeAuthStateInCookie: isIE
-        }
-      }),
-      {
-        interactionType: InteractionType.Redirect,
-        authRequest: {
-         scopes:['user.read']
-        }
-      },
-      {
-        interactionType: InteractionType.Redirect,
-        protectedResourceMap:new Map([
-          ['localhost',['api://9e11a7a0-8ceb-4b31-a905-1a979b097247/resource.patient']],
-          ['https://graph.microsoft.com/v1.0/me',['user.Read']]
-        ])
-      }
-    ),
+    MsalModule
   ],
   exports: [AzureAdIdentityComponent],
   declarations: [AzureAdIdentityComponent],
   providers: [
     {
-        provide: HTTP_INTERCEPTORS,
-        useClass: MsalInterceptor,
-        multi: true
-    },
-    MsalGuard
-    //{
-    //     provide: MSAL_INSTANCE,
-    //     useFactory: MSALInstanceFactory
-    // },
-    // {
-    //     provide: MSAL_GUARD_CONFIG,
-    //     useFactory: MSALGuardConfigFactory
-    // }, {
-    //     provide: MSAL_INTERCEPTOR_CONFIG,
-    //     useFactory: MSALInterceptorConfigFactory
-    // },
-    // MsalService,
-    // MsalGuard,
-    // MsalBroadcastService,
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
+  },
+  {
+      provide: MSAL_INSTANCE,
+      useFactory: MSALInstanceFactory
+  },
+  {
+      provide: MSAL_GUARD_CONFIG,
+      useFactory: MSALGuardConfigFactory
+  },
+  {
+      provide: MSAL_INTERCEPTOR_CONFIG,
+      useFactory: MSALInterceptorConfigFactory
+  },
+  MsalService,
+  MsalBroadcastService,
+  MsalGuard,
   ]})
 export class AzureAdIdentityModule {
-  static forRoot(): ModuleWithProviders<AzureAdIdentityModule> {
-    return {
-      ngModule: AzureAdIdentityModule,
-      providers: [
-        {
-          provide: APP_INITIALIZER,
-          useFactory: azureAdInitialize,
-          deps: [FusionConfigService],
-          multi: true,
-        },
-        // { provide: AuthConfig, useValue: authConfig },
-        // { provide: OAuthModuleConfig, useValue: authModuleConfig },
-        // { provide: OAuthStorage, useFactory: storageFactory, deps: [CustomStorageService] }
-      ],
-    };
-  }
 
   constructor(@Optional() @SkipSelf() parentModule: AzureAdIdentityModule) {
     if (parentModule) {

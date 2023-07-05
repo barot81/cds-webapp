@@ -16,16 +16,9 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "@zhealthcare-common/angular-bootstrap": [
-        "libs/common/angular-bootstrap/src/index.ts"
-      ],
-      "@zhealthcare-common/angular-bootstrap": [
+      "@zhealthcare/angular-bootstrap": [
         "libs/legacy/angular-bootstrap/src/index.ts"
       ],
-      "@zhealthcare-common/angular-extended-http": [
-        "libs/common/angular-extended-http/src/index.ts"
-      ],
-      "@zhealthcare-common/user-idle": ["libs/common/user-idle/src/index.ts"],
       "@zhealthcare-core/angular-mf": ["libs/core/angular-mf/src/index.ts"],
       "@zhealthcare-core/angular-oauth-oidc": [
         "libs/core/angular-oauth-oidc/src/index.ts"

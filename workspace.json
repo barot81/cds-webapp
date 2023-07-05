@@ -1,9 +1,6 @@
 {
   "version": 2,
   "projects": {
-    "common-angular-bootstrap": "libs/common/angular-bootstrap",
-    "common-angular-extended-http": "libs/common/angular-extended-http",
-    "common-user-idle": "libs/common/user-idle",
     "core-angular-mf": "libs/core/angular-mf",
     "core-angular-oauth-oidc": "libs/core/angular-oauth-oidc",
     "core-angular-runtime-config": "libs/core/angular-runtime-config",

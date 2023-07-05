@@ -36,7 +36,7 @@ import { IdentitySandbox } from './identity.sandbox';
 import { AccountNavigtaionService } from './services/account-navigation.service';
 import { LoginActivationGuard } from './services/login-activation-guard.service';
 import { UserNameResolver } from './services/userName.resolver.service';
-
+import { AzureAdIdentityModule } from './components/azuread-identity/azureAd-identity.module';
 export const externalUrlProvider = new InjectionToken(
   'externalUrlRedirectResolver'
 );
@@ -104,6 +104,7 @@ export const cachedComponent: any = '';
     SharedComponentsAccountModule,
     FusePipesModule,
     FeatureMetaDataPipesModule,
+    AzureAdIdentityModule,
   ],
   exports: [
     LoginComponent,
@@ -111,6 +112,7 @@ export const cachedComponent: any = '';
     AccountSettingComponent,
     TermsOfUseComponent,
     LoaderComponent,
+    AzureAdIdentityModule
   ],
   declarations: [
     LoginComponent,

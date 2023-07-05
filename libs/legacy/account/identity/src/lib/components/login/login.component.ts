@@ -14,6 +14,8 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MsalBroadcastService, MsalService } from '@azure/msal-angular';
+import { AuthenticationResult, EventMessage, EventType, InteractionStatus } from '@azure/msal-browser';
 import {
   AuthService,
   BaseComponent,
@@ -26,7 +28,7 @@ import {
 } from '@zhealthcare/fusion/core';
 import { FuseMatchMediaService, PageFacade } from '@zhealthcare/ux';
 import { Subject } from 'rxjs';
-import { take, takeUntil } from 'rxjs/operators';
+import { filter, take, takeUntil } from 'rxjs/operators';
 import { CohereData, ScholarshipData, SupportData } from '../../helper/events';
 import { checkAndRedirectToConsent } from '../../helper/login-flows.helper';
 import { IdentitySandbox } from '../../identity.sandbox';
@@ -116,7 +118,9 @@ export class LoginComponent extends BaseComponent implements OnInit, OnDestroy {
     private locationStrategy: LocationStrategy,
     private passwordStrengthService: PasswordStrengthService,
     private route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private msalBroadcastService: MsalBroadcastService,
+    private msalService: MsalService,
   ) {
     super();
 
@@ -216,6 +220,33 @@ export class LoginComponent extends BaseComponent implements OnInit, OnDestroy {
     });
   }
 
+  handleAzureAd() {
+    this.msalBroadcastService.msalSubject$
+      .pipe(
+        filter((msg: EventMessage) => msg.eventType === EventType.LOGIN_SUCCESS)
+      )
+      .subscribe((result: EventMessage) => {
+        const payload = result.payload as AuthenticationResult;
+        this.msalService.instance.setActiveAccount(payload.account);
+      });
+
+    this.msalBroadcastService.inProgress$
+      .pipe(
+        filter((status: InteractionStatus) => status === InteractionStatus.None)
+      )
+      .subscribe(() => {
+        this.setLoginDisplay();
+          this.msalService.instance.getActiveAccount()?.idTokenClaims
+      });
+  }
+
+  setLoginDisplay() {
+    const isExists = this.msalService.instance.getAllAccounts().length > 0;
+    if(isExists)
+      this.router.navigateByUrl('/admin/account/launch');
+
+}
+
   preventBackButton() {
     history.pushState(null, null, location.href);
     this.locationStrategy.onPopState(() => {
@@ -294,10 +325,7 @@ export class LoginComponent extends BaseComponent implements OnInit, OnDestroy {
               this.credentials.password
             )
           ) {
-            checkAndRedirectToConsent(
-              userState,
-              this.router
-            );
+            checkAndRedirectToConsent(userState, this.router);
           } else {
             // redirect to change passowrd
             Logger.trace(
