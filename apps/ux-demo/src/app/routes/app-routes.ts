@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { RoleConfigType } from '@zhealthcare-common/angular-bootstrap';
+import { RoleConfigType } from '@zhealthcare/angular-bootstrap';
 import {
   AuthGuardService,
   loadRemoteModuleFromDefinitions,

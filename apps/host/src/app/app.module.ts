@@ -1,17 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 
-import { ZhealthcareAngularBootstrapLegacyModule } from '@zhealthcare-common/angular-bootstrap';
+import { ZhealthcareAngularBootstrapLegacyModule } from '@zhealthcare/angular-bootstrap';
 import { RuntimeConfigLoaderService } from '@zhealthcare-core/angular-runtime-config';
 
 import { AppComponent } from './app.component';
 import { fetchRuntimeConfigFactory } from './appinit-factory';
+import { MsalRedirectComponent } from '@azure/msal-angular';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    ZhealthcareAngularBootstrapLegacyModule
-  ],
+  imports: [ZhealthcareAngularBootstrapLegacyModule],
   providers: [
     RuntimeConfigLoaderService,
     {
@@ -21,6 +20,6 @@ import { fetchRuntimeConfigFactory } from './appinit-factory';
       multi: true,
     },
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent, MsalRedirectComponent],
 })
 export class AppModule {}

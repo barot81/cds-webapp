@@ -4,7 +4,7 @@ import { navigations } from './nav/navigations';
 import { roleConfig, routes } from './routes/app-routes';
 
 @Component({
-  selector: 'host-root',
+  selector: 'zhc-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { MsalGuard } from '@azure/msal-angular';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -13,6 +14,7 @@ import { AppComponent } from './app.component';
             import('./remote-entry/entry.module').then(
               (m) => m.RemoteEntryModule
             ),
+          // canActivate: [MsalGuard]
         },
       ],
       { initialNavigation: 'enabledBlocking' }

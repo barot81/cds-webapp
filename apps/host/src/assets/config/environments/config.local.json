@@ -67,6 +67,16 @@
       "redirectUri": "",
       "b2cScopes": [""]
     },
+    "azureAd": {
+      "clientId": "ccdf8d9f-bd27-49d3-8239-8f37dcaeae99",
+      "tenant": "ed1842b4-e4ca-4da6-8587-1f81a3cffa8f",
+      "redirectUri": "/",
+      "objectId": "2b7d602d-a3d2-4bdd-816f-5c9a3034fafb",
+      "activeDirectory": "",
+      "signUpSignInPolicyId": "",
+      "forgotPassword": "",
+      "b2cScopes": [""]
+    },
     "authGuardSettings": {
       "loginUrl": "",
       "launchUrl": ""

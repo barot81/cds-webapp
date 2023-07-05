@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
-import { RoleConfigType } from '@zhealthcare-common/angular-bootstrap';
+import { MsalGuard } from '@azure/msal-angular';
+import { RoleConfigType } from '@zhealthcare/angular-bootstrap';
 import {
   AuthGuardService,
   loadRemoteModuleFromDefinitions,
@@ -14,7 +15,7 @@ const routes: Routes = [
         './Module',
         'RemoteEntryModule'
       ),
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService ,MsalGuard],
   },
   {
     path: 'admin/ux',
@@ -24,18 +25,8 @@ const routes: Routes = [
         './UxDemoModule',
         'UxDemoModule'
       ),
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService, MsalGuard],
   },
-  // {
-  //   path: 'student/remote-home',
-  //   loadChildren: () =>
-  //     loadRemoteModuleFromDefinitions(
-  //       'remote',
-  //       './Module',
-  //       'RemoteEntryModule'
-  //     ),
-  //   canActivate: [AuthGuardService],
-  // },
   {
     path: '**',
     redirectTo: 'admin/account/launch',
