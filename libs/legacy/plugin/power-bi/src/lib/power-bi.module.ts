@@ -5,7 +5,7 @@ import { MaterialModule, FuseSharedModule } from '@zhealthcare/ux';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PowerBIComponent } from './power-bi.component';
-import {PowerBIRoutingModule} from './power-bi-routing.module';
+import { PowerBIRoutingModule } from './power-bi-routing.module';
 import { PowerBIApiClient } from './services/zhealthcare-web-api-client.service';
 import { PowerBISandbox } from './services/zhealthcare-web-sandbox.service';
 
@@ -20,6 +20,6 @@ import { PowerBISandbox } from './services/zhealthcare-web-sandbox.service';
 
   exports: [PowerBIComponent],
   declarations: [PowerBIComponent],
-  providers: [PowerBIApiClient,PowerBISandbox],
+  providers: [PowerBIApiClient, PowerBISandbox],
 })
 export class PowerBIModule {}

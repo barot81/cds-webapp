@@ -3,6 +3,7 @@ export * from './auth/auth.sandbox';
 export * from './auth/auth.service';
 export * from './auth/models/userInfo.model';
 export * from './auth/user.type.service';
+export * from './auth/user.service';
 export * from './componentfactory/componentFactory.service';
 export * from './componentfactory/directives/reference-area.directive';
 export * from './componentfactory/models/ui-state.model';

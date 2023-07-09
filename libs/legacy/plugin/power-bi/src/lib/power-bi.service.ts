@@ -10,8 +10,6 @@ export class PowerBIService {
 
   init() {
     this.tenantId = localStorage.getItem('TenantId');
-    this.orgFacade.selectedOucode$.subscribe((x) => {
-      this.selectedOucode = x.Oucode;
-    });
+    this.selectedOucode = '';
   }
 }

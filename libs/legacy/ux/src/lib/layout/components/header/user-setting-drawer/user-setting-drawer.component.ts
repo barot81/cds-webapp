@@ -20,7 +20,7 @@ import {
   UserSettingsSandbox,
 } from '@zhealthcare/fusion/core';
 import { OAuthService } from 'angular-oauth2-oidc';
-import { UserService } from 'libs/legacy/fusion/core/src/lib/services/auth/user.service';
+import { UserService } from '@zhealthcare/fusion/core';
 import { BehaviorSubject, take } from 'rxjs';
 import { ThemeSelectionService } from '../../../../components/theme-selection-sidebar/services/theme-selection.service';
 import { themes } from '../../../constants/theme';

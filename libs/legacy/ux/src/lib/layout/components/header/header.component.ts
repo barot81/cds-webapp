@@ -18,6 +18,7 @@ import {
   URLConstants,
   UserFacade,
   UserSettingsSandbox,
+  UserService
 } from '@zhealthcare/fusion/core';
 import { TokenModel, User, UserPersona } from '@zhealthcare/fusion/models';
 import { ThemeSelectionService } from '../../../components';
@@ -30,7 +31,6 @@ import { ConsentDetailsPopupComponent } from './consent-details-popup/consent-de
 import { HeaderDrawerService } from './header-drawer.service';
 import { HeaderService } from './header.service';
 import { OAuthService } from 'angular-oauth2-oidc';
-import { UserService } from 'libs/legacy/fusion/core/src/lib/services/auth/user.service';
 @Component({
   selector: 'header',
   templateUrl: './header.component.html',

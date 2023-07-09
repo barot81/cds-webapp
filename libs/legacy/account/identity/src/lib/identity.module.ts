@@ -112,7 +112,6 @@ export const cachedComponent: any = '';
     AccountSettingComponent,
     TermsOfUseComponent,
     LoaderComponent,
-    AzureAdIdentityModule
   ],
   declarations: [
     LoginComponent,

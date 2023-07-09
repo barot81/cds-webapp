@@ -7,8 +7,7 @@ import {
   MSAL_GUARD_CONFIG,
 } from '@azure/msal-angular';
 import { AuthenticationResult, EventMessage, EventType, InteractionStatus, RedirectRequest } from '@azure/msal-browser';
-import { LayoutService } from '@zhealthcare/ux';
-import { UserService } from 'libs/legacy/fusion/core/src/lib/services/auth/user.service';
+import { UserService } from '@zhealthcare/fusion/core';
 import { filter, Subject, takeUntil } from 'rxjs';
 
 @Component({
