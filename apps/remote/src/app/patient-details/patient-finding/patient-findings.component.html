@@ -23,7 +23,7 @@
   <div *ngIf="(loading$ | async) === false; else loading" class="zhealthcare-info">
     <input type="checkbox" class="read-more-state" id="finding" #finding />
     <div class="" *ngIf="(patientFindings$ | async) as patientFindings">
-      <div [ngClass]="{ 'read-more-target': i > 1 }" *ngFor="let item of patientFindings; let i = index">
+      <div *ngFor="let item of patientFindings; let i = index">
         <mat-card fxLayout="row" fxFlex="100" class="p-8" fxLayoutAlign="space-between start">
           <!-- <div fxLayout="row" fxLayoutAlign="center center" class="m-4 pr-8">
             <b>{{i+1}}</b>
@@ -269,18 +269,6 @@
           </div>
 
         </mat-card>
-
-        <div *ngIf="patientFindings?.length > 2">
-          <button (click)="finding.click()" *ngIf="i === 1 && !finding.checked" class="read-more-trigger link-btn"
-            id="show-more-label">
-            Show More Findings
-          </button>
-
-          <button *ngIf="i === patientFindings?.length - 1 && finding.checked" (click)="finding.click()"
-            class="read-less-trigger link-btn mt-8" id="show-more-label">
-            Show Less Findings
-          </button>
-        </div>
       </div>
     </div>
   </div>
