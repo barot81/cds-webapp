@@ -21,3 +21,12 @@
 .username-container:hover {
   background: rgba(0, 0, 0, 0.1);
 }
+
+.sso_signin {
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  gap: 15px;
+}

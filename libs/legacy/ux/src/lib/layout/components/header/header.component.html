@@ -170,14 +170,9 @@
                     userName
                   }}</span>
                 </ng-container>
-                <ng-container *ngIf="!userName">
-                  <span class="username mr-8" fxHide fxShow.gt-sm
-                    > Vishal  </span
-                  >
-                  <span class="username mr-12" fxHide fxShow.gt-sm
-                    >( {{ _headerService.facilityName$ | async }} )</span
-                  >
-                </ng-container>
+                <span class="username mr-12" fxHide fxShow.gt-sm
+                  >( {{ _headerService.facilityName$ | async }} )</span
+                >
               </div>
               <i aria-hidden="true" class="fa-light fa-angle-down s-16"></i>
             </ng-container>

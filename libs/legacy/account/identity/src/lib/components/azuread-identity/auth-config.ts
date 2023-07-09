@@ -18,7 +18,7 @@ export const msalConfig: Configuration = {
     auth: {
         clientId: 'ccdf8d9f-bd27-49d3-8239-8f37dcaeae99', // This is the ONLY mandatory field that you need to supply.
         authority: 'https://login.microsoftonline.com/ed1842b4-e4ca-4da6-8587-1f81a3cffa8f', // Defaults to "https://login.microsoftonline.com/common"
-        redirectUri: '/', // Points to window.location.origin by default. You must register this URI on Azure portal/App Registration.
+        redirectUri: '/auth', // Points to window.location.origin by default. You must register this URI on Azure portal/App Registration.
         postLogoutRedirectUri: '/', // Points to window.location.origin by default.
         clientCapabilities: ['CP1'] // This lets the resource server know that this client can handle claim challenges.
     },
@@ -34,6 +34,9 @@ export const msalConfig: Configuration = {
         loggerOptions: {
             loggerCallback(logLevel: LogLevel, message: string) {
                 console.log(message);
+                this.broadcastService?.subscribe('msal:acquireTokenFailure', (payload) => {
+                  console.log(payload);
+                });
             },
             logLevel: LogLevel.Verbose,
             piiLoggingEnabled: false
@@ -45,15 +48,15 @@ export const msalConfig: Configuration = {
  * Add here the endpoints and scopes when obtaining an access token for protected web APIs. For more information, see:
  * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/resources-and-scopes.md
  */
-export const protectedResources = {
-    apiTodoList: {
-        endpoint: "https://localhost:7198",
-        scopes: {
-            resouce:['api://9e11a7a0-8ceb-4b31-a905-1a979b097247/resource.patient'],
-            read: ["api://9e11a7a0-8ceb-4b31-a905-1a979b097247/resource.patient"],
-            write: ["api://9e11a7a0-8ceb-4b31-a905-1a979b097247/resource.patient"]
-        }
-    }
+ export const protectedResources = {
+  apiTodoList: {
+      endpoint: "https://localhost:7198/*",
+      scopes: {
+          resource: ["api://9e11a7a0-8ceb-4b31-a905-1a979b097247/patients.read"],
+          read: ["api://9e11a7a0-8ceb-4b31-a905-1a979b097247/patients.read"],
+          write: ["api://9e11a7a0-8ceb-4b31-a905-1a979b097247/patients.read"]
+      }
+  }
 }
 
 /**

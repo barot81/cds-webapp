@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
+import { BrowserUtils } from '@azure/msal-browser';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
 export const routingConfiguration: ExtraOptions = {
   paramsInheritanceStrategy: 'always',
   relativeLinkResolution: 'legacy',
+  initialNavigation: !BrowserUtils.isInIframe() && !BrowserUtils.isInPopup() ? 'enabledNonBlocking' : 'disabled' // Set to enabledBlocking to use Angular Universal
 };
 
 @NgModule({

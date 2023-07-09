@@ -79,6 +79,7 @@ export class LaunchComponent
   ) {
     super();
     this._unsubscribe = new Subject();
+    console.log('launch called');
   }
 
 

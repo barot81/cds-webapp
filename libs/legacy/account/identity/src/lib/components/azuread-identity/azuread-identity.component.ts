@@ -1,25 +1,34 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   MsalBroadcastService,
   MsalGuardConfiguration,
   MsalService,
   MSAL_GUARD_CONFIG,
 } from '@azure/msal-angular';
-import { InteractionStatus, RedirectRequest } from '@azure/msal-browser';
+import { AuthenticationResult, EventMessage, EventType, InteractionStatus, RedirectRequest } from '@azure/msal-browser';
+import { LayoutService } from '@zhealthcare/ux';
+import { UserService } from 'libs/legacy/fusion/core/src/lib/services/auth/user.service';
 import { filter, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'zhc-azuread-identity',
   templateUrl: 'azuread-identity.component.html',
+  styleUrls: ['azuread-identity.component.scss']
 })
 export class AzureAdIdentityComponent implements OnInit, OnDestroy {
   isUserLoggedin: boolean;
   private readonly _destroy = new Subject<void>();
+  loading = false;
   constructor(
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private msalBroadcastService: MsalBroadcastService,
-    private authService: MsalService
-  ) {}
+    private msalService: MsalService,
+    private router: Router,
+    private userService: UserService
+  ) {
+    this.loading = JSON.parse(localStorage.getItem('loading'));
+  }
 
   ngOnInit() {
     this.msalBroadcastService.inProgress$
@@ -33,9 +42,37 @@ export class AzureAdIdentityComponent implements OnInit, OnDestroy {
       .subscribe(_ => {
         localStorage.setItem('isAuthenticated', 'true');
         this.isUserLoggedin =
-          this.authService.instance.getAllAccounts().length > 0;
+          this.msalService.instance.getAllAccounts().length > 0;
+          if(this.isUserLoggedin) {
+            this.router.navigateByUrl('/admin/account/launch');
+            this.userService.setUserName(this.msalService.instance.getAllAccounts()[0].name);
+          }
+          this.loading = false;
+          localStorage.removeItem('loading');
       });
   }
+
+
+
+  handleAzureAd() {
+    this.msalBroadcastService.msalSubject$
+      .pipe(
+        filter((msg: EventMessage) => msg.eventType === EventType.LOGIN_SUCCESS)
+      )
+      .subscribe((result: EventMessage) => {
+        const payload = result.payload as AuthenticationResult;
+        this.msalService.instance.setActiveAccount(payload.account);
+      });
+
+    this.msalBroadcastService.inProgress$
+      .pipe(
+        filter((status: InteractionStatus) => status === InteractionStatus.None)
+      )
+      .subscribe(() => {
+          this.msalService.instance.getActiveAccount()?.idTokenClaims
+      });
+  }
+
 
   ngOnDestroy(): void {
     this._destroy.next(undefined);
@@ -43,18 +80,14 @@ export class AzureAdIdentityComponent implements OnInit, OnDestroy {
   }
 
   login() {
+    this.loading = true;
+    localStorage.setItem('loading', 'true');
     if (this.msalGuardConfig.authRequest) {
-      this.authService.loginRedirect({
+      this.msalService.loginRedirect({
         ...this.msalGuardConfig.authRequest,
       } as RedirectRequest);
     } else {
-      this.authService.loginRedirect();
+      this.msalService.loginRedirect();
     }
-  }
-
-  logout() {
-    this.authService.logoutRedirect({
-      postLogoutRedirectUri: 'http://localhost:5200',
-    });
   }
 }

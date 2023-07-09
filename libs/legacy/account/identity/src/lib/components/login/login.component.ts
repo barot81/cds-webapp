@@ -117,13 +117,9 @@ export class LoginComponent extends BaseComponent implements OnInit, OnDestroy {
     private identitySandbox: IdentitySandbox,
     private locationStrategy: LocationStrategy,
     private passwordStrengthService: PasswordStrengthService,
-    private route: ActivatedRoute,
-    private authService: AuthService,
-    private msalBroadcastService: MsalBroadcastService,
-    private msalService: MsalService,
+    private route: ActivatedRoute
   ) {
     super();
-
     this.checkForCohereRegistration();
     // this.currentBG = new BehaviorSubject<string>('assets/images/bg/1.jpg');
     // this.$currentBG = this.currentBG.asObservable();
@@ -218,35 +214,8 @@ export class LoginComponent extends BaseComponent implements OnInit, OnDestroy {
         this._screenSize = _screen;
       }
     });
+
   }
-
-  handleAzureAd() {
-    this.msalBroadcastService.msalSubject$
-      .pipe(
-        filter((msg: EventMessage) => msg.eventType === EventType.LOGIN_SUCCESS)
-      )
-      .subscribe((result: EventMessage) => {
-        const payload = result.payload as AuthenticationResult;
-        this.msalService.instance.setActiveAccount(payload.account);
-      });
-
-    this.msalBroadcastService.inProgress$
-      .pipe(
-        filter((status: InteractionStatus) => status === InteractionStatus.None)
-      )
-      .subscribe(() => {
-        this.setLoginDisplay();
-          this.msalService.instance.getActiveAccount()?.idTokenClaims
-      });
-  }
-
-  setLoginDisplay() {
-    const isExists = this.msalService.instance.getAllAccounts().length > 0;
-    if(isExists)
-      this.router.navigateByUrl('/admin/account/launch');
-
-}
-
   preventBackButton() {
     history.pushState(null, null, location.href);
     this.locationStrategy.onPopState(() => {

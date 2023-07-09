@@ -33,7 +33,7 @@ import { DelegatorSessionTimeoutComponent } from './component/session-timeout/de
 import { SessionLoggedoutDialogComponent } from './component/session-timeout/session-loggedout-dialog/session-loggedout-dialog.component';
 import { SessionTimeoutDialogComponent } from './component/session-timeout/session-timeout-dialog/session-timeout-dialog.component';
 import { BaseSessionTimeoutComponent } from './component/session-timeout/session-timeout.component';
-import { MsalService } from './services/auth/msal.service';
+// import { MsalService } from './services/auth/msal.service';
 import { UserConsentApiClient } from './services/user-consent/user-consent.apiClient.service';
 import { UserConsentSandbox } from './services/user-consent/user-consent.sandbox';
 
@@ -78,7 +78,7 @@ import { UserConsentSandbox } from './services/user-consent/user-consent.sandbox
     HttpResponseHandler,
     ComponentFactoryService,
     RealtimeService,
-    MsalService,
+    // MsalService,
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     LoggingService,
     UserConsentSandbox,

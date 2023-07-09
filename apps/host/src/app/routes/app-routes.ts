@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
-import { MsalGuard } from '@azure/msal-angular';
+import { MsalGuard, MsalRedirectComponent } from '@azure/msal-angular';
+import { LoginComponent } from '@zhealthcare/account/identity';
 import { RoleConfigType } from '@zhealthcare/angular-bootstrap';
 import {
   AuthGuardService,
@@ -15,7 +16,7 @@ const routes: Routes = [
         './Module',
         'RemoteEntryModule'
       ),
-    canActivate: [AuthGuardService ,MsalGuard],
+    canActivate: [AuthGuardService, MsalGuard],
   },
   {
     path: 'admin/ux',
@@ -28,8 +29,19 @@ const routes: Routes = [
     canActivate: [AuthGuardService, MsalGuard],
   },
   {
+    // Needed for handling redirect after login
+    path: 'auth',
+    component: MsalRedirectComponent
+  },
+  {
+    // Needed for handling redirect after login
+    path: 'login-failed',
+    redirectTo: 'account/login'
+  },
+
+  {
     path: '**',
-    redirectTo: 'admin/account/launch',
+    redirectTo: 'account/login',
   },
 
 ];

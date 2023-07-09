@@ -30,6 +30,7 @@ import { ConsentDetailsPopupComponent } from './consent-details-popup/consent-de
 import { HeaderDrawerService } from './header-drawer.service';
 import { HeaderService } from './header.service';
 import { OAuthService } from 'angular-oauth2-oidc';
+import { UserService } from 'libs/legacy/fusion/core/src/lib/services/auth/user.service';
 @Component({
   selector: 'header',
   templateUrl: './header.component.html',
@@ -86,7 +87,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     private _userSettingsSandbox: UserSettingsSandbox,
     public readonly _layoutService: LayoutService,
     public readonly _headerService: HeaderService,
-    private _oAuthService: OAuthService
+    private readonly _userService: UserService
   ) {
     if (localStorage.getItem('User')) {
       const userRoles = JSON.parse(localStorage.getItem('User'))?.UserRoles;
@@ -388,6 +389,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.userName = this._layoutService.getUser()?.name;
+    this.userName = this._userService.getUserName() ??  this._layoutService.getUser()?.name;
   }
 }

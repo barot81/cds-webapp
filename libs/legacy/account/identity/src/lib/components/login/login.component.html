@@ -11,6 +11,12 @@
               <img src="assets/images/logo/z-healthcare-pink-large.png" alt="zhealthcare-pink-large" width="150px" height="80px">
             </div>
           </div>
+          <div class="sso_signin">
+            <zhc-azuread-identity></zhc-azuread-identity>
+            <span class="or">
+                        OR
+            </span>
+          </div>
           <form name="loginForm" [formGroup]="loginForm" novalidate autocomplete="off">
             <div fxLayout="column" fxLayoutAlign="center" class="pb-16">
               <mat-error class="warn-fg" *ngIf="isLockedOut">Your account is locked. Use forgot password to unlock and
@@ -84,6 +90,7 @@
                 <span>LOGIN <em *ngIf="loading" class="fas fa-spinner fa-pulse"></em></span>
               </button>
             </div>
+
             <div class="font-weight-600 mt-20 text-center">
               <p>
                 Note: Internet Explorer browser is not supported.
@@ -93,18 +100,7 @@
               </p>
             </div>
           </form>
-          <div class="mt-64" fxLayout="row" fxLayoutAlign="start center">
-            <iframe
-              src=""
-              sandbox="allow-popups" scrolling="no" frameborder="0" allowTransparency="true"
-              style="border:none; overflow:hidden; width:115px; height:44px;"></iframe>
-          </div>
-          <div>
-            <span>
-                        OR
-            </span>
-            <zhc-azuread-identity></zhc-azuread-identity>
-          </div>
+
         </div>
       </div>
     </div>

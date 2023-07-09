@@ -27,9 +27,9 @@ import { ChangePasswordSuccessComponent } from './components/password-policy/cha
 import { PasswordPolicyComponent } from './components/password-policy/password-policy.component';
 import { RequestComponent } from './components/sso/request/request.component';
 import { ResponseComponent } from './components/sso/response/response.component';
-import { RedirectComponent } from './components/v3-v4-integration/external-redirect.component';
-import { V3RedirectComponent } from './components/v3-v4-integration/v3redirect.component';
-import { V4RedirectComponent } from './components/v3-v4-integration/v4redirect.component';
+// import { RedirectComponent } from './components/v3-v4-integration/external-redirect.component';
+// import { V3RedirectComponent } from './components/v3-v4-integration/v3redirect.component';
+// import { V4RedirectComponent } from './components/v3-v4-integration/v4redirect.component';
 import { NumberDirective } from './directives/numbers-only.directive';
 import { IdentityApiClient } from './identity-api-client.service';
 import { IdentitySandbox } from './identity.sandbox';
@@ -62,15 +62,15 @@ const routes: Routes = [
     path: 'account/changePasswordSuccess',
     component: ChangePasswordSuccessComponent,
   },
-  {
-    path: 'account/v4redirect',
-    component: V4RedirectComponent,
-  },
-  {
-    path: 'account/v3redirect',
-    component: V3RedirectComponent,
-    canActivate: [AuthGuardService],
-  },
+  // {
+  //   path: 'account/v4redirect',
+  //   component: V4RedirectComponent,
+  // },
+  // {
+  //   path: 'account/v3redirect',
+  //   component: V3RedirectComponent,
+  //   canActivate: [AuthGuardService],
+  // },
   {
     path: 'sso/request',
     component: RequestComponent,
@@ -79,13 +79,13 @@ const routes: Routes = [
     path: 'sso/response',
     component: ResponseComponent,
   },
-  {
-    path: 'externalRedirect',
-    resolve: {
-      url: externalUrlProvider,
-    },
-    component: RedirectComponent,
-  },
+  // {
+  //   path: 'externalRedirect',
+  //   resolve: {
+  //     url: externalUrlProvider,
+  //   },
+  //   component: RedirectComponent,
+  // },
 ];
 export const cachedComponent: any = '';
 
@@ -122,9 +122,9 @@ export const cachedComponent: any = '';
     TermsOfUseComponent,
     LockOutDialogComponent,
     NumberDirective,
-    V4RedirectComponent,
-    V3RedirectComponent,
-    RedirectComponent,
+    // V4RedirectComponent,
+    // V3RedirectComponent,
+    // RedirectComponent,
     RequestComponent,
     ResponseComponent,
     PasswordPolicyComponent,

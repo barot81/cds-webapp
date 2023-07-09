@@ -39,7 +39,7 @@ import {
   UpdateFacilityWiseStatuses,
   SetFacilityWithStatuses,
 } from '../actions/org.actions';
-import { MsalService } from '../../services/auth/msal.service';
+// import { MsalService } from '../../services/auth/msal.service';
 import { UserService } from '../../services/auth/user.service';
 import { FusionConfigService } from '../../configuration/fusion-config.service';
 import { HttpResponseHandler } from '../../asyncServices/http';
@@ -60,7 +60,7 @@ export class AuthEffects {
   constructor(
     private readonly authService: AuthService,
     private readonly userService: UserService,
-    private readonly msalService: MsalService,
+    // private readonly msalService: MsalService,
     private readonly actions: Actions,
     private readonly router: Router,
     private readonly config: FusionConfigService,
@@ -119,7 +119,7 @@ export class AuthEffects {
         ofType(UserActionTypes.AzureLogin),
         map((action: AzureLogin) => action),
         tap(() => {
-          this.msalService.login();
+          // this.msalService.login();
         })
       ),
     { dispatch: false }
@@ -419,7 +419,7 @@ export class AuthEffects {
       this.actions.pipe(
         ofType(UserActionTypes.AzureLogout),
         tap(() => {
-          this.msalService.logout();
+          // this.msalService.logout();
           localStorage.clear();
           this.router.navigateByUrl(this.loginUrl);
         })

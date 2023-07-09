@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { MsalGuard } from '@azure/msal-angular';
 import { AuthGuardService } from '@zhealthcare/fusion/core';
 import { FuseSidebarModule, MaterialModule } from '@zhealthcare/ux';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
@@ -16,12 +17,12 @@ const routes: Routes = [
   {
     path: 'account/launch',
     component: LaunchComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService, MsalGuard],
   },
   {
     path: 'admin/account/launch',
     component: AdminLaunchComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService, MsalGuard],
   },
 ];
 

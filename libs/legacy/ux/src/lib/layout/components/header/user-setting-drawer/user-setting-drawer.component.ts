@@ -1,19 +1,26 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @angular-eslint/component-selector */
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import {
+  MsalGuardConfiguration,
+  MsalService,
+  MSAL_GUARD_CONFIG,
+} from '@azure/msal-angular';
+import { InteractionType } from '@azure/msal-browser';
 import {
   AuthService,
   EventsService,
   FusionConfigService,
   UserFacade,
   UserSettingsModel,
-  UserSettingsSandbox
+  UserSettingsSandbox,
 } from '@zhealthcare/fusion/core';
 import { OAuthService } from 'angular-oauth2-oidc';
+import { UserService } from 'libs/legacy/fusion/core/src/lib/services/auth/user.service';
 import { BehaviorSubject, take } from 'rxjs';
 import { ThemeSelectionService } from '../../../../components/theme-selection-sidebar/services/theme-selection.service';
 import { themes } from '../../../constants/theme';
@@ -66,6 +73,7 @@ export class UserSettingDrawerComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
+    private masalService: MsalService,
     public dialog: MatDialog,
     private _userFacade: UserFacade,
     private _fusionConfigService: FusionConfigService,
@@ -75,7 +83,9 @@ export class UserSettingDrawerComponent implements OnInit {
     private _layoutService: LayoutService,
     private oauthService: OAuthService,
     private _themeSelectionService: ThemeSelectionService,
-    private _eventsService: EventsService
+    private _eventsService: EventsService,
+    private readonly userSerive: UserService,
+    @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration
   ) {
     if (localStorage.getItem('LastLoginTime') !== 'null')
       this.lastLoginTime = new Date(localStorage.getItem('LastLoginTime'));
@@ -201,21 +211,33 @@ export class UserSettingDrawerComponent implements OnInit {
   signOut() {
     this._eventsService.publish('zhealthcare_user_log_out');
     if (this._layoutService.getUser()) this.oauthService.logOut();
-    else if (!!this._fusionConfigService.appSettings?.authGuardSettings) {
-      const isV3V4 = JSON.parse(localStorage.getItem('isV3V4'));
+    else if (JSON.parse(localStorage.getItem('isAuthenticated'))) {
+      this.handleAzureAdLogout();
+    } else {
       this._userFacade.LogOut();
-      localStorage.removeItem('StudentId');
       localStorage.clear();
       this.authService.redirectUrl = undefined;
-      if (isV3V4)
-        this.router.navigate([
-          '/externalRedirect',
-          {
-            externalUrl:
-              this._fusionConfigService.getservice('v3.login').endpoint,
-          },
-        ]);
     }
+  }
+
+  private handleAzureAdLogout() {
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('userName');
+    const activeAccount =
+      this.masalService.instance.getActiveAccount() ||
+      this.masalService.instance.getAllAccounts()[0];
+
+    if (this.msalGuardConfig.interactionType === InteractionType.Popup) {
+      this.masalService.logoutPopup({
+        account: activeAccount,
+      });
+    } else {
+      this.masalService.logoutRedirect({
+        account: activeAccount,
+        postLogoutRedirectUri: `${window.location.href}`,
+      });
+    }
+    // this.router.navigateByUrl('Account/login');
   }
 
   public getFirstChar(value: string): string {
@@ -238,6 +260,9 @@ export class UserSettingDrawerComponent implements OnInit {
   }
 
   getUserDetails() {
-    this.userDetails = this._layoutService.getUser();
+    const userName = this.userSerive .getUserName()?.split(' ');
+    this.userDetails = userName
+                  ? {  given_name: userName[0],  family_name: userName[1] }
+                  : this._layoutService.getUser();
   }
 }
