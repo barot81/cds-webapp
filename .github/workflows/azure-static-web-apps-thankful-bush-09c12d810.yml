@@ -22,7 +22,7 @@ jobs:
       - name: npm install and build
         run: |
           npm i -f
-          npx nx build remote --configuration=development
+          npx nx build host --configuration=development
 
       - name: Deploy
         id: builddeploy
