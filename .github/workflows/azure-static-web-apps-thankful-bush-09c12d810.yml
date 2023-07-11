@@ -23,7 +23,7 @@ jobs:
         env:
           NODE_OPTIONS: "--max_old_space_size=16384"
         run: |
-          npm ci -f
+          npm i -f
           npx nx build host --configuration=development
 
       - name: Deploy
