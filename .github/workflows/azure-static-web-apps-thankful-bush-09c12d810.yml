@@ -24,7 +24,7 @@ jobs:
           NODE_OPTIONS: "--max_old_space_size=16384"
         run: |
           npm i -f
-          npx nx run-many -t build -p host --parallel=false --configuration=development
+          npx nx run-many --target build -projects host --parallel=false --configuration=development
 
       - name: Deploy
         id: builddeploy
