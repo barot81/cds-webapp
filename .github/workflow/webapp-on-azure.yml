@@ -13,7 +13,7 @@ on:
 #
 # 2. Change these variables for your configuration:
 env:
-  AZURE_WEBAPP_NAME: zcds-dev    # set this to your application's name
+  AZURE_WEBAPP_NAME: zcds-remote-dev    # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: './dist/apps/remote'      # set this to the path to your web app project
   NODE_VERSION: '10.x'                # set this to the node version to use
 jobs:
@@ -37,5 +37,5 @@ jobs:
       uses: azure/webapps-deploy@v1
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B6A10B48F4384F949D86E98E7DB24AF5 }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
