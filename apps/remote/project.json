@@ -69,6 +69,12 @@
           }
         },
         "development": {
+          "fileReplacements": [
+            {
+              "replace": "apps/remote/src/environments/environment.ts",
+              "with": "apps/remote/src/environments/environment.dev.ts"
+            }
+          ],
           "buildOptimizer": false,
           "optimization": false,
           "vendorChunk": true,

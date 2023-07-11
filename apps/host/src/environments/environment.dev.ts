@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
+  production: false,
   appSettings: {
     production: false,
     allowProductSelection: false,
@@ -20,6 +20,8 @@ export const environment = {
       },
     },
     microfrontends: {
+      remote: 'http://localhost:5201',
+      'ux-demo': 'http://localhost:4801',
     },
     localization: {
       languages: [

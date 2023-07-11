@@ -1,0 +1,24 @@
+parameters:
+- name: 'project'
+  default: ''
+  type: string
+
+jobs:
+  - job: build
+    displayName: Build
+
+    steps:
+      - template: ../../steps/step.install-node-modules.yml
+
+      - script: |
+          npx nx build ${{ project }} --configuration=production
+        displayName: "Build ${{ project }}"
+
+      - task: CopyFiles@2
+        displayName: "Copy nginx.conf and startup script file"
+        inputs:
+          SourceFolder: "./.git-actions"
+          Contents: |
+            nginx.conf
+            run.sh
+          TargetFolder: ./dist

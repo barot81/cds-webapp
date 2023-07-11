@@ -70,6 +70,12 @@
           }
         },
         "development": {
+          "fileReplacements": [
+            {
+              "replace": "apps/host/src/environments/environment.ts",
+              "with": "apps/host/src/environments/environment.dev.ts"
+            }
+          ],
           "buildOptimizer": false,
           "optimization": false,
           "vendorChunk": true,

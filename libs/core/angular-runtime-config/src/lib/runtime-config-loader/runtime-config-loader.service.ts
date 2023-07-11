@@ -44,6 +44,10 @@ export class RuntimeConfigLoaderService {
     );
   }
 
+  setConfigObject(configObj: any) {
+    this.configObject = configObj;
+    this.configSubject.next(this.configObject);
+  }
   getConfigURL() {
     return this.configUrl;
   }
