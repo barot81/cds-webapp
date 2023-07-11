@@ -22,7 +22,7 @@ import {
   UserFacade,
   UserTypeService,
 } from '@zhealthcare/fusion/core';
-// import { FeatureFlagService } from '@zhealthcare/fusion-feature-flag';
+import { FeatureFlagService } from '@zhealthcare/fusion-feature-flag';
 import { StatusCount, UserPersona } from '@zhealthcare/fusion/models';
 import {
   FusionNavigationService,
@@ -87,7 +87,7 @@ export class AdminLaunchComponent
     protected manageuser: ManageUserService,
     private _fuseSidebarService: FuseSidebarService,
     private resolver: ComponentFactoryResolver,
-    // private _featureFlagService: FeatureFlagService,
+    private _featureFlagService: FeatureFlagService,
     private _launchService: LaunchService,
     private _facilitySandox: FacilitySandbox
   ) {
@@ -195,7 +195,7 @@ export class AdminLaunchComponent
   onFacilityChange(facilityId, event) {
     this.manageuser.setTenantId(facilityId);
     if (event.isUserInput) {
-      // this._featureFlagService.resetFeatureFlags();
+      this._featureFlagService.resetFeatureFlags();
       this._headerService.setCurrentFacilityName(facilityId.name);
       this.loadingPrograms = true;
       this.showProgressBar();
