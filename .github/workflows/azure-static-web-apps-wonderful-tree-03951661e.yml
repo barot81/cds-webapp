@@ -21,8 +21,8 @@ jobs:
 
       - name: npm install and build
         run: |
-          npm i -f
-          npx nx build remote --configuration=development
+          npm ci -f
+          npx nx run-many --target build --projects remote --parallel=false --configuration=development
 
       - name: Build And Deploy
         id: builddeploy
