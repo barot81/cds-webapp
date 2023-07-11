@@ -21,7 +21,7 @@ jobs:
 
       - name: npm install and build
         run: |
-          npm i -f
+          npm ci -f
           npx nx build host --configuration=development
 
       - name: Deploy
