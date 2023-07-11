@@ -21,7 +21,7 @@ jobs:
 
       - name: npm install and build
         run: |
-          export NODE_OPTIONS="--max_old_space_size=8192"
+          export NODE_OPTIONS="--max_old_space_size=16384"
           npm ci -f
           npx nx build host --configuration=development
 
