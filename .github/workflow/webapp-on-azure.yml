@@ -15,15 +15,15 @@ on:
 env:
   AZURE_WEBAPP_NAME: zcds-dev    # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: './dist/apps/remote'      # set this to the path to your web app project
-  NODE_VERSION: '16.x'                # set this to the node version to use
+  NODE_VERSION: '10.x'                # set this to the node version to use
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v1
 
     - name: Set up Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v1
       with:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
