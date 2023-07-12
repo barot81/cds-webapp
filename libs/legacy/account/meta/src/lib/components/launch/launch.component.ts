@@ -82,7 +82,6 @@ export class LaunchComponent
     console.log('launch called');
   }
 
-
   ngOnInit() {
     this.pageFacade.setPageTitle('Launch');
 
@@ -134,9 +133,8 @@ export class LaunchComponent
   }
 
   private navigateByUserType() {
-      this.router.navigateByUrl(URLConstants.ADMIN_LAUNCH_URL);
+    this.router.navigateByUrl(URLConstants.ADMIN_LAUNCH_URL);
   }
-
 
   programSelection(facilityId: string, statusCounts: StatusCount[]) {
     if (facilityId && statusCounts) {
@@ -150,8 +148,6 @@ export class LaunchComponent
       );
     } else this.oucodeWithNames = [];
   }
-
-  getOrgUnitInformation(selectedOucode: string): void { }
 
 
   protected sortTenantWithOuCodesByTenantId() {
@@ -177,33 +173,25 @@ export class LaunchComponent
     this.showProgressBar();
     if (selectedUserType) this.userTypeService.setUserType(selectedUserType);
 
-    const updatedStatusCount =  selectedFacility.StatusCount.map(x => {
-                                    if(x.name === selectedStatus)
-                                      return Object.assign({}, x, {isSelected: true})
-                                    else if(x.isSelected)
-                                      return Object.assign({}, x, {isSelected: false})
-                                    return x;
-                                });
+    const updatedStatusCount = selectedFacility.StatusCount.map((x) => {
+      if (x.name === selectedStatus)
+        return Object.assign({}, x, { isSelected: true });
+      else if (x.isSelected) return Object.assign({}, x, { isSelected: false });
+      return x;
+    });
     const updatedFacility = {
       ...selectedFacility,
-      StatusCount: updatedStatusCount
-    }
+      StatusCount: updatedStatusCount,
+    };
     this.orgFacade.SetFacilityWiseStatuses(updatedFacility);
-       this.activatedRoute.queryParams.subscribe(
-          (resp) => {
-            this.hideProgressBar();
-            this.router.navigateByUrl('/dashboard');
-          },
-          (error) => {
-            this.fuseProgressBarService.hide();
-          }
-        );
-}
-
-
-  getTenantName(selectedTenant: FacilityWiseStatuses) {
-    const tenantId = selectedTenant.FacilityId;
-    this.showProgressBar();
+    this.activatedRoute.queryParams.subscribe(
+      (resp) => {
+        this.router.navigateByUrl('/dashboard');
+      },
+      (error) => {
+        this.fuseProgressBarService.hide();
+      }
+    );
   }
 
 
