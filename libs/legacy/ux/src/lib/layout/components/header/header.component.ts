@@ -264,18 +264,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       if (user?.user?.ManagedUserAccount?.IsActive)
         this.router.navigateByUrl(URLConstants.DASHBOARD_URL);
       else {
-        const launchUrl = `${
-          user?.user?.UserRoles.filter(
-            (x) =>
-              x.UserType === 'Student' && !x.RoleCode.includes('ViewAsStudent')
-          ).length > 0
-            ? 'student'
-            : user?.user?.UserRoles.filter(
-                (x) => x.UserType === UserPersona.FacultyPersona
-              ).length > 0
-            ? 'faculty'
-            : 'admin'
-        }${URLConstants.LAUNCH_URL}`;
+        const launchUrl = `admin${URLConstants.LAUNCH_URL}`;
         this.router.navigateByUrl(launchUrl);
       }
     });
