@@ -7,16 +7,11 @@
         <div id="login-form">
 
           <div>
-            <div class="logo mb-16" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
-              <img src="assets/images/logo/z-healthcare-pink-large.png" alt="zhealthcare-pink-large" width="150px" height="80px">
+            <div class="logo mb-32" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+              <img src="assets/images/logo/z-healthcare-pink-large.png" alt="zhealthcare-pink-large" width="120px" height="56px">
             </div>
           </div>
-          <div class="sso_signin">
-            <zhc-azuread-identity></zhc-azuread-identity>
-            <span class="or">
-                        OR
-            </span>
-          </div>
+
           <form name="loginForm" [formGroup]="loginForm" novalidate autocomplete="off">
             <div fxLayout="column" fxLayoutAlign="center" class="pb-16">
               <mat-error class="warn-fg" *ngIf="isLockedOut">Your account is locked. Use forgot password to unlock and
@@ -89,6 +84,12 @@
               [disabled]="!loginForm.valid && loading" class="w-100-p">
                 <span>LOGIN <em *ngIf="loading" class="fas fa-spinner fa-pulse"></em></span>
               </button>
+            </div>
+
+            <div class="sso_signin">
+              <span class="or"> OR </span>
+              <span class="loginwith">Login with </span>
+              <zhc-azuread-identity style="width: 100%;"></zhc-azuread-identity>
             </div>
 
             <div class="font-weight-600 mt-20 text-center">
