@@ -56,8 +56,8 @@
                   <mat-icon class="icon-fill">{{ hide ? 'visibility' : 'lock' }}</mat-icon>
 
                 </button>
-                <mat-error class="error"></mat-error>
               </mat-form-field>
+              <mat-error class="error" *ngIf="isInvalid">Your username or password is invalid.</mat-error>
             </div>
 
             <!-- forgot password field-->

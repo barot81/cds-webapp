@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { MsalGuard, MsalRedirectComponent } from '@azure/msal-angular';
-import { LoginComponent } from '@zhealthcare/account/identity';
 import { RoleConfigType } from '@zhealthcare/angular-bootstrap';
 import {
   AuthGuardService,
