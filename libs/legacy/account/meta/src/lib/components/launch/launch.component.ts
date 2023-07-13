@@ -202,8 +202,10 @@ export class LaunchComponent
   }
 
   showProgressBar() {
-    this.fuseProgressBarService.show();
-    this.inProgressCount++;
+    setTimeout(() => {
+      this.fuseProgressBarService.show();
+      this.inProgressCount++;
+    });
   }
 
   hideProgressBar() {
