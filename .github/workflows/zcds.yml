@@ -27,8 +27,6 @@ jobs:
           NODE_OPTIONS: "--max_old_space_size=16384"
         run: |
           npm ci -f
-          npx nx run-many --target build --projects host --parallel=false --configuration=production
-
 
       - name: Build Remote App
         run: npm run nx build remote-app --configuration ${{ env.CONFIGURATION }}
