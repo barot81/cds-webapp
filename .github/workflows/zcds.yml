@@ -32,10 +32,22 @@ jobs:
       - name: Build Host App
         run: npx nx run-many --target build --projects host --parallel=false --configuration ${{ env.CONFIGURATION }}
 
+      # Add a step to upload the "webapp" artifact
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: webapp
+          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Download Artifacts from Build Job
+        uses: actions/download-artifact@v2
+        with:
+          name: webapp
+          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
       - name: Deploy Remote App to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
