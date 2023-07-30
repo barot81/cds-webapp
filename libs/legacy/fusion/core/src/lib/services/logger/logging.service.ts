@@ -13,31 +13,26 @@ export class LoggingService {
   static setApplicationInsights() {
     LoggingService.router = FoundationInjector.get(Router);
     const config = FoundationInjector.get(FusionConfigService);
-    LoggingService.appInsights = new ApplicationInsights({
-      config: {
-        instrumentationKey: config.appSettings.instrumentationKey,
-        enableAutoRouteTracking: true, // send pageViews on route change
-        maxAjaxCallsPerView: -1, // Send all the events (default is 500 per page)
-      },
-    });
+    // LoggingService.appInsights = new ApplicationInsights({
+    //   config: {
+    //     instrumentationKey: config.appSettings.instrumentationKey,
+    //     enableAutoRouteTracking: true, // send pageViews on route change
+    //     maxAjaxCallsPerView: -1, // Send all the events (default is 500 per page)
+    //   },
+    // });
 
-    LoggingService.appInsights.loadAppInsights();
+    // LoggingService.appInsights.loadAppInsights();
 
     // ITelemetryInitializer - to filer requests, traces | add custom properties to telemetry data
-    LoggingService.appInsights.addTelemetryInitializer((envelope) => {
-      const storage = sessionStorage.getItem('User')
-        ? sessionStorage
-        : localStorage;
-      if (storage.getItem('User')) {
-        const user = JSON.parse(storage.getItem('User'));
-        LoggingService.appInsights.setAuthenticatedUserContext(user?.UserName);
-      }
-
-      // if (envelope.data.someField === 'tobefilteredout') {
-      //   return false;
-      // }
-      // return true;
-    });
+    // LoggingService.appInsights.addTelemetryInitializer((envelope) => {
+    //   const storage = sessionStorage.getItem('User')
+    //     ? sessionStorage
+    //     : localStorage;
+    //   if (storage.getItem('User')) {
+    //     const user = JSON.parse(storage.getItem('User'));
+    //     LoggingService.appInsights.setAuthenticatedUserContext(user?.UserName);
+    //   }
+    // });
 
     LoggingService.excludedTenants =
       config?.appSettings?.clickTrackingSettings?.excludedTenants;
@@ -47,28 +42,29 @@ export class LoggingService {
     LoggingService.appInsights.trackPageView({ name, uri });
   }
   static startNavigationEvent(url: string) {
+    // early comments
     // LoggingService.appInsights.context.operation.id =
     //   window['Microsoft'].ApplicationInsights.Util.newId();
     //LoggingService.appInsights.context.operation.name = url;
-    LoggingService.appInsights.startTrackEvent(url);
+    // LoggingService.appInsights.startTrackEvent(url);
   }
   static endNavigationEvent(url: string) {
-    LoggingService.appInsights.stopTrackEvent(url, { type: 'PAGE LOAD TIME' });
+    // LoggingService.appInsights.stopTrackEvent(url, { type: 'PAGE LOAD TIME' });
   }
   static setUserName(userName: string) {
-    LoggingService.appInsights.setAuthenticatedUserContext(userName);
+    // LoggingService.appInsights.setAuthenticatedUserContext(userName);
   }
 
   static clearUserName() {
-    LoggingService.appInsights.clearAuthenticatedUserContext();
+    // LoggingService.appInsights.clearAuthenticatedUserContext();
   }
 
   static logEvent(name: string, properties?: any, measurements?: any) {
-    LoggingService.appInsights.trackEvent({
-      name: name,
-      properties: properties,
-      measurements: measurements,
-    });
+    // LoggingService.appInsights.trackEvent({
+    //   name: name,
+    //   properties: properties,
+    //   measurements: measurements,
+    // });
   }
 
   static logException(
@@ -80,21 +76,21 @@ export class LoggingService {
     const error: any = {};
     error.exception = exception;
     const props = { ...properties, mainHash: localStorage.getItem('mainHash') };
-    LoggingService.appInsights.trackException(
-      error,
-      handledAt,
-      props,
-      measurements
-    );
+    // LoggingService.appInsights.trackException(
+    //   error,
+    //   handledAt,
+    //   props,
+    //   measurements
+    // );
   }
 
   static logTrace(message: string, properties?: any, severityLevel?: any) {
     const props = { ...properties, mainHash: localStorage.getItem('mainHash') };
-    LoggingService.appInsights.trackTrace({
-      message: message,
-      properties: props,
-      severityLevel: severityLevel,
-    });
+    // LoggingService.appInsights.trackTrace({
+    //   message: message,
+    //   properties: props,
+    //   severityLevel: severityLevel,
+    // });
   }
 
   static logCustomEvents(event) {
@@ -130,15 +126,15 @@ export class LoggingService {
         clickedText =
           event?.target?.parentElement?.nextElementSibling?.innerText; // RadioButton Clicked
       }
-      if (clickedText && clickedText.trim() != '')
-        LoggingService.logEvent(title, {
-          TenantId: tenantId,
-          OuCode: ouCode,
-          userId: userId,
-          userRoles: userRoles,
-          Route: route,
-          ClickedText: clickedText,
-        });
+      // if (clickedText && clickedText.trim() != '')
+      //   LoggingService.logEvent(title, {
+      //     TenantId: tenantId,
+      //     OuCode: ouCode,
+      //     userId: userId,
+      //     userRoles: userRoles,
+      //     Route: route,
+      //     ClickedText: clickedText,
+      //   });
     }
   }
 }

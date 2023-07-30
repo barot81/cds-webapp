@@ -1,0 +1,56 @@
+name: Build and Deploy Angular Apps to Azure Web App
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  AZURE_WEBAPP_NAME: zcds-host
+  AZURE_WEBAPP_PACKAGE_PATH: dist/apps
+  CONFIGURATION: production
+  NODE_VERSION: 16.x
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Remote App
+        run: npm run nx build remote-app --configuration ${{ env.CONFIGURATION }}
+
+      - name: Build Host App
+        run: npm run nx build host-app --configuration ${{ env.CONFIGURATION }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifacts from Build Job
+        uses: actions/download-artifact@v2
+        with:
+          name: webapp
+          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
+      - name: Deploy Remote App to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.ZCDS_REMOTE_SECRET }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/remote
+
+      - name: Deploy Host App to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.ZCDS_HOST_SECRET }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/host
