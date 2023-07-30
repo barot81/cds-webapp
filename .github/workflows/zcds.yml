@@ -7,6 +7,7 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: zcds-host
+  AZURE_WEBAPP_REMOTE_NAME: zcds-remote
   AZURE_WEBAPP_PACKAGE_PATH: dist/apps
   CONFIGURATION: production
   NODE_VERSION: 16.x
@@ -38,7 +39,7 @@ jobs:
       - name: Deploy Remote App to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          app-name: ${{ env.AZURE_WEBAPP_REMOTE_NAME }}
           publish-profile: ${{ secrets.ZCDS_REMOTE_SECRET }}
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/remote
 
