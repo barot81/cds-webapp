@@ -20,7 +20,7 @@ export const environment = {
       },
     },
     microfrontends: {
-      remote: 'http://localhost:5201',
+      remote: 'https://zcds-remote.azurewebsites.net/',
       'ux-demo': 'http://localhost:4801',
     },
     localization: {
