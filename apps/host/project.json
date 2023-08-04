@@ -16,6 +16,7 @@
         "assets": [
           "apps/host/src/favicon.ico",
           "apps/host/src/assets",
+          "apps/host/src/web.config",
           {
             "glob": "**/*",
             "input": "libs/legacy/assets/global/",
