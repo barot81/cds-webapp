@@ -1,0 +1,17 @@
+{
+  "globalHeaders": {
+    "Access-Control-Allow-Origin": "*"
+  },
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/img/*.{png,jpg,gif,webp}",
+      "/css/*"
+    ]
+  },
+  "mimeTypes": {
+    ".json": "text/json",
+    ".mjs": "application/javascript",
+    ".js": "application/javascript"
+  }
+}

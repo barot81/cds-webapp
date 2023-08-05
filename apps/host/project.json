@@ -17,6 +17,7 @@
           "apps/host/src/favicon.ico",
           "apps/host/src/assets",
           "apps/host/src/web.config",
+          "apps/host/src/staticwebapp.config.json",
           {
             "glob": "**/*",
             "input": "libs/legacy/assets/global/",

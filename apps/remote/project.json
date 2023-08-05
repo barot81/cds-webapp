@@ -17,6 +17,7 @@
           "apps/remote/src/favicon.ico",
           "apps/remote/src/assets",
           "apps/remote/src/web.config",
+          "apps/remote/src/staticwebapp.config.json",
           {
             "glob": "**/*",
             "input": "libs/legacy/assets/global/",
