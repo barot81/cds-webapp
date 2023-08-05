@@ -3,7 +3,7 @@ name: Remote App CI/CD
 on:
   push:
     branches:
-      - main2
+      - static_web_app
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
