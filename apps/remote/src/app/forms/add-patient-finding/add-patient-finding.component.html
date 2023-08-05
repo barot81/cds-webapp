@@ -171,7 +171,7 @@
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="32">
             <mat-label>Response Type</mat-label>
-            <mat-select formControlName="responseType" (selectionChange)="OnStatusChanged($event)" required>
+            <mat-select formControlName="responseType" (selectionChange)="OnResponseTypeChanged($event)" required>
               <mat-option *ngFor="let type of responseTypeList" [ngClass]="{'mat-option-text ': isOptionTruncated(type)
               }" id={{type}} [value]="type" class="dropdown-with-tooltip" [options]="tooltipOptions"
                 [display]="isOptionTruncated(type)" [tooltip]="type">
@@ -221,18 +221,6 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-
-          <!-- <mat-form-field appearance="fill" fxFlex="10">
-            <mat-label>Ending Drg</mat-label>
-            <mat-select formControlName="revisedDrgNo" (selectionChange)="onEndingDrgChange($event)"
-              required>
-              <mat-option *ngFor="let drg of drgLookup" [ngClass]="{'mat-option-text ': isOptionTruncated(drg.no)}"
-              id={{drg.no}} [value]="drg.no" class="dropdown-with-tooltip" [options]="tooltipOptions"
-                [display]="isOptionTruncated(drg.no)" [tooltip]="drg.no">
-                {{drg.no}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field> -->
           <mat-form-field appearance="fill" fxFlex="53">
             <mat-label>Ending DRG Description</mat-label>
             <input matInput  formControlName="revisedDrgDescription">

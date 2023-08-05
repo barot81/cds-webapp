@@ -1,13 +1,12 @@
 import { DatePipe } from '@angular/common';
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { MatSelect } from '@angular/material/select';
 import {
   FusionFormAdapter,
   FusionFormComponent,
 } from '@zhealthcare/fusion/components';
 import { DrawerService, SnackbarService } from '@zhealthcare/ux';
-import { BehaviorSubject, catchError, Subject, take, takeUntil } from 'rxjs';
+import { BehaviorSubject,  Subject, takeUntil } from 'rxjs';
 import { Finding } from '../../models/Finding.model';
 import { DrgLookup } from '../../models/lookup.models';
 import { Patient } from '../../models/patient.model';
@@ -100,7 +99,7 @@ export class AddPatientFindingComponent
       expectedWeight: new FormControl(''),
       expectedGmlos: new FormControl(''),
       responseDate: new FormControl(''),
-      responseType: new FormControl(''),
+      responseType: new FormControl('', Validators.required),
       responseComment: new FormControl(''),
       followupComment: new FormControl(''),
       revisedDrgNo: new FormControl(''),
@@ -109,7 +108,7 @@ export class AddPatientFindingComponent
       revisedWeight: new FormControl(''),
       revisedGmlos: new FormControl(''),
       weightDifference: new FormControl(''),
-      queryStatus: new FormControl(''),
+      queryStatus: new FormControl('', Validators.required),
       clinicalSummary: new FormControl(''),
       comments: new FormControl(''),
     });
