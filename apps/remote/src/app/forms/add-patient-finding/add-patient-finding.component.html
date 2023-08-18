@@ -165,7 +165,7 @@
           <mat-form-field appearance="fill" fxFlex="32">
             <mat-label>Response Date</mat-label>
             <input readonly matInput [matDatepicker]="picker2" (click)="picker2.open()"
-              formControlName="responseDate" />
+              formControlName="responseDate" required />
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2 color="primary" class="action-icon"></mat-datepicker>
           </mat-form-field>
