@@ -79,11 +79,10 @@ export class LaunchComponent
   ) {
     super();
     this._unsubscribe = new Subject();
-    console.log('launch called');
   }
 
   ngOnInit() {
-    this.pageFacade.setPageTitle('Launch');
+    this.pageFacade.setPageTitle('Dashboard');
 
     this.navigateByUserType();
     this.searchControl.valueChanges.subscribe((data) => {

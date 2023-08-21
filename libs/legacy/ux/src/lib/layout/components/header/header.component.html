@@ -112,7 +112,7 @@
 
       <!-- <div class="header-separator"></div> -->
 
-      <button
+      <!-- <button
         mat-icon-button
         class="notification-panel-toggle-button h-100-p"
         (click)="navigateToHelpCenter()"
@@ -120,9 +120,9 @@
         [options]="tooltipOptions"
       >
         <i aria-hidden="true" class="fa-light fa-circle-question"></i>
-      </button>
+      </button> -->
 
-      <ng-container *ngIf="isStudent">
+      <!-- <ng-container *ngIf="isStudent">
         <button
           mat-flat-button
           color="primary"
@@ -133,11 +133,11 @@
           <i class="fa-light fa-comments-alt s-16 mr-4"></i>
           <span class="ml-4">chat</span>
         </button>
-      </ng-container>
+      </ng-container> -->
 
       <!-- <div class="header-separator"></div> -->
 
-      <ng-container *ngIf="!(hasDelegateRole$ | async) && isAdmin">
+      <!-- <ng-container *ngIf="!(hasDelegateRole$ | async) && isAdmin">
         <button
           mat-icon-button
           class="notification-panel-toggle-button h-100-p bell-icon-button"
@@ -146,7 +146,7 @@
         >
           <i aria-hidden="true" class="fa fa-bullhorn s-18"></i>
         </button>
-      </ng-container>
+      </ng-container> -->
 
       <!-- <div class="header-separator"></div> -->
       <!-- profile section -->
