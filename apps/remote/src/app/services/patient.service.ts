@@ -142,7 +142,7 @@ export class PatientService extends HttpService {
         map((x) => {
           const existingPatient = this.patients.find((y) => y.id === patientComment.id);
           if(existingPatient) {
-            existingPatient.generalComments = patientComment.generalComment;
+            existingPatient.generalComment = patientComment.generalComment;
             existingPatient.reviewStatus = patientComment.reviewStatus;
             this.patientData$.next(this.patients);
           } else {

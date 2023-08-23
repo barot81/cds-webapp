@@ -204,13 +204,15 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     dataSource.requestType = MethodType.GET;
     dataSource.multiColumnSearch = this.columnsToSearch;
     const selectedStatus = localStorage.getItem('selectedStatus');
-    const defaultFilter: Filter = {
-      fieldName: 'Filters.ReviewStatus',
-      operator: 'eq',
-      value: selectedStatus,
-      displayName: 'Review Status',
-    };
-    dataSource.filters = selectedStatus === 'Total' ? [] : [defaultFilter];
+    if(selectedStatus) {
+      const defaultFilter: Filter = {
+        fieldName: 'Filters.ReviewStatus',
+        operator: 'eq',
+        value: selectedStatus,
+        displayName: 'Review Status',
+      };
+      dataSource.filters = selectedStatus === 'Total' ? [] : [defaultFilter];
+    }
     dataSource.customHeaders = [];
     this.datasourceFacade.InitializeDataSource(dataSource);
     Logger.trace(

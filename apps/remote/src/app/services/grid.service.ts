@@ -32,6 +32,6 @@ export class GridService extends ComponentMap {
 
   removeFilter(value: string, displayName: string) {
     const currentFilterIndex = this.appliedFilters.findIndex(x=>x.displayName === displayName && x.value === value);
-    this.appliedFilters = [...this.appliedFilters.slice().splice(currentFilterIndex,1)];
+    this.appliedFilters = [...this.appliedFilters.slice().splice(currentFilterIndex, 1)];
   }
 }
