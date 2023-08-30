@@ -99,7 +99,7 @@ export class AddPatientFindingComponent
       expectedDrgDescription: new FormControl(''),
       expectedWeight: new FormControl(),
       expectedGmlos: new FormControl(),
-      responseDate: new FormControl(''),
+      responseDate: new FormControl(),
       responseType: new FormControl('', Validators.required),
       responseComment: new FormControl(''),
       followupComment: new FormControl(''),

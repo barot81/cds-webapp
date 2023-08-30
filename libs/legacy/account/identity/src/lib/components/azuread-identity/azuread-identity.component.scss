@@ -3,11 +3,25 @@
   width: 100%;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
+
+.loginwith {
+  text-align: center;
+  font-size: 14px;
+}
+
+
+
 .login_options {
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  margin: 6px;
+  padding: 7px;
+  border-radius: 10%;
+  background: aliceblue;
+
 }
 
 .loader-overlay {
