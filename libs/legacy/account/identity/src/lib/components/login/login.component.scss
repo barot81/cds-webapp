@@ -35,11 +35,3 @@
   font-size: 16px;
   margin-bottom: 5px;
 }
-
-.is-divider-vertical::before {
-  border-color: #555;
-}
-
-.is-divider-vertical[data-content]::after, .is-divider[data-content]::after {
-  color: #555;
-}

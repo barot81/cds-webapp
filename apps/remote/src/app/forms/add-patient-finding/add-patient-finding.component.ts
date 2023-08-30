@@ -17,7 +17,7 @@ import { PatientService } from '../../services/patient.service';
 @Component({
   selector: 'add-patient-finding',
   templateUrl: 'add-patient-finding.component.html',
-  styleUrls: ['add-patient-finding.component.scss'],
+  styleUrls: ['add-patient-finding.component.scss']
 })
 export class AddPatientFindingComponent
   extends FusionFormComponent
