@@ -165,13 +165,14 @@
           <mat-form-field appearance="fill" fxFlex="32">
             <mat-label>Response Date</mat-label>
             <input readonly matInput [matDatepicker]="picker2" (click)="picker2.open()"
-              formControlName="responseDate" required />
+              formControlName="responseDate" [required]="enabledQueryBasedValidation" />
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2 color="primary" class="action-icon"></mat-datepicker>
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="32">
             <mat-label>Response Type</mat-label>
-            <mat-select formControlName="responseType" (selectionChange)="OnResponseTypeChanged($event)" required>
+            <mat-select formControlName="responseType" (selectionChange)="OnResponseTypeChanged($event)"
+            [required]="enabledQueryBasedValidation">
               <mat-option *ngFor="let type of responseTypeList" [ngClass]="{'mat-option-text ': isOptionTruncated(type)
               }" id={{type}} [value]="type" class="dropdown-with-tooltip" [options]="tooltipOptions"
                 [display]="isOptionTruncated(type)" [tooltip]="type">
@@ -185,7 +186,7 @@
 
           <mat-form-field appearance="fill" fxFlex="32">
             <mat-label>Response</mat-label>
-            <textarea matInput  formControlName="responseComment" rows="2"></textarea>
+            <textarea matInput  formControlName="responseComment" rows="2" [required]="enabledQueryBasedValidation"></textarea>
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="68">
             <mat-label>Follow Up Comments</mat-label>
@@ -203,7 +204,7 @@
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
           <mat-form-field appearance="fill" fxFlex="10" class="w-100-p">
             <mat-label> Ending Drg No </mat-label>
-            <mat-select (selectionChange)="onEndingDrgChange($event)" formControlName="revisedDrgNo">
+            <mat-select (selectionChange)="onEndingDrgChange($event)" formControlName="revisedDrgNo" [required]="enabledQueryBasedValidation">
               <mat-option>
                 <ngx-mat-select-search
                   formControlName="revisedDrgSearch"

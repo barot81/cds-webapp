@@ -47,7 +47,7 @@ import {
 import { GridService } from '../../services/grid.service';
 import { PatientGridColInfo } from '../../configs/column-info.config';
 import { PatientService } from '../../services/patient.service';
-import { NavigationEnd, Router, RoutesRecognized } from '@angular/router';
+import { Router, RoutesRecognized } from '@angular/router';
 export class AppliedGridFilter {
   constructor(public name: string, public values: string[]) {}
 }
@@ -211,7 +211,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
         value: selectedStatus,
         displayName: 'Review Status',
       };
-      dataSource.filters = selectedStatus === 'Total' ? [] : [defaultFilter];
+      dataSource.filters = selectedStatus === 'Total DRG' ? [] : [defaultFilter];
     }
     dataSource.customHeaders = [];
     this.datasourceFacade.InitializeDataSource(dataSource);
