@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { AfterViewInit, Component, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import {
   FusionFormAdapter,
@@ -42,6 +42,7 @@ export class AddPatientFindingComponent
   PatientInfo: Patient;
   loading = false;
   drgLookups$ : Subject<DrgLookup[]> = new BehaviorSubject([]);
+  enabledQueryBasedValidation = true;
   constructor(
     private readonly fb: FormBuilder,
     private _drawerService: DrawerService,
@@ -121,7 +122,6 @@ export class AddPatientFindingComponent
     this.statusList = [
       'Pending',
       'Answered',
-      'Completed',
       'Dropped',
       'No Response',
     ];
@@ -166,8 +166,37 @@ export class AddPatientFindingComponent
         });
       }
     );
+
+    this.onQueryStatusChanged();
   }
 
+  onQueryStatusChanged() {
+    this.fusionFormGroup.get('queryStatus')?.valueChanges.subscribe((queryStatus) => {
+
+      this.enabledQueryBasedValidation = false;
+      const responseDateControl = this.fusionFormGroup.get('responseDate');
+      const responseTypeControl = this.fusionFormGroup.get('responseType');
+      const responseCommentControl = this.fusionFormGroup.get('responseComment');
+      const revisedDrgNoControl = this.fusionFormGroup.get('revisedDrgNo');
+      responseDateControl?.clearValidators();
+      responseTypeControl?.clearValidators();
+      responseCommentControl?.clearValidators();
+      revisedDrgNoControl?.clearValidators();
+
+      if (queryStatus !== 'Pending') {
+        this.enabledQueryBasedValidation = true;
+        responseDateControl?.setValidators(Validators.required);
+        responseTypeControl?.setValidators(Validators.required);
+        responseCommentControl?.setValidators(Validators.required);
+        revisedDrgNoControl?.setValidators(Validators.required);
+      }
+
+      responseDateControl?.updateValueAndValidity();
+      responseTypeControl?.updateValueAndValidity();
+      responseCommentControl?.updateValueAndValidity();
+      revisedDrgNoControl?.updateValueAndValidity();
+    });
+  }
 
   protected filterDrgs(formControlName: string) {
     if (!this.drgLookup) {

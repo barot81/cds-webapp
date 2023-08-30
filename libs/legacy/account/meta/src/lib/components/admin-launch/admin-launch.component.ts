@@ -214,19 +214,34 @@ export class AdminLaunchComponent
 
   arrangeTiles(statusCounts: StatusCount[]) {
     const orderedTiles = [
-      'New',
-      'Pending Query',
-      'Later Review',
-      'No Query',
-      'Non DRG',
+      {
+        id: 'New',
+        displayName: 'New DRG',
+      },
+      {
+        id: 'Pending Query',
+        displayName: 'Pending Query',
+      },
+      {
+        id: 'Later Review',
+        displayName: 'Later Review',
+      },
+      {
+        id: 'No Query',
+        displayName: 'No Query',
+      },
+      {
+        id: 'Non DRG',
+        displayName: 'Non DRG',
+      }
     ];
     const totalCount = statusCounts.find((x) => x.name === 'Total')?.count
                       ?? statusCounts.reduce((sum, current) => sum + current.count, 0);
-    this.facilityStatuses.push(new StatusCount('Total', totalCount));
+    this.facilityStatuses.push(new StatusCount('Total DRG', totalCount));
 
     orderedTiles.forEach((x) => {
       this.facilityStatuses.push(
-        new StatusCount(x, statusCounts.find((y) => y.name === x)?.count ?? 0)
+        new StatusCount(x.displayName, statusCounts.find((y) => y.name === x.id)?.count ?? 0)
       );
     });
   }
