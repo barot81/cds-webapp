@@ -1,13 +1,13 @@
-<mat-card class="adcard">
-  <mat-card-header>
-    <mat-card-title style="margin:0px;">
+<div>
+  <div class="adcard">
+    <span class="loginwith">Login with </span>
+    <div>
       <button (click)="login()" class="login_options">
-
         <img src="assets/images/logo/microsoft.png" alt="Microsoft" width="90px" height="50px" />
       </button>
-    </mat-card-title>
-  </mat-card-header>
-</mat-card>
+    </div>
+  </div>
+</div>
 
 <div class="loader-overlay" *ngIf="loading">
   <mat-spinner class="spinner"></mat-spinner>
