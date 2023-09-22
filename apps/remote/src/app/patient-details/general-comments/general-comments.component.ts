@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, map, Subject, takeUntil } from 'rxjs';
+import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 import { PatientFormsService } from '../../forms/patient-forms.service';
 import { GeneralComment } from '../../models/general-comments.model';
 import { Patient } from '../../models/patient.model';
@@ -9,13 +9,15 @@ import { PatientService } from '../../services/patient.service';
 @Component({
   selector: 'patients-general-comments',
   templateUrl: 'general-comments.component.html',
+  styleUrls:['./general-comments.component.scss']
 })
 export class GeneralCommentsComponent implements OnInit, OnDestroy {
   loading$: any;
-  generalComments$: Subject<GeneralComment> = new BehaviorSubject(
-    new GeneralComment()
-  );
+  showMore = true;
+  followUpComments$: Subject<GeneralComment[]> = new BehaviorSubject([]);
   patientInfo: Patient;
+  folloupComments: GeneralComment[] = [];
+  allComments: GeneralComment[] = [];
   _unsubscribe: Subject<any> = new Subject();
   patientId: any;
   constructor(
@@ -30,11 +32,23 @@ export class GeneralCommentsComponent implements OnInit, OnDestroy {
       this.patientService.getPatientById(x.id).subscribe((res) => {
         if(res) {
           this.patientInfo = res;
-          this.generalComments$.next(res.generalComment);
+          this.allComments = this.sortTheComments(res.followUpComments);
+          this.folloupComments = this.allComments.slice(0,2);
+          this.followUpComments$.next(this.allComments);
         }
         this.loading$.next(false);
       });
     });
+  }
+
+  private sortTheComments(followupComments: GeneralComment[] ) {
+    const comments = followupComments || [];
+    comments.sort((a, b) => {
+      const dateA = new Date(a.addedOn).getTime();
+      const dateB = new Date(b.addedOn).getTime();
+      return dateB - dateA;
+    });
+    return comments;
   }
 
   ngOnInit() {
@@ -43,8 +57,7 @@ export class GeneralCommentsComponent implements OnInit, OnDestroy {
       .subscribe(patients => {
         const selectedPatient = patients.find(x=>x.id === this.patientId);
         if(selectedPatient) {
-          selectedPatient.generalComment.comments = selectedPatient?.generalComment?.comments ?? '-';
-          this.generalComments$.next(selectedPatient?.generalComment);
+          this.folloupComments = this.sortTheComments(selectedPatient.followUpComments);
           if(this.patientInfo)
             this.patientInfo.reviewStatus = selectedPatient.reviewStatus;
         }
@@ -58,6 +71,15 @@ export class GeneralCommentsComponent implements OnInit, OnDestroy {
     });
   }
 
+  onShowMoreClick() {
+    this.showMore = false;
+    this.folloupComments = this.allComments;
+  }
+
+  onShowlessClick() {
+    this.showMore = true;
+    this.folloupComments = this.allComments.slice(0, 2);
+  }
   ngOnDestroy(): void {
     this._unsubscribe.next(true);
     this._unsubscribe.complete();

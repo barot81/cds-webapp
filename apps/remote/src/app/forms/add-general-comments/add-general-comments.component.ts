@@ -25,6 +25,7 @@ import { DatePipe } from '@angular/common';
 @Component({
   selector: 'patient-add-general-comments',
   templateUrl: 'add-general-comments.component.html',
+  styleUrls: ['./add-general-comments.component.scss']
 })
 export class AddGeneralCommentsComponent
   extends FusionFormComponent
@@ -37,13 +38,13 @@ export class AddGeneralCommentsComponent
   comments: string;
   patientInfo: PatientComment;
   reviewStatusList: string[];
+  followupComments: GeneralComment[]= [];
 
   constructor(
     private readonly fb: FormBuilder,
     public router: Router,
     private readonly _patientService: PatientService,
     private _layoutService: LayoutService,
-    private cdr: ChangeDetectorRef,
     private _snackBarService: SnackbarService,
     private _drawerService: DrawerService,
     private _datepipe: DatePipe
@@ -91,31 +92,34 @@ export class AddGeneralCommentsComponent
 
   ngAfterViewInit(): void {
     if (this.data) {
-      this.setPatientInfo(this.data);
+      this.getPatientInfo(this.data);
     } else {
       const patientId = this.routeParam.params['id'];
       this._patientService.getPatientById(patientId).subscribe((res) => {
-        this.setPatientInfo(res);
+        this.getPatientInfo(res);
       });
     }
   }
 
-  private setPatientInfo(patient:Patient) {
+  private getPatientInfo(patient:Patient) {
     this.patientInfo = {
       id: patient.id,
       generalComment: patient.generalComment,
       reviewStatus: patient.reviewStatus
     };
+    const comments = patient.followUpComments || [];
+          comments.sort((a, b) => {
+            const dateA = new Date(a.addedOn).getTime();
+            const dateB = new Date(b.addedOn).getTime();
+            return dateB - dateA;
+          });
+    this.followupComments = comments;
     if(!this.reviewStatusList.includes(patient.reviewStatus)) {
       this.reviewStatusList.unshift(patient.reviewStatus);
     }
     this.fusionFormGroup.controls['reviewStatus'].setValue(
       this.patientInfo.reviewStatus
     );
-    this.fusionFormGroup.controls['comments'].setValue(
-      this.patientInfo.generalComment.comments
-    );
-
   }
 
   createConfig() {

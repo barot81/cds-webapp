@@ -29,12 +29,30 @@
 
         <div class="zhealthcare-info p-16">
           <div class="title" tabindex="0" aria-label="General Comments">
-            General Comments
+            Followup Comments
           </div>
-          <div class="ck-editor-container description"
-            *ngIf="(generalComments$ | async) as generalComment"
-            tabindex="0" attr.aria-label="{{ generalComment.comments}}"
-            [innerHTML]="generalComment.comments | mdToHTML | safeHTML">
+          <div *ngFor="let comments of folloupComments; let i = index">
+            <div class="comments-display mt-8" >
+              <div class="ck-editor-container description " *ngIf="comments as generalComment" tabindex="0"
+                attr.aria-label="{{ generalComment.comments}}"
+                [innerHTML]="generalComment.comments | mdToHTML | safeHTML">
+
+              </div>
+              <div *ngIf="comments as generalComment" tabindex="1" class="mb-8"
+                attr.aria-label="{{ generalComment.addedOn }}">
+                <b>- {{ generalComment.addedOn | date:  date:'MMMM d, y'}}</b>
+              </div>
+            </div>
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            *ngIf="allComments.length > 2"
+          >
+            <a (click)="onShowMoreClick()" *ngIf="showMore; else showless"> Show more </a>
+            <ng-template #showless>
+              <a (click)="onShowlessClick()"> Show less </a>
+            </ng-template>
           </div>
         </div>
       </div>

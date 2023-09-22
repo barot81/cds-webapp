@@ -143,18 +143,19 @@ export class PatientService extends HttpService {
           const existingPatient = this.patients.find((y) => y.id === patientComment.id);
           if(existingPatient) {
             existingPatient.generalComment = patientComment.generalComment;
+            existingPatient.folloupComments.unshift(patientComment.generalComment);
             existingPatient.reviewStatus = patientComment.reviewStatus;
-            this.patientData$.next(this.patients);
           } else {
             if(!this.patients) this.patients = [];
             this.patients.push({
               id: patientComment.id,
               generalComment: patientComment.generalComment,
+              followupComments: [patientComment.generalComment],
               reviewStatus: patientComment.reviewStatus
             })
-            this.patientData$.next(this.patients);
-            this.getPatients().subscribe();
+            this.getPatients().subscribe(x=> this.patientData$.next(x));
           }
+          this.patientData$.next(this.patients);
           return x;
         })
       );

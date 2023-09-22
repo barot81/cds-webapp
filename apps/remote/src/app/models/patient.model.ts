@@ -25,6 +25,7 @@ export class Patient {
   contracted: boolean;
   pdx: string; // priniple diagnosis
   generalComment: GeneralComment;
+  followUpComments: GeneralComment[];
   createdBy: string;
   createdTime: string;
   lastUpdatedBy: string;

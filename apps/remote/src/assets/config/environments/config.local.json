@@ -15,7 +15,7 @@
     },
     "services": {
       "facility": {
-        "endpoint": "https://zcds.azurewebsites.net/api"
+        "endpoint": "https://localhost:7198/api"
       }
     },
     "microfrontends": {

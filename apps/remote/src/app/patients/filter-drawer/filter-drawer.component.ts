@@ -126,7 +126,7 @@ export class FilterDrawerComponent
   // { id: 'queryStatus', title: 'Query Status', count: 0 },
 
   statusList = [
-    { name: 'New', isSelected: false },
+    { name: 'New DRG', isSelected: false },
     { name: 'Pending Query', isSelected: false },
     { name: 'Later Review', isSelected: false },
     { name: 'No Query', isSelected: false },

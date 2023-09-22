@@ -193,7 +193,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
       },
     };
     const sort: Sort = {
-      columnName: 'patientName', //this.defaultSortCoulmn,
+      columnName: 'room', //this.defaultSortCoulmn,
       direction: '1',
       customFieldParm: {
         sortByFieldName: 'SortBy',
@@ -208,10 +208,10 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
       const defaultFilter: Filter = {
         fieldName: 'Filters.ReviewStatus',
         operator: 'eq',
-        value: selectedStatus,
+        value: selectedStatus === 'New DRG' ? 'New' : selectedStatus,
         displayName: 'Review Status',
       };
-      dataSource.filters = selectedStatus === 'Total DRG' ? [] : [defaultFilter];
+      dataSource.filters = [defaultFilter];
     }
     dataSource.customHeaders = [];
     this.datasourceFacade.InitializeDataSource(dataSource);
