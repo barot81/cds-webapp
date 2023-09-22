@@ -29,12 +29,7 @@
         min-width: 4vw !important;
       }
       &.review-status-column {
-        text-align: center !important;
-        min-width: 9vw !important;
-      }
-
-      &.admit-date-column {
-        min-width: 9vw !important;
+        min-width: 10vw !important;
       }
 
       &.los-column {
@@ -69,7 +64,49 @@
   }
 }
 
+.column-group {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
 
+.name-column {
+  width: 10vw;
+}
+
+.cds-column {
+  width: 10vw;
+}
+
+.admit-date-column {
+  width: 11vw !important;
+}
+
+.review-column {
+  width: 15vw;
+}
+
+.los-column {
+  width: 7vw;
+}
+
+.drg-column {
+  width: 20vw;
+}
+
+.comments-column {
+  width: 20vw;
+}
+
+.comment-date {
+  width: 6vw;
+}
+.comments-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
 .patient-search-grid-with-filter {
   height: calc(100vh - 160px) !important;
   overflow: auto;

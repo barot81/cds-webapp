@@ -7,39 +7,21 @@ export const PatientGridColInfo: ColumnOption[] = [
     isSearchable: true,
     isDisplayColumn: true
   },
-  {
-    displayName: 'Patient #',
-    fieldName: 'patientNo',
-    isSearchable: true,
-    isDisplayColumn: true
-  },
-  {
-    displayName: 'Room',
-    fieldName: 'room',
-    isSearchable: true,
-    isDisplayColumn: true
-  },
+  // {
+  //   displayName: 'Patient #',
+  //   fieldName: 'patientNo',
+  //   isSearchable: true,
+  //   isDisplayColumn: true
+  // },
+  // {
+  //   displayName: 'Room',
+  //   fieldName: 'room',
+  //   isSearchable: true,
+  //   isDisplayColumn: true
+  // },
   {
     displayName: 'Admit Date',
     fieldName: 'admitDate',
-    isSearchable: true,
-    isDisplayColumn: true
-  },
-  {
-    displayName: 'Health Plan',
-    fieldName: 'healthPlan',
-    isSearchable: true,
-    isDisplayColumn: true
-  },
-  {
-    displayName: 'LOS',
-    fieldName: 'los',
-    isSearchable: false,
-    isDisplayColumn: true
-  },
-  {
-    displayName: 'Review Status',
-    fieldName: 'reviewStatus',
     isSearchable: true,
     isDisplayColumn: true
   },
@@ -50,11 +32,30 @@ export const PatientGridColInfo: ColumnOption[] = [
     isDisplayColumn: true
   },
   {
-    displayName: 'Reimbursement Type',
-    fieldName: 'reimbursementType',
+    displayName: 'Review Status',
+    fieldName: 'reviewStatus',
+    isSearchable: true,
+    isDisplayColumn: true
+  },
+   // {
+  //   displayName: 'Health Plan',
+  //   fieldName: 'healthPlan',
+  //   isSearchable: true,
+  //   isDisplayColumn: true
+  // },
+  {
+    displayName: 'LOS',
+    fieldName: 'los',
     isSearchable: false,
     isDisplayColumn: true
   },
+
+  // {
+  //   displayName: 'Reimbursement Type',
+  //   fieldName: 'reimbursementType',
+  //   isSearchable: false,
+  //   isDisplayColumn: true
+  // },
   {
     displayName: 'Drg No - Description',
     fieldName: 'drgNo',
@@ -62,9 +63,15 @@ export const PatientGridColInfo: ColumnOption[] = [
     isDisplayColumn: true
   },
   {
-    displayName: 'Query Date',
-    fieldName: 'queryDate',
+    displayName: 'Followup Comments',
+    fieldName: 'comments',
     isSearchable: false,
     isDisplayColumn: true
-  }
+  },
+  // {
+  //   displayName: 'Query Date',
+  //   fieldName: 'queryDate',
+  //   isSearchable: false,
+  //   isDisplayColumn: true
+  // }
 ]

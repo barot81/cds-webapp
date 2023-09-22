@@ -12,7 +12,7 @@ import {
   FusionFormComponent,
 } from '@zhealthcare/fusion/components';
 import { DrawerService, LayoutService, SnackbarService } from '@zhealthcare/ux';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import {
   GeneralComment,
   PatientComment,
@@ -21,6 +21,7 @@ import { richTextConfig } from '../../configs/richtext.config';
 import { PatientService } from '../../services/patient.service';
 import { Patient } from '../../models/patient.model';
 import { DatePipe } from '@angular/common';
+import { UserFacade } from '@zhealthcare/fusion/core';
 
 @Component({
   selector: 'patient-add-general-comments',
@@ -39,7 +40,8 @@ export class AddGeneralCommentsComponent
   patientInfo: PatientComment;
   reviewStatusList: string[];
   followupComments: GeneralComment[]= [];
-
+  loggedInUser$ = new BehaviorSubject(null);
+  currentUser: string;
   constructor(
     private readonly fb: FormBuilder,
     public router: Router,
@@ -47,7 +49,8 @@ export class AddGeneralCommentsComponent
     private _layoutService: LayoutService,
     private _snackBarService: SnackbarService,
     private _drawerService: DrawerService,
-    private _datepipe: DatePipe
+    private _datepipe: DatePipe,
+    private _userFacade: UserFacade
   ) {
     super();
 
@@ -60,6 +63,12 @@ export class AddGeneralCommentsComponent
 
     this.reviewStatusList = ['No Query', 'Later Review'];
     this.createConfig();
+    this._userFacade.UserState$.subscribe((data) => {
+      if (data && data !== null) {
+        this.loggedInUser$.next(data.user);
+        this.currentUser = `${data.user.LastName} ${data.user.firstName}`;
+      }
+    });
   }
 
   OnReviewStatusChanged(reviewStatus) {
@@ -132,7 +141,7 @@ export class AddGeneralCommentsComponent
     if (this.key) {
       this.patientInfo.generalComment  = {
         comments: this.fusionFormGroup.controls['comments'].value,
-        addedBy: this._layoutService.getUser()?.name ?? '',
+        addedBy: this.currentUser ?? '',
         addedOn: this._datepipe.transform(new Date(), 'yyyy-MM-dd'),
       };
       this.patientInfo.reviewStatus = this.fusionFormGroup.controls['reviewStatus'].value;

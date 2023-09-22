@@ -128,7 +128,6 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     public _patientGridService: GridService,
     public _headerService: HeaderService,
     public _scrollService: ScrollService,
-    private readonly _fusionNavigationService: FusionNavigationService,
     private readonly _patientService: PatientService,
     private readonly userFacade: UserFacade,
     public datepipe: DatePipe,

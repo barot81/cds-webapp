@@ -89,80 +89,166 @@
           matSort matSortDisableClear>
 
           <ng-container matColumnDef="patientName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="name-column">Patient Name</th>
+            <th mat-header-cell *matHeaderCellDef  class="name-column">
+              <div class="mb-4">Patient #</div>
+              <div class="mb-4">Patient Name </div>
+              <div class="mb-4">Room</div>
+            </th>
             <td mat-cell *matCellDef="let element; let i = index" class="name-column">
-              <div fxLayout="row" fxLayoutAlign="start center">
-                <a [routerLink]="['./', element?.id, 'details']">
-                  <span class="list-item-name">{{ element?.patientName }}
-                  </span>
-                </a>
-                <zhealthcare-tag-showcase [tags]="tags" class="ml-4" *ngIf="i % 3 === 0"></zhealthcare-tag-showcase>
+              <div class="column-group">
+                <div>
+                  {{ element?.patientNo }}
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <a [routerLink]="['./', element?.id, 'details']">
+                    <span class="list-item-name">{{ element?.patientName }}
+                    </span>
+                  </a>
+                  <zhealthcare-tag-showcase [tags]="tags" class="ml-4" *ngIf="i % 3 === 0"></zhealthcare-tag-showcase>
+                </div>
+
+                <div>
+                  <b>{{ element?.room }}</b>
+                </div>
               </div>
             </td>
           </ng-container>
-          <ng-container matColumnDef="patientNo">
+          <!-- <ng-container matColumnDef="patientNo">
             <th id="patient-id-header" mat-header-cell *matHeaderCellDef mat-sort-header>
               Patient #
             </th>
             <td mat-cell *matCellDef="let element">
               {{ element?.patientNo }}
             </td>
-          </ng-container>
+          </ng-container> -->
 
           <!-- address Column -->
-          <ng-container matColumnDef="room">
+          <!-- <ng-container matColumnDef="room">
             <th id="room" mat-header-cell *matHeaderCellDef mat-sort-header class="room-column">
               Room
             </th>
             <td mat-cell *matCellDef="let element" class="room-column">
               {{ element?.room }}
             </td>
-          </ng-container>
+          </ng-container> -->
 
           <!-- email Column -->
           <ng-container matColumnDef="admitDate">
-            <th id="admitDate" mat-header-cell *matHeaderCellDef class="admit-date-column">Admit Date</th>
+            <th id="admitDate" mat-header-cell *matHeaderCellDef class="admit-date-column">
+              <div class="mb-4">Admit Date</div>
+              <div class="mb-4"> Attending physician </div>
+              <div class="mb-4"> Discharge Date</div>
+
+            </th>
             <td mat-cell *matCellDef="let element" class="admit-date-column">
-              <p>{{ element?.admitDate | date:'MMMM d, y' }}</p>
+              <div class="column-group">
+                <p>{{ element?.admitDate | date:'MMMM d, y' }}</p>
+                <div>{{element?.attendingPhysician}} </div>
+                <p>
+                  <span *ngIf="!element?.dischargeDate"><b> -</b></span>
+                  {{ element?.dischargeDate | date:'MMMM d, y' }}
+                </p>
+              </div>
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="dischargeDate">
+          <!-- <ng-container matColumnDef="dischargeDate">
             <th id="admitDate" mat-header-cell *matHeaderCellDef class="email-width">Discharge Date</th>
             <td mat-cell *matCellDef="let element" class="adnutDate-width">
+              <span *ngIf="!element?.dischargeDate"><b> -</b></span>
               <p>{{ element?.dischargeDate | date:'MMMM d, y' }}</p>
+            </td>
+          </ng-container> -->
+          <ng-container matColumnDef="cds">
+            <th mat-header-cell *matHeaderCellDef class="cds-column">
+              <div class="mb-4">CDS</div>
+              <div class="mb-4">Patient Type</div>
+              <div class="mb-4">Reimbursement Type </div>
+            </th>
+            <td mat-cell *matCellDef="let element" class="column-width">
+              <div class="column-group">
+                <div>{{ element?.cds }} </div>
+                <div> {{ element?.patientClass === 'Out' ? 'OBS': 'IN' }} </div>
+                <div>{{ element?.reimbursementType }}</div>
+              </div>
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="financialClass">
+          <ng-container matColumnDef="reviewStatus">
+            <th mat-header-cell *matHeaderCellDef class="review-column">
+                <div class="mb-4"> Review Status </div>
+                <div class="mb-4"> Insurance </div>
+                <div class="mb-4"> Financial Class </div>
+            </th>
+            <td mat-cell *matCellDef="let element" class="column-width review-column">
+              <div class="column-group">
+                <div class="status-badge {{ colorBadges[element?.reviewStatus] }} text-center">
+                  {{ element?.reviewStatus }}
+                </div>
+                <div> {{ element?.healthPlan }} </div>
+                <div>{{ element?.financialClass}}</div>
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="los">
+            <th id="los" mat-header-cell *matHeaderCellDef class="los-column">
+              <div class="mb-4"> LOS / GLOS </div>
+              <div class="mb-4"> TRANSFER DRG </div>
+              <div class="mb-4"> DRG TYPE </div>
+            </th>
+            <td mat-cell class="los-column" *matCellDef="let element">
+             <div class="column-group">
+               <div>{{ element?.los }} / {{ element?.geo }} </div>
+             </div>
+
+            </td>
+          </ng-container>
+
+          <!-- <ng-container matColumnDef="financialClass">
             <th id="financialClass" class="profileStaus-column" mat-header-cell *matHeaderCellDef mat-sort-header>
               Financial Class
             </th>
             <td mat-cell class="profileStaus-column" *matCellDef="let element">
-              <span>{{ element?.financial
-                }}</span>
+              <span>{{ element?.financialClass}}</span>
             </td>
-          </ng-container>
+          </ng-container> -->
           <ng-container matColumnDef="drgNo">
-            <th id="drgNo" class="profileStaus-column" mat-header-cell *matHeaderCellDef mat-sort-header>
-              DRG No - Description
+            <th id="drgNo" class="drg-column" mat-header-cell *matHeaderCellDef>
+              <div class="mb-4"> DRG No </div>
+              <div class="mb-4"> DRG Description </div>
+              <div class="mb-4"> DRG Weight </div>
             </th>
-            <td mat-cell class="profileStaus-column" *matCellDef="let element">
-              <span *ngIf="!!element?.drgNo; else na">{{ element?.drgNo}} - {{element?.diagnosis}}</span>
+            <td mat-cell class="drg-column" *matCellDef="let element">
+              <div class="column-group" *ngIf="!!element?.drgNo; else na">
+                <div>{{ element?.drgNo}} </div>
+                <div>{{ element?.diagnosis }} </div>
+              </div>
               <ng-template #na>
                 <span >NA</span>
               </ng-template>
             </td>
           </ng-container>
-          <ng-container matColumnDef="los">
+          <!-- <ng-container matColumnDef="los">
             <th id="los" class="los-column" mat-header-cell *matHeaderCellDef mat-sort-header>
               Los
             </th>
             <td mat-cell class="los-column" *matCellDef="let element">
               <span>{{ element?.los }}</span>
             </td>
+          </ng-container> -->
+          <ng-container matColumnDef="comments">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-width">Followup Comments</th>
+            <td mat-cell *matCellDef="let element" class="column-width">
+                <div *ngFor="let followup of element?.followUpComments; let i=index;" class="comments-group">
+                  <p *ngIf="i < 2">
+                    {{ followup.comments }}
+                  </p>
+                  <p *ngIf="i < 2" class="comment-date"> <b>{{ followup.addedOn | date: 'MMMM d, y'}}</b></p>
+              </div>
+              <a>show more</a>
+            </td>
           </ng-container>
-
           <!-- phone Column -->
           <ng-container matColumnDef="healthPlan">
             <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-width">Insurance</th>
@@ -172,23 +258,10 @@
           </ng-container>
 
           <!-- cohort Column -->
-          <ng-container matColumnDef="cds">
-            <th mat-header-cell *matHeaderCellDef class="column-width">CDS</th>
-            <td mat-cell *matCellDef="let element" class="column-width">
-              {{ element?.cds }}
-            </td>
-          </ng-container>
+
 
           <!-- status Column -->
-          <ng-container matColumnDef="reviewStatus">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="review-status-column text-center">Review Status
-            </th>
-            <td mat-cell *matCellDef="let element" class="column-width review-status-column">
-              <div class="status-badge {{ colorBadges[element?.reviewStatus] }} text-center">
-                {{ element?.reviewStatus }}
-              </div>
-            </td>
-          </ng-container>
+
           <ng-container matColumnDef="queryDate">
             <th id="queryDate" mat-header-cell *matHeaderCellDef class="email-width">Query Date</th>
             <td mat-cell *matCellDef="let element" class="email-width">
@@ -211,12 +284,12 @@
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="comments">
+          <!-- <ng-container matColumnDef="comments">
             <th mat-header-cell *matHeaderCellDef class="column-width">Comments</th>
             <td mat-cell *matCellDef="let element" class="column-width">
               {{ element?.comments }}
             </td>
-          </ng-container>
+          </ng-container> -->
 
           <ng-container matColumnDef="concurrent_postDC">
             <th mat-header-cell *matHeaderCellDef class="column-width">Concurrent/PostDC</th>

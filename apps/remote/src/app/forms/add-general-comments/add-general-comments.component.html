@@ -40,7 +40,7 @@
       </div>
       <div *ngIf="comments as generalComment" tabindex="1" class="mb-8"
         attr.aria-label="{{ generalComment.addedOn }}">
-        <b>- {{ generalComment.addedOn | date:  date:'MMMM d, y'}} </b>
+        <b> {{ generalComment.addedOn | date:  date:'MMMM d, y'}} </b>
       </div>
     </mat-list>
   </div>
