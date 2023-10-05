@@ -30,7 +30,7 @@ import {
   FusionDataSource,
   Sort,
 } from '@zhealthcare/plugin/data-source';
-import { HeaderService, ScrollService } from '@zhealthcare/ux';
+import { FuseProgressBarService, HeaderService, ScrollService } from '@zhealthcare/ux';
 import {
   catchError,
   map,
@@ -121,6 +121,15 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   };
   @Output() patientClick: EventEmitter<any> = new EventEmitter<any>();
   appliedFilters: Filter[];
+  selectedSortingOption: string;
+  sortingOptions = [
+    { label: 'Name (Ascending)', value: 'patientName-asc' },
+    { label: 'Name (Descending)', value: 'patientName-desc' },
+    { label: 'Admit Date (Oldest First)', value: 'admitDate-asc' },
+    { label: 'Admit Date (Newest First)', value: 'admitDate-desc' },
+    { label: 'Room (Ascending)', value: 'room-asc' },
+    { label: 'Room (Descending)', value: 'room-desc' },
+  ];
   constructor(
     public dataSourceComponentService: DataSourceComponentService,
     public datasourceFacade: DataSourceFacade,
@@ -133,8 +142,10 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     public datepipe: DatePipe,
     public _media: MediaObserver,
     protected configService: FusionConfigService,
-    public router: Router
+    public router: Router,
+    private fuseProgressBarService: FuseProgressBarService
   ) {
+    this.fuseProgressBarService.hide();
     this._unsubscribe = new Subject();
     this.datasourceFacade.DataSourceDestroy();
     this.serviceEndPoint = this._patientService.getDatasourceBaseEndpoint();
@@ -262,9 +273,19 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  applySorting() {
+    const sortOption = this.selectedSortingOption.split('-');
+    this.datasourceFacade.GetDataSource(
+      sortOption[0],
+      sortOption[1] == 'asc' ? '1' : '-1',
+      1,
+      this.paginator.pageSize
+    );
+  }
+
   ngAfterViewInit() {
     this.sort?.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
-    merge(this.sort?.sortChange, this.paginator.page)
+    merge(this.paginator.page)
       .pipe(
         tap(() => {
           this.isLoadingResults = true;

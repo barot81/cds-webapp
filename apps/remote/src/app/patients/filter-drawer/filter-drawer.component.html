@@ -61,7 +61,7 @@
               [checked]="status.isSelected"
               (change)="onStatusChange($event.checked, status.name)">
               <div class="status-badge {{ status.name }} ">
-                {{ status.name }}
+                {{ status.displayName }}
               </div>
             </mat-checkbox>
           </div>

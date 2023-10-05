@@ -186,6 +186,7 @@ export class LaunchComponent
     this.orgFacade.SetFacilityWiseStatuses(updatedFacility);
     this.activatedRoute.queryParams.subscribe(
       (resp) => {
+        this.fuseProgressBarService.hide();
         this.router.navigateByUrl('/dashboard');
       },
       (error) => {
@@ -202,10 +203,8 @@ export class LaunchComponent
   }
 
   showProgressBar() {
-    setTimeout(() => {
       this.fuseProgressBarService.show();
       this.inProgressCount++;
-    });
   }
 
   hideProgressBar() {

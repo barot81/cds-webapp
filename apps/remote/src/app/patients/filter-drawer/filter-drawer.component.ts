@@ -126,12 +126,12 @@ export class FilterDrawerComponent
   // { id: 'queryStatus', title: 'Query Status', count: 0 },
 
   statusList = [
-    { name: 'New DRG', isSelected: false },
-    { name: 'Pending Query', isSelected: false },
-    { name: 'Later Review', isSelected: false },
-    { name: 'No Query', isSelected: false },
-    { name: 'Non DRG', isSelected: false },
-    { name: 'Reviewed', isSelected: false },
+    { name: 'New', displayName: 'New DRG', isSelected: false },
+    { name: 'Pending Query',displayName: 'Pending Query', isSelected: false },
+    { name: 'Later Review', displayName: 'Later Review', isSelected: false },
+    { name: 'No Query', displayName: 'No Query', isSelected: false },
+    { name: 'Non DRG', displayName: 'Non DRG' ,isSelected: false },
+    { name: 'Reviewed', displayName: 'Reviewed', isSelected: false },
   ];
 
   queryStatusList = [
@@ -178,7 +178,6 @@ export class FilterDrawerComponent
       .filter((x) => x.fieldName === 'Filters.ReviewStatus')
       .forEach((x) => {
         this.statusList.find((y) => y.name === x.value).isSelected = true;
-        console.log(this.statusList.find((y) => y.name === x.value).isSelected);
       });
 
     // dataSource.filters
@@ -333,7 +332,7 @@ export class FilterDrawerComponent
       selectedStatus.forEach((ele) => {
         filters.push({
           fieldName: 'Filters.ReviewStatus',
-          value: ele.name,
+          value: ele.name === "New DRG" ? "New" : ele.name,
           operator: 'eq',
           type: 'dropdown',
           displayName: 'Review Status',

@@ -46,6 +46,16 @@
             </div>
 
             <div fxLayout="row" fxLayoutAlign="end center">
+              <div fxLayout="row" fxLayoutAlign="center baseline" class="mr-8 mt-8">
+                <mat-label>Sort By: &nbsp;</mat-label>
+                <mat-form-field appearance="fill">
+                  <mat-select [(ngModel)]="selectedSortingOption" (selectionChange)="applySorting()">
+                    <mat-option *ngFor="let option of sortingOptions" [value]="option.value">
+                      {{ option.label }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
               <div fxLayout="row" fxLayoutAlign="end center" class="border-right h-48" fxHide.lt-md>
               </div>
               <div fxLayout="row" class="mr-16 ml-8">
@@ -97,13 +107,13 @@
             <td mat-cell *matCellDef="let element; let i = index" class="name-column">
               <div class="column-group">
                 <div>
-                  {{ element?.patientNo }}
-                </div>
-                <div fxLayout="row" fxLayoutAlign="start center">
                   <a [routerLink]="['./', element?.id, 'details']">
-                    <span class="list-item-name">{{ element?.patientName }}
+                    <span class="list-item-name"> {{ element?.patientNo }}
                     </span>
                   </a>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <b>{{ element?.patientName }}</b>
                   <zhealthcare-tag-showcase [tags]="tags" class="ml-4" *ngIf="i % 3 === 0"></zhealthcare-tag-showcase>
                 </div>
 
@@ -137,17 +147,18 @@
             <th id="admitDate" mat-header-cell *matHeaderCellDef class="admit-date-column">
               <div class="mb-4">Admit Date</div>
               <div class="mb-4"> Attending physician </div>
-              <div class="mb-4"> Discharge Date</div>
+              <div class="mb-4"> Patient Type</div>
 
             </th>
             <td mat-cell *matCellDef="let element" class="admit-date-column">
               <div class="column-group">
                 <p>{{ element?.admitDate | date:'MMMM d, y' }}</p>
                 <div>{{element?.attendingPhysician}} </div>
-                <p>
+                <div> {{ element?.patientClass === 'Out' ? 'OBS': 'IN' }} </div>
+                <!-- <p>
                   <span *ngIf="!element?.dischargeDate"><b> -</b></span>
                   {{ element?.dischargeDate | date:'MMMM d, y' }}
-                </p>
+                </p> -->
               </div>
             </td>
           </ng-container>
@@ -162,13 +173,16 @@
           <ng-container matColumnDef="cds">
             <th mat-header-cell *matHeaderCellDef class="cds-column">
               <div class="mb-4">CDS</div>
-              <div class="mb-4">Patient Type</div>
+              <div class="mb-4">Review Status</div>
               <div class="mb-4">Reimbursement Type </div>
             </th>
             <td mat-cell *matCellDef="let element" class="column-width">
               <div class="column-group">
                 <div>{{ element?.cds }} </div>
-                <div> {{ element?.patientClass === 'Out' ? 'OBS': 'IN' }} </div>
+                <div class="status-badge {{ colorBadges[element?.reviewStatus] }} text-center">
+                  {{ element?.reviewStatus }}
+                </div>
+                <!-- <div> {{ element?.patientClass === 'Out' ? 'OBS': 'IN' }} </div> -->
                 <div>{{ element?.reimbursementType }}</div>
               </div>
             </td>
@@ -176,17 +190,18 @@
 
           <ng-container matColumnDef="reviewStatus">
             <th mat-header-cell *matHeaderCellDef class="review-column">
-                <div class="mb-4"> Review Status </div>
-                <div class="mb-4"> Insurance </div>
-                <div class="mb-4"> Financial Class </div>
+              <div class="mb-4"> Insurance </div>
+              <div class="mb-4"> Financial Class </div>
+              <div class="mb-4"> Total Charges </div>
             </th>
             <td mat-cell *matCellDef="let element" class="column-width review-column">
               <div class="column-group">
-                <div class="status-badge {{ colorBadges[element?.reviewStatus] }} text-center">
+                <!-- <div class="status-badge {{ colorBadges[element?.reviewStatus] }} text-center">
                   {{ element?.reviewStatus }}
-                </div>
+                </div> -->
                 <div> {{ element?.healthPlan }} </div>
                 <div>{{ element?.financialClass}}</div>
+                <div>{{ element?.totalCharges ?? '-'}}</div>
               </div>
             </td>
           </ng-container>
@@ -200,8 +215,9 @@
             <td mat-cell class="los-column" *matCellDef="let element">
              <div class="column-group">
                <div>{{ element?.los }} / {{ element?.geo }} </div>
+               <div>{{ element?.transferDrg ?? '-'}} </div>
+               <div>{{ element?.drgType ?? '-' }} </div>
              </div>
-
             </td>
           </ng-container>
 
@@ -223,6 +239,7 @@
               <div class="column-group" *ngIf="!!element?.drgNo; else na">
                 <div>{{ element?.drgNo}} </div>
                 <div>{{ element?.diagnosis }} </div>
+                <div>{{ element?.drgWeight ?? '-' }} </div>
               </div>
               <ng-template #na>
                 <span >NA</span>
