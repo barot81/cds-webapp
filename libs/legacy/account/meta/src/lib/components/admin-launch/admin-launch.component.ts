@@ -217,31 +217,38 @@ export class AdminLaunchComponent
       {
         id: 'New',
         displayName: 'New DRG',
+        description: 'Number of DRG patients awaiting review and still not discharged'
       },
       {
         id: 'Pending Query',
         displayName: 'Pending Query',
+        description: 'Number of DRG patients (including discharged patients) under Pending Query status'
       },
       {
         id: 'Later Review',
         displayName: 'Later Review',
+        description: 'Number of DRG patients marked as Later Review by a CDS'
       },
       {
         id: 'No Query',
         displayName: 'No Query',
+        description: 'Number of DRG patients marked as No Query by a CDS'
       },
       {
         id: 'Non DRG',
         displayName: 'Non DRG',
+        description: 'Total number of Non DRG patients based on the census'
       }
     ];
     const totalCount = statusCounts.find((x) => x.name === 'Total')?.count
                       ?? statusCounts.reduce((sum, current) => sum + current.count, 0);
-    this.facilityStatuses.push(new StatusCount('Total DRG', totalCount));
+    this.facilityStatuses.push(new StatusCount('Total DRG', totalCount, 'Total count of DRG patients in the census, regardless of their query status'));
 
     orderedTiles.forEach((x) => {
       this.facilityStatuses.push(
-        new StatusCount(x.displayName, statusCounts.find((y) => y.name === x.id)?.count ?? 0)
+        new StatusCount(x.displayName,
+          statusCounts.find((y) => y.name === x.id)?.count ?? 0,
+          x.description)
       );
     });
   }

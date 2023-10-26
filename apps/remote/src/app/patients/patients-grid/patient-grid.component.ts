@@ -123,12 +123,12 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   appliedFilters: Filter[];
   selectedSortingOption: string;
   sortingOptions = [
+    { label: 'Room (Ascending)', value: 'room-asc' },
+    { label: 'Room (Descending)', value: 'room-desc' },
     { label: 'Name (Ascending)', value: 'patientName-asc' },
     { label: 'Name (Descending)', value: 'patientName-desc' },
     { label: 'Admit Date (Oldest First)', value: 'admitDate-asc' },
     { label: 'Admit Date (Newest First)', value: 'admitDate-desc' },
-    { label: 'Room (Ascending)', value: 'room-asc' },
-    { label: 'Room (Descending)', value: 'room-desc' },
   ];
   constructor(
     public dataSourceComponentService: DataSourceComponentService,

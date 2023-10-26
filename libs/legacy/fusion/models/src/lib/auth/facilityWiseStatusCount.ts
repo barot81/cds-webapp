@@ -4,6 +4,7 @@ export class StatusCount {
   constructor(
       public name: string,
       public count: number,
+      public description: string,
       public isSelected: boolean = false) {
   }
 }

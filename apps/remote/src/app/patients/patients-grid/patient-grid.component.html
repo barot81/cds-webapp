@@ -215,8 +215,8 @@
             <td mat-cell class="los-column" *matCellDef="let element">
              <div class="column-group">
                <div>{{ element?.los }} / {{ element?.geo }} </div>
-               <div>{{ element?.transferDrg ?? '-'}} </div>
-               <div>{{ element?.drgType ?? '-' }} </div>
+               <div>{{ element?.transferDrg || '-' }} </div>
+               <div>{{ element?.drgType || '-' }} </div>
              </div>
             </td>
           </ng-container>
@@ -239,7 +239,7 @@
               <div class="column-group" *ngIf="!!element?.drgNo; else na">
                 <div>{{ element?.drgNo}} </div>
                 <div>{{ element?.diagnosis }} </div>
-                <div>{{ element?.drgWeight ?? '-' }} </div>
+                <div>{{ element?.drgWeight || '-' }} </div>
               </div>
               <ng-template #na>
                 <span >NA</span>
@@ -263,7 +263,7 @@
                   </p>
                   <p *ngIf="i < 2" class="comment-date"> <b>{{ followup.addedOn | date: 'MMMM d, y'}}</b></p>
               </div>
-              <a>show more</a>
+              <a *ngIf="element?.followUpComments.length > 2">show more</a>
             </td>
           </ng-container>
           <!-- phone Column -->

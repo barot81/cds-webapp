@@ -23,6 +23,7 @@ const initialStatuses = statusCount
       {
         name: 'Total',
         count: 0,
+        description:'Total count of DRG patients in the census, regardless of their query status',
         isSelected: false,
       },
     ];
