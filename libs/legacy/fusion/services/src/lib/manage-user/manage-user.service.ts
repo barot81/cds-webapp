@@ -1,26 +1,26 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ManageUserService {
-tenantId:string;
-selectedOucode:string;
-  constructor() { }
+  tenantId: string;
+  selectedOucode: string;
+  constructor() {}
 
-  getTenantId(){
-   return this.tenantId;
-  }
- 
-  setTenantId(selectedTenant:string){
-   this.tenantId=selectedTenant;
+  getTenantId() {
+    return this.tenantId;
   }
 
-  getOucode(){
-return this.selectedOucode
+  setTenantId(selectedTenant: string) {
+    this.tenantId = selectedTenant;
   }
 
-  setOucode(selectedOucode:string){
-this.selectedOucode=selectedOucode;
+  getOucode() {
+    return this.selectedOucode;
+  }
+
+  setOucode(selectedOucode: string) {
+    this.selectedOucode = selectedOucode;
   }
 }

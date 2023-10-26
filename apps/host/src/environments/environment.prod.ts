@@ -1,175 +1,161 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
 export const environment = {
-  "appSettings": {
-    "production": false,
-    "allowProductSelection": false,
-    "unauthorizedEndpoints": [],
-    "notFoundEndpoints": [],
-    "auth": {
-      "endpoint": ""
+  production: true,
+  appSettings: {
+    production: false,
+    allowProductSelection: false,
+    unauthorizedEndpoints: [],
+    notFoundEndpoints: [],
+    auth: {
+      endpoint: '',
     },
-    "realtime": {
-      "endpoint": ""
+    realtime: {
+      endpoint: '',
     },
-    "gateway": {
-      "endpoint": ""
+    gateway: {
+      endpoint: '',
     },
-    "services": {
-      "facility": {
-        "endpoint": "https://zcds.azurewebsites.net/api"
-      }
+    services: {
+      facility: {
+        endpoint: 'https://zcds.azurewebsites.net/api',
+      },
     },
-    "microfrontends": {
-      "remote": "http://localhost:5201",
-      "ux-demo":"http://localhost:4801"
+    microfrontends: {
     },
-    "localization": {
-      "languages": [
+    localization: {
+      languages: [
         {
-          "code": "en",
-          "name": "EN",
-          "culture": "en-EN"
+          code: 'en',
+          name: 'EN',
+          culture: 'en-EN',
         },
         {
-          "code": "es",
-          "name": "ES",
-          "culture": "es-ES"
+          code: 'es',
+          name: 'ES',
+          culture: 'es-ES',
         },
         {
-          "code": "fr",
-          "name": "FR",
-          "culture": "fr-FR"
-        }
+          code: 'fr',
+          name: 'FR',
+          culture: 'fr-FR',
+        },
       ],
-      "defaultLanguage": "en"
+      defaultLanguage: 'en',
     },
-    "notifications": {
-      "toasterEnable": true,
-      "options": {
-        "timeOut": 5000,
-        "showProgressBar": true,
-        "pauseOnHover": true,
-        "position": ["top", "right"],
-        "theClass": "sy-notification"
-      }
+    notifications: {
+      toasterEnable: true,
+      options: {
+        timeOut: 5000,
+        showProgressBar: true,
+        pauseOnHover: true,
+        position: ['top', 'right'],
+        theClass: 'sy-notification',
+      },
     },
-    "debugging": true,
-    "instrumentationKey": "",
-    "clickTrackingSettings": {
-      "clickTrackingEnabled": true,
-      "excludedTenants": []
+    debugging: true,
+    instrumentationKey: '',
+    clickTrackingSettings: {
+      clickTrackingEnabled: true,
+      excludedTenants: [],
     },
-    "azureAdB2C": {
-      "clientId": "",
-      "activeDirectory": "",
-      "tenant": "",
-      "signUpSignInPolicyId": "",
-      "forgotPassword": "",
-      "redirectUri": "",
-      "b2cScopes": [""]
+    azureAdB2C: {
+      clientId: '',
+      activeDirectory: '',
+      tenant: '',
+      signUpSignInPolicyId: '',
+      forgotPassword: '',
+      redirectUri: '',
+      b2cScopes: [''],
     },
-    "azureAd": {
-      "clientId": "ccdf8d9f-bd27-49d3-8239-8f37dcaeae99",
-      "tenant": "ed1842b4-e4ca-4da6-8587-1f81a3cffa8f",
-      "redirectUri": "/",
-      "objectId": "2b7d602d-a3d2-4bdd-816f-5c9a3034fafb",
-      "activeDirectory": "",
-      "signUpSignInPolicyId": "",
-      "forgotPassword": "",
-      "b2cScopes": [""]
+    azureAd: {
+      clientId: 'ccdf8d9f-bd27-49d3-8239-8f37dcaeae99',
+      tenant: 'ed1842b4-e4ca-4da6-8587-1f81a3cffa8f',
+      redirectUri: '/',
+      objectId: '2b7d602d-a3d2-4bdd-816f-5c9a3034fafb',
+      activeDirectory: '',
+      signUpSignInPolicyId: '',
+      forgotPassword: '',
+      b2cScopes: [''],
     },
-    "authGuardSettings": {
-      "loginUrl": "",
-      "launchUrl": ""
+    authGuardSettings: {
+      loginUrl: '',
+      launchUrl: '',
     },
-    "userIdleSettings": {
-      "idle": 1800,
-      "timeout": 300
+    userIdleSettings: {
+      idle: 1800,
+      timeout: 300,
     },
-    "releaseNoteNotification": {
-      "offset": 7
+    releaseNoteNotification: {
+      offset: 7,
     },
-    "silentTokenRefreshSettings": {
-      "oldTokenDeleteOffset": 120
+    silentTokenRefreshSettings: {
+      oldTokenDeleteOffset: 120,
     },
-    "helpCenterSettings": {
-      "switchOverInfo": ""
+    helpCenterSettings: {
+      switchOverInfo: '',
     },
-    "resources": {
-      "eventDaysOffSet": 7,
-      "voracoAuthKey": ""
+    resources: {
+      eventDaysOffSet: 7,
+      voracoAuthKey: '',
     },
-    "GoogleReCaptcha": {
-      "SiteKey": ""
+    GoogleReCaptcha: {
+      SiteKey: '',
     },
-    "Cryptography": {
-      "EnableEncryption": false,
-      "Key": "",
-      "IV": "",
-      "Keysizes": 128
+    Cryptography: {
+      EnableEncryption: false,
+      Key: '',
+      IV: '',
+      Keysizes: 128,
     },
-    "other": {
-      "platformSettings": {
-        "controlSettings": {
-          "searchControlSetting": {
-            "apiKey": "",
-            "searchUriICD": "",
-            "autocompleteUriICD": "",
-            "searchUriCPT": "",
-            "autocompleteUriCPT": ""
-          }
-        }
-      }
+    other: {
+      platformSettings: {
+        controlSettings: {
+          searchControlSetting: {
+            apiKey: '',
+            searchUriICD: '',
+            autocompleteUriICD: '',
+            searchUriCPT: '',
+            autocompleteUriCPT: '',
+          },
+        },
+      },
     },
-    "AzureMap": {
-      "subscriptionKey": ""
+    AzureMap: {
+      subscriptionKey: '',
     },
-    "blobStorage": {
-      "fusionURI": ""
-    }
+    blobStorage: {
+      fusionURI: '',
+    },
   },
-  "uiSettings": {
-    "colorTheme": "theme-blue-light",
-    "customScrollbars": true,
-    "layout": {
-      "style": "vertical-layout-1",
-      "width": "fullwidth",
-      "navbar": {
-        "primaryBackground": "fuse-navy-700",
-        "secondaryBackground": "fuse-navy-900",
-        "folded": false,
-        "hidden": false,
-        "position": "left",
-        "variant": "vertical-style-2"
+  uiSettings: {
+    colorTheme: 'theme-blue-light',
+    customScrollbars: true,
+    layout: {
+      style: 'vertical-layout-1',
+      width: 'fullwidth',
+      navbar: {
+        primaryBackground: 'fuse-navy-700',
+        secondaryBackground: 'fuse-navy-900',
+        folded: false,
+        hidden: false,
+        position: 'left',
+        variant: 'vertical-style-2',
       },
-      "header": {
-        "customBackgroundColor": true,
-        "background": "fuse-white-bg",
-        "hidden": false,
-        "position": "above"
+      header: {
+        customBackgroundColor: true,
+        background: 'fuse-white-bg',
+        hidden: false,
+        position: 'above',
       },
-      "footer": {
-        "customBackgroundColor": true,
-        "background": "fuse-white",
-        "hidden": false,
-        "position": "below-fixed"
+      footer: {
+        customBackgroundColor: true,
+        background: 'fuse-white',
+        hidden: false,
+        position: 'below-fixed',
       },
-      "sidepanel": {
-        "hidden": false,
-        "position": "right"
-      }
-    }
-  }
+      sidepanel: {
+        hidden: false,
+        position: 'right',
+      },
+    },
+  },
 };
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
