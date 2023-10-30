@@ -2,68 +2,68 @@
   <div fxLayout="column" fxflex="100" *ngIf="(patient$ | async) as patient">
     <div fxLayout="column" fxLayoutAlign="stretch stretch" aria-label="Patient banner"
       *ngIf="(loading$ | async) === false; else loading">
-      <div fxLayout="row" fxflex="100">
+      <div fxLayout="row wrap" fxflex="100">
         <div fxLayout="row" fxLayoutAlign="start" fxFlex="7" class="ml-8">
           <zhealthcare-avatar [firstName]="initial1" [lastName]="initial2" size="lg">
           </zhealthcare-avatar>
         </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" >
-            <div fxLayout="column" fxLayoutAlign="center start" class="word-break-all mr-16">
-              <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="100">
-                <h2>
-                  {{ patient.patientName }}&nbsp;
-                  &nbsp;|&nbsp;
-                  {{
-                  patient.patientNo
-                  }}
-                </h2>
-                <profile-shared-student-tag></profile-shared-student-tag>
+        <div fxLayout="row" fxflex="93"  fxLayoutAlign="space-between center">
+          <div fxLayout="column" fxLayoutAlign="center start" class="word-break-all mr-16">
+            <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="100">
+              <h2>
+                {{ patient.patientName }}&nbsp;
+                &nbsp;|&nbsp;
+                {{
+                patient.patientNo
+                }}
+              </h2>
+              <profile-shared-student-tag></profile-shared-student-tag>
+            </div>
+            <div>
+
+              <div class="banner-separator">
+                <span> <b> Admit Date : </b>{{ patient.admitDate | date:'MMMM d, y' }}</span>
+                &nbsp;&nbsp;
+                <span> <b> LOS : </b>{{ patient.los }}</span>
+                &nbsp;&nbsp;
+                <span> <b> Discharge Date :</b> {{ patient.dischargeDate | date:'MMMM d, y' }}</span>
+
               </div>
-              <div>
-
-                <div class="banner-separator">
-                  <span> <b> Admit Date : </b>{{ patient.admitDate | date:'MMMM d, y' }}</span>
-                  &nbsp;&nbsp;
-                  <span> <b> LOS : </b>{{ patient.los }}</span>
-                  &nbsp;&nbsp;
-                  <span> <b> Discharge Date :</b> {{ patient.dischargeDate | date:'MMMM d, y' }}</span>
-
-                </div>
-                <div class="banner-separator">
-                  <span> <b> Insurance : </b>{{ patient.healthPlan }}</span>&nbsp;
-                  <span>{{ patient.secondaryInsurance }}</span>
-                </div>
-                <div class="banner-separator">
-                  <span> <b> Contracted :</b> {{ patient.contracted ? 'Yes' : 'No' }}</span>
-                </div>
+              <div class="banner-separator">
+                <span> <b> Insurance : </b>{{ patient.healthPlan }}</span>&nbsp;
+                <span>{{ patient.secondaryInsurance }}</span>
+              </div>
+              <div class="banner-separator">
+                <span> <b> Contracted :</b> {{ patient.contracted ? 'Yes' : 'No' }}</span>
               </div>
             </div>
-            <div fxLayout="column" fxLayoutAlign="start end" class="ml-128">
-              <div fxLayout="column" fxLayoutAlign="start start" fxLayout.gt-xs="row"
-                fxLayoutAlign.gt-xs="space-between start">
-                <div>
-                  <div class="banner-separator">
-                    <b> MRN:</b> {{ patient.mrn }}
-                  </div>
-                  <div class="banner-separator">
-                    <span>
-                     <b> Reimbursement Type :</b> {{ patient.reimbursementType }}
-                    </span>
-                  </div>
-                  <div class="banner-separator">
-                    <span>
-                      <b> Financial Class : </b>{{ patient.financialClass }}
-                    </span>
-                  </div>
-                  <div class="banner-separator">
-                    <span>
-                     <b> Patient Class : </b>{{ patient.patientClass }}
-                    </span>
-                  </div>
+          </div>
+          <div fxLayout="column" fxLayoutAlign="start end" class="ml-128">
+            <div fxLayout="column" fxLayoutAlign="start start" fxLayout.gt-xs="row"
+              fxLayoutAlign.gt-xs="space-between start">
+              <div>
+                <div class="banner-separator">
+                  <b> MRN:</b> {{ patient.mrn }}
+                </div>
+                <div class="banner-separator">
+                  <span>
+                    <b> Reimbursement Type :</b> {{ patient.reimbursementType }}
+                  </span>
+                </div>
+                <div class="banner-separator">
+                  <span>
+                    <b> Financial Class : </b>{{ patient.financialClass }}
+                  </span>
+                </div>
+                <div class="banner-separator">
+                  <span>
+                    <b> Patient Class : </b>{{ patient.patientClass }}
+                  </span>
                 </div>
               </div>
             </div>
           </div>
+        </div>
       </div>
     </div>
   </div>
