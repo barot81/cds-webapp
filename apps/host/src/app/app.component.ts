@@ -16,9 +16,5 @@ export class AppComponent {
   navigations = navigations;
 
   constructor(public broadcastService: MsalBroadcastService) {
-    console.log('called');
-   
   }
-
-
 }

@@ -12,7 +12,7 @@ import {
   FusionFormComponent,
 } from '@zhealthcare/fusion/components';
 import { DrawerService, LayoutService, SnackbarService } from '@zhealthcare/ux';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import {
   GeneralComment,
   PatientComment,
@@ -110,19 +110,25 @@ export class AddGeneralCommentsComponent
     }
   }
 
+  private sortCommnets(followUpComments) {
+    return followUpComments
+    .sort((a, b) => {
+      return new Date(b.addedOn).getDate() - new Date(a.addedOn).getDate();
+    });
+  }
+
   private getPatientInfo(patient:Patient) {
+
     this.patientInfo = {
       id: patient.id,
       generalComment: patient.generalComment,
       reviewStatus: patient.reviewStatus
     };
-    const comments = patient.followUpComments || [];
-          comments.sort((a, b) => {
-            const dateA = new Date(a.addedOn).getTime();
-            const dateB = new Date(b.addedOn).getTime();
-            return dateB - dateA;
-          });
-    this.followupComments = comments;
+    if (patient.followUpComments && patient.followUpComments.length > 0) {
+      this.followupComments = this.sortCommnets(patient.followUpComments);
+    } else {
+      this.followupComments = [];
+    }
     if(!this.reviewStatusList.includes(patient.reviewStatus)) {
       this.reviewStatusList.unshift(patient.reviewStatus);
     }

@@ -9,6 +9,7 @@ import { generatePatients } from './patient.faker.service';
 @Injectable({ providedIn: 'any' })
 export class PatientService extends HttpService {
   patients = [];
+  currentPatient$ = new BehaviorSubject<Patient>(new Patient());
   patientData$ = new BehaviorSubject<Patient[]>([]);
   loading$ = new BehaviorSubject<boolean>(false);
   updatedStatus$ = new BehaviorSubject<string>('');
@@ -49,7 +50,10 @@ export class PatientService extends HttpService {
     const url = `${this.getBaseEndpoint()}/${id}`;
     this.loading$.next(true);
     return this.httpClient.get<Patient>(url).pipe(
-      tap((x) => this.loading$.next(false)),
+      tap((x) => {
+        this.currentPatient$.next(x);
+        this.loading$.next(false);
+      }),
       catchError((err) => {
         this.loading$.next(false);
         return of(err);

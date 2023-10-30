@@ -32,15 +32,13 @@
 </form>
 <mat-card fxLayout="column" class="m-16">
   <div *ngFor="let comments of followupComments; let i = index">
-    <mat-list class="comments-display" >
-      <div class="ck-editor-container description " *ngIf="comments as generalComment" tabindex="0"
-        attr.aria-label="{{ generalComment.comments}}"
-        [innerHTML]="generalComment.comments | mdToHTML | safeHTML">
-
+    <mat-list class="comments-display">
+      <div *ngIf="comments as generalComment" tabindex="1" attr.aria-label="{{ generalComment.addedOn }}">
+        <b> {{ generalComment.addedOn | date: date:'MMMM d, y'}}: </b>
       </div>
-      <div *ngIf="comments as generalComment" tabindex="1" class="mb-8"
-        attr.aria-label="{{ generalComment.addedOn }}">
-        <b> {{ generalComment.addedOn | date:  date:'MMMM d, y'}} </b>
+      <div class="ck-editor-container description" *ngIf="comments as generalComment" tabindex="0"
+        attr.aria-label="{{ generalComment.comments}}" [innerHTML]="generalComment.comments | mdToHTML | safeHTML">
+        {{generalComment | json}}
       </div>
     </mat-list>
   </div>
