@@ -16,7 +16,7 @@ export const environment = {
     },
     services: {
       facility: {
-        endpoint: 'https://abzcds.azurewebsites.net/api',
+        endpoint: 'https://zcds.azurewebsites.net/api',
       },
     },
     microfrontends: {
