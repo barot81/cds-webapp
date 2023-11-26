@@ -2,7 +2,10 @@ import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpService, MetaConstants } from '@zhealthcare/fusion/core';
 import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
-import { GeneralComment, PatientComment } from '../models/general-comments.model';
+import {
+  GeneralComment,
+  PatientComment,
+} from '../models/general-comments.model';
 import { Patient } from '../models/patient.model';
 import { generatePatients } from './patient.faker.service';
 
@@ -150,16 +153,14 @@ export class PatientService extends HttpService {
       )
       .pipe(
         map((x) => {
-          const existingPatient = this.patients.find(
-            (y) => y.id === patientComment.id
-          );
-          if (existingPatient) {
-            existingPatient.generalComment = patientComment.generalComment;
-            existingPatient.followupComments.unshift(
-              patientComment.generalComment
-            );
-            existingPatient.reviewStatus = patientComment.reviewStatus;
-            this.currentPatient = existingPatient;
+          if (this.currentPatient) {
+            this.currentPatient.reviewStatus = patientComment.reviewStatus;
+            if (this.currentPatient.generalComment.comments) {
+              this.currentPatient.generalComment = patientComment.generalComment;
+              this.currentPatient.followupComments.unshift(
+                patientComment.generalComment
+              );
+            }
             this.currentPatient$.next(this.currentPatient);
           } else {
             if (!this.patients) this.patients = [];
@@ -174,7 +175,6 @@ export class PatientService extends HttpService {
   }
 
   private getUpdatedPatient(patientComment: PatientComment) {
-
     if (!this.currentPatient) {
       this.currentPatient = new Patient();
       this.currentPatient.id = patientComment.id;
