@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
 import { PatientFormsService } from '../../forms/patient-forms.service';
 import { GeneralComment } from '../../models/general-comments.model';
 import { Patient } from '../../models/patient.model';
@@ -12,13 +12,13 @@ import { PatientService } from '../../services/patient.service';
   styleUrls: ['./general-comments.component.scss'],
 })
 export class GeneralCommentsComponent implements OnInit, OnDestroy {
-  loading$: any;
+  loading$: Subject<boolean>;
   showMore = true;
   patientInfo: Patient;
   folloupComments: GeneralComment[] = [];
   allComments: GeneralComment[] = [];
-  _unsubscribe: Subject<any> = new Subject();
-  patientId: any;
+  _unsubscribe: Subject<boolean> = new Subject();
+  patientId: string;
   constructor(
     public _patientFormService: PatientFormsService,
     private activatedRoute: ActivatedRoute,
@@ -40,23 +40,18 @@ export class GeneralCommentsComponent implements OnInit, OnDestroy {
 
   private setGeneralComments(res: Patient) {
     this.allComments =
-      res.followupComments.sort(
+      res.followupComments?.sort(
         (a, b) => new Date(b.addedOn).getTime() - new Date(a.addedOn).getTime()
       ) || [];
-    this.folloupComments = this.allComments.slice(0, 2);
+    this.folloupComments = this.allComments?.slice(0, 2) || [];
   }
 
   ngOnInit() {
     this.patientService.currentPatient$.subscribe((patientInfo) => {
-        this.setGeneralComments(patientInfo);
-        if (this.patientInfo)  this.patientInfo.reviewStatus = patientInfo.reviewStatus;
+      this.setGeneralComments(patientInfo);
+      if (this.patientInfo)
+        this.patientInfo.reviewStatus = patientInfo.reviewStatus;
     });
-
-    // this.patientService.updatedStatus$
-    //   .pipe(takeUntil(this._unsubscribe))
-    //   .subscribe((status) => {
-    //     if (this.patientInfo) this.patientInfo.reviewStatus = status;
-    //   });
   }
 
   onShowMoreClick() {
