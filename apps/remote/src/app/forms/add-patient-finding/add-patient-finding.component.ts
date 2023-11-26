@@ -122,8 +122,7 @@ export class AddPatientFindingComponent
     this.statusList = [
       'Pending',
       'Answered',
-      'Dropped',
-      'No Response',
+      'Dropped'
     ];
   }
 
