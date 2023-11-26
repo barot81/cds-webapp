@@ -447,13 +447,11 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     this.datasourceFacade.updateAllDataSourceFilter(remainingFilters);
   }
 
-  sortedFollowUpComments(comments: any[]): any[] {
-    const sortedComments = [...comments];
-    return sortedComments ? sortedComments.sort((a, b) => new Date(b.addedOn).getTime() - new Date(a.addedOn).getTime()) : [];
+  sortedFollowupComments(comments: GeneralComment[]): GeneralComment[] {
+    return comments ? [...comments].sort((a, b) => new Date(b.addedOn).getTime() - new Date(a.addedOn).getTime()) : [];
   }
 
-  toggleShowMore(comments) {
-
+  toggleShowMore(comments: GeneralComment[]) {
     this.displayedComments = this.displayedComments === 2 ? comments.length : 2;
     this.showMoreText = this.displayedComments === 2 ? 'Show more' : 'Show less';
   }

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { PatientFormsService } from '../../forms/patient-forms.service';
 import { GeneralComment } from '../../models/general-comments.model';
 import { Patient } from '../../models/patient.model';
@@ -39,28 +39,24 @@ export class GeneralCommentsComponent implements OnInit, OnDestroy {
   }
 
   private setGeneralComments(res: Patient) {
-    this.allComments = res.followUpComments
-      .sort((a, b) =>  new Date(b.addedOn).getTime() -  new Date(a.addedOn).getTime()) || [];
+    this.allComments =
+      res.followupComments.sort(
+        (a, b) => new Date(b.addedOn).getTime() - new Date(a.addedOn).getTime()
+      ) || [];
     this.folloupComments = this.allComments.slice(0, 2);
   }
 
   ngOnInit() {
-    this.patientService.patientData$
-      .pipe(takeUntil(this._unsubscribe))
-      .subscribe((patients) => {
-        const selectedPatient = patients.find((x) => x.id === this.patientId);
-        if (selectedPatient) {
-          this.setGeneralComments(selectedPatient);
-          if (this.patientInfo)
-            this.patientInfo.reviewStatus = selectedPatient.reviewStatus;
-        }
-      });
+    this.patientService.currentPatient$.subscribe((patientInfo) => {
+        this.setGeneralComments(patientInfo);
+        if (this.patientInfo)  this.patientInfo.reviewStatus = patientInfo.reviewStatus;
+    });
 
-    this.patientService.updatedStatus$
-      .pipe(takeUntil(this._unsubscribe))
-      .subscribe((status) => {
-        if (this.patientInfo) this.patientInfo.reviewStatus = status;
-      });
+    // this.patientService.updatedStatus$
+    //   .pipe(takeUntil(this._unsubscribe))
+    //   .subscribe((status) => {
+    //     if (this.patientInfo) this.patientInfo.reviewStatus = status;
+    //   });
   }
 
   onShowMoreClick() {
@@ -72,6 +68,7 @@ export class GeneralCommentsComponent implements OnInit, OnDestroy {
     this.showMore = true;
     this.folloupComments = this.allComments.slice(0, 2);
   }
+
   ngOnDestroy(): void {
     this._unsubscribe.next(true);
     this._unsubscribe.complete();

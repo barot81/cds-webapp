@@ -257,7 +257,7 @@
           <ng-container matColumnDef="comments">
             <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-width">Followup Comments</th>
             <td mat-cell *matCellDef="let element" class="column-width">
-              <div *ngFor="let followup of sortedFollowUpComments(element?.followUpComments); let i=index" class="comments-group">
+              <div *ngFor="let followup of sortedFollowupComments(element?.followupComments); let i=index" class="comments-group">
                 <p *ngIf="i < displayedComments">
                   {{ followup.comments }}
                 </p>
@@ -265,7 +265,7 @@
                   <b>{{ followup.addedOn | date: 'MMMM d, y' }}</b>
                 </p>
               </div>
-              <a *ngIf="element?.followUpComments.length > 2" (click)="toggleShowMore(element?.followUpComments)">
+              <a *ngIf="element?.followupComments.length > 2" (click)="toggleShowMore(element?.followupComments)">
                 {{ showMoreText }}
               </a>
             </td>

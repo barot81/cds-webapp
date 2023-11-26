@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  ChangeDetectorRef,
   Component,
   OnDestroy,
 } from '@angular/core';
@@ -72,7 +71,7 @@ export class AddGeneralCommentsComponent
   }
 
   OnReviewStatusChanged(reviewStatus) {
-    if (reviewStatus.value !== null && reviewStatus.value !== undefined) {
+    if (reviewStatus.value) {
       this.fusionFormGroup.controls['reviewStatus'].setValue(
         reviewStatus.value
       );
@@ -110,8 +109,8 @@ export class AddGeneralCommentsComponent
     }
   }
 
-  private sortCommnets(followUpComments) {
-    return followUpComments
+  private sortCommnets(followupComments) {
+    return followupComments
     .sort((a, b) => {
       return new Date(a.addedOn).getDate() - new Date(b.addedOn).getDate();
     });
@@ -124,8 +123,8 @@ export class AddGeneralCommentsComponent
       generalComment: patient.generalComment,
       reviewStatus: patient.reviewStatus
     };
-    if (patient.followUpComments && patient.followUpComments.length > 0) {
-      this.followupComments = this.sortCommnets(patient.followUpComments);
+    if (patient.followupComments && patient.followupComments.length > 0) {
+      this.followupComments = this.sortCommnets(patient.followupComments);
     } else {
       this.followupComments = [];
     }

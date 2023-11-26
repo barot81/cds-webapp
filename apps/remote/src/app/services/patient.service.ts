@@ -2,17 +2,18 @@ import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpService, MetaConstants } from '@zhealthcare/fusion/core';
 import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
-import {  PatientComment } from '../models/general-comments.model';
+import { GeneralComment, PatientComment } from '../models/general-comments.model';
 import { Patient } from '../models/patient.model';
 import { generatePatients } from './patient.faker.service';
 
 @Injectable({ providedIn: 'any' })
 export class PatientService extends HttpService {
   patients = [];
+  currentPatient = new Patient();
   currentPatient$ = new BehaviorSubject<Patient>(new Patient());
   patientData$ = new BehaviorSubject<Patient[]>([]);
   loading$ = new BehaviorSubject<boolean>(false);
-  updatedStatus$ = new BehaviorSubject<string>('');
+
   public onAdded: BehaviorSubject<boolean>;
   public onFilterChange: BehaviorSubject<boolean>;
 
@@ -52,6 +53,7 @@ export class PatientService extends HttpService {
     return this.httpClient.get<Patient>(url).pipe(
       tap((x) => {
         this.currentPatient$.next(x);
+        this.currentPatient = x;
         this.loading$.next(false);
       }),
       catchError((err) => {
@@ -139,25 +141,31 @@ export class PatientService extends HttpService {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.httpClient
-      .put(`${this.getBaseEndpoint()}/${patientComment.id}/comments`, patientComment, {
-        headers: headers,
-      })
+      .put(
+        `${this.getBaseEndpoint()}/${patientComment.id}/comments`,
+        patientComment,
+        {
+          headers: headers,
+        }
+      )
       .pipe(
         map((x) => {
-          const existingPatient = this.patients.find((y) => y.id === patientComment.id);
-          if(existingPatient) {
+          const existingPatient = this.patients.find(
+            (y) => y.id === patientComment.id
+          );
+          if (existingPatient) {
             existingPatient.generalComment = patientComment.generalComment;
-            existingPatient.folloupComments.unshift(patientComment.generalComment);
+            existingPatient.followupComments.unshift(
+              patientComment.generalComment
+            );
             existingPatient.reviewStatus = patientComment.reviewStatus;
+            this.currentPatient = existingPatient;
+            this.currentPatient$.next(this.currentPatient);
           } else {
-            if(!this.patients) this.patients = [];
-            this.patients.push({
-              id: patientComment.id,
-              generalComment: patientComment.generalComment,
-              followupComments: [patientComment.generalComment],
-              reviewStatus: patientComment.reviewStatus
-            })
-            this.getPatients().subscribe(x=> this.patientData$.next(x));
+            if (!this.patients) this.patients = [];
+            const currentPatient = this.getUpdatedPatient(patientComment);
+            this.patients.push(currentPatient);
+            this.currentPatient$.next(currentPatient);
           }
           this.patientData$.next(this.patients);
           return x;
@@ -165,29 +173,53 @@ export class PatientService extends HttpService {
       );
   }
 
-  updaetReviewStatus(patientId: string, reviewStatus: string ) {
+  private getUpdatedPatient(patientComment: PatientComment) {
+
+    if (!this.currentPatient) {
+      this.currentPatient = new Patient();
+      this.currentPatient.id = patientComment.id;
+    }
+
+    if (patientComment.generalComment?.comments) {
+      this.currentPatient.generalComment = patientComment.generalComment;
+      this.currentPatient.followupComments = [patientComment.generalComment];
+    }
+    this.currentPatient.reviewStatus = patientComment.reviewStatus;
+    return this.currentPatient;
+  }
+
+  updaetReviewStatus(patientId: string, reviewStatus: string) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.httpClient
-      .put(`${this.getBaseEndpoint()}/${patientId}/reviewStatus`,{ reviewStatus: reviewStatus} ,{
-        headers: headers,
-      })
+      .put(
+        `${this.getBaseEndpoint()}/${patientId}/reviewStatus`,
+        { reviewStatus: reviewStatus },
+        {
+          headers: headers,
+        }
+      )
       .pipe(
         map((x) => {
           const existingPatient = this.patients.find((y) => y.id === patientId);
-          if(existingPatient) {
+          if (existingPatient) {
             existingPatient.reviewStatus = reviewStatus;
+            this.currentPatient = existingPatient;
+            this.currentPatient$.next(this.currentPatient);
             this.patientData$.next(this.patients);
           } else {
-            if(!this.patients) this.patients = [];
-            this.patients.push({
+            if (!this.patients) this.patients = [];
+            this.currentPatient = this.getUpdatedPatient({
               id: patientId,
-              reviewStatus: reviewStatus
-            })
+              generalComment: new GeneralComment(),
+              reviewStatus: reviewStatus,
+            });
+            this.currentPatient$.next(this.currentPatient);
+            this.patients.push(this.currentPatient);
             this.patientData$.next(this.patients);
-            this.getPatients().subscribe();
           }
-          this.updatedStatus$.next(reviewStatus);
+
+          // this.updatedStatus$.next(reviewStatus);
           return x;
         })
       );
@@ -201,5 +233,4 @@ export class PatientService extends HttpService {
     this.patientData$.next(this.patients);
     return this.patientData$;
   }
-
 }
