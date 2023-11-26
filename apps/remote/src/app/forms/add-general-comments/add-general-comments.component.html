@@ -33,7 +33,7 @@
 <mat-card fxLayout="column" class="m-16">
   <div *ngFor="let comments of followupComments; let i = index">
     <mat-list class="comments-display">
-      <div *ngIf="comments as generalComment" tabindex="1" attr.aria-label="{{ generalComment.addedOn }}">
+      <div *ngIf="comments as generalComment" tabindex="1" attr.aria-label="{{ generalComment.addedOn }}" class="comments-date">
         <b> {{ generalComment.addedOn | date: date:'MMMM d, y'}}: </b>
       </div>
       <div class="ck-editor-container description" *ngIf="comments as generalComment" tabindex="0"

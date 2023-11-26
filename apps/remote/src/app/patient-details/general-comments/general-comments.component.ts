@@ -9,12 +9,11 @@ import { PatientService } from '../../services/patient.service';
 @Component({
   selector: 'patients-general-comments',
   templateUrl: 'general-comments.component.html',
-  styleUrls:['./general-comments.component.scss']
+  styleUrls: ['./general-comments.component.scss'],
 })
 export class GeneralCommentsComponent implements OnInit, OnDestroy {
   loading$: any;
   showMore = true;
-  followUpComments$: Subject<GeneralComment[]> = new BehaviorSubject([]);
   patientInfo: Patient;
   folloupComments: GeneralComment[] = [];
   allComments: GeneralComment[] = [];
@@ -30,45 +29,38 @@ export class GeneralCommentsComponent implements OnInit, OnDestroy {
     this.activatedRoute.params.subscribe((x) => {
       this.patientId = x.id;
       this.patientService.getPatientById(x.id).subscribe((res) => {
-        if(res) {
+        if (res) {
           this.patientInfo = res;
-          this.allComments = this.sortTheComments(res.followUpComments);
-          this.folloupComments = this.allComments.slice(0,2);
-          this.followUpComments$.next(this.allComments);
+          this.setGeneralComments(res);
         }
         this.loading$.next(false);
       });
     });
   }
 
-  private sortTheComments(followupComments: GeneralComment[] ) {
-    const comments = followupComments || [];
-    comments.sort((a, b) => {
-      const dateA = new Date(a.addedOn).getTime();
-      const dateB = new Date(b.addedOn).getTime();
-      return dateB - dateA;
-    });
-    return comments;
+  private setGeneralComments(res: Patient) {
+    this.allComments = res.followUpComments
+      .sort((a, b) =>  new Date(b.addedOn).getTime() -  new Date(a.addedOn).getTime()) || [];
+    this.folloupComments = this.allComments.slice(0, 2);
   }
 
   ngOnInit() {
     this.patientService.patientData$
       .pipe(takeUntil(this._unsubscribe))
-      .subscribe(patients => {
-        const selectedPatient = patients.find(x=>x.id === this.patientId);
-        if(selectedPatient) {
-          this.folloupComments = this.sortTheComments(selectedPatient.followUpComments);
-          if(this.patientInfo)
+      .subscribe((patients) => {
+        const selectedPatient = patients.find((x) => x.id === this.patientId);
+        if (selectedPatient) {
+          this.setGeneralComments(selectedPatient);
+          if (this.patientInfo)
             this.patientInfo.reviewStatus = selectedPatient.reviewStatus;
         }
-    });
+      });
 
     this.patientService.updatedStatus$
       .pipe(takeUntil(this._unsubscribe))
       .subscribe((status) => {
-        if(this.patientInfo)
-          this.patientInfo.reviewStatus = status;
-    });
+        if (this.patientInfo) this.patientInfo.reviewStatus = status;
+      });
   }
 
   onShowMoreClick() {
@@ -84,5 +76,4 @@ export class GeneralCommentsComponent implements OnInit, OnDestroy {
     this._unsubscribe.next(true);
     this._unsubscribe.complete();
   }
-
 }

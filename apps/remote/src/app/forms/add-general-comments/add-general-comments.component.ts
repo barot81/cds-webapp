@@ -113,7 +113,7 @@ export class AddGeneralCommentsComponent
   private sortCommnets(followUpComments) {
     return followUpComments
     .sort((a, b) => {
-      return new Date(b.addedOn).getDate() - new Date(a.addedOn).getDate();
+      return new Date(a.addedOn).getDate() - new Date(b.addedOn).getDate();
     });
   }
 

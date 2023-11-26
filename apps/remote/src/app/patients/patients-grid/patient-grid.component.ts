@@ -48,6 +48,7 @@ import { GridService } from '../../services/grid.service';
 import { PatientGridColInfo } from '../../configs/column-info.config';
 import { PatientService } from '../../services/patient.service';
 import { Router, RoutesRecognized } from '@angular/router';
+import { GeneralComment } from '../../models/general-comments.model';
 export class AppliedGridFilter {
   constructor(public name: string, public values: string[]) {}
 }
@@ -81,7 +82,6 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   itemsPerPage = 20;
   fieldAndDisplayName: Map<string, string> = new Map();
   serviceEndPoint: string;
-  gridData: any;
   routerPath: string;
   currentField: string;
   displayName: string;
@@ -122,6 +122,8 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   @Output() patientClick: EventEmitter<any> = new EventEmitter<any>();
   appliedFilters: Filter[];
   selectedSortingOption: string;
+  displayedComments = 2;
+  showMoreText = 'Show more';
   sortingOptions = [
     { label: 'Room (Ascending)', value: 'room-asc' },
     { label: 'Room (Descending)', value: 'room-desc' },
@@ -165,7 +167,6 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
       .pipe(takeUntil(this._unsubscribe))
       .subscribe((res) => {
         if (res) {
-          this.gridData = res;
           this.numberOfAppliedFilter = res.filters.length;
         }
       });
@@ -444,6 +445,17 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     this._patientGridService.removeFilter(value, filter.name);
     this.datasourceFacade.updateAllDataSourceFilter(remainingFilters);
+  }
+
+  sortedFollowUpComments(comments: any[]): any[] {
+    const sortedComments = [...comments];
+    return sortedComments ? sortedComments.sort((a, b) => new Date(b.addedOn).getTime() - new Date(a.addedOn).getTime()) : [];
+  }
+
+  toggleShowMore(comments) {
+
+    this.displayedComments = this.displayedComments === 2 ? comments.length : 2;
+    this.showMoreText = this.displayedComments === 2 ? 'Show more' : 'Show less';
   }
 
   resetFilter() {

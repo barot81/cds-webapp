@@ -33,7 +33,7 @@
           </div>
           <div *ngFor="let comments of folloupComments; let i = index">
             <div class="comments-display mt-8">
-              <div *ngIf="comments as generalComment" tabindex="1" attr.aria-label="{{ generalComment.addedOn }}">
+              <div *ngIf="comments as generalComment" tabindex="1" attr.aria-label="{{ generalComment.addedOn }}" class="comments-date">
                 <b> {{ generalComment.addedOn | date: date:'MMMM d, y'}}:</b>
               </div>
               <div class="ck-editor-container description " *ngIf="comments as generalComment" tabindex="0"
