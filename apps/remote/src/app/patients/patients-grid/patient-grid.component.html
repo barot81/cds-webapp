@@ -262,7 +262,7 @@
                   {{ followup.comments }}
                 </p>
                 <p *ngIf="i < displayedComments" class="comment-date">
-                  <b>{{ followup.addedOn | date: 'MMMM d, y' }}</b>
+                  <b>{{ followup.addedOn | date: 'MMM d, y' }}</b>
                 </p>
               </div>
               <a *ngIf="element?.followupComments.length > 2" (click)="toggleShowMore(element?.followupComments)">

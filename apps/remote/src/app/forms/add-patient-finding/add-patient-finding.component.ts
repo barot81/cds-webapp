@@ -347,12 +347,12 @@ export class AddPatientFindingComponent
     this._drawerService.setPrimaryActionState(false, true);
     if (this.data) {
       this.patientFindingInfo.id = this.data.id;
-      this.editExistingPatientFinding();
+      this.updateQueryFinding();
     } else {
-      this.addNewPatientFinding();
+      this.addQueryFinding();
     }
   }
-  addNewPatientFinding() {
+  addQueryFinding() {
     this.patientFindingService
       .addPatientFinding(this.patientId, this.patientFindingInfo)
       .subscribe((response) => {
@@ -370,7 +370,7 @@ export class AddPatientFindingComponent
         }
       });
   }
-  editExistingPatientFinding() {
+  updateQueryFinding() {
     this.patientFindingService
       .updatePatientFinding(this.patientId, this.patientFindingInfo)
       .subscribe((response) => {

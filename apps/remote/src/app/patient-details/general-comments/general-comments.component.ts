@@ -50,7 +50,7 @@ export class GeneralCommentsComponent implements OnInit, OnDestroy {
     this.patientService.currentPatient$.subscribe((patientInfo) => {
       this.setGeneralComments(patientInfo);
       if (this.patientInfo)
-        this.patientInfo.reviewStatus = patientInfo.reviewStatus;
+        this.patientInfo = patientInfo;
     });
   }
 

@@ -146,8 +146,8 @@ export class AddGeneralCommentsComponent
     if (this.key) {
       this.patientInfo.generalComment  = {
         comments: this.fusionFormGroup.controls['comments'].value,
-        addedBy: this.currentUser ?? '',
-        addedOn: this._datepipe.transform(new Date(), 'yyyy-MM-dd'),
+        addedBy: this.currentUser ?? localStorage.getItem('userName'),
+        addedOn: this._datepipe.transform(new Date(), 'yyyy-MM-ddTHH:mm:ss'),
       };
       this.patientInfo.reviewStatus = this.fusionFormGroup.controls['reviewStatus'].value;
       this._patientService

@@ -7,11 +7,13 @@ import {
   MSDrgLookup,
   QueryDiagnosisLookup,
 } from '../models/lookup.models';
-import { Patient } from '../models/patient.model';
 
 @Injectable({ providedIn: 'any' })
 export class LookupService extends HttpService {
-  patients = [];
+  aprDrgLookups = [];
+  msDrgLookups = [];
+  diagnosisInfo: QueryDiagnosisLookup;
+  physicians = [];
   loading$ = new BehaviorSubject<boolean>(false);
 
   protected getBaseUrl(): string {
@@ -29,10 +31,17 @@ export class LookupService extends HttpService {
   }
 
   public getPhycianNames() {
+    if(this.physicians.length > 0)
+      return of(this.physicians);
     const url = `${this.getBaseEndpoint()}/Physicians`;
     this.loading$.next(true);
     return this.httpClient.get<string[]>(url).pipe(
-      tap((x) => this.loading$.next(false)),
+      map((x) =>
+      {
+        this.physicians = x;
+        this.loading$.next(false);
+        return x;
+      }),
       catchError((err) => {
         this.loading$.next(false);
         return of(err);
@@ -48,15 +57,19 @@ export class LookupService extends HttpService {
   }
 
   public getMsDrgLookup(): Observable<DrgLookup[]> {
+    if(this.msDrgLookups.length > 0) {
+      return of(this.msDrgLookups);
+    }
     const url = `${this.getBaseUrl()}/Lookups/MsDrg`;
     this.loading$.next(true);
     return this.httpClient.get<MSDrgLookup>(url).pipe(
       map((x) => {
-        this.loading$.next(false);
-        return x.items.map(
+        this.msDrgLookups = x.items.map(
           (y) =>
             new DrgLookup(y.drgNo, y.drgTitle, y.weights, y.geometricMeanLos)
         );
+        this.loading$.next(false);
+        return this.msDrgLookups;
       }),
       catchError((err) => {
         this.loading$.next(false);
@@ -66,12 +79,13 @@ export class LookupService extends HttpService {
   }
 
   public getAprDrgLookup(): Observable<DrgLookup[]> {
+    if(this.aprDrgLookups.length > 0)
+      return of(this.aprDrgLookups);
     const url = `${this.getBaseUrl()}/Lookups/AprDrg`;
     this.loading$.next(true);
     return this.httpClient.get<APRDrgLookup>(url).pipe(
       map((x) => {
-        this.loading$.next(false);
-        return x.items.map(
+        this.aprDrgLookups = x.items.map(
           (y) =>
             new DrgLookup(
               y.drgNo,
@@ -80,6 +94,8 @@ export class LookupService extends HttpService {
               y.nationalAverageLos
             )
         );
+        this.loading$.next(false);
+        return this.aprDrgLookups;
       }),
       catchError((err) => {
         this.loading$.next(false);
@@ -89,10 +105,16 @@ export class LookupService extends HttpService {
   }
 
   public getDiagnosisLookup() {
+    if(this.diagnosisInfo?.items && this.diagnosisInfo.items.length > 0)
+      return of(this.diagnosisInfo);
     const url = `${this.getBaseUrl()}/Lookups/QueryDiagnosis`;
     this.loading$.next(true);
     return this.httpClient.get<QueryDiagnosisLookup>(url).pipe(
-      tap((x) => this.loading$.next(false)),
+      map((x) => {
+        this.diagnosisInfo = x;
+        this.loading$.next(false);
+        return x;
+      }),
       catchError((err) => {
         this.loading$.next(false);
         return of(err);
