@@ -154,8 +154,8 @@ export class AddPatientFindingComponent
       this.queryDiagnosisList = x.items.map((x) => x.name)
     );
 
-    this.patientService.getPatientById(this.patientId).subscribe(
-      patient => {
+    this.patientService.currentPatient$.pipe(takeUntil(this._onDestroy))
+    .subscribe(patient => {
         this.PatientInfo = patient;
         this.lookupService.getDrgLookup(patient.reimbursementType)
         .subscribe((x) => {
@@ -346,7 +346,7 @@ export class AddPatientFindingComponent
     this.patientFindingInfo.patientId = this.patientId;
     this._drawerService.setPrimaryActionState(false, true);
     if (this.data) {
-      this.patientFindingInfo.id = this.data.id;
+      this.patientFindingInfo.id ??= this.data?.id;
       this.updateQueryFinding();
     } else {
       this.addQueryFinding();

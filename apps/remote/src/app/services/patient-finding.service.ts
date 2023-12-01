@@ -1,9 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpService, MetaConstants } from '@zhealthcare/fusion/core';
 import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
-import { environment } from '../../environments/environment';
 import { Finding } from '../models/Finding.model';
 
 @Injectable({ providedIn: 'any' })
@@ -74,7 +73,8 @@ export class PatientFindingService extends HttpService {
         headers: headers,
       })
       .pipe(
-        map((x) => {
+        map((x:Finding) => {
+          patientFinding.id = x.id;
           this.patientFinding.push(patientFinding);
           this.patientFindingData$.next(this.patientFinding);
           return x;
