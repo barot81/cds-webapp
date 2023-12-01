@@ -36,7 +36,7 @@ export class PatientFindingService extends HttpService {
     this.loading$.next(true);
     const url = this.getBaseEndpoint(patientId);
     return this.httpClient.get(url).pipe(
-      map((patientFinding: any[]) => {
+      map((patientFinding: Finding[]) => {
         this.patientFinding = patientFinding;
         this.patientFindingData$.next(patientFinding);
         this.loading$.next(false);

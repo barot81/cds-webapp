@@ -152,24 +152,14 @@
             </th>
             <td mat-cell *matCellDef="let element" class="admit-date-column">
               <div class="column-group">
-                <p>{{ element?.admitDate | date:'MMMM d, y' }}</p>
+                <p>{{ element?.admitDate | date:'MMM d, y' }}</p>
                 <div>{{element?.attendingPhysician}} </div>
                 <div> {{ element?.patientClass === 'Out' ? 'OBS': 'IN' }} </div>
-                <!-- <p>
-                  <span *ngIf="!element?.dischargeDate"><b> -</b></span>
-                  {{ element?.dischargeDate | date:'MMMM d, y' }}
-                </p> -->
+
               </div>
             </td>
           </ng-container>
 
-          <!-- <ng-container matColumnDef="dischargeDate">
-            <th id="admitDate" mat-header-cell *matHeaderCellDef class="email-width">Discharge Date</th>
-            <td mat-cell *matCellDef="let element" class="adnutDate-width">
-              <span *ngIf="!element?.dischargeDate"><b> -</b></span>
-              <p>{{ element?.dischargeDate | date:'MMMM d, y' }}</p>
-            </td>
-          </ng-container> -->
           <ng-container matColumnDef="cds">
             <th mat-header-cell *matHeaderCellDef class="cds-column">
               <div class="mb-4">CDS</div>
@@ -286,7 +276,7 @@
           <ng-container matColumnDef="queryDate">
             <th id="queryDate" mat-header-cell *matHeaderCellDef class="email-width">Query Date</th>
             <td mat-cell *matCellDef="let element" class="email-width">
-              <a>{{ element?.queryDate | date:'MMMM d, y'}}</a>
+              <a>{{ element?.queryDate | date:'MMM d, y'}}</a>
             </td>
           </ng-container>
 
