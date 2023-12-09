@@ -1,7 +1,12 @@
 <div class="p-0 zhealthcare-info-container" fxLayout="column">
   <div fxFlex="100" fxFlex.gt-sm="60">
     <mat-card class="card-header-title card-header-border-bottom">
-      <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
+      <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start"
+      class="add-row"
+      mat-icon-button aria-label="Add Finding Information"
+      zhealthcareDrawerAction [componentSelector]="_patientFormService.get('patient-finding-form')"
+      [size]="'drawer-lg'" [caption]="'Add Finding Information'" [primaryAction]="'Save'"
+      [entityKey]="">
         <div fxLayout="column" fxFlex="90">
           <div fxLayout.gt-md="row" fxLayout="column" fxLayoutAlign.gt-md="start center" fxLayoutAlign="start start"
             fxFlex="100">
@@ -10,10 +15,7 @@
             </div>
           </div>
         </div>
-        <button mat-icon-button aria-label="Add Finding Information" zhealthcareDrawerAction [componentSelector]="
-        _patientFormService.get('patient-finding-form')
-      " [size]="'drawer-lg'" [caption]="'Add Finding Information'" [primaryAction]="'Save'" role="button"
-          [entityKey]="">
+        <button mat-icon-button aria-label="Add Finding Information" role="button">
           <i aria-hidden="true" class="fa-light fa-plus"></i>
         </button>
       </div>
@@ -107,7 +109,7 @@
                 </div>
                 <div fxLayout="column" fxLayoutAlign="top" fxFlex="16">
                   <div class="mb-16">
-                    <div class="title">GMLOS</div>
+                    <div class="title">Initial GMLOS</div>
                     <div class="description">
                       {{ item?.gmlos }}
                       <span *ngIf="!item?.gmlos">-</span>
@@ -145,7 +147,16 @@
                 </div>
               </div>
               <div fxLayout="row" fxLayout.gt-md="row" fxLayoutGap="7">
-                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="16.5">
+                  <div class="mb-16">
+                    <div class="title">Query Status</div>
+                    <div class="description">
+                      {{ item?.queryStatus }}
+                      <span *ngIf="!item?.queryStatus">-</span>
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="16">
                   <div class="mb-16">
                     <div class="title">Response Date</div>
                     <div class="description">
@@ -163,23 +174,23 @@
                     </div>
                   </div>
                 </div>
-                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+              </div>
+              <div fxLayout="row" fxLayout.gt-md="row">
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="49.5">
+                  <div class="mb-16 mr-8">
+                    <div class="title">Follow up Comments</div>
+                    <div class="description">
+                      <div [innerHTML]="displayTextAreaContent(item?.followupComment)"></div>
+                      <span *ngIf="!item?.followupComment">-</span>
+                    </div>
+                  </div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="49.5">
                   <div class="mb-16">
                     <div class="title">Response</div>
                     <div class="description">
                       {{ item?.responseComment }}
                       <span *ngIf="!item?.responseComment">-</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div fxLayout="row" fxLayout.gt-md="row">
-                <div fxLayout="column" fxLayoutAlign="top" fxFlex="100">
-                  <div class="mb-16">
-                    <div class="title">Follow up Comments</div>
-                    <div class="description">
-                      {{ item?.followupComment }}
-                      <span *ngIf="!item?.followupComment">-</span>
                     </div>
                   </div>
                 </div>
@@ -223,34 +234,25 @@
                     </div>
                   </div>
                 </div>
-                <div fxLayout="column" fxLayoutAlign="top" fxFlex="16.5">
-                  <div class="mb-16">
-                    <div class="title">Query Status</div>
-                    <div class="description">
-                      {{ item?.queryStatus }}
-                      <span *ngIf="!item?.queryStatus">-</span>
-                    </div>
-                  </div>
-                </div>
               </div>
               <div fxLayout="row" fxLayout.gt-md="row">
 
               </div>
               <div fxLayout="row" fxLayout.gt-md="row" class="mt-16">
-                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33.5">
-                <div class="mb-16">
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="49.5">
+                <div class="mb-16 mr-8">
                   <div class="title">Clinical Summary</div>
                   <div class="description">
-                    {{ item?.clinicalSummary }}
+                    <div [innerHTML]="displayTextAreaContent(item?.clinicalSummary)"></div>
                     <span *ngIf="!item?.clinicalSummary">-</span>
                   </div>
                 </div>
                 </div>
-                <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
+                <div fxLayout="column" fxLayoutAlign="top" fxFlex="49.5">
                   <div class="mb-16">
                     <div class="title">Comments</div>
                     <div class="description">
-                      {{ item?.comments }}
+                      <div [innerHTML]="displayTextAreaContent(item?.comments)"></div>
                       <span *ngIf="!item?.comments">-</span>
                     </div>
                   </div>

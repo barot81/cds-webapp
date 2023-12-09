@@ -1,16 +1,17 @@
 <mat-card class="p-0 mb-8 mt-small-8">
   <div fxLayout="row wrap" fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-md="100">
     <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="100" fxFlex.gt-md="100">
-      <header fxLayout="row"  fxLayoutAlign="space-between center" class="card-header-title card-header-border-bottom">
+      <header fxLayout="row"  fxLayoutAlign="space-between center" class="card-header-title card-header-border-bottom add-row"
+      zhealthcareDrawerAction
+          [componentSelector]="_patientFormService.get('patient-general-comments-form')" [size]="'drawer-sm'"
+          [data]="patientInfo" title="General Comments" [primaryAction]="'Save'" role="button"
+          [entityKey]="patientInfo?.id">
         <div fxLayout="row" fxLayoutAlign="start center">
           <span class="primary-heading font-weight-600" tabindex="0" aria-label="comments">
             Review Comments
           </span>
         </div>
-        <button mat-icon-button aria-label="Edit summary" zhealthcareDrawerAction
-          [componentSelector]="_patientFormService.get('patient-general-comments-form')" [size]="'drawer-sm'"
-          [data]="patientInfo" title="General Comments" [primaryAction]="'Save'" role="button"
-          [entityKey]="patientInfo?.id">
+        <button mat-icon-button aria-label="Edit summary">
           <i aria-hidden="true" class="fa-light fa-pen"></i>
         </button>
       </header>
@@ -29,7 +30,7 @@
 
         <div class="zhealthcare-info p-16">
           <div class="title" tabindex="0" aria-label="General Comments">
-            Followup Comments
+            General Followup Comments
           </div>
           <div *ngFor="let comments of folloupComments; let i = index">
             <div class="comments-display mt-8">

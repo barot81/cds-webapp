@@ -1,5 +1,27 @@
 <div class="mt-8" fxLayout="row" fxFlex="100">
   <div class="page-layout simple fullwidth inner-scroll full-width-page">
+    <div
+    class="mt-xs-16 mb-16"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    #container_header
+  >
+    <button
+      mat-icon-button
+      aria-label="Click to go back"
+      class="mr-8"
+      routerLink="/admin/patients"
+    >
+      <i aria-hidden="true" class="fal fa-long-arrow-left"></i>
+    </button>
+    <h2
+      class="font-weight-600 ml-8"
+      tabindex="0"
+      aria-label="heading University of Southern California"
+    >
+      Patient Details
+    </h2>
+  </div>
     <div class="content">
       <patient-header></patient-header>
     </div>

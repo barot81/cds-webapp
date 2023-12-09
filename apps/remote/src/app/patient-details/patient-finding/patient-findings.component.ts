@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component,  OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component,  OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, map, Subject, takeUntil } from 'rxjs';
 import { PatientFormsService } from '../../forms/patient-forms.service';
@@ -10,9 +10,10 @@ import { LookupService } from '../../services/lookup.service';
 @Component({
   selector: 'patient-findings',
   templateUrl: 'patient-findings.component.html',
+  styleUrls:['patient-findings.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PatientFindingsComponent implements OnInit {
+export class PatientFindingsComponent implements OnDestroy {
   loading$: any;
   patientFindings$: Subject<Finding[]> = new BehaviorSubject([]);
   patientFindingInfo: Finding;
@@ -40,6 +41,7 @@ export class PatientFindingsComponent implements OnInit {
 
     });
   }
+
   InitialzeLookup() {
     this.lookupService.getPhycianNames().subscribe();
     this.lookupService.getDiagnosisLookup().subscribe();
@@ -48,10 +50,12 @@ export class PatientFindingsComponent implements OnInit {
        this.lookupService.getDrgLookup(patient.reimbursementType).subscribe()
     );
   }
-
-  ngOnInit() {  }
   // this.InitialzeLookup();
 
+
+  displayTextAreaContent(content: string){
+    return content.replace(/\n/g, '<br>');
+  }
   ngOnDestroy(): void {
     this._unsubscribe.next(true);
     this._unsubscribe.complete();

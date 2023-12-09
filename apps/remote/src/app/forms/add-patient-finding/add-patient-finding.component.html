@@ -71,7 +71,7 @@
       <div class="p-16 pb-0" fxLayout="column">
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
           <mat-form-field appearance="fill" fxFlex="11" class="w-100-p">
-            <mat-label> Drg No </mat-label>
+            <mat-label> Current DRG No. </mat-label>
             <mat-select (selectionChange)="onDrgChange($event)" formControlName="currentDrgNo">
               <mat-option>
                 <ngx-mat-select-search
@@ -118,7 +118,7 @@
       <div class="p-16 pb-0" fxLayout="column">
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
           <mat-form-field appearance="fill" fxFlex="11" class="w-100-p">
-            <mat-label>Expected Drg No </mat-label>
+            <mat-label>Expected DRG No. </mat-label>
             <mat-select (selectionChange)="onExpectedDrgChange($event)" formControlName="expectedDrgNo">
               <mat-option>
                 <ngx-mat-select-search
@@ -169,6 +169,16 @@
       <div class="p-16 pb-0" fxLayout="column">
       <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
         <mat-form-field appearance="fill" fxFlex="32">
+          <mat-label>Query Status</mat-label>
+          <mat-select formControlName="queryStatus" (selectionChange)="OnStatusChanged($event)" required>
+            <mat-option *ngFor="let st of statusList" [ngClass]="{'mat-option-text ': isOptionTruncated(st)
+            }" id={{st}} [value]="st" class="dropdown-with-tooltip" [options]="tooltipOptions"
+              [display]="isOptionTruncated(st)" [tooltip]="st">
+              {{st}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" fxFlex="32">
           <mat-label>Response Date</mat-label>
           <input readonly matInput [matDatepicker]="picker2" (click)="picker2.open()"
             formControlName="responseDate" [required]="enabledQueryBasedValidation" />
@@ -189,24 +199,25 @@
 
       </div>
     </div>
-      <div class="p-16 pb-0" fxLayout="column">
+    <div class="p-16 pb-0" fxLayout="column">
       <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
 
-        <mat-form-field appearance="fill" fxFlex="32">
-          <mat-label>Response</mat-label>
-          <textarea matInput  formControlName="responseComment" rows="2" [required]="enabledQueryBasedValidation"></textarea>
-        </mat-form-field>
-        <mat-form-field appearance="fill" fxFlex="68">
+        <mat-form-field appearance="fill" fxFlex="50">
           <mat-label>Follow Up Comments</mat-label>
-          <textarea matInput  formControlName="followupComment" rows="2">
+          <textarea matInput  formControlName="followupComment" rows="8">
         </textarea>
         </mat-form-field>
+        <mat-form-field appearance="fill" fxFlex="50">
+          <mat-label>Response</mat-label>
+          <textarea matInput  formControlName="responseComment" rows="8" [required]="enabledQueryBasedValidation"></textarea>
+        </mat-form-field>
+
       </div>
     </div>
       <div class="p-16 pb-0" fxLayout="column">
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
           <mat-form-field appearance="fill" fxFlex="11" class="w-100-p">
-            <mat-label> Ending Drg No</mat-label>
+            <mat-label> Ending DRG No.</mat-label>
             <mat-select (selectionChange)="onEndingDrgChange($event)" formControlName="revisedDrgNo" [required]="enabledQueryBasedValidation">
               <mat-option>
                 <ngx-mat-select-search
@@ -246,27 +257,17 @@
             <mat-label>Weight Difference</mat-label>
             <input matInput  formControlName="weightDifference">
           </mat-form-field>
-          <mat-form-field appearance="fill" fxFlex="20">
-            <mat-label>Query Status</mat-label>
-            <mat-select formControlName="queryStatus" (selectionChange)="OnStatusChanged($event)" required>
-              <mat-option *ngFor="let st of statusList" [ngClass]="{'mat-option-text ': isOptionTruncated(st)
-              }" id={{st}} [value]="st" class="dropdown-with-tooltip" [options]="tooltipOptions"
-                [display]="isOptionTruncated(st)" [tooltip]="st">
-                {{st}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
         </div>
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
 
           <mat-form-field appearance="fill" fxFlex="50">
             <mat-label>Clinical Summary</mat-label>
-            <textarea matInput  formControlName="clinicalSummary" rows="3">
+            <textarea matInput  formControlName="clinicalSummary" rows="8">
             </textarea>
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="50">
             <mat-label>Comments</mat-label>
-            <textarea matInput  formControlName="comments" rows="3">
+            <textarea matInput  formControlName="comments" rows="8">
             </textarea>
           </mat-form-field>
         </div>
