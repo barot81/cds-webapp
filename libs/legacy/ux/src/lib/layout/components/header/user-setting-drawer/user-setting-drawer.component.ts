@@ -260,9 +260,10 @@ export class UserSettingDrawerComponent implements OnInit {
   }
 
   getUserDetails() {
-    const userName = this.userSerive .getUserName()?.split(' ');
+    const userName = this.userSerive.getUserName()?.split(' ');
     this.userDetails = userName
                   ? {  given_name: userName[0],  family_name: userName[1] }
                   : this._layoutService.getUser();
+    this.userDetails.email = this.userSerive.getEmail();
   }
 }

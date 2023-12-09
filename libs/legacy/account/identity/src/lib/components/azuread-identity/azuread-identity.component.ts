@@ -44,7 +44,8 @@ export class AzureAdIdentityComponent implements OnInit, OnDestroy {
           this.msalService.instance.getAllAccounts().length > 0;
           if(this.isUserLoggedin) {
             this.router.navigateByUrl('/admin/account/launch');
-            this.userService.setUserName(this.msalService.instance.getAllAccounts()[0].name);
+            const instance = this.msalService.instance.getAllAccounts()[0];
+            this.userService.setUserName(instance.name, instance.username);
           }
           this.loading = false;
           localStorage.removeItem('loading');

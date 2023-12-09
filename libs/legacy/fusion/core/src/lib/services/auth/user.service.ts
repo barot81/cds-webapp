@@ -6,17 +6,26 @@ import { GET, Path, Header } from '../../asyncServices/http/http.decorator';
 @Injectable({providedIn: 'any'})
 export class UserService extends HttpService {
 
-    userName: string;
-    setUserName(userName:string) {
-        this.userName = userName;
+    name: string;
+    email: string;
+    setUserName(userName:string, email: string) {
+        this.name = userName;
+        this.email = email;
         localStorage.setItem('userName', userName);
+        localStorage.setItem('email', email);
     }
 
     getUserName(): string {
-       if(!this.userName) {
-            this.userName = localStorage.getItem('userName');
+       if(!this.name) {
+            this.name = localStorage.getItem('userName');
        }
-       return this.userName;
+       return this.name;
+    }
+    getEmail(): string {
+      if(!this.email) {
+        this.name = localStorage.getItem('email');
+      }
+      return this.email;
     }
     @GET<any>('/Profile/{userId}')
     UpdateUser(@Path('userId') userId:number,@Header('TenantId') header: string, @Header('Oucodes') oucodes: string): Observable<any> {
