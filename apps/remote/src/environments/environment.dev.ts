@@ -16,7 +16,7 @@ export const environment = {
     },
     services: {
       facility: {
-        endpoint: 'https://zcds.azurewebsites.net/api' //'https://localhost:7198/api',
+        endpoint: 'https://abzcds.azurewebsites.net/api' //'https://localhost:7198/api',
       },
     },
     microfrontends: {
