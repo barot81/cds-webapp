@@ -76,54 +76,62 @@
                   fxHide.gt-sm>
                   <i aria-hidden="true" class="fal fa-ellipsis-h s-18"></i>
                 </button>
-                <mat-menu #menu= "matMenu" fxHide.gt-sm>
-                  <button mat-menu-item aria-label="Edit Columns" zhealthcareDrawerAction
-                    [componentSelector]="dataSourceComponentService.get('zhealthcare-display-columns-form')"
-                    [size]="'drawer-sm'" [caption]="'Edit Columns'" role="img" [primaryAction]="'Save'"
-                    aria-hidden="true">
-                    <i aria-hidden="true" class="fa-light fa-wrench s-18 mr-8"></i>Edit columns
+                <div fxLayout="row" class="mr-8">
+                  <button matTooltip="Export" tabindex="0" aria-label="Export" (click)="exportAsPDF()" mat-icon-button
+                     fxHide.lt-md>
+                    <i aria-hidden="true" *ngIf="!exportInProgress" class="fa-light fa-file-export s-18"></i>
+                    <mat-spinner *ngIf="exportInProgress" diameter="20" color="accent"></mat-spinner>
                   </button>
-                </mat-menu>
+                  <mat-menu #menu="matMenu" fxHide.gt-sm>
+                    <button mat-menu-item aria-label="Edit Columns" zhealthcareDrawerAction
+                      [componentSelector]="dataSourceComponentService.get('zhealthcare-display-columns-form')"
+                      [size]="'drawer-sm'" [caption]="'Edit Columns'" role="img" [primaryAction]="'Save'"
+                      aria-hidden="true">
+                      <i aria-hidden="true" class="fa-light fa-wrench s-18 mr-8"></i>Edit columns
+                    </button>
+                  </mat-menu>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="content zhealthcare-sticky-table overflow-auto" [ngClass]="{
+        <div class="content zhealthcare-sticky-table overflow-auto" [ngClass]="{
         'patient-search-grid-with-filter': ((searchValue && searchValue!=='') || numberOfAppliedFilter>0) && (datasourceFacade.fusionDataSourceLoading$ | async ) === false,
         'patient-search-grid-without-filter':!((searchValue && searchValue!=='') || numberOfAppliedFilter>0) && (datasourceFacade.fusionDataSourceLoading$ | async ) === false,
         'patient-search-grid-with-loadingstate':(datasourceFacade.fusionDataSourceLoading$ | async )}"
-        (scroll)="scrollHandler($event)">
-        <table id="stickyColumnTable" aria-label="This is a Simple table" mat-table
-          [dataSource]="datasourceFacade.fusionDataSet$ | async" class="mat-table cdk-table w-100-p zhealthcare-table"
-          matSort matSortDisableClear>
+          (scroll)="scrollHandler($event)" #table>
+          <table id="stickyColumnTable" aria-label="This is a Simple table" mat-table
+          matTableExporter
+          #exporter="matTableExporter"
+            [dataSource]="datasourceFacade.fusionDataSet$ | async" class="mat-table cdk-table w-100-p zhealthcare-table"
+            matSort matSortDisableClear>
 
-          <ng-container matColumnDef="patientName">
-            <th mat-header-cell *matHeaderCellDef  class="name-column">
-              <div class="mb-4">Patient #</div>
-              <div class="mb-4">Patient Name </div>
-              <div class="mb-4">Room</div>
-            </th>
-            <td mat-cell *matCellDef="let element; let i = index" class="name-column">
-              <div class="column-group">
-                <div>
-                  <a [routerLink]="['./', element?.id, 'details']">
-                    <span class="list-item-name"> {{ element?.patientNo }}
-                    </span>
-                  </a>
-                </div>
-                <div fxLayout="row" fxLayoutAlign="start center">
-                  <b>{{ element?.patientName }}</b>
-                  <zhealthcare-tag-showcase [tags]="tags" class="ml-4" *ngIf="i % 3 === 0"></zhealthcare-tag-showcase>
-                </div>
+            <ng-container matColumnDef="patientName">
+              <th mat-header-cell *matHeaderCellDef class="name-column">
+                <div class="mb-4">Patient #</div>
+                <div class="mb-4">Patient Name </div>
+                <div class="mb-4">Room</div>
+              </th>
+              <td mat-cell *matCellDef="let element; let i = index" class="name-column">
+                <div class="column-group">
+                  <div>
+                    <a [routerLink]="['./', element?.id, 'details']">
+                      <span class="list-item-name"> {{ element?.patientNo }}
+                      </span>
+                    </a>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start center">
+                    <b>{{ element?.patientName }}</b>
+                    <zhealthcare-tag-showcase [tags]="tags" class="ml-4" *ngIf="i % 3 === 0"></zhealthcare-tag-showcase>
+                  </div>
 
-                <div>
-                  <b>{{ element?.room }}</b>
+                  <div>
+                    <b>{{ element?.room }}</b>
+                  </div>
                 </div>
-              </div>
-            </td>
-          </ng-container>
-          <!-- <ng-container matColumnDef="patientNo">
+              </td>
+            </ng-container>
+            <!-- <ng-container matColumnDef="patientNo">
             <th id="patient-id-header" mat-header-cell *matHeaderCellDef mat-sort-header>
               Patient #
             </th>
@@ -132,8 +140,8 @@
             </td>
           </ng-container> -->
 
-          <!-- address Column -->
-          <!-- <ng-container matColumnDef="room">
+            <!-- address Column -->
+            <!-- <ng-container matColumnDef="room">
             <th id="room" mat-header-cell *matHeaderCellDef mat-sort-header class="room-column">
               Room
             </th>
@@ -142,76 +150,76 @@
             </td>
           </ng-container> -->
 
-          <!-- email Column -->
-          <ng-container matColumnDef="admitDate">
-            <th id="admitDate" mat-header-cell *matHeaderCellDef class="admit-date-column">
-              <div class="mb-4">Admit Date</div>
-              <div class="mb-4"> Att. physician </div>
-              <div class="mb-4"> Patient Type</div>
+            <!-- email Column -->
+            <ng-container matColumnDef="admitDate">
+              <th id="admitDate" mat-header-cell *matHeaderCellDef class="admit-date-column">
+                <div class="mb-4">Admit Date</div>
+                <div class="mb-4"> Att. physician </div>
+                <div class="mb-4"> Patient Type</div>
 
-            </th>
-            <td mat-cell *matCellDef="let element" class="admit-date-column">
-              <div class="column-group">
-                <p>{{ element?.admitDate | date:'MMM d, y' }}</p>
-                <div>{{element?.attendingPhysician}} </div>
-                <div> {{ element?.patientClass === 'Out' ? 'OBS': 'IN' }} </div>
+              </th>
+              <td mat-cell *matCellDef="let element" class="admit-date-column">
+                <div class="column-group">
+                  <p>{{ element?.admitDate | date:'MMM d, y' }}</p>
+                  <div>{{element?.attendingPhysician}} </div>
+                  <div> {{ element?.patientClass === 'Out' ? 'OBS': 'IN' }} </div>
 
-              </div>
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="cds">
-            <th mat-header-cell *matHeaderCellDef class="cds-column">
-              <div class="mb-4">CDS</div>
-              <div class="mb-4">Review Status</div>
-              <div class="mb-4">Reimb Type </div>
-            </th>
-            <td mat-cell *matCellDef="let element" class="column-width">
-              <div class="column-group">
-                <div>{{ element?.cds }} </div>
-                <div class="status-badge {{ colorBadges[element?.reviewStatus] }} text-center">
-                  {{ element?.reviewStatus }}
                 </div>
-                <!-- <div> {{ element?.patientClass === 'Out' ? 'OBS': 'IN' }} </div> -->
-                <div>{{ element?.reimbursementType }}</div>
-              </div>
-            </td>
-          </ng-container>
+              </td>
+            </ng-container>
 
-          <ng-container matColumnDef="reviewStatus">
-            <th mat-header-cell *matHeaderCellDef class="review-column">
-              <div class="mb-4"> Insurance </div>
-              <div class="mb-4"> Financial Class </div>
-              <div class="mb-4"> Total Charges </div>
-            </th>
-            <td mat-cell *matCellDef="let element" class="column-width review-column">
-              <div class="column-group">
-                <!-- <div class="status-badge {{ colorBadges[element?.reviewStatus] }} text-center">
+            <ng-container matColumnDef="cds">
+              <th mat-header-cell *matHeaderCellDef class="cds-column">
+                <div class="mb-4">CDS</div>
+                <div class="mb-4">Review Status</div>
+                <div class="mb-4">Reimb Type </div>
+              </th>
+              <td mat-cell *matCellDef="let element" class="column-width">
+                <div class="column-group">
+                  <div>{{ element?.cds }} </div>
+                  <div class="status-badge {{ colorBadges[element?.reviewStatus] }} text-center">
+                    {{ element?.reviewStatus }}
+                  </div>
+                  <!-- <div> {{ element?.patientClass === 'Out' ? 'OBS': 'IN' }} </div> -->
+                  <div>{{ element?.reimbursementType }}</div>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="reviewStatus">
+              <th mat-header-cell *matHeaderCellDef class="review-column">
+                <div class="mb-4"> Insurance </div>
+                <div class="mb-4"> Financial Class </div>
+                <div class="mb-4"> Total Charges </div>
+              </th>
+              <td mat-cell *matCellDef="let element" class="column-width review-column">
+                <div class="column-group">
+                  <!-- <div class="status-badge {{ colorBadges[element?.reviewStatus] }} text-center">
                   {{ element?.reviewStatus }}
                 </div> -->
-                <div> {{ element?.healthPlan }} </div>
-                <div>{{ element?.financialClass}}</div>
-                <div>{{ element?.totalCharges ?? '-'}}</div>
-              </div>
-            </td>
-          </ng-container>
+                  <div> {{ element?.healthPlan }} </div>
+                  <div>{{ element?.financialClass}}</div>
+                  <div>{{ element?.totalCharges ?? '-'}}</div>
+                </div>
+              </td>
+            </ng-container>
 
-          <ng-container matColumnDef="los">
-            <th id="los" mat-header-cell *matHeaderCellDef class="los-column">
-              <div class="mb-4"> LOS / GLOS </div>
-              <div class="mb-4"> TRAN. DRG </div>
-              <div class="mb-4"> DRG TYPE </div>
-            </th>
-            <td mat-cell class="los-column" *matCellDef="let element">
-             <div class="column-group">
-               <div>{{ element?.los }} / {{ element?.geo }} </div>
-               <div>{{ element?.transferDrg || '-' }} </div>
-               <div>{{ element?.drgType || '-' }} </div>
-             </div>
-            </td>
-          </ng-container>
+            <ng-container matColumnDef="los">
+              <th id="los" mat-header-cell *matHeaderCellDef class="los-column">
+                <div class="mb-4"> LOS / GLOS </div>
+                <div class="mb-4"> TRAN. DRG </div>
+                <div class="mb-4"> DRG TYPE </div>
+              </th>
+              <td mat-cell class="los-column" *matCellDef="let element">
+                <div class="column-group">
+                  <div>{{ element?.los }} / {{ element?.geo }} </div>
+                  <div>{{ element?.transferDrg || '-' }} </div>
+                  <div>{{ element?.drgType || '-' }} </div>
+                </div>
+              </td>
+            </ng-container>
 
-          <!-- <ng-container matColumnDef="financialClass">
+            <!-- <ng-container matColumnDef="financialClass">
             <th id="financialClass" class="profileStaus-column" mat-header-cell *matHeaderCellDef mat-sort-header>
               Financial Class
             </th>
@@ -219,24 +227,24 @@
               <span>{{ element?.financialClass}}</span>
             </td>
           </ng-container> -->
-          <ng-container matColumnDef="drgNo">
-            <th id="drgNo" class="drg-column" mat-header-cell *matHeaderCellDef>
-              <div class="mb-4"> DRG No </div>
-              <div class="mb-4"> DRG Description </div>
-              <div class="mb-4"> DRG Weight </div>
-            </th>
-            <td mat-cell class="drg-column" *matCellDef="let element">
-              <div class="column-group" *ngIf="!!element?.drgNo; else na">
-                <div>{{ element?.drgNo}} </div>
-                <div>{{ element?.diagnosis }} </div>
-                <div>{{ element?.drgWeight || '-' }} </div>
-              </div>
-              <ng-template #na>
-                <span >NA</span>
-              </ng-template>
-            </td>
-          </ng-container>
-          <!-- <ng-container matColumnDef="los">
+            <ng-container matColumnDef="drgNo">
+              <th id="drgNo" class="drg-column" mat-header-cell *matHeaderCellDef>
+                <div class="mb-4"> DRG No </div>
+                <div class="mb-4"> DRG Description </div>
+                <div class="mb-4"> DRG Weight </div>
+              </th>
+              <td mat-cell class="drg-column" *matCellDef="let element">
+                <div class="column-group" *ngIf="!!element?.drgNo; else na">
+                  <div>{{ element?.drgNo}} </div>
+                  <div>{{ element?.diagnosis }} </div>
+                  <div>{{ element?.drgWeight || '-' }} </div>
+                </div>
+                <ng-template #na>
+                  <span>NA</span>
+                </ng-template>
+              </td>
+            </ng-container>
+            <!-- <ng-container matColumnDef="los">
             <th id="los" class="los-column" mat-header-cell *matHeaderCellDef mat-sort-header>
               Los
             </th>
@@ -244,126 +252,127 @@
               <span>{{ element?.los }}</span>
             </td>
           </ng-container> -->
-          <ng-container matColumnDef="comments">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-width">Followup Comments</th>
-            <td mat-cell *matCellDef="let element" class="column-width">
-              <div *ngFor="let followup of sortedFollowupComments(element?.followupComments); let i=index" class="comments-group">
-                <p *ngIf="i < displayedComments">
-                  {{ followup.comments }}
-                </p>
-                <p *ngIf="i < displayedComments" class="comment-date">
-                  <b>{{ followup.addedOn | date: 'MMM d, y' }}</b>
-                </p>
-              </div>
-              <a *ngIf="element?.followupComments.length > 2" (click)="toggleShowMore(element?.followupComments)">
-                {{ showMoreText }}
-              </a>
-            </td>
-          </ng-container>
-          <!-- phone Column -->
-          <ng-container matColumnDef="healthPlan">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-width">Insurance</th>
-            <td mat-cell *matCellDef="let element" class="column-width">
-              {{ element?.healthPlan }}
-            </td>
-          </ng-container>
+            <ng-container matColumnDef="comments">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-width">Followup Comments</th>
+              <td mat-cell *matCellDef="let element" class="column-width">
+                <div *ngFor="let followup of sortedFollowupComments(element?.followupComments); let i=index"
+                  class="comments-group">
+                  <p *ngIf="i < displayedComments">
+                    {{ followup.comments }}
+                  </p>
+                  <p *ngIf="i < displayedComments" class="comment-date">
+                    <b>{{ followup.addedOn | date: 'MMM d, y' }}</b>
+                  </p>
+                </div>
+                <a *ngIf="element?.followupComments.length > 2" (click)="toggleShowMore(element?.followupComments)">
+                  {{ showMoreText }}
+                </a>
+              </td>
+            </ng-container>
+            <!-- phone Column -->
+            <ng-container matColumnDef="healthPlan">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-width">Insurance</th>
+              <td mat-cell *matCellDef="let element" class="column-width">
+                {{ element?.healthPlan }}
+              </td>
+            </ng-container>
 
-          <!-- cohort Column -->
+            <!-- cohort Column -->
 
 
-          <!-- status Column -->
+            <!-- status Column -->
 
-          <ng-container matColumnDef="queryDate">
-            <th id="queryDate" mat-header-cell *matHeaderCellDef class="email-width">Query Date</th>
-            <td mat-cell *matCellDef="let element" class="email-width">
-              <a>{{ element?.queryDate | date:'MMM d, y'}}</a>
-            </td>
-          </ng-container>
+            <ng-container matColumnDef="queryDate">
+              <th id="queryDate" mat-header-cell *matHeaderCellDef class="email-width">Query Date</th>
+              <td mat-cell *matCellDef="let element" class="email-width">
+                <a>{{ element?.queryDate | date:'MMM d, y'}}</a>
+              </td>
+            </ng-container>
 
-          <!-- cohort Column -->
-          <ng-container matColumnDef="reimbursementType">
-            <th mat-header-cell *matHeaderCellDef class="column-width" mat-sort-header>Reimbursement Type</th>
-            <td mat-cell *matCellDef="let element" class="column-width">
-              {{ element?.reimbursementType }}
-            </td>
-          </ng-container>
+            <!-- cohort Column -->
+            <ng-container matColumnDef="reimbursementType">
+              <th mat-header-cell *matHeaderCellDef class="column-width" mat-sort-header>Reimbursement Type</th>
+              <td mat-cell *matCellDef="let element" class="column-width">
+                {{ element?.reimbursementType }}
+              </td>
+            </ng-container>
 
-          <ng-container matColumnDef="age">
-            <th mat-header-cell *matHeaderCellDef class="column-width">Age</th>
-            <td mat-cell *matCellDef="let element" class="column-width">
-              {{ element?.age }}
-            </td>
-          </ng-container>
+            <ng-container matColumnDef="age">
+              <th mat-header-cell *matHeaderCellDef class="column-width">Age</th>
+              <td mat-cell *matCellDef="let element" class="column-width">
+                {{ element?.age }}
+              </td>
+            </ng-container>
 
-          <!-- <ng-container matColumnDef="comments">
+            <!-- <ng-container matColumnDef="comments">
             <th mat-header-cell *matHeaderCellDef class="column-width">Comments</th>
             <td mat-cell *matCellDef="let element" class="column-width">
               {{ element?.comments }}
             </td>
           </ng-container> -->
 
-          <ng-container matColumnDef="concurrent_postDC">
-            <th mat-header-cell *matHeaderCellDef class="column-width">Concurrent/PostDC</th>
-            <td mat-cell *matCellDef="let element" class="column-width">
-              <span
-                [ngClass]="element?.concurrent_postDC === 'Retro' ? 'accent-100-bg font-weight-400 p-4': 'green-100-bg p-4 font-weight-400'">
-                {{ element?.concurrent_postDC }}
-              </span>
+            <ng-container matColumnDef="concurrent_postDC">
+              <th mat-header-cell *matHeaderCellDef class="column-width">Concurrent/PostDC</th>
+              <td mat-cell *matCellDef="let element" class="column-width">
+                <span
+                  [ngClass]="element?.concurrent_postDC === 'Retro' ? 'accent-100-bg font-weight-400 p-4': 'green-100-bg p-4 font-weight-400'">
+                  {{ element?.concurrent_postDC }}
+                </span>
 
-            </td>
-          </ng-container>
+              </td>
+            </ng-container>
 
-          <ng-container matColumnDef="contracted">
-            <th mat-header-cell *matHeaderCellDef class="column-width">Contracted</th>
-            <td mat-cell *matCellDef="let element" class="column-width">
-              <span [ngClass]="element?.contracted === true ? 'green-fg': 'warn-fg'">
-                {{ element?.contracted ? 'Yes': 'No'}}
-              </span>
+            <ng-container matColumnDef="contracted">
+              <th mat-header-cell *matHeaderCellDef class="column-width">Contracted</th>
+              <td mat-cell *matCellDef="let element" class="column-width">
+                <span [ngClass]="element?.contracted === true ? 'green-fg': 'warn-fg'">
+                  {{ element?.contracted ? 'Yes': 'No'}}
+                </span>
 
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="secondaryInsurance">
-            <th mat-header-cell *matHeaderCellDef class="column-width">Secondary Insurance</th>
-            <td mat-cell *matCellDef="let element" class="column-width">
-              {{ element?.secondaryInsurance }}
-            </td>
-          </ng-container>
-
-
-          <ng-container matColumnDef="mrn">
-            <th mat-header-cell *matHeaderCellDef class="column-width">MRN</th>
-            <td mat-cell *matCellDef="let element" class="column-width">
-              {{ element?.mrn }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef class="column-width">Actions</th>
-            <td mat-cell *matCellDef="let element" class="column-width">
-              <button mat-icon-button aria-label="edit item" zhealthcareDrawerAction
-                [componentSelector]="patientFormService.get('patient-add-form')" [size]="'drawer-sm'" [data]="element"
-                [caption]="'Edit Patient'" [primaryAction]="'save'">
-                <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
-              </button>
-            </td>
-          </ng-container>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="secondaryInsurance">
+              <th mat-header-cell *matHeaderCellDef class="column-width">Secondary Insurance</th>
+              <td mat-cell *matCellDef="let element" class="column-width">
+                {{ element?.secondaryInsurance }}
+              </td>
+            </ng-container>
 
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns$ | async; sticky: true"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns$ | async" (click)="addRow(row)"
-            [class.row-selected]="clickedRows?.has(row)" [class.row-highlighted]="highlightedRows?.has(row)"></tr>
-        </table>
-        <div *ngIf="(datasourceFacade.fusionDataSourceLoading$ | async ) === false
+            <ng-container matColumnDef="mrn">
+              <th mat-header-cell *matHeaderCellDef class="column-width">MRN</th>
+              <td mat-cell *matCellDef="let element" class="column-width">
+                {{ element?.mrn }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef class="column-width">Actions</th>
+              <td mat-cell *matCellDef="let element" class="column-width">
+                <button mat-icon-button aria-label="edit item" zhealthcareDrawerAction
+                  [componentSelector]="patientFormService.get('patient-add-form')" [size]="'drawer-sm'" [data]="element"
+                  [caption]="'Edit Patient'" [primaryAction]="'save'">
+                  <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                </button>
+              </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns$ | async; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns$ | async" (click)="addRow(row)"
+              [class.row-selected]="clickedRows?.has(row)" [class.row-highlighted]="highlightedRows?.has(row)"></tr>
+          </table>
+          <div *ngIf="(datasourceFacade.fusionDataSourceLoading$ | async ) === false
         && (datasourceFacade.dataSourceTotal$ | async) === 0" fxLayout="row wrap" fxLayoutAlign="center"
-          class="pt-16 result-found-style warn-fg" tabindex="0" aria-label="no data found.">
-          We are sorry. No data found
+            class="pt-16 result-found-style warn-fg" tabindex="0" aria-label="no data found.">
+            We are sorry. No data found
+          </div>
         </div>
-      </div>
 
-    </div>
-    <div #pagination>
-      <mat-paginator [pageSize]="itemsPerPage" class="bt" [length]="datasourceFacade.dataSourceTotal$ | async">
-      </mat-paginator>
+      </div>
+      <div #pagination>
+        <mat-paginator [pageSize]="itemsPerPage" class="bt" [length]="datasourceFacade.dataSourceTotal$ | async">
+        </mat-paginator>
+      </div>
     </div>
   </div>
-</div>

@@ -155,7 +155,7 @@ export class PatientService extends HttpService {
         map((x) => {
           if (this.currentPatient) {
             this.currentPatient.reviewStatus = patientComment.reviewStatus;
-            if (patientComment?.generalComment) {
+            if (patientComment?.generalComment?.comments) {
               this.currentPatient.generalComment = patientComment.generalComment;
               this.currentPatient.followupComments.unshift(
                 patientComment.generalComment

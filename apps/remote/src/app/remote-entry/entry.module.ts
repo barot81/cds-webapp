@@ -22,6 +22,7 @@ import { FeatureMetaDataPipesModule } from '@zhealthcare/fusion/pipes';
 import { PatientFindingsComponent } from '../patient-details/patient-finding/patient-findings.component';
 import { zhealthcareAvatarModule } from '@zhealthcare/plugin/file-upload';
 import { PatientGridComponent } from '../patients/patients-grid/patient-grid.component';
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { PatientGridComponent } from '../patients/patients-grid/patient-grid.com
     PatientFormsModule,
     FeatureMetaDataPipesModule,
     DragDropModule,
+    MatTableExporterModule,
     EffectsModule.forFeature([]),
     RouterModule.forChild([
       {

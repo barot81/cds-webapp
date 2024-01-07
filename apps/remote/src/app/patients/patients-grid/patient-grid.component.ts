@@ -21,7 +21,6 @@ import {
   MethodType,
   UserFacade,
 } from '@zhealthcare/fusion/core';
-import { FusionNavigationService } from '@zhealthcare/fusion/services';
 import {
   ColumnOption,
   DataSourceComponentService,
@@ -49,6 +48,9 @@ import { PatientGridColInfo } from '../../configs/column-info.config';
 import { PatientService } from '../../services/patient.service';
 import { Router, RoutesRecognized } from '@angular/router';
 import { GeneralComment } from '../../models/general-comments.model';
+import jsPDF  from 'jspdf';
+import { ExportType, MatTableExporterDirective, MatTableExporterModule } from 'mat-table-exporter';
+
 export class AppliedGridFilter {
   constructor(public name: string, public values: string[]) {}
 }
@@ -63,6 +65,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   displayedColumns$: Observable<string[]>;
   isLoadingResults = true;
   loggedInUser$: Observable<any>;
+  exportInProgress = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('text_Container', { static: false }) textContainerRef: ElementRef;
@@ -124,6 +127,8 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   selectedSortingOption: string;
   displayedComments = 2;
   showMoreText = 'Show more';
+  @ViewChild('table', {static: true}) table!: ElementRef;
+  @ViewChild(MatTableExporterDirective, { static: true }) exporter: MatTableExporterDirective;
   sortingOptions = [
     { label: 'Room (Ascending)', value: 'room-asc' },
     { label: 'Room (Descending)', value: 'room-desc' },
@@ -521,6 +526,31 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   selectPatient(selectedPatientId) {
     this.patientClick.emit(selectedPatientId);
+  }
+
+  exportAsPDF() {
+    this.exporter.exportTable("other", {
+      fileName: "test.pdf"
+    });
+    // const doc = new jsPDF();
+    // doc.html(this.table.nativeElement.firstChild, {
+    //   callback: (pdf) => {
+    //     pdf.save("patients.pdf");
+    //   }
+    // })
+    // Use html2canvas to capture the table as an image
+    // html2canvas(table).then((canvas) => {
+    //   const imgData = canvas.toDataURL('image/png');
+    //   const imgWidth = 210; // A4 width in mm
+    //   const pageHeight = 297; // A4 height in mm
+    //   const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    //   const position = 0;
+    //   // Add the captured image to the PDF
+    //   doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+
+    //   // Save the PDF
+    //   doc.save('table-export.pdf');
+    // });
   }
 
   ngOnDestroy(): void {

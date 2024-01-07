@@ -1,8 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  OnDestroy,
-} from '@angular/core';
+import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -25,7 +21,7 @@ import { UserFacade } from '@zhealthcare/fusion/core';
 @Component({
   selector: 'patient-add-general-comments',
   templateUrl: 'add-general-comments.component.html',
-  styleUrls: ['./add-general-comments.component.scss']
+  styleUrls: ['./add-general-comments.component.scss'],
 })
 export class AddGeneralCommentsComponent
   extends FusionFormComponent
@@ -38,14 +34,13 @@ export class AddGeneralCommentsComponent
   comments: string;
   patientInfo: PatientComment;
   reviewStatusList: string[];
-  followupComments: GeneralComment[]= [];
+  followupComments: GeneralComment[] = [];
   loggedInUser$ = new BehaviorSubject(null);
   currentUser: string;
   constructor(
     private readonly fb: FormBuilder,
     public router: Router,
     private readonly _patientService: PatientService,
-    private _layoutService: LayoutService,
     private _snackBarService: SnackbarService,
     private _drawerService: DrawerService,
     private _datepipe: DatePipe,
@@ -63,9 +58,11 @@ export class AddGeneralCommentsComponent
     this.reviewStatusList = ['No Query', 'Later Review'];
     this.createConfig();
     this._userFacade.UserState$.subscribe((data) => {
-      if (data && data !== null) {
+      if (data) {
         this.loggedInUser$.next(data.user);
-        this.currentUser = `${data.user.LastName} ${data.user.firstName}`;
+        this.currentUser = `${data.user.LastName ? data.user.LastName : ''}${
+          data.user.firstName ? ' ' + data.user.FirstName : ''
+        }`;
       }
     });
   }
@@ -110,25 +107,23 @@ export class AddGeneralCommentsComponent
   }
 
   private sortCommnets(followupComments) {
-    return followupComments
-    .sort((a, b) => {
+    return followupComments.sort((a, b) => {
       return new Date(a.addedOn).getDate() - new Date(b.addedOn).getDate();
     });
   }
 
-  private getPatientInfo(patient:Patient) {
-
+  private getPatientInfo(patient: Patient) {
     this.patientInfo = {
       id: patient.id,
       generalComment: patient.generalComment,
-      reviewStatus: patient.reviewStatus
+      reviewStatus: patient.reviewStatus,
     };
     if (patient.followupComments && patient.followupComments.length > 0) {
       this.followupComments = this.sortCommnets(patient.followupComments);
     } else {
       this.followupComments = [];
     }
-    if(!this.reviewStatusList.includes(patient.reviewStatus)) {
+    if (!this.reviewStatusList.includes(patient.reviewStatus)) {
       this.reviewStatusList.unshift(patient.reviewStatus);
     }
     this.fusionFormGroup.controls['reviewStatus'].setValue(
@@ -141,18 +136,23 @@ export class AddGeneralCommentsComponent
     this.config.placeholder = 'General Comments';
   }
 
-
   primaryAction() {
     if (this.key) {
-      this.patientInfo.generalComment  = {
+      this.patientInfo.generalComment = {
         comments: this.fusionFormGroup.controls['comments'].value,
-        addedBy: this.currentUser ?? localStorage.getItem('userName'),
+        addedBy: this.currentUser
+          ? this.currentUser
+          : localStorage.getItem('userName'),
         addedOn: this._datepipe.transform(new Date(), 'yyyy-MM-ddTHH:mm:ss'),
       };
-      this.patientInfo.reviewStatus = this.fusionFormGroup.controls['reviewStatus'].value;
-      this._patientService
-        .updatePatientComments(this.patientInfo)
-        .subscribe((response) => {
+      if (!this.patientInfo.generalComment.comments) {
+        this._drawerService.closeDrawer();
+        return;
+      }
+      this.patientInfo.reviewStatus =
+        this.fusionFormGroup.controls['reviewStatus'].value;
+      this._patientService.updatePatientComments(this.patientInfo).subscribe(
+        (response) => {
           if (response) {
             this._snackBarService.openCustomSnackBar(
               {
@@ -165,8 +165,7 @@ export class AddGeneralCommentsComponent
             this._drawerService.closeDrawer();
           }
         },
-        (error)=>
-        {
+        (error) => {
           this._snackBarService.openCustomSnackBar(
             {
               message: 'General Comment in not updated Successfully.',
@@ -176,7 +175,8 @@ export class AddGeneralCommentsComponent
             'snackbar-error'
           );
           this._drawerService.closeDrawer();
-        });
+        }
+      );
     }
   }
 
