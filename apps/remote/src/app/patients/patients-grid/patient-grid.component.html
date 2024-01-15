@@ -3,7 +3,16 @@
     <div class="spinner-container" *ngIf="datasourceFacade.fusionDataSourceLoading$ | async">
       <mat-spinner color="accent"></mat-spinner>
     </div>
-    <div class=" white-background " fusePerfectScrollbar>
+    <div
+          class="content"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          [style.height.px]="_headerService.scrollContentheight"
+          *ngIf="loading"
+        >
+          <mat-spinner></mat-spinner>
+    </div>
+    <div class="white-background" fusePerfectScrollbar>
       <div #patientSearchHeader>
         <div fxLayout="column">
           <div fxLayout="row" fxLayoutAlign="space-between center" class="w-100-p">
@@ -101,8 +110,6 @@
         'patient-search-grid-with-loadingstate':(datasourceFacade.fusionDataSourceLoading$ | async )}"
           (scroll)="scrollHandler($event)" #table>
           <table id="stickyColumnTable" aria-label="This is a Simple table" mat-table
-          matTableExporter
-          #exporter="matTableExporter"
             [dataSource]="datasourceFacade.fusionDataSet$ | async" class="mat-table cdk-table w-100-p zhealthcare-table"
             matSort matSortDisableClear>
 

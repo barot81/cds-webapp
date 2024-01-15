@@ -49,7 +49,9 @@ import { PatientService } from '../../services/patient.service';
 import { Router, RoutesRecognized } from '@angular/router';
 import { GeneralComment } from '../../models/general-comments.model';
 import jsPDF  from 'jspdf';
-import { ExportType, MatTableExporterDirective, MatTableExporterModule } from 'mat-table-exporter';
+import autoTable from 'jspdf-autotable';
+import { MatTableExporterDirective } from 'mat-table-exporter';
+import * as moment from 'moment';
 
 export class AppliedGridFilter {
   constructor(public name: string, public values: string[]) {}
@@ -137,6 +139,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     { label: 'Admit Date (Oldest First)', value: 'admitDate-asc' },
     { label: 'Admit Date (Newest First)', value: 'admitDate-desc' },
   ];
+  loading = false;
   constructor(
     public dataSourceComponentService: DataSourceComponentService,
     public datasourceFacade: DataSourceFacade,
@@ -528,29 +531,82 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     this.patientClick.emit(selectedPatientId);
   }
 
-  exportAsPDF() {
-    this.exporter.exportTable("other", {
-      fileName: "test.pdf"
-    });
-    // const doc = new jsPDF();
-    // doc.html(this.table.nativeElement.firstChild, {
-    //   callback: (pdf) => {
-    //     pdf.save("patients.pdf");
-    //   }
-    // })
-    // Use html2canvas to capture the table as an image
-    // html2canvas(table).then((canvas) => {
-    //   const imgData = canvas.toDataURL('image/png');
-    //   const imgWidth = 210; // A4 width in mm
-    //   const pageHeight = 297; // A4 height in mm
-    //   const imgHeight = (canvas.height * imgWidth) / canvas.width;
-    //   const position = 0;
-    //   // Add the captured image to the PDF
-    //   doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
 
-    //   // Save the PDF
-    //   doc.save('table-export.pdf');
-    // });
+
+  async exportAsPDF() {
+    this.startShowingLoader();
+    this.generatePDF();
+    this.stopShowingLoader();
+  }
+
+  private startShowingLoader() {
+    this.loading = true;
+  }
+
+  private stopShowingLoader() {
+    this.loading = false;
+  }
+
+  private async generatePDF() {
+    const pdfReport = new jsPDF({ format: 'a4', orientation: 'l' });
+
+    autoTable(pdfReport, {
+      theme: 'grid',
+      columnStyles: {
+        0: { cellWidth: 50 },
+        1: { cellWidth: 50 },
+        2: { cellWidth: 30 },
+        3: { cellWidth: 40 },
+        4: { cellWidth: 25 },
+        5: { cellWidth: 80 }
+
+      },
+      headStyles: {
+        valign: 'middle',
+        fillColor: [200, 230, 255],
+        textColor: 100,
+        lineColor: 220,
+        lineWidth: 0.1
+      },
+      bodyStyles: { valign: 'middle' },
+      head: [
+        [
+          { content: ' Patient #\n Patient Name\n Room' },
+          { content: ' Admint Date\n Att. Physician\n Patient Type' },
+          { content: ' CDS\n Review Status\n Reimb. Type' },
+          { content: ' Insurance\n Financial Class\n Total Charges' },
+          { content: ' LOS/GLOS\n Trans. DRG\n DRG Type' },
+          { content: ' DRG No.\n DRG Description\n DRG Weight' }
+        ]
+      ],
+      body: await this.createTableBody(),
+      tableLineColor: 150
+    });
+
+    pdfReport.save(
+        'patients_' + moment(Date.now()).format('YYYY_MM_DD_hh:mm:ss') + '.pdf'
+    );
+  }
+
+  private async getAllPatientsData(): Promise<any>  {
+    // const patientsCount = await this.datasourceFacade.dataSourceTotal$.toPromise();
+    const endpoint = this.serviceEndPoint + '?SortBy=room&Order=1&Start=0&PageSize=1000';
+    return await this._patientService.getPatientsDataForPDF(endpoint).toPromise();
+  }
+  private async createTableBody() {
+    const body = [];
+    const patientsData = await this.getAllPatientsData();
+    patientsData.result.forEach((patient) => {
+        const row = [];
+        row.push({ content: `${patient.patientNo}\n${patient.patientName}\n${patient.room}` });
+        row.push({ content: `${patient.admitDate}\n${patient.attendingPhysician}\n${patient?.patientClass === 'Out' ? 'OBS': 'IN'}` });
+        row.push({ content: `${patient.cds || "-"}\n${patient.reviewStatus}\n${patient.reimbursementType}` });
+        row.push({ content: `${patient.healthPlan || "-"}\n${patient.financialClass}\n${patient.totalCharges || '-'}` });
+        row.push({ content: `${patient.los +"/"+ patient.geo || "-"}\n${patient.transferDrg || '-'}\n${patient.drgType || '-'}` });
+        row.push({ content: `${patient.drgNo }\n${patient.diagnosis || '-'}\n${patient.drgWeight || '-'}` });
+        body.push(row);
+    });
+    return body;
   }
 
   ngOnDestroy(): void {

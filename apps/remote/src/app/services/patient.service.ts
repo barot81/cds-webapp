@@ -233,4 +233,8 @@ export class PatientService extends HttpService {
     this.patientData$.next(this.patients);
     return this.patientData$;
   }
+
+  getPatientsDataForPDF(endpint):Observable<any[]> {
+    return this.httpClient.get<any[]>(endpint);
+  }
 }

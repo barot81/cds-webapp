@@ -13,8 +13,8 @@ export class PatientHeaderComponent implements OnDestroy{
   patient$: Subject<Patient> = new BehaviorSubject(new Patient());
   public loading$;
   fileConfiguration;
-  initial2: any;
-  initial1: any;
+  initial2;
+  initial1;
   private _unsubscribe = new Subject();
   constructor(private patientService: PatientService) {
     this.loading$ = this.patientService.loading$;
