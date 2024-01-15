@@ -140,6 +140,11 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     { label: 'Admit Date (Oldest First)', value: 'admitDate-asc' },
     { label: 'Admit Date (Newest First)', value: 'admitDate-desc' },
   ];
+  exportToPdfOptions = [
+    { label: 'With Followup comments', value: 'WithComments' },
+    { label: 'Without Followup comments', value: 'NoComments' }
+  ];
+  selectedExportOption = "NoComments";
   constructor(
     public dataSourceComponentService: DataSourceComponentService,
     public datasourceFacade: DataSourceFacade,
@@ -549,7 +554,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private async generatePDF() {
     const pdfData = await this.getAllPatientsData();
-    ExportPDFHelper.generatePDF(pdfData);
+    ExportPDFHelper.generatePDF(pdfData, this.selectedExportOption);
   }
 
   private async getAllPatientsData(): Promise<any>  {

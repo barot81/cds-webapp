@@ -77,11 +77,23 @@
                   <i aria-hidden="true" class="fal fa-ellipsis-h s-18"></i>
                 </button>
                 <div fxLayout="row" class="mr-8">
-                  <button matTooltip="Export" tabindex="0" aria-label="Export" (click)="exportAsPDF()" mat-icon-button
-                     fxHide.lt-md>
+                  <button matTooltip="Export" tabindex="0" aria-label="Export" mat-icon-button fxHide.lt-md [matMenuTriggerFor]="exportMenu">
                     <i aria-hidden="true" *ngIf="!exportInProgress" class="fa-light fa-file-export s-18"></i>
                     <mat-spinner *ngIf="exportInProgress" diameter="20" color="accent"></mat-spinner>
                   </button>
+                  <mat-menu #exportMenu="matMenu">
+                    <div class="export-menu">
+                      <mat-radio-group class="export-pdf" [(ngModel)]="selectedExportOption">
+                        <mat-radio-button *ngFor="let option of exportToPdfOptions" [value]="option.value" (click)="$event.stopPropagation()">{{ option.label }}</mat-radio-button>
+                      </mat-radio-group>
+                      <button mat-button mat-stroked-button color="primary" class="export-button" (click)="exportAsPDF()"
+                      [disabled]="!selectedExportOption">
+                        Export
+                      </button>
+                    </div>
+
+                    <!-- Add a button after the second radio button -->
+                  </mat-menu>
                   <mat-menu #menu="matMenu" fxHide.gt-sm>
                     <button mat-menu-item aria-label="Edit Columns" zhealthcareDrawerAction
                       [componentSelector]="dataSourceComponentService.get('zhealthcare-display-columns-form')"
@@ -373,4 +385,5 @@
         </mat-paginator>
       </div>
     </div>
+
   </div>

@@ -121,3 +121,14 @@
   height: calc(100vh - 261px) !important;
   overflow: auto;
 }
+
+
+.export-menu{
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+
+  .export-button {
+    align-self: flex-end;
+  }
+}
