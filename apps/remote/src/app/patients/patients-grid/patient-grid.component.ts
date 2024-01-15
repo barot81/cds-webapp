@@ -66,7 +66,7 @@ export class AppliedGridFilter {
 export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly _unsubscribe: Subject<any>;
   displayedColumns$: Observable<string[]>;
-  isLoadingResults = true;
+  isLoadingResults = false;
   loggedInUser$: Observable<any>;
   exportInProgress = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -140,7 +140,6 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     { label: 'Admit Date (Oldest First)', value: 'admitDate-asc' },
     { label: 'Admit Date (Newest First)', value: 'admitDate-desc' },
   ];
-  loading = false;
   constructor(
     public dataSourceComponentService: DataSourceComponentService,
     public datasourceFacade: DataSourceFacade,
@@ -536,16 +535,16 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
 
   async exportAsPDF() {
     this.startShowingLoader();
-    this.generatePDF();
+    await this.generatePDF();
     this.stopShowingLoader();
   }
 
   private startShowingLoader() {
-    this.loading = true;
+    this.isLoadingResults = true;
   }
 
   private stopShowingLoader() {
-    this.loading = false;
+    this.isLoadingResults = false;
   }
 
   private async generatePDF() {

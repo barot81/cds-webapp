@@ -1,16 +1,7 @@
 <div class="page-layout carded fullwidth full-width-page inner-scroll pt-8">
   <div class="patient-search-report table-rounded-border p-0">
-    <div class="spinner-container" *ngIf="datasourceFacade.fusionDataSourceLoading$ | async">
+    <div class="spinner-container" *ngIf="(datasourceFacade.fusionDataSourceLoading$ | async) || isLoadingResults">
       <mat-spinner color="accent"></mat-spinner>
-    </div>
-    <div
-          class="content"
-          fxLayout="column"
-          fxLayoutAlign="center center"
-          [style.height.px]="_headerService.scrollContentheight"
-          *ngIf="loading"
-        >
-          <mat-spinner></mat-spinner>
     </div>
     <div class="white-background" fusePerfectScrollbar>
       <div #patientSearchHeader>
