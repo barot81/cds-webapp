@@ -556,20 +556,20 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
       columnStyles: {
         0: { cellWidth: 50 },
         1: { cellWidth: 50 },
-        2: { cellWidth: 30 },
-        3: { cellWidth: 40 },
-        4: { cellWidth: 25 },
+        2: { cellWidth: 25 },
+        3: { cellWidth: 45 },
+        4: { cellWidth: 30 },
         5: { cellWidth: 80 }
-
       },
       headStyles: {
         valign: 'middle',
         fillColor: [200, 230, 255],
         textColor: 100,
         lineColor: 220,
-        lineWidth: 0.1
+        lineWidth: 0.1,
+        fontSize: 11,
       },
-      bodyStyles: { valign: 'middle' },
+      bodyStyles: { valign: 'middle', fontSize: 11 },
       head: [
         [
           { content: ' Patient #\n Patient Name\n Room' },
