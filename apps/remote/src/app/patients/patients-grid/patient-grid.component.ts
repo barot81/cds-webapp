@@ -552,6 +552,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
 
     autoTable(pdfReport, {
       theme: 'grid',
+      rowPageBreak: 'avoid',
       columnStyles: {
         0: { cellWidth: 50 },
         1: { cellWidth: 50 },
@@ -589,7 +590,6 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private async getAllPatientsData(): Promise<any>  {
-    // const patientsCount = await this.datasourceFacade.dataSourceTotal$.toPromise();
     const endpoint = this.serviceEndPoint + '?SortBy=room&Order=1&Start=0&PageSize=1000';
     return await this._patientService.getPatientsDataForPDF(endpoint).toPromise();
   }
