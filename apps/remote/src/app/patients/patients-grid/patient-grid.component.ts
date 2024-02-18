@@ -42,6 +42,7 @@ import {
   debounceTime,
   filter,
   pairwise,
+  lastValueFrom,
 } from 'rxjs';
 import { GridService } from '../../services/grid.service';
 import { PatientGridColInfo } from '../../configs/column-info.config';
@@ -53,6 +54,7 @@ import autoTable from 'jspdf-autotable';
 import { MatTableExporterDirective } from 'mat-table-exporter';
 import * as moment from 'moment';
 import { ExportPDFHelper } from './export-pdf.helper';
+import { Patient } from '../../models/patient.model';
 
 export class AppliedGridFilter {
   constructor(public name: string, public values: string[]) {}
@@ -554,12 +556,22 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private async generatePDF() {
     const pdfData = await this.getAllPatientsData();
+    pdfData.result = pdfData.result.map(x => {
+      const momentDate = moment(x.admitDate);
+      x.admitDate =  momentDate.format('MMM DD, YYYY');
+      x.followupComments = x.followupComments.filter(y=> y.comments).map(y=> {
+        const commentsDate = y.addedOn ? moment(y.addedOn) : "";
+        y.addedOn = commentsDate ? commentsDate.format('MMM DD, YYYY') : "";
+        return y;
+      });
+      return x;
+    });
     ExportPDFHelper.generatePDF(pdfData, this.selectedExportOption);
   }
 
   private async getAllPatientsData(): Promise<any>  {
     const endpoint = this.serviceEndPoint + '?SortBy=room&Order=1&Start=0&PageSize=1000';
-    return await this._patientService.getPatientsDataForPDF(endpoint).toPromise();
+    return await lastValueFrom(this._patientService.getPatientsDataForPDF(endpoint));
   }
 
   ngOnDestroy(): void {

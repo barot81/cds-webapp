@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {
@@ -51,8 +51,8 @@ export class AddGeneralCommentsComponent
     this._unsubscribeAll = new Subject();
 
     this.fusionFormGroup = this.fb.group({
-      comments: new FormControl(''),
-      reviewStatus: new FormControl('New'),
+      comments: new FormControl('', Validators.required),
+      reviewStatus: new FormControl('New', Validators.required),
     });
 
     this.reviewStatusList = ['No Query', 'Later Review'];
@@ -138,14 +138,14 @@ export class AddGeneralCommentsComponent
 
   primaryAction() {
     if (this.key) {
-      this.patientInfo.generalComment = {
-        comments: this.fusionFormGroup.controls['comments'].value,
-        addedBy: this.currentUser
-          ? this.currentUser
-          : localStorage.getItem('userName'),
-        addedOn: this._datepipe.transform(new Date(), 'yyyy-MM-ddTHH:mm:ss'),
-      };
-      if (!this.patientInfo.generalComment.comments) {
+        this.patientInfo.generalComment = {
+          comments: this.fusionFormGroup.controls['comments'].value,
+          addedBy: this.currentUser
+            ? this.currentUser
+            : localStorage.getItem('userName'),
+          addedOn: this._datepipe.transform(new Date(), 'yyyy-MM-ddTHH:mm:ss'),
+        };
+      if (!this.patientInfo.generalComment?.comments && !this.patientInfo.reviewStatus) {
         this._drawerService.closeDrawer();
         return;
       }
