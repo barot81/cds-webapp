@@ -38,12 +38,12 @@ export class ExportPDFHelper {
       bodyStyles: { valign: 'middle', fontSize: 11 },
       head: [
         [
-          { content: ' Patient #\n Patient Name\n Room' },
-          { content: ' Admint Date\n Att. Physician\n Patient Type' },
-          { content: ' CDS\n Review Status\n Reimb. Type' },
-          { content: ' Insurance\n Financial Class\n Total Charges' },
-          { content: ' LOS/GLOS\n Trans. DRG\n DRG Type' },
-          { content: ' DRG No.\n DRG Description\n DRG Weight' }
+          { content: 'Patient #\nPatient Name\nRoom' },
+          { content: 'Admint Date\nAtt. Physician\nPatient Type' },
+          { content: 'CDS\nReview Status\nReimb. Type' },
+          { content: 'Insurance\nFinancial Class\nTotal Charges' },
+          { content: 'LOS/GLOS\nTrans. DRG\nDRG Type' },
+          { content: 'DRG No.\nDRG Description\nDRG Weight' }
         ]
       ],
       body: this.createTableBody(patientsData),
