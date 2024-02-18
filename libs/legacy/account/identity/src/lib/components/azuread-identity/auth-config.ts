@@ -50,7 +50,7 @@ export const msalConfig: Configuration = {
  */
  export const protectedResources = {
   apiTodoList: {
-      endpoint: 'https://localhost:7198/*', //"https://abzcds.azurewebsites.net/*",
+      endpoint: "https://abzcds.azurewebsites.net/*",
       scopes: {
           resource: ["api://9e11a7a0-8ceb-4b31-a905-1a979b097247/patients.read"],
           read: ["api://9e11a7a0-8ceb-4b31-a905-1a979b097247/patients.read"],
