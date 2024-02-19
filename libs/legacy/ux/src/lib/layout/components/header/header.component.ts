@@ -240,24 +240,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     });
     dialogRef.afterClosed().subscribe((result) => {});
   }
-  switchBack() {
-    this.userFacade.UserState$.pipe(take(1)).subscribe((user) => {
-      this.selectedOucode$.pipe(take(1)).subscribe((oucode) => {
-        const adminUser: User = {
-          ...user.user,
-          ManagedUserAccount: null,
-          ReferenceKey: null,
-        };
-        this.userFacade.updateUserSuccess(adminUser);
-        localStorage.setItem(
-          MetaConstants.MANAGE_ACCOUNT_SWITCH_BACK_KEY,
-          oucode
-        );
-
-        this.router.navigateByUrl(URLConstants.ADMIN_LAUNCH_URL);
-      });
-    });
-  }
 
   redirectToLaunch() {
     this.userFacade.UserState$.pipe(take(1)).subscribe((user) => {

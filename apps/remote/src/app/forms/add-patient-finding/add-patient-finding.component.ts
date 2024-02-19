@@ -5,7 +5,8 @@ import {
   FusionFormAdapter,
   FusionFormComponent,
 } from '@zhealthcare/fusion/components';
-import { DrawerService, SnackbarService } from '@zhealthcare/ux';
+import { UserService } from '@zhealthcare/fusion/core';
+import { DrawerService, LayoutService, SnackbarService } from '@zhealthcare/ux';
 import { BehaviorSubject,  Subject, takeUntil } from 'rxjs';
 import { Finding } from '../../models/Finding.model';
 import { DrgLookup } from '../../models/lookup.models';
@@ -50,7 +51,9 @@ export class AddPatientFindingComponent
     private _datepipe: DatePipe,
     private patientService: PatientService,
     private patientFindingService: PatientFindingService,
-    private lookupService: LookupService
+    private lookupService: LookupService,
+    private _userService: UserService,
+    private _layoutService: LayoutService
   ) {
     super();
     // this.fusionFormGroup = this.fb.group({
@@ -81,10 +84,10 @@ export class AddPatientFindingComponent
     //   clinicalSummary: new FormControl(''),
     //   comments: new FormControl(''),
     // });
-
+    const username = this._userService.getUserName() ??  this._layoutService.getUser()?.name;
     this.fusionFormGroup = this.fb.group({
       queryType: new FormControl('', Validators.required),
-      cdsName: new FormControl('Vishal'),
+      cdsName: new FormControl(username),
       queryDate: new FormControl(new Date()),
       queryDiagnosis: new FormControl(''),
       physicianName: new FormControl(''),
