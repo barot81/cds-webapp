@@ -184,6 +184,7 @@ export class LaunchComponent
       StatusCount: updatedStatusCount,
     };
     this.orgFacade.SetFacilityWiseStatuses(updatedFacility);
+
     this.activatedRoute.queryParams.subscribe(
       (resp) => {
         this.fuseProgressBarService.hide();

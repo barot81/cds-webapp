@@ -64,7 +64,6 @@ export class AdminLaunchComponent
   @ViewChild('tenantNavsContainer', { read: ViewContainerRef, static: true })
   tenantNavsContainer!: any;
   facilityStatuses: StatusCount[] = [];
-  private _changeSubscription: any;
 
   constructor(
     protected userState: UserFacade,
@@ -254,6 +253,9 @@ export class AdminLaunchComponent
   }
 
   launch(item) {
+
+    if(item.name === 'all')
+      localStorage.setItem('selectedStatus','');
     this.updateStateAndRedirect(
       this.selectedFacilityWiseStatuses,
       item.name,

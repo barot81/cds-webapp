@@ -44,7 +44,7 @@ export const getTokenExpiration = createSelector(
 export const getSelectedStatus = createSelector(
   getOrgState,
   (state: OrgState) => {
-    return state.FacilityWiseStatuses.StatusCount.find(x=>x.isSelected).name
+    return state.FacilityWiseStatuses.StatusCount.find(x=>x.isSelected)?.name ?? ''
   }
 );
 

@@ -49,12 +49,9 @@ import { PatientGridColInfo } from '../../configs/column-info.config';
 import { PatientService } from '../../services/patient.service';
 import { Router, RoutesRecognized } from '@angular/router';
 import { GeneralComment } from '../../models/general-comments.model';
-import jsPDF  from 'jspdf';
-import autoTable from 'jspdf-autotable';
 import { MatTableExporterDirective } from 'mat-table-exporter';
 import * as moment from 'moment';
 import { ExportPDFHelper } from './export-pdf.helper';
-import { Patient } from '../../models/patient.model';
 
 export class AppliedGridFilter {
   constructor(public name: string, public values: string[]) {}
@@ -570,7 +567,19 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private async getAllPatientsData(): Promise<any>  {
-    const endpoint = this.serviceEndPoint + '?SortBy=room&Order=1&Start=0&PageSize=1000';
+    let sortBy = 'room';
+    let sortOrder = '1';
+    if(this.selectedSortingOption) {
+      const sortOption =this.selectedSortingOption.split("-");
+      sortBy = sortOption[0];
+      sortOrder = sortOption[1] == 'asc' ? '1' : '-1';
+    }
+    let endpoint = `${this.serviceEndPoint}?SortBy=${sortBy}&Order=${sortOrder}&Start=0&PageSize=100000`;
+    if(this.appliedFilters) {
+      this.appliedFilters.forEach(e => {
+        endpoint +=`&${e.fieldName}=${e.value}`;
+      });
+    }
     return await lastValueFrom(this._patientService.getPatientsDataForPDF(endpoint));
   }
 
