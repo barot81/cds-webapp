@@ -49,6 +49,15 @@ export const navigations = {
               breadcrumb: [],
               children: []
             },
+            {
+              icon: 'fa-light fa-cog pink-fg',
+              title: 'Post Discharge Patients',
+              type: 'menu-item',
+              url: '/admin/postdischargepatients',
+              classes:
+                '{"bg":"pink-50-bg","hoverBG":"pink-50-hover-bg","activeBG":"pink-100-bg"}',
+
+            },
             // {
             //   active: false,
             //   icon: 'fa-light fa-cog pink-fg',

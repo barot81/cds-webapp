@@ -1,0 +1,134 @@
+@import 'init';
+.patient-search-report {
+  height: calc(100vh - 70px) !important;
+  overflow: hidden;
+
+  .zhealthcare-table {
+    width: 100% !important;
+    th,
+    td {
+      min-width: 8vw !important;
+
+      @include media-breakpoint('md') {
+        min-width: 23vw !important;
+      }
+
+      @include media-breakpoint('sm') {
+        min-width: 30vw !important;
+      }
+
+      &.phone-column {
+        min-width: 8vw !important;
+
+        @include media-breakpoint('sm') {
+          min-width: 15vw !important;
+        }
+      }
+
+      &.room-column {
+        min-width: 4vw !important;
+      }
+      &.review-status-column {
+        min-width: 10vw !important;
+      }
+
+      &.los-column {
+        min-width: 3vw !important;
+      }
+
+
+      &.invitation-status-column {
+        min-width: 25vw !important;
+
+        @include media-breakpoint('md') {
+          min-width: 30vw !important;
+        }
+
+        @include media-breakpoint('sm') {
+          min-width: 35vw !important;
+        }
+      }
+
+      &.student-category-width {
+        min-width: 15vw !important;
+
+        @include media-breakpoint('md') {
+          min-width: 15vw !important;
+        }
+
+        @include media-breakpoint('sm') {
+          min-width: 18vw !important;
+        }
+      }
+    }
+  }
+}
+
+.column-group {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.name-column {
+  width: 10vw;
+}
+
+.cds-column {
+  width: 8vw;
+}
+
+.admit-date-column {
+  width: 10vw !important;
+}
+
+.review-column {
+  width: 13vw;
+}
+
+.los-column {
+  width: 7vw;
+}
+
+.drg-column {
+  width: 18vw;
+}
+
+.comments-column {
+  width: 20vw;
+}
+
+.comment-date {
+  text-align: right;
+}
+.comments-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.patient-search-grid-with-filter {
+  height: calc(100vh - 160px) !important;
+  overflow: auto;
+}
+
+.patient-search-grid-without-filter {
+  height: calc(100vh - 160px) !important;
+  overflow: auto;
+}
+
+.patient-search-grid-with-loadingstate {
+  height: calc(100vh - 261px) !important;
+  overflow: auto;
+}
+
+
+.export-menu{
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+
+  .export-button {
+    align-self: flex-end;
+  }
+}

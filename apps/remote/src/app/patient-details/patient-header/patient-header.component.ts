@@ -30,8 +30,8 @@ export class PatientHeaderComponent implements OnDestroy{
   setInitials(patientName: string) {
     if (patientName) {
       const patientArr = patientName.split(' ');
-      this.initial1 = patientArr[1].charAt(0).toUpperCase();
-      this.initial2 = patientArr[0].charAt(0).toUpperCase();
+      this.initial1 = patientArr[1]?.charAt(0)?.toUpperCase() ?? '';
+      this.initial2 = patientArr[0]?.charAt(0)?.toUpperCase() ?? '';
     }
   }
 

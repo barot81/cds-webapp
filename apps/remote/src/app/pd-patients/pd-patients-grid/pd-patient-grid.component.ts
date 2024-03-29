@@ -45,24 +45,24 @@ import {
   lastValueFrom,
 } from 'rxjs';
 import { GridService } from '../../services/grid.service';
-import { PatientGridColInfo } from '../../configs/column-info.config';
+import { PdPatientGridColInfo } from '../../configs/column-info.config';
 import { PatientService } from '../../services/patient.service';
 import { Router, RoutesRecognized } from '@angular/router';
 import { GeneralComment } from '../../models/general-comments.model';
 import { MatTableExporterDirective } from 'mat-table-exporter';
 import * as moment from 'moment';
-import { ExportPDFHelper } from './export-pdf.helper';
+import { PdExportPDFHelper } from './pd-export-pdf.helper';
 
 export class AppliedGridFilter {
   constructor(public name: string, public values: string[]) {}
 }
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'zhc-patient-grid',
-  templateUrl: './patient-grid.component.html',
-  styleUrls: ['./patient-grid.component.scss'],
+  selector: 'zhc-pd-patient-grid',
+  templateUrl: './pd-patient-grid.component.html',
+  styleUrls: ['./pd-patient-grid.component.scss'],
 })
-export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
+export class PdPatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly _unsubscribe: Subject<any>;
   displayedColumns$: Observable<string[]>;
   isLoadingResults = false;
@@ -107,7 +107,6 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     'patientName',
     'patientNo',
     'mrn',
-    'room',
     'reimbursementType',
   ];
   colorBadges = {
@@ -132,16 +131,14 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('table', {static: true}) table!: ElementRef;
   @ViewChild(MatTableExporterDirective, { static: true }) exporter: MatTableExporterDirective;
   sortingOptions = [
-    { label: 'Room (Ascending)', value: 'room-asc' },
-    { label: 'Room (Descending)', value: 'room-desc' },
     { label: 'Name (Ascending)', value: 'patientName-asc' },
     { label: 'Name (Descending)', value: 'patientName-desc' },
     { label: 'Admit Date (Oldest First)', value: 'admitDate-asc' },
     { label: 'Admit Date (Newest First)', value: 'admitDate-desc' },
   ];
   exportToPdfOptions = [
-    { label: 'With Followup comments', value: 'WithComments' },
-    { label: 'Without Followup comments', value: 'NoComments' }
+    { label: 'With comments', value: 'WithComments' },
+    { label: 'Without comments', value: 'NoComments' }
   ];
   selectedExportOption = "NoComments";
   constructor(
@@ -158,18 +155,18 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     protected configService: FusionConfigService,
     public router: Router,
     private fuseProgressBarService: FuseProgressBarService,
-    private pageFacade: PageFacade
+    private pageFacade : PageFacade
   ) {
-    this.pageFacade.setPageTitle('Patients');
+    this.pageFacade.setPageTitle('Post discharge in-patients');
     this.fuseProgressBarService.hide();
     this._unsubscribe = new Subject();
     this.datasourceFacade.DataSourceDestroy();
-    this.serviceEndPoint = this._patientService.getDatasourceBaseEndpoint();
+    this.serviceEndPoint = `${this._patientService.getDatasourceBaseEndpoint()}?IsPdPatients=true`;
     this.loggedInUser$ = this.userFacade.UserState$.pipe(
       takeUntil(this._unsubscribe)
     );
     this.ifLaunchpageResetFilter();
-    this.columnInformation = PatientGridColInfo;
+    this.columnInformation = PdPatientGridColInfo;
     this.defaultFilters = [];
     this.InitializeDataSource();
     this.applyFilter();
@@ -228,16 +225,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     dataSource.sort = sort;
     dataSource.requestType = MethodType.GET;
     dataSource.multiColumnSearch = this.columnsToSearch;
-    const selectedStatus = localStorage.getItem('selectedStatus');
-    if(selectedStatus) {
-      const defaultFilter: Filter = {
-        fieldName: 'Filters.ReviewStatus',
-        operator: 'eq',
-        value: selectedStatus === 'New DRG' ? 'New' : selectedStatus,
-        displayName: 'Review Status',
-      };
-      dataSource.filters = [defaultFilter];
-    }
+    dataSource.filters = [];
     dataSource.customHeaders = [];
     this.datasourceFacade.InitializeDataSource(dataSource);
     Logger.trace(
@@ -565,7 +553,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
       });
       return x;
     });
-    ExportPDFHelper.generatePDF(pdfData, this.selectedExportOption);
+    PdExportPDFHelper.generatePDF(pdfData, this.selectedExportOption);
   }
 
   private async getAllPatientsData(): Promise<any>  {
