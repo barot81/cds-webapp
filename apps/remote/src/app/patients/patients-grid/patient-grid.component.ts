@@ -108,7 +108,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     'patientNo',
     'mrn',
     'room',
-    'reimbursementType',
+    'reimbursementType'
   ];
   colorBadges = {
     'No Query': 'noquery',
@@ -160,7 +160,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     private fuseProgressBarService: FuseProgressBarService,
     private pageFacade: PageFacade
   ) {
-    this.pageFacade.setPageTitle('Patients');
+    this.pageFacade.setPageTitle('360\xB0 MD CDI');
     this.fuseProgressBarService.hide();
     this._unsubscribe = new Subject();
     this.datasourceFacade.DataSourceDestroy();

@@ -30,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddGeneralCommentsComponent } from './add-general-comments/add-general-comments.component';
 import { AddPatientFindingComponent } from './add-patient-finding/add-patient-finding.component';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { AddPdPatientFindingComponent } from './add-pd-patient-finding/add-pd-patient-finding.component';
 
 @NgModule({
   imports: [
@@ -58,7 +59,8 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
   declarations: [
     AddPatientComponent,
     AddGeneralCommentsComponent,
-    AddPatientFindingComponent
+    AddPatientFindingComponent,
+    AddPdPatientFindingComponent
   ],
 
   providers: [

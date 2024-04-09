@@ -12,7 +12,7 @@ const routes: Routes = [
         loadChildren: () => import('../patients/patients.module').then(m => m.PatientsModule)
       },
       {
-        path: 'postdischargepatients',
+        path: 'pd-patients',
         loadChildren: () => import('../pd-patients/pd-patients.module').then(m => m.PdPatientsModule)
       },
       {

@@ -157,7 +157,7 @@ export class PdPatientGridComponent implements OnInit, AfterViewInit, OnDestroy 
     private fuseProgressBarService: FuseProgressBarService,
     private pageFacade : PageFacade
   ) {
-    this.pageFacade.setPageTitle('Post discharge in-patients');
+    this.pageFacade.setPageTitle('360\xB0 claim optimization');
     this.fuseProgressBarService.hide();
     this._unsubscribe = new Subject();
     this.datasourceFacade.DataSourceDestroy();

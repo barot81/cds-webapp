@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PdPatientsRoutingModule } from './pd-patients-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomDirectiveModule, RBACDirectiveModule } from '@zhealthcare/fusion/directives';
@@ -10,10 +9,18 @@ import { MaterialModule, FuseSharedModule, FuseSidebarModule, zhealthcareAvatarM
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { PatientFormsModule } from '../forms/patient-forms.module';
 import { PdPatientGridComponent } from './pd-patients-grid/pd-patient-grid.component';
+import { PdPatientFindingsComponent } from '../pd-patient-details/pd-patient-finding/pd-patient-findings.component';
+import { PdPatientDetailsComponent } from '../pd-patient-details/pd-patient-details.component';
+import { PatientHeaderComponent } from '../patient-details/patient-header/patient-header.component';
+import { PatientsModule } from '../patients/patients.module';
 
 
 @NgModule({
-  declarations: [PdPatientGridComponent],
+  declarations: [
+    PdPatientGridComponent,
+    PdPatientFindingsComponent,
+    PdPatientDetailsComponent,
+    ],
   imports: [
     CommonModule,
     MaterialModule,
@@ -29,7 +36,8 @@ import { PdPatientGridComponent } from './pd-patients-grid/pd-patient-grid.compo
     ShowMoreModule,
     DataSourceModule,
     MatTableExporterModule,
-    PdPatientsRoutingModule
+    PdPatientsRoutingModule,
+    PatientsModule,
   ]
 })
 export class PdPatientsModule {

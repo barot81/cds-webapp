@@ -3,6 +3,7 @@ import { ComponentMap } from '@zhealthcare/fusion/core';
 import { AddGeneralCommentsComponent } from './add-general-comments/add-general-comments.component';
 import { AddPatientFindingComponent } from './add-patient-finding/add-patient-finding.component';
 import { AddPatientComponent } from './add-patient/add-patient.component';
+import { AddPdPatientFindingComponent } from './add-pd-patient-finding/add-pd-patient-finding.component';
 // import { BulkUpdateComponent } from './bulk-update/bulk-update.component';
 // import { AreaOfProfessionalInterestFilterComponent } from './filters/area-of-professional-interest-filter/area-of-professional-interest-filter.component';
 // import { ProfileGridFiltersComponent } from './filters/grid-filters/grid-filters.component';
@@ -28,6 +29,7 @@ export class PatientFormsService extends ComponentMap {
     this.add('patient-add-form', AddPatientComponent);
     this.add('patient-general-comments-form', AddGeneralCommentsComponent);
     this.add('patient-finding-form', AddPatientFindingComponent);
+    this.add('pd-patient-finding-form', AddPdPatientFindingComponent);
 
     // //bulk-update
     // this.add('profile-admin-bulk-update-form', BulkUpdateComponent)

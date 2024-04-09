@@ -22,6 +22,6 @@ import { PageFacade } from '@zhealthcare/ux';
 export class RemoteEntryComponent {
 
   constructor(private pageFacade: PageFacade) {
-    this.pageFacade.setPageTitle('Patients');
+    this.pageFacade.setPageTitle('360\xB0 MD CDI');
   }
 }

@@ -17,9 +17,6 @@ import { FeatureMetaDataPipesModule } from '@zhealthcare/fusion/pipes';
 import { DataSourceModule } from '@zhealthcare/plugin/data-source';
 import { EffectsModule } from '@ngrx/effects';
 import { MatTableExporterModule } from 'mat-table-exporter';
-import { FlexLayoutModule } from '@angular/flex-layout';
-
-
 
 @NgModule({
   declarations: [
@@ -49,6 +46,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     EffectsModule.forFeature([]),
     PatientsRoutingModule
   ],
-  providers:[PatientService]
+  providers:[PatientService],
+  exports:[PatientHeaderComponent]
 })
 export class PatientsModule { }

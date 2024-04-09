@@ -35,6 +35,11 @@
               </div>
               <div class="banner-separator">
                 <span> <b> Contracted :</b> {{ patient.contracted ? 'Yes' : 'No' }}</span>
+                &nbsp;&nbsp;
+                <span *ngIf="isPdPatient;else cds"> <b> Auditor : </b>{{ patient.cds }}</span>
+                <ng-template #cds>
+                  <span> <b> CDS : </b>{{ patient.cds }}</span>
+                </ng-template>
               </div>
             </div>
           </div>

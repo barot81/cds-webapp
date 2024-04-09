@@ -4,7 +4,7 @@
     aria-hidden="true"
     [alt]="firstName + ' ' + lastName"
     [ngClass]="{ 'avatar-lg': size === 'lg' }"
-    *ngIf="firstName.length === 0 && lastName.length === 0 && !src; else avatar"
+    *ngIf="firstName?.length === 0 && lastName?.length === 0 && !src; else avatar"
     class="avatar"
     src="assets/images/general/avatar.png"
   />

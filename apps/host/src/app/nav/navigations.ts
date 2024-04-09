@@ -23,7 +23,7 @@ export const navigations = {
           image: null,
           order: '1',
           id: 'patients',
-          title: 'Patients',
+          title: '360\xB0 MD CDI',
           type: 'menu-group',
           url: null,
           classes: '{"bg":"pink-50-bg","font":"pink-fg","border":"pink"}',
@@ -38,7 +38,7 @@ export const navigations = {
               image: null,
               order: null,
               id: 'program.information',
-              title: 'Patients',
+              title: '360\xB0 MD CDI',
               type: 'menu-item',
               url: '/admin/patients',
               classes:
@@ -51,9 +51,9 @@ export const navigations = {
             },
             {
               icon: 'fa-light fa-cog pink-fg',
-              title: 'Post Discharge Patients',
+              title: '360\xB0 CLAIM OPTIMIZATION',
               type: 'menu-item',
-              url: '/admin/postdischargepatients',
+              url: '/admin/pd-patients',
               classes:
                 '{"bg":"pink-50-bg","hoverBG":"pink-50-hover-bg","activeBG":"pink-100-bg"}',
 

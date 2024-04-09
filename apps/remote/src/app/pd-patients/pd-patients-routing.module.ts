@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PatientDetailsComponent } from '../patient-details/patient-details.component';
+import { PdPatientDetailsComponent } from '../pd-patient-details/pd-patient-details.component';
 import { PdPatientGridComponent } from './pd-patients-grid/pd-patient-grid.component';
 
 const routes: Routes = [
@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: ':id/details',
-    component: PatientDetailsComponent,
+    component: PdPatientDetailsComponent,
   },
 
 ];

@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 import { Patient } from '../../models/patient.model';
 import { PatientService } from '../../services/patient.service';
@@ -16,13 +16,14 @@ export class PatientHeaderComponent implements OnDestroy{
   initial2;
   initial1;
   private _unsubscribe = new Subject();
+  @Input() isPdPatient = false;
   constructor(private patientService: PatientService) {
     this.loading$ = this.patientService.loading$;
-    this.patientService.currentPatient$.pipe(takeUntil(this._unsubscribe)).subscribe(x=>{
-          this.patient$.next(x);
-          this.loading$.next(false);
-          this.setInitials(x.patientName);
-
+    this.patientService.currentPatient$.pipe(takeUntil(this._unsubscribe))
+    .subscribe(x=> {
+        this.patient$.next(x);
+        this.loading$.next(false);
+        this.setInitials(x.patientName);
     });
   }
 
@@ -39,6 +40,4 @@ export class PatientHeaderComponent implements OnDestroy{
     this._unsubscribe.next(true);
     this._unsubscribe.complete();
   }
-
-
 }
