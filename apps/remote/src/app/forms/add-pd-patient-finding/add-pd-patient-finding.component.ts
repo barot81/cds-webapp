@@ -45,7 +45,7 @@ export class AddPdPatientFindingComponent
   drgLookups$ : Subject<DrgLookup[]> = new BehaviorSubject([]);
   enabledQueryBasedValidation = true;
   isCodingSuggestion = false;
-  isNonDrgCodingSuggestion: boolean;
+  isNonDrgCodingSuggestion = false;
   constructor(
     private readonly fb: FormBuilder,
     private _drawerService: DrawerService,
@@ -228,19 +228,16 @@ export class AddPdPatientFindingComponent
     }
   }
   OnQueryTypeChanged(queryType) {
-    const queryDiagnosisControl = this.fusionFormGroup.get('queryDiagnosis');
-    const clinicalIndicatorControl = this.fusionFormGroup.get('clinicalIndicator');
-    const physicianNameControl = this.fusionFormGroup.get('physicianName');
     if(queryType.value.includes('Coding Suggestion')) {
       this.isCodingSuggestion = true;
-      queryDiagnosisControl?.clearValidators();
-      clinicalIndicatorControl?.clearValidators();
-      physicianNameControl?.clearValidators();
+      this.fusionFormGroup.get('queryDiagnosis')?.clearValidators();
+      this.fusionFormGroup.get('clinicalIndicator')?.clearValidators();
+      this.fusionFormGroup.get('physicianName')?.clearValidators();
     } else {
       this.isCodingSuggestion = false;
-      clinicalIndicatorControl?.setValidators(Validators.required);
-      queryDiagnosisControl?.setValidators(Validators.required);
-      physicianNameControl?.setValidators(Validators.required);
+      this.fusionFormGroup.get('queryDiagnosis')?.setValidators(Validators.required);
+      this.fusionFormGroup.get('clinicalIndicator')?.setValidators(Validators.required);
+      this.fusionFormGroup.get('physicianName')?.setValidators(Validators.required);
     }
     if(queryType.value.includes('No Drg Change')) {
         this.isNonDrgCodingSuggestion = true;

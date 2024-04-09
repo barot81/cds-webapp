@@ -4,14 +4,14 @@
       <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start"
       class="add-row"
       mat-icon-button aria-label="Add Finding Information"
-      zhealthcareDrawerAction [componentSelector]="_patientFormService.get('patient-finding-form')"
+      zhealthcareDrawerAction [componentSelector]="_patientFormService.get('pd-patient-finding-form')"
       [size]="'drawer-lg'" [caption]="'Add Finding Information'" [primaryAction]="'Save'"
       [entityKey]="">
         <div fxLayout="column" fxFlex="90">
           <div fxLayout.gt-md="row" fxLayout="column" fxLayoutAlign.gt-md="start center" fxLayoutAlign="start start"
             fxFlex="100">
             <div class="secondary-card-header-title overflow-ellipses">
-              <span class="primary-heading">Query Findings</span>
+              <span class="primary-heading">Findings</span>
             </div>
           </div>
         </div>
@@ -116,8 +116,7 @@
                   </div>
                 </div>
               </div>
-              <ng-template *ngIf="!item?.queryType?.includes('No Drg Change')">
-                <div fxLayout="row" fxLayout.gt-md="row" fxLayoutGap="7">
+                <div fxLayout="row" fxLayout.gt-md="row" fxLayoutGap="7" *ngIf="!item?.queryType?.includes('No Drg Change')">
                   <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
                     <div class="mb-16">
                       <div class="title">Expected DRG</div>
@@ -146,7 +145,6 @@
                     </div>
                   </div>
                 </div>
-              </ng-template>
               <div fxLayout="row" fxLayout.gt-md="row" fxLayoutGap="7">
                 <div fxLayout="column" fxLayoutAlign="top" fxFlex="16.5">
                   <div class="mb-16">
@@ -204,8 +202,8 @@
                   </div>
                 </div>
               </div>
-              <ng-template *ngIf="(item?.queryType?.includes('No Drg Change'))">
-              <div fxLayout="row" fxLayout.gt-md="row" class="mt-8" fxLayoutGap="7">
+
+              <div fxLayout="row" fxLayout.gt-md="row" class="mt-8" fxLayoutGap="7" *ngIf="!(item?.queryType?.includes('No Drg Change'))">
                 <div fxLayout="column" fxLayoutAlign="top" fxFlex="33">
                   <div class="mb-16">
                     <div class="title">Ending DRG</div>
@@ -245,7 +243,6 @@
                   </div>
                 </div>
               </div>
-              </ng-template>
               <div fxLayout="row" fxLayout.gt-md="row">
               </div>
               <div fxLayout="row" fxLayout.gt-md="row" class="mt-16">

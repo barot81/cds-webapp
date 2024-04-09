@@ -29,11 +29,11 @@
             <input matInput formControlName="cdsName" required>
           </mat-form-field>
         </div>
-
-        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15" *ngIf="!isCodingSuggestion">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
           <mat-form-field appearance="fill" fxFlex="32.5">
             <mat-label>Query Diagnosis</mat-label>
-            <mat-select formControlName="queryDiagnosis" (selectionChange)="OnQueryDiagnosisChanged($event)" required>
+            <mat-select formControlName="queryDiagnosis" (selectionChange)="OnQueryDiagnosisChanged($event)"
+            [required]="!isCodingSuggestion" [disabled]="isCodingSuggestion">
               <mat-option *ngFor="let diagnosis of queryDiagnosisList"
                 [ngClass]="{'mat-option-text ': isOptionTruncated(diagnosis)}" id={{diagnosis}} [value]="diagnosis"
                 class="dropdown-with-tooltip" [options]="tooltipOptions" [display]="isOptionTruncated(diagnosis)"
@@ -45,7 +45,7 @@
           <mat-form-field appearance="fill" fxFlex="29.5">
             <mat-label>Clinical Indicators</mat-label>
             <mat-select formControlName="clinicalIndicator" (selectionChange)="OnClinicalIndicatorChanged($event)"
-              required>
+            [required]="!isCodingSuggestion" [disabled]="isCodingSuggestion">
               <mat-option *ngFor="let indicator of clinicalIndicatorList" [ngClass]="{'mat-option-text ': isOptionTruncated(indicator)
               }" id={{indicator}} [value]="indicator" class="dropdown-with-tooltip" [options]="tooltipOptions"
                 [display]="isOptionTruncated(indicator)" [tooltip]="indicator">
@@ -55,7 +55,8 @@
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="34">
             <mat-label>Physician Name</mat-label>
-            <mat-select formControlName="physicianName" (selectionChange)="OnPhysicianNameChanged($event)" required>
+            <mat-select formControlName="physicianName" (selectionChange)="OnPhysicianNameChanged($event)"
+            [required]="!isCodingSuggestion" [disabled]="isCodingSuggestion">
               <mat-option *ngFor="let name of physicianNameList" [ngClass]="{'mat-option-text ': isOptionTruncated(name)
               }" id={{name}} [value]="name" class="dropdown-with-tooltip" [options]="tooltipOptions"
                 [display]="isOptionTruncated(name)" [tooltip]="name">
@@ -174,7 +175,6 @@
 
         </div>
       </div>
-
       <div class="p-16 pb-0" fxLayout="column">
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
 
@@ -191,12 +191,12 @@
 
         </div>
       </div>
-      <div class="p-16 pb-0" fxLayout="column" *ngIf="!isNonDrgCodingSuggestion">
+      <div class="p-16 pb-0" fxLayout="column">
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
           <mat-form-field appearance="fill" fxFlex="11" class="w-100-p">
             <mat-label> Ending DRG No.</mat-label>
             <mat-select (selectionChange)="onEndingDrgChange($event)" formControlName="revisedDrgNo"
-              [required]="enabledQueryBasedValidation">
+              [required]="enabledQueryBasedValidation" [disabled]="isNonDrgCodingSuggestion">
               <mat-option>
                 <ngx-mat-select-search formControlName="revisedDrgSearch" placeholderLabel="Search"
                   noEntriesFoundLabel="No entry matches">
@@ -223,25 +223,26 @@
         </div>
       </div>
       <div class="p-16 pb-0" fxLayout="column">
-        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15" *ngIf="!isNonDrgCodingSuggestion">
           <mat-form-field appearance="fill" fxFlex="11">
             <mat-label>Weight Difference</mat-label>
             <input matInput formControlName="weightDifference" readonly>
           </mat-form-field>
         </div>
-        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
 
-          <mat-form-field appearance="fill" fxFlex="50">
-            <mat-label>Clinical Summary</mat-label>
-            <textarea matInput formControlName="clinicalSummary" rows="8">
-            </textarea>
-          </mat-form-field>
-          <mat-form-field appearance="fill" fxFlex="50">
-            <mat-label>Comments</mat-label>
-            <textarea matInput formControlName="comments" rows="8">
-            </textarea>
-          </mat-form-field>
-        </div>
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutGap="15">
+
+            <mat-form-field appearance="fill" fxFlex="50">
+              <mat-label>Clinical Summary</mat-label>
+              <textarea matInput formControlName="clinicalSummary" rows="8">
+              </textarea>
+            </mat-form-field>
+            <mat-form-field appearance="fill" fxFlex="50">
+              <mat-label>Comments</mat-label>
+              <textarea matInput formControlName="comments" rows="8">
+              </textarea>
+            </mat-form-field>
+          </div>
       </div>
     </mat-card>
   </form>
