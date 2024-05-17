@@ -10,13 +10,14 @@ import { PatientGridComponent } from './patients-grid/patient-grid.component';
 import { ShowMoreFilterDrawerComponent } from './show-more-filter-drawer/show-more-filter-drawer.component';
 import { PatientFormsModule } from '../forms/patient-forms.module';
 import { PatientService } from '../services/patient.service';
-import { FuseSharedModule, FuseSidebarModule, FuseThemeOptionsModule, MaterialModule, ShowMoreModule, zhealthcareAvatarModule } from '@zhealthcare/ux';
+import { FuseSharedModule, FuseSidebarModule, MaterialModule, ShowMoreModule, zhealthcareAvatarModule } from '@zhealthcare/ux';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomDirectiveModule, RBACDirectiveModule } from '@zhealthcare/fusion/directives';
 import { FeatureMetaDataPipesModule } from '@zhealthcare/fusion/pipes';
 import { DataSourceModule } from '@zhealthcare/plugin/data-source';
 import { EffectsModule } from '@ngrx/effects';
 import { MatTableExporterModule } from 'mat-table-exporter';
+import { AuditTrailsDrawerComponent } from '../patient-details/audit-trails-drawer/audit-trails-drawer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MatTableExporterModule } from 'mat-table-exporter';
     PatientHeaderComponent,
     GeneralCommentsComponent,
     PatientFindingsComponent,
-    PatientGridComponent
+    PatientGridComponent,
+    AuditTrailsDrawerComponent
   ],
   imports: [
     CommonModule,
@@ -47,6 +49,6 @@ import { MatTableExporterModule } from 'mat-table-exporter';
     PatientsRoutingModule
   ],
   providers:[PatientService],
-  exports:[PatientHeaderComponent]
+  exports:[PatientHeaderComponent, PatientFindingsComponent]
 })
 export class PatientsModule { }

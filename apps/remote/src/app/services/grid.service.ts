@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ComponentMap } from '@zhealthcare/fusion/core';
 import { Filter } from '@zhealthcare/plugin/data-source';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { AuditTrailsDrawerComponent } from '../patient-details/audit-trails-drawer/audit-trails-drawer.component';
 import { FilterDrawerComponent } from '../patients/filter-drawer/filter-drawer.component';
 import { ShowMoreFilterDrawerComponent } from '../patients/show-more-filter-drawer/show-more-filter-drawer.component';
 
@@ -14,6 +15,7 @@ export class GridService extends ComponentMap {
     super();
     this.add('ryzen-filter-drawer', FilterDrawerComponent);
     this.add('ryzen-show-more-filter-drawer', ShowMoreFilterDrawerComponent);
+    this.add('audit-trails-drawer', AuditTrailsDrawerComponent);
     this.onFilterChange$ = new BehaviorSubject<boolean>(false);
   }
 

@@ -1,8 +1,8 @@
 <div class="mt-8" fxLayout="column" fxflex="100">
   <div fxLayout="column" fxflex="100" *ngIf="(patient$ | async) as patient">
-    <div fxLayout="column" fxLayoutAlign="stretch stretch" aria-label="Patient banner"
+    <div fxLayout="column" fxLayoutAlign="stretch stretch" fxflex="100" aria-label="Patient banner"
       *ngIf="(loading$ | async) === false; else loading">
-      <div fxLayout="row wrap" fxflex="100">
+      <div fxLayout="row" fxflex="100">
         <div fxLayout="row" fxLayoutAlign="start" fxFlex="7" class="ml-8">
           <zhealthcare-avatar [firstName]="initial1" [lastName]="initial2" size="lg">
           </zhealthcare-avatar>
@@ -69,7 +69,16 @@
             </div>
           </div>
         </div>
+        <div fxLayout="column" fxLayoutAlign="start end" class="trails">
+          <button mat-button mat-stroked-button color="primary"  aria-label="Audit Trails" zhealthcareDrawerAction
+          [componentSelector]="gridService.get('audit-trails-drawer')" [size]="'drawer-sm'"
+          [caption]="'Audit Trails'" >
+            Audit Trails
+        </button>
+        </div>
       </div>
+
+
     </div>
   </div>
 </div>

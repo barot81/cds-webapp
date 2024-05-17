@@ -1,0 +1,10 @@
+<div *ngFor="let audit of auditTrails" class="m-16 card-border">
+  <mat-card fxLayout="column" fxFlex="100" class="p-8" fxLayoutAlign="space-between start">
+  <div class="m-4"> For Query Type <b>{{audit.queryType}}</b> and Query Diagnosis <b>{{audit.queryDiagnosis}}</b> query status is changed to <b>{{audit.status}}</b>
+  </div>
+  <div fxFlexAlign="end"><b>{{audit.createdDate | date:'MMM d, y hh:mm:ss a'  }}, {{audit.createdBy}} </b></div>
+
+</mat-card>
+</div>
+
+

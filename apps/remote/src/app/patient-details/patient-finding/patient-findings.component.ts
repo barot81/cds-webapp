@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component,  OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component,  Input,  OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, map, Subject, takeUntil } from 'rxjs';
 import { PatientFormsService } from '../../forms/patient-forms.service';
@@ -20,7 +20,7 @@ export class PatientFindingsComponent implements OnDestroy {
   patientId: any;
   _unsubscribe: Subject<any> = new Subject();
   patientInfo: any;
-
+  @Input('isReadonly') isReadonly = false;
   constructor(
     public _patientFormService: PatientFormsService,
     private activatedRoute: ActivatedRoute,

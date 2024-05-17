@@ -1,27 +1,51 @@
 <div class="p-0 zhealthcare-info-container" fxLayout="column">
-  <div fxFlex="100" fxFlex.gt-sm="60">
-    <mat-card class="card-header-title card-header-border-bottom">
-      <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start"
-      class="add-row"
-      mat-icon-button aria-label="Add Finding Information"
-      zhealthcareDrawerAction [componentSelector]="_patientFormService.get('patient-finding-form')"
-      [size]="'drawer-lg'" [caption]="'Add Finding Information'" [primaryAction]="'Save'"
-      [entityKey]="">
-        <div fxLayout="column" fxFlex="90">
-          <div fxLayout.gt-md="row" fxLayout="column" fxLayoutAlign.gt-md="start center" fxLayoutAlign="start start"
-            fxFlex="100">
-            <div class="secondary-card-header-title overflow-ellipses">
-              <span class="primary-heading">Query Findings</span>
-            </div>
-          </div>
-        </div>
-        <button mat-icon-button aria-label="Add Finding Information" role="button">
-          <i aria-hidden="true" class="fa-light fa-plus"></i>
-        </button>
-      </div>
-    </mat-card>
+  <div fxFlex="100" fxFlex.gt-sm="60" *ngIf="!isReadonly else collapsable">
+    <ng-container *ngTemplateOutlet="findingHeader"></ng-container>
   </div>
   <!--1st row-->
+  <div *ngIf="!isReadonly">
+    <ng-container *ngTemplateOutlet="findingDetails"></ng-container>
+  </div>
+</div>
+<ng-template #collapsable>
+  <mat-accordion aria-label="This is a accordian">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div fxLayoutAlign="start center" fxLayout="row">
+            <span > Query Findings </span>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-container *ngTemplateOutlet="findingDetails"></ng-container>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</ng-template>
+
+<ng-template #findingHeader>
+  <mat-card class="card-header-title card-header-border-bottom">
+    <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start"
+    class="add-row"
+    mat-icon-button aria-label="Add Finding Information"
+    zhealthcareDrawerAction [componentSelector]="_patientFormService.get('patient-finding-form')"
+    [size]="'drawer-lg'" [caption]="'Add Finding Information'" [primaryAction]="'Save'"
+    [entityKey]="">
+      <div fxLayout="column" fxFlex="90">
+        <div fxLayout.gt-md="row" fxLayout="column" fxLayoutAlign.gt-md="start center" fxLayoutAlign="start start"
+          fxFlex="100">
+          <div class="secondary-card-header-title overflow-ellipses">
+            <span class="primary-heading">Query Findings</span>
+          </div>
+        </div>
+      </div>
+      <button mat-icon-button aria-label="Add Finding Information" role="button" [hidden]="isReadonly">
+        <i aria-hidden="true" class="fa-light fa-plus"></i>
+      </button>
+    </div>
+  </mat-card>
+</ng-template>
+<ng-template #findingDetails>
   <div *ngIf="(loading$ | async) === false; else loading" class="zhealthcare-info">
     <input type="checkbox" class="read-more-state" id="finding" #finding />
     <div class="" *ngIf="(patientFindings$ | async) as patientFindings">
@@ -260,7 +284,7 @@
               </div>
             </div>
           </div>
-          <div>
+          <div [hidden]="isReadonly">
             <button mat-icon-button attr.aria-label="Edit Query Finding {{ i + 1 }}" zhealthcareDrawerAction
               class="action-icon" [componentSelector]="
                 _patientFormService.get('patient-finding-form')
@@ -274,8 +298,7 @@
       </div>
     </div>
   </div>
-</div>
-
+</ng-template>
 <!--skeleton-->
 <ng-template #loading>
   <div fxLayout="row" fxLayoutAlign="start space-between" class="m-16">
