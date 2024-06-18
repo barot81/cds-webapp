@@ -7,20 +7,20 @@ import {
 } from '@zhealthcare/fusion/components';
 import { UserService } from '@zhealthcare/fusion/core';
 import { DrawerService, LayoutService, SnackbarService } from '@zhealthcare/ux';
-import { BehaviorSubject,  Subject, takeUntil, VirtualTimeScheduler } from 'rxjs';
+import { BehaviorSubject,  Subject, takeUntil } from 'rxjs';
 import { Finding } from '../../models/Finding.model';
 import { DrgLookup } from '../../models/lookup.models';
 import { Patient } from '../../models/patient.model';
 import { LookupService } from '../../services/lookup.service';
-import { PatientFindingService } from '../../services/patient-finding.service';
+import { QueryFindingService } from '../../services/query-finding.service';
 import { PatientService } from '../../services/patient.service';
 
 @Component({
-  selector: 'add-pd-patient-finding',
-  templateUrl: 'add-pd-patient-finding.component.html',
-  styleUrls: ['add-pd-patient-finding.component.scss']
+  selector: 'add-query-finding',
+  templateUrl: 'add-query-finding.component.html',
+  styleUrls: ['add-query-finding.component.scss']
 })
-export class AddPdPatientFindingComponent
+export class AddQueryFindingComponent
   extends FusionFormComponent
   implements OnInit, AfterViewInit, FusionFormAdapter, OnDestroy
 {
@@ -44,20 +44,46 @@ export class AddPdPatientFindingComponent
   loading = false;
   drgLookups$ : Subject<DrgLookup[]> = new BehaviorSubject([]);
   enabledQueryBasedValidation = true;
-  isCodingSuggestion = false;
-  isNonDrgCodingSuggestion = false;
   constructor(
     private readonly fb: FormBuilder,
     private _drawerService: DrawerService,
     private _snackBarService: SnackbarService,
     private _datepipe: DatePipe,
     private patientService: PatientService,
-    private patientFindingService: PatientFindingService,
+    private queryFindingService: QueryFindingService,
     private lookupService: LookupService,
     private _userService: UserService,
     private _layoutService: LayoutService
   ) {
     super();
+    // this.fusionFormGroup = this.fb.group({
+    //   queryType: new FormControl('Quality'),
+    //   cdsName: new FormControl('Vishal'),
+    //   queryDate: new FormControl(new Date('05/01/2023')),
+    //   queryDiagnosis: new FormControl('Encephalopathy-AMS'),
+    //   physicianName: new FormControl('FARUKHI MOHAMMAD U'),
+    //   clinicalIndicator: new FormControl('strong'),
+    //   currentDrgNo: new FormControl('191'),
+    //   currentDrgDescription: new FormControl('CHRONIC OBSTRUCTIVE PULMONARY DISEASE WITH CC'),
+    //   initialWeight: new FormControl('1.19'),
+    //   gmlos: new FormControl('4.35'),
+    //   expectedDrgNo: new FormControl('190-3'),
+    //   expectedDrgDescription: new FormControl('ACUTE MYOCARDIAL INFARCTION'),
+    //   expectedWeight: new FormControl('2.11'),
+    //   expectedGmlos: new FormControl('6.30'),
+    //   responseDate: new FormControl(new Date('01/01/2023')),
+    //   responseType: new FormControl('Neutral'),
+    //   responseComment: new FormControl(''),
+    //   followupComment: new FormControl(''),
+    //   revisedDrgNo: new FormControl('190-4'),
+    //   revisedDrgDescription: new FormControl('ACUTE MYOCARDIAL INFARCTION '),
+    //   revisedWeight: new FormControl('3.02'),
+    //   revisedGmlos: new FormControl('12.34'),
+    //   weightDifference: new FormControl('1.83'),
+    //   queryStatus: new FormControl('Pending'),
+    //   clinicalSummary: new FormControl(''),
+    //   comments: new FormControl(''),
+    // });
     const username = this._userService.getUserName() ??  this._layoutService.getUser()?.name;
     this.fusionFormGroup = this.fb.group({
       queryType: new FormControl('', Validators.required),
@@ -76,7 +102,6 @@ export class AddPdPatientFindingComponent
       expectedDrgDescription: new FormControl(''),
       expectedWeight: new FormControl(),
       expectedGmlos: new FormControl(),
-      isCoderAgreed: new FormControl(false),
       responseDate: new FormControl(),
       responseType: new FormControl('', Validators.required),
       responseComment: new FormControl(''),
@@ -92,7 +117,7 @@ export class AddPdPatientFindingComponent
       comments: new FormControl(''),
     });
 
-    this.queryTypeList = ['CDI', 'Coding Suggestion - No Drg Change','Coding Suggestion - Drg Change', 'Quality', 'Case Management'];
+    this.queryTypeList = ['CDI', 'Coding', 'Quality', 'Case Management'];
     this.queryDiagnosisList = [];
     this.physicianNameList = [];
     this.clinicalIndicatorList = ['Strong', 'Weak'];
@@ -160,7 +185,7 @@ export class AddPdPatientFindingComponent
       responseCommentControl?.clearValidators();
       revisedDrgNoControl?.clearValidators();
 
-      if (queryStatus !== 'Pending' && !this.isCodingSuggestion) {
+      if (queryStatus !== 'Pending') {
         this.enabledQueryBasedValidation = true;
         responseDateControl?.setValidators(Validators.required);
         responseTypeControl?.setValidators(Validators.required);
@@ -228,25 +253,7 @@ export class AddPdPatientFindingComponent
     }
   }
   OnQueryTypeChanged(queryType) {
-    if(queryType.value.includes('Coding Suggestion')) {
-      this.isCodingSuggestion = true;
-      this.fusionFormGroup.get('queryDiagnosis')?.clearValidators();
-      this.fusionFormGroup.get('clinicalIndicator')?.clearValidators();
-      this.fusionFormGroup.get('physicianName')?.clearValidators();
-    } else {
-      this.isCodingSuggestion = false;
-      this.fusionFormGroup.get('queryDiagnosis')?.setValidators(Validators.required);
-      this.fusionFormGroup.get('clinicalIndicator')?.setValidators(Validators.required);
-      this.fusionFormGroup.get('physicianName')?.setValidators(Validators.required);
-    }
-    if(queryType.value.includes('No Drg Change')) {
-        this.isNonDrgCodingSuggestion = true;
-        this.fusionFormGroup.get('revisedDrgNo').clearValidators();
-    } else {
-        this.isNonDrgCodingSuggestion = false;
-        this.fusionFormGroup.get('revisedDrgNo').setValidators(Validators.required);
-    }
-    if (queryType.value) {
+    if (queryType.value !== null && queryType.value !== undefined) {
       this.fusionFormGroup.controls['queryType'].setValue(queryType.value);
     }
   }
@@ -349,7 +356,7 @@ export class AddPdPatientFindingComponent
     }
   }
   addQueryFinding() {
-    this.patientFindingService
+    this.queryFindingService
       .addPatientFinding(this.patientId, this.patientFindingInfo)
       .subscribe((response) => {
         if (response) {
@@ -367,7 +374,7 @@ export class AddPdPatientFindingComponent
       });
   }
   updateQueryFinding() {
-    this.patientFindingService
+    this.queryFindingService
       .updatePatientFinding(this.patientId, this.patientFindingInfo)
       .subscribe((response) => {
         if (response) {

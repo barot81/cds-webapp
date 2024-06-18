@@ -1,0 +1,47 @@
+
+<div class="page-layout simple left-sidebar inner-scroll page-without-header">
+  <div class="center main-right-side-content">
+    <div
+      class="content width-lg margin-auto"
+      fxLayout.gt-sm="row"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxflex="100"
+      class="pd-dashboard-container"
+    >
+      <mat-card fxLayout="row wrap" fxLayoutAlign="start center" fxflex="100" class="dashboard" style="width: 100%;">
+        <mat-card
+          class="p-16 m-4 program_list"
+          fxLayout="column"
+          fxFlex="100"
+          fxFlex.gt-sm="30"
+          fxFlex.gt-md="25"
+          *ngFor="let item of facilityWisePendingAuditor"
+          tabindex="0"
+          attr.aria-label="This is a {{ item.name }} program."
+        >
+          <a (click)="launch(item)" class="card-link-btn" fxLayout="row" fxLayoutAlign="space-between">
+            <div fxLayout="row">
+              <i
+                class="fa-light fa-address-card s-24 mr-12"
+                aria-hidden="true"
+              ></i>
+              <div fxlayout="column">
+                <h2>{{ item.name }}</h2>
+                <span class="font-14 secondary-text"
+                  >{{ item.description }} </span>
+              </div>
+            </div>
+            <h2 class="count">{{ item.count }}</h2>
+          </a>
+          <!-- <div fxFlex fxLayoutAlign="flex-end" class="download-icon">
+            <i
+              aria-hidden="true"
+              class="fa-light fa-download s-18 accent-fg"
+            ></i>
+          </div> -->
+        </mat-card>
+      </mat-card>
+    </div>
+  </div>
+</div>

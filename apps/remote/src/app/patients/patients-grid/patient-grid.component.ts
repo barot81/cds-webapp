@@ -164,7 +164,7 @@ export class PatientGridComponent implements OnInit, AfterViewInit, OnDestroy {
     this.fuseProgressBarService.hide();
     this._unsubscribe = new Subject();
     this.datasourceFacade.DataSourceDestroy();
-    this.serviceEndPoint = this._patientService.getDatasourceBaseEndpoint();
+    this.serviceEndPoint = this._patientService.getBaseEndpoint();
     this.loggedInUser$ = this.userFacade.UserState$.pipe(
       takeUntil(this._unsubscribe)
     );

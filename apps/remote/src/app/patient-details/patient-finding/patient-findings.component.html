@@ -28,7 +28,7 @@
     <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start"
     class="add-row"
     mat-icon-button aria-label="Add Finding Information"
-    zhealthcareDrawerAction [componentSelector]="_patientFormService.get('patient-finding-form')"
+    zhealthcareDrawerAction [componentSelector]="_patientFormService.get('query-finding-form')"
     [size]="'drawer-lg'" [caption]="'Add Finding Information'" [primaryAction]="'Save'"
     [entityKey]="">
       <div fxLayout="column" fxFlex="90">
@@ -287,7 +287,7 @@
           <div [hidden]="isReadonly">
             <button mat-icon-button attr.aria-label="Edit Query Finding {{ i + 1 }}" zhealthcareDrawerAction
               class="action-icon" [componentSelector]="
-                _patientFormService.get('patient-finding-form')
+                _patientFormService.get('query-finding-form')
               " [size]="'drawer-lg'" [caption]="'Finding Information'" [primaryAction]="'Save'"
               [secondaryAction]="'Delete'" role="button" [entityKey]="item.id" [data]="item">
               <i aria-hidden="true" class="fa-light fa-pen"></i>
@@ -322,7 +322,7 @@
           </span>
         </div>
         <button mat-icon-button aria-label="Edit Patient Findings" zhealthcareDrawerAction
-          [componentSelector]="_patientFormService.get('patient-finding-form')"
+          [componentSelector]="_patientFormService.get('query-finding-form')"
           [size]="'drawer-sm'" [data]="patientInfo"
           title="Patient Finding"
           [primaryAction]="'Save'" role="button" [entityKey]="patientInfo?.id">

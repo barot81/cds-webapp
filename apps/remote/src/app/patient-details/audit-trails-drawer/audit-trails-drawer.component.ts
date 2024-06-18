@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { AuditTrail } from '../../models/audit-trail.model';
+import { FindingTypes } from '../../models/constants';
 import { AuditTrailService } from '../../services/audit-trail.service';
 import { PatientService } from '../../services/patient.service';
 
@@ -20,15 +21,14 @@ import { PatientService } from '../../services/patient.service';
 
 export class AuditTrailsDrawerComponent implements OnInit {
   auditTrails: AuditTrail[];
+  @Input() isPdPatient = false;
   constructor(private patientService: PatientService,
     private _auditTrailService: AuditTrailService) {
-
-
   }
 
   ngOnInit() {
     this.patientService.currentPatient$.pipe(take(1)).subscribe(x=> {
-      this._auditTrailService.getAuditTrails(x.id).subscribe((trails) =>{
+      this._auditTrailService.getAuditTrails(x.id, this.isPdPatient ? FindingTypes.Auditor: FindingTypes.Query).subscribe((trails) =>{
         this.auditTrails = trails;
       });
     });

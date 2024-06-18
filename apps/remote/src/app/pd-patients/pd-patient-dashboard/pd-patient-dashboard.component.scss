@@ -1,0 +1,15 @@
+.pd-dashboard-container {
+  width: 100% !important;
+  padding: 25px !important;
+  @media only screen and (max-width: 800px) {
+    padding: 10px;
+   }
+}
+
+.dashboard {
+  height: calc(100vh - 250px);
+
+  @media only screen and (max-width: 800px) {
+   height: 100%;
+  }
+}

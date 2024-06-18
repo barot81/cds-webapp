@@ -72,7 +72,7 @@
         <div fxLayout="column" fxLayoutAlign="start end" class="trails">
           <button mat-button mat-stroked-button color="primary"  aria-label="Audit Trails" zhealthcareDrawerAction
           [componentSelector]="gridService.get('audit-trails-drawer')" [size]="'drawer-sm'"
-          [caption]="'Audit Trails'" >
+          [caption]="'Audit Trails'" [data]="{isPdPatient:isPdPatient}">
             Audit Trails
         </button>
         </div>

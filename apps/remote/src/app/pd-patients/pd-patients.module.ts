@@ -9,17 +9,18 @@ import { MaterialModule, FuseSharedModule, FuseSidebarModule, zhealthcareAvatarM
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { PatientFormsModule } from '../forms/patient-forms.module';
 import { PdPatientGridComponent } from './pd-patients-grid/pd-patient-grid.component';
-import { PdPatientFindingsComponent } from '../pd-patient-details/pd-patient-finding/pd-patient-findings.component';
-import { PdPatientDetailsComponent } from '../pd-patient-details/pd-patient-details.component';
-import { PatientHeaderComponent } from '../patient-details/patient-header/patient-header.component';
 import { PatientsModule } from '../patients/patients.module';
+import { PdPatientDashboardComponent } from './pd-patient-dashboard/pd-patient-dashboard.component';
+import { AuditorFindingsComponent } from '../pd-patient-details/auditor-finding/auditor-findings.component';
+import { PdPatientDetailsComponent } from '../pd-patient-details/pd-patient-details.component';
 
 
 @NgModule({
   declarations: [
-    PdPatientGridComponent,
-    PdPatientFindingsComponent,
-    PdPatientDetailsComponent,
+      PdPatientGridComponent,
+      AuditorFindingsComponent,
+      PdPatientDetailsComponent,
+      PdPatientDashboardComponent
     ],
   imports: [
     CommonModule,

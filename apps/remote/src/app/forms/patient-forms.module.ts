@@ -28,9 +28,9 @@ import { MarkdownModule } from 'ngx-markdown';
 import { AddPatientComponent } from './add-patient/add-patient.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AddGeneralCommentsComponent } from './add-general-comments/add-general-comments.component';
-import { AddPatientFindingComponent } from './add-patient-finding/add-patient-finding.component';
+import { AddQueryFindingComponent } from './add-query-finding/add-query-finding.component';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
-import { AddPdPatientFindingComponent } from './add-pd-patient-finding/add-pd-patient-finding.component';
+import { AddAuditorFindingComponent } from './add-auditor-finding/add-auditor-finding.component';
 
 @NgModule({
   imports: [
@@ -59,8 +59,8 @@ import { AddPdPatientFindingComponent } from './add-pd-patient-finding/add-pd-pa
   declarations: [
     AddPatientComponent,
     AddGeneralCommentsComponent,
-    AddPatientFindingComponent,
-    AddPdPatientFindingComponent
+    AddQueryFindingComponent,
+    AddAuditorFindingComponent
   ],
 
   providers: [

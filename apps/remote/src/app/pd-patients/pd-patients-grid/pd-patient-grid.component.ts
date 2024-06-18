@@ -52,6 +52,7 @@ import { GeneralComment } from '../../models/general-comments.model';
 import { MatTableExporterDirective } from 'mat-table-exporter';
 import * as moment from 'moment';
 import { PdExportPDFHelper } from './pd-export-pdf.helper';
+import { AuditorPatientService } from '../../services/auditor-patient.service';
 
 export class AppliedGridFilter {
   constructor(public name: string, public values: string[]) {}
@@ -149,6 +150,7 @@ export class PdPatientGridComponent implements OnInit, AfterViewInit, OnDestroy 
     public _headerService: HeaderService,
     public _scrollService: ScrollService,
     private readonly _patientService: PatientService,
+    private readonly _auditorPatientService: AuditorPatientService,
     private readonly userFacade: UserFacade,
     public datepipe: DatePipe,
     public _media: MediaObserver,
@@ -161,7 +163,7 @@ export class PdPatientGridComponent implements OnInit, AfterViewInit, OnDestroy 
     this.fuseProgressBarService.hide();
     this._unsubscribe = new Subject();
     this.datasourceFacade.DataSourceDestroy();
-    this.serviceEndPoint = `${this._patientService.getDatasourceBaseEndpoint()}?IsPdPatients=true`;
+    this.serviceEndPoint = `${this._auditorPatientService.getBaseEndpoint()}`;
     this.loggedInUser$ = this.userFacade.UserState$.pipe(
       takeUntil(this._unsubscribe)
     );

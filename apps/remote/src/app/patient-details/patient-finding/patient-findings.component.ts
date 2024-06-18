@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, map, Subject, takeUntil } from 'rxjs';
 import { PatientFormsService } from '../../forms/patient-forms.service';
 import { Finding } from '../../models/Finding.model';
-import { PatientFindingService } from '../../services/patient-finding.service';
+import { QueryFindingService } from '../../services/query-finding.service';
 import { PatientService } from '../../services/patient.service';
 import { LookupService } from '../../services/lookup.service';
 
@@ -24,7 +24,7 @@ export class PatientFindingsComponent implements OnDestroy {
   constructor(
     public _patientFormService: PatientFormsService,
     private activatedRoute: ActivatedRoute,
-    private patientFindingService: PatientFindingService,
+    private patientFindingService: QueryFindingService,
     private lookupService: LookupService,
     private patientService: PatientService
   ) {
@@ -32,11 +32,11 @@ export class PatientFindingsComponent implements OnDestroy {
     this.loading$.next(true);
     this.activatedRoute.params.subscribe((x) => {
       this.patientId = x.id;
-      this.patientFindingService.getPatientFindingsByPatientId(this.patientId).subscribe((res) => {
+      this.patientFindingService.getFindingsByPatientId(this.patientId).subscribe((res) => {
         this.patientFindings$.next(res);
         this.loading$.next(false);
       });
-      this.patientFindingService.patientFindingData$.pipe(takeUntil(this._unsubscribe),
+      this.patientFindingService.queryFindingData$.pipe(takeUntil(this._unsubscribe),
       map(x=> this.patientFindings$.next(x))).subscribe();
 
     });
@@ -53,9 +53,10 @@ export class PatientFindingsComponent implements OnDestroy {
   // this.InitialzeLookup();
 
 
-  displayTextAreaContent(content: string){
+  displayTextAreaContent(content: string) {
     return content.replace(/\n/g, '<br>');
   }
+
   ngOnDestroy(): void {
     this._unsubscribe.next(true);
     this._unsubscribe.complete();

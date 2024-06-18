@@ -124,7 +124,7 @@
               <td mat-cell *matCellDef="let element; let i = index" class="name-column">
                 <div class="column-group">
                   <div>
-                    <a [routerLink]="['./', element?.id, 'details']">
+                    <a [routerLink]="['/admin','pd-patients', element?.id, 'details']">
                       <span class="list-item-name"> {{ element?.patientNo }}
                       </span>
                     </a>

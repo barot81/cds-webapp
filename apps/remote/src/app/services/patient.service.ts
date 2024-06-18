@@ -72,12 +72,6 @@ export class PatientService extends HttpService {
     return url;
   }
 
-  public getDatasourceBaseEndpoint() {
-    const facility = localStorage.getItem(MetaConstants.SelectedFacilityName);
-    const url = `${this.getBaseUrl()}/${facility}/patientsInfo`;
-    return url;
-  }
-
   public getPhycianNames() {
     const url = `${this.getBaseEndpoint()}`;
     this.loading$.next(true);

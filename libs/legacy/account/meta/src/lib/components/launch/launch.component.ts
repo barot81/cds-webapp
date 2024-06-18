@@ -48,7 +48,7 @@ export class LaunchComponent
   roleHash: string;
   navigationHash: string;
   adminRoleExists;
-  oucodeWithNames = [];
+  statusesWithCounts = [];
   showProgramSelection = false;
   selectedOucode;
   orgUnitInformation: OrgUnitInformation[] = [];
@@ -141,11 +141,11 @@ export class LaunchComponent
         facilityId,
         statusCounts
       );
-      this.oucodeWithNames = OucodeHelper.getStatusList(
+      this.statusesWithCounts = OucodeHelper.getStatusList(
         [],
         this.selectedFacilityWiseStatuses.StatusCount
       );
-    } else this.oucodeWithNames = [];
+    } else this.statusesWithCounts = [];
   }
 
 

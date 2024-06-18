@@ -12,15 +12,15 @@ import { Finding } from '../../models/Finding.model';
 import { DrgLookup } from '../../models/lookup.models';
 import { Patient } from '../../models/patient.model';
 import { LookupService } from '../../services/lookup.service';
-import { PatientFindingService } from '../../services/patient-finding.service';
 import { PatientService } from '../../services/patient.service';
+import { AuditorFindingService } from '../../services/auditor-finding.service';
 
 @Component({
-  selector: 'add-patient-finding',
-  templateUrl: 'add-patient-finding.component.html',
-  styleUrls: ['add-patient-finding.component.scss']
+  selector: 'add-auditor-finding',
+  templateUrl: 'add-auditor-finding.component.html',
+  styleUrls: ['add-auditor-finding.component.scss']
 })
-export class AddPatientFindingComponent
+export class AddAuditorFindingComponent
   extends FusionFormComponent
   implements OnInit, AfterViewInit, FusionFormAdapter, OnDestroy
 {
@@ -44,46 +44,20 @@ export class AddPatientFindingComponent
   loading = false;
   drgLookups$ : Subject<DrgLookup[]> = new BehaviorSubject([]);
   enabledQueryBasedValidation = true;
+  isCodingSuggestion = false;
+  isNonDrgCodingSuggestion = false;
   constructor(
     private readonly fb: FormBuilder,
     private _drawerService: DrawerService,
     private _snackBarService: SnackbarService,
     private _datepipe: DatePipe,
     private patientService: PatientService,
-    private patientFindingService: PatientFindingService,
+    private auditorFindingService: AuditorFindingService,
     private lookupService: LookupService,
     private _userService: UserService,
     private _layoutService: LayoutService
   ) {
     super();
-    // this.fusionFormGroup = this.fb.group({
-    //   queryType: new FormControl('Quality'),
-    //   cdsName: new FormControl('Vishal'),
-    //   queryDate: new FormControl(new Date('05/01/2023')),
-    //   queryDiagnosis: new FormControl('Encephalopathy-AMS'),
-    //   physicianName: new FormControl('FARUKHI MOHAMMAD U'),
-    //   clinicalIndicator: new FormControl('strong'),
-    //   currentDrgNo: new FormControl('191'),
-    //   currentDrgDescription: new FormControl('CHRONIC OBSTRUCTIVE PULMONARY DISEASE WITH CC'),
-    //   initialWeight: new FormControl('1.19'),
-    //   gmlos: new FormControl('4.35'),
-    //   expectedDrgNo: new FormControl('190-3'),
-    //   expectedDrgDescription: new FormControl('ACUTE MYOCARDIAL INFARCTION'),
-    //   expectedWeight: new FormControl('2.11'),
-    //   expectedGmlos: new FormControl('6.30'),
-    //   responseDate: new FormControl(new Date('01/01/2023')),
-    //   responseType: new FormControl('Neutral'),
-    //   responseComment: new FormControl(''),
-    //   followupComment: new FormControl(''),
-    //   revisedDrgNo: new FormControl('190-4'),
-    //   revisedDrgDescription: new FormControl('ACUTE MYOCARDIAL INFARCTION '),
-    //   revisedWeight: new FormControl('3.02'),
-    //   revisedGmlos: new FormControl('12.34'),
-    //   weightDifference: new FormControl('1.83'),
-    //   queryStatus: new FormControl('Pending'),
-    //   clinicalSummary: new FormControl(''),
-    //   comments: new FormControl(''),
-    // });
     const username = this._userService.getUserName() ??  this._layoutService.getUser()?.name;
     this.fusionFormGroup = this.fb.group({
       queryType: new FormControl('', Validators.required),
@@ -102,6 +76,7 @@ export class AddPatientFindingComponent
       expectedDrgDescription: new FormControl(''),
       expectedWeight: new FormControl(),
       expectedGmlos: new FormControl(),
+      isCoderAgreed: new FormControl(false),
       responseDate: new FormControl(),
       responseType: new FormControl('', Validators.required),
       responseComment: new FormControl(''),
@@ -117,7 +92,7 @@ export class AddPatientFindingComponent
       comments: new FormControl(''),
     });
 
-    this.queryTypeList = ['CDI', 'Coding', 'Quality', 'Case Management'];
+    this.queryTypeList = ['CDI', 'Coding Suggestion - No Drg Change','Coding Suggestion - Drg Change', 'Quality', 'Case Management'];
     this.queryDiagnosisList = [];
     this.physicianNameList = [];
     this.clinicalIndicatorList = ['Strong', 'Weak'];
@@ -168,8 +143,6 @@ export class AddPatientFindingComponent
         });
       }
     );
-
-    this.onQueryStatusChanged();
   }
 
   onQueryStatusChanged() {
@@ -185,7 +158,7 @@ export class AddPatientFindingComponent
       responseCommentControl?.clearValidators();
       revisedDrgNoControl?.clearValidators();
 
-      if (queryStatus !== 'Pending') {
+      if (queryStatus !== 'Pending' && !this.isCodingSuggestion) {
         this.enabledQueryBasedValidation = true;
         responseDateControl?.setValidators(Validators.required);
         responseTypeControl?.setValidators(Validators.required);
@@ -219,6 +192,8 @@ export class AddPatientFindingComponent
   ngAfterViewInit(): void {
     if (this.data) {
       this.fusionFormGroup.patchValue(this.data);
+      this.onQueryStatusChanged();
+      this.OnQueryTypeChanged(this.fusionFormGroup.get('queryType'));
     }
   }
 
@@ -253,7 +228,25 @@ export class AddPatientFindingComponent
     }
   }
   OnQueryTypeChanged(queryType) {
-    if (queryType.value !== null && queryType.value !== undefined) {
+    if(queryType.value.includes('Coding Suggestion')) {
+      this.isCodingSuggestion = true;
+      this.fusionFormGroup.get('queryDiagnosis')?.clearValidators();
+      this.fusionFormGroup.get('clinicalIndicator')?.clearValidators();
+      this.fusionFormGroup.get('physicianName')?.clearValidators();
+    } else {
+      this.isCodingSuggestion = false;
+      this.fusionFormGroup.get('queryDiagnosis')?.setValidators(Validators.required);
+      this.fusionFormGroup.get('clinicalIndicator')?.setValidators(Validators.required);
+      this.fusionFormGroup.get('physicianName')?.setValidators(Validators.required);
+    }
+    if(queryType.value.includes('No Drg Change')) {
+        this.isNonDrgCodingSuggestion = true;
+        this.fusionFormGroup.get('revisedDrgNo').clearValidators();
+    } else {
+        this.isNonDrgCodingSuggestion = false;
+        this.fusionFormGroup.get('revisedDrgNo').setValidators(Validators.required);
+    }
+    if (queryType.value) {
       this.fusionFormGroup.controls['queryType'].setValue(queryType.value);
     }
   }
@@ -356,11 +349,10 @@ export class AddPatientFindingComponent
     }
   }
   addQueryFinding() {
-    this.patientFindingService
+    this.auditorFindingService
       .addPatientFinding(this.patientId, this.patientFindingInfo)
       .subscribe((response) => {
         if (response) {
-          this.updateReviewStatus();
           this._snackBarService.openCustomSnackBar(
             {
               message: 'Patient Finding Added Successfully.',
@@ -374,12 +366,10 @@ export class AddPatientFindingComponent
       });
   }
   updateQueryFinding() {
-    this.patientFindingService
+    this.auditorFindingService
       .updatePatientFinding(this.patientId, this.patientFindingInfo)
       .subscribe((response) => {
         if (response) {
-          this.updateReviewStatus();
-
           this._snackBarService.openCustomSnackBar(
             {
               message: 'Patient Finding Updated Successfully.',
@@ -392,15 +382,6 @@ export class AddPatientFindingComponent
         }
       });
   }
-  private updateReviewStatus() {
-    const reviewStatus = this.patientFindingInfo.queryStatus === 'Pending'
-      ? 'Pending Query'
-      : 'Reviewed';
-
-    if (reviewStatus)
-      this.patientService.updaetReviewStatus(this.patientId, reviewStatus).subscribe();
-  }
-
   secondaryAction() {}
   panelClose() {}
 
