@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FusionFormAdapter, FusionFormComponent } from '@zhealthcare/fusion/components';
 import { take } from 'rxjs/operators';
 import { AuditTrail } from '../../models/audit-trail.model';
 import { FindingTypes } from '../../models/constants';
@@ -19,16 +20,24 @@ import { PatientService } from '../../services/patient.service';
   ]
 })
 
-export class AuditTrailsDrawerComponent implements OnInit {
+export class AuditTrailsDrawerComponent  extends FusionFormComponent
+implements OnInit, FusionFormAdapter {
   auditTrails: AuditTrail[];
   @Input() isPdPatient = false;
   constructor(private patientService: PatientService,
     private _auditTrailService: AuditTrailService) {
+      super();
+  }
+  primaryAction() {
+  }
+  secondaryAction() {
+  }
+  panelClose() {
   }
 
   ngOnInit() {
     this.patientService.currentPatient$.pipe(take(1)).subscribe(x=> {
-      this._auditTrailService.getAuditTrails(x.id, this.isPdPatient ? FindingTypes.Auditor: FindingTypes.Query).subscribe((trails) =>{
+      this._auditTrailService.getAuditTrails(x.id, this.data.isPdPatient ? FindingTypes.Auditor: FindingTypes.Query).subscribe((trails) =>{
         this.auditTrails = trails;
       });
     });
