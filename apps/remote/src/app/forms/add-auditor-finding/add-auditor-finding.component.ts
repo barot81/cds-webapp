@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   FusionFormAdapter,
   FusionFormComponent,
@@ -217,6 +217,26 @@ export class AddAuditorFindingComponent
     }
   }
 
+  getInvalidControls(formGroup: FormGroup): FormControl[] {
+    const invalidControls: FormControl[] = [];
+
+    Object.keys(formGroup.controls).forEach(key => {
+      const control = formGroup.get(key);
+      if (control instanceof FormControl && control.invalid) {
+        invalidControls.push(control);
+      } else if (control instanceof FormGroup) {
+        invalidControls.push(...this.getInvalidControls(control));
+      }
+    });
+
+    return invalidControls;
+  }
+
+  checkInvalidControls(): void {
+    const invalidControls = this.getInvalidControls(this.fusionFormGroup);
+    console.log('Invalid Controls:', invalidControls);
+  }
+
   OnClinicalIndicatorChanged(clinicalIndicator) {
     if (
       clinicalIndicator.value !== null &&
@@ -249,6 +269,8 @@ export class AddAuditorFindingComponent
     if (queryType.value) {
       this.fusionFormGroup.controls['queryType'].setValue(queryType.value);
     }
+
+    this.checkInvalidControls();
   }
 
   onDrgChange(drgNo) {

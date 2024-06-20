@@ -196,7 +196,7 @@
           <mat-form-field appearance="fill" fxFlex="11" class="w-100-p">
             <mat-label> Ending DRG No.</mat-label>
             <mat-select (selectionChange)="onEndingDrgChange($event)" formControlName="revisedDrgNo"
-              [required]="enabledQueryBasedValidation" [disabled]="isNonDrgCodingSuggestion">
+              [required]="enabledQueryBasedValidation && !isNonDrgCodingSuggestion" [disabled]="isNonDrgCodingSuggestion">
               <mat-option>
                 <ngx-mat-select-search formControlName="revisedDrgSearch" placeholderLabel="Search"
                   noEntriesFoundLabel="No entry matches">
@@ -217,7 +217,7 @@
           </mat-form-field>
           <mat-form-field appearance="fill" fxFlex="14">
             <mat-label>Ending GMLOS</mat-label>
-            <input matInput formControlName="revisedGmlos" readonly>
+            <input matInput formControlName="revisedGmlos"  readonly>
           </mat-form-field>
 
         </div>
