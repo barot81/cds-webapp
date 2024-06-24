@@ -177,7 +177,7 @@ export class DataSourceService {
         body = this.getRequestPayload(applyPagination);
         let requestBody: any = body;
         if (
-          this.configService.appSettings.Cryptography.EnableEncryption &&
+          this.configService?.appSettings?.Cryptography?.EnableEncryption &&
           requestType === MethodType.POST
         ) {
           requestBody = Cryptography.encryptRequest<T>(

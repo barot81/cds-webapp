@@ -1,0 +1,26 @@
+<div class="text-container" fxLayout="row" fxLayoutAlign="start start">
+    <input id="ch" #ch type="checkbox" />
+    <button id="show-more-label" class="pl-0 link-btn" id="show-more-label" *ngIf="!ch.checked" (click)="ch.click()"
+        [attr.aria-label]="'Show More'"></button>
+    <div class="text" id="text_id" tabindex="0">
+        <div class="snackbar-content" fxLayout="column" fxLayoutAlign="start start">
+            <div fxLayout="row" fxLayoutAlign="space-between start">
+                <span class="header font-weight-600">The web page you're trying to access seems to be not
+                    loading/unresponsive at the moment. Try the following to
+                    trouble shoot :</span>
+                    <span aria-label="Close" (click)="closeSnackbar()" class="close-error"><i class="fas fa-times s-18"></i></span>
+            </div>
+            <ul class="error-list">
+                <li class="font-weight-400">1. Check your internet connection</li>
+                <li class="font-weight-400">2. Refresh the page</li>
+                <li class="font-weight-400">3. Clear your browser cache</li>
+                <li class="font-weight-400">4. Try a different browser or device</li>
+                <li class="font-weight-400">5. Wait and try again later</li>
+            </ul>
+            <br>
+            <span class="font-weight-400">If the problem persists, please reach out to our support team at <a
+                    class="email-link" href="mailto:v4support@exxat.com">support@zhealthcae.com</a></span>
+        </div>
+        <br>
+    </div>
+</div>

@@ -5,6 +5,8 @@ import {
   AuthGuardService,
 } from '@zhealthcare/fusion/core';
 import { UserPersona } from '@zhealthcare/fusion/models';
+import { ErrorHandlingComponent } from '../error-handling/error-handling.component';
+
 const routes: Routes = [
   {
     path: 'admin',
@@ -24,12 +26,15 @@ const routes: Routes = [
     path: 'login-failed',
     redirectTo: 'account/login'
   },
-
+  {
+    path: 'not-found',
+    component: ErrorHandlingComponent,
+    canActivate: [AuthGuardService]
+  },
   {
     path: '**',
     redirectTo: 'account/login',
-  },
-
+  }
 ];
 
 const roleConfig: RoleConfigType = {

@@ -38,7 +38,7 @@ export class HttpService {
     this.userFacade = FoundationInjector.get(UserFacade);
     this.orgFacade = FoundationInjector.get(OrgFacade);
     this.encryptionEnabled =
-      this.configService.appSettings.Cryptography.EnableEncryption;
+      this.configService?.appSettings?.Cryptography?.EnableEncryption ?? false;
     this.matSnackBar = FoundationInjector.get(MatSnackBar);
     this.router = FoundationInjector.get(Router);
     this._snackbarService = FoundationInjector.get(FusionSnackbarService);
@@ -46,12 +46,12 @@ export class HttpService {
 
   protected getBaseUrl(): string {
     this.encryptionEnabled =
-      this.configService.appSettings.Cryptography.EnableEncryption;
-    return this.configService.appSettings.auth.endpoint;
+      this.configService.appSettings?.Cryptography?.EnableEncryption ?? false;
+    return this.configService.appSettings?.auth?.endpoint ?? '';
   }
 
   protected geGatewayUrl(): string {
-    return this.configService.appSettings.gateway.endpoint;
+    return this.configService.appSettings?.gateway?.endpoint ?? '';
   }
 
   public getEndpoint(targetUrl: string) {

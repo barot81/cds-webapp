@@ -1,0 +1,15 @@
+<div class="page-layout full-width" class="w-100-p error-pages">
+  <div
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxFlex="100"
+    class="px-xs-16"
+  >
+    <div class="error-code">{{ errorCode ? errorCode : '404' }}</div>
+    <span class="mb-32 error-desc">{{
+      errorMessage
+        ? errorMessage
+        : 'Sorry! The page you were looking for, was not found.'
+    }}</span>
+  </div>
+</div>

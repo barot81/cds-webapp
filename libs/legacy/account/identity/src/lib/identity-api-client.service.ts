@@ -31,7 +31,7 @@ export class IdentityApiClient extends HttpService {
 
   constructor() {
     super();
-    this.config = this.configService.appSettings.auth.endpoint;
+    this.config = this.configService?.appSettings?.auth?.endpoint ?? '';
   }
 
 

@@ -8,6 +8,7 @@ import {
 } from '@azure/msal-angular';
 import { AuthenticationResult, EventMessage, EventType, InteractionStatus, RedirectRequest } from '@azure/msal-browser';
 import { UserService } from '@zhealthcare/fusion/core';
+import { MsalAuthService } from '@zhealthcare/fusion/services';
 import { filter, Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -24,7 +25,8 @@ export class AzureAdIdentityComponent implements OnInit, OnDestroy {
     private msalBroadcastService: MsalBroadcastService,
     private msalService: MsalService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private msalAuthService: MsalAuthService
   ) {
     this.loading = JSON.parse(localStorage.getItem('loading'));
   }
@@ -43,7 +45,12 @@ export class AzureAdIdentityComponent implements OnInit, OnDestroy {
         this.isUserLoggedin =
           this.msalService.instance.getAllAccounts().length > 0;
           if(this.isUserLoggedin) {
-            this.router.navigateByUrl('/admin/account/launch');
+            this.msalAuthService.getGroupsFromToken().then(groups => {
+              if(this.msalAuthService.checkUserAccess(groups, ["Management", "MD CDI"]))
+                this.router.navigateByUrl('/admin/account/launch');
+              else
+                this.router.navigateByUrl('/admin/pd-patients');
+            })
             const instance = this.msalService.instance.getAllAccounts()[0];
             this.userService.setUserName(instance.name, instance.username);
           }

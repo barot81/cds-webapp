@@ -7,13 +7,16 @@ import {
   OnDestroy,
   OnInit,
   SimpleChanges,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import { BehaviorSubject, merge, Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 
-import { GlobalVariable, OrgFacade } from '@zhealthcare/fusion/core';
-import { FusionNavigationService } from '@zhealthcare/fusion/services';
+import { OrgFacade } from '@zhealthcare/fusion/core';
+import {
+  FusionNavigationService,
+  MsalAuthService,
+} from '@zhealthcare/fusion/services';
 
 @Component({
   selector: 'fusion-navigation',
@@ -38,7 +41,8 @@ export class FusionNavigationComponent implements OnChanges, OnInit, OnDestroy {
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
     public _fusionNavigationService: FusionNavigationService,
-    private _orgFacade: OrgFacade
+    private _orgFacade: OrgFacade,
+    private authService: MsalAuthService
   ) {
     // Set the private defaults
     this._unsubscribeAll = new Subject();
@@ -52,27 +56,21 @@ export class FusionNavigationComponent implements OnChanges, OnInit, OnDestroy {
     if (
       changes?.aliasLabels?.currentValue !== changes?.aliasLabels?.previousValue
     ) {
-      this.navigation?.forEach(parent => {
-        if(parent.children?.find(child => child.id === 'admin.site') !== undefined) {
-          const sitelabel = GlobalVariable.settingDictionary.get('Sites')?.value ?? this.siteLabel;
-          parent.children.find(child => child.id === 'admin.site').title = sitelabel;
-          const desc = parent.children.find(child => child.id === 'admin.site').description.replace(/sites/gi, sitelabel);
-          parent.children.find(child => child.id === 'admin.site').description = desc;
-        }
-        if(parent.children?.find(child => child.id === 'admin.placement-requests') !== undefined) {
-          parent.children.find(child => child.id === 'admin.placement-requests').title = 'Process ' + GlobalVariable.settingDictionary.get('MyRequest')?.value + 's' ?? this.myRequestLabel;
-        }
-      });
       this.navAliasLoaded$.next(false);
       this._changeDetectorRef.detectChanges();
       this.navAliasLoaded$.next(true);
     }
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     // Load the navigation either from the input or from the service
     this.navigation =
       this.navigation || this._fusionNavigationService.getCurrentNavigation();
+
+    // const supportedGroups = await this.authService.getGroupsFromToken();
+    // const navs = this.filterMenuItems(this.navigation, supportedGroups);
+    // console.log(navs);
+    // this.navigation = navs;
 
     this.sortNavigation();
 
@@ -81,19 +79,22 @@ export class FusionNavigationComponent implements OnChanges, OnInit, OnDestroy {
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe(() => {
         // Load the navigation
-        this.navigation = this._fusionNavigationService.getCurrentNavigation();
-        this.sortNavigation();
-        this.navigation?.forEach(parent => {
-          if(parent.children?.find(child => child.id === 'admin.site') !== undefined) {
-            parent.children.find(child => child.id === 'admin.site').title = GlobalVariable.settingDictionary.get('Sites')?.value ?? this.siteLabel;
-          }
-          if(parent.children?.find(child => child.id === 'admin.placement-requests') !== undefined) {
-            parent.children.find(child => child.id === 'admin.placement-requests').title = 'Process ' + GlobalVariable.settingDictionary.get('MyRequest')?.value + 's' ?? this.myRequestLabel;
-          }
-        });
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
+        this.authService
+        .getGroupsFromToken()
+        .then((supportedGroups) => {
+            this.navigation = this._fusionNavigationService
+                  .getCurrentNavigation()
+                  .filter(x=> this.hasGroup(supportedGroups, x.groups, x));
+            console.log(this.navigation);
+            // const navs = this.filterMenuItems(
+            //   this.navigation,
+            //   supportedGroups
+            // );
+            // console.log(navs);
+            // this.navigation = navs;
+            // Mark for check
+            this._changeDetectorRef.markForCheck();
+          });
       });
 
     // Subscribe to navigation item
@@ -108,6 +109,20 @@ export class FusionNavigationComponent implements OnChanges, OnInit, OnDestroy {
         this._changeDetectorRef.markForCheck();
       });
   }
+
+  hasGroup(supportedGroupIds, itemGroups, navItem) {
+    console.log(navItem);
+    if(!itemGroups || itemGroups.length === 0) return true;
+    return supportedGroupIds.some((groupId) => itemGroups.includes(groupId));
+  }
+
+
+  // Apply the filter to each menu in the data arra
+
+  // return {
+  //   ...navigations,
+  //   data: filteredData,
+  // };
 
   sortNavigation() {
     if (

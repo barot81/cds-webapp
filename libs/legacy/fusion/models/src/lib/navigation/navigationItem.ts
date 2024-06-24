@@ -24,6 +24,7 @@ export interface NavigationItem {
     bg?: string;
     fg?: string;
   };
+  groups?:string[];
   children?: NavigationItem[];
 }
 export class NavigationItemClasses {

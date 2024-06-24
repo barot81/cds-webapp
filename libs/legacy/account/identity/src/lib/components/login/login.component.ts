@@ -212,8 +212,8 @@ export class LoginComponent extends BaseComponent implements OnInit, OnDestroy {
     if (this.userName !== '') {
       this.loginForm.controls['userName']?.setValue(this.userName);
     }
-
-    this.siteKey = this.configService.get('GoogleReCaptcha')['SiteKey'];
+    const captcha =  this.configService.get('GoogleReCaptcha');
+    this.siteKey =captcha?.SiteKey ?? '';
 
     this._matchMediaService.onMediaChange.subscribe((_screen) => {
       if (_screen && _screen !== null) {

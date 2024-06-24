@@ -1,130 +1,33 @@
 export const environment = {
   production: false,
   appSettings: {
-    production: false,
-    allowProductSelection: false,
-    unauthorizedEndpoints: [],
-    notFoundEndpoints: [],
-    auth: {
-      endpoint: '',
-    },
-    realtime: {
-      endpoint: '',
-    },
-    gateway: {
-      endpoint: '',
-    },
     services: {
       facility: {
         endpoint: 'https://localhost:7198/api',
       },
     },
-    microfrontends: {
-      remote: 'https://wonderful-tree-03951661e.3.azurestaticapps.net'
-    },
-    localization: {
-      languages: [
-        {
-          code: 'en',
-          name: 'EN',
-          culture: 'en-EN',
-        },
-        {
-          code: 'es',
-          name: 'ES',
-          culture: 'es-ES',
-        },
-        {
-          code: 'fr',
-          name: 'FR',
-          culture: 'fr-FR',
-        },
-      ],
-      defaultLanguage: 'en',
-    },
-    notifications: {
-      toasterEnable: true,
-      options: {
-        timeOut: 5000,
-        showProgressBar: true,
-        pauseOnHover: true,
-        position: ['top', 'right'],
-        theClass: 'sy-notification',
-      },
-    },
-    debugging: true,
     instrumentationKey: '',
     clickTrackingSettings: {
       clickTrackingEnabled: true,
       excludedTenants: [],
-    },
-    azureAdB2C: {
-      clientId: '',
-      activeDirectory: '',
-      tenant: '',
-      signUpSignInPolicyId: '',
-      forgotPassword: '',
-      redirectUri: '',
-      b2cScopes: [''],
     },
     azureAd: {
       clientId: 'ccdf8d9f-bd27-49d3-8239-8f37dcaeae99',
       tenant: 'ed1842b4-e4ca-4da6-8587-1f81a3cffa8f',
       redirectUri: '/',
       objectId: '2b7d602d-a3d2-4bdd-816f-5c9a3034fafb',
-      activeDirectory: '',
-      signUpSignInPolicyId: '',
-      forgotPassword: '',
-      b2cScopes: [''],
-    },
-    authGuardSettings: {
-      loginUrl: '',
-      launchUrl: '',
+      groupMapping: {
+        Management: 'd8ea4b5e-8c07-4a32-87a9-0a72069c5ecb',
+        'MD CDI': '3f54d578-74f7-4090-ba56-0974345774d4',
+        ClaimOptimization: '652bf906-4e29-4327-bcc1-303a5c11e1d2',
+      },
     },
     userIdleSettings: {
       idle: 1800,
       timeout: 300,
     },
-    releaseNoteNotification: {
-      offset: 7,
-    },
     silentTokenRefreshSettings: {
       oldTokenDeleteOffset: 120,
-    },
-    helpCenterSettings: {
-      switchOverInfo: '',
-    },
-    resources: {
-      eventDaysOffSet: 7,
-      voracoAuthKey: '',
-    },
-    GoogleReCaptcha: {
-      SiteKey: '',
-    },
-    Cryptography: {
-      EnableEncryption: false,
-      Key: '',
-      IV: '',
-      Keysizes: 128,
-    },
-    other: {
-      platformSettings: {
-        controlSettings: {
-          searchControlSetting: {
-            apiKey: '',
-            searchUriICD: '',
-            autocompleteUriICD: '',
-            searchUriCPT: '',
-            autocompleteUriCPT: '',
-          },
-        },
-      },
-    },
-    AzureMap: {
-      subscriptionKey: '',
-    },
-    blobStorage: {
-      fusionURI: '',
     },
   },
   uiSettings: {

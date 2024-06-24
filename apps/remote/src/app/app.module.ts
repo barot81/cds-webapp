@@ -21,5 +21,6 @@ import { MsalRedirectComponent } from '@azure/msal-angular';
     },
   ],
   bootstrap: [AppComponent, MsalRedirectComponent],
+
 })
 export class AppModule {}

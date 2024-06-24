@@ -26,10 +26,10 @@ export class AuthService extends HttpService {
 
   constructor() {
     super();
-    this.BASE_URL = this.configService.appSettings.auth.endpoint;
+    this.BASE_URL = this.configService.appSettings?.auth?.endpoint ?? '';
   }
   protected getBaseUrl(): string {
-    return this.configService.getservice('foundation.meta').endpoint;
+    return this.configService.getservice('foundation.meta')?.endpoint ?? '';
   }
 
   login(userInputModel: UserInputModel): Observable<any> {

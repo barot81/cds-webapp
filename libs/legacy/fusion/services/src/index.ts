@@ -17,5 +17,6 @@ export * from './lib/feature-metadata/form-validation/form.validation.service';
 export * from './lib/feature-metadata/feature-metadata.service';
 
 export * from './lib/Indexdb/indexdb.service';
-
 export * from './lib/role-base-access/role-based-access-control.service';
+
+export * from './lib/azuread-auth/msal-auth.service';

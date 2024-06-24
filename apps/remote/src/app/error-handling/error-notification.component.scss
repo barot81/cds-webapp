@@ -1,0 +1,24 @@
+
+  .mat-snack-bar-container {
+    &.global-error-alert {
+      background: #b3e5fc !important;
+      color: #1a1a1a !important;
+      padding-bottom: 28px !important;
+
+      .close-error{
+        cursor: pointer;
+      }
+      .error-list{
+        list-style-type: none;
+      }
+      .error-list li {
+        list-style-type: none  !important;
+      } 
+      .email-link{
+        
+      }
+      .email-link :hover{
+        text-decoration: underline !important;
+      }
+    }
+  }

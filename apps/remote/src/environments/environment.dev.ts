@@ -1,129 +1,47 @@
 export const environment = {
   production: false,
   appSettings: {
-    production: false,
-    allowProductSelection: false,
-    unauthorizedEndpoints: [],
-    notFoundEndpoints: [],
-    auth: {
-      endpoint: '',
-    },
-    realtime: {
-      endpoint: '',
-    },
-    gateway: {
-      endpoint: '',
-    },
     services: {
       facility: {
-        endpoint:  'https://localhost:7198/api', //'https://abzcds.azurewebsites.net/api', //'https://localhost:7198/api',
+        endpoint: 'https://localhost:7198/api',
       },
     },
-    microfrontends: {
-    },
-    localization: {
-      languages: [
-        {
-          code: 'en',
-          name: 'EN',
-          culture: 'en-EN',
-        },
-        {
-          code: 'es',
-          name: 'ES',
-          culture: 'es-ES',
-        },
-        {
-          code: 'fr',
-          name: 'FR',
-          culture: 'fr-FR',
-        },
-      ],
-      defaultLanguage: 'en',
-    },
-    notifications: {
-      toasterEnable: true,
-      options: {
-        timeOut: 5000,
-        showProgressBar: true,
-        pauseOnHover: true,
-        position: ['top', 'right'],
-        theClass: 'sy-notification',
-      },
-    },
-    debugging: true,
     instrumentationKey: '',
     clickTrackingSettings: {
       clickTrackingEnabled: true,
       excludedTenants: [],
     },
-    azureAdB2C: {
-      clientId: '',
-      activeDirectory: '',
-      tenant: '',
-      signUpSignInPolicyId: '',
-      forgotPassword: '',
-      redirectUri: '',
-      b2cScopes: [''],
-    },
     azureAd: {
       clientId: 'ccdf8d9f-bd27-49d3-8239-8f37dcaeae99',
-      tenant: 'ed1842b4-e4ca-4da6-8587-1f81a3cffa8f',
-      redirectUri: '/',
-      objectId: '2b7d602d-a3d2-4bdd-816f-5c9a3034fafb',
-      activeDirectory: '',
-      signUpSignInPolicyId: '',
-      forgotPassword: '',
-      b2cScopes: [''],
-    },
-    authGuardSettings: {
-      loginUrl: '',
-      launchUrl: '',
-    },
-    userIdleSettings: {
-      idle: 1800,
-      timeout: 300,
-    },
-    releaseNoteNotification: {
-      offset: 7,
-    },
-    silentTokenRefreshSettings: {
-      oldTokenDeleteOffset: 120,
-    },
-    helpCenterSettings: {
-      switchOverInfo: '',
-    },
-    resources: {
-      eventDaysOffSet: 7,
-      voracoAuthKey: '',
-    },
-    GoogleReCaptcha: {
-      SiteKey: '',
-    },
-    Cryptography: {
-      EnableEncryption: false,
-      Key: '',
-      IV: '',
-      Keysizes: 128,
-    },
-    other: {
-      platformSettings: {
-        controlSettings: {
-          searchControlSetting: {
-            apiKey: '',
-            searchUriICD: '',
-            autocompleteUriICD: '',
-            searchUriCPT: '',
-            autocompleteUriCPT: '',
+      authority:
+        'https://login.microsoftonline.com/ed1842b4-e4ca-4da6-8587-1f81a3cffa8f', // Defaults to "https://login.microsoftonline.com/common"
+      redirectUri: '/auth', // Points to window.location.origin by default. You must register this URI on Azure portal/App Registration.
+      postLogoutRedirectUri: '/', // Points to window.location.origin by default.
+      clientCapabilities: ['CP1'], // This lets the resource server know that this client can handle claim challenges.
+      groupMapping: {
+        Management: 'd8ea4b5e-8c07-4a32-87a9-0a72069c5ecb',
+        'MD CDI': '3f54d578-74f7-4090-ba56-0974345774d4',
+        ClaimOptimization: '652bf906-4e29-4327-bcc1-303a5c11e1d2',
+      },
+      protectedResources: {
+        apiTodoList: {
+          endpoint: 'https://localhost:7198/*', // "https://abzcds.azurewebsites.net/*", // "https://localhost:7198/*",
+          scopes: {
+            resource: [
+              'api://9e11a7a0-8ceb-4b31-a905-1a979b097247/patients.read',
+            ],
+            read: ['api://9e11a7a0-8ceb-4b31-a905-1a979b097247/patients.read'],
+            write: ['api://9e11a7a0-8ceb-4b31-a905-1a979b097247/patients.read'],
           },
         },
       },
-    },
-    AzureMap: {
-      subscriptionKey: '',
-    },
-    blobStorage: {
-      fusionURI: '',
+      userIdleSettings: {
+        idle: 1800,
+        timeout: 300,
+      },
+      silentTokenRefreshSettings: {
+        oldTokenDeleteOffset: 120,
+      },
     },
   },
   uiSettings: {
