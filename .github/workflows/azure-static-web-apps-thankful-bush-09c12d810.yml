@@ -21,7 +21,7 @@ jobs:
 
       - name: npm install and build
         env:
-          NODE_OPTIONS: "--max_old_space_size=16384"
+          NODE_OPTIONS: "--max_old_space_size=16896"
         run: |
           npm ci -f
           npx nx run-many --target build --projects host --parallel=false --configuration=production
