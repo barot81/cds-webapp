@@ -35,8 +35,8 @@
             "input": "libs/legacy/ux/src/lib/styles/themes/_purple-theme.scss",
             "inject": false,
             "bundleName": "theme-purple"
-          },
-          "node_modules/@fortawesome/fontawesome-pro/css/all.css"
+          }
+
         ],
         "scripts": [],
         "customWebpackConfig": {

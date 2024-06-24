@@ -28,9 +28,7 @@
         ],
         "styles": [
           "apps/ux-demo/src/styles.scss",
-          "libs/legacy/assets/global/pdfjs/web/viewer.css",
-          "node_modules/@fortawesome/fontawesome-pro/css/all.css",
-          "node_modules/@fortawesome/fontawesome-pro/css/fontawesome.css"
+          "libs/legacy/assets/global/pdfjs/web/viewer.css"
         ],
         "scripts": [
           "libs/legacy/assets/global/pdfjs/build/pdf.js",
