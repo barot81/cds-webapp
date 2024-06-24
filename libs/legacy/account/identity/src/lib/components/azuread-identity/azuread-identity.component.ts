@@ -59,8 +59,6 @@ export class AzureAdIdentityComponent implements OnInit, OnDestroy {
       });
   }
 
-
-
   handleAzureAd() {
     this.msalBroadcastService.msalSubject$
       .pipe(
