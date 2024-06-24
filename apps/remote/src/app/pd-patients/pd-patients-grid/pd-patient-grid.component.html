@@ -67,18 +67,18 @@
                   [componentSelector]="_patientGridService.get('ryzen-filter-drawer')" [size]="'drawer-md'"
                   [caption]="'Filters'" [primaryAction]="'Apply'">
                   <div fxLayout="row" fxLayoutAlign="start center">
-                    <i aria-hidden="true" class="fal fa-filter s-18 mr-4"></i>
+                    <i aria-hidden="true" class="fal fa-filter s-18 mr-4 fg-lightgrey"></i>
                     <span *ngIf="gridFilter.length> 0"> {{ gridFilter.length }} </span>
                   </div>
                 </button>
 
                 <button tabindex="0" aria-label="mat menu" mat-icon-button [matMenuTriggerFor]="menu" class="ml-4"
                   fxHide.gt-sm>
-                  <i aria-hidden="true" class="fal fa-ellipsis-h s-18"></i>
+                  <i aria-hidden="true" class="fal fa-ellipsis-h s-18 fg-lightgrey"></i>
                 </button>
                 <div fxLayout="row" class="mr-8">
                   <button matTooltip="Export" tabindex="0" aria-label="Export" mat-icon-button fxHide.lt-md [matMenuTriggerFor]="exportMenu">
-                    <i aria-hidden="true" *ngIf="!exportInProgress" class="fa-solid fa-file-export s-18"></i>
+                    <i aria-hidden="true" *ngIf="!exportInProgress" class="fa-solid fa-file-export s-18 fg-lightgrey"></i>
                     <mat-spinner *ngIf="exportInProgress" diameter="20" color="accent"></mat-spinner>
                   </button>
                   <mat-menu #exportMenu="matMenu">
@@ -99,7 +99,7 @@
                       [componentSelector]="dataSourceComponentService.get('zhealthcare-display-columns-form')"
                       [size]="'drawer-sm'" [caption]="'Edit Columns'" role="img" [primaryAction]="'Save'"
                       aria-hidden="true">
-                      <i aria-hidden="true" class="fa-solid fa-wrench s-18 mr-8"></i>Edit columns
+                      <i aria-hidden="true" class="fa-solid fa-wrench s-18 mr-8 fg-lightgrey"></i>Edit columns
                     </button>
                   </mat-menu>
                 </div>
