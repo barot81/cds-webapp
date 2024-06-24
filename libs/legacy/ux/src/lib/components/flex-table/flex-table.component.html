@@ -5,12 +5,12 @@
     <div fxLayout="row" fxLayoutAlign="center center">
       <div *ngIf="($left_scroll_position | async) != 0">
         <button class="scroll-button left" (mouseover)="scrollLeft()" (mouseout)="leaveScrollLeft()">
-          <i aria-hidden="true" class="fa-light fa-chevron-left s-28"></i>
+          <i aria-hidden="true" class="fa-solid fa-chevron-left s-28"></i>
         </button>
       </div>
       <div class="ml-16" *ngIf="($right_scroll_visibility | async) === true">
         <button class="scroll-button right" (mouseover)="scrollRight()" (mouseout)="leaveScrollRight()">
-          <i aria-hidden="true" class="fa-light fa-chevron-right s-28"></i>
+          <i aria-hidden="true" class="fa-solid fa-chevron-right s-28"></i>
         </button>
       </div>
     </div>

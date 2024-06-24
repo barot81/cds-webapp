@@ -21,7 +21,7 @@ export const navigations = {
           children: [
             {
               active: false,
-              icon: 'fa-light fa-columns green-fg',
+              icon: 'fa-solid fa-columns green-fg',
               image: null,
               order: null,
               id: 'zhealthcare-ux-repo',
@@ -38,7 +38,7 @@ export const navigations = {
             },
             {
               active: true,
-              icon: 'fa-light fa-columns green-fg',
+              icon: 'fa-solid fa-columns green-fg',
               image: null,
               order: null,
               id: 'zhealthcare-layouts',
@@ -54,7 +54,7 @@ export const navigations = {
               children: [
                 {
                   active: false,
-                  icon: 'fa-light fa-columns green-fg',
+                  icon: 'fa-solid fa-columns green-fg',
                   image: null,
                   order: null,
                   id: 'zhealthcare-page-layouts',
@@ -174,7 +174,7 @@ export const navigations = {
                 },
                 {
                   active: false,
-                  icon: 'fa-light fa-columns green-fg',
+                  icon: 'fa-solid fa-columns green-fg',
                   image: null,
                   order: null,
                   id: 'left-sidebar',
@@ -210,7 +210,7 @@ export const navigations = {
       menus: [
         {
           active: true,
-          icon: 'fa-light  fa-table-cells',
+          icon: 'fa-solid fa-table-cells',
           image: null,
           order: '0',
           id: 'dashboard',
@@ -241,7 +241,7 @@ export const navigations = {
           children: [
             {
               active: false,
-              icon: 'fa-light fa-university pink-fg',
+              icon: 'fa-solid fa-university pink-fg',
               image: null,
               order: null,
               id: 'program.information',
@@ -258,7 +258,7 @@ export const navigations = {
               children: [
                 {
                   active: false,
-                  icon: 'fa-light fa-cubes',
+                  icon: 'fa-solid fa-cubes',
                   image: null,
                   order: null,
                   id: 'program-details',
@@ -274,7 +274,7 @@ export const navigations = {
                 },
                 {
                   active: false,
-                  icon: 'fa-light fa-cubes',
+                  icon: 'fa-solid fa-cubes',
                   image: null,
                   order: null,
                   id: 'standards',
@@ -290,7 +290,7 @@ export const navigations = {
                 },
                 {
                   active: false,
-                  icon: 'fa-light fa-chart-network',
+                  icon: 'fa-solid fa-chart-network',
                   image: null,
                   order: null,
                   id: 'campus',
@@ -323,7 +323,7 @@ export const navigations = {
                 },
                 {
                   active: true,
-                  icon: 'fa-light fa-file-invoice pink-fg',
+                  icon: 'fa-solid fa-file-invoice pink-fg',
                   image: null,
                   order: null,
                   id: 'admin.compliance-new',
@@ -340,7 +340,7 @@ export const navigations = {
                 },
                 {
                   active: true,
-                  icon: 'fa-light fa-file-invoice pink-fg',
+                  icon: 'fa-solid fa-file-invoice pink-fg',
                   image: null,
                   order: null,
                   id: 'admin.compliance-new',
@@ -359,7 +359,7 @@ export const navigations = {
             },
             {
               active: false,
-              icon: 'fa-light fa-user',
+              icon: 'fa-solid fa-user',
               image: null,
               order: null,
               id: 'admin.profile.header',
@@ -374,7 +374,7 @@ export const navigations = {
               children: [
                 {
                   active: true,
-                  icon: 'fa-light fa-cogs',
+                  icon: 'fa-solid fa-cogs',
                   image: null,
                   order: null,
                   id: 'admin.configuration',
@@ -404,7 +404,7 @@ export const navigations = {
                       children: [
                         {
                           active: false,
-                          icon: 'fa-light fa-cog',
+                          icon: 'fa-solid fa-cog',
                           image: null,
                           order: null,
                           id: 'cohort',
@@ -420,7 +420,7 @@ export const navigations = {
                         },
                         {
                           active: false,
-                          icon: 'fa-light fa-cog',
+                          icon: 'fa-solid fa-cog',
                           image: null,
                           order: null,
                           id: 'enrollmentterm',
@@ -436,7 +436,7 @@ export const navigations = {
                         },
                         {
                           active: false,
-                          icon: 'fa-light fa-cog',
+                          icon: 'fa-solid fa-cog',
                           image: null,
                           order: null,
                           id: 'graduationterm',
@@ -452,7 +452,7 @@ export const navigations = {
                         },
                         {
                           active: false,
-                          icon: 'fa-light fa-cog',
+                          icon: 'fa-solid fa-cog',
                           image: null,
                           order: null,
                           id: 'studentcategory',
@@ -468,7 +468,7 @@ export const navigations = {
                         },
                         {
                           active: false,
-                          icon: 'fa-light fa-cog',
+                          icon: 'fa-solid fa-cog',
                           image: null,
                           order: null,
                           id: 'campus',
@@ -538,7 +538,7 @@ export const navigations = {
                     },
                     {
                       active: false,
-                      icon: 'fa-light fa-calendar-check',
+                      icon: 'fa-solid fa-calendar-check',
                       image: null,
                       order: null,
                       id: 'announcements',
@@ -690,7 +690,7 @@ export const navigations = {
             },
             {
               active: true,
-              icon: 'fa-light fa-graduation-cap pink-fg',
+              icon: 'fa-solid fa-graduation-cap pink-fg',
               image: null,
               order: null,
               id: 'admin.profile',
@@ -890,7 +890,7 @@ export const navigations = {
             },
             {
               active: false,
-              icon: 'fa-light fa-chalkboard-teacher pink-fg',
+              icon: 'fa-solid fa-chalkboard-teacher pink-fg',
               image: null,
               order: null,
               id: 'faculty.information',
@@ -907,7 +907,7 @@ export const navigations = {
               children: [
                 {
                   active: false,
-                  icon: 'fa-light fa-book-reader',
+                  icon: 'fa-solid fa-book-reader',
                   image: null,
                   order: null,
                   id: 'faculty.details',
@@ -922,7 +922,7 @@ export const navigations = {
                   children: [
                     {
                       active: false,
-                      icon: 'fa-light fa-address-card',
+                      icon: 'fa-solid fa-address-card',
                       image: null,
                       order: null,
                       id: 'faculty.profile',
@@ -938,7 +938,7 @@ export const navigations = {
                     },
                     {
                       active: false,
-                      icon: 'fa-light fa-chalkboard-teacher',
+                      icon: 'fa-solid fa-chalkboard-teacher',
                       image: null,
                       order: null,
                       id: 'faculty.teaching',
@@ -954,7 +954,7 @@ export const navigations = {
                     },
                     {
                       active: false,
-                      icon: 'fa-light fa-diploma',
+                      icon: 'fa-solid fa-diploma',
                       image: null,
                       order: null,
                       id: 'faculty.scholarship',
@@ -970,7 +970,7 @@ export const navigations = {
                     },
                     {
                       active: false,
-                      icon: 'fa-light fa-handshake',
+                      icon: 'fa-solid fa-handshake',
                       image: null,
                       order: null,
                       id: 'faculty.service ',
@@ -986,7 +986,7 @@ export const navigations = {
                     },
                     {
                       active: false,
-                      icon: 'fa-light fa-chart-network',
+                      icon: 'fa-solid fa-chart-network',
                       image: null,
                       order: null,
                       id: 'faculty.associations',
@@ -1055,7 +1055,7 @@ export const navigations = {
             },
             {
               active: false,
-              icon: 'fa-light fa-file-invoice pink-fg',
+              icon: 'fa-solid fa-file-invoice pink-fg',
               image: null,
               order: null,
               id: 'admin.compliance',
@@ -1205,7 +1205,7 @@ export const navigations = {
             },
             {
               active: false,
-              icon: 'fa-light fa-file-invoice pink-fg',
+              icon: 'fa-solid fa-file-invoice pink-fg',
               image: null,
               order: null,
               id: 'admin.compliance-new',
@@ -1391,7 +1391,7 @@ export const navigations = {
         //   children: [
         //     {
         //       active: false,
-        //       icon: 'fa-light fa-books orange-fg',
+        //       icon: 'fa-solid fa-books orange-fg',
         //       image: null,
         //       order: null,
         //       id: 'program.course',
@@ -1408,7 +1408,7 @@ export const navigations = {
         //       children: [
         //         {
         //           active: false,
-        //           icon: 'fa-light  fa-book-reader',
+        //           icon: 'fa-solid fa-book-reader',
         //           image: null,
         //           order: null,
         //           id: 'courses.setup',
@@ -1474,7 +1474,7 @@ export const navigations = {
         //         },
         //         {
         //           active: false,
-        //           icon: 'fa-light fa-book-reader',
+        //           icon: 'fa-solid fa-book-reader',
         //           image: null,
         //           order: null,
         //           id: 'courses.master',
@@ -1490,7 +1490,7 @@ export const navigations = {
         //         },
         //         {
         //           active: false,
-        //           icon: 'fa-light fa-book-reader',
+        //           icon: 'fa-solid fa-book-reader',
         //           image: null,
         //           order: null,
         //           id: 'course.offering',
@@ -1505,7 +1505,7 @@ export const navigations = {
         //           children: [
         //             {
         //               active: false,
-        //               icon: 'fa-light fa-book-reader',
+        //               icon: 'fa-solid fa-book-reader',
         //               image: null,
         //               order: null,
         //               id: 'course.details',
@@ -1520,7 +1520,7 @@ export const navigations = {
         //               children: [
         //                 {
         //                   active: false,
-        //                   icon: 'fa-light fa-books',
+        //                   icon: 'fa-solid fa-books',
         //                   image: null,
         //                   order: null,
         //                   id: 'course.information',
@@ -1535,7 +1535,7 @@ export const navigations = {
         //                   children: [
         //                     {
         //                       active: false,
-        //                       icon: 'fa-light fa-book-reader',
+        //                       icon: 'fa-solid fa-book-reader',
         //                       image: null,
         //                       order: null,
         //                       id: 'courses.about',
@@ -1551,7 +1551,7 @@ export const navigations = {
         //                     },
         //                     {
         //                       active: false,
-        //                       icon: 'fa-light fa-book-reader',
+        //                       icon: 'fa-solid fa-book-reader',
         //                       image: null,
         //                       order: null,
         //                       id: 'course.measure',
@@ -1567,7 +1567,7 @@ export const navigations = {
         //                     },
         //                     {
         //                       active: false,
-        //                       icon: 'fa-light fa-book-reader',
+        //                       icon: 'fa-solid fa-book-reader',
         //                       image: null,
         //                       order: null,
         //                       id: 'course.resource',
@@ -1583,7 +1583,7 @@ export const navigations = {
         //                     },
         //                     {
         //                       active: false,
-        //                       icon: 'fa-light fa-book-reader',
+        //                       icon: 'fa-solid fa-book-reader',
         //                       image: null,
         //                       order: null,
         //                       id: 'course.event',
@@ -1601,7 +1601,7 @@ export const navigations = {
         //                 },
         //                 {
         //                   active: true,
-        //                   icon: 'fa-light fa-user',
+        //                   icon: 'fa-solid fa-user',
         //                   image: null,
         //                   order: null,
         //                   id: 'course.student.registration',
@@ -1633,7 +1633,7 @@ export const navigations = {
         //                     },
         //                     {
         //                       active: false,
-        //                       icon: 'fa-light fa-file-alt',
+        //                       icon: 'fa-solid fa-file-alt',
         //                       image: null,
         //                       order: null,
         //                       id: 'course.compliance',
@@ -1651,7 +1651,7 @@ export const navigations = {
         //                 },
         //                 {
         //                   active: false,
-        //                   icon: 'fa-light fa-bullhorn',
+        //                   icon: 'fa-solid fa-bullhorn',
         //                   image: null,
         //                   order: null,
         //                   id: 'courseLevel.announcements',
@@ -1667,7 +1667,7 @@ export const navigations = {
         //                 },
         //                 {
         //                   active: false,
-        //                   icon: 'fa-light fa-chalkboard-teacher',
+        //                   icon: 'fa-solid fa-chalkboard-teacher',
         //                   image: null,
         //                   order: null,
         //                   id: 'admin.courseactivity',
@@ -1718,7 +1718,7 @@ export const navigations = {
         //                 },
         //                 {
         //                   active: false,
-        //                   icon: 'fa-light fa-hospital-user',
+        //                   icon: 'fa-solid fa-hospital-user',
         //                   image: null,
         //                   order: null,
         //                   id: 'admin.placement',
@@ -1838,7 +1838,7 @@ export const navigations = {
         //                 },
         //                 {
         //                   active: false,
-        //                   icon: 'fa-light fa-books',
+        //                   icon: 'fa-solid fa-books',
         //                   image: null,
         //                   order: null,
         //                   id: 'course.surveys',
@@ -1891,7 +1891,7 @@ export const navigations = {
         //         },
         //         {
         //           active: false,
-        //           icon: 'fa-light fa-book-reader',
+        //           icon: 'fa-solid fa-book-reader',
         //           image: null,
         //           order: null,
         //           id: 'courses.catalog',
@@ -1906,7 +1906,7 @@ export const navigations = {
         //           children: [
         //             {
         //               active: false,
-        //               icon: 'fa-light fa-book-reader',
+        //               icon: 'fa-solid fa-book-reader',
         //               image: null,
         //               order: null,
         //               id: 'curriculum.details',
@@ -1922,7 +1922,7 @@ export const navigations = {
         //             },
         //             {
         //               active: false,
-        //               icon: 'fa-light fa-book-reader',
+        //               icon: 'fa-solid fa-book-reader',
         //               image: null,
         //               order: null,
         //               id: 'curriculum.details.wizard',
@@ -1938,7 +1938,7 @@ export const navigations = {
         //             },
         //             {
         //               active: false,
-        //               icon: 'fa-light fa-book-reader',
+        //               icon: 'fa-solid fa-book-reader',
         //               image: null,
         //               order: null,
         //               id: 'curriculum.course.offering',
@@ -1954,7 +1954,7 @@ export const navigations = {
         //             },
         //             {
         //               active: false,
-        //               icon: 'fa-light fa-book-reader',
+        //               icon: 'fa-solid fa-book-reader',
         //               image: null,
         //               order: null,
         //               id: 'curriculum.grid',
@@ -1974,7 +1974,7 @@ export const navigations = {
         //     },
         //     {
         //       active: false,
-        //       icon: 'fa-light fa-sitemap orange-fg',
+        //       icon: 'fa-solid fa-sitemap orange-fg',
         //       image: null,
         //       order: null,
         //       id: 'mapping',
@@ -1991,7 +1991,7 @@ export const navigations = {
         //       children: [
         //         {
         //           active: false,
-        //           icon: 'fa-light fa-code-merge',
+        //           icon: 'fa-solid fa-code-merge',
         //           image: null,
         //           order: null,
         //           id: 'mapping-course',
@@ -2009,7 +2009,7 @@ export const navigations = {
         //     },
         //     {
         //       active: false,
-        //       icon: 'fa-light fa-chart-line orange-fg',
+        //       icon: 'fa-solid fa-chart-line orange-fg',
         //       image: null,
         //       order: null,
         //       id: 'plan.report',

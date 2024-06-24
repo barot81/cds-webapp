@@ -57,7 +57,7 @@ export class PlacementByRotationComponent implements OnInit {
 
 
   buttonList: Array<ButtonToggle> = [
-    { value: 'Card View', label: 'Card view', icon: 'fa-light fa-bring-forward' },
+    { value: 'Card View', label: 'Card view', icon: 'fa-solid fa-bring-forward' },
     { value: 'Grid View', label: 'Grid view', icon: 'fal fa-th' }
   ];
 

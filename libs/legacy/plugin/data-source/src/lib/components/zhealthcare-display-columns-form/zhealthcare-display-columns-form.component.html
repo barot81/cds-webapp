@@ -14,7 +14,7 @@
           <div *ngFor="let column of displayColumns" cdkDrag>
             <div *ngIf="!column.hideEditColumn" class="zhealthcare-drag-drop">
               <div class="icon-drag mr-8" cdkDragHandle>
-                <i class="fa-light fa-grip-vertical s-20"></i>
+                <i class="fa-solid fa-grip-vertical s-20"></i>
               </div>
               <div class="content">{{ column.displayName }}</div>
               <button
@@ -24,7 +24,7 @@
                 (click)="onRemoveColumn(column)"
                 class="ml-8 delete-icon"
               >
-                <i class="fa-light fa-trash-alt warn-fg s-18"></i>
+                <i class="fa-solid fa-trash-alt warn-fg s-18"></i>
               </button>
             </div>
           </div>
@@ -47,7 +47,7 @@
           color="primary"
           [matMenuTriggerFor]="columnMenu"
         >
-          <i class="fa-light fa-plus s-16"></i>
+          <i class="fa-solid fa-plus s-16"></i>
           <span class="ml-4">Add a Column</span>
         </button>
         <mat-menu #columnMenu="matMenu" yPosition="below">

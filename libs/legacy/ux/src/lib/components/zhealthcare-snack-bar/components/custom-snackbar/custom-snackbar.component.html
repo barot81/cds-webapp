@@ -10,7 +10,7 @@
     <i
       aria-hidden="true"
       *ngIf="data.icon && data.icon !== null"
-      class="fa-light {{ data.icon }} mr-12"
+      class="fa-solid {{ data.icon }} mr-12"
     ></i>
     <span *ngIf="data.message && data.message !== null" class="font-weight-600">
       {{ data.message }}
@@ -23,7 +23,7 @@
       aria-label="close snackbar"
       class="action-icon"
     >
-      <i aria-hidden="true" class="fa-light fa-times"></i>
+      <i aria-hidden="true" class="fa-solid fa-times"></i>
     </button>
   </div>
 </div>

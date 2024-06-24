@@ -55,7 +55,7 @@ export class PublicWebsiteAppComponent implements OnInit, AfterViewInit {
         'Review content provided by your school to help you along the way.',
     },
     {
-      icon: 'fa-light fa-chalkboard-teacher',
+      icon: 'fa-solid fa-chalkboard-teacher',
       title: 'School Contact',
       url: '/public/schoolcontact',
       description:

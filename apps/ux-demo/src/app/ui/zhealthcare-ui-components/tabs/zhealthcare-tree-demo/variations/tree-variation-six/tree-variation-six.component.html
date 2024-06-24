@@ -37,7 +37,7 @@
           >
             <button mat-icon-button disabled></button>
             <div class="pl-16 mr-8 pt-4">
-              <i aria-hidden="true" class="fa-light fa-grip-vertical"></i>
+              <i aria-hidden="true" class="fa-solid fa-grip-vertical"></i>
             </div>
             {{ node.filename }} : {{ node.type }}
           </mat-tree-node>
@@ -61,7 +61,7 @@
               [ngClass]="{ 'tree-node-active': activeNode === node }"
             >
               <div class="pl-16 pt-4">
-                <i aria-hidden="true" class="fa-light fa-grip-vertical"></i>
+                <i aria-hidden="true" class="fa-solid fa-grip-vertical"></i>
               </div>
               <button
                 mat-icon-button
@@ -73,8 +73,8 @@
                   aria-hidden="true"
                   [ngClass]="
                     treeControl.isExpanded(node)
-                      ? 'fa-light fa-chevron-down'
-                      : 'fa-light fa-chevron-right'
+                      ? 'fa-solid fa-chevron-down'
+                      : 'fa-solid fa-chevron-right'
                   "
                 ></i>
               </button>
@@ -104,7 +104,7 @@
                     (cdkDragReleased)="dragEnd()" class="draggable">
                     <button mat-icon-button disabled></button>
                     <div class="pl-16 mr-8 pt-4">
-                      <i aria-hidden="true" class="fa-light fa-grip-vertical"></i>
+                      <i aria-hidden="true" class="fa-solid fa-grip-vertical"></i>
                     </div>
                     node.filename : node.type
                   </mat-tree-node>
@@ -114,11 +114,11 @@
                     <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" class="tree-node-hover tree-node-bg"
                       (click)="activeNode = node" [ngClass]="{ 'tree-node-active': activeNode === node }">
                       <div class="pl-16 pt-4">
-                        <i aria-hidden="true" class="fa-light fa-grip-vertical"></i>
+                        <i aria-hidden="true" class="fa-solid fa-grip-vertical"></i>
                       </div>
                       <button mat-icon-button matTreeNodeToggle class="action-icon mr-8"
                         [attr.aria-label]="'Toggle ' + node.filename">
-                        <i [ngClass]="treeControl.isExpanded(node) ? 'fa-light fa-chevron-down' : 'fa-light fa-chevron-right'"
+                        <i [ngClass]="treeControl.isExpanded(node) ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-right'"
                       ></i>
                       </button>
                       <div>

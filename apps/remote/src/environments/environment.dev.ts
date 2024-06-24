@@ -3,8 +3,8 @@ export const environment = {
   appSettings: {
     services: {
       facility: {
-        endpoint: 'https://localhost:7198/api',
-      },
+        endpoint: 'https://abzcds.azurewebsites.net/api'
+      }
     },
     instrumentationKey: '',
     clickTrackingSettings: {

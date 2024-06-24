@@ -18,7 +18,7 @@
           fxLayout="row"
           fxLayoutAlign="start center"
         >
-          <i aria-hidden="true" class="fa-light fa-magnifying-glass s-18"></i>
+          <i aria-hidden="true" class="fa-solid fa-magnifying-glass s-18"></i>
           <input
             type="text"
             class="font-14"
@@ -76,14 +76,14 @@
                   [matMenuTriggerFor]="menu"
                   aria-label="enter for menu"
                 >
-                  <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+                  <i aria-hidden="true" class="fa-solid fa-ellipsis-h"></i>
                 </button>
                 <mat-menu #menu="matMenu">
                   <div mat-menu-item>
                     <div fxLayout="row" fxLayoutAlign="start center">
                       <i
                         aria-hidden="true"
-                        class="fa-light fa-plus icon-fill s-18 mr-4"
+                        class="fa-solid fa-plus icon-fill s-18 mr-4"
                       ></i>
                       <span>Add Department</span>
                     </div>
@@ -125,8 +125,8 @@
                     aria-hidden="true"
                     [ngClass]="
                       treeControl.isExpanded(node)
-                        ? 'fa-light fa-chevron-down s-18'
-                        : 'fa-light fa-chevron-right s-18'
+                        ? 'fa-solid fa-chevron-down s-18'
+                        : 'fa-solid fa-chevron-right s-18'
                     "
                   ></i>
                 </button>
@@ -162,13 +162,13 @@
                   attr.aria-label="enter for menu"
                   aria-label="enter for more menu items"
                 >
-                  <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+                  <i aria-hidden="true" class="fa-solid fa-ellipsis-h"></i>
                 </button>
                 <mat-menu #menu="matMenu">
                   <button mat-menu-item aria-label="Add University">
                     <i
                       aria-hidden="true"
-                      class="fa-light fa-plus icon-fill s-18 mr-4"
+                      class="fa-solid fa-plus icon-fill s-18 mr-4"
                     ></i>
                     <span>Add University</span>
                   </button>
@@ -192,7 +192,7 @@
         fxHide.gt-md
         (click)="toggleSidebar('carded-left-sidebar-tabbed-2')"
       >
-        <i aria-hidden="true" class="fa-light fa-bars"></i>
+        <i aria-hidden="true" class="fa-solid fa-bars"></i>
       </button>
     </div>
     <!-- / HEADER -->

@@ -48,7 +48,7 @@
           [caption]="'Goals'"
           [primaryAction]="'Save'"
         >
-          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+          <i aria-hidden="true" class="fa-solid fa-pen s-18"></i>
         </button>
         <button
           mat-icon-button
@@ -56,13 +56,13 @@
           attr.aria-label="menu for {{ node.name }}"
           aria-label="enter for more options"
         >
-          <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+          <i aria-hidden="true" class="fa-solid fa-ellipsis-h"></i>
         </button>
         <mat-menu #menu="matMenu" class="mat-secondary-menu">
           <button mat-menu-item>
             <div fxLayout="row" fxLayoutAlign="start center">
               <div class="mr-8 mt-4">
-                <i aria-hidden="true" class="fa-light fa-pen icon-pen s-18"></i>
+                <i aria-hidden="true" class="fa-solid fa-pen icon-pen s-18"></i>
               </div>
               <div fxLayout="row" fxLayoutAlign="start center">
                 <span>Add child</span>
@@ -72,7 +72,7 @@
           <button mat-menu-item class="warn-fg">
             <div fxLayout="row" fxLayoutAlign="start center">
               <div class="mr-8 mt-4">
-                <i aria-hidden="true" class="fa-light fa-trash-alt s-18"></i>
+                <i aria-hidden="true" class="fa-solid fa-trash-alt s-18"></i>
               </div>
               <div fxLayout="row" fxLayoutAlign="start center">
                 <span>Delete</span>
@@ -117,8 +117,8 @@
             aria-hidden="true"
             [ngClass]="
               treeControl.isExpanded(node)
-                ? 'fa-light fa-chevron-down'
-                : 'fa-light fa-chevron-right'
+                ? 'fa-solid fa-chevron-down'
+                : 'fa-solid fa-chevron-right'
             "
           ></i>
         </button>
@@ -156,7 +156,7 @@
           [caption]="'Objective'"
           [primaryAction]="'Save'"
         >
-          <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+          <i aria-hidden="true" class="fa-solid fa-pen s-18"></i>
         </button>
         <button
           mat-icon-button
@@ -165,13 +165,13 @@
           class="action-icon"
           aria-label="enter for more menu items"
         >
-          <i aria-hidden="true" class="fa-light fa-ellipsis-h s-16"></i>
+          <i aria-hidden="true" class="fa-solid fa-ellipsis-h s-16"></i>
         </button>
         <mat-menu #menu="matMenu" class="mat-secondary-menu">
           <button mat-menu-item>
             <div fxLayout="row" fxLayoutAlign="start center">
               <div class="mr-8 mt-4">
-                <i aria-hidden="true" class="fa-light fa-pen icon-pen s-18"></i>
+                <i aria-hidden="true" class="fa-solid fa-pen icon-pen s-18"></i>
               </div>
               <div fxLayout="row" fxLayoutAlign="start center">
                 <span>Add child</span>
@@ -181,7 +181,7 @@
           <button mat-menu-item class="warn-fg">
             <div fxLayout="row" fxLayoutAlign="start center">
               <div class="mr-8 mt-4">
-                <i aria-hidden="true" class="fa-light fa-trash-alt s-18"></i>
+                <i aria-hidden="true" class="fa-solid fa-trash-alt s-18"></i>
               </div>
               <div fxLayout="row" fxLayoutAlign="start center">
                 <span>Delete</span>

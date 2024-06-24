@@ -16,7 +16,7 @@
           <div>
             <div class="search-wrapper">
               <div class="search sidenav-search" fxFlex fxLayout="row" fxLayoutAlign="start center">
-                <i aria-hidden="true" class="fa-light fa-magnifying-glass s-18"></i>
+                <i aria-hidden="true" class="fa-solid fa-magnifying-glass s-18"></i>
                 <input type="text" class="font-14" placeholder="Search Student" fxFlex />
               </div>
             </div>
@@ -40,12 +40,12 @@
                     </div>
                     <div fxLayout="row" fxLayoutAlign="end center" class="pr-16 icon-hidden">
                       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="enter for menu">
-                        <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+                        <i aria-hidden="true" class="fa-solid fa-ellipsis-h"></i>
                       </button>
                       <mat-menu #menu="matMenu">
                         <div mat-menu-item>
                           <div fxLayout="row" fxLayoutAlign="start center">
-                            <i aria-hidden="true" class="fa-light fa-plus icon-fill s-18 mr-4"></i>
+                            <i aria-hidden="true" class="fa-solid fa-plus icon-fill s-18 mr-4"></i>
                             <span tabindex="0">Add Department</span>
                           </div>
                         </div>
@@ -66,8 +66,8 @@
                       <button mat-icon-button matTreeNodeToggle aria-label="toggle for parent node">
                         <i [ngClass]="
                         treeControl.isExpanded(node)
-                          ? 'fa-light fa-chevron-down s-18'
-                          : 'fa-light fa-chevron-right s-18'
+                          ? 'fa-solid fa-chevron-down s-18'
+                          : 'fa-solid fa-chevron-right s-18'
                       "></i>
                       </button>
       
@@ -84,11 +84,11 @@
                     <div fxLayout="row" fxLayoutAlign="end center" class="pr-16 icon-hidden">
                       <button mat-icon-button [matMenuTriggerFor]="menu" attr.aria-label="enter for menu"
                         aria-label="enter for more menu items">
-                        <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+                        <i aria-hidden="true" class="fa-solid fa-ellipsis-h"></i>
                       </button>
                       <mat-menu #menu="matMenu">
                         <button mat-menu-item>
-                          <i aria-hidden="true" class="fa-light fa-plus icon-fill s-18 mr-4"></i>
+                          <i aria-hidden="true" class="fa-solid fa-plus icon-fill s-18 mr-4"></i>
                           <span tabindex="0">Add University</span>
                         </button>
                       </mat-menu>

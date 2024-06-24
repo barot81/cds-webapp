@@ -77,7 +77,7 @@
                   <button mat-icon-button [matMenuTriggerFor]="menu">
                     <i
                       aria-hidden="true"
-                      class="fa-light fa-ellipsis-h s-16"
+                      class="fa-solid fa-ellipsis-h s-16"
                     ></i>
                   </button>
                 </div>
@@ -87,7 +87,7 @@
                       <div class="mr-8 mt-4">
                         <i
                           aria-hidden="true"
-                          class="fa-light fa-pen icon-pen s-18"
+                          class="fa-solid fa-pen icon-pen s-18"
                         ></i>
                       </div>
                       <div fxLayout="row" fxLayoutAlign="start center">
@@ -100,7 +100,7 @@
                       <div class="mr-8 mt-4">
                         <i
                           aria-hidden="true"
-                          class="fa-light fa-trash-alt s-18"
+                          class="fa-solid fa-trash-alt s-18"
                         ></i>
                       </div>
                       <div fxLayout="row" fxLayoutAlign="start center">
@@ -156,7 +156,7 @@
                   (click)="addNewItem(node)"
                   aria-label="enter to add new node"
                 >
-                  <i aria-hidden="true" class="fa-light fa-plus"></i>
+                  <i aria-hidden="true" class="fa-solid fa-plus"></i>
                 </button>
               </div>
               <div fxLayout="row" fxLayoutAlign="start center" fxFlex="92">
@@ -170,8 +170,8 @@
                     aria-hidden="true"
                     [ngClass]="
                       treeControl.isExpanded(node)
-                        ? 'fa-light fa-chevron-down'
-                        : 'fa-light fa-chevron-right'
+                        ? 'fa-solid fa-chevron-down'
+                        : 'fa-solid fa-chevron-right'
                     "
                     class=""
                   ></i>
@@ -190,7 +190,7 @@
                   attr.aria-label="menu for node {{ node.name }}"
                 >
                   <button mat-icon-button [matMenuTriggerFor]="menu2">
-                    <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+                    <i aria-hidden="true" class="fa-solid fa-ellipsis-h"></i>
                   </button>
                 </div>
                 <mat-menu #menu2="matMenu" class="mat-secondary-menu">
@@ -199,7 +199,7 @@
                       <div class="mr-8 mt-4">
                         <i
                           aria-hidden="true"
-                          class="fa-light fa-pen icon-pen s-18"
+                          class="fa-solid fa-pen icon-pen s-18"
                         ></i>
                       </div>
                       <div fxLayout="row" fxLayoutAlign="start center">
@@ -212,7 +212,7 @@
                       <div class="mr-8 mt-4">
                         <i
                           aria-hidden="true"
-                          class="fa-light fa-trash-alt s-18"
+                          class="fa-solid fa-trash-alt s-18"
                         ></i>
                       </div>
                       <div fxLayout="row" fxLayoutAlign="start center">
@@ -260,14 +260,14 @@
                       <div class="pr-sm-16 icon-hidden" fxFlex>
                         <div tabindex="0" attr.aria-label="menu for node node.name">
                           <button mat-icon-button [matMenuTriggerFor]="menu" >
-                            <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+                            <i aria-hidden="true" class="fa-solid fa-ellipsis-h"></i>
                           </button>
                         </div>
                         <mat-menu #menu="matMenu" class="mat-secondary-menu">
                           <button mat-menu-item>
                             <div fxLayout="row" fxLayoutAlign="start center">
                               <div class="mr-8 mt-4">
-                                <i aria-hidden="true" class="fa-light fa-pen icon-pen s-18"></i>
+                                <i aria-hidden="true" class="fa-solid fa-pen icon-pen s-18"></i>
                               </div>
                               <div fxLayout="row" fxLayoutAlign="start center">
                                 <span>Add child</span>
@@ -277,7 +277,7 @@
                           <button mat-menu-item class="warn-fg">
                             <div fxLayout="row" fxLayoutAlign="start center">
                               <div class="mr-8 mt-4">
-                                <i aria-hidden="true" class="fa-light fa-trash-alt s-18"></i>
+                                <i aria-hidden="true" class="fa-solid fa-trash-alt s-18"></i>
                               </div>
                               <div fxLayout="row" fxLayoutAlign="start center">
                                 <span>Delete</span>
@@ -309,14 +309,14 @@
                      [ngClass]="{ 'tree-node-active': activeNode === node }">
                       <div class="">
                         <button mat-icon-button class="ml-4" (click)="addNewItem(node)" aria-label="enter to add new node">
-                          <i aria-hidden="true" class="fa-light fa-plus"></i>
+                          <i aria-hidden="true" class="fa-solid fa-plus"></i>
                         </button>
                       </div>
                       <div fxLayout="row" fxLayoutAlign="start center"  fxFlex="92" >
                           <button mat-icon-button matTreeNodeToggle class="mr-8"
                             [attr.aria-label]="'Toggle ' + node.item">
                             <i aria-hidden="true" [ngClass]="treeControl.isExpanded(node) ?
-                            'fa-light fa-chevron-down s-18' : 'fa-light fa-chevron-right s-18'"
+                            'fa-solid fa-chevron-down s-18' : 'fa-solid fa-chevron-right s-18'"
                               class=""></i>
                           </button>
                           <mat-checkbox [checked]="descendantsAllSelected(node)"
@@ -328,14 +328,14 @@
                       <div fxLayout="row" fxFlex class="pr-sm-16 icon-hidden">
                           <div tabindex="0" attr.aria-label="menu for node node.name">
                               <button mat-icon-button [matMenuTriggerFor]="menu2">
-                                <i aria-hidden="true" class="fa-light fa-ellipsis-h"></i>
+                                <i aria-hidden="true" class="fa-solid fa-ellipsis-h"></i>
                               </button>
                           </div>
                           <mat-menu #menu2="matMenu" class="mat-secondary-menu">
                             <button mat-menu-item>
                               <div fxLayout="row" fxLayoutAlign="start center">
                                 <div class="mr-8 mt-4">
-                                  <i aria-hidden="true" class="fa-light fa-pen icon-pen s-18"></i>
+                                  <i aria-hidden="true" class="fa-solid fa-pen icon-pen s-18"></i>
                                 </div>
                                 <div fxLayout="row" fxLayoutAlign="start center">
                                   <span>Add child</span>
@@ -345,7 +345,7 @@
                             <button mat-menu-item class="warn-fg">
                               <div fxLayout="row" fxLayoutAlign="start center">
                                 <div class="mr-8 mt-4">
-                                  <i aria-hidden="true" class="fa-light fa-trash-alt s-18"></i>
+                                  <i aria-hidden="true" class="fa-solid fa-trash-alt s-18"></i>
                                 </div>
                                 <div fxLayout="row" fxLayoutAlign="start center">
                                   <span>Delete</span>

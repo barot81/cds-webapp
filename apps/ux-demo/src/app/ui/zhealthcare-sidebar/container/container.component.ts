@@ -18,7 +18,7 @@ export class SidebarContainerComponent {
 
   items: repo_item[] = [
     {
-      icon: 'fa-light fa-sidebar',
+      icon: 'fa-solid fa-sidebar',
       title: 'Sidebar One',
       description: 'Sidebar with Avatar List Item and has 20% width',
       page: '/admin/ux/ui/zhealthcare-sidebar/sidebar-one',
@@ -27,7 +27,7 @@ export class SidebarContainerComponent {
       isUxApproved: false,
     },
     {
-      icon: 'fa-light fa-sidebar',
+      icon: 'fa-solid fa-sidebar',
       title: 'Sidebar Two',
       description: 'Sidebar with Tree Control and has 30% width',
       page: '/admin/ux/ui/zhealthcare-sidebar/sidebar-two',
@@ -36,7 +36,7 @@ export class SidebarContainerComponent {
       isUxApproved: false,
     },   
     {
-      icon: 'fa-light fa-sidebar',
+      icon: 'fa-solid fa-sidebar',
       title: 'Sidebar Three',
       description: 'Sidebar with collapse and has 240px width',
       page: '/admin/ux/ui/zhealthcare-sidebar/sidebar-three',
@@ -45,7 +45,7 @@ export class SidebarContainerComponent {
       isUxApproved: false,
     },   
     {
-      icon: 'fa-light fa-sidebar',
+      icon: 'fa-solid fa-sidebar',
       title: 'Sidebar Four',
       description: 'Sidebar with secondary description and has 20% width',
       page: '/admin/ux/ui/zhealthcare-sidebar/sidebar-four',
@@ -54,7 +54,7 @@ export class SidebarContainerComponent {
       isUxApproved: false,
     },   
     {
-      icon: 'fa-light fa-sidebar',
+      icon: 'fa-solid fa-sidebar',
       title: 'Sidebar Five',
       description: 'Sidebar with status badge and has 20% width',
       page: '/admin/ux/ui/zhealthcare-sidebar/sidebar-five',
@@ -63,7 +63,7 @@ export class SidebarContainerComponent {
       isUxApproved: false,
     },   
     {
-      icon: 'fa-light fa-sidebar',
+      icon: 'fa-solid fa-sidebar',
       title: 'Sidebar Six',
       description: 'Sidebar with Action Item and has 20% width',
       page: '/admin/ux/ui/zhealthcare-sidebar/sidebar-six',

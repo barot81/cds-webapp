@@ -97,8 +97,8 @@
                 aria-hidden="true"
                 [ngClass]="
                   treeControl.isExpanded(node)
-                    ? 'fa-light fa-chevron-down'
-                    : 'fa-light fa-chevron-right'
+                    ? 'fa-solid fa-chevron-down'
+                    : 'fa-solid fa-chevron-right'
                 "
               ></i>
             </button>
@@ -177,7 +177,7 @@
                   <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100" class="tree-node-hover py-8 px-16 tree-node-bg" (click)="activeNode = node" [ngClass]="{ 'tree-node-active': activeNode === node }">
                       <button mat-icon-button matTreeNodeToggle class="action-icon mr-4"
                          aria-label="toggle button for parent node">
-                        <i [ngClass]="treeControl.isExpanded(node) ? 'fa-light fa-chevron-down' : 'fa-light fa-chevron-right'"
+                        <i [ngClass]="treeControl.isExpanded(node) ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-right'"
                           ></i>
                       </button>
 

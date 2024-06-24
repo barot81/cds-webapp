@@ -10,12 +10,12 @@
             <div fxLayout="row" fxLayoutAlign="start center" fxFlex.lt-md="100">
               <div class="search-wrapper" fxFlex="100">
                 <div class="search table-search" fxFlex fxLayout="row" fxLayoutAlign="start center">
-                  <i aria-hidden="true" class="fa-light fa-magnifying-glass s-18 mr-4"></i>
+                  <i aria-hidden="true" class="fa-solid fa-magnifying-glass s-18 mr-4"></i>
                   <input id="inputBox" type="text" maxlength="50" placeholder="Search" [formControl]="searchItem" fxFlex
                     matInput #searchInput #matInput [(ngModel)]="searchValue" (keyup)="applySearch($event)" />
                   <button mat-icon-button aria-label="clear search" class="action-icon clear-button"
                     (click)="clearSearch()">
-                    <i class="fa-light fa-xmark s-18" aria-hidden="true"></i>
+                    <i class="fa-solid fa-xmark s-18" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
@@ -78,7 +78,7 @@
                 </button>
                 <div fxLayout="row" class="mr-8">
                   <button matTooltip="Export" tabindex="0" aria-label="Export" mat-icon-button fxHide.lt-md [matMenuTriggerFor]="exportMenu">
-                    <i aria-hidden="true" *ngIf="!exportInProgress" class="fa-light fa-file-export s-18"></i>
+                    <i aria-hidden="true" *ngIf="!exportInProgress" class="fa-solid fa-file-export s-18"></i>
                     <mat-spinner *ngIf="exportInProgress" diameter="20" color="accent"></mat-spinner>
                   </button>
                   <mat-menu #exportMenu="matMenu">
@@ -99,7 +99,7 @@
                       [componentSelector]="dataSourceComponentService.get('zhealthcare-display-columns-form')"
                       [size]="'drawer-sm'" [caption]="'Edit Columns'" role="img" [primaryAction]="'Save'"
                       aria-hidden="true">
-                      <i aria-hidden="true" class="fa-light fa-wrench s-18 mr-8"></i>Edit columns
+                      <i aria-hidden="true" class="fa-solid fa-wrench s-18 mr-8"></i>Edit columns
                     </button>
                   </mat-menu>
                 </div>
@@ -379,7 +379,7 @@
                 <button mat-icon-button aria-label="edit item" zhealthcareDrawerAction
                   [componentSelector]="patientFormService.get('patient-add-form')" [size]="'drawer-sm'" [data]="element"
                   [caption]="'Edit Patient'" [primaryAction]="'save'">
-                  <i aria-hidden="true" class="fa-light fa-pen s-18"></i>
+                  <i aria-hidden="true" class="fa-solid fa-pen s-18"></i>
                 </button>
               </td>
             </ng-container>

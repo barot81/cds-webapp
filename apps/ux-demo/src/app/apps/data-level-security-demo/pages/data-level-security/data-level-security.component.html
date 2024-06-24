@@ -64,8 +64,8 @@
               class="accent-fg"
               [ngClass]="
                 (_fullScreenService.fullScreenModeEnabled$ | async)
-                  ? 'fa-light fa-compress'
-                  : 'fa-light fa-expand'
+                  ? 'fa-solid fa-compress'
+                  : 'fa-solid fa-expand'
               "
             ></i>
           </button>
@@ -186,7 +186,7 @@
               <button mat-icon-button class="action-icon">
                 <i
                   aria-hidden="true"
-                  class="fa-light fa-pen icon-fill s-18"
+                  class="fa-solid fa-pen icon-fill s-18"
                 ></i>
               </button>
             </td>

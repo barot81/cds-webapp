@@ -50,7 +50,7 @@
           [ngClass]="{ selected: (selectedScheme$ | async) === item.id }"
           (click)="changeScheme(item.id)"
         >
-          <i aria-hidden="true" class="fa-light {{ item.icon }} mr-8 s-14"></i>
+          <i aria-hidden="true" class="fa-solid {{ item.icon }} mr-8 s-14"></i>
           {{ item.id | titlecase }}
         </button>
       </div>

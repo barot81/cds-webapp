@@ -147,7 +147,7 @@ export class zhealthcareUxRepoComponent {
       page: '/admin/ux/ui/dynamic-overlay',
     },
     {
-      icon: 'fa-light fa-location-arrow',
+      icon: 'fa-solid fa-location-arrow',
       title: 'Navigation',
       description: 'Different types Navigation.',
       page: '/admin/ux/ui/navigation',
