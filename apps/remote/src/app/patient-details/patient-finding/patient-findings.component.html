@@ -40,7 +40,7 @@
         </div>
       </div>
       <button mat-icon-button aria-label="Add Finding Information" role="button" [hidden]="isReadonly">
-        <i aria-hidden="true" class="fa-solid fa-plus"></i>
+        <i aria-hidden="true" class="fa-solid fa-plus fg-lightgrey"></i>
       </button>
     </div>
   </mat-card>
@@ -290,7 +290,7 @@
                 _patientFormService.get('query-finding-form')
               " [size]="'drawer-lg'" [caption]="'Finding Information'" [primaryAction]="'Save'"
               [secondaryAction]="'Delete'" role="button" [entityKey]="item.id" [data]="item">
-              <i aria-hidden="true" class="fa-solid fa-pen"></i>
+              <i aria-hidden="true" class="fa-solid fa-pen fg-lightgrey"></i>
             </button>
           </div>
 

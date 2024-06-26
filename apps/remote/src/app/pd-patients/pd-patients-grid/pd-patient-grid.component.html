@@ -67,7 +67,7 @@
                   [componentSelector]="_patientGridService.get('ryzen-filter-drawer')" [size]="'drawer-md'"
                   [caption]="'Filters'" [primaryAction]="'Apply'">
                   <div fxLayout="row" fxLayoutAlign="start center">
-                    <i aria-hidden="true" class="fal fa-filter s-18 mr-4 fg-lightgrey"></i>
+                    <i aria-hidden="true" class="fa-solid fa-filter s-18 mr-4 fg-lightgrey"></i>
                     <span *ngIf="gridFilter.length> 0"> {{ gridFilter.length }} </span>
                   </div>
                 </button>
@@ -379,7 +379,7 @@
                 <button mat-icon-button aria-label="edit item" zhealthcareDrawerAction
                   [componentSelector]="patientFormService.get('patient-add-form')" [size]="'drawer-sm'" [data]="element"
                   [caption]="'Edit Patient'" [primaryAction]="'save'">
-                  <i aria-hidden="true" class="fa-solid fa-pen s-18"></i>
+                  <i aria-hidden="true" class="fa-solid fa-pen s-18 fg-lightgrey"></i>
                 </button>
               </td>
             </ng-container>

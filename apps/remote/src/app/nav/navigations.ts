@@ -6,7 +6,7 @@ export const navigations = {
       menus: [
         {
           active: true,
-          icon: 'fa-solid fa-table-cells pink-fg',
+          icon: 'fa-solid fa-table-cells pink-fg m-8',
           image: null,
           order: '0',
           id: 'dashboard',
@@ -20,7 +20,7 @@ export const navigations = {
         },
         {
           active: false,
-          icon: 'fa-solid fa-university pink-fg',
+          icon: 'fa-solid fa-university pink-fg m-8',
           image: null,
           order: null,
           id: 'program.information',
@@ -37,7 +37,7 @@ export const navigations = {
           children: []
         },
         {
-          icon: 'fa-solid fa-user pink-fg',
+          icon: 'fa-solid fa-user pink-fg m-8',
           title: '360\xB0 CLAIM OPTIMIZATION',
           type: 'menu-item',
           url: '/admin/pd-patients',
