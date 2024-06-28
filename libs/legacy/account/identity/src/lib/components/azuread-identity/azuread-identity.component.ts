@@ -6,7 +6,13 @@ import {
   MsalService,
   MSAL_GUARD_CONFIG,
 } from '@azure/msal-angular';
-import { AuthenticationResult, EventMessage, EventType, InteractionStatus, RedirectRequest } from '@azure/msal-browser';
+import {
+  AuthenticationResult,
+  EventMessage,
+  EventType,
+  InteractionStatus,
+  RedirectRequest,
+} from '@azure/msal-browser';
 import { UserService } from '@zhealthcare/fusion/core';
 import { MsalAuthService } from '@zhealthcare/fusion/services';
 import { filter, Subject, takeUntil } from 'rxjs';
@@ -14,7 +20,7 @@ import { filter, Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'zhc-azuread-identity',
   templateUrl: 'azuread-identity.component.html',
-  styleUrls: ['azuread-identity.component.scss']
+  styleUrls: ['azuread-identity.component.scss'],
 })
 export class AzureAdIdentityComponent implements OnInit, OnDestroy {
   isUserLoggedin: boolean;
@@ -40,22 +46,27 @@ export class AzureAdIdentityComponent implements OnInit, OnDestroy {
         ),
         takeUntil(this._destroy)
       )
-      .subscribe(_ => {
+      .subscribe((_) => {
         localStorage.setItem('isAuthenticated', 'true');
         this.isUserLoggedin =
           this.msalService.instance.getAllAccounts().length > 0;
-          if(this.isUserLoggedin) {
-            this.msalAuthService.getGroupsFromToken().then(groups => {
-              if(this.msalAuthService.checkUserAccess(groups, ["Management", "MD CDI"]))
-                this.router.navigateByUrl('/admin/account/launch');
-              else
-                this.router.navigateByUrl('/admin/pd-patients');
-            })
-            const instance = this.msalService.instance.getAllAccounts()[0];
-            this.userService.setUserName(instance.name, instance.username);
-          }
-          this.loading = false;
-          localStorage.removeItem('loading');
+        if (this.isUserLoggedin) {
+          this.msalAuthService.getGroupsFromToken().then((groups) => {
+            if (
+              this.msalAuthService.checkUserAccess(groups, [
+                'Management',
+                'MD CDI',
+              ])
+            )
+              this.router.navigateByUrl('/admin/account/launch');
+            else this.router.navigateByUrl('/admin/pd-patients');
+          });
+          const instance = this.msalService.instance.getAllAccounts()[0];
+          this.userService.setUserName(instance.name, instance.username);
+          this.router.navigateByUrl('/admin/account/launch');
+        }
+        this.loading = false;
+        localStorage.removeItem('loading');
       });
   }
 
@@ -74,10 +85,9 @@ export class AzureAdIdentityComponent implements OnInit, OnDestroy {
         filter((status: InteractionStatus) => status === InteractionStatus.None)
       )
       .subscribe(() => {
-          this.msalService.instance.getActiveAccount()?.idTokenClaims
+        this.msalService.instance.getActiveAccount()?.idTokenClaims;
       });
   }
-
 
   ngOnDestroy(): void {
     this._destroy.next(undefined);

@@ -62,30 +62,6 @@ const routes: Routes = [
     path: 'account/changePasswordSuccess',
     component: ChangePasswordSuccessComponent,
   },
-  // {
-  //   path: 'account/v4redirect',
-  //   component: V4RedirectComponent,
-  // },
-  // {
-  //   path: 'account/v3redirect',
-  //   component: V3RedirectComponent,
-  //   canActivate: [AuthGuardService],
-  // },
-  {
-    path: 'sso/request',
-    component: RequestComponent,
-  },
-  {
-    path: 'sso/response',
-    component: ResponseComponent,
-  },
-  // {
-  //   path: 'externalRedirect',
-  //   resolve: {
-  //     url: externalUrlProvider,
-  //   },
-  //   component: RedirectComponent,
-  // },
 ];
 export const cachedComponent: any = '';
 

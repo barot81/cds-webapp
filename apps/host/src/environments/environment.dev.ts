@@ -6,6 +6,11 @@ export const environment = {
         endpoint: 'https://abzcds.azurewebsites.net/api',
       },
     },
+    microfrontends: {
+      remote: 'https://wonderful-tree-03951661e.3.azurestaticapps.net'
+      // "remote": "http://localhost:5201",
+      // "ux-demo":"http://localhost:4801"
+    },
     instrumentationKey: '',
     clickTrackingSettings: {
       clickTrackingEnabled: true,
@@ -19,7 +24,7 @@ export const environment = {
       groupMapping: {
         Management: 'd8ea4b5e-8c07-4a32-87a9-0a72069c5ecb',
         'MD CDI': '3f54d578-74f7-4090-ba56-0974345774d4',
-        ClaimOptimization: '652bf906-4e29-4327-bcc1-303a5c11e1d2',
+        "Claim Optimization": '652bf906-4e29-4327-bcc1-303a5c11e1d2',
       },
     },
     userIdleSettings: {
@@ -29,6 +34,7 @@ export const environment = {
     silentTokenRefreshSettings: {
       oldTokenDeleteOffset: 120,
     },
+
   },
   uiSettings: {
     colorTheme: 'theme-blue-light',

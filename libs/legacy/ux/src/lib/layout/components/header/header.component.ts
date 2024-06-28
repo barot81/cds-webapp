@@ -20,7 +20,7 @@ import {
   UserSettingsSandbox,
   UserService
 } from '@zhealthcare/fusion/core';
-import { TokenModel, User, UserPersona } from '@zhealthcare/fusion/models';
+import { TokenModel } from '@zhealthcare/fusion/models';
 import { ThemeSelectionService } from '../../../components';
 import { productNavigation } from '../../../navigation/navigation';
 import { PageFacade } from '../../../store/facade/page.facade';
@@ -30,7 +30,7 @@ import { IdentityComponentMapService } from './account/services';
 import { ConsentDetailsPopupComponent } from './consent-details-popup/consent-details-popup.component';
 import { HeaderDrawerService } from './header-drawer.service';
 import { HeaderService } from './header.service';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { MsalAuthService } from '@zhealthcare/fusion/services';
 @Component({
   selector: 'header',
   templateUrl: './header.component.html',
@@ -68,6 +68,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   isDelegatorUser = false;
   userName: any;
   isStudent = false;
+  launchRedirectUrl = '/admin/account/launch';
 
   /**
    * Constructor
@@ -87,7 +88,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     private _userSettingsSandbox: UserSettingsSandbox,
     public readonly _layoutService: LayoutService,
     public readonly _headerService: HeaderService,
-    private readonly _userService: UserService
+    private readonly _userService: UserService,
+    private msalAuthService: MsalAuthService
   ) {
     if (localStorage.getItem('User')) {
       const userRoles = JSON.parse(localStorage.getItem('User'))?.UserRoles;
@@ -161,7 +163,11 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         this.rightNavbar = settings.layout.navbar.position === 'right';
         this.hiddenNavbar = settings.layout.navbar.hidden === true;
       });
-
+      this.msalAuthService.getGroupsFromToken().then(groups => {
+          this.launchRedirectUrl = this.msalAuthService.checkUserAccess(groups, ["Management", "Claim Optimization"])
+          ? "/admin/pd-patients"
+          : "/admin/account/launch";
+      });
     // this.getScheduledDowntimeInfo();
     this.logoutOnClearingStorage();
     // this.getUserSettings();
@@ -242,14 +248,15 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   redirectToLaunch() {
-    this.userFacade.UserState$.pipe(take(1)).subscribe((user) => {
-      if (user?.user?.ManagedUserAccount?.IsActive)
-        this.router.navigateByUrl(URLConstants.DASHBOARD_URL);
-      else {
-        const launchUrl = `admin${URLConstants.LAUNCH_URL}`;
-        this.router.navigateByUrl(launchUrl);
-      }
-    });
+    this.router.navigateByUrl(this.launchRedirectUrl);
+    // this.userFacade.UserState$.pipe(take(1)).subscribe((user) => {
+    //   if (user?.user?.ManagedUserAccount?.IsActive)
+    //     this.router.navigateByUrl(URLConstants.DASHBOARD_URL);
+    //   else {
+    //     const launchUrl = `admin${URLConstants.LAUNCH_URL}`;
+    //     this.router.navigateByUrl(launchUrl);
+    //   }
+    // });
   }
 
   getScheduledDowntimeInfo() {
