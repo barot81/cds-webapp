@@ -1,26 +1,15 @@
 export const environment = {
-  production: true,
+  production: false,
   appSettings: {
-    production: false,
-    allowProductSelection: false,
-    unauthorizedEndpoints: [],
-    notFoundEndpoints: [],
-    auth: {
-      endpoint: '',
-    },
-    realtime: {
-      endpoint: '',
-    },
-    gateway: {
-      endpoint: '',
-    },
     services: {
       facility: {
         endpoint: 'https://abzcds.azurewebsites.net/api',
       },
     },
     microfrontends: {
-      remote: 'https://wonderful-tree-03951661e.3.azurestaticapps.net'
+      // remote: 'https://wonderful-tree-03951661e.3.azurestaticapps.net'
+      "remote": "http://localhost:5201",
+      // "ux-demo":"http://localhost:4801"
     },
     instrumentationKey: '',
     clickTrackingSettings: {
@@ -35,58 +24,17 @@ export const environment = {
       groupMapping: {
         Management: 'd8ea4b5e-8c07-4a32-87a9-0a72069c5ecb',
         'MD CDI': '3f54d578-74f7-4090-ba56-0974345774d4',
-        ClaimOptimization: '652bf906-4e29-4327-bcc1-303a5c11e1d2',
+        'Claim Optimization': '652bf906-4e29-4327-bcc1-303a5c11e1d2',
       },
-    },
-    authGuardSettings: {
-      loginUrl: '',
-      launchUrl: '',
     },
     userIdleSettings: {
       idle: 1800,
       timeout: 300,
     },
-    releaseNoteNotification: {
-      offset: 7,
-    },
     silentTokenRefreshSettings: {
       oldTokenDeleteOffset: 120,
     },
-    helpCenterSettings: {
-      switchOverInfo: '',
-    },
-    resources: {
-      eventDaysOffSet: 7,
-      voracoAuthKey: '',
-    },
-    GoogleReCaptcha: {
-      SiteKey: '',
-    },
-    Cryptography: {
-      EnableEncryption: false,
-      Key: '',
-      IV: '',
-      Keysizes: 128,
-    },
-    other: {
-      platformSettings: {
-        controlSettings: {
-          searchControlSetting: {
-            apiKey: '',
-            searchUriICD: '',
-            autocompleteUriICD: '',
-            searchUriCPT: '',
-            autocompleteUriCPT: '',
-          },
-        },
-      },
-    },
-    AzureMap: {
-      subscriptionKey: '',
-    },
-    blobStorage: {
-      fusionURI: '',
-    },
+
   },
   uiSettings: {
     colorTheme: 'theme-blue-light',

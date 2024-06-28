@@ -111,6 +111,9 @@
         },
         "development": {
           "browserTarget": "host:build:development"
+        },
+        "local": {
+          "browserTarget": "host:build:local"
         }
       },
       "defaultConfiguration": "development",
