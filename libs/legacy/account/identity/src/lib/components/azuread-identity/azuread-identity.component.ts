@@ -48,8 +48,7 @@ export class AzureAdIdentityComponent implements OnInit, OnDestroy {
       )
       .subscribe((_) => {
         localStorage.setItem('isAuthenticated', 'true');
-        this.isUserLoggedin =
-          this.msalService.instance.getAllAccounts().length > 0;
+        this.isUserLoggedin = this.msalService.instance.getAllAccounts().length > 0;
         if (this.isUserLoggedin) {
           this.msalAuthService.getGroupsFromToken().then((groups) => {
             if (
@@ -63,7 +62,7 @@ export class AzureAdIdentityComponent implements OnInit, OnDestroy {
           });
           const instance = this.msalService.instance.getAllAccounts()[0];
           this.userService.setUserName(instance.name, instance.username);
-          this.router.navigateByUrl('/admin/account/launch');
+          // this.router.navigateByUrl('/admin/account/launch');
         }
         this.loading = false;
         localStorage.removeItem('loading');

@@ -21,7 +21,7 @@ export class MsalAuthService {
   }
 
   async getGroupsFromToken() {
-    if(this.groupIds) {
+    if(this.groupIds && this.groupIds.length > 0) {
       return this.groupIds;
     }
     const account = this.authService.instance.getActiveAccount();
@@ -41,8 +41,9 @@ export class MsalAuthService {
   }
 
   private getUserRolesFromGroupIds(groupIds: string[]): string[] {
-    const roles: string[] = Object.entries(this.groupMapping)
-      .filter((x) => groupIds.includes(x[1]))
+    const groups = Object.entries(this.groupMapping);
+    if(!groups) return [];
+    const roles: string[] = groups.filter((x) => groupIds.includes(x[1]))
       .map((x) => x[0]);
     return roles.filter((role) => !!role); // Filter out undefined roles
   }

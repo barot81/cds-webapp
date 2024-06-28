@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrgFacade } from '@zhealthcare/fusion/core';
 import { ManageUserService } from '@zhealthcare/fusion/services';
-import { HeaderService, PageFacade } from '@zhealthcare/ux';
+import { FuseProgressBarService, HeaderService, PageFacade } from '@zhealthcare/ux';
 import { AuditorPatientService } from '../../services/auditor-patient.service';
 
 @Component({
@@ -17,12 +17,14 @@ export class PdPatientDashboardComponent implements OnInit {
     protected manageuser: ManageUserService,
     private _headerService: HeaderService,
     private orgFacade: OrgFacade,
-    private _auditorPatientService :AuditorPatientService) {
+    private _auditorPatientService :AuditorPatientService,
+    protected fuseProgressBarService: FuseProgressBarService) {
     this.pageFacade.setPageTitle('360\xB0 claim optimization');
   }
 
   facilityWisePendingAuditor = [];
   ngOnInit() {
+    this.fuseProgressBarService.show();
     this._auditorPatientService.getAuditorDashboard().subscribe((result: any)=>
       {
         result.forEach(x => {
@@ -32,6 +34,7 @@ export class PdPatientDashboardComponent implements OnInit {
             count : x.pendingReviewCount
           });
         });
+        this.fuseProgressBarService.hide();
       });
   }
 

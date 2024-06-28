@@ -172,12 +172,7 @@ export class FusionNavigationService implements OnDestroy {
   }
 
   getCurrentNavigation(): NavigationItem[] {
-    if (
-      localStorage.getItem('Auth') != null ||
-      sessionStorage.getItem('Auth') != null ||
-      window.location.pathname == '/gateway/delegator' ||
-      window.location.pathname == '/account/register'
-    ) {
+    if (localStorage.getItem('isAuthenticated')) {
       if (!this._currentNavigationKey) {
         if (
           localStorage.getItem(NavigationConstants.MetaNavigation) ||

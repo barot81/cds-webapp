@@ -84,7 +84,7 @@ export class FusionNavigationComponent implements OnChanges, OnInit, OnDestroy {
         .then((supportedGroups) => {
             this.navigation = this._fusionNavigationService
                   .getCurrentNavigation()
-                  .filter(x=> this.hasGroup(supportedGroups, x.groups, x));
+                  ?.filter(x=> this.hasGroup(supportedGroups, x.groups, x)) ?? [];
             console.log(this.navigation);
             // const navs = this.filterMenuItems(
             //   this.navigation,

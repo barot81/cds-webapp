@@ -22,37 +22,6 @@ export const environment = {
     microfrontends: {
       remote: 'https://wonderful-tree-03951661e.3.azurestaticapps.net'
     },
-    localization: {
-      languages: [
-        {
-          code: 'en',
-          name: 'EN',
-          culture: 'en-EN',
-        },
-        {
-          code: 'es',
-          name: 'ES',
-          culture: 'es-ES',
-        },
-        {
-          code: 'fr',
-          name: 'FR',
-          culture: 'fr-FR',
-        },
-      ],
-      defaultLanguage: 'en',
-    },
-    notifications: {
-      toasterEnable: true,
-      options: {
-        timeOut: 5000,
-        showProgressBar: true,
-        pauseOnHover: true,
-        position: ['top', 'right'],
-        theClass: 'sy-notification',
-      },
-    },
-    debugging: true,
     instrumentationKey: '',
     clickTrackingSettings: {
       clickTrackingEnabled: true,
