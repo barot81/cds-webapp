@@ -25,7 +25,7 @@ export const environment = {
       },
       protectedResources: {
         apiTodoList: {
-          endpoint: 'https://localhost:7198/*', // "https://abzcds.azurewebsites.net/*", // "https://localhost:7198/*",
+          endpoint: "https://abzcds.azurewebsites.net/*", // "https://abzcds.azurewebsites.net/*", // "https://localhost:7198/*",
           scopes: {
             resource: [
               'api://9e11a7a0-8ceb-4b31-a905-1a979b097247/patients.read',

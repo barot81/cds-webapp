@@ -7,8 +7,8 @@ export const environment = {
       },
     },
     microfrontends: {
-      // remote: 'https://wonderful-tree-03951661e.3.azurestaticapps.net'
-      "remote": "http://localhost:5201",
+      remote: 'https://wonderful-tree-03951661e.3.azurestaticapps.net'
+      //"remote": "http://localhost:5201",
       // "ux-demo":"http://localhost:4801"
     },
     instrumentationKey: '',
