@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpService, MetaConstants } from "@zhealthcare/fusion/core";
-import { BehaviorSubject, map, catchError, of } from "rxjs";
+import { BehaviorSubject, map, catchError, of, Observable, tap } from "rxjs";
 import { Patient } from "../models/patient.model";
 
 @Injectable({ providedIn: 'any' })
@@ -30,6 +30,22 @@ export class AuditorPatientService extends HttpService {
     return url;
   }
 
+
+  getPatientById(id: string): Observable<Patient> {
+    const url = `${this.getBaseEndpoint()}/${id}`;
+    this.loading$.next(true);
+    return this.httpClient.get<Patient>(url).pipe(
+      tap((x) => {
+        this.currentPdPatient$.next(x);
+        this.currentPdPatient = x;
+        this.loading$.next(false);
+      }),
+      catchError((err) => {
+        this.loading$.next(false);
+        return of(err);
+      })
+    );
+  }
 
   profileListLoaded(data: { result: any; count: number }) {
     this.pdPatientData$.next(data.result);

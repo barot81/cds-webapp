@@ -1,8 +1,9 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 import { Patient } from '../../models/patient.model';
 import { GridService } from '../../services/grid.service';
 import { PatientService } from '../../services/patient.service';
+import { AuditorPatientService } from '../../services/auditor-patient.service';
 
 @Component({
   selector: 'patient-header',
@@ -10,7 +11,7 @@ import { PatientService } from '../../services/patient.service';
   styleUrls :  ['./patient-header.component.scss']
 })
 
-export class PatientHeaderComponent implements OnDestroy{
+export class PatientHeaderComponent implements OnDestroy, OnInit {
   patient$: Subject<Patient> = new BehaviorSubject(new Patient());
   public loading$;
   fileConfiguration;
@@ -18,9 +19,16 @@ export class PatientHeaderComponent implements OnDestroy{
   initial1;
   private _unsubscribe = new Subject();
   @Input() isPdPatient = false;
-  constructor(private patientService: PatientService, public gridService:GridService) {
+  constructor(private patientService: PatientService, public gridService:GridService,
+    private auditorPatientService: AuditorPatientService
+  ) {
     this.loading$ = this.patientService.loading$;
-    this.patientService.currentPatient$.pipe(takeUntil(this._unsubscribe))
+  }
+  ngOnInit(): void {
+    (this.isPdPatient
+      ? this.auditorPatientService.currentPdPatient$
+      : this.patientService.currentPatient$)
+    .pipe(takeUntil(this._unsubscribe))
     .subscribe(x=> {
         this.patient$.next(x);
         this.loading$.next(false);

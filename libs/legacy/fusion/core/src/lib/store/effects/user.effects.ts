@@ -494,19 +494,20 @@ export class AuthEffects {
       this.actions.pipe(
         ofType(OrgActionTypes.SetFacilityWithStatuses),
         tap((data: SetFacilityWithStatuses) => {
+          if(!data?.payload) return;
           localStorage.setItem('FacilityId', data.payload.FacilityId);
           localStorage.setItem(
             'StatusCount',
-            JSON.stringify(data.payload.StatusCount)
+            JSON.stringify(data.payload.StatusCount ?? {} )
           );
           localStorage.setItem(
             'selectedStatus',
-            data.payload.StatusCount.find(x=>x.isSelected).name
+            data.payload.StatusCount?.find(x=>x.isSelected)?.name ?? ''
           );
           sessionStorage.setItem('FacilityId', data.payload.FacilityId);
           sessionStorage.setItem(
             'StatusCount',
-            JSON.stringify(data.payload.StatusCount)
+            JSON.stringify(data.payload.StatusCount ?? {} )
           );
         })
       ),

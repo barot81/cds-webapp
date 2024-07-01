@@ -13,7 +13,7 @@
       <mat-expansion-panel-header>
         <mat-panel-title>
           <div fxLayoutAlign="start center" fxLayout="row">
-            <span > Query Findings </span>
+            <span > Query Findings  {{findingsCount === 0 ? "" : "(" + findingsCount + ")"}}</span>
           </div>
         </mat-panel-title>
       </mat-expansion-panel-header>

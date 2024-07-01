@@ -68,7 +68,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   isDelegatorUser = false;
   userName: any;
   isStudent = false;
-  launchRedirectUrl = '/admin/account/launch';
 
   /**
    * Constructor
@@ -111,18 +110,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.loggedInUser$ = this.userFacade.UserState$.pipe(
       takeUntil(this._unsubscribeAll)
     );
-    this.hasDelegateRole$ = this.loggedInUser$.pipe(
-      map((x) =>
-        x?.user?.UserRoles?.some((y) => y.RoleCode.includes('Delegate.'))
-      )
-    );
-    this.facilityId$ = this.orgFacade.OrgState$.pipe(
-      takeUntil(this._unsubscribeAll),
-      map((x) => {
-        if (x.FacilityWiseStatuses?.FacilityId !== HttpConstants.BASE)
-          return x.FacilityWiseStatuses?.FacilityId;
-      })
-    );
 
     this.pageFacade.pageTitle$
       .pipe(delay(0))
@@ -162,11 +149,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         this.horizontalNavbar = settings.layout.navbar.position === 'top';
         this.rightNavbar = settings.layout.navbar.position === 'right';
         this.hiddenNavbar = settings.layout.navbar.hidden === true;
-      });
-      this.msalAuthService.getGroupsFromToken().then(groups => {
-          this.launchRedirectUrl = this.msalAuthService.checkUserAccess(groups, ["Management", "Claim Optimization"])
-          ? "/admin/pd-patients"
-          : "/admin/account/launch";
       });
     // this.getScheduledDowntimeInfo();
     this.logoutOnClearingStorage();
@@ -248,15 +230,10 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   redirectToLaunch() {
-    this.router.navigateByUrl(this.launchRedirectUrl);
-    // this.userFacade.UserState$.pipe(take(1)).subscribe((user) => {
-    //   if (user?.user?.ManagedUserAccount?.IsActive)
-    //     this.router.navigateByUrl(URLConstants.DASHBOARD_URL);
-    //   else {
-    //     const launchUrl = `admin${URLConstants.LAUNCH_URL}`;
-    //     this.router.navigateByUrl(launchUrl);
-    //   }
-    // });
+    const redirectUrl = window.location.pathname.includes("/pd-patients/")
+          ? "/admin/pd-patients"
+          : "/admin/account/launch";
+      this.router.navigateByUrl(redirectUrl);
   }
 
   getScheduledDowntimeInfo() {

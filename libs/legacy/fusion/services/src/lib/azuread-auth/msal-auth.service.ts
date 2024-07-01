@@ -28,7 +28,7 @@ export class MsalAuthService {
     const response = await this.authService.instance
     .acquireTokenSilent({
       account: account,
-      scopes: [`${this.clientId}/openid`],
+      scopes: ['api://9e11a7a0-8ceb-4b31-a905-1a979b097247/patients.read openId'],
     });
     const token = response.accessToken;
     if (!token) {

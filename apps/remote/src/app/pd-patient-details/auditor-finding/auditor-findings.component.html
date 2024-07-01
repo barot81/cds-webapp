@@ -11,7 +11,7 @@
           <div fxLayout.gt-md="row" fxLayout="column" fxLayoutAlign.gt-md="start center" fxLayoutAlign="start start"
             fxFlex="100">
             <div class="secondary-card-header-title overflow-ellipses">
-              <span class="primary-heading">Auditor Findings</span>
+              <span class="primary-heading">Auditor Findings {{findingCount === 0 ? "" : "(" + findingCount + ")"}}</span>
             </div>
           </div>
         </div>

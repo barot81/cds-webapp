@@ -17,6 +17,7 @@ export class PatientFindingsComponent implements OnDestroy {
   loading$: any;
   patientFindings$: Subject<Finding[]> = new BehaviorSubject([]);
   patientFindingInfo: Finding;
+  findingsCount = 0;
   patientId: any;
   _unsubscribe: Subject<any> = new Subject();
   patientInfo: any;
@@ -34,6 +35,7 @@ export class PatientFindingsComponent implements OnDestroy {
       this.patientId = x.id;
       this.patientFindingService.getFindingsByPatientId(this.patientId).subscribe((res) => {
         this.patientFindings$.next(res);
+        this.findingsCount = res.length;
         this.loading$.next(false);
       });
       this.patientFindingService.queryFindingData$.pipe(takeUntil(this._unsubscribe),

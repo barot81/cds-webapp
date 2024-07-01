@@ -23,10 +23,10 @@
     </h2>
   </div>
     <div class="header content">
-    <patient-header isPdPatient="true"></patient-header>
+    <patient-header [isPdPatient]="true"></patient-header>
     </div>
     <div class="content overflow-auto" style="height: calc(100vh - 250px) !important;">
-      <patient-findings isReadonly="true"></patient-findings>
+      <patient-findings [isReadonly]="true"></patient-findings>
       <div class="m-4"></div>
       <auditor-findings></auditor-findings>
     </div>

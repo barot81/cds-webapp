@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HeaderService } from '@zhealthcare/ux';
-import { PatientService } from '../services/patient.service';
+import { AuditorPatientService } from '../services/auditor-patient.service';
 
 @Component({
   selector: 'pd-patient-details',
@@ -12,10 +12,10 @@ export class PdPatientDetailsComponent {
 
   constructor(_headerService:HeaderService,
       private activatedRoute: ActivatedRoute,
-      private readonly patientService: PatientService
+      private readonly auditorService: AuditorPatientService
      ) {
     this.activatedRoute.params.subscribe(x=> {
-      this.patientService.getPatientById(x.id).subscribe();
+      this.auditorService.getPatientById(x.id).subscribe();
     });
   }
 

@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {
-  APP_INITIALIZER,
-  ModuleWithProviders,
   NgModule,
   Optional,
   SkipSelf,
@@ -89,8 +87,6 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
       authRequest: loginRequest
   };
 }
-const isIE = window.navigator.userAgent.indexOf('MSIE') > 0 ||
-window.navigator.userAgent.indexOf('Trident/') > 0
 
 @NgModule({
   imports: [

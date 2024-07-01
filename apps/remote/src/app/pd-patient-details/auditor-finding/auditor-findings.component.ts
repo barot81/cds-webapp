@@ -16,6 +16,7 @@ import { AuditorFindingService } from '../../services/auditor-finding.service';
 export class AuditorFindingsComponent implements OnDestroy {
   loading$: any;
   patientFindings$: Subject<Finding[]> = new BehaviorSubject([]);
+  findingCount = 0;
   patientFindingInfo: Finding;
   patientId: any;
   _unsubscribe: Subject<any> = new Subject();
@@ -33,6 +34,7 @@ export class AuditorFindingsComponent implements OnDestroy {
     this.activatedRoute.params.subscribe((x) => {
       this.patientId = x.id;
       this.auditorFindingService.getFindingsByPatientId(this.patientId).subscribe((res) => {
+        this.findingCount = res.length;
         this.patientFindings$.next(res);
         this.loading$.next(false);
       });
